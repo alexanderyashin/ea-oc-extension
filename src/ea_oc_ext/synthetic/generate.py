@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 import random
 
 import networkx as nx
@@ -17,12 +17,17 @@ class SyntheticConfig:
     steps: int = 200
     p_edge: float = 0.03
     nodes: int = 40
-    tau_EA: int = 25  # used as recurrence window proxy in synthetic mode
-    # If True, we intentionally generate a stability-only violation (f_stab>0)
-    # that is NOT classified by ETS phase logic, to test the guardrail.
-    allow_undefined_surface: bool = False
-    # intensity scalars for synthetic effects
+    tau_EA: int = 25  # recurrence window proxy (synthetic)
     shock_scale: float = 0.25
+
+    # Guardrail test: if True, create a stability-only violation (ETS undefined surface)
+    allow_undefined_surface: bool = False
+
+    # Optional forced injections (synthetic driver knobs)
+    force_stop_at: int | None = None
+    force_inertia_at: tuple[int, ...] = (60, 120)
+    force_collapse_at: tuple[int, ...] = (90, 150)
+    force_recover_at: tuple[int, ...] = (80, 110, 140, 160)
 
 
 def _rand_graph(rng: random.Random, nodes: int, p_edge: float) -> nx.DiGraph:
@@ -36,10 +41,7 @@ def _rand_graph(rng: random.Random, nodes: int, p_edge: float) -> nx.DiGraph:
 
 
 def _required_cycles_from_graph(spec: KeaSpec, g: nx.DiGraph, rng: random.Random) -> set[str]:
-    """
-    Synthetic: we do not have cycle-type ontology. We approximate closure by
-    random assignment conditioned on 'graph has any cycle'.
-    """
+    """Synthetic closure proxy: if graph has any directed cycle, cycles are likely closed."""
     has_any_cycle = False
     try:
         next(nx.simple_cycles(g))
@@ -59,21 +61,22 @@ def _required_cycles_from_graph(spec: KeaSpec, g: nx.DiGraph, rng: random.Random
 def generate_trajectory(spec: KeaSpec, cfg: SyntheticConfig) -> List[Tuple[int, KeaState, K7Fields]]:
     """
     Generates (t, state, fields) triples.
-    f_k dynamics are synthetic: they create regimes where each phase can appear.
+
+    NOTE: This is a synthetic demonstration driver. It does NOT add theory.
+    It only produces trajectories to exercise ETS-defined engine logic.
     """
     rng = random.Random(cfg.seed)
     out: List[Tuple[int, KeaState, K7Fields]] = []
 
-    # start with mostly healthy f
+    # initialize all f-components known to the spec
     f = {c: 0.0 for c in spec.f_components}
-    if "f_stab" not in f:
-        f["f_stab"] = 0.0
+    # some tests also use f_stab even if not listed by spec tooling
+    f.setdefault("f_stab", 0.0)
 
     parent_ok = True
     obs_lost = False
 
     for t in range(cfg.steps):
-        # fields (synthetic)
         fields = K7Fields(
             law=rng.uniform(-1, 1) * cfg.shock_scale,
             regulation=rng.uniform(-1, 1) * cfg.shock_scale,
@@ -82,25 +85,21 @@ def generate_trajectory(spec: KeaSpec, cfg: SyntheticConfig) -> List[Tuple[int, 
             norms=rng.uniform(-1, 1) * cfg.shock_scale,
         )
 
-        # synthetic graph & cycle closure
         g = _rand_graph(rng, cfg.nodes, cfg.p_edge)
         closed_cycles = _required_cycles_from_graph(spec, g, rng)
 
-        # synthetic f updates: push occasionally into inertia/collapse/stop
-        # (explicitly a demo driver, not a claim about enterprises)
+        # synthetic injections (config-driven)
         if t in cfg.force_inertia_at:
-            f["f_inertia"] = 1.0  # inertia regime (synthetic)
+            f["f_inertia"] = 1.0
         if t in cfg.force_collapse_at:
-            f["f_collapse"] = 1.0  # collapse regime (synthetic)
-        if cfg.force_stop_at is not None and t == cfg.force_stop_at:
-            f["f_stop"] = 1.0  # STOP trigger (synthetic)
-
-        # recovery waves (synthetic)
+            f["f_collapse"] = 1.0
         if t in cfg.force_recover_at:
             f["f_inertia"] = 0.0
             f["f_collapse"] = 0.0
+        if cfg.force_stop_at is not None and t == cfg.force_stop_at:
+            f["f_stop"] = 1.0
 
-        # occasional stability-only violation is optional (guardrail test)
+        # optional ETS-undefined surface (stability-only violation)
         if cfg.allow_undefined_surface:
             if t == 30:
                 f["f_stab"] = 1.0

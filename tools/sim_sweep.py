@@ -44,10 +44,8 @@ def run_one(spec, cfg: SyntheticConfig) -> Dict[str, Any]:
             time_to_stop = t
             break
 
-        # driver-only external Ψ knob (synthetic): market>0.15
         ctx = TransitionContext(external_psi_restores_potentials=(fields.market > 0.15))
         phase_guarded = guard_transition_or_stop(prev_phase, phase_raw, ctx)
-
         kk = k_EA(spec, state) if phase_guarded != "STOP" else 0.0
 
         phases_raw.append(phase_raw)
@@ -60,7 +58,7 @@ def run_one(spec, cfg: SyntheticConfig) -> Dict[str, Any]:
             break
 
     if time_to_stop is None:
-        time_to_stop = cfg.steps  # survived whole horizon
+        time_to_stop = cfg.steps
 
     return {
         "cfg": asdict(cfg),
@@ -87,7 +85,7 @@ def main() -> None:
                 shock_scale=shock,
                 tau_EA=25,
                 allow_undefined_surface=False,
-                force_stop_at=None,  # <-- UNFORCED
+                force_stop_at=None,  # UNFORCED
             ))
 
     results = [run_one(spec, cfg) for cfg in sweep]
