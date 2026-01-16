@@ -1,0 +1,85 @@
+id: ETS.K_EA.v1.1
+status: executable_closed
+scope_lock:
+  oc_core: frozen
+  estra_v1: frozen
+  kea: frozen_primitives_only
+
+axes:
+  struct: [coupling, modularity, centralization, redundancy]
+  gov: [decision_latency, rule_enforceability, escalation_integrity]
+  ops: [delivery_coherence, incident_recovery_loop, change_lead_time]
+  res: [budget_flexibility, skills_coverage, supplier_dependency]
+  info: [observability, traceability, semantic_alignment]
+  risk: [risk_visibility, control_gap_rate]
+
+structural_tension_f_k:
+  components:
+    - f_exist
+    - f_stab
+    - f_inertia
+    - f_collapse
+    - f_stop
+  threshold_mapping:
+    Theta_exist: f_exist
+    Theta_stab: f_stab
+    Theta_inertia: f_inertia
+    Theta_collapse: f_collapse
+    Theta_stop: f_stop
+
+cycles:
+  required: [governance, value, reproduction, finance, learning]
+  closure_rule:
+    - graph_closed_path
+    - recurrent_pattern_over_tau
+
+k_EA:
+  factorization:
+    - H_Omega
+    - S_cycles
+    - S_obs
+    - S_parent
+    - S_thresholds
+  aggregation: product
+  bounds: [0,1]
+  hard_zero:
+    - H_Omega_false
+
+phase_logic:
+  precedence: [STOP, COLLAPSE, INERTIA, SUCCESS]
+  definitions:
+    STOP: "f_exist>0 or f_stop>0 or observability_lost"
+    COLLAPSE: "f_collapse>0 and not STOP"
+    INERTIA: "f_inertia>0 and not (STOP or COLLAPSE)"
+    SUCCESS: "all f_k<=0"
+  allowed_transitions:
+    SUCCESS: [INERTIA, COLLAPSE, STOP]
+    INERTIA: [SUCCESS_via_external_Psi, COLLAPSE, STOP]
+    COLLAPSE: [STOP]
+    STOP: []
+
+coupling_k7:
+  fields: [law, regulation, market, tech, norms]
+  effects:
+    law_regulation: [Theta_exist, Theta_stop]
+    market: [P_res, P_fin, Theta_inertia]
+    tech: [A_struct, A_info]
+    norms: [S_obs, semantic_alignment]
+  constraints:
+    - Omega_EA_subset_Omega_7
+    - no_direct_external_axis_control
+    - no_direct_K8_to_EA
+
+invariants:
+  - CycleInvariance
+  - EnergyOfTransformation
+  - ObservabilityInvariant
+  - ParentCompatibility
+  - TimeScaleInvariant
+
+no_go:
+  - NoFreeTransformation
+  - MetricSubstitution
+  - GovernanceSimulation
+  - InstantRecovery
+  - ExternalOverride
