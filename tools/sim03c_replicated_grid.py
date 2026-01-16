@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import csv
 import json
-from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -108,10 +107,10 @@ def main() -> None:
     for w in windows:
         for a in amplitudes:
             for th in thresholds:
-                terms = []
-                t_succ = []
-                t_stop = []
-                kmeans = []
+                terms: List[str] = []
+                t_succ: List[int] = []
+                t_stop: List[int] = []
+                kmeans: List[float] = []
 
                 for r in range(replicates):
                     seed = 700000 + int(w * 1000) + int(a * 10000) + int(th * 1000) + r
