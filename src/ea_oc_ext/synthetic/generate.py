@@ -88,15 +88,15 @@ def generate_trajectory(spec: KeaSpec, cfg: SyntheticConfig) -> List[Tuple[int, 
 
         # synthetic f updates: push occasionally into inertia/collapse/stop
         # (explicitly a demo driver, not a claim about enterprises)
-        if t in (60, 120):
-            f["f_inertia"] = 1.0  # inertia regime
-        if t in (90, 150):
-            f["f_collapse"] = 1.0  # collapse regime
-        if t == 170:
-            f["f_stop"] = 1.0  # STOP trigger
+        if t in cfg.force_inertia_at:
+            f["f_inertia"] = 1.0  # inertia regime (synthetic)
+        if t in cfg.force_collapse_at:
+            f["f_collapse"] = 1.0  # collapse regime (synthetic)
+        if cfg.force_stop_at is not None and t == cfg.force_stop_at:
+            f["f_stop"] = 1.0  # STOP trigger (synthetic)
 
         # recovery waves (synthetic)
-        if t in (80, 110, 140, 160):
+        if t in cfg.force_recover_at:
             f["f_inertia"] = 0.0
             f["f_collapse"] = 0.0
 
