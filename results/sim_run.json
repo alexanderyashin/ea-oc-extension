@@ -1,0 +1,39 @@
+{
+  "spec_id": "ETS.K_EA.v1.1",
+  "spec_sha256": "c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6  configs/ETS.K_EA.v1.1.yaml",
+  "synthetic_config": {
+    "seed": 7,
+    "steps": 200,
+    "p_edge": 0.03,
+    "nodes": 40,
+    "tau_EA": 25,
+    "shock_scale": 0.25
+  },
+  "rows": [
+    {
+      "t": 0,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "STOP",
+      "k": 0.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "reproduction"
+      ],
+      "fields": {
+        "law": -0.08808361758341882,
+        "regulation": -0.17457541303774904,
+        "market": 0.07546723651992687,
+        "tech": -0.21378185666622862,
+        "norms": 0.0179410021533446
+      },
+      "external_psi": false
+    }
+  ],
+  "note": "Synthetic regime run. Not an empirical enterprise claim."
+}
