@@ -25,6 +25,11 @@ def is_transition_allowed(prev: Phase, nxt: Phase, ctx: TransitionContext) -> bo
       COLLAPSE -> STOP
       STOP -> none
     """
+
+    # Self-transition is treated as "no phase change" and is allowed for non-STOP.
+    # ETS lists allowed *changes*; it does not forbid staying in the same phase.
+    if prev == nxt and prev != "STOP":
+        return True
     if prev == "STOP":
         return False
     if prev == "COLLAPSE":

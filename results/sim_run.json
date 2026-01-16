@@ -13,8 +13,8 @@
     {
       "t": 0,
       "phase_raw": "SUCCESS",
-      "phase_guarded": "STOP",
-      "k": 0.0,
+      "phase_guarded": "SUCCESS",
+      "k": 0.2,
       "f": {
         "f_exist": 0.0,
         "f_stab": 0.0,
@@ -33,6 +33,792 @@
         "norms": 0.0179410021533446
       },
       "external_psi": false
+    },
+    {
+      "t": 1,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.6,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "governance",
+        "learning",
+        "value"
+      ],
+      "fields": {
+        "law": 0.07785872002477368,
+        "regulation": -0.0655653406980557,
+        "market": 0.16130534238627486,
+        "tech": 0.14327002431953662,
+        "norms": 0.031050733142095666
+      },
+      "external_psi": false
+    },
+    {
+      "t": 2,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [],
+      "fields": {
+        "law": 0.08992077892266681,
+        "regulation": 0.02692496899571889,
+        "market": 0.13461420829404103,
+        "tech": 0.13493913210889114,
+        "norms": -0.19094040211270735
+      },
+      "external_psi": false
+    },
+    {
+      "t": 3,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 1.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": -0.014286322450226041,
+        "regulation": -0.15102230954233925,
+        "market": 0.04598376717041974,
+        "tech": -0.17767383716935808,
+        "norms": -0.16540484043615156
+      },
+      "external_psi": false
+    },
+    {
+      "t": 4,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": -0.027680640330123407,
+        "regulation": 0.18429049265005976,
+        "market": 0.1412928090708206,
+        "tech": 0.1094092852316273,
+        "norms": -0.09924183599968878
+      },
+      "external_psi": false
+    },
+    {
+      "t": 5,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 1.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.024283323149938474,
+        "regulation": -0.07434301378814556,
+        "market": 0.11068406457926061,
+        "tech": -0.230250603158208,
+        "norms": 0.08830428804159729
+      },
+      "external_psi": false
+    },
+    {
+      "t": 6,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction"
+      ],
+      "fields": {
+        "law": 0.12675002760007315,
+        "regulation": 0.09326189052872558,
+        "market": -0.16736242868078588,
+        "tech": 0.20418888314865236,
+        "norms": 0.24912359813740975
+      },
+      "external_psi": false
+    },
+    {
+      "t": 7,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 1.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": -0.19452651388903264,
+        "regulation": -0.002533206692514889,
+        "market": -0.1121560940105853,
+        "tech": -0.049411189674002653,
+        "norms": 0.07702606909247095
+      },
+      "external_psi": false
+    },
+    {
+      "t": 8,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "governance",
+        "reproduction"
+      ],
+      "fields": {
+        "law": -0.21716221707670014,
+        "regulation": 0.17674791019773245,
+        "market": 0.01164466719497309,
+        "tech": -0.20076267132961712,
+        "norms": 0.0013034768310846157
+      },
+      "external_psi": false
+    },
+    {
+      "t": 9,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.029278786864241013,
+        "regulation": -0.02737056909606367,
+        "market": 0.13076525184922977,
+        "tech": -0.07276315773851272,
+        "norms": 0.006686787318489873
+      },
+      "external_psi": false
+    },
+    {
+      "t": 10,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 1.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.16008741711673685,
+        "regulation": 0.029612143050790185,
+        "market": 0.13076215944392622,
+        "tech": 0.06575232994951669,
+        "norms": -0.24580739592117162
+      },
+      "external_psi": false
+    },
+    {
+      "t": 11,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "value"
+      ],
+      "fields": {
+        "law": 0.040118577705675396,
+        "regulation": -0.19561033063680555,
+        "market": -0.24702054470165735,
+        "tech": 0.061822845099396284,
+        "norms": -0.2489609387273808
+      },
+      "external_psi": false
+    },
+    {
+      "t": 12,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.6,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": -0.1252233543325263,
+        "regulation": -0.08132589281288011,
+        "market": -0.01976822378659293,
+        "tech": -0.16716856605799058,
+        "norms": -0.24891717966813603
+      },
+      "external_psi": false
+    },
+    {
+      "t": 13,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.14746548420187483,
+        "regulation": -0.17156606841796596,
+        "market": 0.12764122650558946,
+        "tech": 0.08795577868748111,
+        "norms": -0.23013247412716892
+      },
+      "external_psi": false
+    },
+    {
+      "t": 14,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction"
+      ],
+      "fields": {
+        "law": 0.03782595780881465,
+        "regulation": 0.10394240994612725,
+        "market": -0.2471002762774595,
+        "tech": -0.23725353997995885,
+        "norms": 0.001697098663703156
+      },
+      "external_psi": false
+    },
+    {
+      "t": 15,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": -0.1359357791148867,
+        "regulation": 0.02797505110924825,
+        "market": -0.012207520735343869,
+        "tech": 0.09654231729120366,
+        "norms": -0.04264134507191536
+      },
+      "external_psi": false
+    },
+    {
+      "t": 16,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "value"
+      ],
+      "fields": {
+        "law": 0.042863454720907024,
+        "regulation": 0.08119109744803543,
+        "market": -0.00737807258997325,
+        "tech": -0.14193556375766397,
+        "norms": 0.17992352119058114
+      },
+      "external_psi": false
+    },
+    {
+      "t": 17,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction"
+      ],
+      "fields": {
+        "law": 0.2323225642564814,
+        "regulation": -0.07147679995736145,
+        "market": -0.10195657499178112,
+        "tech": -0.001757582896959431,
+        "norms": 0.08041956405886064
+      },
+      "external_psi": false
+    },
+    {
+      "t": 18,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "learning"
+      ],
+      "fields": {
+        "law": 0.05573849728283231,
+        "regulation": 0.22949750474427177,
+        "market": 0.18595435888096018,
+        "tech": -0.1938311961300046,
+        "norms": -0.04380986581413421
+      },
+      "external_psi": false
+    },
+    {
+      "t": 19,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.6,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning"
+      ],
+      "fields": {
+        "law": -0.2467935210664981,
+        "regulation": -0.15327182541367168,
+        "market": -0.04713687450531123,
+        "tech": 0.1517876710726655,
+        "norms": 0.16413880301219802
+      },
+      "external_psi": false
+    },
+    {
+      "t": 20,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": -0.08491727218220785,
+        "regulation": 0.0728709705110625,
+        "market": 0.17722976792932305,
+        "tech": 0.20244579575492344,
+        "norms": -0.17774119443146863
+      },
+      "external_psi": false
+    },
+    {
+      "t": 21,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [],
+      "fields": {
+        "law": -0.113601562302582,
+        "regulation": -0.09088752047192838,
+        "market": 0.08805927824702331,
+        "tech": -0.17070118957553765,
+        "norms": -0.07303869244541278
+      },
+      "external_psi": false
+    },
+    {
+      "t": 22,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 1.0,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": -0.00013232068477758707,
+        "regulation": -0.06572876220908863,
+        "market": -0.23726412804300862,
+        "tech": 0.004961078487472015,
+        "norms": -0.182231676630088
+      },
+      "external_psi": false
+    },
+    {
+      "t": 23,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.08107676866195929,
+        "regulation": 0.24124856828598912,
+        "market": -0.15241693107846355,
+        "tech": 0.048623702410357406,
+        "norms": 0.08171426029145734
+      },
+      "external_psi": false
+    },
+    {
+      "t": 24,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.22982416621455531,
+        "regulation": 0.051727782607054185,
+        "market": -0.013863353290783365,
+        "tech": 0.05309729263382157,
+        "norms": -0.10044635630985016
+      },
+      "external_psi": false
+    },
+    {
+      "t": 25,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "governance",
+        "learning"
+      ],
+      "fields": {
+        "law": 0.17461548484838918,
+        "regulation": 0.08644094078027587,
+        "market": 0.047119371984922886,
+        "tech": 0.14480474743823973,
+        "norms": 0.017947820985692475
+      },
+      "external_psi": false
+    },
+    {
+      "t": 26,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "reproduction"
+      ],
+      "fields": {
+        "law": 0.19557018329897635,
+        "regulation": -0.0573344093959724,
+        "market": -0.06765073823587392,
+        "tech": -0.14269787782264215,
+        "norms": -0.21298368837558057
+      },
+      "external_psi": false
+    },
+    {
+      "t": 27,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.006470364750990054,
+        "regulation": 0.21729784028648785,
+        "market": 0.1809876461571167,
+        "tech": -0.15606400594035985,
+        "norms": -0.12387533024997527
+      },
+      "external_psi": false
+    },
+    {
+      "t": 28,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.4,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "governance"
+      ],
+      "fields": {
+        "law": -0.14977448916507913,
+        "regulation": 0.09304958759643278,
+        "market": -0.17455101332271672,
+        "tech": -0.22762671407805468,
+        "norms": 0.13887671830581438
+      },
+      "external_psi": false
+    },
+    {
+      "t": 29,
+      "phase_raw": "SUCCESS",
+      "phase_guarded": "SUCCESS",
+      "k": 0.8,
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "finance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.046962029615438106,
+        "regulation": -0.20174174585121607,
+        "market": -0.14269379695443668,
+        "tech": -0.09012819936476513,
+        "norms": 0.09660268877166345
+      },
+      "external_psi": false
+    },
+    {
+      "t": 30,
+      "phase_raw": "ETS_UNDEFINED",
+      "phase_guarded": "STOP",
+      "k": 0.0,
+      "error": "Phase undefined by ETS.K_EA.v1.1 for this f-vector (non-success violation without STOP/COLLAPSE/INERTIA triggers).",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 1.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "closed_cycles": [
+        "governance",
+        "learning",
+        "reproduction",
+        "value"
+      ],
+      "fields": {
+        "law": 0.169802240093741,
+        "regulation": -0.0426133513589812,
+        "market": 0.17294591901810857,
+        "tech": 0.027513163857659062,
+        "norms": 0.23974593451365694
+      }
     }
   ],
   "note": "Synthetic regime run. Not an empirical enterprise claim."
