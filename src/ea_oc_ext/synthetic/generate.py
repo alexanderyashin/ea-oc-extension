@@ -29,6 +29,11 @@ class SyntheticConfig:
     force_collapse_at: tuple[int, ...] = (90, 150)
     force_recover_at: tuple[int, ...] = (80, 110, 140, 160)
 
+    # Single-field experiment mode (synthetic driver):
+    # If set, only this field is stressed; others are zeroed.
+    single_field: str | None = None
+    single_field_amplitude: float = 0.0
+
 
 def _rand_graph(rng: random.Random, nodes: int, p_edge: float) -> nx.DiGraph:
     g = nx.DiGraph()
@@ -77,13 +82,26 @@ def generate_trajectory(spec: KeaSpec, cfg: SyntheticConfig) -> List[Tuple[int, 
     obs_lost = False
 
     for t in range(cfg.steps):
-        fields = K7Fields(
-            law=rng.uniform(-1, 1) * cfg.shock_scale,
-            regulation=rng.uniform(-1, 1) * cfg.shock_scale,
-            market=rng.uniform(-1, 1) * cfg.shock_scale,
-            tech=rng.uniform(-1, 1) * cfg.shock_scale,
-            norms=rng.uniform(-1, 1) * cfg.shock_scale,
-        )
+        # base random fields
+        law = rng.uniform(-1, 1) * cfg.shock_scale
+        regulation = rng.uniform(-1, 1) * cfg.shock_scale
+        market = rng.uniform(-1, 1) * cfg.shock_scale
+        tech = rng.uniform(-1, 1) * cfg.shock_scale
+        norms = rng.uniform(-1, 1) * cfg.shock_scale
+
+        # single-field override (synthetic experiment control)
+        if cfg.single_field is not None:
+            law = regulation = market = tech = norms = 0.0
+            v = rng.uniform(-1, 1) * cfg.single_field_amplitude
+            if cfg.single_field == "law": law = v
+            elif cfg.single_field == "regulation": regulation = v
+            elif cfg.single_field == "market": market = v
+            elif cfg.single_field == "tech": tech = v
+            elif cfg.single_field == "norms": norms = v
+            else:
+                raise ValueError(f"Unknown single_field: {cfg.single_field}")
+
+        fields = K7Fields(law=law, regulation=regulation, market=market, tech=tech, norms=norms)
 
         g = _rand_graph(rng, cfg.nodes, cfg.p_edge)
         closed_cycles = _required_cycles_from_graph(spec, g, rng)

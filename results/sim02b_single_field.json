@@ -1,0 +1,733 @@
+{
+  "spec_id": "ETS.K_EA.v1.1",
+  "spec_sha256": "c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6  configs/ETS.K_EA.v1.1.yaml",
+  "note": "SIM-02b true single-field sweeps. Synthetic driver only; not an empirical claim.",
+  "psi_mode": "always",
+  "results": [
+    {
+      "cfg": {
+        "seed": 200,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "law",
+        "single_field_amplitude": 0.0
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.46090909090909093
+    },
+    {
+      "cfg": {
+        "seed": 250,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "law",
+        "single_field_amplitude": 0.05
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4827272727272727
+    },
+    {
+      "cfg": {
+        "seed": 300,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "law",
+        "single_field_amplitude": 0.1
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5045454545454545
+    },
+    {
+      "cfg": {
+        "seed": 400,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "law",
+        "single_field_amplitude": 0.2
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.49
+    },
+    {
+      "cfg": {
+        "seed": 550,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "law",
+        "single_field_amplitude": 0.35
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4809090909090909
+    },
+    {
+      "cfg": {
+        "seed": 300,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "regulation",
+        "single_field_amplitude": 0.0
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5045454545454545
+    },
+    {
+      "cfg": {
+        "seed": 350,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "regulation",
+        "single_field_amplitude": 0.05
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5190909090909092
+    },
+    {
+      "cfg": {
+        "seed": 400,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "regulation",
+        "single_field_amplitude": 0.1
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.49
+    },
+    {
+      "cfg": {
+        "seed": 500,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "regulation",
+        "single_field_amplitude": 0.2
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5181818181818182
+    },
+    {
+      "cfg": {
+        "seed": 650,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "regulation",
+        "single_field_amplitude": 0.35
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4881818181818182
+    },
+    {
+      "cfg": {
+        "seed": 400,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "market",
+        "single_field_amplitude": 0.0
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.49
+    },
+    {
+      "cfg": {
+        "seed": 450,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "market",
+        "single_field_amplitude": 0.05
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4981818181818182
+    },
+    {
+      "cfg": {
+        "seed": 500,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "market",
+        "single_field_amplitude": 0.1
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5181818181818182
+    },
+    {
+      "cfg": {
+        "seed": 600,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "market",
+        "single_field_amplitude": 0.2
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4963636363636364
+    },
+    {
+      "cfg": {
+        "seed": 750,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "market",
+        "single_field_amplitude": 0.35
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5036363636363637
+    },
+    {
+      "cfg": {
+        "seed": 500,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "tech",
+        "single_field_amplitude": 0.0
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5181818181818182
+    },
+    {
+      "cfg": {
+        "seed": 550,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "tech",
+        "single_field_amplitude": 0.05
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4809090909090909
+    },
+    {
+      "cfg": {
+        "seed": 600,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "tech",
+        "single_field_amplitude": 0.1
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4963636363636364
+    },
+    {
+      "cfg": {
+        "seed": 700,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "tech",
+        "single_field_amplitude": 0.2
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4809090909090909
+    },
+    {
+      "cfg": {
+        "seed": 850,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "tech",
+        "single_field_amplitude": 0.35
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.48909090909090913
+    },
+    {
+      "cfg": {
+        "seed": 600,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "norms",
+        "single_field_amplitude": 0.0
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4963636363636364
+    },
+    {
+      "cfg": {
+        "seed": 650,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "norms",
+        "single_field_amplitude": 0.05
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4881818181818182
+    },
+    {
+      "cfg": {
+        "seed": 700,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "norms",
+        "single_field_amplitude": 0.1
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.4809090909090909
+    },
+    {
+      "cfg": {
+        "seed": 800,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "norms",
+        "single_field_amplitude": 0.2
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.46454545454545454
+    },
+    {
+      "cfg": {
+        "seed": 950,
+        "steps": 220,
+        "p_edge": 0.03,
+        "nodes": 40,
+        "tau_EA": 25,
+        "shock_scale": 0.0,
+        "allow_undefined_surface": false,
+        "force_stop_at": null,
+        "force_inertia_at": [
+          60,
+          120
+        ],
+        "force_collapse_at": [],
+        "force_recover_at": [
+          80,
+          110,
+          140,
+          160
+        ],
+        "single_field": "norms",
+        "single_field_amplitude": 0.35
+      },
+      "psi_mode": "always",
+      "time_to_stop": 220,
+      "terminated": "SUCCESS",
+      "k_mean": 0.5118181818181818
+    }
+  ]
+}
