@@ -12,7 +12,7 @@ from ea_oc_ext.synthetic.generate import SyntheticConfig, generate_trajectory
 
 def main() -> None:
     spec = load_kea_spec("configs/ETS.K_EA.v1.1.yaml")
-    cfg = SyntheticConfig()
+    cfg = SyntheticConfig(allow_undefined_surface=False)
 
     traj = generate_trajectory(spec, cfg)
 

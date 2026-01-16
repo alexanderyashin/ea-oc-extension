@@ -18,6 +18,9 @@ class SyntheticConfig:
     p_edge: float = 0.03
     nodes: int = 40
     tau_EA: int = 25  # used as recurrence window proxy in synthetic mode
+    # If True, we intentionally generate a stability-only violation (f_stab>0)
+    # that is NOT classified by ETS phase logic, to test the guardrail.
+    allow_undefined_surface: bool = False
     # intensity scalars for synthetic effects
     shock_scale: float = 0.25
 
@@ -97,11 +100,12 @@ def generate_trajectory(spec: KeaSpec, cfg: SyntheticConfig) -> List[Tuple[int, 
             f["f_inertia"] = 0.0
             f["f_collapse"] = 0.0
 
-        # occasional stability violation without inertia/collapse/stop (to surface ETS undefined)
-        if t == 30:
-            f["f_stab"] = 1.0
-        if t == 35:
-            f["f_stab"] = 0.0
+        # occasional stability-only violation is optional (guardrail test)
+        if cfg.allow_undefined_surface:
+            if t == 30:
+                f["f_stab"] = 1.0
+            if t == 35:
+                f["f_stab"] = 0.0
 
         state = KeaState(
             dep_graph=g,
