@@ -41,14 +41,14 @@ This section positions K_EA as a continuum defined by OC primitives, without mod
 ## 3. Formal Definition of the Enterprise Continuum (ETS Projection)
 
 K_EA is defined as a continuum with immutable primitives:
-- State space: Ω_EA and boundary ∂Ω_EA
+- State space: Omega_EA and boundary ∂Omega_EA
 - Axes: A_EA
 - Potentials: P_EA
-- Threshold set: Θ_EA (via f_k components)
+- Threshold set: Theta_EA (via f_k components)
 - Flows: J_EA
 - Cycles: C_EA
 - Continuity/connectivity: k_EA
-- Internal time scale: τ_EA
+- Internal time scale: tau_EA
 
 ---
 
@@ -71,7 +71,7 @@ No additional axes are introduced.
 
 From structural_tension_f_k: in ETS:
 - components: f_exist, f_stab, f_inertia, f_collapse, f_stop
-- mapping: Theta_exist→f_exist, Theta_stab→f_stab, Theta_inertia→f_inertia, Theta_collapse→f_collapse, Theta_stop→f_stop
+- mapping: Theta_exist->f_exist, Theta_stab->f_stab, Theta_inertia->f_inertia, Theta_collapse->f_collapse, Theta_stop->f_stop
 
 This whitepaper does not define numeric values; it preserves the inequality-based structure.
 
@@ -105,10 +105,10 @@ From phase_logic: in ETS:
 - SUCCESS: all f_k<=0
 
 Allowed transitions (ETS):
-- SUCCESS → INERTIA, COLLAPSE, STOP
-- INERTIA → SUCCESS_via_external_Psi, COLLAPSE, STOP
-- COLLAPSE → STOP
-- STOP → (none)
+- SUCCESS -> INERTIA, COLLAPSE, STOP
+- INERTIA -> SUCCESS_via_external_Psi, COLLAPSE, STOP
+- COLLAPSE -> STOP
+- STOP -> (none)
 
 ---
 
@@ -139,3 +139,4 @@ o_go: in ETS:
 ## Appendix — Reproducibility Manifest (Pointer)
 
 See paper/manifest.yml and configs/ETS.K_EA.v1.1.sha256.
+
