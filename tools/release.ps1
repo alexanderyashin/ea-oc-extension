@@ -1,24 +1,10 @@
 param(
-  [Parameter(Mandatory=$true)]
+  [Parameter(Mandatory = $true)]
   [ValidateNotNullOrEmpty()]
   [string]$Version
 )
 
 $ErrorActionPreference = "Stop"
-
-# ---- gates: whitepaper must pass before release ----
-$check = Join-Path $PSScriptRoot "check_whitepaper.ps1"
-if (!(Test-Path $check)) {
-  Write-Error "Missing gate script: $check"
-  exit 2
-}
-powershell -ExecutionPolicy Bypass -File $check
-if ($LASTEXITCODE -ne 0) {
-  Write-Error "Whitepaper gates failed. Abort release."
-  exit 2
-}
-# -----------------------------------------------
-
 
 function Assert-CleanTree {
   $s = git status --porcelain
@@ -29,7 +15,7 @@ function Assert-CleanTree {
 }
 
 function Assert-TagNotExists {
-  param([Parameter(Mandatory=$true)][string]$tag)
+  param([Parameter(Mandatory = $true)][string]$tag)
 
   # local tag
   git rev-parse -q --verify "refs/tags/$tag" *> $null
@@ -50,16 +36,15 @@ function Invoke-WhitepaperGates {
   $check = Join-Path $PSScriptRoot "check_whitepaper.ps1"
   if (!(Test-Path $check)) {
     Write-Error "Missing gate script: $check"
-    exit 1
+    exit 2
   }
 
   Write-Host "== GATES: whitepaper =="
 
-  # Run as file so it works even if execution policy is restricted in the session
   & powershell -ExecutionPolicy Bypass -File $check
   if ($LASTEXITCODE -ne 0) {
     Write-Error "Whitepaper gates FAILED. Fix paper/whitepaper.md and retry."
-    exit 1
+    exit 2
   }
 
   Write-Host "OK: whitepaper gates passed."
