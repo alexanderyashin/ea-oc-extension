@@ -1,0 +1,35 @@
+whitepaper:
+  id: K_EA_whitepaper_v1
+  title: "The Enterprise Continuum (K_EA): Executable-Closed Diagnostic Whitepaper"
+  status: draft
+  claim_level: diagnostic_only
+  scope_lock:
+    oc_core: frozen
+    estra_v1: frozen
+    ets: immutable
+
+sources:
+  repository:
+    name: ea-oc-extension
+    remote: https://github.com/alexanderyashin/ea-oc-extension
+    branch: main
+    commit: "27602b3"
+  ets:
+    id: "ETS.K_EA.v1.1"
+    yaml: "configs/ETS.K_EA.v1.1.yaml"
+    sha256_file: "configs/ETS.K_EA.v1.1.sha256"
+    sha256: "c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6"
+
+reproducibility:
+  synthetic_demos_only: true
+  no_empirical_claims: true
+  required_artifacts:
+    - "configs/ETS.K_EA.v1.1.yaml"
+    - "configs/ETS.K_EA.v1.1.sha256"
+    - ".runs/RUN-20260117-whitepaper-v1/*"
+
+publication:
+  zenodo:
+    published: false
+    doi: null
+    record_url: null
