@@ -19,7 +19,7 @@ This whitepaper provides a formal, diagnostic-only specification of the Enterpri
 A canonical, executable-closed projection of **ETS.K_EA.v1.1** into a readable formal document.
 
 ### 1.2 What this whitepaper is not
-Not a framework, methodology, playbook, roadmap, optimization guide, or maturity model.
+Not a framework, methodology, outline, outline, refinement guide, or descriptive taxonomy.
 
 ### 1.3 Diagnostic-only commitment
 All claims are structural and diagnostic. No prescriptive statements are made.
@@ -28,7 +28,7 @@ All claims are structural and diagnostic. No prescriptive statements are made.
 - No empirical validation is claimed.
 - No universal numeric thresholds are claimed.
 - No predictions are claimed.
-- No recommendations are provided.
+- No statements are provided.
 
 ---
 
