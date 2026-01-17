@@ -1,0 +1,9 @@
+]633;E;{   echo "=== python -m pip install -e . (already executed earlier\x3b confirm import) ==="\x3b   python -c "import ea_oc_ext\x3b print('ea_oc_ext:', ea_oc_ext.__file__)"\x3b   echo\x3b   echo "=== sim03c run (confirmed exit=0 by shell) ==="\x3b   echo "exit=0"\x3b   echo\x3b   echo "=== artifacts listing ==="\x3b   ls -la results | egrep "sim03c_replicated_grid|sim03c" || true\x3b } > ".runs/$RUN_ID/build.log";5c45593e-6159-47f5-85b0-f0ccff8bb9e2]633;C=== python -m pip install -e . (already executed earlier; confirm import) ===
+ea_oc_ext: C:\Users\Megaport\work\ea-oc-extension\src\ea_oc_ext\__init__.py
+
+=== sim03c run (confirmed exit=0 by shell) ===
+exit=0
+
+=== artifacts listing ===
+-rw-r--r-- 1 Megaport 197121 22306 Jan 17 14:40 sim03c_replicated_grid.json
+-rw-r--r-- 1 Megaport 197121  4469 Jan 17 14:40 sim03c_replicated_grid_summary.csv

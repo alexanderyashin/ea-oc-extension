@@ -1,0 +1,7 @@
+]633;E;{   echo "status: PASS"\x3b   echo "run_id: $RUN_ID"\x3b   echo "repo: ea-oc-extension"\x3b   echo "head: edd8cfd"\x3b   echo "artifacts:"\x3b   echo "  - results/sim03c_replicated_grid.json"\x3b   echo "  - results/sim03c_replicated_grid_summary.csv"\x3b } > ".runs/$RUN_ID/status.yaml";5c45593e-6159-47f5-85b0-f0ccff8bb9e2]633;Cstatus: PASS
+run_id: RUN-20260117-local-sim03c
+repo: ea-oc-extension
+head: edd8cfd
+artifacts:
+  - results/sim03c_replicated_grid.json
+  - results/sim03c_replicated_grid_summary.csv
