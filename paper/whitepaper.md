@@ -54,7 +54,7 @@ K_EA is defined as a continuum with immutable primitives:
 
 ## 4. Axes and Degrees of Freedom (ETS Projection)
 
-From xes: in ETS:
+From axes: in ETS:
 
 - struct: coupling, modularity, centralization, redundancy
 - gov: decision_latency, rule_enforceability, escalation_integrity
