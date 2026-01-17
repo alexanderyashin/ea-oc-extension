@@ -195,14 +195,81 @@ Parent coupling is represented as exogenous field influence and constraints on f
 
 ## 10. Invariants and No-Go Results (ETS Projection)
 
-From invariants: in ETS:
+This section is limited to what is explicitly stated in ETS.K_EA.v1.1.
+
+### 10.1 Invariants (ETS)
+From `invariants:` in ETS:
 - EnergyOfTransformation
 - ParentCompatibility
 
-From 
-o_go: in ETS:
+These invariants constrain valid interpretations of the model outputs. They are treated as non-negotiable properties within the executable-closed scope.
+
+### 10.2 No-Go results (ETS)
+From `no_go:` in ETS:
 - MetricSubstitution
 - InstantRecovery
+
+The model explicitly rejects:
+- replacing structural primitives with arbitrary proxy metrics as if they were equivalent ("MetricSubstitution"),
+- assuming immediate recovery from collapse-like conditions without restoring required structural conditions ("InstantRecovery").
+
+---
+
+## 11. Synthetic Demonstrations (Reference Only; Non-Empirical)
+
+This repository may contain computational artifacts (e.g., simulation outputs, grids, or toy models). Any such artifacts are treated as **synthetic demonstrations** only.
+
+### 11.1 Non-empirical status
+Synthetic demonstrations:
+- are not claims about real enterprises,
+- are not empirical evidence,
+- are not predictive models,
+- serve only as consistency checks of pipelines, representations, or executable structures.
+
+### 11.2 Artifact pointers (if present)
+If synthetic artifacts are referenced, they must be treated as *illustrations* and must remain reproducible via the repository state pinned in the manifest.
+
+---
+
+## 12. Applicability and Explicit Non-Claims
+
+This whitepaper is **diagnostic-only** and **executable-closed**. It makes structural statements constrained by ETS and does not claim empirical validity by default.
+
+### 12.1 What this model claims
+- A finite, explicit axis set for K_EA v1 (Section 4)
+- A finite, explicit phase logic based on inequality conditions (Section 8)
+- A finite, explicit coupling interface to parent K7 fields (Section 9)
+- Explicit STOP behavior and No-Go boundaries (Section 10)
+
+### 12.2 What this model does NOT claim
+- No universal numeric thresholds
+- No calibrated scoring function for real enterprises
+- No prediction of business outcomes
+- No optimization strategy, roadmap, or recommendations
+- No replacement of domain expertise, governance authority, or legal interpretation
+- No direct coupling from K8 to K_EA in v1 scope (ETS constraint)
+
+### 12.3 STOP as a first-class outcome
+STOP is a valid terminal diagnostic outcome (highest precedence in phase logic). It expresses insufficient feasibility or observability to proceed within the model’s admissible state space.
+
+---
+
+## 13. Reproducibility and Verification
+
+### 13.1 Source-of-truth binding
+The source of truth for the executable-closed content is:
+- `configs/ETS.K_EA.v1.1.yaml` (sha256 in `configs/ETS.K_EA.v1.1.sha256`)
+
+### 13.2 Repository reference
+Reproducibility requires pinning to:
+- repository remote, branch, and commit recorded in `paper/manifest.yml`
+- the required artifacts list in `paper/manifest.yml`
+
+### 13.3 Minimal verification procedure
+A minimal verification is:
+1) Verify ETS sha256 matches `configs/ETS.K_EA.v1.1.sha256`
+2) Verify `paper/manifest.yml` and `paper/whitepaper.md` are present
+3) Treat any results under `results/` as synthetic-only unless explicitly labeled otherwise
 
 ---
 
