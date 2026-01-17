@@ -13,7 +13,7 @@ sources:
     name: ea-oc-extension
     remote: https://github.com/alexanderyashin/ea-oc-extension
     branch: main
-    commit: "27602b3"
+    commit: "3d3fb35"
   ets:
     id: "ETS.K_EA.v1.1"
     yaml: "configs/ETS.K_EA.v1.1.yaml"
@@ -27,6 +27,8 @@ reproducibility:
     - "configs/ETS.K_EA.v1.1.yaml"
     - "configs/ETS.K_EA.v1.1.sha256"
     - ".runs/RUN-20260117-whitepaper-v1/*"
+    - "paper/manifest.yml"
+    - "paper/whitepaper.md"
 
 publication:
   zenodo:
