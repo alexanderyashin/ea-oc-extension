@@ -13,9 +13,7 @@ sources:
     name: ea-oc-extension
     remote: https://github.com/alexanderyashin/ea-oc-extension
     branch: main
-    commit: "0046553"
-
-
+    commit: "376dd5b"
   ets:
     id: "ETS.K_EA.v1.1"
     yaml: "configs/ETS.K_EA.v1.1.yaml"
