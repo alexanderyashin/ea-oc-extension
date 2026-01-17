@@ -1,0 +1,8 @@
+# Normalize line endings deterministically across platforms
+* text=auto
+
+*.md   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+
+*.ps1  text eol=crlf
