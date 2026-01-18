@@ -11,3 +11,11 @@ __pycache__/
 -replace
 ASCII OK
 
+
+# Whitepaper build artifacts
+paper/whitepaper.pdf
+.tmp_whitepaper_build/
+
+# Local safety backups
+*.bak
+
