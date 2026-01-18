@@ -1,0 +1,120 @@
+% ============================================================
+% paper/sections/03_formal_definition_k_ea.tex
+% Formal Definition of the Enterprise Continuum K_EA
+% ============================================================
+
+\section{Formal Definition of the Enterprise Continuum}
+
+\subsection{Definition of $K_{\mathrm{EA}}$}
+
+The Enterprise Continuum $K_{\mathrm{EA}}$ is defined as an
+Ontology-of-Continua (OC) continuum instantiated according to the
+immutable Executable Theory Specification
+\texttt{ETS.K\_EA.v1.1}.
+
+Formally, the continuum is given by the tuple:
+\[
+K_{\mathrm{EA}} :=
+\left(
+\Omega_{\mathrm{EA}},
+\partial\Omega_{\mathrm{EA}},
+A_{\mathrm{EA}},
+P_{\mathrm{EA}},
+\Theta_{\mathrm{EA}},
+J_{\mathrm{EA}},
+C_{\mathrm{EA}},
+k_{\mathrm{EA}},
+\tau_{\mathrm{EA}}
+\right).
+\]
+
+Each component is defined below strictly by projection from the ETS.
+No additional structure is introduced.
+
+\subsection{State Space and Boundary}
+
+The admissible state space $\Omega_{\mathrm{EA}}$ is the set of all
+enterprise states that satisfy the structural constraints encoded in
+$\Theta_{\mathrm{EA}}$.
+
+The boundary $\partial\Omega_{\mathrm{EA}}$ delimits admissible from
+non-admissible states. Crossing this boundary results in either a phase
+transition or termination of the continuum.
+
+The non-emptiness of $\Omega_{\mathrm{EA}}$ is a necessary condition for
+the existence of $K_{\mathrm{EA}}$ as a diagnosable object.
+
+\subsection{Axes and Degrees of Freedom}
+
+The set of axes $A_{\mathrm{EA}}$ defines the admissible degrees of
+freedom along which enterprise states may vary. Axes are grouped into
+structural, governance, operational, resource, informational, and risk
+dimensions.
+
+Axes are descriptive, not prescriptive. They do not encode desired
+values or optimization targets. They serve solely to parameterize
+admissible variation within $\Omega_{\mathrm{EA}}$.
+
+\subsection{Potentials and Flows}
+
+Potentials $P_{\mathrm{EA}}$ represent stored structural capacities
+within the enterprise continuum. Flows $J_{\mathrm{EA}}$ describe the
+movement of the system through its state space under internal dynamics
+and external constraints.
+
+No assumption of equilibrium, efficiency, or optimality is made.
+Potentials and flows are evaluated only insofar as they affect
+admissibility with respect to thresholds.
+
+\subsection{Thresholds and Admissibility}
+
+The threshold set $\Theta_{\mathrm{EA}}$ encodes admissibility
+conditions via component functions $f_k$ as specified in the ETS.
+
+Thresholds define limits beyond which:
+\begin{itemize}
+  \item the continuum changes phase,
+  \item structural integrity degrades irreversibly,
+  \item or diagnosis must terminate.
+\end{itemize}
+
+Thresholds are expressed as inequalities. No numeric values are fixed at
+the theory level.
+
+\subsection{Cycles and Persistence}
+
+The set of cycles $C_{\mathrm{EA}}$ defines the minimal recurrent
+processes required for persistence over the internal time scale
+$\tau_{\mathrm{EA}}$.
+
+Cycles are structural necessities. Their absence or breakdown indicates
+loss of persistence, even if instantaneous admissibility conditions are
+momentarily satisfied.
+
+\subsection{Continuity Measure}
+
+The continuity measure $k_{\mathrm{EA}} \in [0,1]$ quantifies the degree
+of structural connectivity of the continuum.
+
+A value of $k_{\mathrm{EA}} = 0$ represents a hard termination condition.
+Intermediate values indicate partial connectivity under the admissible
+dynamics.
+
+\subsection{Internal Time Scale}
+
+The parameter $\tau_{\mathrm{EA}}$ represents the characteristic time
+scale over which cycles must close for the continuum to be considered
+persistent.
+
+No assumption is made regarding the correspondence of $\tau_{\mathrm{EA}}$
+to calendar time. It is an internal structural parameter.
+
+\subsection{Executable Closure}
+
+All components of $K_{\mathrm{EA}}$ are fully specified within
+\texttt{ETS.K\_EA.v1.1}. The definition is therefore executable-closed:
+no additional assumptions or external parameters are required to define
+the continuum.
+
+This closure is a necessary condition for reproducibility and formal
+review.

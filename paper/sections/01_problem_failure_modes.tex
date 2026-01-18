@@ -1,0 +1,111 @@
+% ============================================================
+% paper/sections/01_problem_failure_modes.tex
+% Problem Statement and Structural Failure Modes
+% ============================================================
+
+\section{Problem Statement and Structural Failure Modes}
+
+\subsection{Limits of Conventional Enterprise Analysis}
+
+Enterprise analysis is commonly conducted under implicit assumptions
+that remain largely unexamined. Among the most prevalent are the
+assumptions that the enterprise persists as a coherent object, that
+diagnosis remains meaningful under arbitrary degradation, and that
+recovery is always, in principle, attainable.
+
+These assumptions are rarely stated explicitly, yet they shape the
+interpretation of observations and the continuation of analysis even
+when structural coherence is no longer present. As a result, analytical
+output may be produced in regimes where its validity is undefined.
+
+Within such approaches, failure is typically framed as a local defect:
+a gap in governance, an execution issue, or a misalignment between
+strategy and operations. Structural conditions for existence are seldom
+formalized.
+
+\subsection{Enterprises as Conditional Objects}
+
+In the Ontology-of-Continua perspective, an enterprise is not assumed to
+exist unconditionally. It is treated as a continuum whose existence,
+stability, and diagnosability depend on explicit structural conditions.
+
+The enterprise continuum $K_{\mathrm{EA}}$ is admissible for diagnosis
+only while:
+\begin{itemize}
+  \item its state space $\Omega_{\mathrm{EA}}$ is non-empty,
+  \item its boundary $\partial\Omega_{\mathrm{EA}}$ remains well-defined,
+  \item required cycles $C_{\mathrm{EA}}$ are present,
+  \item observability and connectivity are sufficient to evaluate
+        thresholds.
+\end{itemize}
+
+When these conditions are violated, continued analysis is no longer
+defined within the model.
+
+\subsection{Structural Failure Versus Performance Degradation}
+
+A critical distinction made in $K_{\mathrm{EA}}$ is between performance
+degradation and structural failure.
+
+Performance degradation refers to states in which the enterprise
+continues to satisfy existence conditions, but exhibits reduced
+capability along one or more axes. Structural failure, by contrast,
+refers to violations of the conditions that allow the enterprise to be
+treated as a continuum at all.
+
+Only the former admits continued diagnosis within $K_{\mathrm{EA}}$.
+
+\subsection{Classes of Structural Failure Modes}
+
+Structural failure modes are defined through threshold components
+$f_k$ as specified in \texttt{ETS.K\_EA.v1.1}. These components do not
+measure outcomes; they express violations of admissibility conditions.
+
+The principal classes are:
+
+\paragraph{Existence Failure ($f_{\text{exist}}$).}
+The enterprise no longer maintains a non-empty admissible state space.
+This may occur due to legal dissolution, loss of identity, or complete
+loss of operational closure.
+
+\paragraph{Stability Failure ($f_{\text{stab}}$).}
+Recurrent cycles required for persistence cease to function. The system
+may still exist momentarily, but cannot maintain itself over the
+internal time scale $\tau_{\mathrm{EA}}$.
+
+\paragraph{Inertial Failure ($f_{\text{inertia}}$).}
+The enterprise remains structurally intact but is unable to transition
+between admissible states without external intervention. Diagnosis
+remains possible, but evolution is constrained.
+
+\paragraph{Collapse Failure ($f_{\text{collapse}}$).}
+Structural tension exceeds admissible bounds, leading to irreversible
+loss of coherence. Some cycles or axes may persist locally, but the
+enterprise as a whole no longer satisfies stability conditions.
+
+\paragraph{Termination Condition ($f_{\text{stop}}$).}
+Conditions under which diagnosis itself must terminate, regardless of
+other indicators. This includes loss of observability and violation of
+parent compatibility constraints.
+
+\subsection{STOP as a Diagnostic Boundary}
+
+STOP is defined as the highest-precedence diagnostic outcome. When STOP
+conditions are met, the model explicitly forbids further diagnosis.
+
+This boundary is not a heuristic choice; it is a formal consequence of
+the executable specification. Continuing analysis beyond STOP would
+require introducing assumptions not present in the ETS.
+
+\subsection{Implications for Diagnostic Integrity}
+
+By making structural failure modes explicit, $K_{\mathrm{EA}}$ prevents
+the silent continuation of analysis beyond its domain of validity.
+
+This does not imply that recovery is impossible, nor does it prescribe
+any course of action. It states only that, within the model, diagnosis
+is no longer defined once STOP conditions are met.
+
+The distinction between diagnosable degradation and non-diagnosable
+structural failure is central to the integrity of the enterprise
+continuum formulation.

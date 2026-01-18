@@ -10,6 +10,10 @@ Requirements (Windows):
 Determinism:
 - Sets SOURCE_DATE_EPOCH based on git HEAD commit time (or source file mtime fallback)
 - Avoids embedding "today" date in metadata (uses fixed/empty date)
+
+Unicode robustness:
+- Forces a Unicode-capable main font so symbols like ∂, τ, ≤, ⊆ render.
+- Uses Windows-default fonts by default (Times New Roman / Consolas).
 #>
 
 Set-StrictMode -Version Latest
@@ -38,10 +42,8 @@ function Require-Command([string]$Name, [string]$Hint) {
 }
 
 function Get-ScriptPath {
-  # PS7+: $PSCommandPath is reliable
   if ($PSCommandPath) { return $PSCommandPath }
 
-  # PS5.1: MyInvocation.Definition is usually the script path when executed via -File
   try {
     if ($MyInvocation -and $MyInvocation.MyCommand -and $MyInvocation.MyCommand.Definition) {
       $def = $MyInvocation.MyCommand.Definition
@@ -49,7 +51,6 @@ function Get-ScriptPath {
     }
   } catch { }
 
-  # Fallback: assume current directory is repo root
   $cwd = (Get-Location).Path
   $maybe = Join-Path $cwd "tools\build_whitepaper_pdf.ps1"
   if (Test-Path -LiteralPath $maybe) { return $maybe }
@@ -58,7 +59,6 @@ function Get-ScriptPath {
 }
 
 function Get-RepoRoot {
-  # Resolve repo root as parent of /tools
   $thisScript = Get-ScriptPath
   $toolsDir = Split-Path -Parent $thisScript
   $root = Split-Path -Parent $toolsDir
@@ -70,7 +70,6 @@ function Find-WhitepaperSource([string]$PaperDir) {
   $preferred = Join-Path $PaperDir "whitepaper.md"
   if (Test-Path -LiteralPath $preferred) { return $preferred }
 
-  # Fallback: try common names
   $candidates = @(
     Join-Path $PaperDir "WHITEPAPER.md"
     Join-Path $PaperDir "Whitepaper.md"
@@ -79,7 +78,6 @@ function Find-WhitepaperSource([string]$PaperDir) {
 
   if ($candidates.Count -gt 0) { return $candidates[0] }
 
-  # Last resort: first *.md in /paper with "white" in name
   $glob = Get-ChildItem -LiteralPath $PaperDir -File -ErrorAction SilentlyContinue |
     Where-Object { $_.Extension -ieq ".md" -and $_.Name.ToLower().Contains("white") } |
     Select-Object -First 1
@@ -89,7 +87,6 @@ function Find-WhitepaperSource([string]$PaperDir) {
 }
 
 function Get-SourceDateEpoch([string]$RepoRoot, [string]$SourceFile) {
-  # Prefer git HEAD commit time (deterministic per commit)
   $git = Get-Command git -ErrorAction SilentlyContinue
   if ($git) {
     try {
@@ -98,14 +95,12 @@ function Get-SourceDateEpoch([string]$RepoRoot, [string]$SourceFile) {
     } catch { }
   }
 
-  # Fallback: use source file mtime
   try {
     $fi = Get-Item -LiteralPath $SourceFile
     $utc = $fi.LastWriteTimeUtc
     $epoch = [DateTimeOffset]$utc
     return [int64]$epoch.ToUnixTimeSeconds()
   } catch {
-    # Final fallback: fixed epoch
     return 0
   }
 }
@@ -129,6 +124,35 @@ function Hint-LaTeXInstall {
   ) -join "`n"
 }
 
+function Build-WithFonts([string]$src, [string]$outPdf, [string]$resourcePath, [string]$mainFont, [string]$monoFont) {
+  $pandocArgs = @(
+    $src,
+    "--from", "gfm+smart",
+    "--standalone",
+    "--toc",
+    "--toc-depth=3",
+    "--number-sections",
+    "--pdf-engine=xelatex",
+    "--resource-path=$resourcePath",
+
+    "--variable", "mainfont=$mainFont",
+    "--variable", "monofont=$monoFont",
+
+    "--variable", "geometry:margin=25mm",
+    "--variable", "fontsize=11pt",
+    "--variable", "linestretch=1.15",
+
+    "--metadata", "title=EA OC Extension Whitepaper",
+    "--metadata", "date=",
+
+    "--output", $outPdf
+  )
+
+  Info "Running pandoc (mainfont='$mainFont', monofont='$monoFont')..."
+  & pandoc @pandocArgs
+  return $LASTEXITCODE
+}
+
 # ------------------------------
 # Main
 # ------------------------------
@@ -141,8 +165,8 @@ if (-not (Test-Path -LiteralPath $paperDir)) {
 $src = Find-WhitepaperSource -PaperDir $paperDir
 $outPdf = Join-Path $paperDir "whitepaper.pdf"
 
-# Dependencies
 $PandocPath = Require-Command -Name "pandoc" -Hint (Hint-PandocInstall)
+
 $XeLaTeXPath = $null
 try {
   $XeLaTeXPath = (Get-Command xelatex -ErrorAction Stop).Source
@@ -150,7 +174,6 @@ try {
   Fail "Missing dependency: 'xelatex' not found in PATH.`nHint: $(Hint-LaTeXInstall)"
 }
 
-# Deterministic build env
 $epoch = Get-SourceDateEpoch -RepoRoot $repoRoot -SourceFile $src
 $env:SOURCE_DATE_EPOCH = "$epoch"
 $env:LANG = "en_US.UTF-8"
@@ -163,12 +186,6 @@ Info "xelatex   : $XeLaTeXPath"
 Info "SDE       : $env:SOURCE_DATE_EPOCH"
 Write-Host ""
 
-# Ensure output directory exists
-if (-not (Test-Path -LiteralPath $paperDir)) {
-  New-Item -ItemType Directory -Path $paperDir | Out-Null
-}
-
-# Build in a stable temp dir (reserved for future extensions; keep deterministic)
 $tempDir = Join-Path $repoRoot ".tmp_whitepaper_build"
 if (Test-Path -LiteralPath $tempDir) {
   Remove-Item -LiteralPath $tempDir -Recurse -Force
@@ -178,28 +195,26 @@ New-Item -ItemType Directory -Path $tempDir | Out-Null
 try {
   Push-Location $repoRoot
 
-  # Resource paths:
-  # - /paper for local images
-  # - repo root for shared assets
   $resourcePath = "$paperDir;$repoRoot"
 
-  $pandocArgs = @(
-    $src,
-    "--from", "gfm+smart",
-    "--standalone",
-    "--toc",
-    "--toc-depth=3",
-    "--number-sections",
-    "--pdf-engine=xelatex",
-    "--resource-path=$resourcePath",
-    "--metadata", "title=EA OC Extension Whitepaper",
-    "--metadata", "date=",
-    "--output", $outPdf
+  # Windows-safe defaults (almost always available)
+  $fontAttempts = @(
+    @{ main = "Times New Roman"; mono = "Consolas" },
+    @{ main = "Cambria";        mono = "Consolas" },
+    @{ main = "Times New Roman"; mono = "Courier New" },
+    @{ main = "Cambria";        mono = "Courier New" }
   )
 
-  Info "Running pandoc..."
-  & pandoc @pandocArgs
-  if ($LASTEXITCODE -ne 0) { Fail "pandoc failed with exit code $LASTEXITCODE." }
+  $ok = $false
+  foreach ($fa in $fontAttempts) {
+    $code = Build-WithFonts -src $src -outPdf $outPdf -resourcePath $resourcePath -mainFont $fa.main -monoFont $fa.mono
+    if ($code -eq 0) { $ok = $true; break }
+    Warn "pandoc failed (exit code $code) with fonts main='$($fa.main)' mono='$($fa.mono)'. Trying next fallback..."
+  }
+
+  if (-not $ok) {
+    Fail "pandoc failed with all font fallbacks."
+  }
 
   if (-not (Test-Path -LiteralPath $outPdf)) {
     Fail "Build reported success but output PDF not found: $outPdf"
@@ -226,4 +241,3 @@ finally {
     Remove-Item -LiteralPath $tempDir -Recurse -Force -ErrorAction SilentlyContinue
   }
 }
-

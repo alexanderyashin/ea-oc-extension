@@ -1,0 +1,110 @@
+% ============================================================
+% paper/main.tex
+% Entry point for the K_EA Whitepaper
+% ============================================================
+
+\documentclass[11pt]{article}
+
+% ---- Preamble ----
+\input{preamble}
+
+% ---- Document start ----
+\begin{document}
+
+% ============================================================
+% Front matter
+% ============================================================
+\input{frontmatter}
+
+\newpage
+\tableofcontents
+\newpage
+
+% ============================================================
+% Executive Summary
+% ============================================================
+\input{sections/00_executive_summary}
+
+\newpage
+% ============================================================
+% Problem Statement & Failure Modes
+% ============================================================
+\input{sections/01_problem_failure_modes}
+
+\newpage
+% ============================================================
+% Ontological Grounding (OC Context)
+% ============================================================
+\input{sections/02_ontological_grounding_oc}
+
+\newpage
+% ============================================================
+% Formal Definition of the Enterprise Continuum (K_EA)
+% ============================================================
+\input{sections/03_formal_definition_k_ea}
+
+\newpage
+% ============================================================
+% Axes and Degrees of Freedom
+% ============================================================
+\input{sections/04_axes_dof}
+
+\newpage
+% ============================================================
+% Thresholds and Structural Tension
+% ============================================================
+\input{sections/05_thresholds_structural_tension}
+
+\newpage
+% ============================================================
+% Cycles and Closure
+% ============================================================
+\input{sections/06_cycles_closure}
+
+\newpage
+% ============================================================
+% Continuity Measure k_EA
+% ============================================================
+\input{sections/07_continuity_k_measure}
+
+\newpage
+% ============================================================
+% Phase Logic
+% ============================================================
+\input{sections/08_phase_logic}
+
+\newpage
+% ============================================================
+% Parent Coupling (K7)
+% ============================================================
+\input{sections/09_parent_coupling_k7}
+
+\newpage
+% ============================================================
+% Invariants and No-Go Results
+% ============================================================
+\input{sections/10_invariants_nogo}
+
+\newpage
+% ============================================================
+% Reproducibility & Executable Closure
+% ============================================================
+\input{sections/11_reproducibility_executable_closure}
+
+\newpage
+% ============================================================
+% Conclusion & Scope Boundary
+% ============================================================
+\input{sections/12_conclusion_scope_boundary}
+
+\newpage
+% ============================================================
+% Appendices
+% ============================================================
+\appendix
+\input{appendices/appx_repro_manifest_pointer}
+
+% ============================================================
+% End document
+% ============================================================
+\end{document}

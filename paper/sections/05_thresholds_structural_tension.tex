@@ -1,0 +1,83 @@
+% ============================================================
+% paper/sections/05_thresholds_structural_tension.tex
+% Thresholds, f_k Components, and Structural Tension
+% ============================================================
+
+\section{Thresholds, Components, and Structural Tension}
+
+\subsection{Role of Thresholds in the Continuum}
+
+Thresholds $\Theta_{\mathrm{EA}}$ define admissibility limits for the
+enterprise continuum. They separate regions of the state space that are
+structurally permissible from those that are not.
+
+Thresholds are not targets, goals, or performance benchmarks. They are
+constraints that determine whether the continuum can exist, persist,
+and remain diagnosable.
+
+\subsection{Structural Tension and Inequality-Based Formulation}
+
+Structural tension arises when internal dynamics push the enterprise
+state toward threshold boundaries. In the formalism of
+\texttt{ETS.K\_EA.v1.1}, this tension is expressed through component
+functions $f_k$ evaluated as inequalities.
+
+No numeric values are fixed at the theory level. The model operates on
+the sign and ordering of these components, not on calibrated magnitudes.
+
+\subsection{Threshold Components}
+
+The ETS defines the following threshold components:
+
+\begin{itemize}
+  \item $f_{\text{exist}}$: existence admissibility,
+  \item $f_{\text{stab}}$: stability and persistence,
+  \item $f_{\text{inertia}}$: structural inertia,
+  \item $f_{\text{collapse}}$: irreversible structural breakdown,
+  \item $f_{\text{stop}}$: termination of diagnosis.
+\end{itemize}
+
+Each component corresponds to a subset of $\Theta_{\mathrm{EA}}$ and is
+evaluated independently, subject to precedence rules defined in the
+phase logic.
+
+\subsection{Interpretation of Components}
+
+\paragraph{Existence Component ($f_{\text{exist}}$).}
+This component evaluates whether $\Omega_{\mathrm{EA}}$ remains
+non-empty. A positive value indicates violation of existence conditions.
+
+\paragraph{Stability Component ($f_{\text{stab}}$).}
+This component captures the integrity of required cycles over the
+internal time scale $\tau_{\mathrm{EA}}$.
+
+\paragraph{Inertia Component ($f_{\text{inertia}}$).}
+This component reflects the inability of the continuum to transition
+between admissible states without external intervention.
+
+\paragraph{Collapse Component ($f_{\text{collapse}}$).}
+This component signals irreversible loss of structural coherence,
+typically following sustained violation of stability conditions.
+
+\paragraph{Termination Component ($f_{\text{stop}}$).}
+This component encodes conditions under which diagnosis must terminate,
+independent of other indicators.
+
+\subsection{No Implicit Optimization}
+
+The presence of thresholds does not imply that the enterprise should be
+kept away from them or steered toward any particular region of the state
+space.
+
+Thresholds merely define the boundary of admissible diagnosis. Crossing
+certain thresholds invalidates further analysis within the model.
+
+\subsection{Structural Tension Versus Performance Stress}
+
+Structural tension is distinct from operational or financial stress. A
+system may experience significant stress while remaining structurally
+admissible.
+
+Conversely, a system may violate structural thresholds without obvious
+short-term performance degradation. The threshold formalism captures
+this distinction explicitly.

@@ -1,0 +1,116 @@
+% ============================================================
+% paper/sections/00_executive_summary.tex
+% Executive Summary (reviewer-grade)
+% ============================================================
+
+\section{Executive Summary}
+
+\subsection*{Purpose of this Whitepaper}
+
+This whitepaper presents a formal, diagnostic-only specification of the
+\emph{Enterprise Continuum} $K_{\mathrm{EA}}$, defined within the
+Ontology-of-Continua (OC) framework and projected directly from the
+immutable Executable Theory Specification
+\texttt{ETS.K\_EA.v1.1}.
+
+The document exists to make the structure, limits, and admissibility
+conditions of enterprise diagnosis explicit and reviewable.
+It is not a proposal, a method description, or a transformation guide.
+No new primitives, operators, or parameters are introduced beyond those
+already defined in the underlying ETS and OC Core.
+
+\subsection*{Problem Context}
+
+Enterprises are commonly analyzed using frameworks that assume the
+continued existence, recoverability, and transformability of the system
+under study. In practice, many initiatives fail because these
+assumptions silently break: structural coherence is lost, observability
+collapses, or essential cycles cease to exist.
+
+Conventional approaches lack a formal mechanism to state when diagnosis
+itself becomes undefined. As a result, analysis often continues beyond
+the domain where its conclusions remain meaningful.
+
+$K_{\mathrm{EA}}$ addresses this gap by treating the enterprise as a
+\emph{continuum with explicit existence conditions}. Diagnosis is
+permitted only while these conditions hold.
+
+\subsection*{Ontological Position}
+
+$K_{\mathrm{EA}}$ is defined as an OC-continuum characterized by:
+
+\begin{itemize}
+  \item a bounded state space $\Omega_{\mathrm{EA}}$ with boundary
+        $\partial\Omega_{\mathrm{EA}}$,
+  \item a finite set of axes $A_{\mathrm{EA}}$ representing admissible
+        degrees of freedom,
+  \item potentials $P_{\mathrm{EA}}$ and flows $J_{\mathrm{EA}}$
+        governing internal dynamics,
+  \item threshold functions $\Theta_{\mathrm{EA}}$ defining structural
+        admissibility,
+  \item required recurrent cycles $C_{\mathrm{EA}}$,
+  \item a continuity measure $k_{\mathrm{EA}} \in [0,1]$ expressing
+        structural connectivity over time.
+\end{itemize}
+
+All primitives are inherited from OC Core and instantiated strictly
+according to \texttt{ETS.K\_EA.v1.1}. The whitepaper does not reinterpret
+or extend them.
+
+\subsection*{Diagnostic-Only Scope}
+
+The scope of $K_{\mathrm{EA}}$ is strictly diagnostic.
+
+The model does not:
+\begin{itemize}
+  \item recommend actions or interventions,
+  \item optimize outcomes,
+  \item propose roadmaps or maturity paths,
+  \item guarantee recovery or success.
+\end{itemize}
+
+All statements are structural. All outcomes are conditional.
+Where the conditions for diagnosis are violated, the model terminates
+analysis.
+
+\subsection*{STOP as a First-Class Outcome}
+
+A central feature of $K_{\mathrm{EA}}$ is the explicit recognition of
+\emph{STOP} as a valid diagnostic result.
+
+STOP occurs when existence, observability, or structural compatibility
+conditions are violated. In this state, further diagnosis is undefined
+within the model. STOP does not indicate analytical failure; it indicates
+that the object of analysis no longer satisfies the minimum conditions
+required to be treated as a continuum.
+
+This treatment contrasts with conventional approaches that implicitly
+assume infinite recoverability.
+
+\subsection*{Executable Closure and Reproducibility}
+
+$K_{\mathrm{EA}}$ is specified as \emph{executable-closed}. All admissible
+concepts and relations are contained within the ETS. No hidden degrees
+of freedom exist outside the specification.
+
+As a result:
+\begin{itemize}
+  \item the model can be reconstructed from the ETS without
+        interpretation,
+  \item reproducibility is structural rather than empirical,
+  \item numeric values, if supplied externally, are instantiations, not
+        part of the theory.
+\end{itemize}
+
+This whitepaper therefore serves as a faithful, inspectable projection
+of a closed formal object.
+
+\subsection*{Audience and Use}
+
+This document is intended for senior enterprise architects, systems
+engineers, and technical reviewers who require a precise understanding
+of what an enterprise diagnostic model \emph{can} and \emph{cannot}
+assert.
+
+The whitepaper is designed to stand on its own, without accompanying
+presentation or interpretation.

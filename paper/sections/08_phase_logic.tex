@@ -1,0 +1,106 @@
+% ============================================================
+% paper/sections/08_phase_logic.tex
+% Phase Logic: SUCCESS, INERTIA, COLLAPSE, STOP
+% ============================================================
+
+\section{Phase Logic}
+
+\subsection{Purpose of Phase Classification}
+
+Phase logic in $K_{\mathrm{EA}}$ provides a coarse-grained diagnostic
+classification of admissible enterprise states. Phases do not represent
+stages of maturity or progress. They are labels assigned based on the
+evaluation of threshold components and continuity conditions.
+
+The purpose of phase logic is to determine which kinds of diagnostic
+statements remain admissible.
+
+\subsection{Precedence Rules}
+
+Phases are evaluated according to a strict precedence order defined in
+\texttt{ETS.K\_EA.v1.1}:
+
+\[
+\text{STOP} \; \succ \; \text{COLLAPSE} \; \succ \; \text{INERTIA} \;
+\succ \; \text{SUCCESS}.
+\]
+
+Higher-precedence phases override lower-precedence classifications.
+This prevents contradictory diagnoses.
+
+\subsection{STOP Phase}
+
+The STOP phase represents termination of diagnosis. It is entered when
+any of the following conditions hold:
+
+\begin{itemize}
+  \item $f_{\text{exist}} > 0$,
+  \item $f_{\text{stop}} > 0$,
+  \item observability required to evaluate thresholds is lost.
+\end{itemize}
+
+In the STOP phase, further diagnosis is undefined within the model. No
+claims regarding recovery, improvement, or evolution are admissible.
+
+\subsection{COLLAPSE Phase}
+
+The COLLAPSE phase indicates irreversible loss of structural coherence
+while diagnosis remains momentarily defined.
+
+Formally, COLLAPSE holds when:
+\begin{itemize}
+  \item $f_{\text{collapse}} > 0$,
+  \item STOP conditions are not met.
+\end{itemize}
+
+COLLAPSE does not imply immediate non-existence, but it indicates that
+the enterprise continuum can no longer satisfy stability conditions
+over the internal time scale.
+
+\subsection{INERTIA Phase}
+
+The INERTIA phase characterizes states in which the enterprise remains
+structurally admissible but cannot transition between admissible states
+without external intervention.
+
+Formally, INERTIA holds when:
+\begin{itemize}
+  \item $f_{\text{inertia}} > 0$,
+  \item STOP and COLLAPSE conditions are not met.
+\end{itemize}
+
+Diagnosis remains defined, but internal dynamics are constrained.
+
+\subsection{SUCCESS Phase}
+
+The SUCCESS phase is defined by the absence of threshold violations:
+
+\[
+f_k \leq 0 \quad \text{for all components } k.
+\]
+
+SUCCESS does not imply optimality, efficiency, or desirability. It
+indicates only that the enterprise continuum satisfies admissibility
+conditions for diagnosis.
+
+\subsection{Allowed Transitions}
+
+The ETS specifies the following allowed transitions:
+
+\begin{itemize}
+  \item SUCCESS $\rightarrow$ INERTIA, COLLAPSE, STOP,
+  \item INERTIA $\rightarrow$ SUCCESS via external $\Psi$, COLLAPSE,
+        STOP,
+  \item COLLAPSE $\rightarrow$ STOP,
+  \item STOP $\rightarrow$ (none).
+\end{itemize}
+
+Transitions are constrained by threshold evaluations and parent
+compatibility conditions.
+
+\subsection{Non-Teleological Interpretation}
+
+Phase logic does not encode a preferred direction of movement. There is
+no assumption that SUCCESS should be maintained or restored.
+
+Phases are diagnostic labels, not objectives.

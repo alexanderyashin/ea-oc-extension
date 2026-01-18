@@ -1,0 +1,98 @@
+% ============================================================
+% paper/preamble.tex
+% Purpose: robust preamble for a reviewer-grade technical whitepaper
+% Scope: executable-closed, diagnostic-only. No styling perfection.
+% ============================================================
+
+% ---- Encoding / Fonts (XeLaTeX-friendly; pdflatex also ok via fallbacks) ----
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+\fi
+
+% ---- Page & layout ----
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.08}
+\usepackage{parskip}
+
+% ---- Core math ----
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+% ---- Lists / tables ----
+\usepackage{enumitem}
+\setlist[itemize]{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\setlist[enumerate]{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+
+% ---- Figures ----
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ---- Color / links ----
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={The Enterprise Continuum (K_EA): Executable-Closed Diagnostic Whitepaper},
+  pdfauthor={},
+  pdfsubject={Executable-Closed Diagnostic Specification},
+  pdfkeywords={Enterprise Architecture, Ontology of Continua, diagnostic method, executable-closed}
+}
+
+% ---- Better cross-references ----
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+% ---- Code blocks (for non-executable snippets only) ----
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  showstringspaces=false
+}
+
+% ---- Theorem-like environments (neutral, reviewer-friendly) ----
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+% ---- Common macros (keep minimal; do not invent new theory) ----
+\newcommand{\OmegaEA}{\Omega_{\mathrm{EA}}}
+\newcommand{\dOmegaEA}{\partial\Omega_{\mathrm{EA}}}
+\newcommand{\AEA}{A_{\mathrm{EA}}}
+\newcommand{\PEA}{P_{\mathrm{EA}}}
+\newcommand{\ThetaEA}{\Theta_{\mathrm{EA}}}
+\newcommand{\JEA}{J_{\mathrm{EA}}}
+\newcommand{\CEA}{C_{\mathrm{EA}}}
+\newcommand{\kEA}{k_{\mathrm{EA}}}
+\newcommand{\tauEA}{\tau_{\mathrm{EA}}}
+
+% ---- Document safety: avoid overfull boxes in URLs ----
+\usepackage{url}
+\Urlmuskip=0mu plus 1mu
+
+% ---- Title helpers ----
+\usepackage{titling}
+\setlength{\droptitle}{-10mm}
