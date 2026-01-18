@@ -1,10 +1,20 @@
 ﻿<#
 Watches /paper for changes and rebuilds paper/whitepaper.pdf using tools/build_whitepaper_pdf.ps1
-- Debounced to avoid rebuild storms
-- Ignores changes to the output PDF itself to prevent loops
+
+This watcher is intentionally polling-based.
+Reason: Windows PowerShell 5.1 can silently drop Register-ObjectEvent actions
+in long-running sessions on some systems (no logs, no build), even though
+Start-Process works fine.
+
+Behavior:
+- Poll paper/** every 500ms for latest LastWriteTime (excluding whitepaper.pdf and paper/_build/**)
+- Debounce rebuilds (default 600ms) to avoid rebuild storms
+- Writes logs into paper/_build:
+    watch_build_YYYYMMDD_HHMMSS.out.log
+    watch_build_YYYYMMDD_HHMMSS.err.log
 
 Works on:
-- Windows PowerShell 5.1 (no pwsh required)
+- Windows PowerShell 5.1
 - PowerShell 7+ (pwsh)
 
 Usage:
@@ -64,94 +74,146 @@ function Get-PowerShellExe {
   Fail "Neither 'pwsh' nor 'powershell' found in PATH. Cannot run build script."
 }
 
-$repoRoot = Get-RepoRoot
-$paperDir = Join-Path $repoRoot "paper"
-$buildScript = Join-Path $repoRoot "tools/build_whitepaper_pdf.ps1"
-$outPdf = Join-Path $paperDir "whitepaper.pdf"
-$psExe = Get-PowerShellExe
+function Ensure-Dir([string]$path) {
+  if (-not (Test-Path -LiteralPath $path)) {
+    New-Item -ItemType Directory -Path $path | Out-Null
+  }
+}
 
-if (-not (Test-Path -LiteralPath $paperDir)) { Fail "Directory not found: $paperDir" }
+function Norm([string]$p) {
+  # Robust path normalization for comparisons:
+  # - absolute full path
+  # - lowercased (Windows case-insensitive)
+  try {
+    return ([System.IO.Path]::GetFullPath($p)).ToLowerInvariant()
+  } catch {
+    return $p.ToLowerInvariant()
+  }
+}
+
+$repoRoot    = Get-RepoRoot
+$paperDir    = Join-Path $repoRoot "paper"
+$buildScript = Join-Path $repoRoot "tools/build_whitepaper_pdf.ps1"
+$outPdf      = Join-Path $paperDir "whitepaper.pdf"
+$psExe       = Get-PowerShellExe
+
+if (-not (Test-Path -LiteralPath $paperDir))    { Fail "Directory not found: $paperDir" }
 if (-not (Test-Path -LiteralPath $buildScript)) { Fail "Build script not found: $buildScript" }
 
 $debounceMs = 600
-$timer = New-Object System.Timers.Timer
-$timer.Interval = $debounceMs
-$timer.AutoReset = $false
+$pollMs     = 500
 
-$pendingReason = $null
-$lockObj = New-Object object
+# Normalized paths for reliable exclusion (prevents false rebuilds on output/log writes)
+$outPdfN   = Norm $outPdf
+$buildDirN = Norm (Join-Path $paperDir "_build")
 
-$action = {
-  try {
-    Info ""
-    Info "Rebuilding (reason: $pendingReason)..."
-    & $psExe -NoProfile -ExecutionPolicy Bypass -File $buildScript
-    if ($LASTEXITCODE -ne 0) { Warn "Build returned exit code $LASTEXITCODE" }
-    else { Info "Rebuild OK." }
-  } catch {
-    Warn ("Rebuild failed: " + $_.Exception.Message)
+function Invoke-Build([string]$reason) {
+  Info ""
+  Info "Rebuilding (reason: $reason)..."
+
+  $logDir = Join-Path $paperDir "_build"
+  Ensure-Dir $logDir
+
+  $ts = Get-Date -Format "yyyyMMdd_HHmmss"
+  $logPathOut = Join-Path $logDir ("watch_build_{0}.out.log" -f $ts)
+  $logPathErr = Join-Path $logDir ("watch_build_{0}.err.log" -f $ts)
+
+  $args = @(
+    "-NoProfile",
+    "-ExecutionPolicy", "Bypass",
+    "-File", $buildScript
+  )
+
+  $p = Start-Process -FilePath $psExe -ArgumentList $args `
+    -WorkingDirectory $repoRoot `
+    -RedirectStandardOutput $logPathOut `
+    -RedirectStandardError  $logPathErr `
+    -NoNewWindow -PassThru -Wait
+
+  if ($p.ExitCode -ne 0) {
+    Warn "Rebuild FAILED (exit code $($p.ExitCode)). Logs: $logPathOut ; $logPathErr"
+    return
   }
-}
 
-Register-ObjectEvent -InputObject $timer -EventName Elapsed -Action $action | Out-Null
-
-$fsw = New-Object System.IO.FileSystemWatcher
-$fsw.Path = $paperDir
-$fsw.IncludeSubdirectories = $true
-$fsw.EnableRaisingEvents = $true
-
-$fsw.Filter = "*.*"
-$notify = [System.IO.NotifyFilters]'FileName, LastWrite, Size, DirectoryName'
-$fsw.NotifyFilter = $notify
-
-function Should-Ignore([string]$fullPath) {
-  if (-not $fullPath) { return $true }
-  $p = $fullPath.ToLowerInvariant()
-
-  if ($p -eq $outPdf.ToLowerInvariant()) { return $true }
-  if ($p.Contains("\.tmp_")) { return $true }
-  if ($p.Contains("\_build\")) { return $true }
-
-  $ext = [System.IO.Path]::GetExtension($p)
-  $allowed = @(".md", ".mdx", ".png", ".jpg", ".jpeg", ".svg", ".pdf")
-  return -not ($allowed -contains $ext)
-}
-
-function Trigger-Rebuild([string]$reason) {
-  [System.Threading.Monitor]::Enter($lockObj)
-  try {
-    $script:pendingReason = $reason
-    $timer.Stop()
-    $timer.Start()
-  } finally {
-    [System.Threading.Monitor]::Exit($lockObj)
+  if (-not (Test-Path -LiteralPath $outPdf)) {
+    Warn "Rebuild finished with exit code 0 but output is missing: $outPdf. Logs: $logPathOut ; $logPathErr"
+    return
   }
+
+  Info "Rebuild OK. Logs: $logPathOut ; $logPathErr"
 }
 
-$onChange = {
-  $path = $Event.SourceEventArgs.FullPath
-  $chg  = $Event.SourceEventArgs.ChangeType.ToString()
+function Get-InputFilesMaxWriteTime {
+  # Track only source-ish files under paper/**, excluding:
+  # - the output PDF itself (robust normalized compare)
+  # - paper/_build/**      (robust normalized prefix exclude)
+  # Also ignore temporary files.
+  $max = [datetime]::MinValue
 
-  if (Should-Ignore $path) { return }
+  $items = Get-ChildItem -LiteralPath $paperDir -Recurse -File -ErrorAction SilentlyContinue
+  foreach ($it in $items) {
+    $fullN = Norm $it.FullName
 
-  $rel = $path.Replace($repoRoot, "").TrimStart('\')
-  Info ("{0} {1}" -f $chg.PadRight(8), $rel)
-  Trigger-Rebuild ("$chg $rel")
+    # exclude output PDF
+    if ($fullN -eq $outPdfN) { continue }
+
+    # exclude build dir
+    if ($fullN.StartsWith($buildDirN)) { continue }
+
+    $name = $it.Name.ToLowerInvariant()
+    if ($name.StartsWith(".tmp_")) { continue }
+
+    $ext = $it.Extension.ToLowerInvariant()
+    $allowed = @(".md",".mdx",".tex",".bib",".png",".jpg",".jpeg",".svg",".pdf",".yml",".yaml")
+    if (-not ($allowed -contains $ext)) { continue }
+
+    if ($it.LastWriteTime -gt $max) { $max = $it.LastWriteTime }
+  }
+
+  return $max
 }
-
-Register-ObjectEvent -InputObject $fsw -EventName Changed -Action $onChange | Out-Null
-Register-ObjectEvent -InputObject $fsw -EventName Created -Action $onChange | Out-Null
-Register-ObjectEvent -InputObject $fsw -EventName Deleted -Action $onChange | Out-Null
-Register-ObjectEvent -InputObject $fsw -EventName Renamed -Action $onChange | Out-Null
 
 Info "Watching: $paperDir"
 Info "Build via : $buildScript"
 Info "Runner   : $psExe"
 Info "Output   : $outPdf"
 Info "Debounce : ${debounceMs}ms"
+Info "Poll     : ${pollMs}ms"
 Info ""
 Info "Press Ctrl+C to stop."
 
-Trigger-Rebuild "initial"
+# initial state
+$lastSeen = Get-InputFilesMaxWriteTime
+$pendingAt = Get-Date
+$pendingReason = "initial"
 
-while ($true) { Start-Sleep -Seconds 1 }
+# Initial build should happen exactly once; clear pending afterwards.
+Invoke-Build $pendingReason
+
+# IMPORTANT: reset baseline AFTER initial build.
+# Some toolchains touch files under paper/** during the build (aux files, caches, etc.).
+# We treat those as part of initial build, not as a user change trigger.
+$lastSeen = Get-InputFilesMaxWriteTime
+
+$pendingAt = $null
+$pendingReason = $null
+
+while ($true) {
+  Start-Sleep -Milliseconds $pollMs
+
+  $nowMax = Get-InputFilesMaxWriteTime
+  if ($nowMax -gt $lastSeen) {
+    $lastSeen = $nowMax
+    $pendingAt = Get-Date
+    $pendingReason = "file change (max LastWriteTime: $($nowMax.ToString('s')))"
+  }
+
+  if ($pendingAt -ne $null) {
+    $ageMs = (New-TimeSpan -Start $pendingAt -End (Get-Date)).TotalMilliseconds
+    if ($ageMs -ge $debounceMs) {
+      Invoke-Build $pendingReason
+      $pendingAt = $null
+      $pendingReason = $null
+    }
+  }
+}
