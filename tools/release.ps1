@@ -21,7 +21,7 @@ function Fail([string]$msg, [int]$code = 1) {
   exit $code
 }
 
-function GitOut([string[]]$args) {
+function Invoke-GitOut([string[]]$args) {
   $out = & git @args
   if ($LASTEXITCODE -ne 0) {
     Fail "git failed ($LASTEXITCODE): git $($args -join ' ')" $LASTEXITCODE
@@ -29,7 +29,7 @@ function GitOut([string[]]$args) {
   return ($out | Out-String).Trim()
 }
 
-function Git([string[]]$args) {
+function Invoke-Git([string[]]$args) {
   Write-Host ">> git $($args -join ' ')"
   & git @args
   if ($LASTEXITCODE -ne 0) {
@@ -38,7 +38,7 @@ function Git([string[]]$args) {
 }
 
 function Get-WorktreeStatus {
-  return (GitOut @("status","--porcelain"))
+  return (Invoke-GitOut @("status","--porcelain"))
 }
 
 $remote = "origin"
@@ -50,7 +50,7 @@ Write-Host "== RELEASE $tag =="
 & git rev-parse --is-inside-work-tree | Out-Null
 if ($LASTEXITCODE -ne 0) { Fail "Not inside a git work tree." 10 }
 
-$remotes = GitOut @("remote")
+$remotes = Invoke-GitOut @("remote")
 $hasOrigin = $false
 foreach ($r in ($remotes -split "`n")) {
   if ($r.Trim() -eq $remote) { $hasOrigin = $true }
@@ -60,10 +60,10 @@ if (-not $hasOrigin) {
 }
 
 # Fetch tags for deterministic tag-exists check
-Git @("fetch","--tags",$remote)
+Invoke-Git @("fetch","--tags",$remote)
 
 # Refuse if tag already exists
-$existingTag = GitOut @("tag","-l",$tag)
+$existingTag = Invoke-GitOut @("tag","-l",$tag)
 if ($existingTag -eq $tag) {
   Fail "Tag already exists: $tag" 12
 }
@@ -77,9 +77,9 @@ if ($dirty) {
 
   Write-Host "== AUTOCOMMIT =="
 
-  Git @("add","-A")
+  Invoke-Git @("add","-A")
 
-  $staged = GitOut @("diff","--cached","--name-only")
+  $staged = Invoke-GitOut @("diff","--cached","--name-only")
   if ([string]::IsNullOrWhiteSpace($staged)) {
     Fail "AutoCommit requested but nothing staged (no real changes or only ignored files)." 14
   }
@@ -118,15 +118,15 @@ if ($dirty2) {
 }
 
 # Identify HEAD for reporting
-$head = GitOut @("rev-parse","HEAD")
+$head = Invoke-GitOut @("rev-parse","HEAD")
 Write-Host ">> HEAD = $head"
 
 # --- Tag (deterministic) ---
-Git @("tag","-a",$tag,"-m","Release $tag")
+Invoke-Git @("tag","-a",$tag,"-m","Release $tag")
 
 # --- Push deterministically ---
-Git @("push",$remote,"HEAD")
-Git @("push",$remote,$tag)
+Invoke-Git @("push",$remote,"HEAD")
+Invoke-Git @("push",$remote,$tag)
 
 Write-Host ""
 Write-Host "OK: Release pushed."
