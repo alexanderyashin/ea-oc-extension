@@ -1,0 +1,61 @@
+name: Whitepaper PDF
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "paper/**"
+      - "tools/build_whitepaper_pdf.ps1"
+      - "tools/watch_whitepaper_pdf.ps1"
+      - "docs/WHITEPAPER_PDF.md"
+      - ".github/workflows/whitepaper-pdf.yml"
+  pull_request:
+    paths:
+      - "paper/**"
+      - "tools/build_whitepaper_pdf.ps1"
+      - "tools/watch_whitepaper_pdf.ps1"
+      - "docs/WHITEPAPER_PDF.md"
+      - ".github/workflows/whitepaper-pdf.yml"
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install system dependencies (pandoc + xelatex)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pandoc \
+            texlive-xetex \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            lmodern \
+            ca-certificates
+          pandoc -v
+          xelatex --version
+
+      - name: Build whitepaper.pdf
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build_whitepaper_pdf.ps1
+          if (!(Test-Path -LiteralPath "paper/whitepaper.pdf")) {
+            throw "Expected output not found: paper/whitepaper.pdf"
+          }
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: whitepaper-pdf
+          path: paper/whitepaper.pdf
+          if-no-files-found: error
