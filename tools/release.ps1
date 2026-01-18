@@ -21,19 +21,38 @@ function Fail([string]$msg, [int]$code = 1) {
   exit $code
 }
 
-function Invoke-GitOut([string[]]$args) {
-  $out = & git @args
+# Resolve git executable explicitly (avoid aliases/functions named "git")
+$GitExe = $null
+try {
+  $GitExe = (Get-Command git -ErrorAction Stop).Source
+} catch {
+  Fail "git executable not found in PATH." 20
+}
+if ([string]::IsNullOrWhiteSpace($GitExe)) {
+  Fail "git executable not found in PATH." 20
+}
+
+function Invoke-GitOut([string[]]$GitArgs) {
+  if ($null -eq $GitArgs -or $GitArgs.Count -eq 0) {
+    Fail "Internal error: Invoke-GitOut called with empty arguments." 21
+  }
+
+  $out = & $GitExe @GitArgs
   if ($LASTEXITCODE -ne 0) {
-    Fail "git failed ($LASTEXITCODE): git $($args -join ' ')" $LASTEXITCODE
+    Fail "git failed ($LASTEXITCODE): git $($GitArgs -join ' ')" $LASTEXITCODE
   }
   return ($out | Out-String).Trim()
 }
 
-function Invoke-Git([string[]]$args) {
-  Write-Host ">> git $($args -join ' ')"
-  & git @args
+function Invoke-Git([string[]]$GitArgs) {
+  if ($null -eq $GitArgs -or $GitArgs.Count -eq 0) {
+    Fail "Internal error: Invoke-Git called with empty arguments." 22
+  }
+
+  Write-Host ">> git $($GitArgs -join ' ')"
+  & $GitExe @GitArgs
   if ($LASTEXITCODE -ne 0) {
-    Fail "git failed ($LASTEXITCODE): git $($args -join ' ')" $LASTEXITCODE
+    Fail "git failed ($LASTEXITCODE): git $($GitArgs -join ' ')" $LASTEXITCODE
   }
 }
 
@@ -47,7 +66,7 @@ $tag = "v$Version"
 Write-Host "== RELEASE $tag =="
 
 # --- Preconditions ---
-& git rev-parse --is-inside-work-tree | Out-Null
+& $GitExe rev-parse --is-inside-work-tree | Out-Null
 if ($LASTEXITCODE -ne 0) { Fail "Not inside a git work tree." 10 }
 
 $remotes = Invoke-GitOut @("remote")
@@ -86,7 +105,7 @@ if ($dirty) {
 
   $msg = "chore(release): prepare $tag"
   Write-Host ">> git commit -m `"$msg`""
-  & git commit -m $msg | Out-Null
+  & $GitExe commit -m $msg | Out-Null
   if ($LASTEXITCODE -ne 0) {
     Fail "AutoCommit failed (git commit returned $LASTEXITCODE)." 15
   }
