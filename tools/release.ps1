@@ -1,73 +1,135 @@
+# tools/release.ps1
+# Deterministic local release pipeline for ea-oc-extension
+# Source of truth: Git state (HEAD + working tree).
+# Hard gate: tools/check_whitepaper.ps1 (invoked exactly once).
+
+[CmdletBinding()]
 param(
   [Parameter(Mandatory = $true)]
-  [ValidateNotNullOrEmpty()]
-  [string]$Version
+  [ValidatePattern('^\d+\.\d+\.\d+(-[0-9A-Za-z\.-]+)?$')]
+  [string]$Version,
+
+  [Parameter(Mandatory = $false)]
+  [switch]$AutoCommit
 )
 
 $ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
 
-function Assert-CleanTree {
-  $s = git status --porcelain
-  if ($s) {
-    Write-Error "Working tree is not clean. Commit or stash changes first."
-    exit 1
-  }
+function Fail([string]$msg, [int]$code = 1) {
+  Write-Error $msg
+  exit $code
 }
 
-function Assert-TagNotExists {
-  param([Parameter(Mandatory = $true)][string]$tag)
-
-  # local tag
-  git rev-parse -q --verify "refs/tags/$tag" *> $null
-  if ($LASTEXITCODE -eq 0) {
-    Write-Error "Tag already exists locally: $tag"
-    exit 1
-  }
-
-  # remote tag
-  $remote = git ls-remote --tags origin "refs/tags/$tag"
-  if ($remote) {
-    Write-Error "Tag already exists on origin: $tag"
-    exit 1
-  }
-}
-
-function Invoke-WhitepaperGates {
-  $check = Join-Path $PSScriptRoot "check_whitepaper.ps1"
-  if (!(Test-Path $check)) {
-    Write-Error "Missing gate script: $check"
-    exit 2
-  }
-
-  Write-Host "== GATES: whitepaper =="
-
-  & powershell -ExecutionPolicy Bypass -File $check
+function GitOut([string[]]$args) {
+  $out = & git @args
   if ($LASTEXITCODE -ne 0) {
-    Write-Error "Whitepaper gates FAILED. Fix paper/whitepaper.md and retry."
-    exit 2
+    Fail "git failed ($LASTEXITCODE): git $($args -join ' ')" $LASTEXITCODE
   }
-
-  Write-Host "OK: whitepaper gates passed."
+  return ($out | Out-String).Trim()
 }
 
+function Git([string[]]$args) {
+  Write-Host ">> git $($args -join ' ')"
+  & git @args
+  if ($LASTEXITCODE -ne 0) {
+    Fail "git failed ($LASTEXITCODE): git $($args -join ' ')" $LASTEXITCODE
+  }
+}
+
+function Get-WorktreeStatus {
+  return (GitOut @("status","--porcelain"))
+}
+
+$remote = "origin"
 $tag = "v$Version"
 
 Write-Host "== RELEASE $tag =="
 
-Assert-CleanTree
-Invoke-WhitepaperGates
-Assert-TagNotExists $tag
+# --- Preconditions ---
+& git rev-parse --is-inside-work-tree | Out-Null
+if ($LASTEXITCODE -ne 0) { Fail "Not inside a git work tree." 10 }
 
-# push main first (ensure remote is up to date)
-git push origin main
-if ($LASTEXITCODE -ne 0) { exit 1 }
+$remotes = GitOut @("remote")
+$hasOrigin = $false
+foreach ($r in ($remotes -split "`n")) {
+  if ($r.Trim() -eq $remote) { $hasOrigin = $true }
+}
+if (-not $hasOrigin) {
+  Fail "Remote '$remote' not found. Configure 'origin' (required)." 11
+}
 
-# create annotated tag
-git tag -a $tag -m "Release $tag"
-if ($LASTEXITCODE -ne 0) { exit 1 }
+# Fetch tags for deterministic tag-exists check
+Git @("fetch","--tags",$remote)
 
-# push tag
-git push origin $tag
-if ($LASTEXITCODE -ne 0) { exit 1 }
+# Refuse if tag already exists
+$existingTag = GitOut @("tag","-l",$tag)
+if ($existingTag -eq $tag) {
+  Fail "Tag already exists: $tag" 12
+}
 
-Write-Host "OK: pushed main and tag $tag"
+# --- Deterministic cleanliness / optional autocommit ---
+$dirty = -not [string]::IsNullOrWhiteSpace((Get-WorktreeStatus))
+if ($dirty) {
+  if (-not $AutoCommit) {
+    Fail "Working tree is dirty. Commit manually or run with -AutoCommit." 13
+  }
+
+  Write-Host "== AUTOCOMMIT =="
+
+  Git @("add","-A")
+
+  $staged = GitOut @("diff","--cached","--name-only")
+  if ([string]::IsNullOrWhiteSpace($staged)) {
+    Fail "AutoCommit requested but nothing staged (no real changes or only ignored files)." 14
+  }
+
+  $msg = "chore(release): prepare $tag"
+  Write-Host ">> git commit -m `"$msg`""
+  & git commit -m $msg | Out-Null
+  if ($LASTEXITCODE -ne 0) {
+    Fail "AutoCommit failed (git commit returned $LASTEXITCODE)." 15
+  }
+}
+
+# --- HARD GATE (exactly once) ---
+$gatePath = Join-Path $PSScriptRoot "check_whitepaper.ps1"
+if (-not (Test-Path $gatePath)) {
+  Fail "Missing hard gate: tools/check_whitepaper.ps1" 16
+}
+
+$before = Get-WorktreeStatus
+
+Write-Host "== HARD GATE: tools/check_whitepaper.ps1 =="
+& $gatePath
+if ($LASTEXITCODE -ne 0) {
+  Fail "Whitepaper gate FAILED (exit $LASTEXITCODE). Release aborted." $LASTEXITCODE
+}
+
+$after = Get-WorktreeStatus
+if ($before -ne $after) {
+  Fail "Gate modified working tree. Forbidden for deterministic release." 17
+}
+
+# Ensure clean state AFTER gate
+$dirty2 = -not [string]::IsNullOrWhiteSpace((Get-WorktreeStatus))
+if ($dirty2) {
+  Fail "Working tree is not clean after gate. Commit/fix gate and retry." 18
+}
+
+# Identify HEAD for reporting
+$head = GitOut @("rev-parse","HEAD")
+Write-Host ">> HEAD = $head"
+
+# --- Tag (deterministic) ---
+Git @("tag","-a",$tag,"-m","Release $tag")
+
+# --- Push deterministically ---
+Git @("push",$remote,"HEAD")
+Git @("push",$remote,$tag)
+
+Write-Host ""
+Write-Host "OK: Release pushed."
+Write-Host " - Tag: $tag"
+Write-Host " - HEAD: $head"
+exit 0
