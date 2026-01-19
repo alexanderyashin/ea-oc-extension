@@ -27,11 +27,11 @@ Consequently, they induce the same finite encoding domain \(\mathsf{Enc}(\KEA)\)
 and the same diagnostic predicate family \(\mathsf{Pred}_D(\KEA)\).
 
 The value of \(D(\KEA)\) depends exclusively on whether all predicate evaluations
-\(P(x)\), for \(P \in \mathsf{Pred}_D(\KEA)\) and \(x \in \mathsf{Enc}(\KEA)\),
-are well-defined and computable under the fixed \OC{}/ETS semantics. Since both
-the domain and semantics are invariant under ETS-equivalent representations, the
-truth of this condition is invariant as well. Therefore \(D(\KEA)\) is
-representation-independent.
+\(P(x)\), for \(P \in \mathsf{Pred}_D(\KEA)\) and
+\(x \in \mathsf{Enc}(\KEA)\), are well-defined and computable under the fixed
+\OC{}/ETS semantics. Since both the domain and semantics are invariant under
+ETS-equivalent representations, the truth of this condition is invariant as
+well. Therefore \(D(\KEA)\) is representation-independent.
 \end{proof}
 
 \begin{theorem}[Decidability of structural diagnosability]
@@ -48,16 +48,17 @@ finite.
 Each predicate \(P \in \mathsf{Pred}_D(\KEA)\) is defined by explicit,
 algorithmically specified \OC{}/ETS rules (membership in \(\Om\), boundary
 checks for \(\dOm\), threshold satisfaction, and evaluation of
-\(\kcont\) in the prescribed numeric domain). Therefore, for any fixed
-\(x \in \mathsf{Enc}(\KEA)\), the computation of \(P(x)\) either terminates with
-a Boolean value or fails to be well-defined.
+\(\kcont\) in the prescribed numeric domain). For any fixed
+\(x \in \mathsf{Enc}(\KEA)\), the evaluation of \(P(x)\) is carried out by a
+finite ETS-specified procedure that either terminates with a Boolean value or
+returns an explicit \emph{undefined} outcome in finite time.
 
 To decide \(D(\KEA)\), one enumerates all pairs
 \((P,x) \in \mathsf{Pred}_D(\KEA) \times \mathsf{Enc}(\KEA)\) and checks whether
-each evaluation \(P(x)\) is well-defined and computable. Since this is a finite
-set of checks over finite data, the procedure terminates. Consequently,
-\(D(\KEA)\) is decidable, as a standard finite decision problem over a finite
-encoding domain \cite{Sipser2012,Clarke2018}.
+each evaluation \(P(x)\) terminates with a well-defined Boolean result. Since
+this is a finite set of checks over finite data, the procedure terminates.
+Consequently, \(D(\KEA)\) is decidable, as a standard finite decision problem
+over a finite encoding domain \cite{Sipser2012,Clarke2018}.
 \end{proof}
 
 %%% End of file %%%
