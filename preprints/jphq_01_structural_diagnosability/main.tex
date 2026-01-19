@@ -1,0 +1,79 @@
+﻿\documentclass[11pt]{article}
+
+% ---------- Minimal, portable preprint setup ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Bibliography (biber)
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxcitenames=2,
+  maxbibnames=99,
+  doi=true,
+  url=true,
+  isbn=false
+]{biblatex}
+\addbibresource{references.bib}
+
+% ---------- Theorem environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% ---------- Notation (ASCII-only source; macros safe in text) ----------
+\newcommand{\OC}{\textsc{OC}}
+
+% Ensure math-safe macros can be used in text mode:
+\newcommand{\KEA}{\ensuremath{K_{\mathrm{EA}}}}
+\newcommand{\Om}{\ensuremath{\Omega}}
+\newcommand{\dOm}{\ensuremath{\partial \Omega}}
+\newcommand{\Th}{\ensuremath{\Theta}}
+
+\newcommand{\kcont}{\ensuremath{k}}
+\newcommand{\Flow}{\ensuremath{J}}
+\newcommand{\Ax}{\ensuremath{A}}
+\newcommand{\Pot}{\ensuremath{P}}
+\newcommand{\Cyc}{\ensuremath{C}}
+
+% ---------- Metadata ----------
+\title{Structural Diagnosability of Enterprises as Continua: Formal Definition and Decidability}
+\author{Anonymous (JPHQ Preprint Draft)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\input{sections/00_abstract.tex}
+
+\section{Problem and Scope}
+\input{sections/01_problem.tex}
+
+\section{Formal Setting}
+\input{sections/02_formal_setting.tex}
+
+\section{Definitions}
+\input{sections/03_definitions.tex}
+
+\section{Main Results}
+\input{sections/04_theorems.tex}
+
+\section{Scope Limits and Non-Claims}
+\input{sections/05_limits.tex}
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,60 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 02_formal_setting.tex
+%
+% Formal setting and assumptions for the analysis of structural diagnosability
+% of the enterprise continuum K_EA.
+%
+% This section fixes:
+%   - the OC/ETS structures taken as primitive,
+%   - the minimal representational (finiteness) assumption required for
+%     decidability statements,
+%   - the exact scope of information available to any decision procedure.
+%
+% No new primitives are introduced.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We work strictly within the \OC{} core primitives and the enterprise-continuum
+specification \KEA{} as fixed by \texttt{ETS.K\_EA.v1.1}. The enterprise continuum
+is treated as a formal object equipped with (at minimum) the following immutable
+components:
+\[
+(\Om(\KEA), \dOm(\KEA), \Ax(\KEA), \Pot(\KEA), \Th(\KEA), \Flow(\KEA), \Cyc(\KEA), \kcont(\KEA)).
+\]
+All symbols above refer exclusively to the corresponding definitions provided
+by \OC{} core and \texttt{ETS.K\_EA.v1.1}. No reinterpretation or semantic
+extension is permitted.
+
+\subsection{Representational assumption}
+To formulate decidability results, we require that an admissible instance of
+\KEA{} be provided in a \emph{finite}, machine-readable representation consistent
+with \texttt{ETS.K\_EA.v1.1}. This assumption does not introduce a new primitive;
+it merely makes explicit the input model required for any effective decision
+procedure.
+
+In particular, finiteness applies to the representations of axes, thresholds,
+flows, cycles, and all auxiliary data structures prescribed by ETS, yielding a
+finite encoding domain for admissible enterprise states.
+
+\subsection{Permitted information for decision procedures}
+Any decision procedure considered in this work may inspect only the following
+ETS-provided structures of the given \KEA{} instance:
+\begin{itemize}
+  \item the formal representation of admissible states in \(\Om(\KEA)\) and the
+        associated boundary structure \(\dOm(\KEA)\);
+  \item the finite sets of axes \(\Ax(\KEA)\) and thresholds \(\Th(\KEA)\);
+  \item any explicitly represented flow and cycle data
+        \((\Flow(\KEA), \Cyc(\KEA))\) contained in the ETS-conformant input;
+  \item the STOP/No-Go constraints and invariants encoded in
+        \texttt{ETS.K\_EA.v1.1}.
+\end{itemize}
+No appeal to managerial intent, KPI observability, or external interpretive
+semantics is permitted.
+
+\subsection{Structure of the formal argument}
+Within this setting, we proceed as follows: first, structural diagnosability is
+defined as a Boolean property determined solely by \OC{} and ETS structures;
+second, this property is shown to be well-defined (invariant under
+ETS-equivalent representations); and third, decidability is established by
+reduction to a finite decision problem over the ETS-conformant representation.
+
+%%% End of file %%%

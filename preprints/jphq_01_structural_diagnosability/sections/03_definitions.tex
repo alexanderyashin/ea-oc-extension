@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 03_definitions.tex
+%
+% Formal definitions for structural diagnosability of the enterprise continuum
+% K_EA. This section introduces no new primitives and relies exclusively on
+% OC Core and ETS.K_EA.v1.1.
+%
+% Scope:
+%   - admissible instances of K_EA
+%   - diagnostic predicates induced by OC + ETS
+%   - formal Boolean definition of structural diagnosability D(K_EA)
+%
+% Explicitly excluded:
+%   - managerial intent
+%   - KPI observability
+%   - interpretation or decision layers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\label{sec:defns}
+
+\begin{definition}[Admissible enterprise-continuum instance]
+An \emph{instance} of \KEA{} is an input object that conforms to
+\texttt{ETS.K\_EA.v1.1}. Such an instance determines, without reinterpretation
+or semantic enrichment, the corresponding \OC{} core structures
+\(\Om(\KEA)\), \(\dOm(\KEA)\), \(\Ax(\KEA)\), \(\Th(\KEA)\), \(\Flow(\KEA)\),
+\(\Cyc(\KEA)\), and \(\kcont(\KEA)\), exactly as specified by \OC{} core and
+\texttt{ETS.K\_EA.v1.1}.
+\end{definition}
+
+\begin{definition}[ETS-induced diagnostic predicates]
+Fix an admissible instance of \KEA{}. Let \(\mathsf{Enc}(\KEA)\) denote the
+finite set of ETS-admissible encodings of enterprise states for this instance,
+as determined by the finite representations of axes, potentials, thresholds,
+flows, and cycles prescribed by \texttt{ETS.K\_EA.v1.1}.
+
+The \emph{diagnostic predicate family} \(\mathsf{Pred}_D(\KEA)\) is the finite
+set of Boolean predicates over \(\mathsf{Enc}(\KEA)\) defined as follows:
+
+\begin{enumerate}
+\item \(\mathsf{In}_{\Om}(x)\): evaluates to true iff the state decoded from
+\(x\) is an element of \(\Om(\KEA)\).
+
+\item \(\mathsf{On}_{\dOm}(x)\): evaluates to true iff the state decoded from
+\(x\) lies on the boundary \(\dOm(\KEA)\).
+
+\item \(\mathsf{Sat}_{\Th}(x)\): evaluates to true iff the decoded state
+satisfies all threshold constraints specified by \(\Th(\KEA)\) under
+\OC{}+\texttt{ETS} semantics.
+
+\item \(\mathsf{Val}_{\kcont}(x)\): evaluates to true iff the continuity measure
+\(\kcont(\KEA)\) is well-defined at the decoded state and admits evaluation in
+the numeric domain prescribed by \texttt{ETS.K\_EA.v1.1}.
+\end{enumerate}
+
+All predicates in \(\mathsf{Pred}_D(\KEA)\) are defined solely in terms of
+\OC{} core structures and \texttt{ETS.K\_EA.v1.1}. No predicate may reference
+intent, KPI signals, interpretation layers, or external annotations.
+\end{definition}
+
+\begin{definition}[Structural diagnosability]
+Let \KEA{} be an admissible enterprise-continuum instance. The enterprise
+continuum \KEA{} is said to be \emph{structurally diagnosable} iff there exists a
+total decision procedure \(\mathcal{A}_D\) such that, for every encoding
+\(x \in \mathsf{Enc}(\KEA)\) and every predicate \(P \in \mathsf{Pred}_D(\KEA)\),
+the computation \(\mathcal{A}_D(P,x)\) halts and returns the correct truth value
+of \(P(x)\) as determined by the \OC{}+\texttt{ETS.K\_EA.v1.1} semantics of the
+instance.
+
+Structural diagnosability is encoded as the Boolean property
+\[
+D(\KEA) =
+\begin{cases}
+1, & \text{if such a total decision procedure } \mathcal{A}_D \text{ exists},\\
+0, & \text{otherwise.}
+\end{cases}
+\]
+\end{definition}
+
+\begin{remark}[Independence from intent and KPI observability]
+Independence from managerial intent and KPI observability is enforced by
+construction. The definition of \(D(\KEA)\) depends exclusively on the existence
+of a decision procedure over \(\mathsf{Pred}_D(\KEA)\), whose inputs and semantics
+are fully fixed by \OC{} core and \texttt{ETS.K\_EA.v1.1}. No intent variables,
+KPI signals, or interpretive layers are admissible as inputs.
+\end{remark}
+
+%%% End of file %%%
