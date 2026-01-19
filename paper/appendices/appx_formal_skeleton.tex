@@ -1,0 +1,74 @@
+% ============================================================
+% paper/appendices/appx_formal_skeleton.tex
+% Appendix D: Formal Skeleton (Invariants / STOP / No-Go)
+% Purpose: theorem-style restatement without proofs.
+% ============================================================
+
+\section*{Appendix D: Formal Skeleton (Invariants, STOP, No-Go)}
+
+\subsection*{Purpose of This Appendix}
+
+This appendix addresses the ``formalism without demonstration'' critique
+by providing a compact theorem-style skeleton of the core structural
+claims already present in the main text and in \texttt{ETS.K\_EA.v1.1}.
+
+No proofs are provided. No new theorems are introduced.
+The appendix is a restatement of invariants, precedence, and
+termination outcomes as a checklist for reviewers.
+
+\subsection*{Notation (Local to This Appendix)}
+
+All symbols are used in the sense of the main document:
+$\OmegaEA$, $\dOmegaEA$, $\AEA$, $\ThetaEA$, $\JEA$, $\CEA$, $\kEA$.
+
+\subsection*{Skeleton Statements (Restatement Only)}
+
+\begin{theorem}[Executable closure precedence]
+If a textual statement in this whitepaper appears to contradict
+\texttt{ETS.K\_EA.v1.1}, the ETS takes precedence. The whitepaper has no
+authority to override executable constraints.
+\end{theorem}
+
+\begin{theorem}[STOP as definitional outcome]
+STOP is an admissible outcome whenever structural existence,
+observability, or compatibility conditions required by the ETS are not
+met. STOP indicates that further diagnosis is undefined within the model,
+not that the model has failed.
+\end{theorem}
+
+\begin{theorem}[Admissibility non-negotiability]
+If $\OmegaEA=\varnothing$, the continuum $K_{\mathrm{EA}}$ has no
+admissible states under the declared constraints, and diagnosis is
+undefined (STOP).
+\end{theorem}
+
+\begin{theorem}[Boundary sensitivity]
+Approaching $\dOmegaEA$ corresponds to approaching threshold equality or
+admissibility limits. Boundary proximity does not license prescriptions;
+it only delimits the defined domain of the formal object.
+\end{theorem}
+
+\begin{theorem}[Continuity measure status]
+$\kEA$ is a structural measure summarizing coherence of admissibility
+under declared axes, flows, cycles, and thresholds. $\kEA$ is not an
+empirical KPI and is not presented as cross-enterprise comparable.
+\end{theorem}
+
+\begin{theorem}[No-Go: bypassing termination]
+No figure, instantiation, or external artifact may be used to bypass
+STOP conditions, invariants, compatibility constraints, or phase
+precedence rules defined by the ETS.
+\end{theorem}
+
+\begin{theorem}[No-Go: importing external authority]
+External literature, tools, or reconstruction artifacts have no
+normative authority over the ETS. They may support inspection of the
+artifact identity but cannot modify admissibility or phase logic.
+\end{theorem}
+
+\subsection*{Interpretation Boundary}
+
+These skeleton statements are not claims of empirical truth.
+They are structural consequences of a closed specification.
+
+%%%End of Document%%%
