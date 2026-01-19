@@ -1,0 +1,96 @@
+﻿% sections/04_nogo_theorems.tex
+% JPHQ-04 — No-Go theorems (OC/ETS-internal, diagnostic-only)
+
+This section states formal No-Go theorems for enterprise transformation as
+pure impossibility results within the \OC/\kw{ETS.K\_EA.v1.1} framework. Each
+theorem identifies a structural obstruction that rules out transformation as
+defined in Section~3. No result asserts inevitability of collapse, success, or
+failure; each asserts only the non-existence of \emph{admissible}
+transformations under explicitly stated OC/ETS constraints.
+
+\begin{theorem}[Axis-Incompatibility Barrier]
+\label{thm:axis-incompatibility}
+Let $\KEA$ be an enterprise continuum with axis set $\Ax(\KEA)$, thresholds
+$\Th(\KEA)$, and admissible state set $\Om(\KEA)$. Assume that for any candidate
+transformation of $\KEA$ there exists an axis
+$A_{\mathrm{new}} \notin \Ax(\KEA)$ such that:
+\begin{enumerate}
+  \item the transformed structural type requires inclusion of
+  $A_{\mathrm{new}}$; and
+  \item the constraint set induced by $\Ax(\KEA)\cup\{A_{\mathrm{new}}\}$ is
+  incompatible with $\Th(\KEA)$ in the sense that no state satisfies the
+  resulting axis-and-threshold constraints.
+\end{enumerate}
+Then no admissible transformation of $\KEA$ exists. Any realization of the
+postulated transformed structural type yields
+$\Om(\KEA)=\varnothing$ under the attempted extension and is therefore classified
+by the \OC/\kw{ETS} phase logic as $\PHCO$ or $\PHST$.
+\end{theorem}
+
+\begin{theorem}[Threshold Viability Barrier]
+\label{thm:threshold-barrier}
+Let $\KEA$ be an enterprise continuum with axis set $\Ax(\KEA)$ and thresholds
+$\Th(\KEA)$. Assume that any transformation of $\KEA$ requires a threshold
+reconfiguration $\Th'(\KEA)$ such that the corresponding admissible state set is
+empty:
+\[
+\Om(\KEA;\Th')=\varnothing .
+\]
+Then transformation of $\KEA$ is impossible within \OC/\kw{ETS}. Under any such
+required threshold configuration, no admissible states exist, and hence no
+admissible trajectory or structural type change can be represented.
+\end{theorem}
+
+\begin{theorem}[Cycle-Closure Obstruction]
+\label{thm:cycle-closure}
+Let $\KEA$ be an enterprise continuum with admissible cycle set $\Cyc(\KEA)$ and
+continuity measure $\kcont(\KEA)$. Assume that every candidate transformed
+structural type entails a configuration for which no admissible cycle remains,
+i.e.,
+\[
+\Cyc(\KEA)=\varnothing
+\quad\text{(in the postulated transformed structure).}
+\]
+If, in addition, the OC/ETS continuity condition requires existence of at least
+one admissible cycle for $\kcont(\KEA)>0$, then $\kcont(\KEA)=0$ under the
+postulated transformation and the continuum is classified as $\PHST$.
+Consequently, transformation is structurally impossible.
+\end{theorem}
+
+\begin{theorem}[Phase-Incompatibility Theorem]
+\label{thm:phase-incompatibility}
+Assume that the \OC/\kw{ETS} phase-transition constraints for $\KEA$ forbid any
+admissible phase-transition path from the current phase of $\KEA$ to a phase
+compatible with a transformed structural type. Then no admissible
+transformation of $\KEA$ exists. In particular, if all admissible paths in the
+phase-transition graph from the initial phase to any phase supporting the
+postulated transformed type are disallowed, transformation is impossible within
+the OC/ETS phase logic, independently of temporal duration, effort, agency, or
+context.
+\end{theorem}
+
+\begin{theorem}[Boundary Obstruction Theorem]
+\label{thm:boundary-obstruction}
+Let $\dOm(\KEA)$ denote the boundary of the admissible state set $\Om(\KEA)$.
+Assume that any trajectory required for transformation must cross $\dOm(\KEA)$
+in a manner not admitted by \OC/\kw{ETS} boundary conditions, i.e., the required
+crossing violates the OC/ETS admissibility rules governing boundary interaction.
+Then transformation of $\KEA$ is impossible: the boundary constitutes a
+structural obstruction that prevents any admissible access to the region of
+state space required by the transformed structural type.
+\end{theorem}
+
+\begin{corollary}[Existence of Structurally Non-Transformable Classes]
+There exist non-empty classes of enterprise continua $\KEA$ for which all
+candidate transformations are ruled out by at least one of
+Theorems~\ref{thm:axis-incompatibility}--\ref{thm:boundary-obstruction}. For such
+classes, transformation is formally impossible within \OC/\kw{ETS},
+independently of time, intent, agency, or intervention.
+\end{corollary}
+
+\begin{remark}
+The No-Go theorems stated above are logically independent at the level of OC/ETS
+assumptions: a given enterprise continuum may satisfy multiple No-Go conditions
+simultaneously or exactly one. No claim is made regarding empirical prevalence,
+frequency, or desirability of such cases; the results are purely structural.
+\end{remark}

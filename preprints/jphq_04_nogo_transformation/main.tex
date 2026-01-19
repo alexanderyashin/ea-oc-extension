@@ -1,0 +1,166 @@
+﻿\documentclass[11pt]{article}
+
+% ==================================================================
+% Minimal, conservative preamble (pdfLaTeX-compatible, journal-safe)
+% ==================================================================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+% Robust line breaking for paths and identifiers
+\usepackage{xurl}
+
+% Hyperlinks (conservative; bookmarks stabilized)
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+% ==================================================================
+% Theorem-like environments (formal, non-normative)
+% ==================================================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% ==================================================================
+% House macros (typesetting only; NO new primitives)
+% ==================================================================
+\newcommand{\artifact}[1]{\texttt{\nolinkurl{#1}}}
+\newcommand{\kw}[1]{\texttt{\nolinkurl{#1}}}
+
+% ==================================================================
+% OC / ETS notation (pure notation; primitives assumed from OC/ETS)
+% NOTE: use upright small-caps to avoid missing LM font shape scit
+% when these macros occur in italic contexts (e.g., \emph{...}).
+% ==================================================================
+\newcommand{\OC}{\textup{\textsc{OC}}}
+\newcommand{\KEA}{\ensuremath{K_{\mathrm{EA}}}}
+\newcommand{\Om}{\ensuremath{\Omega}}
+\newcommand{\dOm}{\ensuremath{\partial\Omega}}
+\newcommand{\Ax}{\ensuremath{A}}
+\newcommand{\Th}{\ensuremath{\Theta}}
+\newcommand{\Pot}{\ensuremath{P}}
+\newcommand{\Flow}{\ensuremath{J}}
+\newcommand{\Cyc}{\ensuremath{C}}
+\newcommand{\kcont}{\ensuremath{k}}
+
+% Phase labels (diagnostic states only; admissible in OC/ETS)
+\newcommand{\PHOK}{\textup{\textsc{OK}}}
+\newcommand{\PHIN}{\textup{\textsc{INERTIA}}}
+\newcommand{\PHCO}{\textup{\textsc{COLLAPSE}}}
+\newcommand{\PHST}{\textup{\textsc{STOP}}}
+
+% ==================================================================
+% Hyperref setup (safe for math-heavy headings)
+% ==================================================================
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+  pdftitle={No-Go Theorems for Enterprise Transformation under OC/ETS Constraints},
+  pdfauthor={JPHQ Preprint Draft},
+  pdfencoding=auto,
+  psdextra=true,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+}
+
+% Prevent PDF-string warnings if math leaks into headings
+\pdfstringdefDisableCommands{%
+  \def\Theta{Theta}%
+  \def\Omega{Omega}%
+  \def\partial{d}%
+  \def\texttt#1{#1}%
+  \def\nolinkurl#1{#1}%
+  \def\textsc#1{#1}%
+  \def\textup#1{#1}%
+}
+
+% ==================================================================
+% Metadata (stand-alone preprint)
+% ==================================================================
+\title{No-Go Theorems for Enterprise Transformation under Structural Constraints:\\
+Impossibility Results for \KEA\ within \OC/\kw{ETS.K\_EA.v1.1}}
+\author{Anonymous (JPHQ Preprint Draft)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% ==================================================================
+% Abstract
+% ==================================================================
+\input{sections/00_abstract.tex}
+
+% ==================================================================
+% Frozen question and scope
+% ==================================================================
+\section{Problem Statement (Frozen Question)}
+\input{sections/01_problem.tex}
+
+% ==================================================================
+% Formal setting: OC Core + ETS only
+% ==================================================================
+\section{Formal Setting (OC Core + ETS Only)}
+\input{sections/02_formal_setting.tex}
+
+% ==================================================================
+% Definitions: evolution vs transformation
+% ==================================================================
+\section{Definitions: Evolution vs Transformation}
+\input{sections/03_definitions.tex}
+
+% ==================================================================
+% Main results: No-Go theorems
+% ==================================================================
+\section{No-Go Theorems (Impossibility Results)}
+\input{sections/04_nogo_theorems.tex}
+
+% ==================================================================
+% Proof sketches and obligations
+% ==================================================================
+\section{Proof Sketches and Proof Obligations}
+\input{sections/05_proof_sketches.tex}
+
+% ==================================================================
+% Explicit scope limits and non-claims
+% ==================================================================
+\section{Scope Limits and Non-Claims}
+\input{sections/06_scope_limits.tex}
+
+% ==================================================================
+% Falsifiability
+% ==================================================================
+\section{Falsifiability Conditions}
+\input{sections/07_falsifiability.tex}
+
+% ==================================================================
+% Minimal literature positioning (non-derivative, non-authoritative)
+% ==================================================================
+\section{Minimal Literature Positioning}
+\input{sections/08_positioning.tex}
+
+% ==================================================================
+% Bibliography
+% ==================================================================
+% NOTE:
+% This preprint is intentionally citation-light. We force a non-empty
+% bibliography to keep the build robust before targeted \cite insertions.
+\nocite{*}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

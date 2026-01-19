@@ -1,0 +1,18 @@
+﻿# Build artifacts (local)
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.run.xml
+*.bcf
+*.pdf
+
+# Build dir
+build/

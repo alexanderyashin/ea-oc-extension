@@ -1,0 +1,68 @@
+﻿% sections/07_falsifiability.tex
+% JPHQ-04 — Falsifiability conditions (OC/ETS-internal)
+
+\subsection*{Falsifiability Conditions}
+
+The No-Go theorems presented in this preprint are \emph{falsifiable} in a strict
+and formal sense. Each impossibility claim depends on explicitly stated
+assumptions within the \OC/\kw{ETS.K\_EA.v1.1} framework. Failure of any such
+assumption invalidates the corresponding No-Go result.
+
+All falsifiability conditions are formulated entirely at the OC/ETS level.
+No appeal is made to empirical data, managerial interpretation, behavioral
+assumptions, or external semantic layers.
+
+\paragraph{F1. Axis Embedding without Incompatibility.}
+A No-Go theorem based on axis incompatibility is falsified if there exists an
+OC-admissible embedding
+\[
+\varphi:\; A_{\mathrm{new}} \hookrightarrow \Ax(\KEA)
+\]
+such that the extended axis set remains compatible with all thresholds
+$\Th(\KEA)$ and admits at least one admissible state in $\Om(\KEA)$.
+Existence of such an embedding refutes claims of unavoidable structural
+axis incompatibility.
+
+\paragraph{F2. Threshold Reconfiguration with Non-Empty State Space.}
+A No-Go theorem relying on a threshold viability barrier is falsified if there
+exists a threshold reconfiguration $\Th'(\KEA)$ such that
+\[
+\Om(\KEA;\Th') \neq \varnothing,
+\]
+i.e., the admissible state set remains non-empty after the threshold update.
+Such a configuration demonstrates that the assumed threshold barrier is not
+structurally necessary.
+
+\paragraph{F3. Cycle Preservation across Structural Change.}
+A No-Go theorem based on cycle-closure obstruction is falsified if there exists
+a family of admissible cycles $\Cyc'(\KEA)$ compatible with the transformed
+structural type and satisfying
+\[
+\kcont(\KEA) > 0
+\]
+throughout the postulated transformation.
+Existence of such cycles refutes claims that transformation necessarily entails
+loss of continuity or forced entry into phase $\PHST$.
+
+\paragraph{F4. Admissible Phase-Transition Path.}
+Phase-incompatibility No-Go results are falsified if there exists an explicit,
+OC/ETS-admissible phase-transition path from the initial phase of $\KEA$ to a
+phase compatible with the transformed structural type, without traversing any
+forbidden transition.
+Existence of such a path invalidates the assumed phase obstruction.
+
+\paragraph{F5. Boundary-Compatible Trajectories.}
+Boundary-based No-Go theorems are falsified if there exists an admissible
+trajectory that crosses $\dOm(\KEA)$ in a manner permitted by OC/ETS and reaches
+a structurally transformed state without violating admissibility.
+This demonstrates that the boundary constraints do not constitute an absolute
+structural obstruction.
+
+\begin{remark}
+Falsification of any No-Go theorem therefore requires an explicit
+\emph{OC/ETS-internal counterexample}: a demonstrable axis embedding, threshold
+configuration, admissible cycle family, phase-transition path, or
+boundary-respecting trajectory. In the absence of such constructions, the
+corresponding impossibility results remain valid within the assumed formal
+system.
+\end{remark}

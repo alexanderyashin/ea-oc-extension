@@ -1,0 +1,146 @@
+﻿% sections/05_proof_sketches.tex
+% JPHQ-04 — Proof sketches and proof obligations (OC/ETS-internal)
+
+Proofs in this artifact are \emph{internal} to the
+\OC/\kw{ETS.K\_EA.v1.1} formal system. Accordingly, we provide proof
+sketches together with explicit \emph{proof obligations}, i.e., statements
+that must be derivable from the assumed OC/ETS primitives, definitions,
+and axioms. No external semantics, empirical assumptions, behavioral
+models, or interpretive arguments are employed.
+
+Each proof sketch follows a uniform logical structure:
+\begin{enumerate}
+  \item explicit structural assumptions stated entirely in OC/ETS terms;
+  \item reduction to an incompatibility expressed solely via admissibility
+  conditions on $\Om(\KEA)$, $\Ax(\KEA)$, $\Th(\KEA)$, $\Cyc(\KEA)$, or the
+  phase-transition logic;
+  \item contradiction with admissibility of states, cycles, or phase paths;
+  \item conclusion: non-existence of admissible transformations, except via
+  phases $\PHCO$ or $\PHST$.
+\end{enumerate}
+
+\subsection*{Proof Sketch for Theorem~\ref{thm:axis-incompatibility}}
+
+\textbf{Assumptions.}
+Any transformation of $\KEA$ necessarily requires the introduction of an
+axis $A_{\mathrm{new}} \notin \Ax(\KEA)$ whose constraints are incompatible
+with the existing axis set $\Ax(\KEA)$ under the threshold configuration
+$\Th(\KEA)$.
+
+\textbf{Reduction.}
+Axis incompatibility implies that there exists no state satisfying
+simultaneously the constraints induced by
+$\Ax(\KEA)\cup\{A_{\mathrm{new}}\}$ under $\Th(\KEA)$.
+
+\textbf{Contradiction.}
+Admissibility of a transformation would require existence of at least one
+state compatible with all axes and thresholds, i.e.,
+$\Om(\KEA)\neq\varnothing$ under the extended axis set. This contradicts
+the assumed incompatibility, which enforces
+$\Om(\KEA)=\varnothing$.
+
+\textbf{Conclusion.}
+No admissible transformation exists; any realization of
+$A_{\mathrm{new}}$ necessarily violates admissibility and is therefore
+classified as $\PHCO$ or $\PHST$.
+
+\textbf{Proof obligation.}
+Derive within OC/ETS that incompatibility of axes under fixed thresholds
+entails emptiness of the admissible state set.
+
+\subsection*{Proof Sketch for Theorem~\ref{thm:threshold-barrier}}
+
+\textbf{Assumptions.}
+Any transformation requires a reconfiguration of thresholds $\Th(\KEA)$
+such that no state satisfies all resulting constraints.
+
+\textbf{Reduction.}
+A threshold reconfiguration induces a modified admissibility condition on
+$\Om(\KEA)$.
+
+\textbf{Contradiction.}
+Existence of an admissible transformed continuum requires
+$\Om(\KEA)\neq\varnothing$ under the new threshold configuration. The
+assumed reconfiguration enforces $\Om(\KEA)=\varnothing$, yielding a
+direct contradiction.
+
+\textbf{Conclusion.}
+Transformation is formally impossible under the specified threshold
+configuration.
+
+\textbf{Proof obligation.}
+Show within OC/ETS that satisfaction of threshold constraints is a
+necessary condition for non-emptiness of $\Om(\KEA)$.
+
+\subsection*{Proof Sketch for Theorem~\ref{thm:cycle-closure}}
+
+\textbf{Assumptions.}
+All admissible cycles $\Cyc(\KEA)$ become incompatible or undefined under
+the postulated transformed structural type.
+
+\textbf{Reduction.}
+Absence of admissible cycles eliminates the closure required to maintain
+continuity, enforcing $\kcont(\KEA)=0$.
+
+\textbf{Contradiction.}
+Any admissible transformed continuum must satisfy $\kcont(\KEA)>0$.
+If no admissible cycle exists, continuity vanishes, contradicting
+admissibility.
+
+\textbf{Conclusion.}
+Transformation necessarily results in phase $\PHST$ and is therefore
+structurally impossible.
+
+\textbf{Proof obligation.}
+Establish within OC/ETS that existence of admissible cycles is required for
+$\kcont(\KEA)>0$.
+
+\subsection*{Proof Sketch for Theorem~\ref{thm:phase-incompatibility}}
+
+\textbf{Assumptions.}
+The OC/ETS phase-transition logic forbids any admissible path from the
+current phase of $\KEA$ to a phase compatible with a transformed structural
+type.
+
+\textbf{Reduction.}
+An admissible transformation presupposes existence of at least one allowed
+phase-transition path consistent with the target structural type.
+
+\textbf{Contradiction.}
+If no such path exists, realization of a transformed structure would
+violate the phase-transition constraints of OC/ETS.
+
+\textbf{Conclusion.}
+Transformation is impossible within the OC/ETS phase structure.
+
+\textbf{Proof obligation.}
+Demonstrate that admissible transformations require existence of at least
+one allowed phase-transition path.
+
+\subsection*{Proof Sketch for Theorem~\ref{thm:boundary-obstruction}}
+
+\textbf{Assumptions.}
+All trajectories required for transformation must cross $\dOm(\KEA)$ in a
+manner not admitted by OC/ETS boundary conditions.
+
+\textbf{Reduction.}
+Boundary constraints restrict admissible trajectories in the state space
+$\Om(\KEA)$.
+
+\textbf{Contradiction.}
+If every trajectory leading to a transformed structural type violates
+boundary admissibility, no admissible path to such a structure exists.
+
+\textbf{Conclusion.}
+Transformation is structurally impossible.
+
+\textbf{Proof obligation.}
+Show within OC/ETS that trajectories crossing $\dOm(\KEA)$ outside
+admissible boundary conditions are forbidden.
+
+\begin{remark}
+These proof sketches deliberately avoid completeness claims. They isolate
+the minimal internal dependencies required for full formal proofs within
+OC/ETS and thereby identify precisely where falsification of the No-Go
+results would have to occur.
+\end{remark}

@@ -1,0 +1,112 @@
+\contentsline {section}{\numberline {1}Epistemic Status of This Artifact}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Artifact classification}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}What kind of knowledge this is}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}What this artifact is not}{6}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Why this artifact exists as a publication}{6}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Citation \& Use Contract}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}What a citation to this artifact asserts}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}What a citation does not assert}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Invalid citation and use patterns}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Versioning and pinning requirements}{7}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Executive Summary}{8}{section.3}%
+\contentsline {section}{\numberline {4}Problem Statement and Structural Failure Modes}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Limits of Conventional Enterprise Analysis}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Enterprises as Conditional Objects}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Structural Failure Versus Performance Degradation}{11}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Classes of Structural Failure Modes}{12}{subsection.4.4}%
+\contentsline {paragraph}{Existence Failure ($f_{\text {exist}}$).}{12}{section*.9}%
+\contentsline {paragraph}{Stability Failure ($f_{\text {stab}}$).}{12}{section*.10}%
+\contentsline {paragraph}{Inertial Failure ($f_{\text {inertia}}$).}{12}{section*.11}%
+\contentsline {paragraph}{Collapse Failure ($f_{\text {collapse}}$).}{12}{section*.12}%
+\contentsline {paragraph}{Termination Condition ($f_{\text {stop}}$).}{12}{section*.13}%
+\contentsline {subsection}{\numberline {4.5}STOP as a Diagnostic Boundary}{12}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Implications for Diagnostic Integrity}{12}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Ontological Grounding: Ontology of Continua Context}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Necessity of an Ontological Grounding}{14}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Continuum as a Primitive Object}{14}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Dynamics, Cycles, and Persistence}{14}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Continuity and Structural Connectivity}{15}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Thresholds and Structural Tension}{15}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Parent Continua and Compatibility}{15}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Implications for Enterprise Diagnosis}{15}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Formal Definition of the Enterprise Continuum}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Definition of $K_{\mathrm {EA}}$}{16}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}State Space and Boundary}{16}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Axes and Degrees of Freedom}{16}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Potentials and Flows}{16}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Thresholds and Admissibility}{17}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Cycles and Persistence}{17}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Continuity Measure}{17}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Internal Time Scale}{17}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}Executable Closure}{17}{subsection.6.9}%
+\contentsline {section}{\numberline {7}Axes and Degrees of Freedom}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Role of Axes in the Enterprise Continuum}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Structural Axes}{19}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Governance Axes}{19}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Operational Axes}{19}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Resource Axes}{20}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Information Axes}{20}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Risk Axes}{20}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Axes as Constraints, Not Goals}{20}{subsection.7.8}%
+\contentsline {section}{\numberline {8}Thresholds, Components, and Structural Tension}{21}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Role of Thresholds in the Continuum}{21}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Structural Tension and Inequality-Based Formulation}{21}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Threshold Components}{21}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Interpretation of Components}{21}{subsection.8.4}%
+\contentsline {paragraph}{Existence Component ($f_{\text {exist}}$).}{21}{section*.14}%
+\contentsline {paragraph}{Stability Component ($f_{\text {stab}}$).}{22}{section*.15}%
+\contentsline {paragraph}{Inertia Component ($f_{\text {inertia}}$).}{22}{section*.16}%
+\contentsline {paragraph}{Collapse Component ($f_{\text {collapse}}$).}{22}{section*.17}%
+\contentsline {paragraph}{Termination Component ($f_{\text {stop}}$).}{22}{section*.18}%
+\contentsline {subsection}{\numberline {8.5}Absence of Implicit Optimization}{22}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Structural Tension Versus Performance Stress}{22}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Cycles and Closure}{23}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Cycles as a Condition for Persistence}{23}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Required Cycle Classes}{23}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Formal Notion of Closure}{23}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Failure of Closure and Stability}{24}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Cycles Versus Processes}{24}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}Implications for Diagnosis}{24}{subsection.9.6}%
+\contentsline {section}{\numberline {10}Continuity Measure $k_{\mathrm {EA}}$}{25}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Meaning of Continuity in OC}{25}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Definition of $k_{\mathrm {EA}}$}{25}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Factorization of Continuity}{25}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Hard-Zero Condition}{25}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Continuity Versus Performance}{26}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Role in Phase Logic}{26}{subsection.10.6}%
+\contentsline {section}{\numberline {11}Phase Logic}{27}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Purpose of Phase Classification}{27}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Precedence Rules}{27}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}STOP Phase}{27}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}COLLAPSE Phase}{27}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}INERTIA Phase}{28}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}SUCCESS Phase}{28}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}Allowed Transitions}{28}{subsection.11.7}%
+\contentsline {subsection}{\numberline {11.8}Non-Teleological Interpretation}{29}{subsection.11.8}%
+\contentsline {section}{\numberline {12}Parent Coupling: Constraints from the K7 Continuum}{30}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Non-Isolated Nature of the Enterprise Continuum}{30}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}External Fields as Exogenous Constraints}{30}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Indirect Effects on Enterprise Primitives}{30}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Compatibility Constraints}{30}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Interpretation Limits}{31}{subsection.12.5}%
+\contentsline {section}{\numberline {13}Invariants and No-Go Results}{32}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Role of Invariants}{32}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Energy of Transformation}{32}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Parent Compatibility}{32}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}No-Go Results}{32}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Metric Substitution}{32}{subsection.13.5}%
+\contentsline {subsection}{\numberline {13.6}Instant Recovery}{33}{subsection.13.6}%
+\contentsline {subsection}{\numberline {13.7}No-Go Results as Integrity Constraints}{33}{subsection.13.7}%
+\contentsline {section}{\numberline {14}Reproducibility and Executable Closure}{34}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Meaning of Reproducibility in This Context}{34}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Executable Closure}{34}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Separation of Theory and Instantiation}{34}{subsection.14.3}%
+\contentsline {subsection}{\numberline {14.4}Implications for Tooling}{34}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}Structural Falsifiability}{35}{subsection.14.5}%
+\contentsline {subsection}{\numberline {14.6}Role of This Whitepaper}{35}{subsection.14.6}%
+\contentsline {section}{\numberline {15}Conclusion and Scope Boundary}{36}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Summary of the Contribution}{36}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}What This Whitepaper Enables}{36}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}What This Whitepaper Explicitly Forbids}{36}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}Boundary of Applicability}{36}{subsection.15.4}%
+\contentsline {subsection}{\numberline {15.5}Final Remark}{37}{subsection.15.5}%
