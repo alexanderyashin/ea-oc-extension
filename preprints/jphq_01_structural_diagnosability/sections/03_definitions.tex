@@ -58,30 +58,36 @@ intent, KPI signals, interpretation layers, or external annotations.
 \end{definition}
 
 \begin{definition}[Structural diagnosability]
-Let \KEA{} be an admissible enterprise-continuum instance. The enterprise
-continuum \KEA{} is said to be \emph{structurally diagnosable} iff there exists a
-total decision procedure \(\mathcal{A}_D\) such that, for every encoding
-\(x \in \mathsf{Enc}(\KEA)\) and every predicate \(P \in \mathsf{Pred}_D(\KEA)\),
-the computation \(\mathcal{A}_D(P,x)\) halts and returns the correct truth value
-of \(P(x)\) as determined by the \OC{}+\texttt{ETS.K\_EA.v1.1} semantics of the
-instance.
+Let \KEA{} be an admissible enterprise-continuum instance with finite encoding
+set \(\mathsf{Enc}(\KEA)\) and predicate family \(\mathsf{Pred}_D(\KEA)\).
+
+The enterprise continuum \KEA{} is said to be \emph{structurally diagnosable} iff
+for every predicate \(P \in \mathsf{Pred}_D(\KEA)\) and every encoding
+\(x \in \mathsf{Enc}(\KEA)\), the truth value \(P(x)\) is well-defined and
+computable under the \OC{}+\texttt{ETS.K\_EA.v1.1} semantics of the instance.
 
 Structural diagnosability is encoded as the Boolean property
 \[
 D(\KEA) =
 \begin{cases}
-1, & \text{if such a total decision procedure } \mathcal{A}_D \text{ exists},\\
+1, & \text{if all } P(x) \text{ are well-defined and computable},\\
 0, & \text{otherwise.}
 \end{cases}
 \]
 \end{definition}
 
+\begin{remark}[Operational form]
+Since both \(\mathsf{Enc}(\KEA)\) and \(\mathsf{Pred}_D(\KEA)\) are finite,
+\(D(\KEA)=1\) is equivalent to the existence of a total decision procedure that,
+given any \(P \in \mathsf{Pred}_D(\KEA)\) and \(x \in \mathsf{Enc}(\KEA)\),
+halts and returns the correct truth value of \(P(x)\).
+\end{remark}
+
 \begin{remark}[Independence from intent and KPI observability]
 Independence from managerial intent and KPI observability is enforced by
-construction. The definition of \(D(\KEA)\) depends exclusively on the existence
-of a decision procedure over \(\mathsf{Pred}_D(\KEA)\), whose inputs and semantics
-are fully fixed by \OC{} core and \texttt{ETS.K\_EA.v1.1}. No intent variables,
-KPI signals, or interpretive layers are admissible as inputs.
+construction. The definition of \(D(\KEA)\) depends exclusively on ETS-induced
+predicates over \OC{} core structures. No intent variables, KPI signals, or
+interpretive layers are admissible as inputs.
 \end{remark}
 
 %%% End of file %%%

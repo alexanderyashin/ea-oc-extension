@@ -20,18 +20,18 @@ representations \(R_1\) and \(R_2\) are equivalent under
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-By definition, ETS-equivalent representations induce identical \OC{} core
-structures \(\Om(\KEA)\), \(\dOm(\KEA)\), \(\Ax(\KEA)\), \(\Th(\KEA)\),
-\(\Flow(\KEA)\), \(\Cyc(\KEA)\), and \(\kcont(\KEA)\). Consequently, they induce
-the same finite encoding domain \(\mathsf{Enc}(\KEA)\) and the same diagnostic
-predicate family \(\mathsf{Pred}_D(\KEA)\).
+ETS-equivalent representations induce identical \OC{} core structures
+\(\Om(\KEA)\), \(\dOm(\KEA)\), \(\Ax(\KEA)\), \(\Th(\KEA)\), \(\Flow(\KEA)\),
+\(\Cyc(\KEA)\), and \(\kcont(\KEA)\). Hence, they induce the same finite encoding
+domain \(\mathsf{Enc}(\KEA)\) and the same diagnostic predicate family
+\(\mathsf{Pred}_D(\KEA)\).
 
-The definition of \(D(\KEA)\) depends solely on the existence of a total decision
-procedure that correctly decides all predicates in \(\mathsf{Pred}_D(\KEA)\) over
-\(\mathsf{Enc}(\KEA)\). Since both the domain and semantics of these predicates are
-identical for \(R_1\) and \(R_2\), the existence (or non-existence) of such a
-procedure is invariant under ETS-equivalent representation changes. Hence,
-\(D(\KEA)\) takes the same value for \(R_1\) and \(R_2\).
+The value of \(D(\KEA)\) depends exclusively on whether all predicate evaluations
+\(P(x)\), for \(P \in \mathsf{Pred}_D(\KEA)\) and \(x \in \mathsf{Enc}(\KEA)\),
+are well-defined and computable under the fixed \OC{}/ETS semantics. Since both
+the domain and semantics are invariant under ETS-equivalent representations, the
+truth of this condition is invariant as well. Therefore \(D(\KEA)\) is
+representation-independent.
 \end{proof}
 
 \begin{theorem}[Decidability of structural diagnosability]
@@ -41,21 +41,23 @@ diagnosability property \(D(\KEA)\) is decidable.
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-By the finiteness requirements implicit in \texttt{ETS.K\_EA.v1.1}, the encoding
-set \(\mathsf{Enc}(\KEA)\) is finite, and the diagnostic predicate family
-\(\mathsf{Pred}_D(\KEA)\) is finite.
+By the representational assumption, both the encoding set
+\(\mathsf{Enc}(\KEA)\) and the predicate family \(\mathsf{Pred}_D(\KEA)\) are
+finite.
 
-For each predicate \(P \in \mathsf{Pred}_D(\KEA)\), its semantics is given by
-explicit \OC{}/ETS-defined rules over finite data structures (threshold
-comparisons, boundary membership checks, and evaluation of the continuity measure
-in the ETS numeric domain). Therefore, the truth value of \(P(x)\) is computable
-for any \(x \in \mathsf{Enc}(\KEA)\).
+Each predicate \(P \in \mathsf{Pred}_D(\KEA)\) is defined by explicit,
+algorithmically specified \OC{}/ETS rules (membership in \(\Om\), boundary
+checks for \(\dOm\), threshold satisfaction, and evaluation of
+\(\kcont\) in the prescribed numeric domain). Therefore, for any fixed
+\(x \in \mathsf{Enc}(\KEA)\), the computation of \(P(x)\) either terminates with
+a Boolean value or fails to be well-defined.
 
-Structural diagnosability requires the existence of a total decision procedure
-that decides all such predicate evaluations. Since the domain and predicate set
-are finite, this existence question reduces to a finite decision problem: one
-can effectively verify that all predicate evaluations halt and are computable
-under the given ETS semantics. Hence, \(D(\KEA)\) is decidable.
+To decide \(D(\KEA)\), one enumerates all pairs
+\((P,x) \in \mathsf{Pred}_D(\KEA) \times \mathsf{Enc}(\KEA)\) and checks whether
+each evaluation \(P(x)\) is well-defined and computable. Since this is a finite
+set of checks over finite data, the procedure terminates. Consequently,
+\(D(\KEA)\) is decidable, as a standard finite decision problem over a finite
+encoding domain \cite{Sipser2012,Clarke2018}.
 \end{proof}
 
 %%% End of file %%%
