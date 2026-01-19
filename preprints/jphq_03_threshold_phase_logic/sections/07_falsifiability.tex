@@ -1,33 +1,34 @@
-﻿% PURPOSE: Falsifiability conditions (what would refute the claims).
-% TARGET: referees.
-% LANGUAGE MODE: formal.
-% EVIDENCE PROFILE: abstract but operationalizable conditions.
-% ROLE: scientific closure via refutation criteria.
-
-\section{Falsifiability conditions}
+﻿\section{Falsifiability conditions}
 \label{sec:falsify}
 
-The claims of this paper are falsified if any of the following conditions holds.
+The claims of this paper are falsified if at least one of the following
+conditions holds.
+Each condition specifies a concrete way in which the formal structure
+asserted here would fail.
 
 \begin{enumerate}
   \item \textbf{Absence of threshold-induced discontinuities.}
-  If all ETS.K\_EA.v1.1 phase predicates can be reformulated as continuous,
-  precedence-free conditions such that phase classification varies continuously
-  with respect to admissible state parametrizations, then the proposed analogy
-  to threshold-induced phase transitions fails.
+  If all phase predicates defined in \artifact{ETS.K_EA.v1.1} can be
+  reformulated as continuous, precedence-free conditions such that
+  phase classification varies continuously with respect to admissible
+  parametrizations of states in $\Omega(K_{EA})$, then the proposed
+  analogy to threshold-induced phase transitions is invalid.
 
-  \item \textbf{Failure of boundary correspondence under mapping.}
-  If empirical or simulated enterprise trajectories, when consistently mapped
-  to ETS variables, do not exhibit boundary-like changes in phase membership
-  at predicate sign changes or observability loss, then the diagnostic claim
-  of threshold-induced phase reassignment is refuted.
+  \item \textbf{Failure of boundary correspondence under faithful mapping.}
+  If empirical or simulated enterprise trajectories, when mapped
+  consistently and without reinterpretation to ETS variables, do not
+  exhibit boundary-like changes in phase membership at predicate sign
+  changes or loss of observability, then the diagnostic claim of
+  threshold-induced phase reassignment is refuted.
 
-  \item \textbf{Violation of absorbing constraints.}
-  If STOP or other ETS no-go invariants admit outgoing phase-level transitions
-  or behave as non-absorbing under the ETS transition allowance relation,
-  then the formal phase logic asserted here is invalid.
+  \item \textbf{Violation of absorbing or no-go constraints.}
+  If \texttt{STOP} or any other ETS-defined no-go invariant admits
+  outgoing phase-level transitions, or behaves as non-absorbing under
+  the ETS allowance relation, then the formal phase logic asserted in
+  this paper is invalid.
 \end{enumerate}
 
-These falsifiability conditions are stated at the level of formal structure.
-They do not require any specific empirical dataset, but they admit operational
-tests wherever a faithful mapping to ETS variables is available.
+All falsifiability conditions are stated at the level of formal structure.
+They do not presuppose any specific empirical dataset, but they admit
+operational testing wherever a faithful, non-substitutive mapping to
+ETS variables is available.

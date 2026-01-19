@@ -1,23 +1,20 @@
-﻿% PURPOSE: Formal setting: OC Core primitives as instantiated in ETS.K_EA.v1.1.
-% TARGET: formal-methods readers and adversarial referees.
-% LANGUAGE MODE: strictly formal.
-% EVIDENCE PROFILE: internal OC/ETS artifacts only (hash-anchored).
-% ROLE: define the complete symbol set used in the paper; no reinterpretation.
-
-\section{Formal setting (OC/ETS-only)}
+﻿\section{Formal setting (OC/ETS-only)}
 \label{sec:formal}
 
-This paper takes the Ontology of Continua (OC Core) and the executable specification
-\artifact{ETS.K_EA.v1.1} as immutable inputs
-(\artifact{status: executable\_closed}).
-No symbols, operators, predicates, or semantics beyond those explicitly defined
-in OC Core or ETS are introduced or reinterpreted.
+This paper takes the Ontology of Continua (OC Core) and the executable
+specification \artifact{ETS.K_EA.v1.1} as immutable inputs
+(\artifact{status: executable\_closed}). No symbols, operators, predicates,
+relations, or semantics beyond those explicitly defined in OC Core or ETS are
+introduced, extended, or reinterpreted. All references to structure, phase,
+continuity, or transition are understood strictly within this fixed formal
+vocabulary.
 
 \paragraph{Enterprise continuum.}
-The enterprise is modeled as a continuum $K_{EA}$ with admissible state region
-$\Omega(K_{EA})$ and boundary $\partial\Omega(K_{EA})$.
-Each state $s \in \Omega(K_{EA})$ is evaluated exclusively through
-ETS-defined variables and predicates.
+An enterprise is modeled as a continuum $K_{EA}$ with admissible state region
+$\Omega(K_{EA})$ and boundary $\partial\Omega(K_{EA})$. Each state
+$s \in \Omega(K_{EA})$ is evaluated exclusively through ETS-defined variables,
+predicates, and invariants. States outside $\Omega(K_{EA})$ are treated as
+inadmissible and are not classified.
 
 \paragraph{Axes.}
 The set of axes $A$ is fixed by ETS and grouped into the following dimensions:
@@ -29,11 +26,13 @@ The set of axes $A$ is fixed by ETS and grouped into the following dimensions:
   \item \emph{Operations:} \artifact{delivery\_coherence},
         \artifact{incident\_recovery\_loop}, \artifact{change\_lead\_time};
   \item \emph{Resources:} \artifact{budget\_flexibility},
-        \artifact{skills\_coverage}, \artifact{supplier\_dependency};
+        \artifact{skills\_coverage}, \artifact{sup\-plier\_dependency};
   \item \emph{Information:} \artifact{observability},
         \artifact{traceability}, \artifact{semantic\_alignment};
   \item \emph{Risk:} \artifact{risk\_visibility}, \artifact{control\_gap\_rate}.
 \end{itemize}
+Axes are descriptive coordinates only; no metric structure, optimization
+direction, or control affordance is assumed.
 
 \paragraph{Structural tension and thresholds.}
 Structural tension is represented by ETS-defined components
@@ -41,14 +40,15 @@ Structural tension is represented by ETS-defined components
 f_k \in \{f_{\text{exist}}, f_{\text{stab}}, f_{\text{inertia}},
           f_{\text{collapse}}, f_{\text{stop}}\}.
 \]
-Each component is mapped to a corresponding threshold
+Each component is associated with a corresponding threshold
 \[
 \Theta_k \in \{\Theta_{\text{exist}}, \Theta_{\text{stab}},
                \Theta_{\text{inertia}}, \Theta_{\text{collapse}},
                \Theta_{\text{stop}}\}.
 \]
-Threshold crossings are treated strictly as logical predicates on states $s$;
-no dynamical, control, or optimization interpretation is implied.
+Threshold crossings are evaluated strictly as logical predicates on states
+$s \in \Omega(K_{EA})$. No temporal evolution law, causal mechanism, or control
+interpretation is implied.
 
 \paragraph{Cycles.}
 ETS requires the presence of cycles
@@ -57,8 +57,8 @@ C = \{\artifact{governance}, \artifact{value}, \artifact{reproduction},
       \artifact{finance}, \artifact{learning}\},
 \]
 with closure defined by graph-closed paths and recurrent patterns over the
-ETS-defined time parameter $\tau$.
-Cycle absence or breakage is evaluated exclusively via ETS closure rules.
+ETS-defined time parameter $\tau$. Cycle absence, degradation, or breakage is
+evaluated exclusively via ETS closure rules and invariants.
 
 \paragraph{Continuity measure.}
 The continuity (viability) measure $k_{EA} \in [0,1]$ is defined by the ETS
@@ -68,7 +68,9 @@ k_{EA}
 = \prod \{ H_{\Omega}, S_{\text{cycles}}, S_{\text{obs}},
            S_{\text{parent}}, S_{\text{thresholds}} \},
 \]
-with a hard-zero condition enforced whenever $H_{\Omega}=\text{false}$.
+with a hard-zero condition enforced whenever $H_{\Omega}=\text{false}$. The
+quantity $k_{EA}$ is interpreted solely as a diagnostic indicator of admissible
+continuity and not as a utility, fitness, or optimization target.
 
 \paragraph{Phase logic and precedence.}
 ETS defines a phase logic with strict precedence ordering
@@ -76,8 +78,9 @@ ETS defines a phase logic with strict precedence ordering
 \texttt{STOP} \succ \texttt{COLLAPSE} \succ
 \texttt{INERTIA} \succ \texttt{SUCCESS}.
 \]
-Phase membership is determined solely by ETS predicates and evaluated
-pointwise for each $s \in \Omega(K_{EA})$.
+Phase membership is determined solely by ETS predicates and evaluated pointwise
+for each $s \in \Omega(K_{EA})$. Precedence resolves simultaneous predicate
+satisfaction without implying recoverability or directionality.
 
 \paragraph{Invariants and no-go constraints.}
 All reasoning is constrained by ETS invariants:
@@ -98,7 +101,7 @@ and by explicit no-go rules:
 \end{itemize}
 
 \paragraph{Scope of use.}
-Within this paper, the formal setting is used exclusively for
-\emph{diagnostic classification} of states and phase transitions.
-No optimization objective, intervention strategy, or governance semantics
-are inferred or implied.
+Within this paper, the formal setting is used exclusively for diagnostic
+classification of states and phase relations. No optimization objective,
+intervention strategy, steering logic, or governance prescription is inferred or
+implied.

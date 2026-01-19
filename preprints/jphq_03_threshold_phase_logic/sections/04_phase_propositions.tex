@@ -1,10 +1,4 @@
-﻿% PURPOSE: State formal propositions implied by ETS.K_EA.v1.1 phase logic.
-% TARGET: adversarial referees.
-% LANGUAGE MODE: formal.
-% EVIDENCE PROFILE: internal logical consistency only (ETS-faithful).
-% ROLE: claims layer (diagnostic, non-interventional).
-
-\section{Propositions on threshold-induced transitions}
+﻿\section{Propositions on threshold-induced transitions}
 \label{sec:props}
 
 \begin{proposition}[Uniqueness of phase classification]
@@ -19,28 +13,31 @@ precedence ordering.
 
 \begin{proof}[Sketch]
 By Definition~\ref{sec:phases}, each phase predicate is Boolean-valued.
-If more than one predicate evaluates to true at $s$, the total precedence
-ordering
+For any state $s$, either exactly one predicate is true or multiple predicates
+are simultaneously true. In the latter case, the total precedence ordering
 \[
 \texttt{STOP} \succ \texttt{COLLAPSE} \succ \texttt{INERTIA} \succ \texttt{SUCCESS}
 \]
-selects exactly one phase label. Hence $\Pi(s)$ is well-defined and unique.
+selects a unique maximal element. Hence the classification map $\Pi$ is
+well-defined and single-valued on $\Omega(K_{EA})$.
 \end{proof}
 
 \begin{proposition}[Discontinuous reassignment under threshold crossings]
 \label{prop:discontinuous}
-Let $s(\lambda)$ be a parametrized family of states in $\Omega(K_{EA})$.
-If, for some $\lambda^\ast$, the truth value of an ETS phase predicate
-changes due to a threshold crossing (e.g.\ $f_k(s(\lambda))$ changing sign
-or loss of observability), then the induced phase classification
+Let $s(\lambda)$ be a parametrized family of admissible states in
+$\Omega(K_{EA})$, with $\lambda$ an arbitrary external parameter.
+If, for some $\lambda^\ast$, the truth value of at least one ETS phase predicate
+changes due to a threshold crossing (e.g.\ a sign change in $f_k(s(\lambda))$ or
+loss of observability), then the induced phase classification
 $\Pi(s(\lambda))$ may change discontinuously at $\lambda^\ast$.
 \end{proposition}
 
 \begin{proof}[Sketch]
-Phase predicates are defined by strict Boolean conditions on ETS variables.
-A change in predicate truth value corresponds to crossing the boundary between
-disjoint subsets of $\Omega(K_{EA})$. No continuity requirement on the parameter
-$\lambda$ is imposed by ETS.
+Each phase predicate defines a subset of $\Omega(K_{EA})$ via strict Boolean
+conditions. A change in predicate truth value corresponds to crossing the
+boundary between disjoint predicate-defined subsets. Since ETS imposes no
+continuity or smoothness requirements on the parametrization $\lambda$,
+the induced map $\lambda \mapsto \Pi(s(\lambda))$ need not be continuous.
 \end{proof}
 
 \begin{proposition}[STOP as an absorbing phase]
@@ -50,20 +47,25 @@ phase transition exists from $s$ to any other phase class.
 \end{proposition}
 
 \begin{proof}[Sketch]
-The ETS allowance relation specifies $\texttt{STOP} \Rightarrow \varnothing$.
-Therefore, no outgoing phase-level transitions are admissible from STOP.
+By the ETS allowance relation,
+\[
+\texttt{STOP} \Rightarrow \varnothing .
+\]
+Therefore, there are no admissible outgoing phase-level transitions from STOP.
 \end{proof}
 
-\begin{proposition}[Irreversibility of COLLAPSE at the phase level]
+\begin{proposition}[Irreversibility of \texttt{COLLAPSE} at the phase level]
 \label{prop:collapse-no-return}
-If $\Pi(s)=\texttt{COLLAPSE}$, then no ETS-allowed phase transition leads
-directly from COLLAPSE to either SUCCESS or INERTIA.
+If $\Pi(s)=\texttt{COLLAPSE}$ for some $s \in \Omega(K_{EA})$, then no ETS-allowed
+phase transition leads directly from COLLAPSE to either SUCCESS or INERTIA.
 \end{proposition}
 
 \begin{proof}[Sketch]
-According to ETS, the only admissible outgoing transition from COLLAPSE is
-$\texttt{COLLAPSE} \Rightarrow \{\texttt{STOP}\}$. No other phase-level
-transitions are permitted.
+According to the ETS allowance relation,
+\[
+\texttt{COLLAPSE} \Rightarrow \{\texttt{STOP}\}.
+\]
+No other outgoing phase-level transitions from COLLAPSE are permitted.
 \end{proof}
 
 \begin{proposition}[Diagnostic non-steerability]
@@ -74,13 +76,14 @@ $\Omega(K_{EA})$.
 \end{proposition}
 
 \begin{proof}[Sketch]
-ETS defines phase transitions as a guarded allowance relation, not as a
-dynamical or control system. Consequently, neither reachability nor
-steerability follows from phase identification alone.
+ETS specifies phase transitions as a guarded allowance relation, not as a
+dynamical system or control model. The existence of a phase label or an allowed
+transition does not entail reachability, controllability, or reversibility of
+state trajectories within $\Omega(K_{EA})$.
 \end{proof}
 
 \begin{remark}[Non-claims]
-The propositions above do not introduce optimization objectives, recovery
-strategies, governance prescriptions, or continuity assumptions. They are
-logical consequences of ETS predicates, precedence, and allowance rules only.
+The propositions above introduce no optimization objectives, recovery strategies,
+governance prescriptions, or continuity assumptions. They are logical
+consequences of ETS predicates, precedence ordering, and allowance rules only.
 \end{remark}

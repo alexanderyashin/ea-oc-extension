@@ -1,20 +1,15 @@
-﻿% PURPOSE: Define phases as ETS.K_EA.v1.1 predicates and the induced partition of Omega(K_EA).
-% TARGET: referees and formal-methods readers.
-% LANGUAGE MODE: strictly formal.
-% EVIDENCE PROFILE: none (definitions only; predicates are direct ETS transcription).
-% ROLE: definitional firewall: phase identification only, no intervention semantics.
-
-\section{Phase definitions as \texorpdfstring{$\Theta$}{Theta}-induced partitions}
+﻿\section{Phase definitions as \texorpdfstring{$\Theta$}{Theta}-induced partitions}
 \label{sec:phases}
 
 \begin{definition}[Phase predicate (ETS-faithful)]
-Let $s \in \Omega(K_{EA})$ be an admissible state. A phase predicate is a Boolean-valued
-function
+Let $s \in \Omega(K_{EA})$ be an admissible state. A phase predicate is a
+Boolean-valued function
 \[
 \pi : \Omega(K_{EA}) \rightarrow \{\text{true}, \text{false}\},
 \]
 defined exclusively in terms of variables, components, and predicates already
-present in \artifact{ETS.K_EA.v1.1}.
+present in \artifact{ETS.K_EA.v1.1}. No auxiliary variables, derived metrics, or
+external semantics are introduced.
 \end{definition}
 
 \begin{definition}[Phase logic and precedence (ETS)]
@@ -24,11 +19,14 @@ The ETS phase logic is the totally ordered set
 \]
 where $\succ$ denotes strict precedence. If multiple phase predicates evaluate
 to true for a given state $s$, the phase with highest precedence is assigned.
+Precedence resolves classification only and does not imply temporal ordering,
+causal direction, or recoverability.
 \end{definition}
 
 \begin{definition}[ETS phase predicates]
 The phase predicates are transcribed directly from
-\artifact{ETS.K_EA.v1.1} and evaluated pointwise for $s \in \Omega(K_{EA})$:
+\artifact{ETS.K_EA.v1.1} and evaluated pointwise for
+$s \in \Omega(K_{EA})$:
 \begin{align}
 \pi_{\texttt{STOP}}(s)
 &:= \bigl(f_{\text{exist}}(s) > 0\bigr)
@@ -53,7 +51,8 @@ where
 f_k \in \{f_{\text{exist}}, f_{\text{stab}}, f_{\text{inertia}},
           f_{\text{collapse}}, f_{\text{stop}}\}
 \]
-are the ETS-defined structural-tension components.
+are the ETS-defined structural-tension components. No assumptions are made
+regarding continuity, smoothness, or parametrization of the functions $f_k$.
 \end{definition}
 
 \begin{definition}[Phase classes as subsets of $\Omega(K_{EA})$]
@@ -70,14 +69,14 @@ The effective classification map
 \Pi : \Omega(K_{EA}) \rightarrow
 \{\texttt{SUCCESS}, \texttt{INERTIA}, \texttt{COLLAPSE}, \texttt{STOP}\}
 \]
-assigns to each state $s$ the unique highest-precedence phase whose predicate
-is satisfied at $s$.
+assigns to each state $s$ the unique highest-precedence phase whose predicate is
+satisfied at $s$. The map $\Pi$ is total on $\Omega(K_{EA})$ by construction.
 \end{definition}
 
 \begin{remark}[Diagnostic meaning only]
-Phase membership $\Pi(s)$ is a diagnostic classification of a state under
-ETS predicates. No intervention objective, control policy, recovery claim,
-or optimization target is inferred from $\Pi$ within this paper.
+Phase membership $\Pi(s)$ constitutes a diagnostic classification of a state
+under ETS predicates. No intervention objective, control policy, recovery
+claim, or optimization target is inferred from $\Pi$ within this paper.
 \end{remark}
 
 \begin{definition}[Allowed phase transitions (ETS)]
@@ -89,7 +88,7 @@ ETS specifies a phase-level allowance relation $\Rightarrow$ given by
 \texttt{COLLAPSE} &\Rightarrow \{\texttt{STOP}\}, \\
 \texttt{STOP}     &\Rightarrow \varnothing .
 \end{align}
-This relation specifies admissibility only. In particular, the label
-\artifact{SUCCESS\_via\_external\_Psi} is treated as an ETS-defined symbol and
-does not encode an actionable mechanism or prescription.
+This relation specifies admissibility only. In particular, the symbol
+\artifact{SUCCESS\_via\_external\_Psi} is treated as an ETS-defined label and
+does not encode an actionable mechanism, controllable pathway, or prescription.
 \end{definition}
