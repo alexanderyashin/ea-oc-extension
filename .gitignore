@@ -4,8 +4,7 @@ __pycache__/
 *.pyo
 *.pyd
 *.egg-info/
-.dist-info/
-
+*.dist-info/
 # local trash (PowerShell artifacts)
 -replace
 ASCII OK
