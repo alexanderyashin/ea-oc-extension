@@ -9,12 +9,13 @@
 
 This appendix provides a formal pointer to reproducibility artifacts
 associated with the Enterprise Continuum $K_{\mathrm{EA}}$.
-It does not introduce additional theory, methodology, or executable
-logic.
+It introduces no additional theory, methodology, assumptions, or
+executable logic.
 
 Its sole purpose is to delimit the relationship between this
-whitepaper, the Executable Theory Specification, and external
-artifacts that may be used for structural reconstruction or audit.
+whitepaper, the Executable Theory Specification, and any external
+artifacts that may be used for structural reconstruction, inspection,
+or audit.
 
 \subsection*{Executable Source of Truth}
 
@@ -26,45 +27,48 @@ immutable Executable Theory Specification:
 \end{center}
 
 as referenced in the front matter of this document.
-All admissible primitives, relations, thresholds, invariants, and phase
-precedence rules are fully specified therein.
+All admissible primitives, relations, thresholds, invariants, phase
+precedence rules, and termination conditions are fully specified
+therein.
 
 This whitepaper is a human-readable projection of that specification
-and does not modify or extend it.
+and does not modify, extend, or reinterpret it.
 
 \subsection*{Reproducibility Scope}
 
 Reproducibility in the context of $K_{\mathrm{EA}}$ is structural rather
 than empirical.
-It refers to the ability to reconstruct the same formal object from the
-same executable specification, not to replicate observed enterprise
-behavior.
+It refers exclusively to the ability to reconstruct the same formal
+object from the same executable specification, without interpretation,
+extension, or invention.
 
-External artifacts such as configuration files, manifests, or
+External artifacts such as configuration files, manifests, scripts, or
 instantiation inputs may exist to support reconstruction, inspection,
 or audit.
 Such artifacts are not part of the theory and carry no independent
-normative or diagnostic authority.
+normative, diagnostic, or explanatory authority.
 
 \subsection*{Non-Claims and Boundaries}
 
 This appendix explicitly makes no claims regarding:
 \begin{itemize}
-  \item correctness or completeness of external tooling,
-  \item empirical validity of any instantiation,
-  \item performance, accuracy, or predictive value of results,
-  \item suitability of artifacts for operational or decision-making
-        use.
+  \item correctness, completeness, or reliability of external tooling,
+  \item empirical validity of any instantiation or simulation,
+  \item performance, accuracy, or predictive value of derived outputs,
+  \item suitability of artifacts for operational, managerial, or
+        decision-making use.
 \end{itemize}
 
-The presence or absence of external reproducibility artifacts does not
-alter the admissibility conditions, invariants, No-Go results, or STOP
-logic defined by the Executable Theory Specification.
+The presence, absence, or quality of external reproducibility artifacts
+does not alter the admissibility conditions, invariants, No-Go results,
+or STOP logic defined by the Executable Theory Specification.
 
 \subsection*{Interpretation Rule}
 
-If any external artifact, reconstruction attempt, or visual output
-appears to contradict the formal results implied by
+If any external artifact, reconstruction attempt, simulation output, or
+visual material appears to contradict the formal results implied by
 \texttt{ETS.K\_EA.v1.1}, the executable specification takes precedence.
 
 Beyond this formal pointer, the appendix deliberately remains silent.
+
+%%%End of Document%%%

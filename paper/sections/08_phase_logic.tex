@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/08_phase_logic.tex
 % Phase Logic: SUCCESS, INERTIA, COLLAPSE, STOP (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Phase Logic}
@@ -9,14 +10,17 @@
 
 Phase logic in $K_{\mathrm{EA}}$ provides a coarse-grained classification
 of enterprise states with respect to admissible diagnosis.
-Phases are not stages of development, maturity levels, or indicators of
-progress.
-They are labels assigned solely on the basis of threshold evaluations
-and continuity conditions.
+Phases are not stages of development, maturity levels, lifecycle
+positions, or indicators of progress.
 
-The purpose of phase logic is to determine which classes of diagnostic
-statements remain formally admissible under the current structural
-conditions of the enterprise continuum.
+They are labels assigned solely on the basis of threshold evaluations,
+continuity conditions, and precedence rules defined in
+\texttt{ETS.K\_EA.v1.1}.
+
+The purpose of phase logic is strictly delimiting: to determine which
+classes of diagnostic statements remain formally admissible under the
+current structural conditions of the enterprise continuum, and which
+statements are forbidden.
 
 \subsection{Precedence Rules}
 
@@ -29,8 +33,12 @@ Phase assignment follows a strict precedence order defined in
 
 Higher-precedence phases override lower-precedence classifications.
 This ordering prevents contradictory diagnoses by ensuring that
-violations of existence, termination, or stability conditions dominate
+violations of existence, termination, or persistence conditions dominate
 all other considerations.
+
+Precedence is logical rather than temporal.
+It does not encode sequences, trajectories, or expectations of movement
+between phases.
 
 \subsection{STOP Phase}
 
@@ -44,8 +52,13 @@ It is entered when any of the following conditions hold:
 \end{itemize}
 
 In the STOP phase, further diagnosis is undefined within the model.
-No statements regarding recovery, improvement, optimization, or
-evolution are admissible.
+No statements regarding recovery, improvement, optimization, evolution,
+or future states are admissible.
+
+STOP is not a failure outcome and does not imply empirical non-existence.
+It indicates that the object no longer satisfies the minimum structural
+conditions required to be treated as a diagnosable continuum within the
+model.
 
 \subsection{COLLAPSE Phase}
 
@@ -63,6 +76,9 @@ It indicates that the enterprise continuum can no longer satisfy
 persistence requirements over the internal time scale
 $\tau_{\mathrm{EA}}$.
 
+No implication of recovery, stabilization, or reversibility is made.
+Any such interpretation would lie outside the executable specification.
+
 \subsection{INERTIA Phase}
 
 The INERTIA phase characterizes states in which the enterprise continuum
@@ -77,6 +93,8 @@ Formally, INERTIA holds when:
 
 Diagnosis remains admissible in this phase, but internal dynamics are
 structurally constrained.
+No assumption is made regarding desirability, urgency, or inevitability
+of transition out of INERTIA.
 
 \subsection{SUCCESS Phase}
 
@@ -85,10 +103,13 @@ The SUCCESS phase is defined by the absence of threshold violations:
 f_k \leq 0 \quad \text{for all threshold components } k.
 \]
 
-SUCCESS does not imply optimality, efficiency, resilience, or
+SUCCESS does not imply optimality, efficiency, resilience, health, or
 desirability.
 It indicates only that the enterprise continuum satisfies the structural
 conditions required for admissible diagnosis.
+
+No persistence, stability margin, or safety buffer is implied by
+SUCCESS.
 
 \subsection{Allowed Transitions}
 
@@ -103,9 +124,9 @@ phase transitions:
   \item $\text{STOP} \rightarrow$ (none).
 \end{itemize}
 
-All transitions are constrained by threshold evaluations and
-compatibility with parent continua.
-No transition is guaranteed or implied.
+Transitions describe admissibility relations, not temporal guarantees,
+probabilities, or recommended actions.
+No transition is implied to be likely, desirable, or achievable.
 
 \subsection{Non-Teleological Interpretation}
 
@@ -115,3 +136,7 @@ restored.
 
 Phases function solely as diagnostic labels delimiting what can and
 cannot be meaningfully asserted within the enterprise continuum.
+Any teleological or normative interpretation is explicitly excluded by
+construction.
+
+%%%End of Document%%%

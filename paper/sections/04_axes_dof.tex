@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/04_axes_dof.tex
 % Axes and Degrees of Freedom (ETS Projection) (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Axes and Degrees of Freedom}
@@ -10,7 +11,7 @@
 Axes in $A_{\mathrm{EA}}$ define the admissible degrees of freedom of the
 enterprise continuum.
 They do not represent objectives, performance targets, maturity levels,
-or normative dimensions.
+best practices, or normative dimensions.
 Their sole function is to parameterize variation within the admissible
 state space $\Omega_{\mathrm{EA}}$.
 
@@ -18,6 +19,9 @@ All axes described in this section are projected directly from
 \texttt{ETS.K\_EA.v1.1}.
 No additional axes are introduced, and none are reinterpreted beyond
 their structural role as coordinates of admissible variation.
+
+Axes therefore specify \emph{where variation is possible}, not
+\emph{which direction is preferable}.
 
 \subsection{Structural Axes}
 
@@ -37,7 +41,8 @@ enterprise components.
 
 These axes determine the geometry and connectivity of
 $\Omega_{\mathrm{EA}}$.
-They do not encode preferred configurations or architectural ideals.
+They do not encode preferred configurations, architectural ideals, or
+design guidance.
 
 \subsection{Governance Axes}
 
@@ -55,6 +60,9 @@ decision propagation, and enforcement.
 
 These axes constrain admissible dynamics by shaping flows $J_{\mathrm{EA}}$
 and the closure properties of cycles $C_{\mathrm{EA}}$.
+
+They do not prescribe governance models, organizational forms, or
+decision-making practices.
 
 \subsection{Operational Axes}
 
@@ -75,6 +83,8 @@ existence.
 Their violation may degrade continuity without immediately terminating
 admissibility.
 
+They do not define performance targets or operational benchmarks.
+
 \subsection{Resource Axes}
 
 Resource axes describe constraints associated with material, financial,
@@ -91,6 +101,8 @@ and human resources.
 
 These axes constrain potentials $P_{\mathrm{EA}}$ and contribute to
 structural tension relative to thresholds $\Theta_{\mathrm{EA}}$.
+
+They do not encode efficiency, cost optimization, or sourcing strategy.
 
 \subsection{Information Axes}
 
@@ -109,6 +121,9 @@ semantic consistency.
 Loss of admissible observability directly constrains diagnosis and may
 trigger termination conditions independent of other axes.
 
+Information axes therefore bound diagnosability, not analytical depth or
+reporting quality.
+
 \subsection{Risk Axes}
 
 Risk axes parameterize the accumulation and visibility of unmanaged
@@ -123,7 +138,7 @@ structural risk.
 
 These axes interact with threshold components associated with inertia
 and collapse.
-They do not represent risk appetite or tolerance.
+They do not represent risk appetite, tolerance, or governance posture.
 
 \subsection{Axes as Constraints, Not Goals}
 
@@ -135,3 +150,8 @@ of optimality.
 An axis becomes diagnostically relevant only through its interaction
 with thresholds $\Theta_{\mathrm{EA}}$, cycles $C_{\mathrm{EA}}$, and the
 continuity measure $k_{\mathrm{EA}}$.
+
+Axes therefore serve as coordinates of admissibility, not as levers of
+intervention.
+
+%%%End of Document%%%

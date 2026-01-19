@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/06_cycles_closure.tex
 % Cycles, Closure, and Persistence (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Cycles and Closure}
@@ -21,6 +22,11 @@ They are not processes to be optimized, improved, redesigned, or
 managed within the scope of the model.
 Their role is solely to sustain the definability of the continuum over
 time.
+
+The term ``cycle'' is used in the OC sense: a minimal closure condition
+on admissible trajectories.
+It does not denote a prescribed workflow, organizational ritual, or
+control mechanism.
 
 \subsection{Required Cycle Classes}
 
@@ -45,6 +51,11 @@ specific organizational or technical implementation.
 The model does not prescribe how these closures are realized.
 Only their existence as closed recurrent structures is required.
 
+The listed classes are not a maturity model, checklist, or process
+catalog.
+They represent the minimal closure categories required for persistence
+as defined by the ETS.
+
 \subsection{Formal Notion of Closure}
 
 Closure is defined structurally as the existence of recurrent paths in
@@ -56,6 +67,10 @@ In \texttt{ETS.K\_EA.v1.1}, this condition is expressed as the existence
 of graph-closed paths or recurrent patterns.
 No assumptions are made regarding efficiency, speed, optimality, or
 resource consumption of closure.
+
+Closure is therefore a definability condition.
+It does not imply that closed trajectories are desirable, efficient, or
+stable in any operational sense.
 
 \subsection{Failure of Closure and Stability}
 
@@ -69,6 +84,9 @@ treated as persistent.
 Diagnosis remains defined only until stability or termination thresholds
 are crossed.
 
+Cycle failure is evaluated structurally via admissibility conditions,
+not by performance outcomes.
+
 \subsection{Cycles Versus Processes}
 
 Cycles must be distinguished from operational or managerial processes.
@@ -78,6 +96,10 @@ realized through heterogeneous or distributed processes.
 The model makes no claims about process design or execution.
 It asserts only that structural closure, independent of implementation,
 is required for persistence.
+
+The whitepaper therefore does not license prescriptive statements such
+as ``introduce a governance loop'' or ``improve learning cycles''.
+Such intervention language is outside scope.
 
 \subsection{Implications for Diagnosis}
 
@@ -90,3 +112,5 @@ The presence or absence of required cycles directly affects:
 
 Cycles therefore constitute the formal link between instantaneous
 admissibility and temporal persistence in the enterprise continuum.
+
+%%%End of Document%%%

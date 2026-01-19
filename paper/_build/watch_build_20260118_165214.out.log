@@ -1,9 +1,0 @@
-Repo root : C:\Users\Megaport\work\ea-oc-extension
-Source    : C:\Users\Megaport\work\ea-oc-extension\paper\whitepaper.md
-Output    : C:\Users\Megaport\work\ea-oc-extension\paper\whitepaper.pdf
-pandoc    : C:\Users\Megaport\AppData\Local\Pandoc\pandoc.exe
-xelatex   : C:\Users\Megaport\AppData\Local\Programs\MiKTeX\miktex\bin\x64\xelatex.exe
-SDE       : 1768742098
-
-Running pandoc (mainfont='Times New Roman', monofont='Consolas')...
-OK: Built C:\Users\Megaport\work\ea-oc-extension\paper\whitepaper.pdf

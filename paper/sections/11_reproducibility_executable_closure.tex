@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/11_reproducibility_executable_closure.tex
 % Reproducibility and Executable Closure (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Reproducibility and Executable Closure}
@@ -8,13 +9,18 @@
 \subsection{Meaning of Reproducibility in This Context}
 
 Reproducibility in the context of $K_{\mathrm{EA}}$ does not refer to
-repeated empirical measurement, statistical replication, or experimental
-repeatability.
-It refers to the ability to reconstruct the same formal object from the
-same specification without interpretation, extension, or invention.
+repeated empirical measurement, statistical replication, experimental
+repeatability, or observational convergence.
+
+It refers exclusively to the ability to reconstruct the same formal
+object from the same specification without interpretation, extension, or
+invention.
 
 The object of reproduction is the structure of the enterprise continuum
-itself, not observed enterprise behavior or outcomes.
+itself, as defined by its primitives, admissibility conditions,
+thresholds, cycles, and phase logic.
+Observed enterprise behavior or outcomes are explicitly not objects of
+reproduction within this model.
 
 \subsection{Executable Closure}
 
@@ -27,8 +33,10 @@ Theory Specification \texttt{ETS.K\_EA.v1.1}.
 This whitepaper introduces no additional degrees of freedom.
 It serves solely as a faithful projection of the ETS into a
 human-readable form.
-Any interpretation that relies on elements not present in the ETS lies
-outside the model.
+
+Any interpretation, inference, or extension that relies on elements not
+present in the ETS lies outside the model and is not attributable to
+$K_{\mathrm{EA}}$.
 
 \subsection{Separation of Theory and Instantiation}
 
@@ -41,7 +49,8 @@ Such values constitute instantiations of the theory, not part of its
 definition.
 
 This separation ensures that theoretical claims remain invariant under
-changes of data, measurement resolution, or observational perspective.
+changes of data, measurement resolution, instrumentation, or
+observational perspective.
 
 \subsection{Implications for Tooling}
 
@@ -49,21 +58,24 @@ Executable closure implies that any tooling constructed on top of
 \texttt{ETS.K\_EA.v1.1} must operate strictly within the same admissible
 space.
 
-Tools may automate evaluation or visualization, but they may not extend,
-override, or bypass admissibility conditions, phase precedence, STOP
-states, or No-Go results.
+Tools may automate evaluation, inspection, or visualization.
+They may not extend, override, reinterpret, or bypass admissibility
+conditions, phase precedence rules, STOP states, or No-Go results.
+
 Any such extension constitutes departure from the model rather than an
 alternative implementation.
+Tool output carries no authority beyond consistency with the executable
+specification.
 
 \subsection{Structural Falsifiability}
 
 $K_{\mathrm{EA}}$ is falsifiable in a structural sense.
 If an enterprise is claimed to satisfy all admissibility conditions
-while simultaneously violating an invariant or No-Go result, the claim
-is inconsistent with the theory.
+while simultaneously violating an invariant, compatibility constraint,
+or No-Go result, the claim is inconsistent with the theory.
 
-This form of falsifiability does not depend on empirical calibration or
-statistical significance.
+This form of falsifiability does not depend on empirical calibration,
+statistical significance, or probabilistic confidence.
 It depends solely on logical consistency with the executable
 specification.
 
@@ -74,5 +86,7 @@ structure of $K_{\mathrm{EA}}$ explicit, inspectable, and reviewable.
 
 It does not provide reference implementations, datasets, benchmarks, or
 empirical case material.
-Such artifacts, if produced, belong outside the scope of this document
-and do not modify the theory it presents.
+Such artifacts, if produced, lie outside the scope of this document and
+do not modify, validate, or extend the theory it presents.
+
+%%%End of Document%%%

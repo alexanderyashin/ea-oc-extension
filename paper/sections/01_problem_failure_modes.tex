@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/01_problem_failure_modes.tex
 % Problem Statement and Structural Failure Modes (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Problem Statement and Structural Failure Modes}
@@ -25,6 +26,11 @@ Within such approaches, failure is usually framed as a local deficiency
 The structural conditions under which the enterprise itself remains a
 well-defined object of analysis are seldom formalized.
 
+This section does not assert that conventional analyses are incorrect.
+It asserts only that their domain of validity is rarely delimited
+explicitly, and that this omission obscures the point at which
+diagnostic statements lose formal meaning.
+
 \subsection{Enterprises as Conditional Objects}
 
 Within the Ontology of Continua, an enterprise is not treated as an
@@ -45,6 +51,10 @@ only while the following conditions hold:
 Violation of any of these conditions renders continued diagnosis
 undefined within the model.
 
+These conditions are not empirical hypotheses.
+They are formal existence constraints inherited from OC and projected
+unchanged into the enterprise continuum.
+
 \subsection{Structural Failure Versus Performance Degradation}
 
 $K_{\mathrm{EA}}$ draws a strict distinction between performance
@@ -60,6 +70,10 @@ Only performance degradation admits continued diagnosis within
 $K_{\mathrm{EA}}$.
 Structural failure does not represent a poor outcome; it represents a
 loss of definability.
+
+This distinction is structural rather than evaluative.
+It does not rank outcomes or imply desirability.
+It specifies whether the object of diagnosis remains formally defined.
 
 \subsection{Classes of Structural Failure Modes}
 
@@ -97,6 +111,10 @@ indicators.
 These include loss of observability and violations of compatibility
 constraints imposed by parent continua.
 
+The ordering and precedence of these components are defined exclusively
+by the executable specification and are not subject to interpretive
+adjustment within this document.
+
 \subsection{STOP as a Diagnostic Boundary}
 
 STOP is defined as the highest-precedence diagnostic outcome.
@@ -107,6 +125,9 @@ This boundary is not heuristic.
 It follows directly from the executable specification.
 Any continuation of analysis beyond STOP would require assumptions not
 contained in the ETS and is therefore outside the model.
+
+STOP is therefore not a conclusion about the enterprise.
+It is a conclusion about the limits of admissible diagnosis.
 
 \subsection{Implications for Diagnostic Integrity}
 
@@ -121,3 +142,5 @@ $K_{\mathrm{EA}}$, diagnosis is undefined once STOP conditions are met.
 The explicit separation between diagnosable degradation and
 non-diagnosable structural failure is central to the integrity of the
 enterprise continuum formulation.
+
+%%%End of Document%%%

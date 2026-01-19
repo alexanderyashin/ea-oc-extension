@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/10_invariants_nogo.tex
 % Invariants and No-Go Results (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Invariants and No-Go Results}
@@ -9,12 +10,16 @@
 
 Invariants in $K_{\mathrm{EA}}$ express structural properties that hold
 across all admissible states of the enterprise continuum.
-They are not assumptions, heuristics, or design guidelines.
-They follow necessarily from the formal specification given by
-\texttt{ETS.K\_EA.v1.1}.
+They are not assumptions, heuristics, empirical regularities, or design
+guidelines.
 
-Violation of an invariant does not indicate inefficiency or poor
-performance.
+Invariants follow necessarily from the formal specification given by
+\texttt{ETS.K\_EA.v1.1}.
+They are properties of the formal object itself, not contingent
+observations about real enterprises.
+
+Violation of an invariant does not indicate inefficiency, weakness, or
+poor performance.
 It indicates that the object under consideration no longer satisfies
 the conditions required to be defined as $K_{\mathrm{EA}}$.
 
@@ -25,12 +30,15 @@ between admissible enterprise states requires non-zero structural
 expenditure.
 
 There are no cost-free transitions in $K_{\mathrm{EA}}$.
+Any admissible change necessarily interacts with thresholds, cycles, or
+continuity conditions.
+
 Any interpretation in which large-scale structural change occurs without
 corresponding impact on thresholds, cycles, or continuity violates the
 formal conditions of admissibility.
 
 Apparent instantaneous or frictionless transformation therefore signals
-loss of definability rather than exceptional efficiency.
+loss of definability rather than exceptional efficiency or capability.
 
 \subsection{Parent Compatibility}
 
@@ -38,19 +46,24 @@ The invariant \emph{Parent Compatibility} requires that all admissible
 enterprise states remain compatible with constraints imposed by the
 parent continuum $K_7$.
 
-An enterprise state that violates parent compatibility is not a degraded
-or extreme state of $K_{\mathrm{EA}}$.
+An enterprise state that violates parent compatibility is not an
+extreme, stressed, or degraded state of $K_{\mathrm{EA}}$.
 It lies outside the admissible state space $\Omega_{\mathrm{EA}}$ and is
 therefore not defined within the continuum.
 
+Parent compatibility is a condition of existence, not a dimension of
+performance or compliance.
+
 \subsection{No-Go Results}
 
-No-Go results are formal impossibility statements derived from the
-Executable Theory Specification.
-They specify transitions, interpretations, or substitutions that are
-structurally forbidden within $K_{\mathrm{EA}}$.
+No-Go results are formal impossibility statements derived directly from
+the Executable Theory Specification.
+They specify transitions, interpretations, substitutions, or inference
+moves that are structurally forbidden within $K_{\mathrm{EA}}$.
 
-These results delimit the domain in which diagnostic statements remain
+No-Go results do not rely on empirical assumptions or case-dependent
+evidence.
+They delimit the domain in which diagnostic statements remain formally
 meaningful.
 
 \subsection{Metric Substitution}
@@ -60,8 +73,12 @@ diagnosis with isolated scalar performance metrics.
 
 No finite set of metrics can substitute for evaluation of admissibility
 conditions, recurrent cycles, and continuity.
-Any attempt to do so collapses the diagnostic object by severing its
-connection to the defining primitives of the continuum.
+Metrics may be used as inputs to instantiations, but they cannot serve
+as defining or sufficient criteria for diagnosis.
+
+Any attempt to substitute metrics for structural primitives collapses
+the diagnostic object by severing its connection to the defining
+conditions of the continuum.
 
 \subsection{Instant Recovery}
 
@@ -74,12 +91,17 @@ state space and re-establishment of required cycles.
 Direct re-entry into SUCCESS without such reconstitution is undefined
 within the model.
 
+This No-Go result excludes narratives of spontaneous normalization or
+structurally cost-free restoration.
+
 \subsection{No-Go Results as Integrity Constraints}
 
 No-Go results do not weaken the model or restrict its applicability.
 They function as integrity constraints that preserve executable closure
 and ontological consistency.
 
-By excluding structurally inconsistent interpretations, they ensure
-that diagnostic statements derived from $K_{\mathrm{EA}}$ remain
-well-defined and reviewable.
+By excluding structurally inconsistent interpretations, No-Go results
+ensure that diagnostic statements derived from $K_{\mathrm{EA}}$ remain
+well-defined, non-contradictory, and reviewable.
+
+%%%End of Document%%%

@@ -14,25 +14,27 @@ They visualize consequences of the executable specification
 choices.
 
 Figures do not introduce new theoretical content.
-They do not define primitives, parameters, thresholds, or admissible
-transitions.
+They do not define primitives, parameters, thresholds, admissible
+transitions, or phase logic.
 All formal meaning is defined exclusively by the Executable Theory
 Specification and the main text of this whitepaper.
 
-The figures are provided to support inspection of:
+The figures are provided solely to support inspection of:
 \begin{itemize}
   \item admissible versus non-admissible regions of state space,
   \item qualitative behavior of threshold components,
   \item interaction between continuity $k_{\mathrm{EA}}$, cycles, and
-        termination,
-  \item phase classification under varying structural conditions.
+        termination conditions,
+  \item phase classification implied by structural constraints.
 \end{itemize}
 
 \subsection*{Non-Empirical Status}
 
 All figures are generated from synthetic instantiations of the
 executable specification.
-They are not empirical measurements, benchmarks, or validation data.
+They are not empirical measurements, benchmarks, validation data, or
+case evidence.
+
 They do not support predictive claims, comparative assessment, or
 generalization across enterprises.
 
@@ -82,7 +84,8 @@ Shown values illustrate admissibility boundaries implied by the ETS.}
 The following heatmaps visualize admissible and non-admissible regions
 of the enterprise state space under varying window and threshold
 parameters.
-They illustrate structural phase boundaries and STOP regions.
+They illustrate structural phase boundaries and STOP regions implied by
+the executable specification.
 
 \begin{figure}[H]
 \centering
@@ -116,10 +119,11 @@ They illustrate structural phase boundaries and STOP regions.
 
 \subsection*{Interpretation Boundary}
 
-No figure may be used to bypass STOP conditions, invariants, or phase
-precedence rules.
+Figures carry no independent diagnostic authority.
+
+No figure may be used to bypass STOP conditions, invariants, compatibility
+constraints, or phase precedence rules.
 If a visual pattern appears to contradict a formal result, the formal
 specification takes precedence.
 
-Figures carry no independent diagnostic authority beyond their
-illustrative role.
+%%%End of Document%%%

@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/05_thresholds_structural_tension.tex
 % Thresholds, f_k Components, and Structural Tension (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Thresholds, Components, and Structural Tension}
@@ -17,6 +18,9 @@ Thresholds are not targets, objectives, or performance benchmarks.
 They are constraints that determine whether the continuum can exist,
 persist, and remain diagnosable under the given structure.
 
+Thresholds therefore bound the \emph{domain of definition} of diagnosis,
+not its outcomes.
+
 \subsection{Structural Tension and Inequality-Based Formulation}
 
 Structural tension arises when internal dynamics drive the enterprise
@@ -28,9 +32,13 @@ of component functions $f_k$, each evaluated as an inequality.
 The formalism operates on the sign, ordering, and logical combination of
 these components rather than on calibrated numerical magnitudes.
 
+Inequality-based formulation is intentional.
+It encodes admissibility relations and precedence logic without
+introducing metric assumptions, scales, or optimization criteria.
+
 No numerical values are fixed at the theory level.
 Any quantitative instantiation occurs outside the theory and does not
-alter the formal structure.
+alter the formal structure or admissibility logic.
 
 \subsection{Threshold Components}
 
@@ -48,6 +56,10 @@ components:
 Each component corresponds to a subset of $\Theta_{\mathrm{EA}}$.
 Components are evaluated independently, subject to explicit precedence
 rules encoded in the phase logic.
+
+The presence of multiple components does not imply additive scoring or
+continuous grading.
+Each component acts as a logical constraint on admissibility.
 
 \subsection{Interpretation of Components}
 
@@ -90,6 +102,8 @@ Thresholds define only the boundary of admissible diagnosis.
 Crossing certain thresholds renders further analysis undefined within
 the model.
 
+The formalism therefore encodes admissibility, not preference.
+
 \subsection{Structural Tension Versus Performance Stress}
 
 Structural tension is distinct from operational, financial, or
@@ -101,3 +115,5 @@ Conversely, structural thresholds may be violated without immediate or
 visible performance degradation.
 The threshold formalism makes this distinction explicit by separating
 structural admissibility from observed outcomes.
+
+%%%End of Document%%%

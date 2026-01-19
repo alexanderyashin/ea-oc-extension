@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/12_conclusion_scope_boundary.tex
 % Conclusion and Scope Boundary (finalized)
+% + Scope-hardening and closure clarification
 % ============================================================
 
 \section{Conclusion and Scope Boundary}
@@ -23,8 +24,8 @@ Specifically, the document has:
         constraints.
 \end{itemize}
 
-No new primitives, parameters, interpretations, or claims have been
-introduced.
+No new primitives, parameters, interpretations, assumptions, or claims
+have been introduced.
 
 \subsection{What This Whitepaper Enables}
 
@@ -35,25 +36,27 @@ Within its explicitly defined scope, this whitepaper enables:
         undefined,
   \item rigorous distinction between performance degradation and
         structural failure,
-  \item inspection and formal review of diagnostic assumptions.
+  \item inspection and formal review of diagnostic assumptions and
+        boundary conditions.
 \end{itemize}
 
 All enabled capabilities arise solely from the formal structure of the
-enterprise continuum as specified by the ETS.
+enterprise continuum as specified by the Executable Theory Specification.
 
 \subsection{What This Whitepaper Explicitly Forbids}
 
-The document explicitly forbids:
+This document explicitly forbids:
 \begin{itemize}
   \item prescriptive or normative interpretation of diagnostic results,
-  \item optimization, improvement, or transformation guidance,
+  \item optimization, improvement, recovery, or transformation guidance,
   \item substitution of structural diagnosis with isolated performance
-        metrics,
-  \item bypassing STOP conditions, invariants, or No-Go results.
+        metrics or maturity labels,
+  \item bypassing STOP conditions, invariants, compatibility constraints,
+        or No-Go results.
 \end{itemize}
 
 Any such use constitutes an interpretation outside the admissible scope
-of the model.
+of the model and is not attributable to $K_{\mathrm{EA}}$.
 
 \subsection{Boundary of Applicability}
 
@@ -61,18 +64,20 @@ The applicability of $K_{\mathrm{EA}}$ is strictly bounded by the
 conditions under which an enterprise can be treated as a diagnosable
 continuum.
 
-When existence, observability, persistence, or parent compatibility
-conditions are violated, diagnosis terminates.
+When existence, observability, persistence, continuity, or parent
+compatibility conditions are violated, diagnosis terminates.
 The model makes no claims beyond this boundary and provides no
 extrapolation outside it.
 
 \subsection{Final Remark}
 
-The Enterprise Continuum is not a promise of success, recovery, or
-control.
+The Enterprise Continuum is not a promise of success, recovery, control,
+or governance effectiveness.
 It is a formal object designed to preserve diagnostic integrity by
 making its own limits explicit.
 
 Within those limits, it provides a coherent and reproducible basis for
 enterprise diagnosis.
 Beyond them, it deliberately remains silent.
+
+%%%End of Document%%%

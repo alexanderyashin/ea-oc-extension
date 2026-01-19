@@ -1,7 +1,7 @@
 % ============================================================
 % paper/frontmatter.tex
 % Front matter: title, status, scope, and immutability anchors
-% (finalized)
+% (finalized) + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \title{The Enterprise Continuum ($K_{\mathrm{EA}}$)\\
@@ -62,6 +62,30 @@ are violated.
 STOP indicates that further diagnosis is undefined within the model,
 not that analysis has failed.
 
+\vspace{3mm}
+
+\noindent\textbf{Verifiability and integrity anchor (not authority).}
+The ETS SHA-256 value above is an integrity anchor for \emph{file identity}.
+It enables reviewers to verify that a given copy of
+\texttt{ETS.K\_EA.v1.1} matches the referenced immutable source.
+It does not assert empirical correctness, scientific validation, or
+external authority.
+Executable closure means that the formal object can be reconstructed
+without interpretive degrees of freedom; it does not imply predictive
+status.
+
+\vspace{3mm}
+
+\noindent\textbf{Reviewer orientation (boundary).}
+This document is designed to be evaluated as:
+(i) a closed formal object (ETS) and its faithful human-readable
+projection (whitepaper),
+(ii) a diagnostic boundary specification (including STOP),
+(iii) a scope-locked non-prescriptive artifact.
+Requests for empirical validation, case studies, prescriptive guidance,
+or optimization are outside the intended document type and are not
+treated as missing content.
+
 \vspace{4mm}
 
 \noindent\textbf{Intended readership.}
@@ -73,3 +97,5 @@ No prior exposure to ESTRA, OC, or $K_{\mathrm{EA}}$ is assumed.
 \vspace{6mm}
 
 \noindent\rule{\linewidth}{0.4pt}
+
+%%%End of Document%%%

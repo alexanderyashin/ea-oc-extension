@@ -1,6 +1,7 @@
 % ============================================================
 % paper/sections/03_formal_definition_k_ea.tex
 % Formal Definition of the Enterprise Continuum K_EA (finalized)
+% + FWHQ-01 foundational hardening additions
 % ============================================================
 
 \section{Formal Definition of the Enterprise Continuum}
@@ -29,8 +30,14 @@ k_{\mathrm{EA}},
 \]
 
 Each component is defined exclusively by projection from the ETS.
-No additional primitives, relations, or interpretive structure are
-introduced at the level of this whitepaper.
+No additional primitives, relations, operators, or interpretive
+structure are introduced at the level of this whitepaper.
+
+The tuple notation is declarative rather than constructive.
+It enumerates the components required for definability of the continuum
+but does not assign numerical values, functional forms, or empirical
+interpretations.
+All formal content resides in the ETS.
 
 \subsection{State Space and Boundary}
 
@@ -45,6 +52,8 @@ continuum or in termination of the continuum itself.
 
 Non-emptiness of $\Omega_{\mathrm{EA}}$ is a necessary condition for the
 existence of $K_{\mathrm{EA}}$ as a diagnosable object.
+This condition is structural and does not depend on performance,
+outcomes, or desirability of states.
 
 \subsection{Axes and Degrees of Freedom}
 
@@ -57,6 +66,9 @@ states nor optimization criteria.
 Their sole function is to render admissible variation explicit and
 structurally comparable.
 
+Axes do not define directions of improvement.
+They define coordinates of admissibility.
+
 \subsection{Potentials and Flows}
 
 Potentials $P_{\mathrm{EA}}$ represent stored structural capacities of
@@ -67,6 +79,9 @@ dynamics and externally imposed constraints.
 No assumptions of equilibrium, efficiency, or optimality are made.
 Potentials and flows are evaluated only with respect to their impact on
 admissibility relative to $\Theta_{\mathrm{EA}}$.
+
+Neither potentials nor flows are interpreted as resources, KPIs, or
+control variables within this document.
 
 \subsection{Thresholds and Admissibility}
 
@@ -85,6 +100,9 @@ Thresholds are expressed as inequalities.
 No numerical values are fixed at the theory level; any values supplied
 externally constitute instantiations rather than definitions.
 
+Thresholds delimit existence and diagnosability.
+They do not rank states or encode preference.
+
 \subsection{Cycles and Persistence}
 
 The set of cycles $C_{\mathrm{EA}}$ specifies the minimal recurrent
@@ -95,6 +113,10 @@ Cycles are structural requirements.
 Their absence or breakdown indicates loss of persistence even when
 instantaneous admissibility conditions remain momentarily satisfied.
 
+Cycles are not operational processes or management constructs.
+They denote the minimal closure conditions required for definability
+over time.
+
 \subsection{Continuity Measure}
 
 The continuity measure $k_{\mathrm{EA}} \in [0,1]$ quantifies the degree
@@ -104,7 +126,10 @@ dynamics.
 A value of $k_{\mathrm{EA}} = 0$ constitutes a hard termination
 condition.
 Intermediate values indicate partial connectivity without implying
-gradual degradation or recoverability.
+gradual degradation, recoverability, or improvement potential.
+
+Continuity expresses the existence of admissible transitions, not their
+quality.
 
 \subsection{Internal Time Scale}
 
@@ -124,5 +149,12 @@ The definition is therefore executable-closed: no external assumptions,
 hidden parameters, or interpretive degrees of freedom are required to
 define the continuum.
 
+Executable closure denotes formal completeness and inspectability.
+It does not imply empirical validation, scientific authority, or
+predictive power.
+
 Executable closure is a necessary condition for reproducibility,
-formal inspection, and reviewer-grade validation.
+formal inspection, and reviewer-grade validation of the specification
+as a closed formal object.
+
+%%%End of Document%%%
