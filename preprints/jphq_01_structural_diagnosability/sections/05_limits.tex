@@ -1,17 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 05_limits.tex
+%
+% Scope limits, non-claims, and falsifiability conditions.
+% This section contains no positive results and introduces no new primitives.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Local helper to avoid overfull boxes from long monospace tokens.
+% Use \providecommand to avoid collisions if the macro is defined elsewhere.
+\providecommand{\ETSK}{\texttt{ETS.\allowbreak K\_EA.\allowbreak v1.1}}
+
 \subsection{What is not claimed}
 We do not claim:
 \begin{itemize}
   \item that diagnosability implies controllability, success, or improvement;
   \item any managerial prescription or actionability;
   \item any empirical KPI-based observability guarantee;
-  \item any universality beyond the ETS.K\_EA.v1.1 and \OC{} scope.
+  \item any universality beyond the scope of \OC{} and \ETSK.
 \end{itemize}
 
 \subsection{What would falsify the main claims}
 The main claims would be falsified if:
 \begin{itemize}
   \item the formal definition of \(D(\KEA)\) cannot be expressed purely in the
-        immutable \OC{} + ETS.K\_EA.v1.1 structures; or
-  \item the ETS representation necessarily requires infinite objects not reducible
-        to finite decision procedures in the intended encoding.
+        immutable structures provided by \OC{} and \ETSK; or
+  \item the ETS representation necessarily requires infinite objects that are not
+        reducible to finite decision procedures in the intended encoding.
 \end{itemize}
+
+%%% End of file %%%
