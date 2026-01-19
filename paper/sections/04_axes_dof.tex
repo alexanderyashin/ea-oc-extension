@@ -1,6 +1,6 @@
 % ============================================================
 % paper/sections/04_axes_dof.tex
-% Axes and Degrees of Freedom (ETS Projection)
+% Axes and Degrees of Freedom (ETS Projection) (finalized)
 % ============================================================
 
 \section{Axes and Degrees of Freedom}
@@ -8,112 +8,130 @@
 \subsection{Role of Axes in the Enterprise Continuum}
 
 Axes in $A_{\mathrm{EA}}$ define the admissible degrees of freedom of the
-enterprise continuum. They do not represent objectives, performance
-targets, or maturity levels. Their sole role is to parameterize
-variation within the admissible state space $\Omega_{\mathrm{EA}}$.
+enterprise continuum.
+They do not represent objectives, performance targets, maturity levels,
+or normative dimensions.
+Their sole function is to parameterize variation within the admissible
+state space $\Omega_{\mathrm{EA}}$.
 
 All axes described in this section are projected directly from
-\texttt{ETS.K\_EA.v1.1}. No additional axes are introduced, and none are
-reinterpreted beyond their structural role.
+\texttt{ETS.K\_EA.v1.1}.
+No additional axes are introduced, and none are reinterpreted beyond
+their structural role as coordinates of admissible variation.
 
 \subsection{Structural Axes}
 
-Structural axes characterize how enterprise components are arranged and
-interconnected.
+Structural axes characterize the internal arrangement and coupling of
+enterprise components.
 
 \begin{itemize}
-  \item \textbf{Coupling}: degree of dependency between components.
-  \item \textbf{Modularity}: extent to which components can vary
-        independently.
-  \item \textbf{Centralization}: concentration of control or decision
+  \item \textbf{Coupling}: degree of dependency among components and
+        subsystems.
+  \item \textbf{Modularity}: extent to which components admit independent
+        variation.
+  \item \textbf{Centralization}: concentration of decision or control
         authority.
-  \item \textbf{Redundancy}: presence of parallel components or pathways.
+  \item \textbf{Redundancy}: presence of parallel components or pathways
+        supporting persistence.
 \end{itemize}
 
-These axes affect the shape and resilience of $\Omega_{\mathrm{EA}}$ but
-do not imply preferred configurations.
+These axes determine the geometry and connectivity of
+$\Omega_{\mathrm{EA}}$.
+They do not encode preferred configurations or architectural ideals.
 
 \subsection{Governance Axes}
 
-Governance axes describe the structural properties of decision-making
-and rule enforcement.
+Governance axes describe structural properties of rule formation,
+decision propagation, and enforcement.
 
 \begin{itemize}
-  \item \textbf{Decision latency}: delay between signal and binding
-        decision.
-  \item \textbf{Rule enforceability}: ability to apply declared rules in
-        practice.
+  \item \textbf{Decision latency}: delay between signal detection and
+        binding decision.
+  \item \textbf{Rule enforceability}: degree to which declared rules are
+        effectively applied.
   \item \textbf{Escalation integrity}: coherence of escalation paths
-        under stress.
+        under stress conditions.
 \end{itemize}
 
-These axes influence admissibility by constraining the dynamics of
-flows and cycles.
+These axes constrain admissible dynamics by shaping flows $J_{\mathrm{EA}}$
+and the closure properties of cycles $C_{\mathrm{EA}}$.
 
 \subsection{Operational Axes}
 
-Operational axes characterize the execution layer of the enterprise.
+Operational axes parameterize execution-level properties of the
+enterprise.
 
 \begin{itemize}
-  \item \textbf{Delivery coherence}: consistency between intent and
-        delivered outcomes.
-  \item \textbf{Incident recovery loop}: ability to close recovery
-        cycles.
+  \item \textbf{Delivery coherence}: consistency between declared intent
+        and realized outcomes.
+  \item \textbf{Incident recovery closure}: ability to close recovery
+        cycles after disruption.
   \item \textbf{Change lead time}: delay between decision and effective
         operational change.
 \end{itemize}
 
-Operational axes primarily affect persistence and stability conditions.
+Operational axes primarily affect persistence and stability rather than
+existence.
+Their violation may degrade continuity without immediately terminating
+admissibility.
 
 \subsection{Resource Axes}
 
-Resource axes describe constraints related to material and human
-resources.
+Resource axes describe constraints associated with material, financial,
+and human resources.
 
 \begin{itemize}
-  \item \textbf{Budget flexibility}: ability to reallocate financial
-        resources.
-  \item \textbf{Skills coverage}: availability of required competencies.
-  \item \textbf{Supplier dependency}: reliance on external providers.
+  \item \textbf{Budget flexibility}: capacity to reallocate financial
+        resources across commitments.
+  \item \textbf{Skills coverage}: availability of competencies required
+        to sustain cycles.
+  \item \textbf{Supplier dependency}: degree of reliance on external
+        providers.
 \end{itemize}
 
-Resource axes constrain potentials $P_{\mathrm{EA}}$ and influence
-structural tension.
+These axes constrain potentials $P_{\mathrm{EA}}$ and contribute to
+structural tension relative to thresholds $\Theta_{\mathrm{EA}}$.
 
 \subsection{Information Axes}
 
-Information axes characterize observability and semantic coherence.
+Information axes characterize observability, trace construction, and
+semantic consistency.
 
 \begin{itemize}
   \item \textbf{Observability}: availability of reliable signals about
-        system state.
-  \item \textbf{Traceability}: ability to reconstruct causal paths.
+        internal state.
+  \item \textbf{Traceability}: ability to reconstruct causal paths
+        across decisions and actions.
   \item \textbf{Semantic alignment}: consistency of meaning across
         organizational units.
 \end{itemize}
 
-Loss of observability directly affects the admissibility of diagnosis
-and may trigger STOP conditions.
+Loss of admissible observability directly constrains diagnosis and may
+trigger termination conditions independent of other axes.
 
 \subsection{Risk Axes}
 
-Risk axes describe the visibility and accumulation of unmanaged
+Risk axes parameterize the accumulation and visibility of unmanaged
 structural risk.
 
 \begin{itemize}
-  \item \textbf{Risk visibility}: ability to detect emerging risks.
-  \item \textbf{Control gap rate}: rate at which control deficits
-        accumulate.
+  \item \textbf{Risk visibility}: ability to detect emerging structural
+        risks.
+  \item \textbf{Control gap rate}: rate at which unmitigated control
+        deficits accumulate.
 \end{itemize}
 
-These axes influence threshold components related to inertia and
-collapse.
+These axes interact with threshold components associated with inertia
+and collapse.
+They do not represent risk appetite or tolerance.
 
 \subsection{Axes as Constraints, Not Goals}
 
-Across all categories, axes are treated as constraints on admissible
-variation. No axis defines a direction of improvement or a desired end
-state.
+Across all groups, axes function exclusively as constraints on
+admissible variation.
+No axis defines a direction of improvement, a target state, or a notion
+of optimality.
 
-Their relevance is determined solely by their interaction with
-thresholds, cycles, and continuity.
+An axis becomes diagnostically relevant only through its interaction
+with thresholds $\Theta_{\mathrm{EA}}$, cycles $C_{\mathrm{EA}}$, and the
+continuity measure $k_{\mathrm{EA}}$.

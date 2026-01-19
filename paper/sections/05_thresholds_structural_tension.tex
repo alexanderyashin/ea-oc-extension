@@ -1,33 +1,41 @@
 % ============================================================
 % paper/sections/05_thresholds_structural_tension.tex
-% Thresholds, f_k Components, and Structural Tension
+% Thresholds, f_k Components, and Structural Tension (finalized)
 % ============================================================
 
 \section{Thresholds, Components, and Structural Tension}
 
 \subsection{Role of Thresholds in the Continuum}
 
-Thresholds $\Theta_{\mathrm{EA}}$ define admissibility limits for the
-enterprise continuum. They separate regions of the state space that are
-structurally permissible from those that are not.
+Thresholds $\Theta_{\mathrm{EA}}$ define the admissibility limits of the
+enterprise continuum.
+They separate regions of the state space that are structurally
+admissible from those in which the continuum is undefined, unstable, or
+non-diagnosable.
 
-Thresholds are not targets, goals, or performance benchmarks. They are
-constraints that determine whether the continuum can exist, persist,
-and remain diagnosable.
+Thresholds are not targets, objectives, or performance benchmarks.
+They are constraints that determine whether the continuum can exist,
+persist, and remain diagnosable under the given structure.
 
 \subsection{Structural Tension and Inequality-Based Formulation}
 
-Structural tension arises when internal dynamics push the enterprise
-state toward threshold boundaries. In the formalism of
-\texttt{ETS.K\_EA.v1.1}, this tension is expressed through component
-functions $f_k$ evaluated as inequalities.
+Structural tension arises when internal dynamics drive the enterprise
+state toward the boundary $\partial\Omega_{\mathrm{EA}}$ defined by the
+thresholds.
 
-No numeric values are fixed at the theory level. The model operates on
-the sign and ordering of these components, not on calibrated magnitudes.
+In \texttt{ETS.K\_EA.v1.1}, structural tension is expressed through a set
+of component functions $f_k$, each evaluated as an inequality.
+The formalism operates on the sign, ordering, and logical combination of
+these components rather than on calibrated numerical magnitudes.
+
+No numerical values are fixed at the theory level.
+Any quantitative instantiation occurs outside the theory and does not
+alter the formal structure.
 
 \subsection{Threshold Components}
 
-The ETS defines the following threshold components:
+The Executable Theory Specification defines the following threshold
+components:
 
 \begin{itemize}
   \item $f_{\text{exist}}$: existence admissibility,
@@ -37,47 +45,59 @@ The ETS defines the following threshold components:
   \item $f_{\text{stop}}$: termination of diagnosis.
 \end{itemize}
 
-Each component corresponds to a subset of $\Theta_{\mathrm{EA}}$ and is
-evaluated independently, subject to precedence rules defined in the
-phase logic.
+Each component corresponds to a subset of $\Theta_{\mathrm{EA}}$.
+Components are evaluated independently, subject to explicit precedence
+rules encoded in the phase logic.
 
 \subsection{Interpretation of Components}
 
 \paragraph{Existence Component ($f_{\text{exist}}$).}
-This component evaluates whether $\Omega_{\mathrm{EA}}$ remains
-non-empty. A positive value indicates violation of existence conditions.
+Evaluates whether the admissible state space $\Omega_{\mathrm{EA}}$
+remains non-empty.
+Violation indicates loss of definability of the enterprise continuum
+itself.
 
 \paragraph{Stability Component ($f_{\text{stab}}$).}
-This component captures the integrity of required cycles over the
-internal time scale $\tau_{\mathrm{EA}}$.
+Evaluates the integrity of required recurrent cycles over the internal
+time scale $\tau_{\mathrm{EA}}$.
+Violation indicates loss of persistence even if instantaneous
+admissibility holds.
 
 \paragraph{Inertia Component ($f_{\text{inertia}}$).}
-This component reflects the inability of the continuum to transition
-between admissible states without external intervention.
+Evaluates the ability of the continuum to transition between admissible
+states under endogenous dynamics.
+Violation indicates structural immobilization without immediate loss of
+existence.
 
 \paragraph{Collapse Component ($f_{\text{collapse}}$).}
-This component signals irreversible loss of structural coherence,
-typically following sustained violation of stability conditions.
+Signals irreversible loss of structural coherence.
+It typically follows sustained violation of stability conditions and
+cannot be interpreted as a reversible state.
 
 \paragraph{Termination Component ($f_{\text{stop}}$).}
-This component encodes conditions under which diagnosis must terminate,
-independent of other indicators.
+Encodes conditions under which diagnosis must terminate regardless of
+other component values.
+This includes loss of observability and violation of compatibility with
+parent continua.
 
-\subsection{No Implicit Optimization}
+\subsection{Absence of Implicit Optimization}
 
 The presence of thresholds does not imply that the enterprise should be
-kept away from them or steered toward any particular region of the state
-space.
+kept distant from them, nor that movement within the admissible region
+is desirable or undesirable.
 
-Thresholds merely define the boundary of admissible diagnosis. Crossing
-certain thresholds invalidates further analysis within the model.
+Thresholds define only the boundary of admissible diagnosis.
+Crossing certain thresholds renders further analysis undefined within
+the model.
 
 \subsection{Structural Tension Versus Performance Stress}
 
-Structural tension is distinct from operational or financial stress. A
-system may experience significant stress while remaining structurally
-admissible.
+Structural tension is distinct from operational, financial, or
+performance-related stress.
+An enterprise may experience severe stress while remaining structurally
+admissible and diagnosable.
 
-Conversely, a system may violate structural thresholds without obvious
-short-term performance degradation. The threshold formalism captures
-this distinction explicitly.
+Conversely, structural thresholds may be violated without immediate or
+visible performance degradation.
+The threshold formalism makes this distinction explicit by separating
+structural admissibility from observed outcomes.

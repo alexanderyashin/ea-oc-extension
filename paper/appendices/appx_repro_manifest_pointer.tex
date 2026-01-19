@@ -1,0 +1,70 @@
+% ============================================================
+% paper/appendices/appx_repro_manifest_pointer.tex
+% Appendix A: Reproducibility Manifest Pointer
+% ============================================================
+
+\section*{Appendix A: Reproducibility Manifest Pointer}
+
+\subsection*{Purpose of This Appendix}
+
+This appendix provides a formal pointer to reproducibility artifacts
+associated with the Enterprise Continuum $K_{\mathrm{EA}}$.
+It does not introduce additional theory, methodology, or executable
+logic.
+
+Its sole purpose is to delimit the relationship between this
+whitepaper, the Executable Theory Specification, and external
+artifacts that may be used for structural reconstruction or audit.
+
+\subsection*{Executable Source of Truth}
+
+The definitive source of truth for the Enterprise Continuum is the
+immutable Executable Theory Specification:
+
+\begin{center}
+\texttt{ETS.K\_EA.v1.1}
+\end{center}
+
+as referenced in the front matter of this document.
+All admissible primitives, relations, thresholds, invariants, and phase
+precedence rules are fully specified therein.
+
+This whitepaper is a human-readable projection of that specification
+and does not modify or extend it.
+
+\subsection*{Reproducibility Scope}
+
+Reproducibility in the context of $K_{\mathrm{EA}}$ is structural rather
+than empirical.
+It refers to the ability to reconstruct the same formal object from the
+same executable specification, not to replicate observed enterprise
+behavior.
+
+External artifacts such as configuration files, manifests, or
+instantiation inputs may exist to support reconstruction, inspection,
+or audit.
+Such artifacts are not part of the theory and carry no independent
+normative or diagnostic authority.
+
+\subsection*{Non-Claims and Boundaries}
+
+This appendix explicitly makes no claims regarding:
+\begin{itemize}
+  \item correctness or completeness of external tooling,
+  \item empirical validity of any instantiation,
+  \item performance, accuracy, or predictive value of results,
+  \item suitability of artifacts for operational or decision-making
+        use.
+\end{itemize}
+
+The presence or absence of external reproducibility artifacts does not
+alter the admissibility conditions, invariants, No-Go results, or STOP
+logic defined by the Executable Theory Specification.
+
+\subsection*{Interpretation Rule}
+
+If any external artifact, reconstruction attempt, or visual output
+appears to contradict the formal results implied by
+\texttt{ETS.K\_EA.v1.1}, the executable specification takes precedence.
+
+Beyond this formal pointer, the appendix deliberately remains silent.

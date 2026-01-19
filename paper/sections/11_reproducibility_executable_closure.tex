@@ -1,67 +1,78 @@
 % ============================================================
 % paper/sections/11_reproducibility_executable_closure.tex
-% Reproducibility and Executable Closure
+% Reproducibility and Executable Closure (finalized)
 % ============================================================
 
 \section{Reproducibility and Executable Closure}
 
 \subsection{Meaning of Reproducibility in This Context}
 
-Reproducibility in $K_{\mathrm{EA}}$ does not refer to repeated empirical
-measurement or statistical replication. It refers to the ability to
-reconstruct the same formal object from the same specification without
-interpretation or invention.
+Reproducibility in the context of $K_{\mathrm{EA}}$ does not refer to
+repeated empirical measurement, statistical replication, or experimental
+repeatability.
+It refers to the ability to reconstruct the same formal object from the
+same specification without interpretation, extension, or invention.
 
-The object of reproduction is the structure of the continuum itself,
-not observed enterprise behavior.
+The object of reproduction is the structure of the enterprise continuum
+itself, not observed enterprise behavior or outcomes.
 
 \subsection{Executable Closure}
 
-The Enterprise Continuum is specified as \emph{executable-closed}. This
-means that all admissible primitives, relations, constraints, and
-precedence rules are contained within the immutable Executable Theory
-Specification \texttt{ETS.K\_EA.v1.1}.
+The enterprise continuum $K_{\mathrm{EA}}$ is specified as
+\emph{executable-closed}.
+All admissible primitives, relations, constraints, precedence rules, and
+termination conditions are contained within the immutable Executable
+Theory Specification \texttt{ETS.K\_EA.v1.1}.
 
-No additional degrees of freedom are introduced by this whitepaper. The
-document serves only as a projection of the ETS into human-readable
-form.
+This whitepaper introduces no additional degrees of freedom.
+It serves solely as a faithful projection of the ETS into a
+human-readable form.
+Any interpretation that relies on elements not present in the ETS lies
+outside the model.
 
 \subsection{Separation of Theory and Instantiation}
 
 The theory-level specification of $K_{\mathrm{EA}}$ is independent of
 any concrete enterprise instantiation.
 
-Numeric values, measurements, or observations may be supplied externally
-to evaluate threshold components or continuity factors. Such values are
-instantiations, not part of the theory.
+Numerical values, measurements, or observations may be supplied
+externally to evaluate threshold components or continuity factors.
+Such values constitute instantiations of the theory, not part of its
+definition.
 
-This separation ensures that theoretical claims are not contaminated by
-data-dependent assumptions.
+This separation ensures that theoretical claims remain invariant under
+changes of data, measurement resolution, or observational perspective.
 
 \subsection{Implications for Tooling}
 
-Executable closure implies that any tooling built on top of
-\texttt{ETS.K\_EA.v1.1} must respect the same admissibility conditions
-and termination rules.
+Executable closure implies that any tooling constructed on top of
+\texttt{ETS.K\_EA.v1.1} must operate strictly within the same admissible
+space.
 
-Tooling may automate evaluation, but it cannot extend or override the
-theory. In particular, no tool may bypass STOP conditions or No-Go
-results without leaving the scope of the model.
+Tools may automate evaluation or visualization, but they may not extend,
+override, or bypass admissibility conditions, phase precedence, STOP
+states, or No-Go results.
+Any such extension constitutes departure from the model rather than an
+alternative implementation.
 
 \subsection{Structural Falsifiability}
 
-The model is falsifiable in a structural sense. If an enterprise is
-claimed to satisfy all admissibility conditions while violating an
-invariant or No-Go result, the claim is inconsistent with the theory.
+$K_{\mathrm{EA}}$ is falsifiable in a structural sense.
+If an enterprise is claimed to satisfy all admissibility conditions
+while simultaneously violating an invariant or No-Go result, the claim
+is inconsistent with the theory.
 
-This form of falsifiability does not depend on empirical calibration. It
-depends on logical consistency with the executable specification.
+This form of falsifiability does not depend on empirical calibration or
+statistical significance.
+It depends solely on logical consistency with the executable
+specification.
 
 \subsection{Role of This Whitepaper}
 
-This whitepaper contributes to reproducibility by making the structure
-of $K_{\mathrm{EA}}$ explicit and inspectable. It does not provide
-reference implementations, datasets, or benchmarks.
+This whitepaper contributes to reproducibility by making the formal
+structure of $K_{\mathrm{EA}}$ explicit, inspectable, and reviewable.
 
-Such artifacts, if they exist, belong outside the scope of this
-document.
+It does not provide reference implementations, datasets, benchmarks, or
+empirical case material.
+Such artifacts, if produced, belong outside the scope of this document
+and do not modify the theory it presents.

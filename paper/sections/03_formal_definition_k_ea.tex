@@ -1,6 +1,6 @@
 % ============================================================
 % paper/sections/03_formal_definition_k_ea.tex
-% Formal Definition of the Enterprise Continuum K_EA
+% Formal Definition of the Enterprise Continuum K_EA (finalized)
 % ============================================================
 
 \section{Formal Definition of the Enterprise Continuum}
@@ -8,11 +8,11 @@
 \subsection{Definition of $K_{\mathrm{EA}}$}
 
 The Enterprise Continuum $K_{\mathrm{EA}}$ is defined as an
-Ontology-of-Continua (OC) continuum instantiated according to the
-immutable Executable Theory Specification
+Ontology-of-Continua (OC) continuum instantiated strictly according to
+the immutable Executable Theory Specification
 \texttt{ETS.K\_EA.v1.1}.
 
-Formally, the continuum is given by the tuple:
+Formally, the continuum is given by the tuple
 \[
 K_{\mathrm{EA}} :=
 \left(
@@ -28,93 +28,101 @@ k_{\mathrm{EA}},
 \right).
 \]
 
-Each component is defined below strictly by projection from the ETS.
-No additional structure is introduced.
+Each component is defined exclusively by projection from the ETS.
+No additional primitives, relations, or interpretive structure are
+introduced at the level of this whitepaper.
 
 \subsection{State Space and Boundary}
 
 The admissible state space $\Omega_{\mathrm{EA}}$ is the set of all
-enterprise states that satisfy the structural constraints encoded in
+enterprise states that satisfy the admissibility constraints encoded in
 $\Theta_{\mathrm{EA}}$.
 
-The boundary $\partial\Omega_{\mathrm{EA}}$ delimits admissible from
-non-admissible states. Crossing this boundary results in either a phase
-transition or termination of the continuum.
+The boundary $\partial\Omega_{\mathrm{EA}}$ separates admissible from
+non-admissible states.
+Crossing this boundary results either in a phase transition within the
+continuum or in termination of the continuum itself.
 
-The non-emptiness of $\Omega_{\mathrm{EA}}$ is a necessary condition for
-the existence of $K_{\mathrm{EA}}$ as a diagnosable object.
+Non-emptiness of $\Omega_{\mathrm{EA}}$ is a necessary condition for the
+existence of $K_{\mathrm{EA}}$ as a diagnosable object.
 
 \subsection{Axes and Degrees of Freedom}
 
 The set of axes $A_{\mathrm{EA}}$ defines the admissible degrees of
-freedom along which enterprise states may vary. Axes are grouped into
-structural, governance, operational, resource, informational, and risk
-dimensions.
+freedom along which enterprise states may vary.
 
-Axes are descriptive, not prescriptive. They do not encode desired
-values or optimization targets. They serve solely to parameterize
-admissible variation within $\Omega_{\mathrm{EA}}$.
+Axes parameterize variation within $\Omega_{\mathrm{EA}}$.
+They are descriptive rather than prescriptive and encode neither target
+states nor optimization criteria.
+Their sole function is to render admissible variation explicit and
+structurally comparable.
 
 \subsection{Potentials and Flows}
 
-Potentials $P_{\mathrm{EA}}$ represent stored structural capacities
-within the enterprise continuum. Flows $J_{\mathrm{EA}}$ describe the
-movement of the system through its state space under internal dynamics
-and external constraints.
+Potentials $P_{\mathrm{EA}}$ represent stored structural capacities of
+the enterprise continuum.
+Flows $J_{\mathrm{EA}}$ describe state transitions induced by internal
+dynamics and externally imposed constraints.
 
-No assumption of equilibrium, efficiency, or optimality is made.
-Potentials and flows are evaluated only insofar as they affect
-admissibility with respect to thresholds.
+No assumptions of equilibrium, efficiency, or optimality are made.
+Potentials and flows are evaluated only with respect to their impact on
+admissibility relative to $\Theta_{\mathrm{EA}}$.
 
 \subsection{Thresholds and Admissibility}
 
 The threshold set $\Theta_{\mathrm{EA}}$ encodes admissibility
-conditions via component functions $f_k$ as specified in the ETS.
+conditions through component functions $f_k$ as specified in
+\texttt{ETS.K\_EA.v1.1}.
 
 Thresholds define limits beyond which:
 \begin{itemize}
-  \item the continuum changes phase,
-  \item structural integrity degrades irreversibly,
-  \item or diagnosis must terminate.
+  \item the continuum undergoes a phase transition,
+  \item structural persistence is lost,
+  \item or diagnosis becomes undefined.
 \end{itemize}
 
-Thresholds are expressed as inequalities. No numeric values are fixed at
-the theory level.
+Thresholds are expressed as inequalities.
+No numerical values are fixed at the theory level; any values supplied
+externally constitute instantiations rather than definitions.
 
 \subsection{Cycles and Persistence}
 
-The set of cycles $C_{\mathrm{EA}}$ defines the minimal recurrent
-processes required for persistence over the internal time scale
-$\tau_{\mathrm{EA}}$.
+The set of cycles $C_{\mathrm{EA}}$ specifies the minimal recurrent
+processes required for persistence of the continuum over its internal
+time scale $\tau_{\mathrm{EA}}$.
 
-Cycles are structural necessities. Their absence or breakdown indicates
-loss of persistence, even if instantaneous admissibility conditions are
-momentarily satisfied.
+Cycles are structural requirements.
+Their absence or breakdown indicates loss of persistence even when
+instantaneous admissibility conditions remain momentarily satisfied.
 
 \subsection{Continuity Measure}
 
 The continuity measure $k_{\mathrm{EA}} \in [0,1]$ quantifies the degree
-of structural connectivity of the continuum.
-
-A value of $k_{\mathrm{EA}} = 0$ represents a hard termination condition.
-Intermediate values indicate partial connectivity under the admissible
+of structural connectivity among admissible states under the defined
 dynamics.
+
+A value of $k_{\mathrm{EA}} = 0$ constitutes a hard termination
+condition.
+Intermediate values indicate partial connectivity without implying
+gradual degradation or recoverability.
 
 \subsection{Internal Time Scale}
 
-The parameter $\tau_{\mathrm{EA}}$ represents the characteristic time
-scale over which cycles must close for the continuum to be considered
-persistent.
+The parameter $\tau_{\mathrm{EA}}$ denotes the characteristic internal
+time scale over which required cycles must close for the continuum to be
+considered persistent.
 
-No assumption is made regarding the correspondence of $\tau_{\mathrm{EA}}$
-to calendar time. It is an internal structural parameter.
+No assumption is made regarding correspondence between
+$\tau_{\mathrm{EA}}$ and calendar or operational time.
+It is a purely internal structural parameter.
 
 \subsection{Executable Closure}
 
 All components of $K_{\mathrm{EA}}$ are fully specified within
-\texttt{ETS.K\_EA.v1.1}. The definition is therefore executable-closed:
-no additional assumptions or external parameters are required to define
-the continuum.
+\texttt{ETS.K\_EA.v1.1}.
+The definition is therefore executable-closed: no external assumptions,
+hidden parameters, or interpretive degrees of freedom are required to
+define the continuum.
 
-This closure is a necessary condition for reproducibility and formal
-review.
+Executable closure is a necessary condition for reproducibility,
+formal inspection, and reviewer-grade validation.

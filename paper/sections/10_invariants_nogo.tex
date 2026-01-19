@@ -1,6 +1,6 @@
 % ============================================================
 % paper/sections/10_invariants_nogo.tex
-% Invariants and No-Go Results
+% Invariants and No-Go Results (finalized)
 % ============================================================
 
 \section{Invariants and No-Go Results}
@@ -8,63 +8,78 @@
 \subsection{Role of Invariants}
 
 Invariants in $K_{\mathrm{EA}}$ express structural properties that hold
-across all admissible states of the enterprise continuum. They are not
-assumptions and not design guidelines; they are consequences of the
-formal specification.
+across all admissible states of the enterprise continuum.
+They are not assumptions, heuristics, or design guidelines.
+They follow necessarily from the formal specification given by
+\texttt{ETS.K\_EA.v1.1}.
 
-Violation of an invariant does not indicate poor performance. It
-indicates that the continuum is no longer well-defined.
+Violation of an invariant does not indicate inefficiency or poor
+performance.
+It indicates that the object under consideration no longer satisfies
+the conditions required to be defined as $K_{\mathrm{EA}}$.
 
 \subsection{Energy of Transformation}
 
-The invariant \emph{Energy of Transformation} states that transitions
-between admissible states require non-zero structural expenditure.
+The invariant \emph{Energy of Transformation} states that any transition
+between admissible enterprise states requires non-zero structural
+expenditure.
 
-There are no cost-free transitions in $K_{\mathrm{EA}}$. Any apparent
-instantaneous or frictionless change implies that the model’s
-admissibility conditions are no longer satisfied.
+There are no cost-free transitions in $K_{\mathrm{EA}}$.
+Any interpretation in which large-scale structural change occurs without
+corresponding impact on thresholds, cycles, or continuity violates the
+formal conditions of admissibility.
 
-This invariant forbids interpretations in which large-scale structural
-change occurs without corresponding impact on thresholds, cycles, or
-continuity.
+Apparent instantaneous or frictionless transformation therefore signals
+loss of definability rather than exceptional efficiency.
 
 \subsection{Parent Compatibility}
 
 The invariant \emph{Parent Compatibility} requires that all admissible
-enterprise states remain compatible with the constraints imposed by the
+enterprise states remain compatible with constraints imposed by the
 parent continuum $K_7$.
 
 An enterprise state that violates parent compatibility is not a degraded
-state of $K_{\mathrm{EA}}$; it is an inadmissible state outside
-$\Omega_{\mathrm{EA}}$.
+or extreme state of $K_{\mathrm{EA}}$.
+It lies outside the admissible state space $\Omega_{\mathrm{EA}}$ and is
+therefore not defined within the continuum.
 
 \subsection{No-Go Results}
 
-No-Go results are formal impossibility statements derived from the ETS.
-They specify transitions or interpretations that are structurally
-forbidden.
+No-Go results are formal impossibility statements derived from the
+Executable Theory Specification.
+They specify transitions, interpretations, or substitutions that are
+structurally forbidden within $K_{\mathrm{EA}}$.
+
+These results delimit the domain in which diagnostic statements remain
+meaningful.
 
 \subsection{Metric Substitution}
 
 The No-Go result \emph{Metric Substitution} forbids replacing structural
-diagnosis with isolated performance metrics.
+diagnosis with isolated scalar performance metrics.
 
-No finite set of scalar metrics can substitute for evaluation of
-admissibility conditions, cycles, and continuity. Attempting to do so
-invalidates diagnostic conclusions.
+No finite set of metrics can substitute for evaluation of admissibility
+conditions, recurrent cycles, and continuity.
+Any attempt to do so collapses the diagnostic object by severing its
+connection to the defining primitives of the continuum.
 
 \subsection{Instant Recovery}
 
 The No-Go result \emph{Instant Recovery} forbids interpretations in which
-an enterprise exits COLLAPSE or STOP states without traversing admissible
-transitions.
+an enterprise exits the COLLAPSE or STOP phase without traversing
+admissible transitions.
 
-Recovery, if it occurs, must involve reconstitution of admissible state
-space and cycles. Instantaneous re-entry into SUCCESS is not defined
+Recovery, if defined at all, requires reconstitution of an admissible
+state space and re-establishment of required cycles.
+Direct re-entry into SUCCESS without such reconstitution is undefined
 within the model.
 
-\subsection{No-Go Results as Guarantees of Integrity}
+\subsection{No-Go Results as Integrity Constraints}
 
-No-Go results do not weaken the model. They protect its internal
-consistency by preventing interpretations that would otherwise
-contradict executable closure or ontological grounding.
+No-Go results do not weaken the model or restrict its applicability.
+They function as integrity constraints that preserve executable closure
+and ontological consistency.
+
+By excluding structurally inconsistent interpretations, they ensure
+that diagnostic statements derived from $K_{\mathrm{EA}}$ remain
+well-defined and reviewable.

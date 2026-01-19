@@ -1,20 +1,22 @@
 % ============================================================
 % paper/sections/07_continuity_k_measure.tex
-% Continuity Measure k_EA
+% Continuity Measure k_EA (finalized)
 % ============================================================
 
 \section{Continuity Measure $k_{\mathrm{EA}}$}
 
 \subsection{Meaning of Continuity in OC}
 
-In the Ontology-of-Continua framework, continuity is not a geometric or
-topological notion in the classical sense. It represents the degree of
-structural connectivity among admissible states under the defined
-dynamics.
+Within the Ontology of Continua, continuity is not a geometric,
+topological, or metric notion in the classical sense.
+It denotes the degree of structural connectivity among admissible states
+under the dynamics permitted by the continuum.
 
 For the enterprise continuum, continuity expresses whether admissible
 states remain mutually reachable without violating thresholds or
 breaking required cycles.
+Continuity therefore concerns definability of transitions, not quality
+of outcomes.
 
 \subsection{Definition of $k_{\mathrm{EA}}$}
 
@@ -22,48 +24,61 @@ The continuity measure $k_{\mathrm{EA}}$ is defined as a scalar quantity
 bounded in the interval $[0,1]$.
 
 A value of $k_{\mathrm{EA}} = 1$ indicates full structural connectivity
-under admissible dynamics. A value of $k_{\mathrm{EA}} = 0$ represents a
-hard structural break and terminates diagnosis.
+among admissible states under the defined dynamics.
+A value of $k_{\mathrm{EA}} = 0$ constitutes a hard structural
+discontinuity, at which point the enterprise continuum ceases to be a
+valid object of diagnosis.
 
-\subsection{Factorization}
+Intermediate values indicate partial connectivity.
+They do not imply gradual degradation, recoverability, or proximity to
+any desirable state.
 
-According to \texttt{ETS.K\_EA.v1.1}, $k_{\mathrm{EA}}$ is factorized into
-the following components:
+\subsection{Factorization of Continuity}
+
+According to \texttt{ETS.K\_EA.v1.1}, the continuity measure
+$k_{\mathrm{EA}}$ is factorized into a finite set of structural
+components:
 
 \begin{itemize}
   \item $H_{\Omega}$: indicator of non-empty admissible state space,
-  \item $S_{\text{cycles}}$: contribution of required cycles,
-  \item $S_{\text{obs}}$: contribution of observability,
+  \item $S_{\text{cycles}}$: contribution of required recurrent cycles,
+  \item $S_{\text{obs}}$: contribution of admissible observability,
   \item $S_{\text{parent}}$: compatibility with parent continua,
   \item $S_{\text{thresholds}}$: compliance with admissibility
         thresholds.
 \end{itemize}
 
-The aggregation rule is multiplicative. Violation of any hard factor
-results in $k_{\mathrm{EA}} = 0$.
+The aggregation rule is multiplicative.
+Violation of any hard component collapses the product and yields
+$k_{\mathrm{EA}} = 0$.
 
-\subsection{Hard Zero Condition}
+\subsection{Hard-Zero Condition}
 
-The factor $H_{\Omega}$ acts as a hard gate. If the admissible state
-space becomes empty, continuity collapses immediately, regardless of
-the values of other factors.
+The factor $H_{\Omega}$ acts as a hard gate on continuity.
+If the admissible state space becomes empty, continuity collapses
+immediately, regardless of the values of all other components.
 
-This reflects the principle that connectivity cannot exist in the
-absence of admissible states.
+This reflects the principle that structural connectivity is undefined in
+the absence of admissible states.
 
 \subsection{Continuity Versus Performance}
 
-Continuity should not be interpreted as a measure of performance,
-efficiency, or success. A highly performant enterprise may exhibit low
-structural continuity, and vice versa.
+Continuity must not be interpreted as a measure of performance,
+efficiency, effectiveness, or success.
+A system may exhibit high operational or financial performance while
+having low structural continuity, and conversely.
 
-The measure exists solely to determine whether diagnosis remains
-structurally admissible.
+The sole function of $k_{\mathrm{EA}}$ is to determine whether diagnosis
+remains structurally admissible within the model.
 
 \subsection{Role in Phase Logic}
 
-The value of $k_{\mathrm{EA}}$ influences phase transitions indirectly
-through its interaction with threshold components and STOP conditions.
+The value of $k_{\mathrm{EA}}$ influences phase logic indirectly through
+its interaction with threshold components and termination conditions.
 
-A decline of continuity toward zero signals approaching termination of
-diagnosis but does not, by itself, prescribe any action.
+A decline of continuity toward zero signals approaching loss of
+diagnosability.
+However, $k_{\mathrm{EA}}$ does not prescribe interventions, targets, or
+responses.
+It serves exclusively as a structural indicator of admissibility within
+the enterprise continuum.
