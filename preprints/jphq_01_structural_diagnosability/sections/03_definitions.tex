@@ -18,20 +18,23 @@
 
 \label{sec:defns}
 
+% Local helper to prevent overfull boxes from long monospace identifiers.
+\newcommand{\ETSK}{\texttt{ETS.\allowbreak K\_EA.\allowbreak v1.1}}
+
 \begin{definition}[Admissible enterprise-continuum instance]
-An \emph{instance} of \KEA{} is an input object that conforms to
-\texttt{ETS.K\_EA.v1.1}. Such an instance determines, without reinterpretation
-or semantic enrichment, the corresponding \OC{} core structures
+An \emph{instance} of \KEA{} is an input object that conforms to \ETSK. Such an
+instance determines, without reinterpretation or semantic enrichment, the
+corresponding \OC{} core structures
 \(\Om(\KEA)\), \(\dOm(\KEA)\), \(\Ax(\KEA)\), \(\Th(\KEA)\), \(\Flow(\KEA)\),
 \(\Cyc(\KEA)\), and \(\kcont(\KEA)\), exactly as specified by \OC{} core and
-\texttt{ETS.K\_EA.v1.1}.
+\ETSK.
 \end{definition}
 
 \begin{definition}[ETS-induced diagnostic predicates]
 Fix an admissible instance of \KEA{}. Let \(\mathsf{Enc}(\KEA)\) denote the
 finite set of ETS-admissible encodings of enterprise states for this instance,
 as determined by the finite representations of axes, potentials, thresholds,
-flows, and cycles prescribed by \texttt{ETS.K\_EA.v1.1}.
+flows, and cycles prescribed by \ETSK.
 
 The \emph{diagnostic predicate family} \(\mathsf{Pred}_D(\KEA)\) is the finite
 set of Boolean predicates over \(\mathsf{Enc}(\KEA)\) defined as follows:
@@ -49,12 +52,12 @@ satisfies all threshold constraints specified by \(\Th(\KEA)\) under
 
 \item \(\mathsf{Val}_{\kcont}(x)\): evaluates to true iff the continuity measure
 \(\kcont(\KEA)\) is well-defined at the decoded state and admits evaluation in
-the numeric domain prescribed by \texttt{ETS.K\_EA.v1.1}.
+the numeric domain prescribed by \ETSK.
 \end{enumerate}
 
 All predicates in \(\mathsf{Pred}_D(\KEA)\) are defined solely in terms of
-\OC{} core structures and \texttt{ETS.K\_EA.v1.1}. No predicate may reference
-intent, KPI signals, interpretation layers, or external annotations.
+\OC{} core structures and \ETSK. No predicate may reference intent, KPI signals,
+interpretation layers, or external annotations.
 \end{definition}
 
 \begin{definition}[Structural diagnosability]
@@ -64,7 +67,7 @@ set \(\mathsf{Enc}(\KEA)\) and predicate family \(\mathsf{Pred}_D(\KEA)\).
 The enterprise continuum \KEA{} is said to be \emph{structurally diagnosable} iff
 for every predicate \(P \in \mathsf{Pred}_D(\KEA)\) and every encoding
 \(x \in \mathsf{Enc}(\KEA)\), the truth value \(P(x)\) is well-defined and
-computable under the \OC{}+\texttt{ETS.K\_EA.v1.1} semantics of the instance.
+computable under the \OC{}+\ETSK{} semantics of the instance.
 
 Structural diagnosability is encoded as the Boolean property
 \[
