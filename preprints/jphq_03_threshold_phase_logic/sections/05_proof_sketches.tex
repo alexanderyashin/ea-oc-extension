@@ -1,0 +1,82 @@
+﻿% PURPOSE: Proof sketches only (finite where possible).
+% TARGET: formal reviewers.
+% LANGUAGE MODE: formal.
+% EVIDENCE PROFILE: internal logical derivations from OC/ETS.
+% ROLE: separate reasoning from claims.
+
+\section{Proof sketches (OC/ETS-constrained)}
+\label{sec:proofs}
+
+All arguments in this section are proof sketches in the strict sense.
+They derive logical consequences directly from ETS predicates, precedence
+ordering, and the phase-level allowance relation. No empirical data,
+dynamical assumptions, or control semantics are invoked.
+
+\subsection{Uniqueness of phase classification}
+
+\begin{proof}[Sketch of Proposition~\ref{prop:unique-phase}]
+Let $s \in \Omega(K_{EA})$ be arbitrary. By construction, each ETS phase
+predicate is Boolean-valued. The phase logic defines a total precedence
+ordering
+\[
+\texttt{STOP} \succ \texttt{COLLAPSE} \succ \texttt{INERTIA} \succ \texttt{SUCCESS}.
+\]
+If more than one predicate evaluates to true at $s$, the precedence ordering
+selects exactly one phase label. Hence the classification map $\Pi(s)$ is
+well-defined and unique for all admissible states.
+\end{proof}
+
+\subsection{Discontinuity at threshold crossings}
+
+\begin{proof}[Sketch of Proposition~\ref{prop:discontinuous}]
+Each phase predicate is defined by strict Boolean conditions on ETS variables,
+such as inequalities of the form $f_k(s) > 0$ or the Boolean predicate
+$\texttt{observability\_lost}(s)$. These predicates partition
+$\Omega(K_{EA})$ into disjoint subsets separated by threshold hypersurfaces.
+A change in predicate truth value therefore induces a jump between distinct
+phase classes. ETS imposes no continuity requirement on the parametrization
+of states, so $\Pi(s)$ may change discontinuously.
+\end{proof}
+
+\subsection{Absorbing nature of \texttt{STOP}}
+
+\begin{proof}[Sketch of Proposition~\ref{prop:stop-absorbing}]
+The ETS allowance relation specifies no outgoing phase transitions from
+\texttt{STOP}. Formally,
+\[
+\texttt{STOP} \Rightarrow \varnothing.
+\]
+Therefore, once a state is classified as \texttt{STOP}, no further phase-level
+transition is admissible.
+\end{proof}
+
+\subsection{Irreversibility of \texttt{COLLAPSE}}
+
+\begin{proof}[Sketch of Proposition~\ref{prop:collapse-no-return}]
+According to ETS, the only admissible outgoing transition from
+\texttt{COLLAPSE} is
+\[
+\texttt{COLLAPSE} \Rightarrow \{\texttt{STOP}\}.
+\]
+No transitions from \texttt{COLLAPSE} to either \texttt{SUCCESS} or
+\texttt{INERTIA} are permitted. Hence return to non-terminal phases is
+excluded at the phase-logic level.
+\end{proof}
+
+\subsection{Non-steerability of phase transitions}
+
+\begin{proof}[Sketch of Proposition~\ref{prop:non-steerable}]
+ETS specifies phase transitions as a guarded allowance relation rather than
+as a dynamical system with admissible trajectories or controls. As a result,
+the existence of phase boundaries or predicates does not entail the existence
+of continuous, controllable, or reversible paths between phase classes.
+\end{proof}
+
+\subsection{Scope of the proof sketches}
+
+\begin{remark}
+The proofs above establish only logical consequences of the ETS structure.
+They make no claims about temporal evolution, causal mechanisms, recovery
+feasibility, or empirical realizability, all of which lie outside the scope
+of this paper.
+\end{remark}

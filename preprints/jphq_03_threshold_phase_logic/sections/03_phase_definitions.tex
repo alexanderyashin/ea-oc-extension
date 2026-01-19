@@ -1,0 +1,95 @@
+﻿% PURPOSE: Define phases as ETS.K_EA.v1.1 predicates and the induced partition of Omega(K_EA).
+% TARGET: referees and formal-methods readers.
+% LANGUAGE MODE: strictly formal.
+% EVIDENCE PROFILE: none (definitions only; predicates are direct ETS transcription).
+% ROLE: definitional firewall: phase identification only, no intervention semantics.
+
+\section{Phase definitions as \texorpdfstring{$\Theta$}{Theta}-induced partitions}
+\label{sec:phases}
+
+\begin{definition}[Phase predicate (ETS-faithful)]
+Let $s \in \Omega(K_{EA})$ be an admissible state. A phase predicate is a Boolean-valued
+function
+\[
+\pi : \Omega(K_{EA}) \rightarrow \{\text{true}, \text{false}\},
+\]
+defined exclusively in terms of variables, components, and predicates already
+present in \artifact{ETS.K_EA.v1.1}.
+\end{definition}
+
+\begin{definition}[Phase logic and precedence (ETS)]
+The ETS phase logic is the totally ordered set
+\[
+\texttt{STOP} \succ \texttt{COLLAPSE} \succ \texttt{INERTIA} \succ \texttt{SUCCESS},
+\]
+where $\succ$ denotes strict precedence. If multiple phase predicates evaluate
+to true for a given state $s$, the phase with highest precedence is assigned.
+\end{definition}
+
+\begin{definition}[ETS phase predicates]
+The phase predicates are transcribed directly from
+\artifact{ETS.K_EA.v1.1} and evaluated pointwise for $s \in \Omega(K_{EA})$:
+\begin{align}
+\pi_{\texttt{STOP}}(s)
+&:= \bigl(f_{\text{exist}}(s) > 0\bigr)
+    \,\lor\, \bigl(f_{\text{stop}}(s) > 0\bigr)
+    \,\lor\, \artifact{observability\_lost}(s),
+    \label{eq:pi-stop} \\[4pt]
+\pi_{\texttt{COLLAPSE}}(s)
+&:= \bigl(f_{\text{collapse}}(s) > 0\bigr)
+    \,\land\, \neg \pi_{\texttt{STOP}}(s),
+    \label{eq:pi-collapse} \\[4pt]
+\pi_{\texttt{INERTIA}}(s)
+&:= \bigl(f_{\text{inertia}}(s) > 0\bigr)
+    \,\land\, \neg\!\bigl(\pi_{\texttt{STOP}}(s)
+                          \lor \pi_{\texttt{COLLAPSE}}(s)\bigr),
+    \label{eq:pi-inertia} \\[4pt]
+\pi_{\texttt{SUCCESS}}(s)
+&:= \bigwedge_{k} \bigl(f_k(s) \le 0\bigr),
+    \label{eq:pi-success}
+\end{align}
+where
+\[
+f_k \in \{f_{\text{exist}}, f_{\text{stab}}, f_{\text{inertia}},
+          f_{\text{collapse}}, f_{\text{stop}}\}
+\]
+are the ETS-defined structural-tension components.
+\end{definition}
+
+\begin{definition}[Phase classes as subsets of $\Omega(K_{EA})$]
+Each phase predicate induces a subset of the admissible state region:
+\[
+\Omega_{\texttt{PHASE}}
+:= \{\, s \in \Omega(K_{EA}) \mid \pi_{\texttt{PHASE}}(s)=\text{true} \,\},
+\quad
+\texttt{PHASE} \in
+\{\texttt{SUCCESS}, \texttt{INERTIA}, \texttt{COLLAPSE}, \texttt{STOP}\}.
+\]
+The effective classification map
+\[
+\Pi : \Omega(K_{EA}) \rightarrow
+\{\texttt{SUCCESS}, \texttt{INERTIA}, \texttt{COLLAPSE}, \texttt{STOP}\}
+\]
+assigns to each state $s$ the unique highest-precedence phase whose predicate
+is satisfied at $s$.
+\end{definition}
+
+\begin{remark}[Diagnostic meaning only]
+Phase membership $\Pi(s)$ is a diagnostic classification of a state under
+ETS predicates. No intervention objective, control policy, recovery claim,
+or optimization target is inferred from $\Pi$ within this paper.
+\end{remark}
+
+\begin{definition}[Allowed phase transitions (ETS)]
+ETS specifies a phase-level allowance relation $\Rightarrow$ given by
+\begin{align}
+\texttt{SUCCESS}  &\Rightarrow \{\texttt{INERTIA}, \texttt{COLLAPSE}, \texttt{STOP}\}, \\
+\texttt{INERTIA}  &\Rightarrow \{\artifact{SUCCESS\_via\_external\_Psi},
+                              \texttt{COLLAPSE}, \texttt{STOP}\}, \\
+\texttt{COLLAPSE} &\Rightarrow \{\texttt{STOP}\}, \\
+\texttt{STOP}     &\Rightarrow \varnothing .
+\end{align}
+This relation specifies admissibility only. In particular, the label
+\artifact{SUCCESS\_via\_external\_Psi} is treated as an ETS-defined symbol and
+does not encode an actionable mechanism or prescription.
+\end{definition}

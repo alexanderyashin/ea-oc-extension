@@ -1,0 +1,86 @@
+﻿% PURPOSE: State formal propositions implied by ETS.K_EA.v1.1 phase logic.
+% TARGET: adversarial referees.
+% LANGUAGE MODE: formal.
+% EVIDENCE PROFILE: internal logical consistency only (ETS-faithful).
+% ROLE: claims layer (diagnostic, non-interventional).
+
+\section{Propositions on threshold-induced transitions}
+\label{sec:props}
+
+\begin{proposition}[Uniqueness of phase classification]
+\label{prop:unique-phase}
+For every admissible state $s \in \Omega(K_{EA})$, the phase classification
+\[
+\Pi(s) \in \{\texttt{SUCCESS}, \texttt{INERTIA}, \texttt{COLLAPSE}, \texttt{STOP}\}
+\]
+is uniquely determined by the ETS phase predicates together with the fixed
+precedence ordering.
+\end{proposition}
+
+\begin{proof}[Sketch]
+By Definition~\ref{sec:phases}, each phase predicate is Boolean-valued.
+If more than one predicate evaluates to true at $s$, the total precedence
+ordering
+\[
+\texttt{STOP} \succ \texttt{COLLAPSE} \succ \texttt{INERTIA} \succ \texttt{SUCCESS}
+\]
+selects exactly one phase label. Hence $\Pi(s)$ is well-defined and unique.
+\end{proof}
+
+\begin{proposition}[Discontinuous reassignment under threshold crossings]
+\label{prop:discontinuous}
+Let $s(\lambda)$ be a parametrized family of states in $\Omega(K_{EA})$.
+If, for some $\lambda^\ast$, the truth value of an ETS phase predicate
+changes due to a threshold crossing (e.g.\ $f_k(s(\lambda))$ changing sign
+or loss of observability), then the induced phase classification
+$\Pi(s(\lambda))$ may change discontinuously at $\lambda^\ast$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Phase predicates are defined by strict Boolean conditions on ETS variables.
+A change in predicate truth value corresponds to crossing the boundary between
+disjoint subsets of $\Omega(K_{EA})$. No continuity requirement on the parameter
+$\lambda$ is imposed by ETS.
+\end{proof}
+
+\begin{proposition}[STOP as an absorbing phase]
+\label{prop:stop-absorbing}
+If $\Pi(s)=\texttt{STOP}$ for some $s \in \Omega(K_{EA})$, then no ETS-allowed
+phase transition exists from $s$ to any other phase class.
+\end{proposition}
+
+\begin{proof}[Sketch]
+The ETS allowance relation specifies $\texttt{STOP} \Rightarrow \varnothing$.
+Therefore, no outgoing phase-level transitions are admissible from STOP.
+\end{proof}
+
+\begin{proposition}[Irreversibility of COLLAPSE at the phase level]
+\label{prop:collapse-no-return}
+If $\Pi(s)=\texttt{COLLAPSE}$, then no ETS-allowed phase transition leads
+directly from COLLAPSE to either SUCCESS or INERTIA.
+\end{proposition}
+
+\begin{proof}[Sketch]
+According to ETS, the only admissible outgoing transition from COLLAPSE is
+$\texttt{COLLAPSE} \Rightarrow \{\texttt{STOP}\}$. No other phase-level
+transitions are permitted.
+\end{proof}
+
+\begin{proposition}[Diagnostic non-steerability]
+\label{prop:non-steerable}
+Phase classification under ETS does not imply the existence of a continuous,
+controllable, or reversible path between phase classes within
+$\Omega(K_{EA})$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+ETS defines phase transitions as a guarded allowance relation, not as a
+dynamical or control system. Consequently, neither reachability nor
+steerability follows from phase identification alone.
+\end{proof}
+
+\begin{remark}[Non-claims]
+The propositions above do not introduce optimization objectives, recovery
+strategies, governance prescriptions, or continuity assumptions. They are
+logical consequences of ETS predicates, precedence, and allowance rules only.
+\end{remark}

@@ -1,0 +1,98 @@
+﻿\documentclass[11pt]{article}
+
+% ------------------------------------------------------------------
+% Minimal, conservative preamble (pdfLaTeX-compatible, journal-safe)
+% ------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+
+% Better line breaking for URLs/paths (safe with pdfLaTeX)
+\usepackage{xurl}
+
+% Hyperref near the end; bookmark stabilizes outlines
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+\geometry{margin=1in}
+
+% ------------------------------------------------------------------
+% Theorem-like environments (formal, non-normative)
+% ------------------------------------------------------------------
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% ------------------------------------------------------------------
+% House macros (typesetting only; prevent overfull boxes for long tokens)
+% Use nolinkurl so LaTeX can break on punctuation safely without creating links.
+% ------------------------------------------------------------------
+\newcommand{\artifact}[1]{\texttt{\nolinkurl{#1}}}
+\newcommand{\kw}[1]{\texttt{\nolinkurl{#1}}}
+
+% ------------------------------------------------------------------
+% Hyperref setup (conservative, avoids PDF string warnings)
+% ------------------------------------------------------------------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+  pdftitle={Threshold-Induced Phase Logic in Socio-Technical Systems},
+  pdfauthor={Alexander Yashin},
+  pdfencoding=auto,
+  psdextra=true,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+}
+
+% If math ever appears in headings later, prevent PDF-string warnings safely.
+\pdfstringdefDisableCommands{%
+  \def\Theta{Theta}%
+  \def\Omega{Omega}%
+  \def\partial{d}%
+  \def\texttt#1{#1}%
+  \def\nolinkurl#1{#1}%
+}
+
+% ------------------------------------------------------------------
+% Metadata
+% ------------------------------------------------------------------
+\title{Threshold-Induced Phase Logic in Socio-Technical Systems:\\
+A Formal Diagnostic Analogy to Physical Continua (OC/ETS-Only)}
+\author{Alexander Yashin}
+\date{\today}
+
+% ------------------------------------------------------------------
+% Document
+% ------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+% ------------------------------------------------------------------
+% Main content (strict order, frozen scope)
+% ------------------------------------------------------------------
+\input{sections/00_abstract.tex}
+\input{sections/01_problem_statement.tex}
+\input{sections/02_formal_setting.tex}
+\input{sections/03_phase_definitions.tex}
+\input{sections/04_phase_propositions.tex}
+\input{sections/05_proof_sketches.tex}
+\input{sections/06_scope_limits_nonclaims.tex}
+\input{sections/07_falsifiability.tex}
+\input{sections/08_literature_positioning.tex}
+
+% ------------------------------------------------------------------
+% Bibliography
+% ------------------------------------------------------------------
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
