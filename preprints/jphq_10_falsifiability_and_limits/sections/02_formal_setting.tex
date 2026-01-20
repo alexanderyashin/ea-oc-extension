@@ -5,6 +5,8 @@ All notions are taken exclusively from the Ontology of Continua (OC Core)
 and its executable specification ETS.K\_EA.
 No new primitives, semantic extensions, or external interpretations are
 introduced.
+All terms are used in their strictly formal sense as defined by the
+executable model.
 
 \medskip
 
@@ -18,8 +20,8 @@ Here, \(\Omega(K_{EA})\) denotes the space of admissible enterprise states,
 while \(A\), \(P\), \(\Theta\), \(J\), \(C\), and \(k\) denote axes,
 potentials, thresholds, flows, cycles, and the continuum measure,
 respectively.
-All admissibility conditions, invariants, and structural constraints are
-fixed by the executable specification.
+All admissibility conditions, invariants, and structural constraints
+governing these components are fixed by the executable specification.
 \end{definition}
 
 \medskip
@@ -43,7 +45,7 @@ by ETS.K\_EA for expressing statements about enterprise states.
 It includes only quantities, relations, predicates, and constraints that
 are explicitly representable within the executable model.
 Statements formulated outside this language are not admissible inputs to
-the model.
+the model and are excluded prior to any semantic or diagnostic evaluation.
 \end{definition}
 
 \medskip
@@ -54,7 +56,8 @@ the observation language whose joint interpretation does not presuppose the
 violation of any axiom, invariant, threshold, or structural constraint
 defining \(\Omega(K_{EA})\).
 Admissibility is a property determined prior to any diagnostic procedure or
-falsifiability assessment.
+falsifiability assessment and is independent of whether the observation is
+informative, decisive, or sufficient for state identification.
 \end{definition}
 
 \medskip
@@ -65,19 +68,23 @@ An admissible observation \(O\) is \emph{compatible} with a model realization
 \(s\) without violating any mandatory invariant, threshold, or structural
 constraint.
 Compatibility does not require uniqueness of the realization and may hold
-for multiple distinct states.
+for multiple distinct states simultaneously.
 \end{definition}
 
 \medskip
 
-\begin{definition}[STOP outcome]
-A \emph{STOP} outcome occurs when no admissible continuation of diagnosis,
-state refinement, or inference exists that preserves compatibility with at
-least one model realization in \(\Omega(K_{EA})\).
-STOP is defined as a terminal condition of the diagnostic procedure and does
-not constitute a statement about the emptiness or inconsistency of
+\begin{remark}[STOP as a procedural notion]
+The \emph{STOP} outcome is a formally defined terminal condition of a
+diagnostic procedure.
+It occurs when no admissible continuation of diagnosis, state refinement,
+or inference exists that preserves compatibility with at least one model
+realization in \(\Omega(K_{EA})\).
+STOP is therefore a property of the diagnostic process rather than a claim
+about the emptiness, inconsistency, or non-existence of
 \(\Omega(K_{EA})\).
-\end{definition}
+A precise treatment of STOP and its logical relation to falsifiability is
+given in Section~\ref{sec:relation-to-stop}.
+\end{remark}
 
 \medskip
 
@@ -89,6 +96,7 @@ This formal setting explicitly separates three layers:
 observation language; and
 (iii) the behavior and termination conditions of diagnostic procedures,
 including STOP.
-All subsequent results on falsifiability and limits operate strictly within
-this interface and rely on no external semantics.
+All subsequent results on falsifiability and formal limits operate strictly
+within this interface and rely on no external semantics or interpretive
+assumptions.
 \end{remark}

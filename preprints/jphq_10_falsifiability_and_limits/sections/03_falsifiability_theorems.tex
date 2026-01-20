@@ -1,20 +1,21 @@
 ﻿\section{Falsifiability criteria}
 \label{sec:falsifiability-criteria}
 
-This section formulates necessary and sufficient conditions under which the
+This section formulates criteria under which the
 enterprise-as-continuum model is formally falsifiable.
 All statements are strictly internal to the Ontology of Continua (OC Core)
 and its executable specification ETS.K\_EA.
-No empirical, managerial, predictive, or external interpretation is implied.
+No empirical, managerial, predictive, or external interpretation is
+implied or required.
 
 \medskip
 
 Falsifiability is defined exclusively in terms of compatibility between
-admissible observations and admissible model realizations in the state space
-\(\Omega(K_{EA})\).
+admissible observations and admissible model realizations in the state
+space \(\Omega(K_{EA})\).
 In particular, falsification is a statement about the non-existence of any
-compatible realization and not about the behavior or outcome of a diagnostic
-procedure.
+compatible realization and not about the behavior, success, or termination
+of a diagnostic procedure.
 
 \medskip
 
@@ -40,50 +41,53 @@ enterprise-as-continuum model.
 \end{theorem}
 
 \begin{proof}
-By definition, internal falsification requires the absence of any compatible
-model realization.
-The existence of at least one realization \(s \in \Omega(K_{EA})\) that is
-compatible with \(O\) therefore excludes falsification.
+By definition, internal falsification requires the absence of any
+compatible model realization.
+The existence of at least one realization
+\(s \in \Omega(K_{EA})\) that is compatible with \(O\) therefore excludes
+falsification.
 \end{proof}
 
 \medskip
 
 \begin{theorem}[Sufficient condition for falsifiability]
 \label{thm:sufficient-falsifiability}
-An admissible observation \(O\) falsifies the enterprise-as-continuum model
-if and only if \(O\) implies the violation of at least one invariant,
-threshold, or structural constraint that is mandatory for all
-\(s \in \Omega(K_{EA})\).
+If an admissible observation \(O\) logically implies inconsistency with at
+least one invariant, threshold, or structural constraint that is mandatory
+for all
+\(s \in \Omega(K_{EA})\),
+then \(O\) falsifies the enterprise-as-continuum model.
 \end{theorem}
 
 \begin{proof}
 All admissible model realizations are defined as elements of
 \(\Omega(K_{EA})\) satisfying the full set of mandatory constraints.
-If \(O\) implies the negation of any such constraint, then no admissible
-realization can exist, and falsification follows.
-Conversely, if \(O\) does not imply the violation of any mandatory
-constraint, at least one compatible realization remains admissible, and
-falsification does not occur.
+If \(O\) implies inconsistency with any such constraint, then no admissible
+realization can exist that is compatible with \(O\).
+By definition, this entails internal falsification of the model.
 \end{proof}
 
 \medskip
 
 \begin{proposition}[Non-falsifying observations]
+\label{prop:nonfalsifying}
 Admissible observations that lead to non-identifiability, underdetermined
 state reconstruction, or the coexistence of multiple compatible model
 realizations do not constitute falsification.
-Such outcomes indicate epistemic limitation, not internal inconsistency of
-the model.
+Such outcomes indicate epistemic limitation rather than internal
+inconsistency of the model.
 \end{proposition}
 
 \medskip
 
 \begin{proposition}[STOP is not falsification]
+\label{prop:stop-not-falsification}
 The occurrence of a \emph{STOP} outcome, defined as the formal impossibility
 of continuing diagnosis without violating admissibility constraints, is a
 non-falsifying result.
-STOP reflects the exhaustion of admissible inference paths and does not
-invalidate the enterprise-as-continuum model.
+STOP reflects the exhaustion of admissible inference paths under the given
+observation interface and does not invalidate the
+enterprise-as-continuum model.
 \end{proposition}
 
 \medskip
@@ -94,6 +98,6 @@ strictly stronger than empirical refutation.
 It occupies a narrow logical interval defined solely by the internal
 consistency of admissible observations with the formal state space
 \(\Omega(K_{EA})\).
-Any failure mode that does not force the compatibility set to be empty is
-explicitly classified as non-falsifying.
+Any outcome that does not force the set of compatible model realizations to
+be empty is explicitly classified as non-falsifying.
 \end{remark}

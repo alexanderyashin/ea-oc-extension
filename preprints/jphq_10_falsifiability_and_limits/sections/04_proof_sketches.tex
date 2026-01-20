@@ -2,8 +2,8 @@
 
 This section provides proof sketches for the falsifiability criteria stated
 in \Cref{sec:falsifiability-criteria}.
-All arguments are purely structural and operate exclusively on the existence
-or non-existence of compatible states in the formal state space
+All arguments are purely structural and operate exclusively on the
+existence or non-existence of compatible states in the formal state space
 \(\Omega(K_{EA})\).
 No assumptions about empirical interpretation, diagnostic heuristics, or
 procedural completeness are involved.
@@ -16,56 +16,53 @@ Assume that there exists at least one model realization
 compatible with \(s\), i.e., all statements in \(O\) can be embedded into
 \(s\) without violating any mandatory invariant, threshold, or structural
 constraint.
-By definition, internal falsification requires the non-existence of any such
-compatible realization.
-The existence of \(s\) therefore excludes falsification.
+By definition, internal falsification requires the absence of any
+compatible model realization.
+The existence of such an \(s\) therefore excludes falsification.
 \end{proof}
 
 \medskip
 
 \begin{proof}[Proof sketch for \Cref{thm:sufficient-falsifiability}]
-(\(\Rightarrow\)) Assume that \(O\) falsifies the enterprise-as-continuum
-model.
-By definition, no model realization
-\(s \in \Omega(K_{EA})\) is compatible with \(O\).
-Hence \(O\) must logically imply the negation of at least one constraint that
-is mandatory for all admissible realizations, i.e., an invariant, threshold,
-or structural constraint.
-
-\smallskip
-
-(\(\Leftarrow\)) Conversely, assume that \(O\) implies the violation of at
-least one mandatory constraint that all
-\(s \in \Omega(K_{EA})\) must satisfy.
-Then no admissible realization can exist that is compatible with \(O\).
-By definition, this entails internal falsification of the model.
+Assume that an admissible observation \(O\) logically implies inconsistency
+with at least one invariant, threshold, or structural constraint that is
+mandatory for all admissible model realizations
+\(s \in \Omega(K_{EA})\).
+By definition, every admissible realization must satisfy all mandatory
+constraints.
+If \(O\) implies inconsistency with any such constraint, then no admissible
+realization can exist that is compatible with \(O\).
+The compatibility set is therefore empty, and internal falsification of the
+enterprise-as-continuum model follows.
 \end{proof}
 
 \medskip
 
-\begin{proof}[Proof sketch for Proposition (Non-falsifying observations)]
+\begin{proof}[Proof sketch for \Cref{prop:nonfalsifying}]
 Non-identifiability or underdetermination means that multiple distinct model
 realizations
 \[
 s_1, s_2, \dots \in \Omega(K_{EA})
 \]
 remain compatible with the same admissible observation \(O\).
-This situation reflects a multiplicity of admissible realizations, not a
-logical contradiction.
-Since at least one compatible realization exists, the compatibility set is
-non-empty and falsification does not occur.
+This situation reflects a multiplicity of admissible realizations rather
+than a logical contradiction.
+Since at least one compatible realization exists, the set of compatible
+states is non-empty and falsification does not occur.
 \end{proof}
 
 \medskip
 
-\begin{proof}[Proof sketch for Proposition (STOP is not falsification)]
-A STOP outcome asserts that no further admissible refinement or continuation
-of the diagnostic process is possible without violating model constraints.
+\begin{proof}[Proof sketch for \Cref{prop:stop-not-falsification}]
+A \emph{STOP} outcome asserts that no further admissible refinement or
+continuation of the diagnostic process is possible without violating model
+constraints.
 It is therefore a statement about the limits of admissible inference under
 the given observation interface.
-Crucially, STOP does not assert that the set
-\(\Omega(K_{EA})\) is empty, nor that no compatible realization exists.
-Hence STOP cannot imply falsification.
+Crucially, STOP does not assert that the state space
+\(\Omega(K_{EA})\) is empty, nor that no compatible model realization
+exists.
+Hence a STOP outcome cannot imply falsification.
 \end{proof}
 
 \medskip
@@ -82,7 +79,8 @@ Internal falsification is equivalent to the condition
 \(\Omega_O = \varnothing\).
 The enterprise-as-continuum model is therefore falsifiable precisely to the
 extent that admissible observations can, in principle, force the emptiness
-of \(\Omega_O\) by contradicting mandatory constraints.
+of \(\Omega_O\) by inducing internal inconsistency with mandatory
+constraints.
 All other outcomes correspond to non-empty compatibility sets and are
 explicitly non-falsifying.
 \end{remark}
