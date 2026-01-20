@@ -31,3 +31,6 @@ preprints/**/main.pdf
 
 # Local safety backups
 *.bak
+
+# build artifacts (root)
+/main.pdf
