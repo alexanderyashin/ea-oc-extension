@@ -1,24 +1,27 @@
 \section{Falsifiability}
+\label{sec:falsifiability}
 
-All results in this paper are formulated so as to admit explicit
-falsification \emph{within} the Ontology of Continua (OC Core) and the
-executable specification ETS.K\_EA.v1.1. Falsifiability is defined
-strictly at the level of admissible observability constructs and logical
-invariance properties; no external semantics, methods, or assumptions
-are required.
+All results in this paper are formulated so as to admit explicit and
+unambiguous falsification \emph{within} the Ontology of Continua (OC
+Core) and the executable specification ETS.K\_EA.v1.1. Falsifiability is
+defined strictly at the level of admissible observability constructs
+and logical invariance properties. No external semantics, empirical
+methods, or auxiliary assumptions are invoked or required.
 
 \subsection{Falsifiability of decidability claims}
+\label{subsec:falsifiability-decidable}
 
-A decidability claim for a state predicate $\varphi$ asserts invariance
-of $\varphi$ across all enterprise continua that are observationally
-equivalent under the ETS-defined observation operator $\Pi$.
+A decidability claim for a state predicate $\varphi$ asserts that
+$\varphi$ is invariant across all enterprise continua that are
+observationally equivalent under the ETS-defined observation operator
+$\Pi$.
 
 Such a claim is falsified if and only if there exist:
 \begin{itemize}
 \item two enterprise continua $K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ that are
       observationally equivalent, i.e.\
       \[
-      \Pi(\Omega_{EA}^{(1)}) = \Pi(\Omega_{EA}^{(2)});
+      \Pi(\Omega_{EA}^{(1)}) = \Pi(\Omega_{EA}^{(2)}),
       \]
 \item an admissible state predicate $\varphi$ such that
       \[
@@ -26,20 +29,25 @@ Such a claim is falsified if and only if there exist:
       \]
 \end{itemize}
 
-The existence of such a pair constitutes a direct counterexample and
-invalidates the decidability claim. No probabilistic or algorithmic
-considerations enter this criterion.
+The existence of such a pair constitutes a direct logical
+counterexample and invalidates the decidability claim. No probabilistic,
+algorithmic, asymptotic, or methodological considerations enter this
+criterion. A single counterexample suffices.
 
 \subsection{Falsifiability of undecidability claims}
+\label{subsec:falsifiability-undecidable}
 
 An undecidability claim asserts the \emph{existence} of at least one
 observational equivalence class on which a predicate $\varphi$ is
 non-invariant.
 
-Such a claim is falsified if it can be shown that:
+Such a claim is falsified if and only if it can be shown that
+$\varphi$ is invariant across \emph{all} observational equivalence
+classes. Concretely, falsification occurs if at least one of the
+following holds:
 \begin{itemize}
 \item for every pair of observationally equivalent enterprise continua,
-      the predicate $\varphi$ agrees; equivalently,
+      the predicate $\varphi$ agrees;
 \item there exists a mapping
       \[
       \tilde{\varphi} : \Sigma_{\mathrm{obs}} \to
@@ -48,28 +56,32 @@ Such a claim is falsified if it can be shown that:
       such that $\varphi = \tilde{\varphi} \circ \Pi$.
 \end{itemize}
 
-Either condition establishes invariance of $\varphi$ over all
-observational equivalence classes and contradicts the undecidability
-result.
+Either condition establishes global invariance of $\varphi$ under
+observational equivalence and therefore contradicts the undecidability
+claim.
 
 \subsection{Falsifiability of STOP-only claims}
+\label{subsec:falsifiability-stop-only}
 
-STOP-only decidability claims assert a one-sided invariance: STOP
-membership is invariant under observational equivalence, while
+STOP-only decidability claims assert a one-sided invariance structure:
+STOP membership is invariant under observational equivalence, while
 non-STOP outcomes are not.
 
-Such a claim is falsified by either of the following:
+Such a claim is falsified if and only if at least one of the following
+conditions holds:
 \begin{itemize}
-\item the existence of observationally equivalent enterprise continua
-      for which STOP holds in one case but not in the other;
-\item a demonstration that at least one non-STOP phase outcome is also
-      invariant across all observationally equivalent continua.
+\item there exist observationally equivalent enterprise continua for
+      which STOP holds in one case but not in the other;
+\item there exists at least one non-STOP phase outcome that is invariant
+      across all observationally equivalent continua.
 \end{itemize}
 
 The first case violates STOP invariance directly. The second collapses
-the STOP-only classification into full decidability.
+the STOP-only classification into full decidability, contradicting the
+original claim.
 
 \subsection{Observable-signature-level refutation}
+\label{subsec:falsifiability-signatures}
 
 All falsification conditions reduce to statements about observable
 signatures in $\Sigma_{\mathrm{obs}}$ and their compatibility with
@@ -77,12 +89,13 @@ OC/ETS-admissible predicates. No falsification requires access to
 unobservable internal structure beyond what is already constrained by
 ETS observability.
 
-In particular, a single admissible observable signature
-$\sigma \in \Sigma_{\mathrm{obs}}$ that is compatible with mutually
-inconsistent predicate values is sufficient to refute any claim of
-decidability for that predicate.
+In particular, the existence of a single admissible observable
+signature $\sigma \in \Sigma_{\mathrm{obs}}$ that is compatible with
+mutually inconsistent predicate values is sufficient to refute any
+claim of decidability for the corresponding predicate.
 
 \subsection{No meta-level escape}
+\label{subsec:no-meta-escape}
 
 No result in this paper can be falsified or defended by appeal to
 improved measurement, richer data streams, probabilistic modeling, or
@@ -91,4 +104,4 @@ appeal would constitute a change of formal system and therefore lies
 outside the scope of admissible falsification for the present results.
 
 Within OC Core and ETS.K\_EA.v1.1, falsifiability is complete and
-exhaustive at the level specified above.
+exhaustive at the logical level specified above.

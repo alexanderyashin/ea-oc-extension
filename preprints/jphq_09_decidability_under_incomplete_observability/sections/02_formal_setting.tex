@@ -1,12 +1,14 @@
 \section{Formal setting}
+\label{sec:formal-setting}
 
 This section fixes the formal framework used throughout the paper.
 All symbols, objects, and relations are taken exclusively from the
 Ontology of Continua (OC Core) and the executable specification
-ETS.K\_EA.v1.1. No extensions, reinterpretations, or auxiliary
-formalisms are introduced.
+ETS.K\_EA.v1.1. No extensions, reinterpretations, auxiliary formalisms,
+or external semantics are introduced.
 
 \subsection{Enterprise continuum}
+\label{subsec:enterprise-continuum}
 
 An enterprise is modeled as a continuum $K_{EA}$ with the following
 components, as defined in ETS.K\_EA.v1.1:
@@ -29,24 +31,25 @@ Here:
 \begin{itemize}
 \item $\Omega_{EA}$ is the internal state space of the enterprise
       continuum;
-\item $\partial\Omega_{EA}$ denotes its boundary, including collapse-
-      and STOP-relevant regions;
-\item $A_{EA}$ is the set of admissible axes;
-\item $P_{EA}$ denotes potentials associated with the axes;
-\item $\Theta_{EA}$ is the set of thresholds;
-\item $J_{EA}$ represents flows;
+\item $\partial\Omega_{EA}$ denotes its boundary, including regions
+      relevant for collapse and STOP conditions;
+\item $A_{EA}$ is the set of admissible structural axes;
+\item $P_{EA}$ denotes potentials associated with these axes;
+\item $\Theta_{EA}$ is the set of admissible thresholds;
+\item $J_{EA}$ represents internal flows;
 \item $C_{EA}$ denotes admissible cycles;
 \item $k_{EA}$ is the continuity measure;
 \item $\tau_{EA}$ is the internal time parameter.
 \end{itemize}
 
-No assumptions are made beyond those already fixed in the executable
+No assumptions are made beyond those explicitly fixed in the executable
 specification.
 
 \subsection{Admissible phase logic}
+\label{subsec:phase-logic}
 
 The enterprise continuum admits the following phase outcomes, treated
-as mutually exclusive predicates over $\Omega_{EA}$:
+as mutually exclusive state predicates over $\Omega_{EA}$:
 \[
 \text{OK}, \quad \text{INERTIA}, \quad \text{COLLAPSE}, \quad \text{STOP}.
 \]
@@ -54,30 +57,35 @@ as mutually exclusive predicates over $\Omega_{EA}$:
 These phases are defined in ETS in terms of threshold relations,
 boundary interactions, and structural conditions. In particular,
 $\text{STOP}$ denotes a terminal or boundary condition at which further
-meaningful state discrimination is no longer admissible.
+meaningful state discrimination within the enterprise continuum is no
+longer admissible.
 
 Throughout this paper, phase outcomes are treated purely as logical
-state predicates. No dynamic transition rules, recovery mechanisms, or
-intervention semantics are assumed.
+predicates. No dynamic transition rules, recovery mechanisms, temporal
+ordering of phases, or intervention semantics are assumed or implied.
 
 \subsection{Observability constructs}
+\label{subsec:observability-constructs}
 
 Observability is restricted to the constructs already present in ETS.
 Let:
 \begin{itemize}
 \item $\Omega_{\mathrm{obs}} \subseteq \Omega_{EA}$ denote the observable
       projection of the enterprise state space;
-\item $\Sigma_{\mathrm{obs}}$ denote the space of observable signatures;
+\item $\Sigma_{\mathrm{obs}}$ denote the space of admissible observable
+      signatures;
 \item $\Pi$ denote the observation operator
       $\Pi : \Omega_{EA} \rightarrow \Sigma_{\mathrm{obs}}$.
 \end{itemize}
 
 The operator $\Pi$ captures all admissible observations. No additional
-measurement channels, inferred quantities, or reconstructed states are
-permitted. In particular, $\Pi$ is not assumed to be injective, and
-distinct internal states may induce identical observable signatures.
+measurement channels, inferred quantities, reconstructed states, or
+derived observables are permitted. In particular, $\Pi$ is not assumed
+to be injective: distinct internal states may induce identical
+observable signatures.
 
 \subsection{Observational consistency}
+\label{subsec:observational-consistency}
 
 For a given observable signature
 $\sigma \in \Sigma_{\mathrm{obs}}$, the set of internally compatible
@@ -85,22 +93,22 @@ enterprise states is given by:
 \[
 \Pi^{-1}(\sigma) \subseteq \Omega_{EA}.
 \]
-This set may contain multiple, structurally distinct internal states
-or even entire continua that are observationally indistinguishable.
 
-All results in this paper are formulated in terms of invariance or
-non-invariance of predicates over such sets.
+This set may contain multiple, structurally distinct internal states or
+even entire enterprise continua that are observationally
+indistinguishable. All results in this paper are formulated in terms of
+invariance or non-invariance of predicates over such sets.
 
-\subsection{Meta-constraints}
+\subsection{Global meta-constraints}
+\label{subsec:meta-constraints}
 
-The following constraints apply globally:
-
+The following constraints apply globally throughout the paper:
 \begin{itemize}
-\item No inference, estimation, or reconstruction procedures are used
-      or implied.
+\item No inference, estimation, or reconstruction procedures are used or
+      implied.
 \item No probabilistic or statistical assumptions are introduced.
-\item No algorithmic decidability notions are employed; decidability
-      is treated as a logical property only.
+\item No algorithmic or computational notions of decidability are
+      employed; decidability is treated strictly as a logical property.
 \item No prescriptions, interventions, control strategies, or
       governance interpretations are derived.
 \end{itemize}

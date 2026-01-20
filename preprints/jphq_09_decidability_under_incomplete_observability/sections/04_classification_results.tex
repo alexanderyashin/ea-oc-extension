@@ -1,4 +1,5 @@
 \section{Classification results}
+\label{sec:classification}
 
 This section presents the core results of the paper. All results are
 negative or classificatory in nature: they identify which classes of
@@ -8,26 +9,33 @@ All statements are formulated strictly within OC Core and
 ETS.K\_EA.v1.1.
 
 \subsection{Decidable predicates}
+\label{subsec:decidable-predicates}
 
 \begin{proposition}[Observationally invariant predicates]
+\label{prop:observational-invariance}
 Let $\varphi$ be a state predicate defined exclusively in terms of
 observable signatures in $\Sigma_{\mathrm{obs}}$, i.e.\ there exists a
 mapping
 \[
 \tilde{\varphi} : \Sigma_{\mathrm{obs}} \to \{\text{true},\text{false}\}
 \]
-such that $\varphi = \tilde{\varphi} \circ \Pi$.
+such that
+\[
+\varphi = \tilde{\varphi} \circ \Pi.
+\]
 Then $\varphi$ is decidable under incomplete observability.
 \end{proposition}
 
 \noindent
 This proposition characterizes the maximal class of trivially decidable
-predicates: those whose truth value depends only on what is directly
-observable. No claim is made that such predicates are structurally rich,
+predicates: those whose truth value depends only on admissible observable
+signatures. No claim is made that such predicates are structurally rich,
 informative, or diagnostically meaningful; only their logical
-decidability is asserted.
+decidability in the sense of Definition~\ref{sec:definitions} is
+asserted.
 
 \begin{theorem}[Decidability of STOP boundary predicates]
+\label{thm:stop-decidability}
 Any predicate $\varphi_{\mathrm{STOP}}$ that is equivalent to membership
 of the enterprise continuum in a STOP region of
 $\partial\Omega_{EA}$ is decidable under incomplete observability,
@@ -36,13 +44,17 @@ equivalence class.
 \end{theorem}
 
 \noindent
-This result reflects the special status of STOP in ETS: STOP corresponds
+This result reflects the special status of STOP in ETS. STOP corresponds
 to a boundary condition whose observable consequences dominate all
-internally compatible states.
+internally admissible states compatible with a given observable
+signature. Under the stated invariance condition, STOP becomes a class
+property of observational equivalence.
 
 \subsection{Undecidable predicates}
+\label{subsec:undecidable-predicates}
 
 \begin{theorem}[Structural undecidability]
+\label{thm:structural-undecidability}
 Let $\varphi$ be a state predicate that depends on at least one internal
 OC/ETS element not uniquely determined by $\Sigma_{\mathrm{obs}}$
 (e.g.\ internal axes, potentials, flows, cycles, or threshold margins).
@@ -54,16 +66,18 @@ In particular, predicates that depend on:
 \begin{itemize}
 \item internal configuration within $\Omega_{EA}$ away from
       $\partial\Omega_{EA}$;
-\item relative ordering or margin of thresholds $\Theta_{EA}$ not
-      observable through $\Pi$;
+\item relative ordering, distance, or margin of thresholds
+      $\Theta_{EA}$ not observable through $\Pi$;
 \item existence, stability, or coupling structure of internal cycles
       $C_{EA}$;
 \item magnitudes or directions of flows $J_{EA}$ not uniquely encoded in
       observable signatures,
 \end{itemize}
-are undecidable in the sense defined in Section~\ref{sec:definitions}.
+are undecidable in the sense of
+Definition~\ref{subsec:decidability}.
 
 \begin{corollary}[Undecidability of non-terminal phase distinctions]
+\label{cor:nonterminal-undecidability}
 Predicates distinguishing between non-STOP phase outcomes (e.g.\ OK
 versus INERTIA, or INERTIA versus COLLAPSE) are undecidable under
 incomplete observability whenever the corresponding phase conditions
@@ -73,15 +87,17 @@ are not observationally invariant.
 \noindent
 This corollary formalizes the impossibility of reliably distinguishing
 most non-terminal enterprise states solely from admissible
-observations.
+observations, even in the absence of noise or data limitations.
 
 \subsection{STOP-only decidability}
+\label{subsec:stop-only-decidability}
 
 \begin{theorem}[STOP-only classification]
+\label{thm:stop-only}
 Let $\varphi$ be a phase predicate taking values in
 $\{\text{OK}, \text{INERTIA}, \text{COLLAPSE}, \text{STOP}\}$.
-If STOP membership is observationally invariant, but the remaining phase
-values are not, then $\varphi$ is STOP-only decidable.
+If STOP membership is observationally invariant, while the remaining
+phase values are not, then $\varphi$ is STOP-only decidable.
 \end{theorem}
 
 \noindent
@@ -97,8 +113,10 @@ boundary states may be decidable, while all interior distinctions
 collapse under observational equivalence.
 
 \subsection{Exhaustiveness of the classification}
+\label{subsec:exhaustiveness}
 
 \begin{proposition}[Exhaustive trichotomy]
+\label{prop:exhaustive-trichotomy}
 Every admissible enterprise state predicate falls into exactly one of
 the following classes under incomplete observability:
 \begin{enumerate}

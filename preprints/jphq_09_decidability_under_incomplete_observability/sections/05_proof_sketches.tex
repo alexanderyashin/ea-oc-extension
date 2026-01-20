@@ -1,51 +1,71 @@
 \section{Proof sketches}
+\label{sec:proof_sketches}
 
 This section provides proof sketches for the classification results.
 All arguments are existence- and invariance-based. No reconstruction,
-inference, optimization, or algorithmic procedures are used.
+inference, optimization, algorithmic procedures, or asymptotic limits
+are used.
 
-\subsection{Proof sketch for Proposition~4.1 (observational invariance)}
+\subsection{Proof sketch for Proposition~\ref{prop:observational-invariance}
+(observational invariance)}
 
 Assume that $\varphi = \tilde{\varphi} \circ \Pi$ for some mapping
-$\tilde{\varphi} : \Sigma_{\mathrm{obs}} \to \{\text{true},\text{false}\}$.
+\[
+\tilde{\varphi} : \Sigma_{\mathrm{obs}} \to \{\text{true},\text{false}\}.
+\]
 Let $K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ be observationally equivalent
-enterprise continua, so that
-$\Pi(\Omega_{EA}^{(1)}) = \Pi(\Omega_{EA}^{(2)})$.
+enterprise continua, i.e.
+\[
+\Pi(\Omega_{EA}^{(1)}) = \Pi(\Omega_{EA}^{(2)}).
+\]
 
-For any internally admissible state $s$ in either continuum, its
-observable signature $\Pi(s)$ belongs to the same observable set in
-both cases. Since $\tilde{\varphi}$ depends exclusively on the
-observable signature, the value of $\varphi(s)$ cannot differ across
-members of the observational equivalence class. Hence $\varphi$ is
-decidable under incomplete observability.
+For any internally admissible state
+$s \in \Omega_{EA}^{(1)} \cup \Omega_{EA}^{(2)}$, the observable
+signature $\Pi(s)$ belongs to the same observable signature set in both
+continua. Since $\tilde{\varphi}$ depends exclusively on the observable
+signature, the value of $\varphi(s)$ cannot differ across members of the
+same observational equivalence class.
 
-The argument is purely extensional: decidability follows from the fact
-that the predicate factors through the observation operator.
+Therefore, $\varphi$ is invariant across all observationally equivalent
+enterprise continua and is decidable under incomplete observability.
 
-\subsection{Proof sketch for Theorem~4.2 (decidability of STOP predicates)}
+The argument is purely extensional: decidability follows solely from the
+fact that the predicate factors through the observation operator.
+
+\subsection{Proof sketch for Theorem~\ref{thm:stop-decidability}
+(decidability of STOP boundary predicates)}
 
 The theorem assumes that STOP membership corresponds to a boundary
 condition in $\partial\Omega_{EA}$ whose observable consequences are
 invariant across any observational equivalence class.
 
-Under this assumption, if a given observable signature is compatible
-with STOP for one internally admissible enterprise state, then every
-internally compatible state must also lie in the STOP region. STOP
-therefore becomes a class property of observational equivalence, and
-the corresponding predicate is decidable.
+Under this assumption, if a given observable signature $\sigma \in
+\Sigma_{\mathrm{obs}}$ is compatible with STOP for at least one
+internally admissible enterprise state, then every internally
+admissible state compatible with $\sigma$ must also lie in the STOP
+region.
+
+Hence STOP membership becomes a class property of observational
+equivalence, rather than a property of individual internal states.
+The corresponding predicate $\varphi_{\mathrm{STOP}}$ is therefore
+decidable under incomplete observability.
 
 This proof relies only on the ETS-defined relationship between STOP and
-$\partial\Omega_{EA}$, together with the stipulated invariance
-condition. No additional structural assumptions are introduced.
+$\partial\Omega_{EA}$, together with the stated invariance condition.
+No additional structural assumptions are introduced.
 
-\subsection{Proof sketch for Theorem~4.3 (structural undecidability)}
+\subsection{Proof sketch for Theorem~\ref{thm:structural-undecidability}
+(structural undecidability)}
 
 Let $\varphi$ be a predicate that depends on at least one internal
 OC/ETS element not uniquely determined by observable signatures.
-To establish undecidability, it suffices to construct two
+
+To establish undecidability, it suffices to exhibit two
 observationally equivalent enterprise continua
-$K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ such that $\varphi$ evaluates
-differently.
+$K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ such that
+\[
+\varphi(\Omega_{EA}^{(1)}) \neq \varphi(\Omega_{EA}^{(2)}).
+\]
 
 The construction follows a standard indistinguishability argument:
 
@@ -53,35 +73,45 @@ The construction follows a standard indistinguishability argument:
 \item Fix an admissible observable signature set
       $S \subseteq \Sigma_{\mathrm{obs}}$.
 \item Consider the observational consistency set
-      $\Pi^{-1}(S) \subseteq \Omega_{EA}$, containing all internal
-      states compatible with $S$.
+      $\Pi^{-1}(S) \subseteq \Omega_{EA}$ containing all internally
+      admissible states compatible with $S$.
 \item By hypothesis, $\varphi$ depends on an internal feature not fixed
       by $S$. Therefore, there exist internally admissible states
       $s^{(1)}, s^{(2)} \in \Pi^{-1}(S)$ such that
-      $\varphi(s^{(1)}) \neq \varphi(s^{(2)})$.
+      \[
+      \varphi(s^{(1)}) \neq \varphi(s^{(2)}).
+      \]
 \item Lift these states into two enterprise continua realizing the same
       observable signature set $S$ but differing with respect to the
       relevant internal feature. Then
-      $\Pi(\Omega_{EA}^{(1)}) = \Pi(\Omega_{EA}^{(2)})$ while
-      $\varphi(\Omega_{EA}^{(1)}) \neq \varphi(\Omega_{EA}^{(2)})$.
+      \[
+      \Pi(\Omega_{EA}^{(1)}) = \Pi(\Omega_{EA}^{(2)})
+      \quad\text{while}\quad
+      \varphi(\Omega_{EA}^{(1)}) \neq \varphi(\Omega_{EA}^{(2)}).
+      \]
 \end{enumerate}
 
 This establishes undecidability directly from the existence of
 non-trivial observational equivalence classes.
 
-\subsection{Proof sketch for Corollary~4.4 (non-terminal phase distinctions)}
+\subsection{Proof sketch for Corollary~\ref{cor:nonterminal-undecidability}
+(non-terminal phase distinctions)}
 
 Assume that two non-STOP phase outcomes (e.g.\ OK and INERTIA) are
 defined via internal conditions that are not observationally invariant.
+
 The predicate distinguishing these outcomes therefore depends on
 internal features not uniquely determined by
-$\Sigma_{\mathrm{obs}}$.
+$\Sigma_{\mathrm{obs}}$. By
+Theorem~\ref{thm:structural-undecidability}, there exist
+observationally equivalent enterprise continua that differ with respect
+to the phase predicate.
 
-By Theorem~4.3, there exist observationally equivalent enterprise
-continua that differ with respect to the phase predicate. Consequently,
-no admissible observation can decide the distinction.
+Consequently, no admissible observation can decide the distinction
+between such non-terminal phase outcomes.
 
-\subsection{Proof sketch for Theorem~4.5 (STOP-only classification)}
+\subsection{Proof sketch for Theorem~\ref{thm:stop-only}
+(STOP-only classification)}
 
 Let $\varphi$ be a phase predicate taking values in
 $\{\text{OK}, \text{INERTIA}, \text{COLLAPSE}, \text{STOP}\}$.
@@ -91,28 +121,31 @@ remaining phase values are not.
 \begin{itemize}
 \item \emph{STOP decidability.} By invariance, if any internally
       admissible state compatible with an observable signature is STOP,
-      then all compatible states are STOP. Hence STOP is decidable.
+      then all internally admissible states compatible with that same
+      signature are STOP. Hence STOP is decidable.
 \item \emph{Non-STOP undecidability.} For any non-STOP value, lack of
       invariance implies the existence of observationally equivalent
-      continua for which $\varphi$ takes different non-STOP values.
-      Hence non-STOP outcomes are undecidable.
+      enterprise continua for which $\varphi$ takes different non-STOP
+      values. Hence non-STOP outcomes are undecidable.
 \end{itemize}
 
 Therefore, $\varphi$ is STOP-only decidable.
 
-\subsection{Proof sketch for Proposition~4.6 (exhaustiveness)}
+\subsection{Proof sketch for Proposition~\ref{prop:exhaustive-trichotomy}
+(exhaustiveness)}
 
 For any admissible predicate $\varphi$, consider its behavior on each
 observational equivalence class induced by $\Pi$.
 
 \begin{enumerate}
 \item If $\varphi$ is constant on every equivalence class, then it is
-      decidable by Definition~3.4.
+      decidable by Definition~\ref{sec:definitions}.
 \item If $\varphi$ is non-constant on at least one equivalence class,
-      then it is undecidable by Definition~3.5, unless a one-sided
-      invariance holds for STOP.
+      then it is undecidable by Definition~\ref{sec:definitions},
+      unless a one-sided invariance holds for STOP.
 \item If STOP is invariant while non-STOP values are not, then
-      $\varphi$ is STOP-only decidable by Definition~3.6.
+      $\varphi$ is STOP-only decidable by
+      Definition~\ref{sec:definitions}.
 \end{enumerate}
 
 These cases exhaust all possibilities, yielding the stated trichotomy.

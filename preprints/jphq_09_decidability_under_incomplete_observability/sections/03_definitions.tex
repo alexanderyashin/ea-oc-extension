@@ -1,4 +1,5 @@
 \section{Definitions}
+\label{sec:definitions}
 
 This section introduces the formal notions required to reason about
 decidability of enterprise states under incomplete observability.
@@ -8,6 +9,7 @@ ETS.K\_EA.v1.1. No new primitives, operators, or interpretative layers
 are introduced.
 
 \subsection{Observable domain}
+\label{subsec:observable-domain}
 
 Let $K_{EA}$ denote an enterprise continuum with internal state space
 $\Omega_{EA}$ and boundary $\partial\Omega_{EA}$, equipped with axes
@@ -15,8 +17,8 @@ $A_{EA}$, potentials $P_{EA}$, thresholds $\Theta_{EA}$, flows $J_{EA}$,
 cycles $C_{EA}$, continuity measure $k_{EA}$, and internal time
 $\tau_{EA}$, as defined in ETS.K\_EA.v1.1.
 
-Observability is defined via the admissible observation constructs
-already present in ETS. Let
+Observability is defined exclusively via the admissible observation
+constructs already present in ETS. Let
 \[
 \Omega_{\mathrm{obs}} \subseteq \Omega_{EA}
 \]
@@ -24,21 +26,22 @@ denote the observable projection of the enterprise continuum, and let
 \[
 \Sigma_{\mathrm{obs}}
 \]
-denote the space of observable signatures induced by admissible
-observations. The observation operator $\Pi$ maps internal states to
-observable signatures:
+denote the space of admissible observable signatures. The observation
+operator is defined as
 \[
 \Pi : \Omega_{EA} \to \Sigma_{\mathrm{obs}}.
 \]
+
 No assumptions are made about injectivity, surjectivity, continuity, or
-invertibility of $\Pi$ beyond what is explicitly specified in ETS.
+invertibility of $\Pi$ beyond what is explicitly fixed in ETS.
 
 \subsection{Observational equivalence}
+\label{subsec:observational-equivalence}
 
 \begin{definition}[Observational equivalence]
 Two enterprise continua $K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ are said to be
-\emph{observationally equivalent} if their observable signatures
-coincide:
+\emph{observationally equivalent} if their induced observable signature
+sets coincide:
 \[
 \Pi\!\left(\Omega_{EA}^{(1)}\right)
 =
@@ -48,32 +51,42 @@ coincide:
 \end{definition}
 
 Observational equivalence induces equivalence classes over the space of
-enterprise continua. All elements within such a class are
-indistinguishable by any admissible observation, even if their internal
-structures differ in axes, potentials, flows, cycles, or thresholds.
+enterprise continua. All members of such a class are indistinguishable
+by any admissible observation, even if their internal structures differ
+in axes, potentials, flows, cycles, or threshold configurations.
 
 \subsection{Enterprise state predicates}
+\label{subsec:state-predicates}
 
 Enterprise states are not identified with full internal configurations
 in $\Omega_{EA}$, but with \emph{state predicates} defined over
-admissible OC/ETS elements. Typical examples include predicates
-corresponding to admissible phase outcomes (OK, INERTIA, COLLAPSE,
-STOP), satisfaction or violation of threshold conditions, or membership
-in specific regions of $\Omega_{EA}$ or $\partial\Omega_{EA}$.
+admissible OC/ETS elements.
 
-Formally, a state predicate is a mapping
+Typical examples include predicates corresponding to admissible phase
+outcomes (OK, INERTIA, COLLAPSE, STOP), satisfaction or violation of
+threshold conditions, or membership in specific regions of
+$\Omega_{EA}$ or $\partial\Omega_{EA}$.
+
+\begin{definition}[State predicate]
+A state predicate is a mapping
 \[
 \varphi : \Omega_{EA} \to \{\text{true},\text{false}\},
 \]
-with $\varphi$ defined solely using OC/ETS constructs and relations.
+where $\varphi$ is defined solely using OC/ETS-admissible constructs and
+relations.
+\end{definition}
+
+No operational, temporal, inferential, or methodological interpretation
+is attached to state predicates.
 
 \subsection{Decidability under incomplete observability}
+\label{subsec:decidability}
 
 \begin{definition}[Decidability]
 A state predicate $\varphi$ is said to be \emph{decidable under
 incomplete observability} if, for all enterprise continua
-$K_{EA}^{(1)}, K_{EA}^{(2)}$ that are observationally equivalent, the
-predicate agrees:
+$K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ that are observationally equivalent,
+the predicate agrees:
 \[
 \Pi\!\left(\Omega_{EA}^{(1)}\right)
 =
@@ -85,15 +98,15 @@ predicate agrees:
 \]
 \end{definition}
 
-Decidability is thus a purely logical property: it requires invariance
-of the predicate across all members of an observational equivalence
-class. No algorithmic, statistical, inferential, or operational
-interpretation is implied.
+Decidability is a purely logical property: it requires invariance of the
+predicate across all members of an observational equivalence class. No
+algorithmic, statistical, inferential, or operational interpretation is
+implied.
 
 \begin{definition}[Undecidability]
 A state predicate $\varphi$ is \emph{undecidable under incomplete
 observability} if there exist two observationally equivalent enterprise
-continua $K_{EA}^{(1)}, K_{EA}^{(2)}$ such that
+continua $K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ such that
 \[
 \varphi\!\left(\Omega_{EA}^{(1)}\right)
 \neq
@@ -101,11 +114,12 @@ continua $K_{EA}^{(1)}, K_{EA}^{(2)}$ such that
 \]
 \end{definition}
 
-Undecidability expresses the impossibility of determining the truth
-value of $\varphi$ from any admissible observation, regardless of data
-volume, observational persistence, or analytical sophistication.
+Undecidability expresses the logical impossibility of determining the
+truth value of $\varphi$ from any admissible observation, regardless of
+data volume, observational persistence, or analytical sophistication.
 
 \subsection{STOP-only predicates}
+\label{subsec:stop-only}
 
 Certain predicates admit a one-sided form of certification tied to
 boundary conditions.
@@ -123,10 +137,11 @@ A predicate $\varphi$ is \emph{STOP-only decidable} if:
 
 STOP-only decidability captures the diagnosability boundary emphasized
 in ETS: certain terminal or boundary conditions can be certified, while
-non-terminal states remain logically undecidable under incomplete
+all non-terminal states remain logically undecidable under incomplete
 observability.
 
 \subsection{Separation of observability and decidability}
+\label{subsec:obs-vs-decidability}
 
 \begin{lemma}[Observability does not imply decidability]
 The existence of a non-trivial observable projection
@@ -137,6 +152,6 @@ any non-trivial state predicate.
 \noindent
 This lemma formalizes the strict separation between observability
 (the availability of observable signatures) and decidability (logical
-invariance of predicates under observational equivalence). The
-remainder of the paper relies on this separation as a structural
-constraint, not as a methodological choice.
+invariance of predicates under observational equivalence). The remainder
+of the paper relies on this separation as a structural constraint, not
+as a methodological choice.

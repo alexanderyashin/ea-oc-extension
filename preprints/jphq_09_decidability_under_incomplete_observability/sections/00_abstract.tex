@@ -1,37 +1,40 @@
 \begin{abstract}
-This paper addresses a single, frozen question: which enterprise states
-are logically decidable, and which are provably undecidable, under
-incomplete observability when enterprises are modeled as continua
-$K_{EA}$ within the Ontology of Continua (OC Core) and its executable
-specification ETS.K\_EA.v1.1.
+This paper addresses a single, fixed question: which enterprise state
+predicates are logically decidable, and which are provably undecidable,
+under incomplete observability when enterprises are modeled as
+continua $K_{EA}$ within the Ontology of Continua (OC Core) and its
+executable specification ETS.K\_EA.v1.1.
 
-Decidability is treated strictly as a logical property of state
-predicates, not as an algorithmic, statistical, inferential, or
-procedural notion. Observability is formalized exclusively through the
-ETS-defined observation operator and observable signature space, and is
-explicitly separated from decidability. No inference, reconstruction,
-probabilistic assumptions, or control semantics are introduced.
+Decidability is treated strictly as a logical property of predicates
+under observational equivalence. It is explicitly separated from
+algorithmic decidability, statistical inference, estimation,
+reconstruction, or procedural decision-making. Observability is
+formalized solely through the ETS-defined observation operator and the
+associated space of observable signatures, without assuming injectivity,
+invertibility, convergence, or completeness.
 
-We show that an enterprise state predicate is decidable if and only if
-it is invariant over the observational equivalence classes induced by
-admissible observations. Predicates that depend on internal structural
-features not fixed by observable signatures are shown to be undecidable
-by construction. As a central negative result, we prove that most
-non-terminal phase distinctions cannot be decided under incomplete
-observability.
+We show that a state predicate is decidable under incomplete
+observability if and only if it is invariant across all observational
+equivalence classes induced by admissible observations. Predicates that
+depend on internal structural features not uniquely fixed by observable
+signatures are undecidable by construction. As a central negative
+result, we prove that most non-terminal phase distinctions cannot be
+decided under incomplete observability.
 
 A sharp boundary case is identified in the form of \emph{STOP-only
-decidability}: under explicit OC/ETS conditions, STOP can be certified
-as a terminal outcome even when all non-STOP phase distinctions remain
-undecidable. This yields a complete trichotomy of enterprise state
-predicates into decidable, undecidable, and STOP-only decidable classes.
+decidability}: under explicit OC/ETS conditions, STOP membership is
+observationally invariant and therefore decidable, even though all
+non-STOP phase distinctions remain undecidable. This yields a complete
+trichotomy of admissible enterprise state predicates into decidable,
+undecidable, and STOP-only decidable classes.
 
 All results are fully internal to the OC/ETS formalism and are
 explicitly falsifiable at the level of observable signatures. The paper
-makes no claims about estimation, governance, optimization, or
-intervention, and establishes formal limits on what can and cannot be
-decided about enterprise states from admissible observations alone.
+introduces no inference, probabilistic assumptions, governance models,
+optimization criteria, or intervention semantics, and establishes
+formal limits on what can and cannot be decided about enterprise states
+from admissible observations alone.
 \end{abstract}
 
-\noindent\textbf{Keywords:} enterprise continuum; partial observability;
+\noindent\textbf{Keywords:} enterprise continuum; incomplete observability;
 logical decidability; indistinguishability; diagnosability; STOP.
