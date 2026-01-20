@@ -3,37 +3,36 @@
 
 This section formalizes the relationship between admissibility,
 falsifiability, and the \emph{STOP} outcome.
-Although these notions interact operationally within diagnostic
-procedures, they occupy strictly distinct logical roles in the Ontology of
-Continua (OC Core) and the executable specification ETS.K\_EA.
-Failure to distinguish these roles leads to category errors in the
+Although these notions interact within diagnostic procedures, they occupy
+strictly distinct logical roles in the Ontology of Continua (OC Core) and
+the executable specification ETS.K\_EA.
+Failure to separate these roles leads to category errors in the
 interpretation of diagnostic results.
 
 \medskip
 
 \begin{definition}[Admissibility domain]
 The \emph{admissibility domain} is the set of all observations, inferences,
-and state transitions that are expressible without violating the axioms,
+and state transitions that can be expressed without violating the axioms,
 invariants, thresholds, and structural constraints defining the state space
 \(\Omega(K_{EA})\).
-Only elements belonging to this domain are considered meaningful inputs to
-the model.
+Only elements belonging to this domain are meaningful inputs to the model.
 Elements outside the admissibility domain are excluded prior to any
-diagnostic or falsifiability assessment.
+diagnostic, inferential, or falsifiability assessment.
 \end{definition}
 
 \medskip
 
 \begin{remark}[STOP as a procedural outcome]
 A \emph{STOP} outcome is a formally defined terminal state of a diagnostic
-process.
+procedure.
 It occurs when no admissible continuation of diagnosis, state refinement,
 or inference exists without violating at least one mandatory model
 constraint, while the existence of admissible model realizations in
 \(\Omega(K_{EA})\) is not negated.
-STOP is therefore a property of the diagnostic procedure rather than a
-statement about the emptiness, inconsistency, or non-existence of the model
-state space itself.
+STOP is therefore a property of the diagnostic process and not a statement
+about the emptiness, inconsistency, or non-existence of the model state
+space itself.
 \end{remark}
 
 \medskip
@@ -43,18 +42,18 @@ Falsifiability is evaluated only after admissibility has been established.
 Observations that are ill-formed, externally defined, or not representable
 within the formal vocabulary of ETS.K\_EA are excluded prior to any
 falsifiability assessment.
-Inadmissible inputs are rejected without semantic interpretation and do not
+Inadmissible inputs are rejected syntactically and semantically and do not
 give rise to falsifying statements.
 \end{proposition}
 
 \medskip
 
 \begin{proposition}[STOP implies non-falsification]
-If a diagnostic process terminates in a STOP outcome, the
+If a diagnostic procedure terminates in a STOP outcome, the
 enterprise-as-continuum model is not falsified.
 STOP signifies exhaustion of admissible inference paths under the given
 observation interface and constraint set, not violation of model axioms,
-invariants, thresholds, or structural requirements.
+invariants, thresholds, or structural constraints.
 \end{proposition}
 
 \medskip
@@ -71,7 +70,7 @@ without exceeding admissibility bounds.
 \medskip
 
 \begin{proposition}[Logical ordering of diagnostic outcomes]
-For any diagnostic process operating within the admissibility domain, the
+For any diagnostic procedure operating within the admissibility domain,
 possible terminal outcomes are strictly ordered as follows:
 \[
 \text{inadmissible input}
@@ -83,7 +82,7 @@ possible terminal outcomes are strictly ordered as follows:
 \text{STOP}.
 \end{cases}
 \]
-No admissible diagnostic process can yield both falsification and STOP
+No admissible diagnostic procedure can yield both falsification and STOP
 simultaneously.
 \end{proposition}
 

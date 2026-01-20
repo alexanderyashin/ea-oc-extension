@@ -1,7 +1,7 @@
 ﻿\section{Falsifiability criteria}
 \label{sec:falsifiability-criteria}
 
-This section formulates criteria under which the
+This section formulates necessary and sufficient criteria under which the
 enterprise-as-continuum model is formally falsifiable.
 All statements are strictly internal to the Ontology of Continua (OC Core)
 and its executable specification ETS.K\_EA.
@@ -13,7 +13,7 @@ implied or required.
 Falsifiability is defined exclusively in terms of compatibility between
 admissible observations and admissible model realizations in the state
 space \(\Omega(K_{EA})\).
-In particular, falsification is a statement about the non-existence of any
+Accordingly, falsification is a statement about the non-existence of any
 compatible realization and not about the behavior, success, or termination
 of a diagnostic procedure.
 
@@ -41,8 +41,8 @@ enterprise-as-continuum model.
 \end{theorem}
 
 \begin{proof}
-By definition, internal falsification requires the absence of any
-compatible model realization.
+Internal falsification requires that no compatible model realization
+exists.
 The existence of at least one realization
 \(s \in \Omega(K_{EA})\) that is compatible with \(O\) therefore excludes
 falsification.
@@ -52,26 +52,25 @@ falsification.
 
 \begin{theorem}[Sufficient condition for falsifiability]
 \label{thm:sufficient-falsifiability}
-If an admissible observation \(O\) logically implies inconsistency with at
-least one invariant, threshold, or structural constraint that is mandatory
-for all
-\(s \in \Omega(K_{EA})\),
-then \(O\) falsifies the enterprise-as-continuum model.
+An admissible observation \(O\) falsifies the enterprise-as-continuum model
+if it logically entails inconsistency with at least one invariant,
+threshold, or structural constraint that is mandatory for all
+\(s \in \Omega(K_{EA})\).
 \end{theorem}
 
 \begin{proof}
 All admissible model realizations are defined as elements of
 \(\Omega(K_{EA})\) satisfying the full set of mandatory constraints.
-If \(O\) implies inconsistency with any such constraint, then no admissible
-realization can exist that is compatible with \(O\).
-By definition, this entails internal falsification of the model.
+If \(O\) entails inconsistency with any such constraint, then no admissible
+realization compatible with \(O\) can exist.
+By definition, this constitutes internal falsification.
 \end{proof}
 
 \medskip
 
 \begin{proposition}[Non-falsifying observations]
 \label{prop:nonfalsifying}
-Admissible observations that lead to non-identifiability, underdetermined
+Admissible observations that result in non-identifiability, underdetermined
 state reconstruction, or the coexistence of multiple compatible model
 realizations do not constitute falsification.
 Such outcomes indicate epistemic limitation rather than internal

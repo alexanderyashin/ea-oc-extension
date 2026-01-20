@@ -1,33 +1,39 @@
 ﻿\begin{abstract}
 This paper provides a strictly formal analysis of the falsifiability of the
 enterprise-as-continuum model as defined within the Ontology of Continua
-(OC Core) and its executable specification ETS.K\_EA.
-The investigation is confined to the model's internal logical interface and
+(OC Core) and its executable specification ETS.K\_EA~\cite{occore,etsk_ea}.
+The investigation is confined to the model’s internal logical interface and
 deliberately excludes empirical, managerial, predictive, or policy-oriented
 interpretations.
 
-Falsifiability is defined as an internal property of the formal system.
+Falsifiability is defined as an internal property of the formal system, in
+explicit distinction from empirical falsification criteria in the classical
+sense~\cite{popper1959logic}.
 An admissible observation \(O\) is said to falsify the model if and only if
 it entails that no admissible model realization exists that is compatible
 with \(O\) in the state space \(\Omega(K_{EA})\); equivalently, the
 observation forces internal inconsistency with at least one mandatory
 invariant, threshold, or structural constraint that defines
 \(\Omega(K_{EA})\).
-Within this setting, the paper provides a precise characterization of the
-conditions under which such internal falsification occurs.
+Within this setting, the paper derives a precise characterization of the
+necessary and sufficient conditions under which such internal falsification
+occurs.
 
 The analysis further draws sharp boundaries between falsification and a
 range of formally distinct phenomena, including non-identifiability,
 underdetermination, logical undecidability, and the \emph{STOP} outcome.
-STOP is treated as a first-class diagnostic termination condition that
-signals the exhaustion of admissible inference paths under the given
+Undecidability is treated as a limitation of inference rather than a form
+of falsification, in line with classical results in formal logic and
+computability theory~\cite{church1936unsolvable,turing1937computable,godel1931incompleteness}.
+STOP is characterized as a first-class diagnostic termination condition
+that signals the exhaustion of admissible inference paths under the given
 observation interface, rather than a failure or refutation of the model.
 
-The result is a restrictive characterization of what the
+The result is a restrictive and fully explicit account of what the
 enterprise-as-continuum model can, and cannot, be falsified by.
 Falsification is possible in principle, but only through demonstrable
-internal inconsistency; all other apparent failure modes are explicitly
-classified as non-falsifying by construction.
+internal inconsistency; all other apparent failure modes are classified as
+non-falsifying by construction.
 \end{abstract}
 
 \noindent\textbf{Keywords:} enterprise continuum; ontology of continua;
