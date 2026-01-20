@@ -1,36 +1,49 @@
 ﻿\section{Falsifiability}
 
-The results are falsified if one can \emph{explicitly construct} an intervention
-operator $\mathcal{I}$ and a nontrivial domain $D\subseteq\Omega$ such that all
-of the following hold:
+The results of this work are falsifiable in the strict Popperian sense.
+They are refuted if and only if one can \emph{explicitly construct} an
+intervention operator $\mathcal{I}$ together with a nontrivial domain
+$D\subseteq\Omega$ such that \emph{all} of the following conditions hold
+simultaneously.
 
 \begin{enumerate}
-\item \textbf{Boundary action:} $\mathcal{I}$ acts across $\partial\Omega$
-(Definition in Section~3), i.e., it genuinely confronts constraint-tight regions
-rather than remaining an interior re-parameterization.
+\item \textbf{Boundary action.}
+$\mathcal{I}$ acts across $\partial\Omega$ (Definition in Section~3), i.e., it
+genuinely confronts constraint-tight regions rather than remaining an interior
+re-parameterization of $\Omega$.
 
-\item \textbf{Threshold preservation:} $\mathcal{I}$ is $\Theta$-preserving on
-$D$:
+\item \textbf{Threshold preservation.}
+$\mathcal{I}$ is $\ThetaSys$-preserving on $D$:
 \[
-\ThetaSys(\omega)\le 0 \Rightarrow \ThetaSys(\mathcal{I}(\omega))\le 0
+\ThetaSys(\omega)\le 0 \;\Rightarrow\;
+\ThetaSys(\mathcal{I}(\omega))\le 0
 \quad \forall \omega\in D.
 \]
 
-\item \textbf{No continuity loss:} $\mathcal{I}$ does not reduce continuity on
-$D$:
+\item \textbf{No continuity loss.}
+$\mathcal{I}$ does not reduce structural continuity on $D$:
 \[
-k(\mathcal{I}(\omega)) \ge k(\omega) \quad \forall \omega\in D.
+k(\mathcal{I}(\omega)) \ge k(\omega)
+\quad \forall \omega\in D.
 \]
 
-\item \textbf{No phase transition:} $\mathcal{I}$ is phase-preserving on $D$:
+\item \textbf{No phase transition.}
+$\mathcal{I}$ is phase-preserving on $D$:
 \[
-\Phase(\mathcal{I}(\omega))=\Phase(\omega) \quad \forall \omega\in D.
+\Phase(\mathcal{I}(\omega))=\Phase(\omega)
+\quad \forall \omega\in D.
 \]
 \end{enumerate}
 
+Failure of any single condition does \emph{not} constitute a refutation.
+Only the simultaneous satisfaction of (1)--(4) on a non-negligible domain $D$
+invalidates Theorem~\ref{thm:no_free} and thereby refutes the structural limits
+derived in this work.
+
 \paragraph{Operational refutation test (ETS-consistent).}
-A direct refutation path is to implement $\mathcal{I}$ in an executable
+A concrete refutation path is to implement $\mathcal{I}$ in an executable
 environment consistent with ETS.K\_EA.v1.1 and demonstrate that, for a family of
-states sampling a neighborhood that includes constraint-tight regions,
-properties (1)--(4) hold simultaneously with non-negligible $D$.
-Any such explicit construction refutes Theorem~\ref{thm:no_free}.
+states sampling neighborhoods that include constraint-tight regions, properties
+(1)--(4) hold simultaneously on a domain $D$ of non-negligible measure.
+Any such explicit construction constitutes a direct operational refutation of
+Theorem~\ref{thm:no_free}.

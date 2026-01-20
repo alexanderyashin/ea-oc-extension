@@ -1,67 +1,74 @@
 ﻿\section{Limit Theorems}
 
-All statements are \emph{structural} consequences of:
-(i) threshold-defined admissibility $\Omega=\{\ThetaSys\le 0\}$,
-(ii) existence of a boundary $\partial\Omega$,
+All statements below are \emph{structural} consequences of:
+(i) threshold-defined admissibility
+$\Omega=\{\omega\in\mathcal{S}\mid\ThetaSys(\omega)\le 0\}$,
+(ii) the existence of a nontrivial admissibility boundary $\partial\Omega$,
 (iii) a continuity measure $k$ defined on $\Omega$, and
-(iv) an OC/ETS-consistent phase partition with terminal $\STOP$.
+(iv) an OC/ETS-consistent phase partition with terminal phase $\STOP$.
+No additional axioms or optimization principles are assumed.
 
 \begin{theorem}[Admissibility saturation region]
 \label{thm:saturation}
-There exist (possibly empty) regions $\Omega^\ast\subseteq \Omega$ adjacent to
-$\partial\Omega$ such that any boundary-crossing intervention $\mathcal{I}$
-either
+If the admissible boundary $\partial\Omega$ contains constraint-tight states
+(i.e.\ points where at least one component of $\ThetaSys$ is active), then there
+exist regions $\Omega^\ast\subseteq\Omega$ arbitrarily close to $\partial\Omega$
+such that any intervention $\mathcal{I}$ acting across $\partial\Omega$ either
 \begin{enumerate}
-\item is not $\ThetaSys$-preserving on $\Omega^\ast$, or
+\item fails to be $\ThetaSys$-preserving on $\Omega^\ast$, or
 \item must restrict its domain so that
-$\Omega^\ast \cap \Dom(\mathcal{I})=\emptyset$.
+$\Omega^\ast\cap\Dom(\mathcal{I})=\emptyset$.
 \end{enumerate}
 \end{theorem}
 
 \begin{theorem}[No-free boundary intervention]
 \label{thm:no_free}
-Let $\mathcal{I}$ be an intervention that acts across $\partial\Omega$ and is
-$\ThetaSys$-preserving on its domain.
-Then at least one of the following must occur:
+Let $\mathcal{I}$ be an intervention operator that acts across $\partial\Omega$
+and is $\ThetaSys$-preserving on its domain.
+Then it is impossible for $\mathcal{I}$ to be both continuity-nondecreasing and
+phase-preserving on all of $\Dom(\mathcal{I})$.
+
+Equivalently, at least one of the following must occur:
 \begin{enumerate}
-\item (\textbf{Continuity loss}) there exists $\omega\in\Dom(\mathcal{I})$ with
-$\Delta k(\omega) < 0$;
-\item (\textbf{Phase transition}) there exists $\omega\in\Dom(\mathcal{I})$ such
-that $\Phase(\mathcal{I}(\omega))\neq \Phase(\omega)$.
+\item (\textbf{Continuity loss}) there exists
+$\omega\in\Dom(\mathcal{I})$ such that
+$k(\mathcal{I}(\omega))<k(\omega)$;
+\item (\textbf{Phase transition}) there exists
+$\omega\in\Dom(\mathcal{I})$ such that
+$\Phase(\mathcal{I}(\omega))\neq\Phase(\omega)$.
 \end{enumerate}
-Equivalently: one cannot simultaneously have a boundary-crossing,
-$\ThetaSys$-preserving operator with non-decreasing $k$ and phase preservation.
 \end{theorem}
 
 \begin{proposition}[Perfectly safe operators are interior-limited]
 \label{prop:trivial}
-Assume $\mathcal{I}$ is $\ThetaSys$-preserving, phase-preserving, and satisfies
-$k(\mathcal{I}(\omega))\ge k(\omega)$ for all $\omega\in\Dom(\mathcal{I})$.
-If $\mathcal{I}$ also avoids $\partial\Omega$ (i.e.\ does not act across the
-boundary), then $\mathcal{I}$ is confined to interior dynamics of $\Omega$:
-it cannot realize macroscopic structural change that requires crossing
-admissibility constraints.
+Assume that an intervention $\mathcal{I}$ is $\ThetaSys$-preserving,
+phase-preserving, and satisfies
+$k(\mathcal{I}(\omega))\ge k(\omega)$ for all
+$\omega\in\Dom(\mathcal{I})$.
+If $\mathcal{I}$ does not act across $\partial\Omega$, then it is confined to
+interior transformations of $\Omega$ and cannot realize changes whose
+feasibility is blocked by admissibility constraints at the boundary.
 \end{proposition}
 
 \begin{theorem}[
-  \texorpdfstring{$\STOP$}{STOP} irreversibility\\
-  (terminality)
+  \texorpdfstring{$\STOP$}{STOP} irreversibility (terminality)
 ]
 \label{thm:stop}
 If there exists $\omega\in\Dom(\mathcal{I})$ such that
-$\Phase(\mathcal{I}(\omega))=\STOP$, then no further $\ThetaSys$-preserving
-intervention sequence can restore $\OK$ from that image state under OC/ETS
-constraints.
+$\Phase(\mathcal{I}(\omega))=\STOP$, then no finite or infinite sequence of
+$\ThetaSys$-preserving intervention operators can restore phase $\OK$ from that
+image state under OC/ETS constraints.
 \end{theorem}
 
-\begin{corollary}[Falsification criterion as operator existence]
+\begin{corollary}[Operator-existence falsification criterion]
 \label{cor:fals}
-If an explicit operator $\mathcal{I}$ can be constructed that
+If an explicit intervention operator $\mathcal{I}$ can be constructed that
 \begin{enumerate}
 \item acts across $\partial\Omega$,
 \item is $\ThetaSys$-preserving on a non-negligible domain,
 \item satisfies $k(\mathcal{I}(\omega))\ge k(\omega)$ on that domain, and
 \item is phase-preserving there,
 \end{enumerate}
-then Theorem~\ref{thm:no_free} is false and the present limits are refuted.
+then Theorem~\ref{thm:no_free} is false and the structural limits established in
+this work are refuted.
 \end{corollary}

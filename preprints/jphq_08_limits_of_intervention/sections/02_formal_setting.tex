@@ -1,56 +1,69 @@
 ﻿\section{Formal Setting}
 
-We assume OC Core as the foundational formalism~\cite{oc_core}.
-We further adopt the executable-closed ETS.K\_EA.v1.1 as an immutable symbol
-discipline and constraint set for the enterprise continuum~\cite{ets_kea_v11}.
-No new axioms are introduced.
+We assume the Ontology of Continua (OC Core) as the foundational formalism for
+describing admissible system states and structural evolution~\cite{oc_core}.
+In addition, we adopt the executable-closed ETS.K\_EA.v1.1 specification as an
+immutable symbol discipline and constraint set for the enterprise continuum~\cite{ets_kea_v11}.
+No new axioms or structural primitives are introduced in this work.
+
+The purpose of this section is not to rederive OC Core, but to fix the minimal
+formal objects required to state and evaluate intervention limits.
 
 \subsection{Enterprise continuum and admissibility}
 
-We write the enterprise continuum as
+We represent the enterprise continuum as
 \[
 K_{EA} \equiv (\Omega,\partial\Omega, A, P, \ThetaSys, J, C, k, \tau),
 \]
-where $\Omega=\Omega(K_{EA})$ is the admissible state space and $\partial\Omega$
-is its boundary. The remaining components are the OC primitives: axes $A$,
-potentials $P$, threshold system $\ThetaSys$, flows $J$, closure cycles $C$,
-continuity measure $k$, and characteristic cycle times $\tau$ (all in the OC
-Core sense).
+where $\Omega=\Omega(K_{EA})$ denotes the admissible state space and
+$\partial\Omega$ its boundary. The remaining components follow OC Core
+conventions: axes $A$, potentials $P$, a threshold system $\ThetaSys$, flows $J$,
+closure cycles $C$, a continuity measure $k$, and characteristic cycle times
+$\tau$.
 
-Thresholds are treated as a \emph{system} (possibly vector-valued) of
+Thresholds are treated as a \emph{system} (possibly vector-valued) of inequality
 constraints on states:
 \[
 \ThetaSys(\omega) \le 0
-\quad \text{means: ``$\omega$ is admissible under all thresholds.''}
+\quad \text{means that $\omega$ is admissible under all thresholds.}
 \]
-Define the admissible region
+Accordingly, we define the admissible region as
 \[
-\Omega \;:=\; \{\omega \in \mathcal{S} \mid \ThetaSys(\omega)\le 0\},
+\Omega := \{\omega \in \mathcal{S} \mid \ThetaSys(\omega)\le 0\},
 \]
-for some ambient space $\mathcal{S}$ of candidate states. Then $\partial\Omega$
-denotes the boundary between admissible and inadmissible states.
+for some ambient space $\mathcal{S}$ of candidate states.
+The boundary $\partial\Omega$ separates admissible from inadmissible states and
+is the locus at which feasibility becomes fragile.
+
+No smoothness, convexity, or metric structure of $\Omega$ is assumed unless
+explicitly stated. In particular, admissibility is governed solely by inequality
+constraints rather than by local perturbative notions.
 
 \subsection{Continuity and phase labels}
 
-The continuity measure is a map
+Structural continuity is represented by a scalar observable
 \[
 k:\Omega \to [0,1],
 \]
-interpreted as structural continuity/connectedness of the enterprise continuum
-(as defined by OC Core/ETS).
+interpreted as a measure of connectedness, closure, or structural coherence of
+the enterprise continuum, in the OC Core/ETS sense.
+We do not assume monotonicity, differentiability, or explicit dynamics for $k$;
+it is used only as a comparative indicator before and after intervention.
 
-We use a phase classifier
+We further introduce a coarse phase classifier
 \[
 \Phase:\Omega \to \{\OK,\INERTIA,\COLLAPSE,\STOP\},
 \]
-treated as a coarse label determined by OC/ETS-consistent criteria (e.g.,
-closure loss, threshold death, cycle divergence). We do not fix an explicit
-classifier; the results depend only on the existence of a phase partition and
-the terminal nature of $\STOP$.
+which assigns each admissible state to a qualitative regime determined by
+OC/ETS-consistent criteria (e.g., closure loss, threshold death, or cycle
+divergence).
+The analysis does not depend on a specific classifier construction, only on the
+existence of a phase partition and the terminal nature of $\STOP$.
 
 \begin{remark}
-The role of $\partial\Omega$ is not ``small perturbations'' but structural
-non-smoothness: near $\partial\Omega$ the admissible set changes discontinuously
-in what mappings are allowed, because admissibility is governed by inequality
-constraints.
+The boundary $\partial\Omega$ does not represent small perturbations or local
+instability.
+Rather, it marks structural non-smoothness: near $\partial\Omega$, the set of
+admissible mappings changes discontinuously because feasibility is enforced by
+inequality constraints.
 \end{remark}

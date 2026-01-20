@@ -1,29 +1,50 @@
 ﻿\section{Boundary and Phase Effects}
 
-\subsection{Why the boundary is the hard region}
+\subsection{Why the admissibility boundary is structurally hard}
 
-Near the admissible boundary $\partial\Omega$, the feasible set is shaped by
-inequality constraints and is generically non-smooth. Two consequences matter:
+Near the admissible boundary $\partial\Omega$, the feasible set is determined by
+active inequality constraints $\ThetaSys(\omega)\le 0$ and is therefore
+generically non-smooth.
+Two structural consequences follow.
+
 \begin{enumerate}
-\item \textbf{Directional collapse:} the set of admissible directions shrinks as
-constraints tighten, making many ``intended'' interventions infeasible without
-threshold violation.
-\item \textbf{Nonlocal propagation:} enforcing one threshold often shifts other
-potentials or flows (OC coupling), so local changes near the boundary can induce
-global changes in $J$ and $C$, and therefore in $k$.
+\item \textbf{Directional collapse.}
+As constraints become tight, the local cone of admissible directions in the
+ambient state space shrinks.
+Interventions that would be feasible in the interior lose admissible directions
+near $\partial\Omega$, making boundary-crossing actions impossible without
+explicit constraint handling or violation.
+
+\item \textbf{Nonlocal propagation.}
+Thresholds in OC/ETS are coupled through shared potentials, flows $J$, and
+closure cycles $C$.
+Enforcing a single active constraint near the boundary typically induces
+adjustments in other components of the system, propagating changes nonlocally
+through $J$ and $C$ and thereby affecting the continuity measure $k$.
 \end{enumerate}
 
-\subsection{Phase transitions as constraint-induced bifurcations}
+Thus, $\partial\Omega$ is not merely a region of quantitative fragility but a
+locus of qualitative structural change in what interventions are admissible.
 
-Even when an operator is $\Theta$-preserving pointwise, it may alter cycles $C$
-and flows $J$ required for maintaining a phase.
-As a result, phase transitions are not necessarily controllable by ``making the
-operator smaller'': the transition is triggered by the structural fact that some
-closure conditions cannot be maintained under tightened constraints.
+\subsection{Phase transitions as constraint-induced structural bifurcations}
 
-\begin{remark}
-This preprint does not claim that intervention is ``hopeless''.
-It claims that the combination of (i) boundary-crossing intent and (ii) strict
-threshold preservation imposes unavoidable tradeoffs: either continuity is
-degraded somewhere, or the system changes phase somewhere.
+Even when an intervention is $\ThetaSys$-preserving pointwise, it may alter the
+cycles $C$ and flows $J$ required for sustaining a given phase.
+Phase transitions in this framework arise not from large perturbations but from
+the structural impossibility of maintaining closure conditions under tightened
+constraints.
+
+Importantly, such transitions are not removable by arbitrarily reducing the
+magnitude of an intervention.
+They are induced by the fact that some admissible configurations supporting a
+phase cease to exist once specific thresholds become active.
+In this sense, phase transitions function as constraint-induced structural
+bifurcations rather than dynamical instabilities.
+
+\begin{remark}[Interpretation discipline]
+This preprint does not claim that intervention is futile.
+It establishes that the combination of boundary-crossing intent and strict
+threshold preservation imposes unavoidable structural tradeoffs: any such
+intervention must incur either continuity degradation somewhere in $\Omega$ or
+a phase change somewhere in its domain.
 \end{remark}
