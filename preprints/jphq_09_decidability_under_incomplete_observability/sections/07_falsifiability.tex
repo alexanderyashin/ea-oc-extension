@@ -1,0 +1,94 @@
+\section{Falsifiability}
+
+All results in this paper are formulated so as to admit explicit
+falsification \emph{within} the Ontology of Continua (OC Core) and the
+executable specification ETS.K\_EA.v1.1. Falsifiability is defined
+strictly at the level of admissible observability constructs and logical
+invariance properties; no external semantics, methods, or assumptions
+are required.
+
+\subsection{Falsifiability of decidability claims}
+
+A decidability claim for a state predicate $\varphi$ asserts invariance
+of $\varphi$ across all enterprise continua that are observationally
+equivalent under the ETS-defined observation operator $\Pi$.
+
+Such a claim is falsified if and only if there exist:
+\begin{itemize}
+\item two enterprise continua $K_{EA}^{(1)}$ and $K_{EA}^{(2)}$ that are
+      observationally equivalent, i.e.\
+      \[
+      \Pi(\Omega_{EA}^{(1)}) = \Pi(\Omega_{EA}^{(2)});
+      \]
+\item an admissible state predicate $\varphi$ such that
+      \[
+      \varphi(\Omega_{EA}^{(1)}) \neq \varphi(\Omega_{EA}^{(2)}).
+      \]
+\end{itemize}
+
+The existence of such a pair constitutes a direct counterexample and
+invalidates the decidability claim. No probabilistic or algorithmic
+considerations enter this criterion.
+
+\subsection{Falsifiability of undecidability claims}
+
+An undecidability claim asserts the \emph{existence} of at least one
+observational equivalence class on which a predicate $\varphi$ is
+non-invariant.
+
+Such a claim is falsified if it can be shown that:
+\begin{itemize}
+\item for every pair of observationally equivalent enterprise continua,
+      the predicate $\varphi$ agrees; equivalently,
+\item there exists a mapping
+      \[
+      \tilde{\varphi} : \Sigma_{\mathrm{obs}} \to
+      \{\text{true},\text{false}\}
+      \]
+      such that $\varphi = \tilde{\varphi} \circ \Pi$.
+\end{itemize}
+
+Either condition establishes invariance of $\varphi$ over all
+observational equivalence classes and contradicts the undecidability
+result.
+
+\subsection{Falsifiability of STOP-only claims}
+
+STOP-only decidability claims assert a one-sided invariance: STOP
+membership is invariant under observational equivalence, while
+non-STOP outcomes are not.
+
+Such a claim is falsified by either of the following:
+\begin{itemize}
+\item the existence of observationally equivalent enterprise continua
+      for which STOP holds in one case but not in the other;
+\item a demonstration that at least one non-STOP phase outcome is also
+      invariant across all observationally equivalent continua.
+\end{itemize}
+
+The first case violates STOP invariance directly. The second collapses
+the STOP-only classification into full decidability.
+
+\subsection{Observable-signature-level refutation}
+
+All falsification conditions reduce to statements about observable
+signatures in $\Sigma_{\mathrm{obs}}$ and their compatibility with
+OC/ETS-admissible predicates. No falsification requires access to
+unobservable internal structure beyond what is already constrained by
+ETS observability.
+
+In particular, a single admissible observable signature
+$\sigma \in \Sigma_{\mathrm{obs}}$ that is compatible with mutually
+inconsistent predicate values is sufficient to refute any claim of
+decidability for that predicate.
+
+\subsection{No meta-level escape}
+
+No result in this paper can be falsified or defended by appeal to
+improved measurement, richer data streams, probabilistic modeling, or
+algorithmic inference \emph{within the same OC/ETS framework}. Any such
+appeal would constitute a change of formal system and therefore lies
+outside the scope of admissible falsification for the present results.
+
+Within OC Core and ETS.K\_EA.v1.1, falsifiability is complete and
+exhaustive at the level specified above.

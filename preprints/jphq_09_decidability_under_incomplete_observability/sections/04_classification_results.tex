@@ -1,0 +1,114 @@
+\section{Classification results}
+
+This section presents the core results of the paper. All results are
+negative or classificatory in nature: they identify which classes of
+enterprise state predicates are decidable, which are undecidable, and
+which admit only STOP-only decidability under incomplete observability.
+All statements are formulated strictly within OC Core and
+ETS.K\_EA.v1.1.
+
+\subsection{Decidable predicates}
+
+\begin{proposition}[Observationally invariant predicates]
+Let $\varphi$ be a state predicate defined exclusively in terms of
+observable signatures in $\Sigma_{\mathrm{obs}}$, i.e.\ there exists a
+mapping
+\[
+\tilde{\varphi} : \Sigma_{\mathrm{obs}} \to \{\text{true},\text{false}\}
+\]
+such that $\varphi = \tilde{\varphi} \circ \Pi$.
+Then $\varphi$ is decidable under incomplete observability.
+\end{proposition}
+
+\noindent
+This proposition characterizes the maximal class of trivially decidable
+predicates: those whose truth value depends only on what is directly
+observable. No claim is made that such predicates are structurally rich,
+informative, or diagnostically meaningful; only their logical
+decidability is asserted.
+
+\begin{theorem}[Decidability of STOP boundary predicates]
+Any predicate $\varphi_{\mathrm{STOP}}$ that is equivalent to membership
+of the enterprise continuum in a STOP region of
+$\partial\Omega_{EA}$ is decidable under incomplete observability,
+provided that STOP membership is invariant across each observational
+equivalence class.
+\end{theorem}
+
+\noindent
+This result reflects the special status of STOP in ETS: STOP corresponds
+to a boundary condition whose observable consequences dominate all
+internally compatible states.
+
+\subsection{Undecidable predicates}
+
+\begin{theorem}[Structural undecidability]
+Let $\varphi$ be a state predicate that depends on at least one internal
+OC/ETS element not uniquely determined by $\Sigma_{\mathrm{obs}}$
+(e.g.\ internal axes, potentials, flows, cycles, or threshold margins).
+Then $\varphi$ is undecidable under incomplete observability.
+\end{theorem}
+
+\noindent
+In particular, predicates that depend on:
+\begin{itemize}
+\item internal configuration within $\Omega_{EA}$ away from
+      $\partial\Omega_{EA}$;
+\item relative ordering or margin of thresholds $\Theta_{EA}$ not
+      observable through $\Pi$;
+\item existence, stability, or coupling structure of internal cycles
+      $C_{EA}$;
+\item magnitudes or directions of flows $J_{EA}$ not uniquely encoded in
+      observable signatures,
+\end{itemize}
+are undecidable in the sense defined in Section~\ref{sec:definitions}.
+
+\begin{corollary}[Undecidability of non-terminal phase distinctions]
+Predicates distinguishing between non-STOP phase outcomes (e.g.\ OK
+versus INERTIA, or INERTIA versus COLLAPSE) are undecidable under
+incomplete observability whenever the corresponding phase conditions
+are not observationally invariant.
+\end{corollary}
+
+\noindent
+This corollary formalizes the impossibility of reliably distinguishing
+most non-terminal enterprise states solely from admissible
+observations.
+
+\subsection{STOP-only decidability}
+
+\begin{theorem}[STOP-only classification]
+Let $\varphi$ be a phase predicate taking values in
+$\{\text{OK}, \text{INERTIA}, \text{COLLAPSE}, \text{STOP}\}$.
+If STOP membership is observationally invariant, but the remaining phase
+values are not, then $\varphi$ is STOP-only decidable.
+\end{theorem}
+
+\noindent
+In this case:
+\begin{itemize}
+\item the occurrence of STOP can be certified unambiguously;
+\item any non-STOP outcome remains undecidable under incomplete
+      observability.
+\end{itemize}
+
+This establishes a strict diagnosability boundary: only terminal or
+boundary states may be decidable, while all interior distinctions
+collapse under observational equivalence.
+
+\subsection{Exhaustiveness of the classification}
+
+\begin{proposition}[Exhaustive trichotomy]
+Every admissible enterprise state predicate falls into exactly one of
+the following classes under incomplete observability:
+\begin{enumerate}
+\item decidable;
+\item undecidable;
+\item STOP-only decidable.
+\end{enumerate}
+\end{proposition}
+
+\noindent
+No fourth class exists within the OC/ETS formalism. In particular, there
+is no notion of partial, approximate, probabilistic, or asymptotic
+decidability admissible under the constraints of this paper.

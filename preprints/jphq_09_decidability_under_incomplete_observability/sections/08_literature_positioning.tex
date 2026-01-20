@@ -1,0 +1,96 @@
+\section{Literature positioning}
+
+This work positions itself at the intersection of logical decidability,
+partial observability, and diagnosability, while deliberately departing
+from algorithmic, probabilistic, and control-oriented traditions.
+All positioning is descriptive and contrastive; no dependency on
+external formalisms is introduced.
+
+\subsection{Decidability and indistinguishability}
+
+Classical notions of decidability originate in logic and computability
+theory, where decidability is defined relative to formal languages and
+algorithms. In contrast, the present work adopts a purely \emph{logical}
+notion of decidability that is independent of algorithms, complexity,
+or computability. Decidability is defined solely as invariance of a
+predicate over observational equivalence classes induced by admissible
+observations.
+
+This framing is closer in spirit to indistinguishability arguments in
+logic and model theory, where different models satisfy the same
+observable sentences while differing on internal properties. However,
+the present setting is neither syntactic nor language-based:
+equivalence is induced by the ETS-defined observation operator $\Pi$
+over continua, rather than by satisfaction of a theory.
+\cite{hodges1993_model_theory,ebbinghaus_flum1995_finite_model_theory,nerode1958_linear_automaton_transformations}
+
+\subsection{Partial observability in systems theory}
+
+Partial observability has been extensively studied in systems theory,
+control, and estimation, typically with the goal of reconstructing or
+estimating internal states from outputs. Such approaches rely on
+assumptions about dynamics, noise models, observability ranks, or
+asymptotic convergence.
+
+This paper explicitly rejects that framing. Incomplete observability is
+treated as a structural condition of the OC/ETS formalism, not as a
+technical limitation to be overcome. No notion of state reconstruction,
+observer design, filtering, or convergence appears. As a result, the
+results presented here are orthogonal to classical observability theory
+and do not compete with it; instead, they delineate logical limits that
+apply even in the absence of noise and even with unlimited observation
+time.
+\cite{milner1980_ccs,milner1989_communication_concurrency,van_glabbeek2001_ltbts1}
+
+\subsection{Diagnosability and fault detection}
+
+The notion of diagnosability is most prominently developed in the
+context of discrete event systems, where diagnosability typically
+refers to the algorithmic ability to infer fault occurrence from
+observed event sequences within bounded delay.
+
+The STOP-only results of this paper are superficially reminiscent of
+diagnosability results in that they identify a class of terminal or
+boundary conditions that can be certified from observations. However,
+the similarity is purely structural. No automata, languages, delays, or
+algorithms are involved, and no notion of detection time is defined.
+STOP-only decidability is a logical classification result: it asserts
+invariance of STOP across observational equivalence classes, not the
+existence of a detection procedure.
+\cite{sampath1995_diagnosability_des}
+
+\subsection{Epistemic limits and negative results}
+
+The emphasis on negative and limit results aligns this work with a
+broader tradition of epistemic limit analysis in complex systems.
+Rather than proposing improved methods, richer data, or refined models,
+the paper identifies classes of questions that are provably undecidable
+within a fixed formalism.
+
+This positioning is intentional. The results are not softened by
+approximation, probability, or asymptotics. Undecidability is not
+interpreted as practical difficulty, but as a formal impossibility
+statement relative to OC Core and ETS.K\_EA.v1.1.
+\cite{hodges1993_model_theory}
+
+\subsection{Relation to enterprise modeling}
+
+Within the enterprise modeling literature, most approaches focus on
+representation, optimization, governance, or decision support. Even
+when formal models are used, they are typically embedded in managerial
+or prescriptive narratives.
+
+The present work takes a different stance. Enterprises are treated as
+continua with admissible observability, and the sole question addressed
+is what can be \emph{decided} about their states from admissible
+observations. No claims are made about how enterprises should be
+managed, intervened upon, or optimized. In this sense, the paper is
+foundational rather than applied.
+
+\subsection{Bibliographic status}
+
+At this stage, this section is intentionally non-exhaustive. All
+references to external work are restricted to formally relevant
+literature on logical indistinguishability, diagnosability, and
+epistemic limits, and are included without importing additional
+primitives or assumptions.

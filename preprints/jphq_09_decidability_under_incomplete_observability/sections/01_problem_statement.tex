@@ -1,0 +1,80 @@
+\section{Problem statement}
+
+This preprint addresses exactly one frozen question:
+
+\medskip
+\noindent
+\textbf{Q9.} \emph{Which enterprise states are decidable under incomplete
+observability, and which are provably undecidable, in enterprises modeled
+as continua $K_{EA}$?}
+\medskip
+
+The question is posed in the formal setting of the Ontology of Continua
+(OC Core) and the executable specification ETS.K\_EA.v1.1. It is treated
+as a problem in logical decidability, not as a problem of estimation,
+reconstruction, inference, or control.
+
+\subsection{Scope of the question}
+
+An \emph{enterprise state} is understood here not as a full internal
+configuration of the enterprise continuum, but as a state predicate
+defined over admissible OC/ETS elements. In particular, this includes:
+\begin{itemize}
+\item admissible phase outcomes (OK, INERTIA, COLLAPSE, STOP);
+\item predicates defined via thresholds $\Theta_{EA}$, boundaries
+      $\partial\Omega_{EA}$, or structural properties of cycles and
+      flows;
+\item any property expressible without introducing new primitives
+      beyond those fixed in OC Core and ETS.K\_EA.v1.1.
+\end{itemize}
+
+No commitment is made to any operational, managerial, or interpretative
+meaning of such states beyond their formal definition.
+
+\subsection{Incomplete observability}
+
+Enterprises are assumed to be only partially observable. Observations
+are restricted to the admissible observability constructs already
+defined in ETS, yielding observable signatures in
+$\Sigma_{\mathrm{obs}}$ via the observation operator $\Pi$.
+No assumption is made that observable information is sufficient to
+reconstruct internal states, nor that it becomes sufficient with more
+data or time.
+
+Incomplete observability is therefore taken as a structural condition,
+not as a temporary limitation or a noise-related issue.
+
+\subsection{Decidability versus observability}
+
+A central constraint of this work is the strict separation between
+observability and decidability. Observability concerns what can be
+measured or registered as an observable signature. Decidability
+concerns whether a state predicate has a truth value that is invariant
+across all enterprise continua consistent with the same observable
+signature.
+
+Accordingly:
+\begin{itemize}
+\item high observability does not imply decidability;
+\item undecidability is not a defect of methods, data quality, or
+      inference techniques;
+\item decidability and undecidability are treated as intrinsic logical
+      properties induced by the OC/ETS structure.
+\end{itemize}
+
+\subsection{Negative framing}
+
+The problem is deliberately framed to admit negative results. The
+objective is not to maximize the set of decidable states, but to
+classify, within the fixed formalism, which classes of predicates are:
+\begin{itemize}
+\item decidable under incomplete observability;
+\item undecidable under incomplete observability;
+\item decidable only in a STOP-only sense, at the diagnosability
+      boundary.
+\end{itemize}
+
+No prescriptions, governance recommendations, optimization criteria,
+or intervention strategies are derived from these results. The outcome
+is a classification of logical limits, not a method for overcoming
+them.
