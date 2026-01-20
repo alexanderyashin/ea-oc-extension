@@ -1,0 +1,54 @@
+﻿\section{Proof Sketches}
+
+We provide proof sketches emphasizing where each conclusion originates.
+No additional assumptions beyond OC/ETS structure are used.
+
+\subsection{Sketch for Theorem~\ref{thm:saturation}}
+
+Because $\Omega$ is defined by threshold inequalities $\ThetaSys(\omega)\le 0$,
+points near $\partial\Omega$ are \emph{constraint-tight}: small moves in ambient
+space typically violate at least one component of $\ThetaSys$.
+If $\mathcal{I}$ ``tries'' to enact a boundary-crossing change, it must either
+(i) step outside admissibility (violating $\ThetaSys$) or (ii) refuse to act on
+those states (domain restriction). This yields $\Omega^\ast$ as the set of
+states where constraints are tight enough that a nontrivial boundary-crossing
+map cannot be defined while preserving $\ThetaSys$.
+
+\subsection{Sketch for Theorem~\ref{thm:no_free}}
+
+The boundary is where admissibility is fragile: the feasible directions in state
+space collapse as constraints tighten. A $\Theta$-preserving boundary-crossing
+operator cannot move ``freely''; it must route along constraint-compatible
+directions.
+
+Two structural failure modes are unavoidable:
+\begin{enumerate}
+\item \emph{Continuity loss.} Constraint routing introduces fragmentation:
+previously connected regions of $\Omega$ become disconnected under the mapping
+(or trajectories concentrate into narrower subsets), reducing $k$ for some
+states.
+\item \emph{Phase transition.} If the operator enforces constraint satisfaction
+by cutting off cycles/flows required for closure (a core OC notion), then the
+system crosses a phase boundary into $\INERTIA$, $\COLLAPSE$, or $\STOP$.
+\end{enumerate}
+
+Thus, if an operator both crosses $\partial\Omega$ and preserves $\ThetaSys$,
+it cannot also guarantee $\Delta k\ge 0$ and phase preservation everywhere on a
+nontrivial domain.
+
+\subsection{Sketch for Proposition~\ref{prop:trivial}}
+
+If an operator never confronts $\partial\Omega$, it is confined to interior
+movement within an already admissible region. In OC terms, it cannot realize
+structural changes whose feasibility is precisely blocked by $\ThetaSys$ at the
+boundary: it only re-parameterizes within existing degrees of freedom. Hence it
+may be safe (non-decreasing $k$, phase-preserving) but is correspondingly
+limited in reach.
+
+\subsection{Sketch for Theorem~\ref{thm:stop}}
+
+$\STOP$ is terminal in OC/ETS terms: it corresponds to a death condition such as
+loss of admissible cycles, collapse of closure, or emptiness of feasible
+continuation under thresholds. Any subsequent $\Theta$-preserving intervention
+would need an admissible path back to $\OK$, but terminality rules out such a
+path by definition of the phase partition and death threshold logic.

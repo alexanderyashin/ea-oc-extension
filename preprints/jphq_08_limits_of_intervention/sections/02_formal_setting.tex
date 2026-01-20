@@ -1,0 +1,56 @@
+﻿\section{Formal Setting}
+
+We assume OC Core as the foundational formalism~\cite{oc_core}.
+We further adopt the executable-closed ETS.K\_EA.v1.1 as an immutable symbol
+discipline and constraint set for the enterprise continuum~\cite{ets_kea_v11}.
+No new axioms are introduced.
+
+\subsection{Enterprise continuum and admissibility}
+
+We write the enterprise continuum as
+\[
+K_{EA} \equiv (\Omega,\partial\Omega, A, P, \ThetaSys, J, C, k, \tau),
+\]
+where $\Omega=\Omega(K_{EA})$ is the admissible state space and $\partial\Omega$
+is its boundary. The remaining components are the OC primitives: axes $A$,
+potentials $P$, threshold system $\ThetaSys$, flows $J$, closure cycles $C$,
+continuity measure $k$, and characteristic cycle times $\tau$ (all in the OC
+Core sense).
+
+Thresholds are treated as a \emph{system} (possibly vector-valued) of
+constraints on states:
+\[
+\ThetaSys(\omega) \le 0
+\quad \text{means: ``$\omega$ is admissible under all thresholds.''}
+\]
+Define the admissible region
+\[
+\Omega \;:=\; \{\omega \in \mathcal{S} \mid \ThetaSys(\omega)\le 0\},
+\]
+for some ambient space $\mathcal{S}$ of candidate states. Then $\partial\Omega$
+denotes the boundary between admissible and inadmissible states.
+
+\subsection{Continuity and phase labels}
+
+The continuity measure is a map
+\[
+k:\Omega \to [0,1],
+\]
+interpreted as structural continuity/connectedness of the enterprise continuum
+(as defined by OC Core/ETS).
+
+We use a phase classifier
+\[
+\Phase:\Omega \to \{\OK,\INERTIA,\COLLAPSE,\STOP\},
+\]
+treated as a coarse label determined by OC/ETS-consistent criteria (e.g.,
+closure loss, threshold death, cycle divergence). We do not fix an explicit
+classifier; the results depend only on the existence of a phase partition and
+the terminal nature of $\STOP$.
+
+\begin{remark}
+The role of $\partial\Omega$ is not ``small perturbations'' but structural
+non-smoothness: near $\partial\Omega$ the admissible set changes discontinuously
+in what mappings are allowed, because admissibility is governed by inequality
+constraints.
+\end{remark}

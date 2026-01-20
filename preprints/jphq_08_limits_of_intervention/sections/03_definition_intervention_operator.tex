@@ -1,0 +1,57 @@
+﻿\section{Intervention Operator}
+
+\subsection{Definition}
+
+\begin{definition}[Intervention operator]
+An \emph{intervention} is a (possibly partial) operator
+\[
+\mathcal{I}:\Dom(\mathcal{I})\subseteq \Omega \to \Omega,
+\]
+interpreted as a state update $\omega \mapsto \mathcal{I}(\omega)$.
+
+It is \emph{$\Theta$-preserving} if for every $\omega\in\Dom(\mathcal{I})$,
+\[
+\ThetaSys(\omega)\le 0 \quad \Rightarrow \quad \ThetaSys(\mathcal{I}(\omega))\le 0.
+\]
+\end{definition}
+
+We intentionally do \emph{not} attach objective functions, optimality,
+governance, or control semantics to $\mathcal{I}$.
+
+\subsection{Boundary-crossing action}
+
+\begin{definition}[Acts across the boundary]
+An intervention $\mathcal{I}$ \emph{acts across} $\partial\Omega$ if there exists
+$\omega\in\Dom(\mathcal{I})$ such that either
+\begin{enumerate}
+\item $\omega$ is in a neighborhood of the boundary and the image traverses the
+boundary in the ambient space, i.e. $\omega \in \Cl(\Omega)\cap U$ with $U$
+meeting both admissible and inadmissible states, and $\mathcal{I}$ changes the
+state in a way that would be inadmissible without active constraint handling; or
+\item equivalently for our purposes: $\mathcal{I}$ is not representable as a
+restriction of an automorphism of $\Omega$ that leaves $\partial\Omega$
+invariant.
+\end{enumerate}
+\end{definition}
+
+Intuition: ``across $\partial\Omega$'' means the operator confronts the
+admissibility boundary (tight constraints) rather than moving freely inside a
+smooth interior.
+
+\subsection{Outcome evaluation}
+
+We evaluate interventions by two structural observables:
+\[
+\Delta k(\omega) := k(\mathcal{I}(\omega)) - k(\omega),
+\qquad
+\Delta \Phase(\omega) := \Phase(\mathcal{I}(\omega)) - \Phase(\omega),
+\]
+where the second is symbolic: it indicates whether a phase transition occurs.
+We will only use the predicate ``phase transition happens''.
+
+\begin{definition}[Phase-preserving]
+$\mathcal{I}$ is \emph{phase-preserving} on $\Dom(\mathcal{I})$ if
+\[
+\Phase(\mathcal{I}(\omega))=\Phase(\omega)\quad \forall \omega\in\Dom(\mathcal{I}).
+\]
+\end{definition}

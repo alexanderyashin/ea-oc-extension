@@ -1,0 +1,29 @@
+﻿\section{Boundary and Phase Effects}
+
+\subsection{Why the boundary is the hard region}
+
+Near the admissible boundary $\partial\Omega$, the feasible set is shaped by
+inequality constraints and is generically non-smooth. Two consequences matter:
+\begin{enumerate}
+\item \textbf{Directional collapse:} the set of admissible directions shrinks as
+constraints tighten, making many ``intended'' interventions infeasible without
+threshold violation.
+\item \textbf{Nonlocal propagation:} enforcing one threshold often shifts other
+potentials or flows (OC coupling), so local changes near the boundary can induce
+global changes in $J$ and $C$, and therefore in $k$.
+\end{enumerate}
+
+\subsection{Phase transitions as constraint-induced bifurcations}
+
+Even when an operator is $\Theta$-preserving pointwise, it may alter cycles $C$
+and flows $J$ required for maintaining a phase.
+As a result, phase transitions are not necessarily controllable by ``making the
+operator smaller'': the transition is triggered by the structural fact that some
+closure conditions cannot be maintained under tightened constraints.
+
+\begin{remark}
+This preprint does not claim that intervention is ``hopeless''.
+It claims that the combination of (i) boundary-crossing intent and (ii) strict
+threshold preservation imposes unavoidable tradeoffs: either continuity is
+degraded somewhere, or the system changes phase somewhere.
+\end{remark}

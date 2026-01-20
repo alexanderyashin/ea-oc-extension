@@ -1,0 +1,57 @@
+﻿% preprints/jphq_08_limits_of_intervention/preamble.tex
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+
+\usepackage{amsmath,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Limits of Intervention under Continuum Constraints},
+  pdfauthor={EA--OC Extension / JPHQ}
+}
+
+% --- Theorem environments (numbered by section for readability)
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+
+% --- Minimal notation helpers (keep OC-core symbols intact)
+\newcommand{\OA}{\Omega}
+\newcommand{\dOA}{\partial\Omega}
+\newcommand{\ThetaSys}{\Theta}
+\newcommand{\Phase}{\mathsf{Phase}}
+\newcommand{\OK}{\mathsf{OK}}
+\newcommand{\INERTIA}{\mathsf{INERTIA}}
+\newcommand{\COLLAPSE}{\mathsf{COLLAPSE}}
+\newcommand{\STOP}{\mathsf{STOP}}
+
+% --- Operator shorthands
+% IMPORTANT: do NOT redefine \Im (it is already defined in LaTeX/AMS contexts).
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Cl}{cl}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Img}{Im}
+
+% Optional aliases (safe): use these if you prefer explicit operator names.
+\newcommand{\OpInt}{\Int}
+\newcommand{\OpCl}{\Cl}
+\newcommand{\OpDom}{\Dom}
+\newcommand{\OpIm}{\Img}

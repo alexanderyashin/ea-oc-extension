@@ -1,0 +1,36 @@
+﻿\section{Falsifiability}
+
+The results are falsified if one can \emph{explicitly construct} an intervention
+operator $\mathcal{I}$ and a nontrivial domain $D\subseteq\Omega$ such that all
+of the following hold:
+
+\begin{enumerate}
+\item \textbf{Boundary action:} $\mathcal{I}$ acts across $\partial\Omega$
+(Definition in Section~3), i.e., it genuinely confronts constraint-tight regions
+rather than remaining an interior re-parameterization.
+
+\item \textbf{Threshold preservation:} $\mathcal{I}$ is $\Theta$-preserving on
+$D$:
+\[
+\ThetaSys(\omega)\le 0 \Rightarrow \ThetaSys(\mathcal{I}(\omega))\le 0
+\quad \forall \omega\in D.
+\]
+
+\item \textbf{No continuity loss:} $\mathcal{I}$ does not reduce continuity on
+$D$:
+\[
+k(\mathcal{I}(\omega)) \ge k(\omega) \quad \forall \omega\in D.
+\]
+
+\item \textbf{No phase transition:} $\mathcal{I}$ is phase-preserving on $D$:
+\[
+\Phase(\mathcal{I}(\omega))=\Phase(\omega) \quad \forall \omega\in D.
+\]
+\end{enumerate}
+
+\paragraph{Operational refutation test (ETS-consistent).}
+A direct refutation path is to implement $\mathcal{I}$ in an executable
+environment consistent with ETS.K\_EA.v1.1 and demonstrate that, for a family of
+states sampling a neighborhood that includes constraint-tight regions,
+properties (1)--(4) hold simultaneously with non-negligible $D$.
+Any such explicit construction refutes Theorem~\ref{thm:no_free}.
