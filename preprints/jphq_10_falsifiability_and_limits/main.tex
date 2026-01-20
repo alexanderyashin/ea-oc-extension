@@ -1,0 +1,52 @@
+﻿\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[noabbrev,nameinlink]{cleveref}
+
+% --- theorem environments (no new primitives; standard form only)
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{nonclaim}{Non-Claim}
+
+\title{Enterprises as Continua: Falsifiability and Limits}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\input{sections/00_abstract}
+\input{sections/01_problem_statement}
+\input{sections/02_formal_setting}
+\input{sections/03_falsifiability_theorems}
+\input{sections/04_proof_sketches}
+\input{sections/05_limits_and_nonclaims}
+\input{sections/06_relation_to_stop}
+\input{sections/07_conclusion}
+
+% ------------------------------------------------------------
+% Bibliography disabled in RUN-0/RUN-1 skeleton to avoid:
+% - "Empty thebibliography" warning
+% - bibtex noise before citations exist
+% Re-enable in RUN-2 (citations + bibliography polish).
+% ------------------------------------------------------------
+% \bibliographystyle{plain}
+% \bibliography{references}
+
+\end{document}
