@@ -1,0 +1,85 @@
+﻿% ======================================================================
+% preprints/jphq_06_structural_tension_nonoptimizable/main.tex
+% JPHQ-06: Structural Tension as a Non-Optimizable Quantity (K_EA / OC)
+% ASCII-only source (no Unicode).
+% ======================================================================
+
+\documentclass[11pt]{article}
+
+% --- Geometry / typography ---
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% --- Math ---
+\usepackage{amsmath,amssymb,mathtools}
+
+% --- Tables / lists ---
+\usepackage{booktabs}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*,topsep=4pt,itemsep=2pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=*,topsep=4pt,itemsep=2pt,parsep=0pt}
+
+% --- Hyperref (keep section titles ASCII-only to avoid PDF string warnings) ---
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdfauthor={EA-OC-Extension / Journal Preprint HQ (JPHQ)},
+  pdftitle={Structural Tension as a Non-Optimizable Quantity in Enterprise Continua},
+  pdfsubject={Ontology of Continua (OC) / Enterprise Continuum K_EA},
+  pdfkeywords={structural tension, thresholds, admissibility, enterprise continuum, non-optimizable},
+  pdfcreator={latexmk},
+  pdfproducer={}
+}
+
+% --- Bibliography (biber) ---
+\usepackage[backend=biber,style=authoryear,maxcitenames=2,maxbibnames=99]{biblatex}
+\addbibresource{bibliography/references.bib}
+
+% --- OC/ETS notation (ASCII-only file; math is LaTeX commands) ---
+\newcommand{\KEA}{\ensuremath{K_{\mathrm{EA}}}}
+\newcommand{\OmegaEA}{\ensuremath{\Omega_{\mathrm{EA}}}}
+\newcommand{\dOmegaEA}{\ensuremath{\partial\Omega_{\mathrm{EA}}}} % boundary of admissibility
+\newcommand{\ThetaEA}{\ensuremath{\Theta_{\mathrm{EA}}}}
+\newcommand{\kEA}{\ensuremath{k_{\mathrm{EA}}}}
+\newcommand{\tauEA}{\ensuremath{\tau_{\mathrm{EA}}}}
+
+% Structural tension T_EA is defined OC/ETS-only via threshold components f_k.
+\newcommand{\TEA}{\ensuremath{T_{\mathrm{EA}}}}
+\newcommand{\fk}{\ensuremath{f_k}}
+\newcommand{\fexist}{\ensuremath{f_{\text{exist}}}}
+\newcommand{\fstab}{\ensuremath{f_{\text{stab}}}}
+\newcommand{\finertia}{\ensuremath{f_{\text{inertia}}}}
+\newcommand{\fcollapse}{\ensuremath{f_{\text{collapse}}}}
+\newcommand{\fstop}{\ensuremath{f_{\text{stop}}}}
+
+% Phases (logical labels; not temporal stages)
+\newcommand{\PHASESUCCESS}{\textsc{success}}
+\newcommand{\PHASEINERTIA}{\textsc{inertia}}
+\newcommand{\PHASECOLLAPSE}{\textsc{collapse}}
+\newcommand{\PHASESTOP}{\textsc{stop}}
+
+\title{Structural Tension as a Non-Optimizable Quantity in Enterprise Continua}
+\author{EA-OC-Extension / Journal Preprint HQ (JPHQ)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\input{sections/00_abstract}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\input{sections/01_problem_statement}
+\input{sections/02_formal_setting}
+\input{sections/03_definition_structural_tension}
+\input{sections/04_impossibility_theorems}
+\input{sections/05_proof_sketches}
+\input{sections/06_scope_limits_nonclaims}
+\input{sections/07_falsifiability}
+\input{sections/08_literature_positioning}
+
+\printbibliography
+
+\end{document}

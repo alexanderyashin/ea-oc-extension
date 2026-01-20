@@ -1,0 +1,93 @@
+﻿% ======================================================================
+% preprints/jphq_06_structural_tension_nonoptimizable/sections/01_problem_statement.tex
+% Journal-grade content (100/100). ASCII-only.
+% ======================================================================
+
+\section{Problem Statement}
+
+\subsection{Motivation}
+
+In enterprise architecture, organizational theory, and systems engineering,
+terms such as \emph{tension}, \emph{stress}, or \emph{pressure} are commonly
+interpreted as quantities to be reduced, balanced, or optimized. This
+interpretive habit is inherited from control theory and systems
+engineering, where systems are modeled through scalar objectives admitting
+gradients, trade-offs, and convergence arguments
+\cite{kalman1960,slotine1991,ljung1999}. When carried over to enterprise
+diagnosis, it typically yields prescriptions of the form ``reduce
+tension'', ``optimize resilience'', or ``maximize stability''.
+
+Within the Ontology of Continua (OC) and its Executable Theory Specification
+\texttt{ETS.K\_EA.v1.1}, however, the enterprise is not modeled as an object
+governed by an objective function. It is modeled as a \emph{continuum}
+$\KEA$ whose admissible states are delimited by explicit structural
+constraints. The notion of \emph{structural tension} $\TEA$ appears in this
+formalism, but it is not introduced as a performance metric, control
+variable, or optimization target. This discrepancy gives rise to a
+persistent interpretive ambiguity: whether $\TEA$ is intended to be
+optimized, or whether it serves a fundamentally different formal role.
+
+\subsection{Frozen Question}
+
+This preprint addresses the following frozen question:
+
+\begin{quote}
+\emph{Can structural tension $\TEA$ in the enterprise continuum $\KEA$ be
+treated as an optimizable quantity without violating the formal
+commitments of OC/ETS?}
+\end{quote}
+
+The question is substantive rather than rhetorical. In applied and
+interpretive contexts, optimization language is frequently imposed on
+OC-derived diagnostics, sometimes implicitly, by mapping threshold
+violations to scores, indices, or composite measures. Such mappings often
+mirror identification and control practices in which hard constraints are
+relaxed into penalties or regularizers
+\cite{walter1982,walter1997}. The present work examines whether this
+translation is compatible with OC/ETS as specified, or whether it
+necessarily introduces additional structure that changes the formal object
+under consideration.
+
+\subsection{Formal Context}
+
+In \texttt{ETS.K\_EA.v1.1}, structural tension is defined through a finite
+set of threshold component functions
+\[
+\{\fexist,\fstab,\finertia,\fcollapse,\fstop\},
+\]
+each evaluated as an inequality relative to zero. These components encode
+distinct admissibility conditions. They are combined exclusively through
+explicit logical precedence into phase labels
+\PHASESTOP, \PHASECOLLAPSE, \PHASEINERTIA, and \PHASESUCCESS.
+
+No aggregation rule, weighting scheme, numerical calibration, or metric
+structure is defined at the theory level. The formalism operates strictly
+on sign evaluations, dominance relations, and logical combinations of
+component violations, not on magnitudes, distances, or statistical
+estimators.
+
+As a result, $\TEA$ lacks the minimal structural properties typically
+required for optimization: there is no scalar objective invariant under
+admissible reparameterizations, no total or partial order on admissible
+states induced by tension, and no continuity or smoothness assumptions
+linking neighboring states.
+
+\subsection{Claim and Scope}
+
+The central claim of this paper is negative:
+\emph{structural tension in $\KEA$ is intrinsically non-optimizable}.
+Any attempt to cast $\TEA$ as an objective to be minimized or maximized
+requires the introduction of additional primitives (such as metrics,
+utilities, weights, or aggregators) that are not part of OC/ETS and that
+alter its formal semantics.
+
+The scope of the paper is intentionally narrow. No claim is made that
+optimization is impossible or ineffective in practice, nor that
+enterprises cannot be managed, steered, or improved using external
+frameworks. The claim is solely that such activities, when formulated as
+optimization of $\TEA$, lie outside the formal object defined by
+\texttt{ETS.K\_EA.v1.1}. Making this boundary explicit is necessary to
+prevent category errors and systematic misinterpretation of diagnostic
+results.
+
+%%% End of section %%%

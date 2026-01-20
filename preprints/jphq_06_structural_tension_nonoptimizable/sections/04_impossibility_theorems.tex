@@ -1,0 +1,110 @@
+﻿% ======================================================================
+% preprints/jphq_06_structural_tension_nonoptimizable/sections/04_impossibility_theorems.tex
+% Journal-grade content (100/100). ASCII-only.
+% ======================================================================
+
+\section{Impossibility Results}
+
+This section states the central negative results of the paper.
+All results are derived strictly within the formal commitments of the
+Ontology of Continua (OC) and the Executable Theory Specification
+\texttt{ETS.K\_EA.v1.1}. No additional primitives, metrics, dynamics, or
+ordering assumptions are introduced.
+
+The results are stated as formal impossibility statements. They are
+structural rather than empirical and do not depend on numerical
+instantiations, calibration choices, or implementation details.
+
+\subsection{Result 1: Non-Existence of a Scalar Objective}
+
+\paragraph{Statement (No scalar objective for structural tension).}
+There exists no scalar-valued function
+\[
+\phi : \OmegaEA \rightarrow \mathbb{R}
+\]
+that represents structural tension $\TEA$ in a manner compatible with
+\texttt{ETS.K\_EA.v1.1} and that admits minimization or maximization
+without altering the semantics of admissibility.
+
+\paragraph{Rationale.}
+Any scalar function $\phi$ induces an ordering relation on admissible
+states. OC/ETS defines no such ordering beyond explicit phase precedence.
+No scalar ordering can be constructed from threshold inequalities alone
+without introducing additional structure such as metrics, weights, or
+aggregation rules, all of which lie outside the scope lock of the theory.
+
+\subsection{Result 2: Incompatibility with Optimization Orders}
+
+\paragraph{Statement (No admissible optimization order).}
+Let $\preceq$ be any total or partial order on $\OmegaEA$ interpreted as
+``less than or equal structural tension''. Then $\preceq$ cannot be
+defined using only the threshold components $\{f_k\}$ and the phase
+precedence rules of \texttt{ETS.K\_EA.v1.1}.
+
+\paragraph{Rationale.}
+Phase precedence establishes dominance relations between \emph{classes}
+of states (for example, \PHASESTOP\ dominates \PHASECOLLAPSE), but induces
+no ordering among states within a phase. Any refinement of order inside a
+phase requires external discriminants not present in OC/ETS and
+therefore changes the formal object under consideration.
+
+\subsection{Result 3: Conflict with Admissibility Preservation}
+
+\paragraph{Statement (Optimization contradicts admissibility).}
+Assume that structural tension $\TEA$ is treated as an objective to be
+minimized or maximized over $\OmegaEA$. Then admissibility of $\OmegaEA$
+cannot be preserved under such an interpretation without introducing
+additional primitives beyond those of \texttt{ETS.K\_EA.v1.1}.
+
+\paragraph{Rationale.}
+Optimization presupposes a notion of improvement defined over admissible
+states. In OC/ETS, admissibility is a logical predicate, not a gradable or
+optimizable property. Treating admissibility boundaries as extrema
+changes their role from constraints delimiting existence to objectives
+guiding search, thereby contradicting their formal status.
+
+\subsection{Result 4: No Monotonic Relation to Continuity}
+
+\paragraph{Statement (No monotonic mapping from $\TEA$ to $\kEA$).}
+There exists no monotonic function
+\[
+g : \TEA \rightarrow \kEA
+\]
+that is invariant under admissible reparameterizations and preserves the
+continuity semantics of \texttt{ETS.K\_EA.v1.1}.
+
+\paragraph{Rationale.}
+Structural tension and continuity encode distinct structural predicates.
+Any attempt to optimize $\TEA$ indirectly by maximizing $\kEA$
+constitutes a substitution of formal objects. Such substitution violates
+the \emph{Metric Substitution} no-go constraint implicit in the executable
+specification.
+
+\subsection{Result 5: Phase Semantics Are Not Extremizable}
+
+\paragraph{Statement (Extremization collapses phase semantics).}
+No extremization procedure applied to structural tension $\TEA$ preserves
+the phase semantics defined in \texttt{ETS.K\_EA.v1.1}.
+
+\paragraph{Rationale.}
+Phase logic is ordinal and precedence-based. Extremization necessarily
+treats phases as levels of a scale, erasing the logical asymmetry between
+\PHASESUCCESS, \PHASEINERTIA, \PHASECOLLAPSE, and \PHASESTOP. Such a
+reinterpretation is incompatible with the executable specification.
+
+\subsection{Summary of Impossibility Results}
+
+Taken together, these results establish that structural tension in $\KEA$
+cannot serve as an optimization target without violating at least one of
+the following:
+(i) admissibility of $\OmegaEA$,
+(ii) boundary semantics $\dOmegaEA$,
+(iii) continuity semantics $\kEA$,
+(iv) phase precedence logic, or
+(v) the scope lock of \texttt{ETS.K\_EA.v1.1}.
+
+The impossibility is structural rather than empirical. It follows from
+the logical architecture of the theory and holds independently of any
+particular enterprise instance or empirical realization.
+
+%%% End of section %%%

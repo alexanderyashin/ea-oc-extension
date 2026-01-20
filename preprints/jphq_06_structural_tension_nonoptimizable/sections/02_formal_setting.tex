@@ -1,0 +1,93 @@
+﻿% ======================================================================
+% preprints/jphq_06_structural_tension_nonoptimizable/sections/02_formal_setting.tex
+% Journal-grade content (100/100). ASCII-only.
+% ======================================================================
+
+\section{Formal Setting}
+
+\subsection{Enterprise as Continuum}
+
+Throughout this preprint, the enterprise is modeled as a continuum
+$\KEA$ in the sense of the Ontology of Continua (OC). A continuum is
+treated as a closed formal object whose admissible states are given by a
+set $\OmegaEA$ together with explicitly declared admissibility
+conditions.
+
+No assumptions are made regarding geometry, smoothness, equilibrium,
+optimality, convergence, trajectories, or attractors. The continuum is
+defined purely through admissibility and its associated structural
+constraints.
+
+The admissible state space $\OmegaEA$ is specified relative to a fixed
+set of constraints encoded in the Executable Theory Specification
+\texttt{ETS.K\_EA.v1.1}. If $\OmegaEA = \varnothing$, the enterprise
+continuum is undefined for diagnostic purposes within the theory.
+
+\subsection{Boundary and Thresholds}
+
+The boundary of admissibility is denoted by $\dOmegaEA$. It represents
+the locus at which one or more admissibility conditions are satisfied at
+equality, or at which required structural properties cease to hold.
+Boundary terminology is used strictly in a formal sense and carries no
+geometric, physical, or metric interpretation.
+
+Thresholds are collected in the set $\ThetaEA$. Each threshold encodes a
+structural constraint separating admissible from non-admissible
+regimes. Thresholds are not empirical constants, performance targets,
+safety margins, or control parameters. They determine only whether the
+continuum remains a valid object of diagnosis.
+
+\subsection{Axes, Flows, and Cycles}
+
+Admissible states of $\KEA$ are described using a set of axes
+$A(\KEA)$, interpreted as dimensions of distinguishability. The presence
+of an axis indicates that variation along that dimension is
+structurally meaningful within the model. No assumption is made
+regarding cardinality, metric structure, or comparability of axes across
+enterprises.
+
+State changes are mediated by admissible flows $J(\KEA)$. Persistence of
+the continuum requires the existence of recurrent structures,
+represented abstractly as cycles $C(\KEA)$. The Executable Theory
+Specification determines which cycles are required and how closure is
+evaluated. No temporal regularity, equilibrium condition, or stability
+criterion is imposed beyond closure itself.
+
+\subsection{Continuity Measure}
+
+The continuity measure $\kEA \in [0,1]$ indicates whether the enterprise
+continuum retains coherent admissibility under the declared structural
+constraints. A value $\kEA = 0$ denotes a hard structural discontinuity,
+at which point $\KEA$ ceases to exist as a diagnosable object within the
+theory.
+
+Continuity is not a measure of performance, fitness, robustness, or
+desirability. It expresses only the existence of admissible transitions
+and required closure structures. No monotonic, functional, or causal
+relation between $\kEA$ and observed outcomes is assumed or implied.
+
+\subsection{Phase Logic}
+
+Admissible states of $\KEA$ are classified into phases
+(\PHASESUCCESS, \PHASEINERTIA, \PHASECOLLAPSE, \PHASESTOP) according to
+threshold evaluations and explicit precedence rules. Phase labels
+delimit which classes of diagnostic statements remain formally
+admissible. They do not encode trajectories, lifecycle stages, or
+normative judgments.
+
+Phase logic is taken as fixed from \texttt{ETS.K\_EA.v1.1} and is not
+redefined here. It provides the logical context in which structural
+tension is interpreted in subsequent sections.
+
+\subsection{Explicit Non-Optimization Setting}
+
+No objective function, utility, loss, cost functional, or preference
+ordering is defined on $\OmegaEA$. The formal setting explicitly excludes
+any assumption that admissible states are ordered by desirability or
+that system behavior seeks extrema of a scalar quantity.
+
+This absence is not an omission but a structural property of the theory.
+All results in this preprint are derived under this explicit
+non-optimization setting.
+
+%%% End of section %%%

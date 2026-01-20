@@ -1,0 +1,92 @@
+﻿% ======================================================================
+% preprints/jphq_06_structural_tension_nonoptimizable/sections/03_definition_structural_tension.tex
+% Journal-grade content (100/100). ASCII-only.
+% ======================================================================
+
+\section{Definition of Structural Tension}
+
+\subsection{Status of Structural Tension in OC/ETS}
+
+Structural tension $\TEA$ is a derived notion within the enterprise
+continuum $\KEA$. It is not introduced as a primitive of the Ontology of
+Continua and does not appear as an independent object in the Executable
+Theory Specification. Its meaning is fully determined by the
+admissibility structure defined for $\KEA$.
+
+Formally, structural tension characterizes the relation between a given
+enterprise state and the threshold conditions collected in $\ThetaEA$.
+Outside this threshold-based admissibility framework, the concept of
+structural tension is undefined and has no formal interpretation.
+
+\subsection{Component-Based Formulation}
+
+In \texttt{ETS.K\_EA.v1.1}, structural tension is represented through a
+finite family of threshold component functions
+\[
+\mathcal{F} =
+\{\fexist,\fstab,\finertia,\fcollapse,\fstop\}.
+\]
+
+Each component corresponds to a distinct admissibility condition and is
+evaluated as an inequality relative to zero. The sign of a component
+$f_k$ determines whether the associated condition is satisfied
+($f_k \leq 0$) or violated ($f_k > 0$). No assumptions are made regarding
+scale, range, continuity, ordering, or numerical interpretation of these
+functions.
+
+No aggregation, weighting, normalization, or algebraic combination of
+components is defined at the theory level. Interactions between
+components are governed exclusively by explicit logical precedence rules
+encoded in the phase logic.
+
+\subsection{Structural Tension as a Logical Configuration}
+
+Structural tension $\TEA$ is not a scalar-valued function on $\OmegaEA$.
+It is identified with the configuration of inequality evaluations across
+the component set $\mathcal{F}$.
+
+Two enterprise states are structurally distinct with respect to tension
+if and only if they differ in the pattern of component satisfactions and
+violations, even when no numerical distance, ranking, or ordering between
+them can be defined. Accordingly, $\TEA$ induces neither a total nor a
+partial order on $\OmegaEA$.
+
+The only admissible ordering relation within the formalism is phase
+precedence (for example, \PHASESTOP\ dominates \PHASECOLLAPSE), which is
+logical rather than quantitative and does not refine distinctions between
+states within the same phase.
+
+\subsection{Relation to Boundary and Continuity}
+
+Structural tension is related to the boundary of admissibility
+$\dOmegaEA$ through threshold conditions. Boundary states are
+characterized by component equalities or by the failure of required
+structural properties. This relation is qualitative and non-metric.
+
+Threshold violations may affect the continuity measure $\kEA$ by
+eliminating admissible transitions or required closure cycles. However,
+$\TEA$ and $\kEA$ are not linked by any functional, monotonic, or
+invertible mapping. Structural tension concerns admissibility conditions,
+whereas continuity concerns the existence of coherent closure and
+transition structure.
+
+\subsection{Explicit Non-Properties}
+
+For clarity, structural tension in $\KEA$ does \emph{not} possess the
+following properties:
+
+\begin{itemize}
+  \item it is not a scalar metric,
+  \item it is not additive, compositional, or aggregative,
+  \item it is not continuous or differentiable,
+  \item it is not comparable across enterprises,
+  \item it is not invariant under admissible reparameterizations,
+  \item it is not an objective, loss, cost, or utility function.
+\end{itemize}
+
+These absences are structural consequences of the OC/ETS formalism. Any
+extension that assigns such properties to $\TEA$ introduces additional
+primitives and therefore constitutes a change of theory rather than an
+interpretation within it.
+
+%%% End of section %%%

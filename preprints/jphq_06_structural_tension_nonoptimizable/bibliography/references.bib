@@ -1,0 +1,211 @@
+% ======================================================================
+% preprints/jphq_06_structural_tension_nonoptimizable/bibliography/references.bib
+% JPHQ-06 references (ASCII-only). BibLaTeX (biber) / authoryear.
+% ======================================================================
+
+% --- Optimization / scalarization / multiobjective foundations ---
+
+@book{boyd2004,
+  author    = {Boyd, Stephen and Vandenberghe, Lieven},
+  title     = {Convex Optimization},
+  publisher = {Cambridge University Press},
+  year      = {2004},
+  note      = {Canonical reference for objectives, constraints, and the structural requirements of optimization problems.}
+}
+
+@book{miettinen1999,
+  author    = {Miettinen, Kaisa},
+  title     = {Nonlinear Multiobjective Optimization},
+  publisher = {Kluwer Academic Publishers},
+  year      = {1999},
+  note      = {Systematic treatment of vector objectives and scalarization; clarifies what must be added to turn a vector into a single objective.}
+}
+
+@book{ehrgott2005,
+  author    = {Ehrgott, Matthias},
+  title     = {Multicriteria Optimization},
+  publisher = {Springer},
+  year      = {2005},
+  note      = {Reference for partial orders, Pareto dominance, and the limits of total ordering in multicriteria settings.}
+}
+
+@book{keeney1976,
+  author    = {Keeney, Ralph L. and Raiffa, Howard},
+  title     = {Decisions with Multiple Objectives: Preferences and Value Tradeoffs},
+  publisher = {Wiley},
+  year      = {1976},
+  note      = {Classic text on turning multiple criteria into a scalar value function; emphasizes that additional preference structure is required.}
+}
+
+@book{arrow1951,
+  author    = {Arrow, Kenneth J.},
+  title     = {Social Choice and Individual Values},
+  publisher = {Wiley},
+  year      = {1951},
+  note      = {Impossibility results for aggregating preferences into a single consistent ordering; useful as a negative parallel to scalarization claims.}
+}
+
+@book{sen1970,
+  author    = {Sen, Amartya K.},
+  title     = {Collective Choice and Social Welfare},
+  publisher = {Holden-Day},
+  year      = {1970},
+  note      = {Formal analysis of aggregation and ordering; highlights structural incompatibilities that arise when forcing a single ranking.}
+}
+
+@article{pareto1906,
+  author  = {Pareto, Vilfredo},
+  title   = {Manual of Political Economy},
+  journal = {Manuale di Economia Politica},
+  year    = {1906},
+  note    = {Introduces Pareto efficiency concepts that underpin non-total orderings in multi-criterion contexts; cited for historical grounding.}
+}
+
+% --- Constraint / admissibility viewpoint (hard boundaries vs costs) ---
+
+@book{rossi2006,
+  editor    = {Rossi, Francesca and van Beek, Peter and Walsh, Toby},
+  title     = {Handbook of Constraint Programming},
+  publisher = {Elsevier},
+  year      = {2006},
+  note      = {Constraint satisfaction perspective: feasibility/admissibility is not an objective; useful contrast to penalty-based optimization.}
+}
+
+@book{rockafellar1998,
+  author    = {Rockafellar, R. Tyrrell and Wets, Roger J.-B.},
+  title     = {Variational Analysis},
+  publisher = {Springer},
+  year      = {1998},
+  note      = {Boundary/constraint semantics and variational structure; cited for formal language around admissible sets and boundary behavior.}
+}
+
+% --- Control / observability / identification (used for contrast, not as prescriptions) ---
+
+@article{kalman1960,
+  author  = {Kalman, R. E.},
+  title   = {On the General Theory of Control Systems},
+  journal = {Proceedings of the IFAC Congress},
+  year    = {1960},
+  note    = {Foundational state-space control reference; cited for the standard scalar-objective intuition that OC/ETS explicitly does not assume.}
+}
+
+@book{ljung1999,
+  author    = {Ljung, Lennart},
+  title     = {System Identification: Theory for the User},
+  publisher = {Prentice Hall},
+  year      = {1999},
+  edition   = {2},
+  note      = {Standard reference for identification and model-based objectives; used as contrast to non-metric admissibility diagnostics.}
+}
+
+@book{slotine1991,
+  author    = {Slotine, Jean-Jacques E. and Li, Weiping},
+  title     = {Applied Nonlinear Control},
+  publisher = {Prentice Hall},
+  year      = {1991},
+  note      = {Canonical nonlinear control reference; used to position what optimization/control presuppose (objectives, stability notions).}
+}
+
+@article{walter1982,
+  author  = {Walter, Eric and Pronzato, Luc},
+  title   = {Identification of Parametric Models from Experimental Data},
+  journal = {Automatica},
+  volume  = {18},
+  number  = {5},
+  pages   = {611--623},
+  year    = {1982},
+  note    = {Identification framing of model selection and objectives; cited as a standard objective-driven paradigm for contrast.}
+}
+
+@book{walter1997,
+  author    = {Walter, Eric and Pronzato, Luc},
+  title     = {Identification of Parametric Models from Experimental Data},
+  publisher = {Springer},
+  year      = {1997},
+  edition   = {2},
+  note      = {Extended identification reference; provides additional context for objective-based estimation vs admissibility delimiters.}
+}
+
+% --- Information / statistical foundations (ordering, distinguishability, non-metric limits) ---
+
+@book{ash1990,
+  author    = {Ash, Robert B.},
+  title     = {Information Theory},
+  publisher = {Dover Publications},
+  year      = {1990},
+  note      = {Basic reference for information-theoretic constraints; cited for non-teleological, structural limits language.}
+}
+
+@book{cover2006,
+  author    = {Cover, Thomas M. and Thomas, Joy A.},
+  title     = {Elements of Information Theory},
+  publisher = {Wiley},
+  year      = {2006},
+  edition   = {2},
+  note      = {Standard reference for distinguishability and limits; used only for formal language, not for KPI interpretations.}
+}
+
+@book{bishop2006,
+  author    = {Bishop, Christopher M.},
+  title     = {Pattern Recognition and Machine Learning},
+  publisher = {Springer},
+  year      = {2006},
+  note      = {Reference for model-based scoring and loss functions; used as contrast to OC/ETS non-loss diagnostic semantics.}
+}
+
+% --- Enterprise architecture / socio-technical context (non-normative positioning) ---
+
+@book{ross2006,
+  author    = {Ross, Jeanne W. and Weill, Peter and Robertson, David C.},
+  title     = {Enterprise Architecture as Strategy: Creating a Foundation for Business Execution},
+  publisher = {Harvard Business School Press},
+  year      = {2006},
+  note      = {Widely cited EA framing; included for context while keeping this preprint non-prescriptive and non-maturity-model based.}
+}
+
+@standard{iso42010_2011,
+  title        = {ISO/IEC/IEEE 42010:2011 Systems and Software Engineering --- Architecture Description},
+  organization = {ISO/IEC/IEEE},
+  year         = {2011},
+  note         = {Architecture description standard; cited for baseline terminology without importing KPI/control commitments.}
+}
+
+@standard{togaf_2018,
+  title        = {TOGAF Standard, Version 9.2},
+  organization = {The Open Group},
+  year         = {2018},
+  note         = {Industry EA reference; cited only to locate the enterprise-architecture domain, not to introduce governance prescriptions.}
+}
+
+% --- Complexity / boundaries / non-teleological systems language ---
+
+@book{holland1992,
+  author    = {Holland, John H.},
+  title     = {Adaptation in Natural and Artificial Systems},
+  publisher = {MIT Press},
+  year      = {1992},
+  note      = {Complex adaptive systems framing; used for non-teleological language about structural constraints and emergent behavior.}
+}
+
+@book{simon1996,
+  author    = {Simon, Herbert A.},
+  title     = {The Sciences of the Artificial},
+  publisher = {MIT Press},
+  year      = {1996},
+  edition   = {3},
+  note      = {Bounded rationality and design constraints; useful to resist objective-function imports as default assumptions.}
+}
+
+% --- Optional: internal artifact citation pattern (kept minimal; can be expanded later if desired) ---
+
+@misc{ets_kea_v11,
+  author       = {{EA-OC-Extension Project}},
+  title        = {Executable Theory Specification: ETS.K\_EA.v1.1},
+  year         = {2026},
+  howpublished = {Repository configuration file (local artifact)},
+  note         = {Scope-locked executable specification used as the formal source for definitions of thresholds, phase logic, and continuity semantics.}
+}
+
+% ======================================================================
+% End of references.bib
+% ======================================================================

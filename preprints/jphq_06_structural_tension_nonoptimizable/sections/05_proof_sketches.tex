@@ -1,0 +1,107 @@
+﻿% ======================================================================
+% preprints/jphq_06_structural_tension_nonoptimizable/sections/05_proof_sketches.tex
+% Journal-grade content (100/100). ASCII-only.
+% ======================================================================
+
+\section{Proof Sketches and Boundary Cases}
+
+This section provides finite proof sketches for the impossibility results
+stated above. All arguments are structural and logical. No appeal is made
+to empirical data, numerical instantiation, or external optimization
+theory. Each sketch isolates the minimal contradiction with OC/ETS
+semantics.
+
+\subsection{Proof Sketch for Result 1}
+
+Assume that a scalar function
+\[
+\phi : \OmegaEA \rightarrow \mathbb{R}
+\]
+exists and represents structural tension $\TEA$.
+
+By construction, $\phi$ induces an ordering on $\OmegaEA$ via the
+standard order on $\mathbb{R}$. In \texttt{ETS.K\_EA.v1.1}, the only
+admissible relations over states are:
+(i) sign-based evaluations of the component functions $f_k$, and
+(ii) ordinal phase precedence.
+
+No rule exists to compare two admissible states belonging to the same
+phase when all relevant $f_k \leq 0$. Any ordering introduced by $\phi$
+therefore exceeds what is derivable from the theory. This violates the
+scope lock of OC/ETS. Hence, no such scalar representation exists within
+the theory.
+
+\subsection{Proof Sketch for Result 2}
+
+Assume that an order $\preceq$ exists on $\OmegaEA$ interpreted as
+``less than or equal structural tension''.
+
+Phase precedence defines dominance relations between disjoint classes of
+states (for example, \PHASESTOP\ dominates \PHASECOLLAPSE). Within any
+single phase, OC/ETS defines no further discriminants.
+
+Any order $\preceq$ must therefore either:
+(i) refine ordering within a phase by introducing new criteria, or
+(ii) collapse distinct phases into a single ordered scale.
+
+Both options introduce structure not present in OC/ETS and alter the
+formal object under consideration. Therefore, no admissible optimization
+order exists.
+
+\subsection{Proof Sketch for Result 3}
+
+Assume that structural tension $\TEA$ is treated as an objective for
+minimization or maximization over $\OmegaEA$.
+
+Optimization semantics require a notion of improvement defined over
+admissible states. In OC/ETS, admissibility is a logical predicate, not a
+gradable or optimizable property. Thresholds delimit where diagnosis is
+defined; they are not extrema of a quantity.
+
+Reinterpreting thresholds as optimization targets reassigns them from
+constraints of existence to objectives of improvement. This changes their
+formal role and violates admissibility semantics. Hence, optimization of
+$\TEA$ is incompatible with admissibility preservation.
+
+\subsection{Proof Sketch for Result 4}
+
+Assume that a monotonic mapping
+\[
+g : \TEA \rightarrow \kEA
+\]
+exists.
+
+Continuity $\kEA$ is defined through cycle closure, observability, and
+parent compatibility. Structural tension is defined through threshold
+inequalities. These predicates are logically independent in OC/ETS.
+
+A monotonic mapping would permit substitution of $\kEA$ for $\TEA$ as an
+optimization proxy. Such substitution constitutes a change of formal
+objects and violates the \emph{Metric Substitution} no-go constraint.
+Therefore, no such mapping exists.
+
+\subsection{Proof Sketch for Result 5}
+
+Assume that extremization is applied to $\TEA$.
+
+Extremization presupposes an ordered scale. Applying it to $\TEA$ treats
+phases as ordered levels. Phase logic, however, is ordinal and
+precedence-based: \PHASESTOP\ dominates \PHASECOLLAPSE\ by rule, not by
+magnitude.
+
+Interpreting phases as extrema erases this logical asymmetry and induces
+inadmissible transitions between diagnostic classes. Thus, extremization
+collapses phase semantics.
+
+\subsection{Boundary Cases}
+
+At the boundary $\dOmegaEA$, the only admissible comparisons are those
+explicitly encoded in phase precedence. No limit process approaching
+$\dOmegaEA$ defines an interior distance, gradient, margin, or rate of
+change.
+
+Consequently, epsilon-margin reasoning, asymptotic optimization, or
+``safety buffer'' interpretations are excluded by construction. Such
+arguments presuppose metric structure that is absent from OC/ETS.
+
+%%% End of section %%%

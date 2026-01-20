@@ -1,0 +1,66 @@
+\contentsline {section}{\numberline {1}Problem Statement}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Motivation}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Frozen Question}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Formal Context}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Claim and Scope}{4}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Formal Setting}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Enterprise as Continuum}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Boundary and Thresholds}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Axes, Flows, and Cycles}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Continuity Measure}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Phase Logic}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Explicit Non-Optimization Setting}{5}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Definition of Structural Tension}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Status of Structural Tension in OC/ETS}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Component-Based Formulation}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Structural Tension as a Logical Configuration}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Relation to Boundary and Continuity}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Explicit Non-Properties}{6}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Impossibility Results}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Result 1: Non-Existence of a Scalar Objective}{7}{subsection.4.1}%
+\contentsline {paragraph}{Statement (No scalar objective for structural tension).}{7}{section*.2}%
+\contentsline {paragraph}{Rationale.}{7}{section*.3}%
+\contentsline {subsection}{\numberline {4.2}Result 2: Incompatibility with Optimization Orders}{7}{subsection.4.2}%
+\contentsline {paragraph}{Statement (No admissible optimization order).}{7}{section*.4}%
+\contentsline {paragraph}{Rationale.}{7}{section*.5}%
+\contentsline {subsection}{\numberline {4.3}Result 3: Conflict with Admissibility Preservation}{7}{subsection.4.3}%
+\contentsline {paragraph}{Statement (Optimization contradicts admissibility).}{7}{section*.6}%
+\contentsline {paragraph}{Rationale.}{7}{section*.7}%
+\contentsline {subsection}{\numberline {4.4}Result 4: No Monotonic Relation to Continuity}{7}{subsection.4.4}%
+\contentsline {paragraph}{Statement (No monotonic mapping from $\ensuremath {T_{\mathrm {EA}}}$ to $\ensuremath {k_{\mathrm {EA}}}$).}{7}{section*.8}%
+\contentsline {paragraph}{Rationale.}{8}{section*.9}%
+\contentsline {subsection}{\numberline {4.5}Result 5: Phase Semantics Are Not Extremizable}{8}{subsection.4.5}%
+\contentsline {paragraph}{Statement (Extremization collapses phase semantics).}{8}{section*.10}%
+\contentsline {paragraph}{Rationale.}{8}{section*.11}%
+\contentsline {subsection}{\numberline {4.6}Summary of Impossibility Results}{8}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Proof Sketches and Boundary Cases}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Proof Sketch for Result 1}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Proof Sketch for Result 2}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Proof Sketch for Result 3}{9}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Proof Sketch for Result 4}{9}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Proof Sketch for Result 5}{9}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Boundary Cases}{9}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Scope Limits and Non-Claims}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Scope}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Non-Claims}{10}{subsection.6.2}%
+\contentsline {paragraph}{No governance, control, or intervention claims.}{10}{section*.12}%
+\contentsline {paragraph}{No performance interpretation.}{10}{section*.13}%
+\contentsline {paragraph}{No empirical or statistical claims.}{10}{section*.14}%
+\contentsline {paragraph}{No quantitative margins or buffers.}{10}{section*.15}%
+\contentsline {paragraph}{No cross-enterprise comparability.}{10}{section*.16}%
+\contentsline {paragraph}{No claims about the impossibility of optimization in general.}{10}{section*.17}%
+\contentsline {subsection}{\numberline {6.3}Boundary of Applicability}{10}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Implication of the Limits}{11}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Falsifiability and Conditions of Refutation}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Target Claim}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Admissible Modes of Refutation}{11}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Explicit Non-Falsifiers}{11}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Internal Consistency Refutation}{12}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Scope of Falsification}{12}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Positioning with Respect to Existing Literature}{12}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Optimization and Control Frameworks}{12}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Resilience and Systems Engineering}{12}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Complexity and Phase-Transition Analogies}{13}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Maturity Models and Capability Scales}{13}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Formal Ontologies and Meta-Models}{13}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Summary of Structural Distinctions}{13}{subsection.8.6}%
