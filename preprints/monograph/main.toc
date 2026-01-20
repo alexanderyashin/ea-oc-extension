@@ -1,0 +1,261 @@
+\contentsline {chapter}{\numberline {1}Chapter 1 - JPHQ-01}{6}{chapter.2}%
+\contentsline {paragraph}{Keywords.}{1}{section*.3}%
+\contentsline {subsection}{\numberline {1.0.1}Frozen scientific question}{1}{subsection.4}%
+\contentsline {subsection}{\numberline {1.0.2}Hard scope constraints}{1}{subsection.5}%
+\contentsline {subsection}{\numberline {1.0.3}Operational meaning}{1}{subsection.6}%
+\contentsline {subsection}{\numberline {1.0.4}Representational assumption}{1}{subsection.7}%
+\contentsline {subsection}{\numberline {1.0.5}Permitted information for decision procedures}{2}{subsection.8}%
+\contentsline {subsection}{\numberline {1.0.6}Structure of the formal argument}{2}{subsection.9}%
+\contentsline {subsection}{\numberline {1.0.7}What is not claimed}{3}{subsection.21}%
+\contentsline {subsection}{\numberline {1.0.8}What would falsify the main claims}{4}{subsection.22}%
+\contentsline {chapter}{\numberline {2}Chapter 2 - JPHQ-02}{6}{chapter.24}%
+\contentsline {section}{\numberline {2.1}Problem Statement: STOP as a Diagnostic Outcome}{6}{section.26}%
+\contentsline {section}{\numberline {2.2}Formal Setting}{7}{section.27}%
+\contentsline {section}{\numberline {2.3}Definition of STOP}{8}{section.28}%
+\contentsline {section}{\numberline {2.4}Propositions}{9}{section.29}%
+\contentsline {section}{\numberline {2.5}Proof Sketches}{10}{section.37}%
+\contentsline {section}{\numberline {2.6}Falsifiability}{11}{section.45}%
+\contentsline {section}{\numberline {2.7}Limits and Scope Boundaries}{12}{section.46}%
+\contentsline {chapter}{\numberline {3}Chapter 3 - JPHQ-03}{14}{chapter.48}%
+\contentsline {section}{\numberline {3.1}Problem statement (frozen)}{1}{section.49}%
+\contentsline {paragraph}{Frozen question (Q3).}{1}{section*.50}%
+\contentsline {paragraph}{Scope and constraints.}{1}{section*.51}%
+\contentsline {paragraph}{Analytical plan.}{1}{section*.52}%
+\contentsline {section}{\numberline {3.2}Formal setting (OC/ETS-only)}{1}{section.53}%
+\contentsline {paragraph}{Enterprise continuum.}{1}{section*.54}%
+\contentsline {paragraph}{Axes.}{1}{section*.55}%
+\contentsline {paragraph}{Structural tension and thresholds.}{2}{section*.56}%
+\contentsline {paragraph}{Cycles.}{2}{section*.57}%
+\contentsline {paragraph}{Continuity measure.}{2}{section*.58}%
+\contentsline {paragraph}{Phase logic and precedence.}{2}{section*.59}%
+\contentsline {paragraph}{Invariants and no-go constraints.}{2}{section*.60}%
+\contentsline {paragraph}{Scope of use.}{3}{section*.61}%
+\contentsline {section}{\numberline {3.3}Phase definitions as $\Theta $-induced partitions}{3}{section.62}%
+\contentsline {section}{\numberline {3.4}Propositions on threshold-induced transitions}{4}{section.77}%
+\contentsline {section}{\numberline {3.5}Proof sketches (OC/ETS-constrained)}{5}{section.84}%
+\contentsline {subsection}{\numberline {3.5.1}Uniqueness of phase classification}{5}{subsection.85}%
+\contentsline {subsection}{\numberline {3.5.2}Discontinuity at threshold crossings}{5}{subsection.86}%
+\contentsline {subsection}{\numberline {3.5.3}Absorbing nature of \texttt {STOP}}{5}{subsection.87}%
+\contentsline {subsection}{\numberline {3.5.4}Irreversibility of \texttt {COLLAPSE}}{6}{subsection.88}%
+\contentsline {subsection}{\numberline {3.5.5}Non-steerability of phase transitions}{6}{subsection.89}%
+\contentsline {subsection}{\numberline {3.5.6}Scope of the proof sketches}{6}{subsection.90}%
+\contentsline {section}{\numberline {3.6}Scope limits and non-claims}{6}{section.92}%
+\contentsline {paragraph}{Non-teleological stance.}{6}{section*.93}%
+\contentsline {paragraph}{Non-managerial stance.}{6}{section*.94}%
+\contentsline {section}{\numberline {3.7}Falsifiability conditions}{7}{section.95}%
+\contentsline {section}{\numberline {3.8}Literature positioning (minimal)}{7}{section.99}%
+\contentsline {chapter}{\numberline {4}Chapter 4 - JPHQ-04}{9}{chapter.101}%
+\contentsline {paragraph}{Primitive vocabulary (assumed).}{1}{section*.105}%
+\contentsline {paragraph}{Standing constraint (internal derivability).}{2}{section*.106}%
+\contentsline {paragraph}{Scope of formal reasoning.}{2}{section*.107}%
+\contentsline {paragraph}{F1. Axis Embedding without Incompatibility.}{6}{section*.146}%
+\contentsline {paragraph}{F2. Threshold Reconfiguration with Non-Empty State Space.}{6}{section*.147}%
+\contentsline {paragraph}{F3. Cycle Preservation across Structural Change.}{7}{section*.148}%
+\contentsline {paragraph}{F4. Admissible Phase-Transition Path.}{7}{section*.149}%
+\contentsline {paragraph}{F5. Boundary-Compatible Trajectories.}{7}{section*.150}%
+\contentsline {chapter}{\numberline {5}Chapter 5 - JPHQ-05}{9}{chapter.154}%
+\contentsline {section}{\numberline {5.1}Problem Statement}{1}{section.155}%
+\contentsline {paragraph}{Hard constraints.}{1}{section*.156}%
+\contentsline {paragraph}{Explicit non-claims.}{1}{section*.157}%
+\contentsline {paragraph}{Core distinction.}{1}{section*.158}%
+\contentsline {paragraph}{Formal relevance.}{1}{section*.159}%
+\contentsline {section}{\numberline {5.2}Formal Setting}{1}{section.160}%
+\contentsline {subsection}{\numberline {5.2.1}ETS-anchored observability structures}{2}{subsection.161}%
+\contentsline {subsection}{\numberline {5.2.2}Observation as structural quotienting}{2}{subsection.162}%
+\contentsline {section}{\numberline {5.3}Observation and KPI Spaces}{2}{section.163}%
+\contentsline {section}{\numberline {5.4}Impossibility and Non-Identifiability Results}{4}{section.171}%
+\contentsline {subsection}{\numberline {5.4.1}Existence of KPI-Indistinguishable States}{4}{subsection.172}%
+\contentsline {subsection}{\numberline {5.4.2}Absence of Universal KPI Completeness}{4}{subsection.174}%
+\contentsline {subsection}{\numberline {5.4.3}Structural Indistinguishability as an Intrinsic Feature}{5}{subsection.176}%
+\contentsline {subsection}{\numberline {5.4.4}Independence from Statistical or Algorithmic Enrichment}{5}{subsection.178}%
+\contentsline {subsection}{\numberline {5.4.5}Observability Versus Identifiability}{5}{subsection.180}%
+\contentsline {section}{\numberline {5.5}Proof Sketches and Technical Remarks}{5}{section.182}%
+\contentsline {subsection}{\numberline {5.5.1}Source of the Impossibility Results}{6}{subsection.183}%
+\contentsline {subsection}{\numberline {5.5.2}On Injectivity and Admissible Assumptions}{6}{subsection.184}%
+\contentsline {subsection}{\numberline {5.5.3}Observable Domain and Loss of Observability}{6}{subsection.185}%
+\contentsline {subsection}{\numberline {5.5.4}Why Sampling and Aggregation Cannot Help}{7}{subsection.186}%
+\contentsline {subsection}{\numberline {5.5.5}Interpretation of the Results}{7}{subsection.187}%
+\contentsline {section}{\numberline {5.6}Scope, Assumptions, and Falsifiability}{7}{section.188}%
+\contentsline {subsection}{\numberline {5.6.1}Scope of the Preprint}{7}{subsection.189}%
+\contentsline {subsection}{\numberline {5.6.2}Explicit Assumptions}{8}{subsection.190}%
+\contentsline {subsection}{\numberline {5.6.3}What Is Explicitly Not Claimed}{8}{subsection.194}%
+\contentsline {subsection}{\numberline {5.6.4}Falsifiability and Empirical Interface}{8}{subsection.195}%
+\contentsline {section}{\numberline {5.7}Literature Positioning}{9}{section.199}%
+\contentsline {subsection}{\numberline {5.7.1}Observation as a Map and Loss of Information}{9}{subsection.200}%
+\contentsline {subsection}{\numberline {5.7.2}Identifiability in System Identification}{9}{subsection.201}%
+\contentsline {subsection}{\numberline {5.7.3}OC/ETS-Specific Contribution}{9}{subsection.202}%
+\contentsline {subsection}{\numberline {5.7.4}Relation to Partial Observability and Representation Limits}{10}{subsection.203}%
+\contentsline {subsection}{\numberline {5.7.5}Positioning of the Present Results}{10}{subsection.204}%
+\contentsline {chapter}{\numberline {6}Chapter 6 - JPHQ-06}{12}{chapter.206}%
+\contentsline {section}{\numberline {6.1}Problem Statement}{1}{section.207}%
+\contentsline {subsection}{\numberline {6.1.1}Motivation}{1}{subsection.208}%
+\contentsline {subsection}{\numberline {6.1.2}Frozen Question}{1}{subsection.209}%
+\contentsline {subsection}{\numberline {6.1.3}Formal Context}{1}{subsection.210}%
+\contentsline {subsection}{\numberline {6.1.4}Claim and Scope}{2}{subsection.211}%
+\contentsline {section}{\numberline {6.2}Formal Setting}{2}{section.212}%
+\contentsline {subsection}{\numberline {6.2.1}Enterprise as Continuum}{2}{subsection.213}%
+\contentsline {subsection}{\numberline {6.2.2}Boundary and Thresholds}{2}{subsection.214}%
+\contentsline {subsection}{\numberline {6.2.3}Axes, Flows, and Cycles}{2}{subsection.215}%
+\contentsline {subsection}{\numberline {6.2.4}Continuity Measure}{3}{subsection.216}%
+\contentsline {subsection}{\numberline {6.2.5}Phase Logic}{3}{subsection.217}%
+\contentsline {subsection}{\numberline {6.2.6}Explicit Non-Optimization Setting}{3}{subsection.218}%
+\contentsline {section}{\numberline {6.3}Definition of Structural Tension}{3}{section.219}%
+\contentsline {subsection}{\numberline {6.3.1}Status of Structural Tension in OC/ETS}{3}{subsection.220}%
+\contentsline {subsection}{\numberline {6.3.2}Component-Based Formulation}{3}{subsection.221}%
+\contentsline {subsection}{\numberline {6.3.3}Structural Tension as a Logical Configuration}{4}{subsection.222}%
+\contentsline {subsection}{\numberline {6.3.4}Relation to Boundary and Continuity}{4}{subsection.223}%
+\contentsline {subsection}{\numberline {6.3.5}Explicit Non-Properties}{4}{subsection.224}%
+\contentsline {section}{\numberline {6.4}Impossibility Results}{5}{section.225}%
+\contentsline {subsection}{\numberline {6.4.1}Result 1: Non-Existence of a Scalar Objective}{5}{subsection.226}%
+\contentsline {paragraph}{Statement (No scalar objective for structural tension).}{5}{section*.227}%
+\contentsline {paragraph}{Rationale.}{5}{section*.228}%
+\contentsline {subsection}{\numberline {6.4.2}Result 2: Incompatibility with Optimization Orders}{5}{subsection.229}%
+\contentsline {paragraph}{Statement (No admissible optimization order).}{5}{section*.230}%
+\contentsline {paragraph}{Rationale.}{5}{section*.231}%
+\contentsline {subsection}{\numberline {6.4.3}Result 3: Conflict with Admissibility Preservation}{5}{subsection.232}%
+\contentsline {paragraph}{Statement (Optimization contradicts admissibility).}{5}{section*.233}%
+\contentsline {paragraph}{Rationale.}{5}{section*.234}%
+\contentsline {subsection}{\numberline {6.4.4}Result 4: No Monotonic Relation to Continuity}{6}{subsection.235}%
+\contentsline {paragraph}{Statement (No monotonic mapping from $$\mathsf {T_{EA}}$$ to $$k_{EA}$$).}{6}{section*.236}%
+\contentsline {paragraph}{Rationale.}{6}{section*.237}%
+\contentsline {subsection}{\numberline {6.4.5}Result 5: Phase Semantics Are Not Extremizable}{6}{subsection.238}%
+\contentsline {paragraph}{Statement (Extremization collapses phase semantics).}{6}{section*.239}%
+\contentsline {paragraph}{Rationale.}{6}{section*.240}%
+\contentsline {subsection}{\numberline {6.4.6}Summary of Impossibility Results}{6}{subsection.241}%
+\contentsline {section}{\numberline {6.5}Proof Sketches and Boundary Cases}{6}{section.242}%
+\contentsline {subsection}{\numberline {6.5.1}Proof Sketch for Result 1}{6}{subsection.243}%
+\contentsline {subsection}{\numberline {6.5.2}Proof Sketch for Result 2}{7}{subsection.244}%
+\contentsline {subsection}{\numberline {6.5.3}Proof Sketch for Result 3}{7}{subsection.245}%
+\contentsline {subsection}{\numberline {6.5.4}Proof Sketch for Result 4}{7}{subsection.246}%
+\contentsline {subsection}{\numberline {6.5.5}Proof Sketch for Result 5}{7}{subsection.247}%
+\contentsline {subsection}{\numberline {6.5.6}Boundary Cases}{7}{subsection.248}%
+\contentsline {section}{\numberline {6.6}Scope Limits and Non-Claims}{8}{section.249}%
+\contentsline {subsection}{\numberline {6.6.1}Scope}{8}{subsection.250}%
+\contentsline {subsection}{\numberline {6.6.2}Non-Claims}{8}{subsection.251}%
+\contentsline {paragraph}{No governance, control, or intervention claims.}{8}{section*.252}%
+\contentsline {paragraph}{No performance interpretation.}{8}{section*.253}%
+\contentsline {paragraph}{No empirical or statistical claims.}{8}{section*.254}%
+\contentsline {paragraph}{No quantitative margins or buffers.}{8}{section*.255}%
+\contentsline {paragraph}{No cross-enterprise comparability.}{9}{section*.256}%
+\contentsline {paragraph}{No claims about the impossibility of optimization in general.}{9}{section*.257}%
+\contentsline {subsection}{\numberline {6.6.3}Boundary of Applicability}{9}{subsection.258}%
+\contentsline {subsection}{\numberline {6.6.4}Implication of the Limits}{9}{subsection.259}%
+\contentsline {section}{\numberline {6.7}Falsifiability and Conditions of Refutation}{9}{section.260}%
+\contentsline {subsection}{\numberline {6.7.1}Target Claim}{9}{subsection.261}%
+\contentsline {subsection}{\numberline {6.7.2}Admissible Modes of Refutation}{9}{subsection.262}%
+\contentsline {subsection}{\numberline {6.7.3}Explicit Non-Falsifiers}{10}{subsection.267}%
+\contentsline {subsection}{\numberline {6.7.4}Internal Consistency Refutation}{10}{subsection.268}%
+\contentsline {subsection}{\numberline {6.7.5}Scope of Falsification}{10}{subsection.269}%
+\contentsline {section}{\numberline {6.8}Positioning with Respect to Existing Literature}{10}{section.270}%
+\contentsline {subsection}{\numberline {6.8.1}Optimization and Control Frameworks}{11}{subsection.271}%
+\contentsline {subsection}{\numberline {6.8.2}Resilience and Systems Engineering}{11}{subsection.272}%
+\contentsline {subsection}{\numberline {6.8.3}Complexity and Phase-Transition Analogies}{11}{subsection.273}%
+\contentsline {subsection}{\numberline {6.8.4}Maturity Models and Capability Scales}{11}{subsection.274}%
+\contentsline {subsection}{\numberline {6.8.5}Formal Ontologies and Meta-Models}{11}{subsection.275}%
+\contentsline {subsection}{\numberline {6.8.6}Summary of Structural Distinctions}{12}{subsection.276}%
+\contentsline {chapter}{\numberline {7}Chapter 7 - JPHQ-07}{14}{chapter.278}%
+\contentsline {section}{\numberline {7.1}Problem Statement}{1}{section.279}%
+\contentsline {paragraph}{Frozen Question (Q7).}{1}{section*.280}%
+\contentsline {section}{\numberline {7.2}Formal Setting}{1}{section.281}%
+\contentsline {section}{\numberline {7.3}Enterprise Identity as Structure}{1}{section.282}%
+\contentsline {section}{\numberline {7.4}Identity Loss as Phase Transition}{2}{section.288}%
+\contentsline {section}{\numberline {7.5}Irreversibility and No-Go Results}{2}{section.291}%
+\contentsline {section}{\numberline {7.6}Proof Sketches and Boundary Cases}{3}{section.297}%
+\contentsline {subsection}{\numberline {7.6.1}Proof Sketch: Identity Loss Transition}{3}{subsection.298}%
+\contentsline {subsection}{\numberline {7.6.2}Proof Sketch: Irreversibility}{3}{subsection.299}%
+\contentsline {subsection}{\numberline {7.6.3}Boundary Case: Inertia without Identity}{3}{subsection.300}%
+\contentsline {subsection}{\numberline {7.6.4}Boundary Case: Apparent Identity Persistence}{4}{subsection.301}%
+\contentsline {section}{\numberline {7.7}Scope Limits and Non-Claims}{4}{section.302}%
+\contentsline {paragraph}{No Prescriptive or Normative Claims.}{4}{section*.303}%
+\contentsline {paragraph}{No Recovery or Turnaround Claims.}{4}{section*.304}%
+\contentsline {paragraph}{No Managerial, Cultural, or Narrative Semantics.}{4}{section*.305}%
+\contentsline {paragraph}{No Extension of OC or ETS.}{4}{section*.306}%
+\contentsline {paragraph}{Domain of Validity.}{4}{section*.307}%
+\contentsline {section}{\numberline {7.8}Falsifiability}{4}{section.308}%
+\contentsline {paragraph}{Falsification via Cycle Persistence.}{5}{section*.309}%
+\contentsline {paragraph}{Falsification via Admissible Reconstitution without Extension.}{5}{section*.310}%
+\contentsline {paragraph}{Falsification via Absence of Discontinuity.}{5}{section*.311}%
+\contentsline {paragraph}{Falsification via Collapse Equivalence.}{5}{section*.312}%
+\contentsline {section}{\numberline {7.9}Literature Positioning}{5}{section.313}%
+\contentsline {chapter}{\numberline {8}Chapter 8 - JPHQ-08}{8}{chapter.315}%
+\contentsline {section}{\numberline {8.1}Problem Statement}{1}{section.316}%
+\contentsline {section}{\numberline {8.2}Formal Setting}{1}{section.317}%
+\contentsline {subsection}{\numberline {8.2.1}Enterprise continuum and admissibility}{1}{subsection.318}%
+\contentsline {subsection}{\numberline {8.2.2}Continuity and phase labels}{2}{subsection.319}%
+\contentsline {section}{\numberline {8.3}Intervention Operator}{2}{section.321}%
+\contentsline {subsection}{\numberline {8.3.1}Definition}{2}{subsection.322}%
+\contentsline {subsection}{\numberline {8.3.2}Boundary-crossing action}{3}{subsection.324}%
+\contentsline {subsection}{\numberline {8.3.3}Outcome observables}{3}{subsection.329}%
+\contentsline {section}{\numberline {8.4}Limit Theorems}{3}{section.331}%
+\contentsline {section}{\numberline {8.5}Proof Sketches}{4}{section.345}%
+\contentsline {subsection}{\numberline {8.5.1}Sketch for Theorem~\ref {thm:saturation}}{4}{subsection.346}%
+\contentsline {subsection}{\numberline {8.5.2}Sketch for Theorem~\ref {thm:no_free}}{4}{subsection.347}%
+\contentsline {subsection}{\numberline {8.5.3}Sketch for Proposition~\ref {prop:trivial}}{5}{subsection.350}%
+\contentsline {subsection}{\numberline {8.5.4}Sketch for Theorem~\ref {thm:stop}}{5}{subsection.351}%
+\contentsline {section}{\numberline {8.6}Boundary and Phase Effects}{5}{section.352}%
+\contentsline {subsection}{\numberline {8.6.1}Why the admissibility boundary is structurally hard}{5}{subsection.353}%
+\contentsline {subsection}{\numberline {8.6.2}Phase transitions as constraint-induced structural bifurcations}{6}{subsection.356}%
+\contentsline {section}{\numberline {8.7}Scope Limits and Non-Claims}{6}{section.358}%
+\contentsline {paragraph}{Scope.}{6}{section*.359}%
+\contentsline {paragraph}{Non-claims.}{6}{section*.360}%
+\contentsline {paragraph}{Interpretation discipline.}{6}{section*.361}%
+\contentsline {section}{\numberline {8.8}Falsifiability}{6}{section.362}%
+\contentsline {paragraph}{Operational refutation test (ETS-consistent).}{7}{section*.367}%
+\contentsline {chapter}{\numberline {9}Chapter 9 - JPHQ-09}{9}{chapter.369}%
+\contentsline {section}{\numberline {9.1}Problem statement}{1}{section.370}%
+\contentsline {subsection}{\numberline {9.1.1}Scope of the question}{1}{subsection.371}%
+\contentsline {subsection}{\numberline {9.1.2}Incomplete observability}{1}{subsection.372}%
+\contentsline {subsection}{\numberline {9.1.3}Decidability versus observability}{1}{subsection.373}%
+\contentsline {subsection}{\numberline {9.1.4}Negative framing and classification objective}{2}{subsection.374}%
+\contentsline {section}{\numberline {9.2}Formal setting}{2}{section.375}%
+\contentsline {subsection}{\numberline {9.2.1}Enterprise continuum}{2}{subsection.376}%
+\contentsline {subsection}{\numberline {9.2.2}Admissible phase logic}{3}{subsection.377}%
+\contentsline {subsection}{\numberline {9.2.3}Observability constructs}{3}{subsection.378}%
+\contentsline {subsection}{\numberline {9.2.4}Observational consistency}{3}{subsection.379}%
+\contentsline {subsection}{\numberline {9.2.5}Global meta-constraints}{3}{subsection.380}%
+\contentsline {section}{\numberline {9.3}Definitions}{4}{section.381}%
+\contentsline {subsection}{\numberline {9.3.1}Observable domain}{4}{subsection.382}%
+\contentsline {subsection}{\numberline {9.3.2}Observational equivalence}{4}{subsection.383}%
+\contentsline {subsection}{\numberline {9.3.3}Enterprise state predicates}{4}{subsection.385}%
+\contentsline {subsection}{\numberline {9.3.4}Decidability under incomplete observability}{5}{subsection.387}%
+\contentsline {subsection}{\numberline {9.3.5}STOP-only predicates}{5}{subsection.390}%
+\contentsline {subsection}{\numberline {9.3.6}Separation of observability and decidability}{5}{subsection.392}%
+\contentsline {section}{\numberline {9.4}Classification results}{5}{section.394}%
+\contentsline {subsection}{\numberline {9.4.1}Decidable predicates}{6}{subsection.395}%
+\contentsline {subsection}{\numberline {9.4.2}Undecidable predicates}{6}{subsection.398}%
+\contentsline {subsection}{\numberline {9.4.3}STOP-only decidability}{7}{subsection.401}%
+\contentsline {subsection}{\numberline {9.4.4}Exhaustiveness of the classification}{7}{subsection.403}%
+\contentsline {section}{\numberline {9.5}Proof sketches}{7}{section.408}%
+\contentsline {subsection}{\numberline {9.5.1}Proof sketch for Proposition~\ref {prop:observational-invariance} (observational invariance)}{7}{subsection.409}%
+\contentsline {subsection}{\numberline {9.5.2}Proof sketch for Theorem~\ref {thm:stop-decidability} (decidability of STOP boundary predicates)}{8}{subsection.410}%
+\contentsline {subsection}{\numberline {9.5.3}Proof sketch for Theorem~\ref {thm:structural-undecidability} (structural undecidability)}{8}{subsection.411}%
+\contentsline {subsection}{\numberline {9.5.4}Proof sketch for Corollary~\ref {cor:nonterminal-undecidability} (non-terminal phase distinctions)}{8}{subsection.416}%
+\contentsline {subsection}{\numberline {9.5.5}Proof sketch for Theorem~\ref {thm:stop-only} (STOP-only classification)}{9}{subsection.417}%
+\contentsline {subsection}{\numberline {9.5.6}Proof sketch for Proposition~\ref {prop:exhaustive-trichotomy} (exhaustiveness)}{9}{subsection.418}%
+\contentsline {section}{\numberline {9.6}Scope limits and non-claims}{9}{section.422}%
+\contentsline {subsection}{\numberline {9.6.1}No inference or estimation}{9}{subsection.423}%
+\contentsline {subsection}{\numberline {9.6.2}No probabilistic or statistical guarantees}{10}{subsection.424}%
+\contentsline {subsection}{\numberline {9.6.3}No intervention, recovery, or control semantics}{10}{subsection.425}%
+\contentsline {subsection}{\numberline {9.6.4}No governance, optimization, or KPI framing}{10}{subsection.426}%
+\contentsline {subsection}{\numberline {9.6.5}Logical, not practical, limits}{10}{subsection.427}%
+\contentsline {section}{\numberline {9.7}Falsifiability}{11}{section.428}%
+\contentsline {subsection}{\numberline {9.7.1}Falsifiability of decidability claims}{11}{subsection.429}%
+\contentsline {subsection}{\numberline {9.7.2}Falsifiability of undecidability claims}{11}{subsection.430}%
+\contentsline {subsection}{\numberline {9.7.3}Falsifiability of STOP-only claims}{11}{subsection.431}%
+\contentsline {subsection}{\numberline {9.7.4}Observable-signature-level refutation}{12}{subsection.432}%
+\contentsline {subsection}{\numberline {9.7.5}No meta-level escape}{12}{subsection.433}%
+\contentsline {section}{\numberline {9.8}Literature positioning}{12}{section.434}%
+\contentsline {subsection}{\numberline {9.8.1}Decidability and indistinguishability}{12}{subsection.435}%
+\contentsline {subsection}{\numberline {9.8.2}Partial observability in systems theory}{12}{subsection.436}%
+\contentsline {subsection}{\numberline {9.8.3}Diagnosability and fault detection}{13}{subsection.437}%
+\contentsline {subsection}{\numberline {9.8.4}Epistemic limits and negative results}{13}{subsection.438}%
+\contentsline {subsection}{\numberline {9.8.5}Relation to enterprise modeling}{13}{subsection.439}%
+\contentsline {subsection}{\numberline {9.8.6}Bibliographic status}{13}{subsection.440}%
+\contentsline {chapter}{\numberline {10}Chapter 10 - JPHQ-10}{15}{chapter.442}%
+\contentsline {section}{\numberline {10.1}Problem statement}{1}{section.443}%
+\contentsline {section}{\numberline {10.2}Formal setting (OC Core / ETS only)}{2}{section.447}%
+\contentsline {section}{\numberline {10.3}Falsifiability criteria}{3}{section.455}%
+\contentsline {section}{\numberline {10.4}Proof sketches}{4}{section.462}%
+\contentsline {section}{\numberline {10.5}Limits and explicit non-claims}{5}{section.464}%
+\contentsline {section}{\numberline {10.6}Relation to admissibility and STOP}{6}{section.471}%
+\contentsline {section}{\numberline {10.7}Conclusion}{7}{section.479}%
