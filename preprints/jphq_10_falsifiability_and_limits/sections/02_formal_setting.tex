@@ -1,5 +1,94 @@
 ﻿\section{Formal setting (OC Core / ETS only)}
-% Define the formal interface used in this paper (no new primitives):
-% - Enterprise continuum model K_EA as given by OC Core + ETS.K_EA.v1.1
-% - Observations, admissibility, STOP as already defined in prior admissible results
-% - What counts as a model instance and what counts as an observation statement
+
+This section fixes the formal setting used throughout the paper.
+All notions are taken exclusively from the Ontology of Continua (OC Core)
+and its executable specification ETS.K\_EA.
+No new primitives, semantic extensions, or external interpretations are
+introduced.
+
+\medskip
+
+\begin{definition}[Enterprise continuum]
+The \emph{enterprise continuum} is the formal object
+\[
+K_{EA} \;=\; (\Omega(K_{EA}), A, P, \Theta, J, C, k)
+\]
+as defined in OC Core and instantiated by ETS.K\_EA.
+Here, \(\Omega(K_{EA})\) denotes the space of admissible enterprise states,
+while \(A\), \(P\), \(\Theta\), \(J\), \(C\), and \(k\) denote axes,
+potentials, thresholds, flows, cycles, and the continuum measure,
+respectively.
+All admissibility conditions, invariants, and structural constraints are
+fixed by the executable specification.
+\end{definition}
+
+\medskip
+
+\begin{definition}[Model realization]
+A \emph{model realization} is any state
+\[
+s \in \Omega(K_{EA})
+\]
+that satisfies all axioms, invariants, threshold conditions, and structural
+constraints imposed by OC Core and enforced by ETS.K\_EA.
+No assumptions are made regarding uniqueness, identifiability, or
+observability of such states.
+\end{definition}
+
+\medskip
+
+\begin{definition}[Observation language]
+The \emph{observation language} is the restricted formal vocabulary exposed
+by ETS.K\_EA for expressing statements about enterprise states.
+It includes only quantities, relations, predicates, and constraints that
+are explicitly representable within the executable model.
+Statements formulated outside this language are not admissible inputs to
+the model.
+\end{definition}
+
+\medskip
+
+\begin{definition}[Admissible observation]
+An \emph{admissible observation} is a finite set of well-formed statements in
+the observation language whose joint interpretation does not presuppose the
+violation of any axiom, invariant, threshold, or structural constraint
+defining \(\Omega(K_{EA})\).
+Admissibility is a property determined prior to any diagnostic procedure or
+falsifiability assessment.
+\end{definition}
+
+\medskip
+
+\begin{definition}[Compatibility]
+An admissible observation \(O\) is \emph{compatible} with a model realization
+\(s \in \Omega(K_{EA})\) if all statements in \(O\) can be embedded into
+\(s\) without violating any mandatory invariant, threshold, or structural
+constraint.
+Compatibility does not require uniqueness of the realization and may hold
+for multiple distinct states.
+\end{definition}
+
+\medskip
+
+\begin{definition}[STOP outcome]
+A \emph{STOP} outcome occurs when no admissible continuation of diagnosis,
+state refinement, or inference exists that preserves compatibility with at
+least one model realization in \(\Omega(K_{EA})\).
+STOP is defined as a terminal condition of the diagnostic procedure and does
+not constitute a statement about the emptiness or inconsistency of
+\(\Omega(K_{EA})\).
+\end{definition}
+
+\medskip
+
+\begin{remark}
+This formal setting explicitly separates three layers:
+(i) the existence of admissible model realizations in
+\(\Omega(K_{EA})\);
+(ii) the expressibility and admissibility of observations formulated in the
+observation language; and
+(iii) the behavior and termination conditions of diagnostic procedures,
+including STOP.
+All subsequent results on falsifiability and limits operate strictly within
+this interface and rely on no external semantics.
+\end{remark}

@@ -1,3 +1,95 @@
 ﻿\section{Relation to admissibility and STOP}
-% RUN-1: formal relation:
-% falsifiability vs admissibility constraints vs STOP as first-class outcome.
+
+This section formalizes the relationship between admissibility,
+falsifiability, and the \emph{STOP} outcome.
+Although these notions interact operationally within diagnostic procedures,
+they occupy strictly distinct logical roles in the Ontology of Continua
+(OC Core) and the executable specification ETS.K\_EA.
+Failure to distinguish these roles leads to category errors in the
+interpretation of diagnostic results.
+
+\medskip
+
+\begin{definition}[Admissibility domain]
+The \emph{admissibility domain} is the set of all observations, inferences,
+and state transitions that are expressible without violating the axioms,
+invariants, thresholds, and structural constraints defining the state space
+\(\Omega(K_{EA})\).
+Only elements belonging to this domain are considered meaningful inputs to
+the model.
+\end{definition}
+
+\medskip
+
+\begin{definition}[STOP outcome]
+A \emph{STOP} outcome is a formally defined terminal state of the diagnostic
+process.
+It occurs when no admissible continuation of diagnosis, state refinement,
+or inference exists without violating at least one mandatory model
+constraint, while the existence of admissible model realizations in
+\(\Omega(K_{EA})\) is not negated.
+STOP is therefore a property of the diagnostic procedure, not of the model
+state space itself.
+\end{definition}
+
+\medskip
+
+\begin{proposition}[Admissibility precedes falsifiability]
+Falsifiability is evaluated only after admissibility has been established.
+Observations that are ill-formed, externally defined, or not representable
+within the formal vocabulary of ETS.K\_EA are excluded prior to any
+falsifiability assessment.
+Inadmissible inputs are rejected without semantic interpretation.
+\end{proposition}
+
+\medskip
+
+\begin{proposition}[STOP implies non-falsification]
+If a diagnostic process terminates in a STOP outcome, the
+enterprise-as-continuum model is not falsified.
+STOP signifies exhaustion of admissible inference paths under the given
+observation interface and constraint set, not violation of model axioms,
+invariants, or structural requirements.
+\end{proposition}
+
+\medskip
+
+\begin{proposition}[Falsification excludes STOP]
+Internal falsification and STOP are mutually exclusive outcomes.
+Falsification requires demonstration that no admissible model realization
+exists in \(\Omega(K_{EA})\).
+By contrast, STOP presupposes the continued existence of at least one
+admissible realization whose internal structure cannot be further refined
+without exceeding admissibility bounds.
+\end{proposition}
+
+\medskip
+
+\begin{proposition}[Logical ordering of diagnostic outcomes]
+For any diagnostic process operating within the admissibility domain, the
+possible terminal outcomes are strictly ordered as follows:
+\[
+\text{inadmissible input}
+\;\rightarrow\;
+\text{admissible continuation}
+\;\rightarrow\;
+\begin{cases}
+\text{falsification},\\
+\text{STOP}.
+\end{cases}
+\]
+No admissible diagnostic process can yield both falsification and STOP
+simultaneously.
+\end{proposition}
+
+\medskip
+
+\begin{remark}
+Admissibility defines the space of meaningful interaction with the model.
+Within this space, falsification corresponds to a strict logical
+contradiction—namely, the emptiness of the set of compatible model
+realizations—whereas STOP denotes a controlled termination of inference
+under constraint preservation.
+STOP is therefore a first-class diagnostic outcome, not a failure mode and
+not a weakened or partial form of falsification.
+\end{remark}
