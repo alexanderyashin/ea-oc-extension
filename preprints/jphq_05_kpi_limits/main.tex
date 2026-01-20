@@ -1,0 +1,75 @@
+﻿\documentclass[11pt]{article}
+
+% =================================================
+% Root-only build mode:
+% This preprint is built from repo root, so all paths
+% must be anchored under preprints/jphq_05_kpi_limits.
+% =================================================
+\newcommand{\PreprintDir}{preprints/jphq_05_kpi_limits}
+
+% -------------------------------------------------
+% Geometry and layout
+% -------------------------------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+
+% -------------------------------------------------
+% Mathematics and theorem environments
+% -------------------------------------------------
+\usepackage{amsmath,amssymb,amsthm}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+
+% -------------------------------------------------
+% Lists
+% -------------------------------------------------
+\usepackage{enumitem}
+
+% -------------------------------------------------
+% Hyperref (loaded late)
+% -------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+  pdftitle={Continuum-Based Limits of KPI-Driven Analysis in Enterprise Systems},
+  pdfauthor={EA--OC--Extension / JPHQ},
+  pdfborder={0 0 0}
+}
+
+% -------------------------------------------------
+% Title metadata
+% -------------------------------------------------
+\title{Continuum-Based Limits of KPI-Driven Analysis in Enterprise Systems}
+\author{EA--OC--Extension / JPHQ}
+\date{\today}
+
+% -------------------------------------------------
+% Document
+% -------------------------------------------------
+\begin{document}
+\maketitle
+
+% -------------------------------------------------
+% Sections (anchored for root-only build)
+% -------------------------------------------------
+\input{\PreprintDir/sections/00_abstract}
+\input{\PreprintDir/sections/01_problem}
+\input{\PreprintDir/sections/02_formal_setting}
+\input{\PreprintDir/sections/03_definitions}
+\input{\PreprintDir/sections/04_impossibility_results}
+\input{\PreprintDir/sections/05_proof_sketches}
+\input{\PreprintDir/sections/06_scope_and_falsifiability}
+\input{\PreprintDir/sections/07_literature_positioning}
+
+% -------------------------------------------------
+% Bibliography (anchored for root-only build)
+% -------------------------------------------------
+\bibliographystyle{plain}
+\bibliography{\PreprintDir/bib/references}
+
+\end{document}

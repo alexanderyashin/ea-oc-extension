@@ -1,0 +1,118 @@
+﻿\section{Proof Sketches and Technical Remarks}
+\label{sec:proof-sketches}
+
+This section provides concise technical remarks clarifying the logical status
+and scope of the results established in
+Section~\ref{sec:impossibility}.
+The purpose is not to introduce additional assumptions, strengthen theorems, or
+extend proofs, but to make explicit what follows strictly from the Ontology of
+Continua (OC) and the frozen executable specification
+\texttt{ETS.K\_EA.v1.1}, and what does not.
+
+\subsection{Source of the Impossibility Results}
+
+The fundamental structural fact underlying all impossibility statements is that
+KPI-based observation is represented by a map
+\[
+\pi_K:\Omega_{\mathrm{obs}}\to\Sigma_{\mathrm{obs}},
+\]
+which necessarily factors through the quotient
+\(\Omega_{\mathrm{obs}}/\!\sim_K\).
+
+Once observation is expressed in this form, non-identifiability follows
+immediately: any two distinct states lying in the same fiber of \(\pi_K\) are
+indistinguishable by construction.
+This argument is purely set-theoretic and logical.
+No assumptions about smoothness, topology, dimensionality, or regularity of
+\(\Omega_{\mathrm{obs}}\) are required.
+
+In this sense, the impossibility results here are structurally analogous to
+classical observation-induced ambiguities in control and identification theory,
+where indistinguishability arises from projection onto a lower-information
+output space (cf.\ \cite{kalman1960,ljung1999}).
+
+\subsection{On Injectivity and Admissible Assumptions}
+
+Many classical impossibility or non-identifiability results in system
+identification are derived under auxiliary assumptions on the observation map,
+such as genericity, excitation conditions, smoothness, or dimensional mismatch
+between state and output spaces \cite{ljung1999,walter1997}.
+
+In contrast, this preprint deliberately avoids importing any such assumptions as
+new primitives.
+Doing so would exceed the OC/ETS scope and undermine the diagnostic character of
+the results.
+
+Accordingly, all statements are formulated in the minimal logically correct
+form:
+\begin{itemize}[leftmargin=2em]
+  \item if the KPI readout map \(\pi_K\) is not injective, then distinct
+        KPI-indistinguishable states exist
+        (Theorem~\ref{thm:nonident});
+  \item OC and \texttt{ETS.K\_EA.v1.1} do not imply injectivity of any admissible
+        finite KPI family, and therefore do not support claims of universal KPI
+        completeness
+        (Theorem~\ref{thm:no-complete});
+  \item any deterministic transformation applied to KPI readouts preserves
+        non-identifiability
+        (Proposition~\ref{prop:no-pp}).
+\end{itemize}
+
+This framing reflects the intended scope: a formal diagnostic boundary, not an
+engineering guideline or modeling prescription.
+
+\subsection{Observable Domain and Loss of Observability}
+
+The observable domain \(\Omega_{\mathrm{obs}}\) is a strict subset of the full
+enterprise state space \(\Omega(K_{EA})\).
+It is defined exclusively via ETS-level observability structures, namely the
+existence of the factor \(S_{\mathrm{obs}}\) and the validity of the
+\emph{ObservabilityInvariant}.
+
+States for which the ETS phase condition \texttt{observability\_lost} applies
+are explicitly outside the scope of this analysis.
+In such states, KPI readouts are not assumed to be defined, and no claims about
+identifiability or non-identifiability are made.
+All impossibility results in this preprint are therefore conditional on
+admissible observability.
+
+This separation mirrors standard distinctions in control theory, where
+questions of identifiability are only meaningful on domains where outputs are
+well-defined \cite{kalman1960}.
+
+\subsection{Why Sampling and Aggregation Cannot Help}
+
+Any aggregation over time windows, smoothing, scoring, embedding, or similar
+analytic operation applied to KPI values can be represented as a deterministic
+map
+\[
+g:\Sigma_{\mathrm{obs}}\to Z
+\]
+acting on the KPI readout \(\pi_K(\omega)\).
+
+Deterministic post-processing cannot refine the partition induced by
+\(\pi_K\):
+if two states yield identical KPI vectors, then all deterministic functions of
+those vectors are also identical.
+Consequently, no increase in sampling frequency, no aggregation strategy, and no
+deterministic statistical enrichment can restore identifiability once it is lost
+at the level of KPI readout.
+
+This is a standard result in identification theory: information that is not
+present in the observation cannot be reconstructed by downstream processing
+alone \cite{ljung1999,walter1982}.
+
+\subsection{Interpretation of the Results}
+
+The results established in this preprint are not claims about the usefulness,
+quality, or desirability of KPIs.
+They are strictly formal statements about limits of identifiability.
+
+Within OC and \texttt{ETS.K\_EA.v1.1}, KPI-based observation modeled as a finite
+readout map cannot be assumed to uniquely identify the underlying enterprise
+state without introducing additional identifying structure or constraints that
+lie outside the OC/ETS framework.
+
+Read in this way, the results function as a clarification of scope: they specify
+what KPI-based analysis can and cannot be expected to recover at the level of
+formal enterprise continua.

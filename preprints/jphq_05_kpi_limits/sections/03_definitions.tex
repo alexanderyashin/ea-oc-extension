@@ -1,0 +1,107 @@
+﻿\section{Observation and KPI Spaces}
+
+\begin{definition}[Enterprise State Space]
+Let \(\Omega := \Omega(K_{EA})\) denote the OC/ETS enterprise state space of the
+enterprise continuum \(K_{EA}\).
+All constructions in this section are carried out strictly within the Ontology
+of Continua and the frozen executable specification
+\texttt{ETS.K\_EA.v1.1}.
+No additional primitives, regularity assumptions, or modeling hypotheses are
+introduced.
+\end{definition}
+
+\begin{definition}[Observable Domain \(\Omega_{\mathrm{obs}}\)]
+The executable specification \texttt{ETS.K\_EA.v1.1} includes
+(i) an information-axis component \emph{observability},
+(ii) a factor \(S_{\mathrm{obs}}\) in the factorization of the continuum measure
+\(k_{EA}\), and
+(iii) an explicit \emph{ObservabilityInvariant}.
+Accordingly, define the observable domain
+\[
+\Omega_{\mathrm{obs}}
+\;:=\;
+\bigl\{
+\omega \in \Omega
+\;\big|\;
+S_{\mathrm{obs}}(\omega)\ \text{is defined and the ObservabilityInvariant holds}
+\bigr\}.
+\]
+Only states in \(\Omega_{\mathrm{obs}}\) are admissible inputs to observation.
+States for which the ETS phase condition \texttt{observability\_lost} applies lie
+outside the scope of this definition.
+\end{definition}
+
+\begin{definition}[Observation Space \(\Sigma_{\mathrm{obs}}\)]
+Define the observation space \(\Sigma_{\mathrm{obs}}\) as the codomain of all
+OC/ETS-admissible readout maps defined on \(\Omega_{\mathrm{obs}}\).
+Once a finite KPI family \(K=(\kappa_1,\ldots,\kappa_m)\) is fixed,
+\(\Sigma_{\mathrm{obs}}\) is identified with a subset of \(\mathbb{R}^m\).
+\end{definition}
+
+\begin{definition}[KPI Family and Readout Map]\label{def:kpi-family}
+Fix a finite KPI family
+\(K := (\kappa_1,\ldots,\kappa_m)\) such that each
+\(\kappa_i:\Omega_{\mathrm{obs}}\to\mathbb{R}\) is an OC/ETS-admissible readout,
+i.e.\ it is defined on \(\Omega_{\mathrm{obs}}\) and does not violate the
+ObservabilityInvariant.
+The induced KPI readout map is
+\[
+\pi_{K}:\Omega_{\mathrm{obs}}\to\Sigma_{\mathrm{obs}}\subseteq\mathbb{R}^m,
+\qquad
+\pi_{K}(\omega)
+=
+\bigl(\kappa_1(\omega),\ldots,\kappa_m(\omega)\bigr).
+\]
+No assumption of injectivity, completeness, faithfulness, sufficiency, or
+statistical optimality is imposed.
+\end{definition}
+
+\begin{definition}[\(K\)-Indistinguishability and Fibers]
+Two states \(\omega_1,\omega_2\in\Omega_{\mathrm{obs}}\) are
+\emph{\(K\)-indistinguishable} if and only if
+\[
+\pi_{K}(\omega_1)=\pi_{K}(\omega_2).
+\]
+Equivalently, they lie in the same fiber of \(\pi_K\), defined as
+\[
+\mathrm{Fib}_K(y)
+\;:=\;
+\pi_K^{-1}(y)
+\;\subseteq\;
+\Omega_{\mathrm{obs}},
+\qquad
+y\in\Sigma_{\mathrm{obs}}.
+\]
+This fiber representation is standard in observation and identification theory
+\cite{kalman1960,ljung1999}.
+\end{definition}
+
+\begin{definition}[Identifiability on a Domain]
+Let \(D\subseteq\Omega_{\mathrm{obs}}\) be any domain of interest.
+KPI-based observation is said to be \emph{identifying on \(D\)} if the restricted
+map \(\pi_K|_{D}\) is injective, i.e.,
+\[
+\forall \omega_1,\omega_2\in D:\quad
+\pi_K(\omega_1)=\pi_K(\omega_2)
+\;\Longrightarrow\;
+\omega_1=\omega_2.
+\]
+If \(\pi_K|_{D}\) fails to be injective, then there exist distinct states in \(D\)
+that are KPI-indistinguishable.
+This definition corresponds to structural identifiability in the classical
+system identification sense \cite{ljung1999,walter1997}.
+\end{definition}
+
+\begin{definition}[Quotient Induced by KPI Observation]
+The equivalence relation \(\sim_K\) induced by KPI equality defines the quotient
+space
+\[
+\Omega_{\mathrm{obs}} \big/ \!\sim_K ,
+\]
+whose elements are the KPI fibers.
+KPI-based observation factors through this quotient: all structural variation
+within a fiber is necessarily lost once observation is restricted to KPI
+readouts.
+This loss of information is intrinsic to non-injective observation maps
+\cite{ash1990}.
+\end{definition}

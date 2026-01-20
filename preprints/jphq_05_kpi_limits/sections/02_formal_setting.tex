@@ -1,0 +1,75 @@
+﻿% preprints/jphq_05_kpi_limits/sections/02_formal_setting.tex
+
+\section{Formal Setting}
+\label{sec:formal-setting}
+
+Throughout this preprint we assume the Ontology of Continua (OC) together with
+the frozen executable theory specification \texttt{ETS.K\_EA.v1.1}.
+An enterprise is modeled as a continuum \(K_{EA}\) with state space
+\(\Omega(K_{EA})\), boundary \(\partial\Omega(K_{EA})\), axes \(A\), flows \(J\),
+thresholds \(\Theta\), cycles \(C\), and a continuum measure \(k_{EA}\).
+No primitives beyond those defined in OC and ETS are introduced or assumed.
+
+\subsection{ETS-anchored observability structures}
+
+In \texttt{ETS.K\_EA.v1.1}, observability is not treated as an external modeling
+assumption but as an internal structural component of the enterprise continuum.
+In particular, the executable specification includes:
+
+\begin{itemize}[leftmargin=2em]
+  \item an information-axis component \emph{observability}, located within the
+        information/semantics axis block;
+  \item a factor \(S_{\mathrm{obs}}\) in the factorization of the continuum
+        measure \(k_{EA}\);
+  \item an explicit \emph{ObservabilityInvariant} listed among the system
+        invariants;
+  \item and a phase-logic condition \texttt{observability\_lost} acting as a STOP
+        trigger.
+\end{itemize}
+
+Observation is therefore defined only on the OC/ETS-admissible observable domain
+\[
+\Omega_{\mathrm{obs}} \;\subseteq\; \Omega(K_{EA}),
+\]
+consisting of all enterprise states for which \(S_{\mathrm{obs}}\) is defined
+and the ObservabilityInvariant holds.
+When the ETS phase condition \texttt{observability\_lost} applies, KPI readout is
+outside scope and no observation map is assumed to be defined.
+
+\subsection{Observation as structural quotienting}
+
+Fix a finite KPI family \(K=(\kappa_1,\ldots,\kappa_m)\) admissible under OC/ETS.
+Each KPI \(\kappa_i\) is treated as a readout map
+\(\kappa_i:\Omega_{\mathrm{obs}}\to\mathbb{R}\).
+Together they define the KPI readout map
+\[
+\pi_K:\Omega_{\mathrm{obs}}\to\Sigma_{\mathrm{obs}}\subseteq\mathbb{R}^m,
+\qquad
+\pi_K(\omega)
+=
+\bigl(\kappa_1(\omega),\ldots,\kappa_m(\omega)\bigr).
+\]
+
+As in classical observation theory, the map \(\pi_K\) induces an equivalence
+relation \(\sim_K\) on \(\Omega_{\mathrm{obs}}\) defined by
+\[
+\omega_1 \sim_K \omega_2
+\quad\Longleftrightarrow\quad
+\pi_K(\omega_1)=\pi_K(\omega_2).
+\]
+Accordingly, KPI-based observation partitions \(\Omega_{\mathrm{obs}}\) into
+fibers (preimages) of \(\pi_K\).
+The observation space \(\Sigma_{\mathrm{obs}}\) is therefore identified with the
+quotient
+\[
+\Sigma_{\mathrm{obs}} \;\cong\; \Omega_{\mathrm{obs}} / \!\sim_K ,
+\]
+which represents the maximal information preserved by the KPI readout
+\cite{kalman1960,ljung1999}.
+
+All subsequent limits established in this preprint are statements about this
+quotienting.
+Identifiability of enterprise states requires injectivity of \(\pi_K\) on a
+domain of interest.
+In contrast, KPI-based observation generically collapses structurally distinct
+states in \(\Omega_{\mathrm{obs}}\) into the same equivalence class.

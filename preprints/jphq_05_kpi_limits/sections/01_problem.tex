@@ -1,0 +1,54 @@
+﻿\section{Problem Statement}
+
+This preprint addresses exactly one scope-locked question:
+
+\begin{quote}
+\emph{Q5: What are the formal limits of KPI-based enterprise analysis in
+continuum-modeled systems \(K_{EA}\)?}
+\end{quote}
+
+\paragraph{Hard constraints.}
+All statements are derived strictly within the Ontology of Continua (OC) and the
+executable theory specification \texttt{ETS.K\_EA.v1.1}.
+No new primitives are introduced, and no reinterpretation or extension of OC or
+ETS is permitted.
+The scope is purely diagnostic: the results are negative in nature and establish
+existence and impossibility claims concerning what KPI-based analysis cannot
+identify.
+
+\paragraph{Explicit non-claims.}
+This work makes no managerial, governance, optimization, or control claims.
+It does not recommend KPIs, prescribe dashboards, propose decision rules, or
+advance performance narratives.
+No probabilistic or statistical enrichment is introduced beyond what is already
+contained in OC/ETS.
+References to aggregation, sampling, or post-processing are included solely to
+emphasize that the derived limits are structural and do not disappear under such
+operations.
+
+\paragraph{Core distinction.}
+The central distinction formalized in this work is between
+\emph{observability} and \emph{identifiability}.
+Observability concerns whether readouts are defined and admissible on a given
+domain, whereas identifiability concerns whether those readouts uniquely
+determine the underlying system state.
+This distinction is classical in systems theory and system identification
+\cite{kalman1960,ljung1999,walter1997}.
+While OC/ETS explicitly provides observability structures at the level of the
+enterprise continuum, the question addressed here is whether KPI-based readouts
+can be identifying in the formal sense.
+The main result is that, in continuum-modeled enterprise systems,
+KPI-based observation is generically non-identifying.
+
+\paragraph{Formal relevance.}
+Under OC/ETS, enterprises are modeled as continua with state space
+\(\Omega(K_{EA})\), structured by axes, flows, thresholds, cycles, and a
+continuum measure.
+KPI readouts are, by construction, finite-dimensional projections of this state
+space.
+It is a standard result in identification theory that such projections generally
+induce equivalence classes of indistinguishable states unless injectivity is
+explicitly enforced \cite{ljung1999,walter1982}.
+This preprint formalizes that reduction in the OC/ETS setting and shows that it
+induces unavoidable non-identifiability: multiple structurally distinct
+enterprise states can share identical KPI values.

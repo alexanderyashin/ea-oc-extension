@@ -1,0 +1,113 @@
+﻿\section{Literature Positioning}
+\label{sec:literature}
+
+The formal structure employed in this preprint follows a well-established and
+widely used paradigm in the mathematical treatment of observation and
+identification.
+A system is characterized by a state space, observation is represented as a map
+from states to an observation space, and identifiability corresponds to
+injectivity of that map on a domain of interest.
+This abstract structure underlies classical work in control theory and system
+identification and serves as the baseline against which the present results are
+positioned.
+
+\subsection{Observation as a Map and Loss of Information}
+
+Modeling observation as a map
+\(\pi:\Omega\to\Sigma\) and analyzing the induced equivalence relation on the
+state space is classical.
+Observation partitions \(\Omega\) into fibers (preimages) of \(\pi\), and any two
+states lying in the same fiber are observationally indistinguishable under the
+given observation scheme.
+This perspective is already implicit in early state-space formulations of
+control systems and observability
+\cite{kalman1960}.
+
+In control-theoretic and systems-theoretic language, this corresponds to the
+standard distinction between \emph{observability} and
+\emph{identifiability}.
+Observability concerns whether outputs are defined and informative in principle,
+whereas identifiability is the stronger property that states or parameters are
+uniquely determined by outputs under specified conditions.
+The fact that observability alone does not guarantee identifiability is
+well-known and widely recognized in the literature.
+
+\subsection{Identifiability in System Identification}
+
+The system identification literature traditionally distinguishes between two
+notions of identifiability.
+\emph{Structural identifiability} refers to uniqueness under idealized,
+noise-free observations within a given model class, while
+\emph{practical identifiability} concerns uniqueness under finite data, noise,
+and experimental limitations.
+This distinction is classical and extensively documented
+\cite{ljung1999,walter1997}.
+
+The results of this preprint operate entirely at the structural level.
+They formalize the fact that, within the Ontology of Continua and the frozen
+executable specification \texttt{ETS.K\_EA.v1.1}, no general structural
+identifiability guarantee follows for arbitrary finite KPI readout maps.
+This is a statement about what is \emph{not implied} by the modeling framework
+itself, independent of estimation algorithms, noise models, or data volume.
+In this respect, the results are fully aligned with standard identifiability
+theory rather than in tension with it.
+
+\subsection{OC/ETS-Specific Contribution}
+
+The only nonstandard element in the present analysis is the enterprise modeling
+substrate.
+OC and \texttt{ETS.K\_EA.v1.1} provide a formally specified enterprise continuum
+with a state space \(\Omega(K_{EA})\), explicit structural components (axes,
+flows, thresholds, cycles), and a factorized continuum measure.
+In addition, ETS constrains admissible observation through explicit
+observability conditions and invariants.
+
+Within this substrate, KPI observation becomes a concrete instantiation of the
+general observation-map paradigm:
+\[
+\pi_K:\Omega_{\mathrm{obs}}\to\Sigma_{\mathrm{obs}}\subseteq\mathbb{R}^m.
+\]
+Once this structure is fixed, the non-identifiability results follow directly,
+without importing auxiliary assumptions such as smoothness, dimensionality
+arguments, or genericity conditions.
+The contribution of this preprint is therefore not a new impossibility theorem,
+but the explicit localization of standard identifiability limits within the
+OC/ETS enterprise continuum framework.
+
+\subsection{Relation to Partial Observability and Representation Limits}
+
+In many applied domains, including control, econometrics, and organizational
+measurement, only partial projections of the underlying system are observable.
+KPI dashboards are an archetypal example: they compress complex enterprise states
+into a finite collection of scalar outputs.
+
+From this perspective, indistinguishability of distinct underlying states is not
+an anomaly but an expected consequence of projection.
+Identifiability typically requires additional structure, such as richer sensing,
+persistent excitation, experimental intervention, restrictive model classes,
+or explicit injectivity constraints
+\cite{slotine1991,walter1982}.
+
+OC/ETS makes this separation explicit by distinguishing:
+\begin{itemize}[leftmargin=2em]
+  \item admissibility of observation via the observable domain
+        \(\Omega_{\mathrm{obs}}\),
+  \item the readout mechanism \(\pi_K\),
+  \item and the uniqueness question captured by injectivity and
+        identifiability.
+\end{itemize}
+
+The present note should therefore be read as a formal reminder that
+\emph{projection-induced ambiguity is intrinsic} and does not disappear through
+aggregation, smoothing, or deterministic post-processing alone.
+
+\subsection{Positioning of the Present Results}
+
+We draw on classical literature in observability, system identification, and
+identifiability to anchor the formal notions used here
+\cite{kalman1960,ljung1999,walter1997}.
+No attempt is made to provide a comprehensive survey.
+The purpose of this section is positioning rather than comparison: the logical
+structure of the results is standard, while their application to KPI-based
+enterprise observation within the OC/ETS continuum framework is specific and
+diagnostic in nature.

@@ -1,0 +1,116 @@
+﻿\section{Scope, Assumptions, and Falsifiability}
+\label{sec:scope-falsifiability}
+
+\subsection{Scope of the Preprint}
+
+This preprint has a deliberately narrow and explicitly delimited scope.
+It is a diagnostic analysis of \emph{KPI-based observation} for enterprise
+continua modeled under the Ontology of Continua (OC) and the frozen executable
+theory specification \texttt{ETS.K\_EA.v1.1}.
+
+We do not propose a new enterprise model, a new KPI methodology, nor a new
+estimation, optimization, governance, or decision framework.
+Instead, we make explicit structural consequences that already follow from the
+OC/ETS setup itself:
+
+\begin{itemize}[leftmargin=2em]
+  \item the enterprise is represented as an OC/ETS continuum with state space
+        \(\Omega(K_{EA})\) and an admissible observable domain
+        \(\Omega_{\mathrm{obs}}\subseteq\Omega(K_{EA})\);
+  \item KPI observation is modeled as a finite readout map
+        \(\pi_K:\Omega_{\mathrm{obs}}\to\Sigma_{\mathrm{obs}}\subseteq\mathbb{R}^m\);
+  \item identifiability is defined strictly as injectivity of \(\pi_K\) on a
+        specified domain of interest.
+\end{itemize}
+
+The central conclusion is not that KPIs are ineffective, misleading, or
+inappropriate, but that identifiability cannot be inferred from OC/ETS alone,
+and that deterministic post-processing cannot recover information already lost
+at the level of KPI readout.
+
+\subsection{Explicit Assumptions}
+
+All results in this preprint rely exclusively on the following explicit and
+exhaustive assumptions:
+
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{OC/ETS state space.}
+        The enterprise continuum \(K_{EA}\) is described by OC primitives
+        (axes, flows, thresholds, cycles, and a continuum measure), with state
+        space \(\Omega(K_{EA})\).
+        Observation is restricted to the admissible domain
+        \(\Omega_{\mathrm{obs}}\), defined solely by ETS-level observability
+        structures.
+  \item \textbf{Finite KPI observation.}
+        A KPI family \(K=(\kappa_1,\ldots,\kappa_m)\) is finite and admissible
+        under \texttt{ETS.K\_EA.v1.1}, inducing a readout map
+        \(\pi_K:\Omega_{\mathrm{obs}}\to\Sigma_{\mathrm{obs}}\subseteq\mathbb{R}^m\).
+  \item \textbf{No hidden enrichment.}
+        Any analytic, statistical, or computational procedure that operates only
+        on KPI values is modeled as a deterministic post-processing map composed
+        with \(\pi_K\).
+\end{enumerate}
+
+No assumptions of smoothness, continuity, dimensionality, genericity,
+regularity, noise structure, or probabilistic modeling are required for the
+logical core of the results in Section~\ref{sec:impossibility}.
+
+\subsection{What Is Explicitly Not Claimed}
+
+This preprint explicitly does \emph{not} claim:
+
+\begin{itemize}[leftmargin=2em]
+  \item that KPI observation cannot be identifying on restricted domains
+        \(D\subseteq\Omega_{\mathrm{obs}}\);
+  \item that identifiability cannot be achieved by introducing additional
+        observables, sensors, experimental interventions, or structural
+        constraints beyond OC/ETS;
+  \item that any concrete KPI system used in practice is necessarily
+        non-identifying or analytically deficient.
+\end{itemize}
+
+The claim is strictly limited to the following statement:
+OC and \texttt{ETS.K\_EA.v1.1} alone do not entail injectivity of an arbitrary
+finite KPI readout map, and deterministic post-processing cannot recover
+information lost within KPI fibers.
+
+\subsection{Falsifiability and Empirical Interface}
+
+Because the results of this preprint are diagnostic and largely negative,
+falsifiability must be interpreted at the appropriate formal and empirical
+interfaces.
+
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Formal falsification (model level).}
+        If OC or \texttt{ETS.K\_EA.v1.1} were extended by an explicit axiom
+        enforcing injectivity of \(\pi_K\) on \(\Omega_{\mathrm{obs}}\) for a
+        specified class of KPI families, then
+        Theorem~\ref{thm:no-complete} would no longer hold within that amended
+        formal system.
+        This would constitute a formal falsification of the scope of the present
+        results.
+  \item \textbf{Empirical falsification (measurement level).}
+        For a fixed enterprise, a fixed KPI family \(K\), and a fixed readout
+        protocol, non-identifiability can be empirically witnessed by exhibiting
+        two distinct operationally realizable states
+        \(\omega_1\neq\omega_2\in\Omega_{\mathrm{obs}}\) such that
+        \(\pi_K(\omega_1)=\pi_K(\omega_2)\).
+        Existence of such a pair directly demonstrates non-identifiability of
+        \(K\) on the tested domain.
+        Conversely, failure to find such pairs does not establish global
+        injectivity; it only supports identifiability for the explored domain and
+        protocol.
+  \item \textbf{Protocol dependence.}
+        Because KPI values depend on sampling, aggregation windows, and cadence,
+        any empirical claim must fix the readout protocol explicitly.
+        Once fixed, the protocol is absorbed into the definition of \(\pi_K\),
+        and the formal results apply unchanged.
+\end{enumerate}
+
+Accordingly, the falsifiable content of this preprint can be summarized as
+follows:
+\emph{for a fixed KPI readout protocol, if two distinct admissible enterprise
+states yield identical KPI values, then KPI-based observation is
+non-identifying on that tested domain}.
+This statement is a direct consequence of the definitions in
+Section~\ref{sec:formal-setting}.

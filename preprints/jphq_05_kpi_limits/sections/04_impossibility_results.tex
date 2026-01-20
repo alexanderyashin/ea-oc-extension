@@ -1,0 +1,144 @@
+﻿\section{Impossibility and Non-Identifiability Results}
+\label{sec:impossibility}
+
+This section establishes formal limits of KPI-based observation for the
+enterprise continuum \(K_{EA}\) under the Ontology of Continua and the frozen
+executable specification \texttt{ETS.K\_EA.v1.1}.
+All results are strictly diagnostic and negative in nature: they delimit what
+KPI-based observation cannot identify even in principle.
+
+The formal structure follows the classical observation--identification
+paradigm: observation is modeled as a map from a state space to an observation
+space, and identifiability corresponds to injectivity of that map on a domain of
+interest (see, e.g., classical treatments in control and system identification
+\cite{kalman1960,ljung1999,walter1997}).
+The specific contribution of the OC/ETS framework is to instantiate this
+paradigm for enterprise continua with explicit observability constraints.
+
+\subsection{Existence of KPI-Indistinguishable States}
+
+\begin{theorem}[Non-Identifiability in the Absence of Injectivity]
+\label{thm:nonident}
+Let \(K=(\kappa_1,\ldots,\kappa_m)\) be any finite admissible KPI family with
+induced readout map
+\[
+\pi_K:\Omega_{\mathrm{obs}}\to\Sigma_{\mathrm{obs}}.
+\]
+If \(\pi_K\) is not injective on \(\Omega_{\mathrm{obs}}\), then there exist
+distinct states
+\(\omega_1\neq\omega_2\in\Omega_{\mathrm{obs}}\) such that
+\[
+\pi_K(\omega_1)=\pi_K(\omega_2).
+\]
+\end{theorem}
+
+\begin{proof}
+Non-injectivity of \(\pi_K\) means, by definition, that there exist at least two
+distinct elements of \(\Omega_{\mathrm{obs}}\) that are mapped to the same
+observation.
+These states are therefore indistinguishable under KPI observation.
+\end{proof}
+
+Although elementary, this statement is foundational: it makes explicit that
+non-identifiability is the default situation whenever injectivity of the
+observation map is not guaranteed.
+
+\subsection{Absence of Universal KPI Completeness}
+
+\begin{theorem}[No Universal KPI Completeness]
+\label{thm:no-complete}
+There exists no finite admissible KPI family \(K\) such that the associated
+readout map \(\pi_K\) uniquely identifies all states in
+\(\Omega_{\mathrm{obs}}\), unless injectivity is imposed as an additional
+constraint on the admissible state space.
+In particular, neither OC nor \texttt{ETS.K\_EA.v1.1} implies injectivity of any
+finite KPI readout map on \(\Omega_{\mathrm{obs}}\).
+\end{theorem}
+
+\begin{proof}[OC/ETS-grounded argument]
+The Ontology of Continua and \texttt{ETS.K\_EA.v1.1} fix the structural components
+of the enterprise continuum, including its state space, admissible observable
+domain, axes, flows, thresholds, cycles, and the factorization of the continuum
+measure \(k_{EA}\).
+They do not contain any axiom or admissibility condition requiring a user-chosen
+KPI readout map \(\pi_K\) to be injective on \(\Omega_{\mathrm{obs}}\).
+
+This mirrors the classical situation in system identification, where
+identifiability is not automatic but must be established or enforced through
+additional structural assumptions, excitation conditions, or model
+restrictions (see, e.g., \cite{ljung1999,walter1997}).
+Within OC/ETS, no such enforcing assumption is present.
+Hence universal KPI completeness cannot be concluded from OC/ETS alone.
+\end{proof}
+
+\subsection{Structural Indistinguishability as an Intrinsic Feature}
+
+\begin{proposition}[Loss of Structural Information Along KPI Fibers]
+\label{prop:fiber-loss}
+Let \(K\) be any admissible KPI family and let
+\(\omega_1,\omega_2\in\Omega_{\mathrm{obs}}\) lie in the same fiber of
+\(\pi_K\).
+Then all OC/ETS-structural information distinguishing \(\omega_1\) from
+\(\omega_2\) is unrecoverable from KPI values alone.
+\end{proposition}
+
+\begin{proof}
+If \(\omega_1\) and \(\omega_2\) lie in the same fiber, then
+\(\pi_K(\omega_1)=\pi_K(\omega_2)\).
+Any downstream procedure whose input depends only on KPI values receives
+identical input for \(\omega_1\) and \(\omega_2\).
+Consequently, all structural variation within a fiber is eliminated once
+observation factors through the quotient
+\(\Omega_{\mathrm{obs}}/\!\sim_K\).
+\end{proof}
+
+This fiber-based loss of information is the direct analogue of classical
+projection-induced ambiguity in partially observed systems
+(cf.\ indistinguishable states in linear and nonlinear observation theory
+\cite{kalman1960,slotine1991}).
+
+\subsection{Independence from Statistical or Algorithmic Enrichment}
+
+\begin{proposition}[Post-Processing Cannot Restore Identifiability]
+\label{prop:no-pp}
+Let \(g:\Sigma_{\mathrm{obs}}\to Z\) be any deterministic post-processing map,
+including aggregation, smoothing, scoring, embedding, or transformation.
+Then the composite map \(g\circ\pi_K\) is identifying on a domain
+\(D\subseteq\Omega_{\mathrm{obs}}\) only if \(\pi_K\) is identifying on \(D\).
+\end{proposition}
+
+\begin{proof}
+If \(\pi_K(\omega_1)=\pi_K(\omega_2)\), then
+\((g\circ\pi_K)(\omega_1)=(g\circ\pi_K)(\omega_2)\) for any deterministic function
+\(g\).
+Thus post-processing cannot separate states that are already
+KPI-indistinguishable.
+Identifiability of \(g\circ\pi_K\) therefore implies identifiability of
+\(\pi_K\) on the same domain.
+\end{proof}
+
+This reflects a standard principle in identification theory: no deterministic
+transformation of insufficient data can recover information that was never
+observed in the first place \cite{ljung1999,walter1982}.
+
+\subsection{Observability Versus Identifiability}
+
+\begin{proposition}[Observability Does Not Imply Identifiability]
+\label{prop:obs-vs-id}
+ETS-level observability guarantees only that KPI readouts are defined on
+\(\Omega_{\mathrm{obs}}\).
+It does not imply that KPI readouts uniquely identify states in
+\(\Omega_{\mathrm{obs}}\).
+\end{proposition}
+
+\begin{proof}
+Observability, as used here, is an admissibility condition ensuring that readouts
+are defined on the domain \(\Omega_{\mathrm{obs}}\).
+Identifiability is a distinct property, equivalent to injectivity of the readout
+map on a domain of interest.
+OC and \texttt{ETS.K\_EA.v1.1} do not equate these notions and do not enforce
+injectivity.
+This separation mirrors the classical distinction between observability and
+identifiability in control and system identification theory
+\cite{kalman1960,ljung1999}.
+\end{proof}
