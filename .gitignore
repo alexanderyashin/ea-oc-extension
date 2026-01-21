@@ -34,3 +34,7 @@ preprints/**/main.pdf
 
 # build artifacts (root)
 /main.pdf
+
+# --- paper build artifacts
+paper/main.pdf
+paper/main.toc
