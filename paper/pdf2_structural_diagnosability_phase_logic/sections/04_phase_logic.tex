@@ -1,6 +1,6 @@
-﻿%==============================================================================
-% PDF-2 / Section 04 — Phase Logic
-% Full-file replacement (RUN-P2-03) — FIX: remove undefined 'proposition' env
+%==============================================================================
+% PDF-2 / Section 04 � Phase Logic
+% Full-file replacement � RUN-P2-04H (headings: math-safe; overfull fixes)
 %==============================================================================
 
 \section{Phase logic as diagnostic regimes}
@@ -15,7 +15,8 @@ A \emph{phase} is a formal diagnostic category: a set of internal realizations
 (continua or states) sharing invariant properties relevant to stability,
 feasibility, and admissible transitions.
 
-\subsection{Phases as subsets of $\Omega(K_{EA})$ and/or model spaces}
+\subsection{Phases as subsets of \texorpdfstring{$\Omega(K_{EA})$}{Omega(K EA)} and/or model spaces}
+
 Let $K_{EA}$ be fixed. A phase can be defined at different formal levels.
 
 \begin{definition}[State-space phase]
@@ -29,7 +30,9 @@ indicator $k$, and feasibility spaces).
 \begin{definition}[Model-space phase]
 \label{def:model_space_phase}
 A \emph{model-space phase} is a subset
-$\widehat{\Phi} \subseteq \{(M_{current},M_{declared},M_{feasible})\}$
+\[
+\widehat{\Phi} \subseteq \{(M_{current},M_{declared},M_{feasible})\}
+\]
 specified by constraints on feasibility, consistency, and compatibility relations.
 \end{definition}
 
@@ -47,25 +50,26 @@ We introduce a minimal, canonical family of regimes expressed without adding new
 primitives. Each regime is defined by \emph{existence} or \emph{non-existence}
 statements about feasibility, continuity, and boundary proximity.
 
-\begin{definition}[Regime $\mathbf{R_{STOP}}$ (feasibility collapse)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{STOP}}$}{R_STOP} (feasibility collapse)]
 \label{def:regime_stop}
 $\mathbf{R_{STOP}}$ holds if $M_{feasible}=\varnothing$ (as in
 Definition~\ref{def:feasibility_collapse_stop}).
 This is an epistemic non-existence classification.
 \end{definition}
 
-\begin{definition}[Regime $\mathbf{R_{COLLAPSE}}$ (boundary violation imminent/ongoing)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{COLLAPSE}}$}{R_COLLAPSE}]
 \label{def:regime_collapse}
+(Boundary violation imminent/ongoing.)
 $\mathbf{R_{COLLAPSE}}$ holds if the compatibility set implies boundary
 violation in the sense that all compatible realizations lie on or beyond the
 boundary:
 \[
-\forall (K \text{ or } x)\ \text{compatible with } D:\quad (K \notin \Omega) \ \text{or}\ x \in \partial\Omega.
+\forall (K \text{ or } x)\ \text{compatible with } D:\quad (K \notin \Omega)\ \text{or}\ x \in \partial\Omega.
 \]
 Equivalently, if a diagnosable bound forces $d(\cdot,\partial\Omega)\le 0$.
 \end{definition}
 
-\begin{definition}[Regime $\mathbf{R_{INERTIA}}$ (stable but non-expansive)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{INERTIA}}$}{R_INERTIA} (stable but non-expansive)]
 \label{def:regime_inertia}
 $\mathbf{R_{INERTIA}}$ holds if:
 (i) feasibility is non-empty, and
@@ -75,7 +79,7 @@ diagnosable), i.e.\ the set of compatible transitions does not include any
 transition that strictly increases the effective state-space dimensionality.
 \end{definition}
 
-\begin{definition}[Regime $\mathbf{R_{ADAPT}}$ (local adaptation)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{ADAPT}}$}{R_ADAPT} (local adaptation)]
 \label{def:regime_adapt}
 $\mathbf{R_{ADAPT}}$ holds if:
 (i) feasibility is non-empty, and
@@ -85,7 +89,7 @@ violating thresholds, with continuity preserved (non-vanishing $k$ over the
 considered horizon, if $k(t)$ is used in the core).
 \end{definition}
 
-\begin{definition}[Regime $\mathbf{R_{TRANSITION}}$ (phase transition admissible)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{TRANSITION}}$}{R_TRANSITION} (phase transition admissible)]
 \label{def:regime_transition}
 $\mathbf{R_{TRANSITION}}$ holds if:
 (i) feasibility is non-empty, and
