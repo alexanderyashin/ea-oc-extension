@@ -1,12 +1,18 @@
 {
-  "run_id": "EDHQ-02",
-  "timestamp_utc": "2026-01-21T14:00:53.279985+00:00",
-  "seed": 13371337,
-  "sample_n": 20000,
-  "ets_path": "configs\\ETS.K_EA.v1.1.yaml",
-  "projection_rule": "lexicographic_first_two_axis_groups",
-  "synthetic_coordinate_rule": "mean_of_uniform_subaxes_in_[0,1]",
+  "axes_used": [
+    "struct",
+    "gov"
+  ],
   "axis_groups_used": [
+    {
+      "group": "struct",
+      "sub_axes": [
+        "coupling",
+        "modularity",
+        "centralization",
+        "redundancy"
+      ]
+    },
     {
       "group": "gov",
       "sub_axes": [
@@ -14,28 +20,38 @@
         "rule_enforceability",
         "escalation_integrity"
       ]
-    },
-    {
-      "group": "info",
-      "sub_axes": [
-        "observability",
-        "traceability",
-        "semantic_alignment"
-      ]
     }
   ],
-  "script_sha256": "28bdaac62de5c99a71c4f0861d1053256db57d2228e82d67f3d554677dd8af0a",
-  "outputs": [
-    "results\\pdf1\\phase_space_demo\\phase_space.png",
+  "bounds": {
+    "gov": {
+      "max": 1.0,
+      "min": 0.0
+    },
+    "struct": {
+      "max": 1.0,
+      "min": 0.0
+    }
+  },
+  "ets_path": "configs\\ETS.K_EA.v1.1.yaml",
+  "ets_sha256": "18f075990a1e400124a81e31cc0783828e1162bf04d298cc5d24df76705e8710",
+  "grid_resolution": 200,
+  "guarantees": {
+    "geometry_only": true,
+    "no_diagnostics": true,
+    "no_new_primitives": true,
+    "no_phase_transitions": true,
+    "no_stop": true
+  },
+  "output_files": [
     "results\\pdf1\\phase_space_demo\\phase_space.pdf",
-    "results\\pdf1\\phase_space_demo\\phase_space.svg",
     "results\\pdf1\\phase_space_demo\\run_manifest.json"
   ],
-  "guarantees": {
-    "no_stop": true,
-    "no_diagnostics": true,
-    "no_phase_transitions": true,
-    "no_new_primitives": true,
-    "geometry_only": true
-  }
+  "projection_rule": "first_two_axis_groups_in_declaration_order",
+  "python_version": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "run_id": "EDHQ-02",
+  "sample_n": 20000,
+  "script_sha256": "602b3f1edec64c097ddab67f87f99d7f6598ca96533219059c1457efb8f51279",
+  "seed": 13371337,
+  "synthetic_coordinate_rule": "mean_of_uniform_subaxes_in_[0,1]",
+  "timestamp_utc": "2026-01-21T15:03:58.697261+00:00"
 }
