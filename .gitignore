@@ -38,3 +38,7 @@ preprints/**/main.pdf
 # --- paper build artifacts
 paper/main.pdf
 paper/main.toc
+
+# build artifacts
+/paper/pdf1_executing_kea/main.pdf
+
