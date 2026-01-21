@@ -1,0 +1,15 @@
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+*.run.xml
+*.toc
+
+# Error save files
+*-SAVE-ERROR
+
+# Monograph
+preprints/monograph/empty.bib
