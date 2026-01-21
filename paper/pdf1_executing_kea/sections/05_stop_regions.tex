@@ -1,6 +1,7 @@
 % ==============================================================================
-% PDF-1 / Section 05 — STOP Regions (Skeleton)
-% No new primitives. Diagnostic-only. Container structure.
+% PDF-1 / Section 05 — STOP Regions (Executable mask demo)
+% ETS-only predicate; tooling-only instantiation (explicit in run manifest).
+% No new primitives. Diagnostic-only.
 % ==============================================================================
 
 \section{STOP Regions}
@@ -20,6 +21,21 @@ undefined or non-falsifiable under the given specification.
 This outcome is explicit, terminal, and non-negotiable.
 
 STOP does not imply failure, blame, urgency, or the necessity of action.
+
+\subsection{Executable STOP mask (2D demo)}
+This section includes a minimal executable demonstration of STOP regions as a binary mask
+(admissible vs.\ STOP) over a deterministic 2D projection of the ETS axis-groups.
+
+The STOP predicate is taken verbatim from the immutable ETS.
+All execution parameters, hashes, and the explicit tooling-only instantiation used for this demo
+are recorded in the run manifest.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\linewidth]{../../results/pdf1/stop_regions_demo/stop_regions.pdf}
+  \caption{Executable STOP regions mask over a deterministic 2D projection (ETS predicate; tooling-only instantiation recorded in manifest).}
+  \label{fig:stop-regions-mask}
+\end{figure}
 
 \subsection{Boundary characterization (container)}
 STOP regions are characterized by:
