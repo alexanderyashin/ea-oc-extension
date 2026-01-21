@@ -6,3 +6,4 @@
 
 # Markdown (portable)
 *.md  text eol=lf
+*.pdf binary
