@@ -1,2 +1,28 @@
 ﻿\section{Problem Statement}
-TODO (skeleton).
+
+Enterprises are complex systems whose internal structure is only partially observable.
+Architectural elements, dependencies, constraints, and tensions evolve in ways that are not directly accessible through external observation.
+Instead, analysis typically relies on projections such as metrics, events, reports, or aggregated indicators.
+These projections constitute observable manifestations of the enterprise, but they do not provide a one-to-one mapping to the underlying structural configuration.
+
+This paper examines the problem of determining whether, and to what extent, an enterprise can be \emph{structurally diagnosed} based on such observable projections.
+Structural diagnosability is understood here as an epistemic property: the ability to infer structural phase membership of an enterprise from available observations, given a fixed formal model.
+The question is not whether a particular enterprise state is favorable or unfavorable, but whether it is distinguishable, in principle, from other structurally different states.
+
+Formally, the enterprise is modeled as a continuum \(K_{EA}\) with an internal state space and a corresponding observable projection.
+Multiple internal configurations may map to identical or near-identical observable outcomes.
+When this occurs, state-level diagnosis becomes undecidable, even if observations are precise.
+The paper therefore shifts the focus from exact state identification to phase-level diagnosability, where structurally equivalent configurations are grouped into equivalence classes.
+
+The core problem addressed is the following:
+given a set of observable manifestations, under what conditions can an enterprise be diagnosed as belonging to a specific structural phase, and under what conditions is such a diagnosis fundamentally underdetermined?
+
+Several boundaries are explicit.
+The paper does not propose methods for improving observability, refining measurements, or influencing enterprise behavior.
+It does not introduce new managerial constructs, optimization criteria, or intervention operators.
+It does not assume the availability of complete or noise-free data.
+Instead, it treats incomplete observability as a structural condition and analyzes its implications for diagnostic claims.
+
+Within these constraints, the objective is to clarify the logical status of diagnostic statements about enterprises.
+A diagnosis may be possible, impossible, or falsifiable only at the level of structural phases.
+Recognizing these limits is essential for distinguishing meaningful diagnostic knowledge from claims that exceed what the model and observations can support.
