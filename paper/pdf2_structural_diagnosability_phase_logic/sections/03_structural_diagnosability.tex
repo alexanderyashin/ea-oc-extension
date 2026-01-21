@@ -1,6 +1,6 @@
 ﻿%==============================================================================
 % PDF-2 / Section 03 — Structural Diagnosability
-% Full-file replacement (RUN-P2-03)
+% Full-file replacement (RUN-P2-03) — FIX: remove undefined 'proposition' env
 %==============================================================================
 
 \section{Structural diagnosability (epistemic, non-algorithmic)}
@@ -79,13 +79,11 @@ The manifestation map is generally non-injective:
 different internal continua (or different internal states) can produce
 indistinguishable observation traces under the same $(E,\Pi)$.
 
-\begin{proposition}[Generic non-identifiability]
-\label{prop:generic_nonidentifiability}
+\paragraph{Proposition (Generic non-identifiability).}
 Unless $\Pi$ is informationally complete for $\Omega(K_{EA})$ (a degenerate,
 rarely realizable condition in enterprise contexts), the mapping
 $K_{EA} \mapsto \Sigma_{obs}(K_{EA},E)$ is not injective. Therefore,
 $\lvert\mathcal{K}_{compat}(D;E,\Pi)\rvert > 1$ is generic for finite $D$.
-\end{proposition}
 
 \begin{proof}[Proof sketch]
 Observation operators $\Pi$ reduce dimension: $\dim \Sigma_{obs} \ll \dim

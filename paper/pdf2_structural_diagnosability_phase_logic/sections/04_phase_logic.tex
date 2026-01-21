@@ -1,6 +1,6 @@
 ﻿%==============================================================================
 % PDF-2 / Section 04 — Phase Logic
-% Full-file replacement (RUN-P2-03)
+% Full-file replacement (RUN-P2-03) — FIX: remove undefined 'proposition' env
 %==============================================================================
 
 \section{Phase logic as diagnostic regimes}
@@ -125,13 +125,10 @@ A unique phase label is justified only when some regime is \textbf{forced} and
 all incompatible regimes are \textbf{ruled out}. Otherwise, the correct
 diagnostic output is a \emph{set} of admissible regimes.
 
-\subsection{Non-identifiability theorem for phase labels (negative result)}
-\begin{proposition}[Generic non-uniqueness of phase classification]
-\label{prop:generic_nonunique_phase}
+\paragraph{Proposition (Generic non-uniqueness of phase classification).}
 For finite traces $D$ under realistic $(E,\Pi)$, multiple regimes among
 $\{\mathbf{R_{INERTIA}},\mathbf{R_{ADAPT}},\mathbf{R_{TRANSITION}}\}$ are
 typically admissible simultaneously, i.e.\ phase classification is not forced.
-\end{proposition}
 
 \begin{proof}[Proof sketch]
 Finite traces constrain only a projection $\Sigma_{obs}$, not the full internal
@@ -147,12 +144,10 @@ epistemic limits. The formalism prevents over-commitment.
 \subsection{STOP dominance and logical precedence}
 Some regimes dominate others by logical precedence.
 
-\begin{proposition}[STOP dominates regime classification]
-\label{prop:stop_dominates}
+\paragraph{Proposition (STOP dominates regime classification).}
 If $\mathbf{R_{STOP}}$ is forced by $D$, then no non-STOP regime can be forced.
 Moreover, any classification that asserts a non-STOP regime as forced is
 inconsistent with the definition of feasibility collapse.
-\end{proposition}
 
 \begin{proof}[Proof sketch]
 If $M_{feasible}=\varnothing$ holds for all compatible realizations, then there
