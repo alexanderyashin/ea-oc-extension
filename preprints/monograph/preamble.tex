@@ -3,9 +3,11 @@
 % Purpose: stable monograph wrapper, no scientific content.
 % Policy: "eat everything" / compile robustness across heterogeneous JPHQ preprints.
 %
-% Bib policy:
-% - biblatex + biber
-% - Each chapter wrapper must open its own refsection and print its bibliography.
+% Bib policy (FINAL / monograph-global):
+% - biblatex + biber (loaded ONCE, here).
+% - ALL JPHQ references.bib are registered here via \addbibresource{...}.
+% - NO refsection per chapter. NO per-chapter bibliography printing.
+% - Monograph main.tex prints ONE unified bibliography at the end via \printbibliography.
 %
 % Compatibility policy:
 % - Monograph includes only ../jphq_XX/.../sections/*.tex
@@ -42,14 +44,27 @@
 % - bookmarksopen=false: reduce fragile bookmark nesting surprises
 \usepackage[hidelinks,hypertexnames=false,bookmarksopen=false]{hyperref}
 
-% --- Bib policy:
-% refsection per chapter, numeric style, no sorting.
-% csquotes recommended by biblatex (robustness; no semantic impact).
+% --- Bib policy (GLOBAL):
+% - csquotes recommended by biblatex (robustness; no semantic impact).
+% - numeric style, no sorting (keeps in-text order as it appears in compilation flow).
 \usepackage{csquotes}
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 
+% Register ALL JPHQ bib sources (monograph-global pool).
+% IMPORTANT: keep paths stable and explicit.
+\addbibresource{preprints/jphq_01_structural_diagnosability/references.bib}
+\addbibresource{preprints/jphq_02_stop_as_diagnostic/references.bib}
+\addbibresource{preprints/jphq_03_threshold_phase_logic/references.bib}
+\addbibresource{preprints/jphq_04_nogo_transformation/references.bib}
+\addbibresource{preprints/jphq_05_kpi_limits/references.bib}
+\addbibresource{preprints/jphq_06_structural_tension_nonoptimizable/references.bib}
+\addbibresource{preprints/jphq_07_identity_loss_phase_transition/references.bib}
+\addbibresource{preprints/jphq_08_limits_of_intervention/references.bib}
+\addbibresource{preprints/jphq_09_decidability_under_incomplete_observability/references.bib}
+\addbibresource{preprints/jphq_10_falsifiability_and_limits/references.bib}
+
 % --- Counter reset helper (public command)
-% NOTE: wrapper should call this between chapters if needed.
+% NOTE: wrapper may call this between chapters if needed.
 \newcommand{\ARResetCounters}{%
   \setcounter{section}{0}%
   \setcounter{subsection}{0}%
@@ -58,6 +73,32 @@
   \setcounter{figure}{0}%
   \setcounter{table}{0}%
 }
+
+% --- Pagination freeze (wrapper-only)
+% Purpose: JPHQ sources may contain \pagenumbering{...} or \setcounter{page}{...}
+% Policy: JPHQ is immutable; neutralize page resets at aggregation layer only.
+\makeatletter
+\newcommand{\ARFreezePaginationBegin}{%
+  % save originals (idempotent per chapter)
+  \let\AR@orig@pagenumbering\pagenumbering%
+  \let\AR@orig@setcounter\setcounter%
+  % neutralize \pagenumbering{...}
+  \renewcommand{\pagenumbering}[1]{}%
+  % neutralize \setcounter{page}{...} but keep all other counters functional
+  \renewcommand{\setcounter}[2]{%
+    \def\AR@ctr{##1}\def\AR@page{page}%
+    \ifx\AR@ctr\AR@page
+      % ignore
+    \else
+      \AR@orig@setcounter{##1}{##2}%
+    \fi
+  }%
+}
+\newcommand{\ARFreezePaginationEnd}{%
+  \let\pagenumbering\AR@orig@pagenumbering%
+  \let\setcounter\AR@orig@setcounter%
+}
+\makeatother
 
 % ============================================================================
 % Compatibility shims (JPHQ macro fallbacks)
@@ -345,6 +386,7 @@
 
 % ----------------------------------------------------------------------------
 % 8b) Extremely defensive cite fallbacks (only if someone uses them)
+% (With biblatex loaded, these are normally defined; harmless regardless.)
 % ----------------------------------------------------------------------------
 \providecommand{\textcite}[1]{\cite{#1}}
 \providecommand{\parencite}[1]{\cite{#1}}

@@ -1,25 +1,44 @@
 ﻿\documentclass[11pt]{report}
 
-\input{preamble}
+% ============================================================================
+% Monograph wrapper (aggregation only)
+% - Preamble carries GLOBAL biblatex+biber + ALL bibresources
+% - Chapters are pure \input aggregators (NO refsection / NO \printbibliography)
+% ============================================================================
+
+\input{preprints/monograph/preamble}
 
 \title{Unified Journal Monograph (JPHQ-01 \dots JPHQ-10)}
 \author{}
 \date{}
 
 \begin{document}
+
 \maketitle
 \tableofcontents
 \clearpage
 
-\input{chapters/ch01_jphq01}
-\input{chapters/ch02_jphq02}
-\input{chapters/ch03_jphq03}
-\input{chapters/ch04_jphq04}
-\input{chapters/ch05_jphq05}
-\input{chapters/ch06_jphq06}
-\input{chapters/ch07_jphq07}
-\input{chapters/ch08_jphq08}
-\input{chapters/ch09_jphq09}
-\input{chapters/ch10_jphq10}
+% Optional: freeze pagination resets inside included sources (safe if unused)
+% If any included sections contain \pagenumbering or \setcounter{page}{...},
+% uncomment the next line ONCE to neutralize those resets globally.
+% \ARFreezePaginationBegin
+
+\input{preprints/monograph/chapters/ch01_jphq01}
+\input{preprints/monograph/chapters/ch02_jphq02}
+\input{preprints/monograph/chapters/ch03_jphq03}
+\input{preprints/monograph/chapters/ch04_jphq04}
+\input{preprints/monograph/chapters/ch05_jphq05}
+\input{preprints/monograph/chapters/ch06_jphq06}
+\input{preprints/monograph/chapters/ch07_jphq07}
+\input{preprints/monograph/chapters/ch08_jphq08}
+\input{preprints/monograph/chapters/ch09_jphq09}
+\input{preprints/monograph/chapters/ch10_jphq10}
+
+% \ARFreezePaginationEnd
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography
 
 \end{document}
