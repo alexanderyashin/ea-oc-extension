@@ -1,0 +1,71 @@
+% ==============================================================================
+% PDF-1 / Appendix — Reproducibility Manifest (Skeleton)
+% No new primitives. Diagnostic-only. Container structure.
+% ==============================================================================
+
+\section{Reproducibility Manifest}
+\label{appx:repro-manifest}
+
+\subsection{Purpose}
+This appendix specifies the minimal reproducibility contract for PDF-1.
+It documents the conditions under which the document can be built, inspected,
+and verified without modifying the theoretical core or the build pipeline.
+
+The manifest is descriptive and declarative; it does not introduce executable logic.
+
+\subsection{Artifact identity}
+\begin{itemize}
+  \item \textbf{Artifact class:} Executable Demonstration / Diagnostic / Non-prescriptive
+  \item \textbf{Artifact ID:} PDF-1 — Executing the Enterprise Continuum
+  \item \textbf{Immutable sources:} KEA (PDF-0), \texttt{ETS.K\_EA.v1.1}
+\end{itemize}
+
+\subsection{Build environment assumptions}
+The following assumptions define the supported local build environment:
+\begin{itemize}
+  \item Operating system: Windows
+  \item Shell: PowerShell
+  \item Build tool: \texttt{latexmk}
+  \item TeX distribution: any standard distribution compatible with the shared preamble
+\end{itemize}
+
+No guarantees are made for alternative shells, operating systems, or modified pipelines.
+
+\subsection{Canonical build command}
+The canonical reproducible build is defined by the following command sequence,
+executed from the repository root:
+
+\begin{verbatim}
+Set-Location C:\Users\Megaport\work\ea-oc-extension
+Push-Location .\paper\pdf1_executing_kea
+latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error .\main.tex
+Pop-Location
+\end{verbatim}
+
+A successful build must terminate with exit status \texttt{0} and produce
+\texttt{paper/pdf1\_executing\_kea/main.pdf}.
+
+\subsection{Scope integrity guarantees}
+This manifest guarantees that:
+\begin{itemize}
+  \item no new theoretical primitives are introduced,
+  \item no existing definitions are modified,
+  \item no pipeline code or shared preamble is altered,
+  \item all content remains diagnostic-only.
+\end{itemize}
+
+Any deviation from these conditions invalidates the reproducibility claim.
+
+\subsection{Non-guarantees}
+The following are explicitly not guaranteed:
+\begin{itemize}
+  \item numerical stability or performance characteristics,
+  \item completeness of observation data,
+  \item applicability outside the KEA/ETS formal scope,
+  \item suitability for decision-making or intervention.
+\end{itemize}
+
+\subsection{Verification status}
+This appendix defines the criteria for reproducibility but does not assert
+that a particular build has been executed.
+Verification must be established by an explicit build log and commit hash.

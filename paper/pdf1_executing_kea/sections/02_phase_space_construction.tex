@@ -1,0 +1,50 @@
+% ==============================================================================
+% PDF-1 / Section 02 — Phase Space Construction (Skeleton)
+% No new primitives. Diagnostic-only. Container structure.
+% ==============================================================================
+
+\section{Phase Space Construction}
+\label{sec:phase-space}
+
+\subsection{Objective of the construction}
+This section defines the \emph{structural container} for constructing a diagnostic
+phase space over the Enterprise Continuum \(K_{EA}\).
+The goal is to provide a clear slot for mapping observable enterprise states into
+a formally bounded space without introducing new variables, metrics, or primitives.
+
+All coordinates, axes, and constraints referenced here are assumed to be inherited
+from KEA (PDF-0) and \texttt{ETS.K\_EA.v1.1}. No extensions are permitted in this run.
+
+\subsection{State representation (container)}
+An enterprise state is represented as a point (or region) in the admissible
+phase space defined by:
+\begin{itemize}
+  \item the existing state descriptors of \(K_{EA}\),
+  \item the admissible configuration set as specified by the ETS,
+  \item explicit boundary conditions inherited from the STOP logic.
+\end{itemize}
+
+This subsection intentionally omits any numerical parametrization or computation.
+It exists solely to anchor later executable demonstrations to a stable formal slot.
+
+\subsection{Admissible regions and boundaries}
+The phase space is partitioned into admissible and non-admissible regions according
+to constraints already defined in the immutable sources.
+Boundary surfaces are treated as diagnostic objects (not optimization targets).
+
+No assumptions are made about smoothness, convexity, or continuity beyond what is
+explicitly stated in the underlying KEA specification.
+
+\subsection{Observability and projection}
+Observed enterprise signals are projected into the phase space via diagnostic
+projection operators already defined elsewhere.
+This document does not define new projection rules; it only reserves the structural
+location where such projections are referenced and discussed.
+
+\subsection{Non-goals}
+\begin{itemize}
+  \item No construction of new dimensions or axes.
+  \item No optimization criteria or target states.
+  \item No intervention logic or control objectives.
+  \item No claims about completeness or sufficiency of observation.
+\end{itemize}

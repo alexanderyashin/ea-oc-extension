@@ -1,0 +1,50 @@
+% ==============================================================================
+% PDF-1 / Section 04 — Executing Diagnostics (Skeleton)
+% No new primitives. Diagnostic-only. Container structure.
+% ==============================================================================
+
+\section{Executing Diagnostics}
+\label{sec:executing-diagnostics}
+
+\subsection{Role of execution in a diagnostic context}
+Execution in this document refers exclusively to the \emph{procedural application}
+of already defined diagnostic rules to observed enterprise states.
+It does not imply intervention, control, optimization, or decision enforcement.
+
+The term “executing” is used in a strictly technical sense: applying an immutable
+specification to concrete observations in a reproducible manner.
+
+\subsection{Diagnostic inputs (container)}
+Diagnostic execution assumes the availability of:
+\begin{itemize}
+  \item observed enterprise signals admissible under the KEA scope,
+  \item a fixed mapping into the diagnostic phase space,
+  \item invariant boundary and STOP conditions as defined in the ETS.
+\end{itemize}
+
+No assumptions are made about data completeness, quality, or timeliness.
+
+\subsection{Execution flow (structural slot)}
+This subsection reserves the structural slot for a future step-by-step
+diagnostic flow, such as:
+\begin{enumerate}
+  \item projection of observations into phase space,
+  \item identification of the occupied synthetic regime(s),
+  \item evaluation of proximity to STOP regions,
+  \item generation of diagnostic outcomes.
+\end{enumerate}
+
+In RUN-EDHQ-01, this flow is intentionally non-operational and non-algorithmic.
+
+\subsection{Determinism and reproducibility}
+Given identical inputs and an unchanged specification, diagnostic execution
+must be deterministic and reproducible.
+Any future executable realization must preserve this property.
+
+\subsection{Non-claims}
+\begin{itemize}
+  \item No guarantee of actionability.
+  \item No claim of predictive power.
+  \item No promise of real-time execution.
+  \item No implication of managerial decision support.
+\end{itemize}

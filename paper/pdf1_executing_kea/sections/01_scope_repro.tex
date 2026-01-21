@@ -1,0 +1,49 @@
+% ==============================================================================
+% PDF-1 / Section 01 — Scope & Reproducibility (Skeleton)
+% No new primitives. Non-prescriptive. Container only.
+% ==============================================================================
+
+\section{Scope and Reproducibility}
+\label{sec:scope-repro}
+
+\subsection{Document class and intent}
+This document is an \emph{executable demonstration} of diagnostic \emph{phase space}
+construction and \emph{STOP regions} for the Enterprise Continuum \(K_{EA}\).
+It is strictly \emph{non-prescriptive}: it does not recommend interventions, policies,
+or managerial actions.
+
+The present PDF-1 is a \emph{container skeleton}. It provides a stable LaTeX structure
+for later computational demos (in subsequent runs), while preserving the immutability of:
+(i) KEA (PDF-0) and (ii) \texttt{ETS.K\_EA.v1.1}.
+No new theoretical primitives are introduced here, and no semantic drift is permitted.
+
+\subsection{Immutability and scope guardrails}
+\begin{itemize}
+  \item \textbf{Immutable inputs:} KEA (PDF-0) and \texttt{ETS.K\_EA.v1.1} are treated as authoritative.
+  \item \textbf{No new primitives:} only re-use of existing definitions and terms.
+  \item \textbf{No engine in RUN-EDHQ-01:} no computation, no implementation details, no algorithms beyond placeholders.
+  \item \textbf{No pipeline edits:} the shared preamble and build tooling remain untouched.
+\end{itemize}
+
+\subsection{Reproducible build path}
+The build must succeed when executed from the repository root using PowerShell and \texttt{latexmk}.
+The canonical local build commands are:
+
+\begin{verbatim}
+Set-Location C:\Users\Megaport\work\ea-oc-extension
+Push-Location .\paper\pdf1_executing_kea
+latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error .\main.tex
+Pop-Location
+\end{verbatim}
+
+Expected output:
+\begin{itemize}
+  \item PDF artifact: \texttt{paper/pdf1\_executing\_kea/main.pdf}
+  \item Exit status: \texttt{0} (success)
+\end{itemize}
+
+\subsection{What this PDF-1 will contain (structural)}
+Subsequent sections provide only the structural slots for:
+(i) phase space construction, (ii) synthetic regimes, (iii) executing diagnostics,
+(iv) STOP regions, (v) invariance stress tests, and (vi) explicit non-claims and limits.
+Any future computational content must remain diagnostic-only and must not modify the KEA/ETS core.

@@ -1,0 +1,48 @@
+% ==============================================================================
+% PDF-1 / Section 06 — Invariance Stress Tests (Skeleton)
+% No new primitives. Diagnostic-only. Container structure.
+% ==============================================================================
+
+\section{Invariance Stress Tests}
+\label{sec:invariance-stress-tests}
+
+\subsection{Purpose of invariance testing}
+Invariance stress tests are used to verify that diagnostic outcomes remain stable
+under admissible transformations of observation, representation, or projection.
+They do not test performance, efficiency, or effectiveness.
+
+The objective is to detect violations of invariants already defined in the KEA and
+ETS layers.
+
+\subsection{Classes of admissible perturbations}
+This section reserves space for discussing admissible perturbations, such as:
+\begin{itemize}
+  \item reparameterization of observation without semantic change,
+  \item partial loss or aggregation of signals within admissible bounds,
+  \item alternative but equivalent projection paths.
+\end{itemize}
+
+No new perturbation classes are defined here.
+
+\subsection{Stress test outcomes}
+Possible outcomes of invariance stress tests include:
+\begin{itemize}
+  \item confirmed invariance (diagnostic stability),
+  \item detected sensitivity (boundary proximity),
+  \item violation leading to STOP region identification.
+\end{itemize}
+
+All outcomes are descriptive and diagnostic-only.
+
+\subsection{Relation to falsifiability}
+Failure of invariance under admissible conditions is treated as a falsification
+signal for the diagnostic setup under the current observation context.
+This does not falsify the KEA itself, but constrains its applicability.
+
+\subsection{Non-goals}
+\begin{itemize}
+  \item No robustness optimization.
+  \item No tolerance tuning.
+  \item No resilience scoring.
+  \item No operational recommendations.
+\end{itemize}

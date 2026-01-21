@@ -1,0 +1,46 @@
+% ==============================================================================
+% PDF-1 / Section 05 — STOP Regions (Skeleton)
+% No new primitives. Diagnostic-only. Container structure.
+% ==============================================================================
+
+\section{STOP Regions}
+\label{sec:stop-regions}
+
+\subsection{Conceptual role of STOP regions}
+STOP regions represent formally defined boundaries in the enterprise phase space
+beyond which diagnostic execution must halt.
+They are first-class diagnostic outcomes, not errors and not recommendations.
+
+STOP regions encode structural impossibility, loss of admissibility, or violation
+of invariant constraints already specified in the KEA and ETS layers.
+
+\subsection{STOP as a diagnostic outcome}
+Reaching a STOP region signifies that further diagnostic refinement is either
+undefined or non-falsifiable under the given specification.
+This outcome is explicit, terminal, and non-negotiable.
+
+STOP does not imply failure, blame, urgency, or the necessity of action.
+
+\subsection{Boundary characterization (container)}
+STOP regions are characterized by:
+\begin{itemize}
+  \item violation of admissibility constraints,
+  \item collapse of observability assumptions,
+  \item incompatibility with invariant stress conditions.
+\end{itemize}
+
+No new boundary criteria are introduced here.
+All references are strictly inherited from immutable sources.
+
+\subsection{Detection and signaling}
+This section reserves the structural location for detecting proximity to, or entry
+into, STOP regions during diagnostic execution.
+Signaling of STOP is treated as a formal result, not a warning or alert.
+
+\subsection{Explicit exclusions}
+\begin{itemize}
+  \item No recovery strategies.
+  \item No mitigation or workaround logic.
+  \item No escalation or governance prescriptions.
+  \item No optimization away from STOP.
+\end{itemize}
