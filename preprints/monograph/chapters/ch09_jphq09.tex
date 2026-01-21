@@ -2,8 +2,12 @@
 % Aggregator only. NO CONTENT.
 % Wrapper for monograph build: inputs JPHQ-09 section files in order.
 % Bibliography is handled globally in preprints/monograph/preamble.tex and
-% printed once in monograph main.tex. Do NOT add refsections or bib commands here.
+% printed once in monograph main.tex.
+% Do NOT add refsections or bib commands here.
 % ======================================================================
+
+\ARNamespaceBegin{jphq09:}
+\ARFreezePaginationBegin
 
 \chapter{JPHQ-09 — Decidability under Incomplete Observability}
 \ARResetCounters
@@ -17,3 +21,6 @@
 \input{../jphq_09_decidability_under_incomplete_observability/sections/06_scope_limits_nonclaims}
 \input{../jphq_09_decidability_under_incomplete_observability/sections/07_falsifiability}
 \input{../jphq_09_decidability_under_incomplete_observability/sections/08_literature_positioning}
+
+\ARFreezePaginationEnd
+\ARNamespaceEnd

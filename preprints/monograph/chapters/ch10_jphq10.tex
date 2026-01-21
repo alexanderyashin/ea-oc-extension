@@ -2,8 +2,12 @@
 % Aggregator only. NO CONTENT.
 % Wrapper for monograph build: inputs JPHQ-10 section files in order.
 % Bibliography is handled globally in preprints/monograph/preamble.tex and
-% printed once in monograph main.tex. Do NOT add refsections or bib commands here.
+% printed once in monograph main.tex.
+% Do NOT add refsections or bib commands here.
 % ======================================================================
+
+\ARNamespaceBegin{jphq10:}
+\ARFreezePaginationBegin
 
 \chapter{JPHQ-10 — Falsifiability and Limits}
 \ARResetCounters
@@ -16,3 +20,6 @@
 \input{../jphq_10_falsifiability_and_limits/sections/05_limits_and_nonclaims}
 \input{../jphq_10_falsifiability_and_limits/sections/06_relation_to_stop}
 \input{../jphq_10_falsifiability_and_limits/sections/07_conclusion}
+
+\ARFreezePaginationEnd
+\ARNamespaceEnd

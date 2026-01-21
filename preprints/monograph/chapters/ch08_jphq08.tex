@@ -2,8 +2,12 @@
 % Aggregator only. NO CONTENT.
 % Wrapper for monograph build: inputs JPHQ-08 section files in order.
 % Bibliography is handled globally in preprints/monograph/preamble.tex and
-% printed once in monograph main.tex. Do NOT add refsections or bib commands here.
+% printed once in monograph main.tex.
+% Do NOT add refsections or bib commands here.
 % ======================================================================
+
+\ARNamespaceBegin{jphq08:}
+\ARFreezePaginationBegin
 
 \chapter{JPHQ-08 — Limits of Intervention}
 \ARResetCounters
@@ -17,3 +21,6 @@
 \input{../jphq_08_limits_of_intervention/sections/06_boundary_and_phase_effects}
 \input{../jphq_08_limits_of_intervention/sections/07_scope_limits_nonclaims}
 \input{../jphq_08_limits_of_intervention/sections/08_falsifiability}
+
+\ARFreezePaginationEnd
+\ARNamespaceEnd

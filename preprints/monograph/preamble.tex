@@ -101,6 +101,42 @@
 \makeatother
 
 % ============================================================================
+% Monograph-only: label/ref namespace wrapper to avoid cross-chapter collisions
+% when aggregating multiple preprints.
+%
+% Policy:
+% - Do NOT modify JPHQ sources.
+% - Wrapper chapters activate a namespace, then input section files as-is.
+% - Inside the namespace, \label/\ref/\pageref/\autoref/\nameref are rewritten
+%   to transparently prefix keys with a chapter identifier (e.g., jphq05:).
+% ============================================================================
+
+\makeatletter
+\newcommand{\ARNamespaceBegin}[1]{%
+  \begingroup
+  \def\AR@ns{#1}%
+  % --- label: write namespaced label keys
+  \let\AR@origlabel\label
+  \renewcommand{\label}[1]{\AR@origlabel{\AR@ns##1}}%
+  % --- ref/pageref: read namespaced keys transparently inside the chapter
+  \let\AR@origref\ref
+  \renewcommand{\ref}[1]{\AR@origref{\AR@ns##1}}%
+  \let\AR@origpageref\pageref
+  \renewcommand{\pageref}[1]{\AR@origpageref{\AR@ns##1}}%
+  % --- hyperref helpers (guarded)
+  \@ifundefined{autoref}{}{%
+    \let\AR@origautoref\autoref
+    \renewcommand{\autoref}[1]{\AR@origautoref{\AR@ns##1}}%
+  }%
+  \@ifundefined{nameref}{}{%
+    \let\AR@orignameref\nameref
+    \renewcommand{\nameref}[1]{\AR@orignameref{\AR@ns##1}}%
+  }%
+}
+\newcommand{\ARNamespaceEnd}{\endgroup}
+\makeatother
+
+% ============================================================================
 % Compatibility shims (JPHQ macro fallbacks)
 % Policy:
 % - ONLY \providecommand / \@ifundefined-based guards (no hard overrides).
@@ -421,5 +457,3 @@
 \makeatother
 
 \endinput
-
-
