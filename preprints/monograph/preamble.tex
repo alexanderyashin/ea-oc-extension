@@ -26,6 +26,14 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 
+% ---------------------------------------------------------------------------
+% Wrapper-only layout robustness (cosmetic only)
+% - Aggregation tends to create long unbreakable tokens (artifacts, math, ETS ids).
+% - This reduces Overfull \hbox noise without touching scientific sources.
+% ---------------------------------------------------------------------------
+\emergencystretch=2em
+\sloppy
+
 \usepackage{geometry}
 \geometry{margin=1in}
 
@@ -39,10 +47,27 @@
 \setlist[enumerate]{leftmargin=2em}
 
 % hyperref:
+% Journal-grade hygiene requirement: ZERO PDF-string warnings.
+%
+% Root cause: included sources contain raw math ($...$) / subscripts in section titles,
+% which hyperref attempts to serialize into PDF outline/bookmarks.
+%
+% Wrapper-only deterministic fix (no source edits): disable bookmarks.
+% Links remain functional; PDF outline is simply not emitted.
+%
+% Additive robustness: unicode + psdextra (safe; future-proof if bookmarks re-enabled).
 % - hidelinks: keep PDF clean
 % - hypertexnames=false: avoid duplicate destination anchors (page.1 collisions)
-% - bookmarksopen=false: reduce fragile bookmark nesting surprises
-\usepackage[hidelinks,hypertexnames=false,bookmarksopen=false]{hyperref}
+% - bookmarksopen=false: reduce fragile bookmark nesting surprises (kept harmless)
+% - bookmarks=false: prevent PDF outline serialization entirely (kills warnings)
+\usepackage[
+  hidelinks,
+  hypertexnames=false,
+  bookmarksopen=false,
+  bookmarks=false,
+  unicode,
+  psdextra
+]{hyperref}
 
 % --- Bib policy (GLOBAL):
 % - csquotes recommended by biblatex (robustness; no semantic impact).
@@ -103,27 +128,18 @@
 % ============================================================================
 % Monograph-only: label/ref namespace wrapper to avoid cross-chapter collisions
 % when aggregating multiple preprints.
-%
-% Policy:
-% - Do NOT modify JPHQ sources.
-% - Wrapper chapters activate a namespace, then input section files as-is.
-% - Inside the namespace, \label/\ref/\pageref/\autoref/\nameref are rewritten
-%   to transparently prefix keys with a chapter identifier (e.g., jphq05:).
 % ============================================================================
 
 \makeatletter
 \newcommand{\ARNamespaceBegin}[1]{%
   \begingroup
   \def\AR@ns{#1}%
-  % --- label: write namespaced label keys
   \let\AR@origlabel\label
   \renewcommand{\label}[1]{\AR@origlabel{\AR@ns##1}}%
-  % --- ref/pageref: read namespaced keys transparently inside the chapter
   \let\AR@origref\ref
   \renewcommand{\ref}[1]{\AR@origref{\AR@ns##1}}%
   \let\AR@origpageref\pageref
   \renewcommand{\pageref}[1]{\AR@origpageref{\AR@ns##1}}%
-  % --- hyperref helpers (guarded)
   \@ifundefined{autoref}{}{%
     \let\AR@origautoref\autoref
     \renewcommand{\autoref}[1]{\AR@origautoref{\AR@ns##1}}%
@@ -138,30 +154,14 @@
 
 % ============================================================================
 % Compatibility shims (JPHQ macro fallbacks)
-% Policy:
-% - ONLY \providecommand / \@ifundefined-based guards (no hard overrides).
-% - Shims must compile under pdfLaTeX.
-% - Keep semantics minimal: mostly text tokens and math wrappers.
-% - Avoid implicit mode switching that can create "$" imbalance.
-%
-% STRATEGY:
-% - Treat included files as hostile: underscores, math-only tokens in text, missing macros.
-% - Provide wrappers that are safe in BOTH text and math mode.
-% - Never override upstream: all definitions guarded.
 % ============================================================================
 
 \makeatletter
 
-% ----------------------------------------------------------------------------
-% 0) Small internal helpers (guarded)
-% ----------------------------------------------------------------------------
-
-% \AR@tt{<raw>} : render raw token string as typewriter, safe for underscores, etc.
 \@ifundefined{AR@tt}{%
   \def\AR@tt#1{\texttt{\detokenize{#1}}}%
 }{}
 
-% \AR@ttm{<raw>} : same but safe in math mode too (forces text)
 \@ifundefined{AR@ttm}{%
   \def\AR@ttm#1{%
     \ifmmode
@@ -172,40 +172,26 @@
   }%
 }{}
 
-% \AR@ensuremath{<x>} : minimal ensure-math without importing extra packages
 \@ifundefined{AR@ensuremath}{%
   \def\AR@ensuremath#1{\ifmmode #1\else $#1$\fi}%
 }{}
 
-% ----------------------------------------------------------------------------
-% 0b) Legacy saved-reference fallbacks (stale .toc/.aux safety)
+% ---------------------------------------------------------------------------
+% Legacy saved-reference fallbacks (stale .toc/.aux safety)
 % Some previous runs may have written \AR@origref into .toc/.aux.
 % Provide guarded fallbacks so aggregation never fails on stale artifacts.
-% ----------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
 \@ifundefined{AR@origref}{\def\AR@origref#1{\ref{#1}}}{}%
 \@ifundefined{AR@origpageref}{\def\AR@origpageref#1{\pageref{#1}}}{}%
 \@ifundefined{AR@origautoref}{\def\AR@origautoref#1{\ref{#1}}}{}%
 
-% ----------------------------------------------------------------------------
-% 1) Core project shorthands used across the JPHQ series
-% ----------------------------------------------------------------------------
+\providecommand{\OC}{OC}
 
-\providecommand{\OC}{OC} % Ontology of Continua (text)
-
-% Enterprise Continuum shorthand:
-% - In text: print literal "K_EA" safely.
-% - In math: prefer K_{EA}.
 \providecommand{\Kea}{\ifmmode K_{EA}\else \AR@tt{K_EA}\fi}
 \providecommand{\KEA}{\ifmmode K_{EA}\else \AR@tt{K_EA}\fi}
 
-% Common formatting macros (robust in text AND math; tolerates underscores)
-% Example hostile usage: specification \artifact{ETS.K_EA.v1.1} as immutable inputs
 \providecommand{\artifact}[1]{\AR@ttm{#1}}
 \providecommand{\code}[1]{\AR@ttm{#1}}
-
-% ----------------------------------------------------------------------------
-% 2) Common math wrappers / typography conveniences
-% ----------------------------------------------------------------------------
 
 \providecommand{\defeq}{\mathrel{:=}}
 \providecommand{\eqdef}{\mathrel{=:}}
@@ -216,60 +202,32 @@
 \providecommand{\diag}{\mathrm{diag}}
 \providecommand{\Id}{\mathrm{Id}}
 
-% Safe text macros that sometimes appear (avoid package deps)
 \providecommand{\ie}{i.e.\ }
 \providecommand{\eg}{e.g.\ }
-
-% ----------------------------------------------------------------------------
-% 3) Reference helpers (do NOT pull in cleveref)
-% ----------------------------------------------------------------------------
 
 \providecommand{\cref}[1]{\ref{#1}}
 \providecommand{\Cref}[1]{\ref{#1}}
 \providecommand{\cpageref}[1]{\pageref{#1}}
 \providecommand{\Cpageref}[1]{\pageref{#1}}
 
-% Extra safe ref helper sometimes used (hyperref usually provides it; keep harmless)
 \providecommand{\autoref}[1]{\ref{#1}}
-
-% ----------------------------------------------------------------------------
-% 4) Common LaTeX convenience fallbacks
-% ----------------------------------------------------------------------------
 
 \providecommand{\todo}[1]{\textbf{[TODO: #1]}}
 \providecommand{\TODO}[1]{\textbf{[TODO: #1]}}
-
-% ----------------------------------------------------------------------------
-% 5) Phase symbol shims used in JPHQ04+ (and likely later)
-% Must be safe in BOTH text and math mode.
-% ----------------------------------------------------------------------------
 
 \providecommand{\PHOK}{\ifmmode\mathsf{PH\_OK}\else\AR@ensuremath{\mathsf{PH\_OK}}\fi}
 \providecommand{\PHIN}{\ifmmode\mathsf{PH\_IN}\else\AR@ensuremath{\mathsf{PH\_IN}}\fi}
 \providecommand{\PHCO}{\ifmmode\mathsf{PH\_CO}\else\AR@ensuremath{\mathsf{PH\_CO}}\fi}
 \providecommand{\PHST}{\ifmmode\mathsf{PH\_ST}\else\AR@ensuremath{\mathsf{PH\_ST}}\fi}
-% Extra "just in case" phase tokens (harmless if unused)
 \providecommand{\PHSU}{\ifmmode\mathsf{PH\_SU}\else\AR@ensuremath{\mathsf{PH\_SU}}\fi}
 \providecommand{\PHFA}{\ifmmode\mathsf{PH\_FA}\else\AR@ensuremath{\mathsf{PH\_FA}}\fi}
 \providecommand{\PHER}{\ifmmode\mathsf{PH\_ER}\else\AR@ensuremath{\mathsf{PH\_ER}}\fi}
-
-% ----------------------------------------------------------------------------
-% 5b) Phase predicate component shims (JPHQ06 and later)
-% Used as tokens inside math sets like { \fexist, \fstab, ... }.
-% Provide harmless fallbacks (robust in text and math).
-% ----------------------------------------------------------------------------
 
 \providecommand{\fexist}{\ifmmode \mathsf{f_{exist}}\else \AR@ensuremath{\mathsf{f_{exist}}}\fi}
 \providecommand{\fstab}{\ifmmode \mathsf{f_{stab}}\else \AR@ensuremath{\mathsf{f_{stab}}}\fi}
 \providecommand{\finertia}{\ifmmode \mathsf{f_{inertia}}\else \AR@ensuremath{\mathsf{f_{inertia}}}\fi}
 \providecommand{\fcollapse}{\ifmmode \mathsf{f_{collapse}}\else \AR@ensuremath{\mathsf{f_{collapse}}}\fi}
 \providecommand{\fstop}{\ifmmode \mathsf{f_{stop}}\else \AR@ensuremath{\mathsf{f_{stop}}}\fi}
-
-% ----------------------------------------------------------------------------
-% 5c) Named phase shims (JPHQ06 and later)
-% Used like: $\PHASESTOP \succ \PHASECOLLAPSE \succ ...$.
-% Provide harmless fallbacks (robust in text and math).
-% ----------------------------------------------------------------------------
 
 \providecommand{\PHASESTOP}{\ifmmode \mathsf{PHASE\_STOP}\else \AR@ensuremath{\mathsf{PHASE\_STOP}}\fi}
 \providecommand{\PHASECOLLAPSE}{\ifmmode \mathsf{PHASE\_COLLAPSE}\else \AR@ensuremath{\mathsf{PHASE\_COLLAPSE}}\fi}
@@ -278,28 +236,14 @@
 \providecommand{\PHASESTABLE}{\ifmmode \mathsf{PHASE\_STABLE}\else \AR@ensuremath{\mathsf{PHASE\_STABLE}}\fi}
 \providecommand{\PHASEEXIST}{\ifmmode \mathsf{PHASE\_EXIST}\else \AR@ensuremath{\mathsf{PHASE\_EXIST}}\fi}
 
-% ----------------------------------------------------------------------------
-% 5d) Minimal phase label tokens used in some drafts (JPHQ08 abstract)
-% Example: $\{\OK,\INERTIA,\COLLAPSE,\STOP\}$.
-% ----------------------------------------------------------------------------
-
 \providecommand{\OK}{\ifmmode \mathsf{OK}\else \AR@ensuremath{\mathsf{OK}}\fi}
 \providecommand{\INERTIA}{\ifmmode \mathsf{INERTIA}\else \AR@ensuremath{\mathsf{INERTIA}}\fi}
 \providecommand{\COLLAPSE}{\ifmmode \mathsf{COLLAPSE}\else \AR@ensuremath{\mathsf{COLLAPSE}}\fi}
 \providecommand{\STOP}{\ifmmode \mathsf{STOP}\else \AR@ensuremath{\mathsf{STOP}}\fi}
-% Optional extras (harmless if unused)
 \providecommand{\SUCCESS}{\ifmmode \mathsf{SUCCESS}\else \AR@ensuremath{\mathsf{SUCCESS}}\fi}
 \providecommand{\STABLE}{\ifmmode \mathsf{STABLE}\else \AR@ensuremath{\mathsf{STABLE}}\fi}
 \providecommand{\EXIST}{\ifmmode \mathsf{EXIST}\else \AR@ensuremath{\mathsf{EXIST}}\fi}
 
-% ----------------------------------------------------------------------------
-% 6) OC/EA shorthand macro shims used inside sections (JPHQ-series)
-% Some macros are used BOTH as symbols (\Om) and as functions (\Om{K}).
-% Implement "optional argument if next token is { ... }".
-% ----------------------------------------------------------------------------
-
-% Helper: define a macro \X that is either sym or fun depending on next char
-% Usage: \AR@def@maybe@arg{X}{<symbol>}{<function body using ##1>}
 \@ifundefined{AR@def@maybe@arg}{%
   \def\AR@def@maybe@arg#1#2#3{%
     \expandafter\def\csname #1\endcsname{%
@@ -309,7 +253,6 @@
   }%
 }{}
 
-% Canonical OC tuple components (minimal names)
 \@ifundefined{Om}{\AR@def@maybe@arg{Om}{\Omega}{\Omega\!\left(##1\right)}}{}
 \@ifundefined{dOm}{\AR@def@maybe@arg{dOm}{\partial\Omega}{\partial\Omega\!\left(##1\right)}}{}
 \@ifundefined{Ax}{\AR@def@maybe@arg{Ax}{A}{A\!\left(##1\right)}}{}
@@ -321,12 +264,10 @@
 \@ifundefined{Stress}{\AR@def@maybe@arg{Stress}{T}{T\!\left(##1\right)}}{}
 \@ifundefined{Tau}{\AR@def@maybe@arg{Tau}{\tau}{\tau\!\left(##1\right)}}{}
 
-% Boundary shorthands (keep both spellings in case used)
 \@ifundefined{dOmega}{\def\dOmega{\partial\Omega}}{}
 \@ifundefined{partialOmega}{\def\partialOmega{\partial\Omega}}{}
 \@ifundefined{OmegaK}{\def\OmegaK{\Omega}}{}
 
-% Alternative spellings that may appear (safe aliases)
 \@ifundefined{Dom}{\let\Dom\Om}{}
 \@ifundefined{dDom}{\let\dDom\dOm}{}
 \@ifundefined{Axx}{\let\Axx\Ax}{}
@@ -334,51 +275,26 @@
 \@ifundefined{Jxx}{\let\Jxx\Flow}{}
 \@ifundefined{Cxx}{\let\Cxx\Cyc}{}
 
-% Generic “operator” / typography helpers sometimes used
 \@ifundefined{Op}{\def\Op#1{\mathcal{#1}}}{}
 \@ifundefined{Tsf}{\def\Tsf#1{\mathsf{#1}}}{}
 
-% ----------------------------------------------------------------------------
-% 6c) EA-specialized shorthands (JPHQ06+)
-% ----------------------------------------------------------------------------
-
-% Common EA state-space / boundary shorthands.
 \providecommand{\OmegaEA}{\ifmmode \Omega_{EA}\else \AR@ensuremath{\Omega_{EA}}\fi}
 \providecommand{\dOmegaEA}{\ifmmode \partial\Omega_{EA}\else \AR@ensuremath{\partial\Omega_{EA}}\fi}
 
-% Alternate spellings seen in some drafts (harmless aliases)
 \providecommand{\partialOmegaEA}{\dOmegaEA}
 \providecommand{\BoundaryEA}{\dOmegaEA}
-
-% ----------------------------------------------------------------------------
-% 6d) EA continuity / time / tuple-set shorthands (JPHQ06+)
-% ----------------------------------------------------------------------------
 
 \providecommand{\kEA}{\ifmmode k_{EA}\else \AR@ensuremath{k_{EA}}\fi}
 \providecommand{\TauEA}{\ifmmode \tau_{EA}\else \AR@ensuremath{\tau_{EA}}\fi}
 \providecommand{\ThetaEA}{\ifmmode \Theta_{EA}\else \AR@ensuremath{\Theta_{EA}}\fi}
 
-% Optional (harmless) common EA tuple-component set shorthands
 \providecommand{\AEA}{\ifmmode A_{EA}\else \AR@ensuremath{A_{EA}}\fi}
 \providecommand{\PEA}{\ifmmode P_{EA}\else \AR@ensuremath{P_{EA}}\fi}
 \providecommand{\JEA}{\ifmmode J_{EA}\else \AR@ensuremath{J_{EA}}\fi}
 \providecommand{\CEA}{\ifmmode C_{EA}\else \AR@ensuremath{C_{EA}}\fi}
 
-% ----------------------------------------------------------------------------
-% 6e) System-level threshold token (JPHQ08+)
-% ----------------------------------------------------------------------------
 \providecommand{\ThetaSys}{\ifmmode \Theta\else \AR@ensuremath{\Theta}\fi}
-
-% ----------------------------------------------------------------------------
-% 6f) Phase classification map symbol (JPHQ08+)
-% ----------------------------------------------------------------------------
 \providecommand{\Phase}{\ifmmode \mathrm{Phase}\else \AR@ensuremath{\mathrm{Phase}}\fi}
-
-% ----------------------------------------------------------------------------
-% 7) Theorem-like environments (fallbacks)
-% NOTE: In LaTeX, environments are not reliably testable via \@ifundefined{<env>}.
-% We guard on their underlying counter macros instead (safe and non-overriding).
-% ----------------------------------------------------------------------------
 
 \@ifundefined{c@definition}{\newtheorem{definition}{Definition}}{}
 \@ifundefined{c@theorem}{\newtheorem{theorem}{Theorem}}{}
@@ -386,60 +302,36 @@
 \@ifundefined{c@lemma}{\newtheorem{lemma}{Lemma}}{}
 \@ifundefined{c@corollary}{\newtheorem{corollary}{Corollary}}{}
 \@ifundefined{c@remark}{\newtheorem{remark}{Remark}}{}
-
-% Common variants that often appear in heterogeneous papers
 \@ifundefined{c@assumption}{\newtheorem{assumption}{Assumption}}{}
 \@ifundefined{AR@noop}{\def\AR@noop{}}{}
 \AR@noop
 \@ifundefined{c@claim}{\newtheorem{claim}{Claim}}{}
 \@ifundefined{c@example}{\newtheorem{example}{Example}}{}
-
-% ----------------------------------------------------------------------------
-% 7b) Additional environments used in later JPHQ drafts
-% ----------------------------------------------------------------------------
 \@ifundefined{c@nonclaim}{\newtheorem{nonclaim}{Non-claim}}{}
 
-% ----------------------------------------------------------------------------
-% 8) Minimal “compat hooks” for typical JPHQ preamble macros (no semantics)
-% ----------------------------------------------------------------------------
-
-% Some papers use \tightlist (pandoc-style). Provide harmless fallback.
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%
 }
 
-% Some papers use \kw{...} for inline keywords / key tokens.
 \providecommand{\kw}[1]{%
   \ifmmode \text{\textbf{#1}}%
   \else \textbf{#1}%
   \fi
 }
 
-% Some papers use \TEA as the enterprise-tension symbol (math token).
 \providecommand{\TEA}{%
   \ifmmode \mathsf{T_{EA}}%
   \else \AR@ensuremath{\mathsf{T_{EA}}}%
   \fi
 }
 
-% Some papers use \mathcal{O} as \BigO{...} or similar; define harmless fallback.
 \@ifundefined{BigO}{\def\BigO#1{\mathcal{O}\!\left(#1\right)}}{}
 
-% Extra: occasional blackboard variants without pulling packages
 \@ifundefined{mathbbm}{\def\mathbbm#1{\mathbb{#1}}}{}
 \@ifundefined{mathds}{\def\mathds#1{\mathbb{#1}}}{}
 
-% ----------------------------------------------------------------------------
-% 8b) Extremely defensive cite fallbacks (only if someone uses them)
-% (With biblatex loaded, these are normally defined; harmless regardless.)
-% ----------------------------------------------------------------------------
 \providecommand{\textcite}[1]{\cite{#1}}
 \providecommand{\parencite}[1]{\cite{#1}}
-
-% ----------------------------------------------------------------------------
-% 9) Hyperref robustness: avoid fragile PDF strings from math / underscores
-% (Does not change content, only sanitizes bookmarks)
-% ----------------------------------------------------------------------------
 
 \pdfstringdefDisableCommands{%
   \def\artifact#1{#1}%
