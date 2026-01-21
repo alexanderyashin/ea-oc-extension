@@ -178,6 +178,15 @@
 }{}
 
 % ----------------------------------------------------------------------------
+% 0b) Legacy saved-reference fallbacks (stale .toc/.aux safety)
+% Some previous runs may have written \AR@origref into .toc/.aux.
+% Provide guarded fallbacks so aggregation never fails on stale artifacts.
+% ----------------------------------------------------------------------------
+\@ifundefined{AR@origref}{\def\AR@origref#1{\ref{#1}}}{}%
+\@ifundefined{AR@origpageref}{\def\AR@origpageref#1{\pageref{#1}}}{}%
+\@ifundefined{AR@origautoref}{\def\AR@origautoref#1{\ref{#1}}}{}%
+
+% ----------------------------------------------------------------------------
 % 1) Core project shorthands used across the JPHQ series
 % ----------------------------------------------------------------------------
 
