@@ -38,12 +38,13 @@ executed from the repository root:
 \begin{verbatim}
 Set-Location C:\Users\Megaport\work\ea-oc-extension
 Push-Location .\paper\pdf1_executing_kea
-latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error .\main.tex
+latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error `
+  .\main.tex
 Pop-Location
 \end{verbatim}
 
 A successful build must terminate with exit status \texttt{0} and produce
-\texttt{paper/pdf1\_executing\_kea/main.pdf}.
+\path{paper/pdf1_executing_kea/main.pdf}.
 
 \subsection{Scope integrity guarantees}
 This manifest guarantees that:

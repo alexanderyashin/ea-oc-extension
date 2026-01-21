@@ -32,13 +32,14 @@ The canonical local build commands are:
 \begin{verbatim}
 Set-Location C:\Users\Megaport\work\ea-oc-extension
 Push-Location .\paper\pdf1_executing_kea
-latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error .\main.tex
+latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error `
+  .\main.tex
 Pop-Location
 \end{verbatim}
 
 Expected output:
 \begin{itemize}
-  \item PDF artifact: \texttt{paper/pdf1\_executing\_kea/main.pdf}
+  \item PDF artifact: \path{paper/pdf1_executing_kea/main.pdf}
   \item Exit status: \texttt{0} (success)
 \end{itemize}
 
