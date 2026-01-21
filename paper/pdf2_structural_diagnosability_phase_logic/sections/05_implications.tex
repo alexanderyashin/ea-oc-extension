@@ -1,2 +1,112 @@
-﻿\section{Implications}
-TODO (skeleton).
+﻿% ==============================================================================
+% PDF-2 — Structural Diagnosability & Phase Logic
+% Section 05: Implications (Negative/Limiting Only)
+%
+% Purpose:
+%   State only limiting implications: what follows epistemically from the formal
+%   results about what can/cannot be inferred. No operational implications.
+%
+% Target audience:
+%   Reviewers prone to read prescriptions into any implication language.
+%
+% Language mode:
+%   Formal / epistemic implications only.
+%
+% Evidence profile:
+%   Consequences of definitions/theorems internal to the formal setting.
+%
+% Role in argument:
+%   Bridge from formal results to reader interpretation, while preventing
+%   category mistakes (epistemic -> operational).
+% ==============================================================================
+
+\section{Implications (Epistemic Only)}
+\label{sec:implications}
+
+In this paper, ``implications'' are \emph{epistemic consequences} of the formal
+setting: they restrict what can be inferred (or claimed) from a given
+observational interface and a fixed vocabulary boundary
+(\texttt{ETS.K\_EA.v1.1}). They are not operational recommendations.
+
+\subsection{Implications for Inference Under Incomplete Observability}
+\label{subsec:imp-incomplete-observability}
+
+The formal results imply the following limitations:
+
+\begin{enumerate}
+  \item \textbf{Non-uniqueness is the default.}
+  Absent explicit identifiability conditions, the inverse mapping from
+  observations to internal structure is set-valued: multiple incompatible
+  internal states may be observationally indistinguishable.
+
+  \item \textbf{Apparent stability may be epistemic, not structural.}
+  A stable pattern of observations does not imply a stable internal structure.
+  It may reflect observation coarseness, masking, or information loss.
+
+  \item \textbf{``More data'' is not guaranteed to help.}
+  Additional observations can be irrelevant if they do not reduce the
+  indistinguishability classes induced by the interface. Therefore, claims of
+  improved diagnosability require formal justification, not intuition.
+
+  \item \textbf{Boundary effects dominate near critical regions.}
+  Close to phase boundaries (including STOP), small changes in observation or
+  assumptions can cause discontinuous changes in admissible inferences. This is
+  an epistemic instability, not necessarily an operational one.
+\end{enumerate}
+
+\subsection{Implications for the Meaning of Phase Regions}
+\label{subsec:imp-phase-regions}
+
+A phase-region label produced by the predicates in this paper must be read as:
+
+\begin{itemize}
+  \item \textbf{A classification within the formal semantics,} conditional on
+  the stated assumptions and on the declared observation interface.
+
+  \item \textbf{Not a statement about managerial desirability.}
+  A region is neither ``good'' nor ``bad'' in an operational sense; it is only
+  a statement about diagnosability/existence conditions in the model.
+
+  \item \textbf{Not a promise of recoverability.}
+  The formalism does not assert that systems in non-STOP regions are recoverable,
+  controllable, or improvable.
+\end{itemize}
+
+\subsection{Implications of STOP}
+\label{subsec:imp-stop}
+
+STOP has three epistemic implications:
+
+\begin{enumerate}
+  \item \textbf{Inference collapse:} within the present interface and
+  assumptions, non-degenerate diagnosis is not justified.
+
+  \item \textbf{Constraint violation or undecidability:} the STOP predicate
+  indicates either violation of existence/consistency constraints or loss of
+  diagnosability required for meaningful state claims.
+
+  \item \textbf{Non-substitutability:} STOP cannot be replaced by a positive
+  diagnosis without adding external assumptions, new primitives, or additional
+  semantics beyond the allowed vocabulary.
+\end{enumerate}
+
+\subsection{Implications for Claims and Reporting}
+\label{subsec:imp-claims-reporting}
+
+The results impose negative constraints on what a scientifically valid report may
+claim:
+
+\begin{enumerate}
+  \item \textbf{No causal claims without identifiability.}
+  If multiple internal states are compatible with the same observations, causal
+  statements about internal structure are underdetermined.
+
+  \item \textbf{No operational conclusions from epistemic regions.}
+  Mapping an epistemic classification to a decision recommendation is an
+  additional step requiring a policy model, which is out of scope here.
+
+  \item \textbf{No universality without a declared mapping.}
+  Any application to a concrete enterprise must explicitly declare the mapping
+  from enterprise artifacts/observations to the formal objects; otherwise, the
+  result is not meaningfully interpretable.
+\end{enumerate}
