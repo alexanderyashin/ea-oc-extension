@@ -1,0 +1,41 @@
+{
+  "run_id": "EDHQ-02",
+  "timestamp_utc": "2026-01-21T14:00:53.279985+00:00",
+  "seed": 13371337,
+  "sample_n": 20000,
+  "ets_path": "configs\\ETS.K_EA.v1.1.yaml",
+  "projection_rule": "lexicographic_first_two_axis_groups",
+  "synthetic_coordinate_rule": "mean_of_uniform_subaxes_in_[0,1]",
+  "axis_groups_used": [
+    {
+      "group": "gov",
+      "sub_axes": [
+        "decision_latency",
+        "rule_enforceability",
+        "escalation_integrity"
+      ]
+    },
+    {
+      "group": "info",
+      "sub_axes": [
+        "observability",
+        "traceability",
+        "semantic_alignment"
+      ]
+    }
+  ],
+  "script_sha256": "28bdaac62de5c99a71c4f0861d1053256db57d2228e82d67f3d554677dd8af0a",
+  "outputs": [
+    "results\\pdf1\\phase_space_demo\\phase_space.png",
+    "results\\pdf1\\phase_space_demo\\phase_space.pdf",
+    "results\\pdf1\\phase_space_demo\\phase_space.svg",
+    "results\\pdf1\\phase_space_demo\\run_manifest.json"
+  ],
+  "guarantees": {
+    "no_stop": true,
+    "no_diagnostics": true,
+    "no_phase_transitions": true,
+    "no_new_primitives": true,
+    "geometry_only": true
+  }
+}
