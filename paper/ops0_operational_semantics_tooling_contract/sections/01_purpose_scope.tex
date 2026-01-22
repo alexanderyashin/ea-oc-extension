@@ -1,18 +1,22 @@
 ﻿\section{Purpose and Scope (Locked)}
+
 \subsection{Purpose}
-OPS-0 is a \textbf{contract scaffold} that will later constrain tooling behavior and admissible transformations
-around EA-OC-EXTENSION artifacts, without adding new theoretical primitives.
+OPS-0 defines a \textbf{contract scaffold} that \textbf{MUST} constrain the observable behavior of tools and the admissibility of tool-visible transformations applied to EA-OC-EXTENSION artifacts.
+The contract is \textbf{diagnostic-only}: it classifies, validates, and enforces admissibility boundaries without prescribing actions or outcomes.
+
+OPS-0 \textbf{MUST NOT} introduce new Ontology of Continua (OC) primitives and \textbf{MUST NOT} reinterpret, extend, or modify the semantics of ETS.K\_EA.v1.1.
+OPS-0 \textbf{MUST NOT} provide recommendations, remediation guidance, optimization objectives, or control strategies.
 
 \subsection{Scope Lock}
-This RUN-OPS0-01 deliverable provides only:
+This RUN-OPS0-01 deliverable \textbf{MUST} provide only:
 \begin{itemize}
-  \item the locked artifact class statement (\emph{Operational Semantics \& Tooling Contract});
-  \item strict non-claims and diagnostic-only boundary conditions;
-  \item section map and placeholders for future contract tables (appendix registries);
-  \item lineage statement to PDF-0 / PDF-2 / PDF-3 (separation of concerns).
+  \item the locked artifact class definition (\emph{Operational Semantics \& Tooling Contract});
+  \item explicit diagnostic-only and non-claim boundary conditions;
+  \item a complete section map with normative bindings to appendix registries (CT-xx tables), without populating those registries;
+  \item a lineage statement to PDF-0, PDF-2, and PDF-3 establishing separation of concerns.
 \end{itemize}
 
-Everything else is explicitly deferred.
+Any content not listed above \textbf{MUST NOT} be considered part of OPS-0 and is \textbf{explicitly out of scope} for this run.
 
 \subsection{Reserved}
-All substantive content is reserved for RUN-OPS0-02 and subsequent runs.
+All substantive content population, including registry entries, concrete formats, mechanisms, and examples, \textbf{MUST} be deferred to RUN-OPS0-02 and subsequent runs.

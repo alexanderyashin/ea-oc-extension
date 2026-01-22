@@ -1,5 +1,18 @@
-﻿\section{Admissible Operations (Placeholder)}
-This section will define which operations are admissible under OPS-0 and how they are recognized.
-RUN-OPS0-01 contains \textbf{no} operation registry and \textbf{no} semantics.
+﻿\section{Admissible Operations}
 
-\textbf{Reserved for: RUN-OPS0-02.}
+\subsection{Normative Definition}
+Within OPS-0, an operation is \textbf{admissible} if and only if it satisfies all applicable contract constraints
+defined in this document and is classified as admissible by reference to the appendix registries (CT-xx tables).
+
+RUN-OPS0-01 \textbf{MUST NOT} define or populate any operation registry and \textbf{MUST NOT} assign operational semantics.
+Admissibility in this run is therefore \textbf{structural and declarative only}.
+
+\subsection{Binding to Registries}
+This section \textbf{MUST} be read together with the corresponding appendix tables (CT-xx), which enumerate
+operation classes and their admissibility status in later runs.
+In RUN-OPS0-01, these tables are referenced but \textbf{MUST NOT} be populated or relied upon for execution.
+
+\subsection{Scope Constraint}
+Any tool-visible action not explicitly classified as admissible by the applicable CT-xx registry
+in a later run \textbf{MUST} be treated as \emph{non-admissible} under OPS-0.
+No implicit admissibility, inference, or default allowance is permitted.

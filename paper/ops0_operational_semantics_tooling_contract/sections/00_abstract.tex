@@ -1,8 +1,10 @@
-﻿\section*{Abstract (Skeleton)}
-This document defines the \emph{OPS-0 artifact class}: an \textbf{Operational Semantics \& Tooling Contract}.
-It is a scope-locked, diagnostic-only contract scaffold that specifies what \emph{may} be defined in later runs
-and what is explicitly out of scope here.
+﻿\section*{Abstract}
+\textbf{OPS-0} defines the \emph{OPS-0 artifact class} as an \textbf{Operational Semantics \& Tooling Contract} for EA-OC-EXTENSION artifacts.
+It is \textbf{scope-locked} and \textbf{diagnostic-only}: it specifies \emph{admissible} and \emph{forbidden} tool-visible operations, input admissibility rules, output legitimacy requirements, and \textbf{STOP / NO-GO enforcement} as terminal epistemic boundaries.
 
-\textbf{Status:} placeholders only. No operational semantics, no registries, no examples, no implementations.
+OPS-0 \textbf{MUST NOT} introduce new Ontology of Continua (OC) primitives and \textbf{MUST NOT} reinterpret or modify the semantics of ETS.K\_EA.v1.1.
+OPS-0 \textbf{MUST} remain a contract for \emph{classification, validation, and enforcement} only; it \textbf{MUST NOT} provide recommendations, remediation steps, optimization objectives, or control prescriptions.
 
-\textbf{Reserved for: RUN-OPS0-02+ (content population).}
+Normative requirements in OPS-0 use \textbf{MUST / MUST NOT / MAY}.
+The enforcement surface, registries, and precedence rules are defined in the main sections and bound to Appendix registries (CT-xx tables) referenced there.
+In all cases, \textbf{STOP is terminal}: any post-STOP activity is \textbf{outside} this contract and requires an external witness and a new run, not a continuation within OPS-0.

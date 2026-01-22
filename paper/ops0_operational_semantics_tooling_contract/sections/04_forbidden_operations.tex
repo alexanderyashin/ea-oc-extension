@@ -1,5 +1,18 @@
-﻿\section{Forbidden Operations (Placeholder)}
-This section will define which operations are forbidden and why (scope, epistemic legitimacy, or STOP boundary).
-RUN-OPS0-01 contains \textbf{no} forbidden list beyond the global non-claims and scope lock.
+﻿\section{Forbidden Operations}
 
-\textbf{Reserved for: RUN-OPS0-02.}
+\subsection{Normative Definition}
+An operation is \textbf{forbidden} under OPS-0 if it violates any scope lock, non-claim, epistemic legitimacy requirement,
+or crosses a STOP / NO-GO boundary as defined by this contract.
+
+RUN-OPS0-01 \textbf{MUST NOT} provide a populated forbidden-operation list.
+Forbidden status is established exclusively through normative constraints and registry bindings defined elsewhere.
+
+\subsection{Binding to Registries}
+The classification of forbidden operations is normatively bound to appendix registries (CT-xx tables),
+which, in later runs, enumerate operation classes that are explicitly disallowed.
+In RUN-OPS0-01, these registries are referenced for completeness but remain unpopulated.
+
+\subsection{Precedence Rule}
+In case of ambiguity or overlap, \textbf{forbidden status takes precedence} over admissibility.
+If an operation is both tentatively admissible and forbidden under different constraints,
+it \textbf{MUST} be treated as forbidden without exception.

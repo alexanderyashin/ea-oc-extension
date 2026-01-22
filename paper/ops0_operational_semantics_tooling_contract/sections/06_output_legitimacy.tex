@@ -1,7 +1,23 @@
-﻿\section{Output Legitimacy (Placeholder)}
-This section will define legitimacy constraints on outputs:
-what constitutes a legitimate transformation result and what must be flagged as STOP/NO-GO.
+﻿\section{Output Legitimacy}
 
-RUN-OPS0-01 provides \textbf{no} legitimacy rules beyond the diagnostic-only boundary.
+\subsection{Normative Requirement}
+An output is \textbf{legitimate} under OPS-0 if and only if it:
+\begin{itemize}
+  \item is traceable to admissible inputs under this contract;
+  \item declares an explicit \texttt{epistemic\_status};
+  \item includes a provenance and authorship reference;
+  \item contains no prescriptive guidance, recommendations, or action proposals.
+\end{itemize}
 
-\textbf{Reserved for: RUN-OPS0-02.}
+RUN-OPS0-01 \textbf{MUST NOT} define output formats or validation mechanisms.
+Legitimacy is assessed solely at the contract level.
+
+\subsection{STOP Classification}
+If an output violates any legitimacy requirement or crosses a STOP / NO-GO boundary,
+it \textbf{MUST} be classified as \textbf{STOP} and treated as terminal.
+
+No downgraded, advisory, or recovery output \textbf{MAY} be produced following STOP.
+
+\subsection{Binding to Registries}
+Output legitimacy classes and STOP classifications are normatively bound to appendix registries (CT-xx tables),
+which are referenced but remain unpopulated in RUN-OPS0-01.

@@ -1,9 +1,21 @@
-﻿\section{STOP / NO-GO Enforcement (Placeholder)}
+﻿\section{STOP / NO-GO Enforcement}
+
 \subsection{Terminal Epistemic Boundary}
-STOP is a \textbf{terminal epistemic boundary}. If STOP is reached, the contract will later require termination
-without prescriptive guidance.
+\textbf{STOP} is a \textbf{terminal epistemic boundary} within OPS-0.
+Once STOP is reached, the current run \textbf{MUST} be considered terminated for the purposes of this contract.
 
-\subsection{No Semantics Yet}
-RUN-OPS0-01 defines no detection rules, no triggers, and no enforcement mechanism.
+OPS-0 \textbf{MUST NOT} define recovery, remediation, continuation, or optimization behavior following STOP.
+Any activity occurring after STOP is \textbf{outside} the OPS-0 contract and requires an external witness
+and a new run.
 
-\textbf{Reserved for: RUN-OPS0-02.}
+\subsection{Phase Precedence}
+Phase precedence within OPS-0 is strictly ordered as follows:
+\[
+\text{STOP} \; > \; \text{COLLAPSE} \; > \; \text{INERTIA} \; > \; \text{SUCCESS}.
+\]
+This precedence order \textbf{MUST} be applied consistently across all sections and appendix registries.
+
+\subsection{Binding to Registries}
+STOP / NO-GO conditions and classifications are normatively bound to appendix registries (CT-xx tables),
+which specify triggering conditions and classification outcomes in later runs.
+RUN-OPS0-01 \textbf{MUST NOT} define detection rules, triggers, or enforcement mechanisms.

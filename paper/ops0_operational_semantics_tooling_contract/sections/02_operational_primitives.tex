@@ -1,14 +1,20 @@
 ﻿\section{Operational Primitives (Headings Only)}
-\subsection{Non-Introduction Rule}
-RUN-OPS0-01 introduces \textbf{no new OC primitives} and performs \textbf{no reinterpretation} of ETS.K\_EA.v1.1 semantics.
 
-\subsection{Placeholders (to be specified)}
-The following headings exist as placeholders only:
+\subsection{Non-Introduction Rule}
+RUN-OPS0-01 \textbf{MUST} introduce \textbf{no new OC primitives} and \textbf{MUST NOT} reinterpret, overload, or otherwise alter the semantics of ETS.K\_EA.v1.1.
+Any concept named in this section is declarative only and carries \textbf{no operative semantics} within OPS-0.
+
+\subsection{Declared Placeholder Domains}
+The following domains are declared for structural completeness only.
+Within OPS-0, they \textbf{MUST NOT} be instantiated, executed, or relied upon for behavior:
+
 \begin{itemize}
-  \item Artifact identifiers and version labels (format constraints to be specified).
-  \item Tool actions / operations (registry to be specified).
-  \item STOP / NO-GO enforcement surface (mechanism to be specified).
-  \item Provenance and signature surface (mechanism to be specified).
+  \item \textbf{Artifact identifiers and version labels}: existence acknowledged; formats and constraints are deferred to appendix registries (CT-xx) and future runs.
+  \item \textbf{Tool actions / operations}: names and categories are reserved; admissibility and enforcement are defined only via registry binding in later runs.
+  \item \textbf{STOP / NO-GO enforcement surface}: the terminal nature of STOP is normative in OPS-0, while concrete mechanisms are deferred.
+  \item \textbf{Provenance and signature surface}: presence is mandatory at the contract level; representation and validation mechanisms are deferred.
 \end{itemize}
 
-\textbf{Reserved for: RUN-OPS0-02.}
+Use of any of the above domains beyond acknowledgment \textbf{MUST NOT} occur in RUN-OPS0-01.
+
+\textbf{Reserved for content population in RUN-OPS0-02 and subsequent runs.}
