@@ -1,200 +1,190 @@
-﻿% ==============================================================================
-% PDF-2 — Structural Diagnosability & Phase Logic
-% Section 06: Limits and Non-Claims (Reviewer Attack Closure)
-%
-% Purpose:
-%   Close predictable reviewer attacks by making limits explicit: what this paper
-%   does NOT do; what cannot be inferred; what would falsify the claims made here.
-%
-% Target audience:
-%   Readers trained in formal methods / systems theory / philosophy of science;
-%   hostile reviewers searching for hidden prescriptions or optimization claims.
-%
-% Language mode:
-%   Formal / diagnostic-only. No operational guidance.
-%
-% Evidence profile:
-%   Theorems/definitions internal to the formal setting + ETS.K_EA.v1.1 as an
-%   immutable specification boundary. No empirical performance evidence.
-%
-% Role in argument:
-%   Hard boundary layer: prevents misreadings (control, KPI, optimization),
-%   clarifies falsifiability scope, and legitimizes STOP as scientific output.
-% ==============================================================================
-
-\section{Limits and Non-Claims}
+﻿\section{Limits and Non-Claims}
 \label{sec:limits-nonclaims}
 
-This document is a \emph{diagnostic} formalization of (i) structural
-diagnosability conditions and (ii) phase-logic predicates (including STOP),
-\emph{under the assumptions and symbol vocabulary fixed in the formal setting and
-by} \texttt{ETS.K\_EA.v1.1}. It does not provide prescriptions, control rules, or
-optimization objectives.
+This document presents a \emph{diagnostic} formalization of
+(i) structural diagnosability conditions and
+(ii) phase-logic predicates, including STOP,
+under the assumptions and symbol vocabulary fixed by the formal setting and by
+\texttt{ETS.K\_EA.v1.1}.
+It does not provide prescriptions, control rules, optimization objectives, or
+decision guidance.
 
 \subsection{Non-Claims (Explicit)}
 \label{subsec:nonclaims-explicit}
 
-The following statements are \emph{not} asserted anywhere in this paper:
+The following statements are explicitly \emph{not} asserted anywhere in this
+paper:
 
 \begin{enumerate}
   \item \textbf{No control or optimization claim.}
-  We do not claim the ability to control, optimize, stabilize, or improve an
-  enterprise system, nor to select actions that move the system within any phase
-  region.
+  The paper does not claim the ability to control, optimize, stabilize, or
+  improve an enterprise system, nor to select actions that move the system within
+  or between phase regions.
 
   \item \textbf{No algorithmic procedure claim.}
-  We do not provide algorithms, procedures, or operational recipes for computing
-  diagnoses or for enforcing constraints in real organizations.
+  The paper does not provide algorithms, procedures, or operational recipes for
+  computing diagnoses or enforcing constraints in real organizations.
 
-  \item \textbf{No KPI / managerial metric claim.}
-  We do not define KPIs, performance targets, maturity models, or managerial
-  scorecards. Any numeric illustration elsewhere (if present) is an internal
-  demonstration of formal predicates, not a KPI proposal.
+  \item \textbf{No KPI or managerial metric claim.}
+  The paper does not define KPIs, performance targets, maturity models, or
+  managerial scorecards.
+  Any numerical illustration, if present, serves only as an internal
+  demonstration of formal predicates.
 
-  \item \textbf{No causal attribution claim from symptoms to structure.}
-  We do not claim that observed incidents uniquely identify internal structure.
-  In general, multiple distinct internal structures may be compatible with the
-  same observable manifestations.
+  \item \textbf{No causal attribution from symptoms to structure.}
+  The paper does not claim that observed incidents or measurements uniquely
+  identify internal structure.
+  In general, multiple distinct internal configurations may be compatible with
+  the same observable manifestations.
 
   \item \textbf{No completeness claim under partial observability.}
   Under incomplete observability, the framework does not guarantee that every
-  true internal failure mode is diagnosable from available observations.
+  true internal failure mode is diagnosable from the available observations.
 
   \item \textbf{No universality beyond the formal setting.}
-  We do not claim the definitions here are universally adequate for every
+  The definitions are not claimed to be universally adequate for every
   organization without an explicit, justified mapping from that organization to
   the formal objects constrained by \texttt{ETS.K\_EA.v1.1}.
 \end{enumerate}
 
-\subsection{Why Control/Optimization Questions Are Ill-Posed Here}
+\subsection{Why Control and Optimization Questions Are Ill-Posed Here}
 \label{subsec:why-control-illposed}
 
-A recurrent reviewer failure mode is to treat any phase-space representation as
-implicitly \emph{actionable}. In this work, that inference is invalid for
-structural reasons:
+A recurrent reviewer misreading is to treat any phase-space representation as
+implicitly actionable.
+Within the present formalism, such an inference is invalid for structural
+reasons:
 
 \begin{enumerate}
-  \item \textbf{Diagnostic mapping is not a policy.}
-  A diagnostic statement has the form ``given assumptions $A$ and observations
-  $O$, the set of compatible internal states is $\mathcal{K}_{\text{compat}}$''.
-  A control statement requires an additional object: a policy/action space, a
-  transition model under interventions, and a goal functional. None of these are
-  introduced here, and introducing them would violate the diagnostic-only scope.
+  \item \textbf{Diagnostic statements are not policies.}
+  A diagnostic statement has the form:
+  ``given assumptions $A$ and observations $O$, the set of compatible internal
+  realizations is $\mathcal{K}_{\text{compat}}$''.
+  A control or optimization statement requires additional objects: a policy or
+  action space, a transition model under interventions, and a goal functional.
+  None of these are introduced here, and introducing them would violate the
+  diagnostic-only scope.
 
   \item \textbf{Underdetermination under partial observability.}
-  When observations are incomplete, inverse inference is generally
-  non-unique. Without uniqueness, optimization of interventions is not
-  well-defined: different compatible internal structures may require incompatible
-  interventions.
+  When observations are incomplete, inverse inference is generally non-unique.
+  Without uniqueness, optimization of interventions is not well-defined, since
+  different compatible internal realizations may require incompatible actions.
 
   \item \textbf{Specification boundary (no new primitives).}
-  \texttt{ETS.K\_EA.v1.1} fixes the admissible vocabulary and prevents the covert
-  insertion of managerial primitives (objectives, utility, ROI). Therefore,
-  ``what should we do?'' is outside the formal language of this paper.
+  \texttt{ETS.K\_EA.v1.1} fixes the admissible vocabulary and precludes the
+  introduction of managerial primitives such as objectives, utilities, or ROI.
+  Questions of the form ``what should be done?'' therefore lie outside the formal
+  language of this paper.
 
-  \item \textbf{Category error: epistemic vs.\ operational.}
-  The results here constrain what can be \emph{known} or \emph{ruled out} from a
-  given observational interface. They do not specify what can be
-  \emph{implemented} in a socio-technical organization.
+  \item \textbf{Category distinction: epistemic versus operational.}
+  The results constrain what can be \emph{known}, \emph{ruled out}, or
+  \emph{left undecided} from a given observation interface.
+  They do not specify what can be \emph{implemented} in a socio-technical
+  organization.
 \end{enumerate}
 
-Thus, control/optimization questions are not ``unanswered''; they are
-\emph{ill-posed within the present formalism}.
+Accordingly, control and optimization questions are not merely unanswered; they
+are \emph{ill-posed within the present formalism}.
 
 \subsection{STOP as a Valid Scientific Outcome}
 \label{subsec:stop-valid-outcome}
 
-STOP is treated as a first-class outcome because it can be a correct diagnostic
+STOP is treated as a first-class outcome because it can be the correct diagnostic
 conclusion under the formal semantics:
 
 \begin{itemize}
-  \item \textbf{STOP is an epistemic classification, not a recommendation.}
-  STOP indicates that, under the formal predicates and available observation,
-  the system is in a region where (i) diagnosability fails, (ii) existence
-  constraints are violated, or (iii) the formal interface cannot support
+  \item \textbf{STOP is an epistemic classification.}
+  STOP indicates that, under the admitted predicates and available observations,
+  the system lies in a region where diagnosability fails, existence or consistency
+  constraints are violated, or the formal interface does not support
   non-degenerate inference.
 
-  \item \textbf{STOP may be the most informative statement possible.}
-  In some regimes, ``cannot diagnose within this interface'' is strictly more
-  scientifically honest than emitting a spurious positive diagnosis.
+  \item \textbf{STOP may be maximally informative.}
+  In certain regimes, the statement ``no non-degenerate diagnosis is justified
+  within this interface'' is strictly more informative than any positive but
+  unsupported classification.
 
   \item \textbf{STOP is falsifiable at the interface level.}
-  If an observational regime claimed to be STOP still permits stable, unique
-  inference under the same formal assumptions, then the STOP predicate (or its
-  prerequisites) is incorrect and must be revised \emph{within the allowed
+  If an observational regime classified as STOP nevertheless permits stable and
+  unique inference under the same formal assumptions, then the STOP predicate, or
+  its prerequisites, is incorrect and must be revised \emph{within the admitted
   vocabulary}.
 \end{itemize}
 
-\subsection{Falsifiability Boundaries (What Can Be Refuted)}
+\subsection{Falsifiability Boundaries}
 \label{subsec:falsifiability-boundaries}
 
-This paper contains two classes of claims, with different falsifiability modes:
+The paper contains two classes of claims, each with a distinct falsifiability
+mode:
 
 \paragraph{(F1) Internal formal claims.}
-Statements of the form ``Given Definitions X and Assumptions Y, Proposition Z
-holds'' are falsified by a \emph{formal} counterexample: an explicit construction
-within the formal setting that violates Z while satisfying X and Y.
+Statements of the form ``given Definitions $X$ and Assumptions $Y$, Proposition
+$Z$ holds'' are falsified by a \emph{formal counterexample}: an explicit
+construction within the formal setting that satisfies $X$ and $Y$ while
+violating $Z$.
 
-\paragraph{(F2) Projection/interface claims.}
-Statements relating the formal objects to an empirical enterprise are not
-universal; they are conditional on a declared mapping (observational interface).
-They are falsified when one can demonstrate at least one of the following:
+\paragraph{(F2) Projection and interface claims.}
+Statements relating formal objects to an empirical enterprise are conditional on
+a declared observational interface.
+They are falsified if at least one of the following can be demonstrated:
 
 \begin{enumerate}
-  \item \textbf{Spec violation:} the paper implicitly requires primitives not
-  permitted by \texttt{ETS.K\_EA.v1.1}, or contradicts an explicit constraint in
-  that specification.
+  \item \textbf{Specification violation:}
+  the argument requires primitives not permitted by \texttt{ETS.K\_EA.v1.1}, or
+  contradicts an explicit constraint of that specification.
 
-  \item \textbf{Incoherent mapping:} the proposed observational interface cannot
-  be instantiated without changing the formal meaning of the symbols (i.e., the
-  mapping is not semantics-preserving).
+  \item \textbf{Incoherent mapping:}
+  the observational interface cannot be instantiated without altering the
+  formal meaning of the symbols, i.e., the mapping is not semantics-preserving.
 
-  \item \textbf{Interface insufficiency:} for the claimed diagnosability regime,
-  the observation channel is provably insufficient (e.g., information loss makes
-  the inverse problem non-identifiable) under the assumptions stated.
+  \item \textbf{Interface insufficiency:}
+  for a claimed diagnosability regime, the observation channel is provably
+  insufficient, for example because information loss renders the inverse problem
+  non-identifiable under the stated assumptions.
 
-  \item \textbf{Non-replicability of the predicate evaluation:} if, under the
-  same formal assumptions and same declared interface, the predicate evaluation
-  is not well-defined (ambiguous semantics), the projection layer is refuted.
+  \item \textbf{Indeterminate predicate evaluation:}
+  under the same formal assumptions and the same declared interface, the
+  diagnostic predicates cannot be evaluated unambiguously.
 \end{enumerate}
 
-\subsection{Falsifiability by example (counterexample templates)}
+\subsection{Falsifiability by Counterexample Templates}
 \label{subsec:falsifiability-templates-wrapper}
 
-We additionally provide explicit counterexample templates (logical refuters) in
-an epistemic sense. They specify what would count as a counterexample \emph{in
-principle} under admissible assumptions, without prescribing any operational
-search or empirical protocol.
+The paper additionally provides explicit counterexample templates.
+These specify what would count as a counterexample \emph{in principle} under
+admissible assumptions, without prescribing any operational search procedure or
+empirical protocol.
 
 \input{sections/06a_counterexample_templates.tex}
 
-\subsection{Hard Limits: What This Framework Cannot Guarantee}
+\subsection{Hard Limits of the Framework}
 \label{subsec:hard-limits}
 
-Even in its intended scope, the framework cannot guarantee:
+Even within its intended scope, the framework cannot guarantee:
 
 \begin{enumerate}
-  \item \textbf{Uniqueness of inferred internal state} from observations, unless
-  explicit identifiability conditions are met.
+  \item \textbf{Uniqueness of inferred internal structure} from observations,
+  unless explicit identifiability conditions are met.
 
-  \item \textbf{Completeness of diagnosis} under incomplete observability: some
+  \item \textbf{Completeness of diagnosis} under partial observability; some
   internal degradations may remain observationally indistinguishable.
 
-  \item \textbf{Operational feasibility of any intervention,} because
-  interventions are not part of the formal language here.
+  \item \textbf{Operational feasibility of interventions,}
+  since interventions are not elements of the formal language employed here.
 
-  \item \textbf{Empirical truth of a chosen mapping} from a real organization to
-  formal objects: that mapping is an external act, requiring separate evidence
-  and validation beyond this paper.
+  \item \textbf{Empirical validity of a chosen mapping} from a real organization
+  to the formal objects; such mappings require external evidence and validation
+  beyond the scope of this paper.
 \end{enumerate}
 
-\subsection{What the Reader Should Take Away}
+\subsection{Interpretive Takeaway}
 \label{subsec:takeaway}
 
-The correct interpretation is:
+The correct reading is:
 
 \begin{quote}
-This paper specifies \emph{conditions under which diagnosis is well-posed} in a
-formal sense, and \emph{conditions under which the only honest outcome is STOP}.
-It does not prescribe actions, goals, or optimizations.
+This paper specifies the conditions under which structural diagnosis is
+well-posed in a formal sense, and the conditions under which the only honest
+diagnostic outcome is STOP.
+It does not prescribe actions, objectives, or optimization criteria.
 \end{quote}

@@ -1,33 +1,29 @@
-﻿%==============================================================================
-% PDF-2 / Section 03 — Structural Diagnosability
-% Full-file replacement — RUN-P2-03H (headings: math-safe; proposition removed)
-%==============================================================================
-
-\section{Structural diagnosability (epistemic, non-algorithmic)}
+﻿\section{Structural diagnosability (epistemic, non-algorithmic)}
 \label{sec:pdf2_structural_diagnosability}
 
 \subsection{Problem statement: what can be known from observations}
 We consider an enterprise as a continuum $K_{EA}$ with admissible internal state
-space $\Omega(K_{EA})$ and boundary $\partial\Omega(K_{EA})$ (failure / phase
-transition boundary). Observations do not reveal $\Omega(K_{EA})$ directly; they
-are manifestations produced by interaction with an environment $E$ and an
+space $\Omega(K_{EA})$ and boundary $\partial\Omega(K_{EA})$, interpreted as a
+failure or phase-transition boundary.
+Observations do not provide direct access to $\Omega(K_{EA})$; they arise as
+manifestations generated through interaction with an environment $E$ and an
 observation operator $\Pi$.
 
-We use the (already established) manifestation map
+We use the established manifestation map
 \[
 \Sigma_{obs}(K_{EA},E) := \Pi\!\left(\Omega(K_{EA}) \cap \Omega(E)\right),
 \]
 and interpret any concrete dataset as a finite observation trace
-$D \subseteq \Sigma_{obs}$ collected under a specific observational regime
-$\Pi$ and environment $E$.
+$D \subseteq \Sigma_{obs}$ collected under a fixed observational regime $\Pi$
+and environment $E$.
 
 \paragraph{Diagnosability question.}
 Given a finite observation trace $D$, what can be inferred about the internal
-state of $K_{EA}$ (and about its proximity to $\partial\Omega(K_{EA})$) without
+state of $K_{EA}$—and about its relation to $\partial\Omega(K_{EA})$—without
 introducing prescriptive assumptions, control intent, or optimization criteria?
 
-The answer is \emph{set-valued}: the data typically admits multiple internal
-realizations.
+The answer is inherently \emph{set-valued}: the available data typically admits
+multiple internally consistent realizations.
 
 \subsection{Compatibility set and non-identifiability}
 \label{sec:pdf2_compatibility_set}
@@ -35,18 +31,18 @@ realizations.
 \begin{definition}[Compatibility set]
 \label{def:compatibility_set}
 Fix $(E,\Pi)$ and an observation trace $D$.
-The \emph{compatibility set} is the set of all enterprise continua compatible
-with the observations:
+The \emph{compatibility set} is defined as the set of all enterprise continua
+compatible with the observations:
 \[
 \mathcal{K}_{compat}(D;E,\Pi) :=
 \left\{K_{EA} \;:\; D \subseteq \Sigma_{obs}(K_{EA},E)\right\}.
 \]
 \end{definition}
 
-\begin{definition}[State-level compatibility (within a fixed \texorpdfstring{$K_{EA}$}{K_EA})]
+\begin{definition}[State-level compatibility (within a fixed \texorpdfstring{$K_{EA}$}{K\_EA})]
 \label{def:state_level_compatibility}
-If the formalization distinguishes internal states $x \in \Omega(K_{EA})$, then
-for fixed $(K_{EA},E,\Pi)$ define the set of compatible internal states:
+When the formalization distinguishes internal states $x \in \Omega(K_{EA})$, the
+set of compatible internal states for fixed $(K_{EA},E,\Pi)$ is
 \[
 \Omega_{compat}(D \mid K_{EA},E,\Pi)
 := \left\{x \in \Omega(K_{EA}) \;:\; D \subseteq \Sigma_{obs}(x;K_{EA},E,\Pi)\right\},
@@ -57,55 +53,50 @@ state $x$ under $(E,\Pi)$.
 
 \begin{definition}[Structural diagnosability (epistemic)]
 \label{def:structural_diagnosability}
-A diagnostic question $Q$ (e.g.\ “is the system within $\varepsilon$ of
-$\partial\Omega$?” or “which diagnostic regime is admissible?”) is
-\emph{structurally diagnosable} from $D$ under $(E,\Pi)$ if $Q$ is constant over
-the compatibility set:
+A diagnostic question $Q$ (e.g.\ proximity to $\partial\Omega$, or admissibility
+of a diagnostic regime) is \emph{structurally diagnosable} from $D$ under $(E,\Pi)$
+if $Q$ is invariant over the compatibility set:
 \[
 \forall K_1,K_2 \in \mathcal{K}_{compat}(D;E,\Pi):\quad Q(K_1) = Q(K_2).
 \]
-Equivalently, for a fixed $K_{EA}$, $Q$ is diagnosable at the state level if it
-is constant over $\Omega_{compat}(D \mid K_{EA},E,\Pi)$.
+For a fixed continuum $K_{EA}$, an analogous criterion applies at the state level
+if $Q$ is constant over $\Omega_{compat}(D \mid K_{EA},E,\Pi)$.
 \end{definition}
 
 \paragraph{Interpretation.}
-Diagnosability is an epistemic property of the triple $(D,E,\Pi)$ relative to
-the formal object $K_{EA}$, not a promise that an algorithm exists, nor a
-guarantee of uniqueness. It is a criterion for when a \emph{definite} diagnostic
-statement is justified.
+Structural diagnosability is an epistemic property of the triple $(D,E,\Pi)$
+relative to the formal object $K_{EA}$.
+It does not assert uniqueness, computability, or algorithmic reconstructability.
+It specifies the conditions under which a \emph{definite} diagnostic statement is
+logically justified.
 
 \subsection{Underdetermination as the default}
-The manifestation map is generally non-injective:
-different internal continua (or different internal states) can produce
-indistinguishable observation traces under the same $(E,\Pi)$.
+The manifestation map is generally non-injective: distinct internal continua, or
+distinct internal states within a continuum, may generate indistinguishable
+observation traces under the same $(E,\Pi)$.
 
-\paragraph{Proposition (Generic non-identifiability).}
-Unless $\Pi$ is informationally complete for $\Omega(K_{EA})$ (a degenerate,
-rarely realizable condition in enterprise contexts), the mapping
-$K_{EA} \mapsto \Sigma_{obs}(K_{EA},E)$ is not injective. Therefore,
-$\lvert\mathcal{K}_{compat}(D;E,\Pi)\rvert > 1$ is generic for finite $D$.
+\paragraph{Generic non-identifiability.}
+Unless the observation operator $\Pi$ is informationally complete with respect to
+$\Omega(K_{EA})$—a degenerate condition in enterprise contexts—the mapping
+$K_{EA} \mapsto \Sigma_{obs}(K_{EA},E)$ fails to be injective.
+For finite observation traces $D$, the compatibility set
+$\mathcal{K}_{compat}(D;E,\Pi)$ therefore contains multiple elements in typical
+settings.
 
-\begin{proof}[Proof sketch]
-Observation operators $\Pi$ reduce dimension: $\dim \Sigma_{obs} \ll \dim
-\Omega(K_{EA})$ in realistic settings. Dimension reduction together with finite
-sampling implies that multiple distinct internal structures can share the same
-projection. Hence, non-identifiability is generic.
-\end{proof}
-
-\paragraph{Negative result (accepted).}
-It is generally impossible to \emph{reconstruct} the internal structure of an
-enterprise continuum from observational traces. The maximal justified output of
-diagnosis is a \emph{set} (compatibility set) and statements invariant over that
-set.
+\paragraph{Accepted negative result.}
+Reconstruction of the internal structure of an enterprise continuum from
+observational traces is, in general, impossible.
+The maximal justified output of diagnosis is a \emph{set} of compatible
+realizations together with statements invariant over that set.
 
 \subsection{Diagnosable properties: invariants and bounds}
-Even under non-identifiability, certain \emph{invariants} and \emph{bounds} can
-be diagnosable.
+Even under non-identifiability, certain structural properties remain diagnosable
+as invariants or bounds.
 
 \begin{definition}[Diagnosable invariant]
 \label{def:diagnosable_invariant}
-A functional $I$ defined on continua is a \emph{diagnosable invariant} from $D$
-if it is constant on $\mathcal{K}_{compat}(D;E,\Pi)$.
+A functional $I$ defined on continua is a \emph{diagnosable invariant} from $D$ if
+it is constant on $\mathcal{K}_{compat}(D;E,\Pi)$.
 \end{definition}
 
 \begin{definition}[Diagnosable bound]
@@ -116,58 +107,53 @@ $K \in \mathcal{K}_{compat}(D;E,\Pi)$,
 \[
 b^-(D) \le B(K) \le b^+(D),
 \]
-and the bounds depend only on $D$ (and fixed $(E,\Pi)$).
+with bounds depending only on $D$ under fixed $(E,\Pi)$.
 \end{definition}
 
-\paragraph{Typical examples (structural, not managerial).}
-Examples of candidates for $B$ include:
-distance-to-boundary proxies, admissibility of certain transitions $\Psi$, or
-whether the feasible model space $M_{feasible}$ is empty. These are not
-performance targets; they are \emph{structural feasibility} statements.
+\paragraph{Examples (structural, non-managerial).}
+Typical candidates include distance-to-boundary proxies, admissibility of
+transition operators $\Psi$, or emptiness of the feasible model space
+$M_{feasible}$.
+These are structural feasibility statements, not performance targets.
 
 \subsection{Model-space triad and the STOP boundary}
 We assume the established triad of model spaces:
 $M_{current}$ (what is), $M_{declared}$ (what is claimed), and $M_{feasible}$
-(what can exist without violating thresholds / constraints). A central negative
-outcome is the collapse of feasibility.
+(what can exist without violating constraints).
+A central negative diagnostic outcome is the collapse of feasibility.
 
 \begin{definition}[Feasibility collapse (STOP condition)]
 \label{def:feasibility_collapse_stop}
-A trace $D$ implies a \emph{feasibility collapse} (diagnostic STOP) under
-$(E,\Pi)$ if
+A trace $D$ implies a diagnostic \emph{STOP} under $(E,\Pi)$ if
 \[
 \forall K \in \mathcal{K}_{compat}(D;E,\Pi):\quad M_{feasible}(K) = \varnothing.
 \]
 \end{definition}
 
 \paragraph{Meaning.}
-STOP is not advice. It is a formal diagnostic classification: within the
-compatibility set supported by $D$, there exists no internally consistent model
-meeting the declared constraints. It is an epistemic statement about
-non-existence.
+STOP is a diagnostic classification, not advice.
+It asserts non-existence of any internally consistent model compatible with the
+observations and declared constraints.
 
 \subsection{Diagnosability of proximity to \texorpdfstring{$\partial\Omega$}{dOmega}}
-
-The boundary $\partial\Omega(K_{EA})$ is generally not observable directly.
-However, one can ask whether closeness to the boundary is diagnosable as an
-invariant over compatible continua/states.
+The boundary $\partial\Omega(K_{EA})$ is not directly observable.
+One may nevertheless ask whether proximity to this boundary is diagnosable as an
+invariant or bound.
 
 \begin{definition}[Diagnosable proximity statement]
 \label{def:diagnosable_proximity}
-Let $d(\cdot,\partial\Omega)$ be a distance-like functional defined on internal
-states $x \in \Omega(K_{EA})$ (or on continua via induced metrics, if defined in
-the core). A statement of the form
+Let $d(\cdot,\partial\Omega)$ be a distance-like functional on internal states or
+continua.
+A statement of the form
 \[
 d(\cdot,\partial\Omega) \le \varepsilon
 \]
-is diagnosable from $D$ if it holds for all compatible realizations (continua or
-states, depending on the level of formalization).
+is diagnosable from $D$ if it holds for all compatible realizations.
 \end{definition}
 
-\paragraph{Negative result (accepted).}
+\paragraph{Accepted limitation.}
 Without strong assumptions on $\Pi$ and on the metric structure, proximity to
-$\partial\Omega$ is usually \emph{not} diagnosable; at best, one obtains
-one-sided bounds.
+$\partial\Omega$ is generally not diagnosable beyond one-sided bounds.
 
 \subsection{Epistemic closure: what this section does \emph{not} claim}
 This section does not claim:
@@ -175,5 +161,5 @@ This section does not claim:
 (ii) existence of a computable estimator;
 (iii) controllability, optimizability, or policy implications.
 
-It establishes only the epistemic formalism required to speak precisely about
-what is (and is not) inferable from observations in the $K_{EA}$ setting.
+It establishes the epistemic formalism required to state precisely what is—and
+what is not—inferable from observations in the $K_{EA}$ setting.

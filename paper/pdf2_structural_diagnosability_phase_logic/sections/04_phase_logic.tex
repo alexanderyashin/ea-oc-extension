@@ -1,163 +1,154 @@
-%==============================================================================
-% PDF-2 / Section 04 � Phase Logic
-% Full-file replacement � RUN-P2-04H (headings: math-safe; overfull fixes)
-%==============================================================================
-
 \section{Phase logic as diagnostic regimes}
 \label{sec:pdf2_phase_logic}
 
 \subsection{Purpose and stance}
-Phase logic is introduced as a \emph{diagnostic} language for classifying
-observed enterprise dynamics into regimes. It is not a control scheme, not a
-transformation methodology, and not an optimization framework.
+Phase logic is introduced as a \emph{diagnostic} language for classifying observed
+enterprise dynamics into regimes.
+It is not a control scheme, not a transformation methodology, and not an
+optimization framework.
 
 A \emph{phase} is a formal diagnostic category: a set of internal realizations
-(continua or states) sharing invariant properties relevant to stability,
-feasibility, and admissible transitions.
+(continua or states) sharing invariant properties relevant to feasibility,
+stability, and admissible transitions under the given formalization.
 
 \subsection{Phases as subsets of \texorpdfstring{$\Omega(K_{EA})$}{Omega(K EA)} and/or model spaces}
 
-Let $K_{EA}$ be fixed. A phase can be defined at different formal levels.
+Let $K_{EA}$ be fixed.
+Phases may be defined at different formal levels, depending on which internal
+structures are made explicit.
 
 \begin{definition}[State-space phase]
 \label{def:state_space_phase}
 A \emph{state-space phase} is a subset $\Phi \subseteq \Omega(K_{EA})$ specified
-by constraints expressed using existing primitives (thresholds $\Theta$,
-distance to boundary, admissible flows $J$, existence of cycles $C$, continuity
-indicator $k$, and feasibility spaces).
+by constraints expressed using existing primitives, such as thresholds $\Theta$,
+distance to the boundary $\partial\Omega$, admissible flows $J$, existence of
+cycles $C$, continuity indicators $k$, and feasibility relations.
 \end{definition}
 
 \begin{definition}[Model-space phase]
 \label{def:model_space_phase}
 A \emph{model-space phase} is a subset
 \[
-\widehat{\Phi} \subseteq \{(M_{current},M_{declared},M_{feasible})\}
+\widehat{\Phi} \subseteq \{(M_{current}, M_{declared}, M_{feasible})\}
 \]
-specified by constraints on feasibility, consistency, and compatibility relations.
+specified by constraints on feasibility, consistency, and compatibility between
+model spaces.
 \end{definition}
 
 \paragraph{Observationally induced phase statement.}
-Given data $D$ under $(E,\Pi)$, phase classification is \emph{set-valued} unless
-diagnosability holds:
+Given observations $D$ collected under $(E,\Pi)$, phase classification is
+generally \emph{set-valued} unless diagnosability holds:
 \[
 \Phi_{admissible}(D) :=
-\left\{\Phi \;\middle|\; \exists K \in \mathcal{K}_{compat}(D;E,\Pi)\ \text{s.t.}\ K \in \Phi\right\}.
+\left\{\Phi \;\middle|\; \exists K \in \mathcal{K}_{compat}(D;E,\Pi)
+\text{ such that } K \in \Phi \right\}.
 \]
-A unique phase label is justified only when invariant across the compatibility set.
+A unique phase label is justified only if it is invariant over the entire
+compatibility set.
 
 \subsection{Canonical diagnostic regimes (non-prescriptive)}
-We introduce a minimal, canonical family of regimes expressed without adding new
-primitives. Each regime is defined by \emph{existence} or \emph{non-existence}
-statements about feasibility, continuity, and boundary proximity.
+We introduce a minimal, canonical family of diagnostic regimes expressed without
+adding new primitives.
+Each regime is defined through existence or non-existence statements concerning
+feasibility, continuity, and boundary proximity.
 
-\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{STOP}}$}{R_STOP} (feasibility collapse)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{STOP}}$}{R\_STOP} (feasibility collapse)]
 \label{def:regime_stop}
-$\mathbf{R_{STOP}}$ holds if $M_{feasible}=\varnothing$ (as in
-Definition~\ref{def:feasibility_collapse_stop}).
-This is an epistemic non-existence classification.
+$\mathbf{R_{STOP}}$ holds if $M_{feasible} = \varnothing$, as defined in
+Definition~\ref{def:feasibility_collapse_stop}.
+This regime represents an epistemic non-existence classification.
 \end{definition}
 
-\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{COLLAPSE}}$}{R_COLLAPSE}]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{COLLAPSE}}$}{R\_COLLAPSE}]
 \label{def:regime_collapse}
-(Boundary violation imminent/ongoing.)
-$\mathbf{R_{COLLAPSE}}$ holds if the compatibility set implies boundary
-violation in the sense that all compatible realizations lie on or beyond the
-boundary:
+$\mathbf{R_{COLLAPSE}}$ holds if the compatibility set implies boundary violation,
+in the sense that all compatible realizations lie on or beyond the boundary:
 \[
-\forall (K \text{ or } x)\ \text{compatible with } D:\quad (K \notin \Omega)\ \text{or}\ x \in \partial\Omega.
+\forall (K \text{ or } x) \text{ compatible with } D:\quad
+(K \notin \Omega) \ \text{or}\ x \in \partial\Omega.
 \]
-Equivalently, if a diagnosable bound forces $d(\cdot,\partial\Omega)\le 0$.
+Equivalently, if a diagnosable bound enforces $d(\cdot,\partial\Omega)\le 0$.
 \end{definition}
 
-\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{INERTIA}}$}{R_INERTIA} (stable but non-expansive)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{INERTIA}}$}{R\_INERTIA} (stable but non-expansive)]
 \label{def:regime_inertia}
 $\mathbf{R_{INERTIA}}$ holds if:
 (i) feasibility is non-empty, and
-(ii) under the admissible transition operator family $\Psi$, only ``local''
-transitions are compatible with thresholds (no required dimension expansion is
-diagnosable), i.e.\ the set of compatible transitions does not include any
-transition that strictly increases the effective state-space dimensionality.
+(ii) under the admissible transition family $\Psi$, only local transitions are
+compatible with thresholds, such that no increase in effective structural
+dimensionality is diagnostically forced.
 \end{definition}
 
-\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{ADAPT}}$}{R_ADAPT} (local adaptation)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{ADAPT}}$}{R\_ADAPT} (local adaptation)]
 \label{def:regime_adapt}
 $\mathbf{R_{ADAPT}}$ holds if:
 (i) feasibility is non-empty, and
-(ii) there exists at least one compatible realization in which observed changes
-can be represented as internal reconfiguration within $\Omega(K_{EA})$ without
-violating thresholds, with continuity preserved (non-vanishing $k$ over the
-considered horizon, if $k(t)$ is used in the core).
+(ii) at least one compatible realization admits observed changes as internal
+reconfiguration within $\Omega(K_{EA})$ without violating thresholds, with
+continuity preserved (e.g.\ non-vanishing $k$ over the considered horizon, if
+defined in the core).
 \end{definition}
 
-\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{TRANSITION}}$}{R_TRANSITION} (phase transition admissible)]
+\begin{definition}[Regime \texorpdfstring{$\mathbf{R_{TRANSITION}}$}{R\_TRANSITION} (phase transition admissible)]
 \label{def:regime_transition}
 $\mathbf{R_{TRANSITION}}$ holds if:
 (i) feasibility is non-empty, and
-(ii) at least one compatible realization requires (or exhibits) a transition
-across a threshold class that changes admissible structure (e.g.\ activation of
-a previously absent axis / cycle family, or a diagnosable change in the set of
-admissible $\Psi$-moves), while still remaining within $\Omega(K_{EA})$.
+(ii) at least one compatible realization requires or exhibits a transition across
+a threshold class that changes admissible structure (e.g.\ activation of a
+previously absent axis or cycle family, or a diagnosable change in the admissible
+set of $\Psi$-moves), while remaining within $\Omega(K_{EA})$.
 \end{definition}
 
 \paragraph{Remarks.}
 \begin{itemize}
-\item The regimes are defined by existence/non-existence constraints over
-existing primitives. No prescriptive reading is permitted.
-\item The intended usage is diagnostic: to state what regime(s) are consistent
-with evidence, and which are ruled out.
-\item Regimes are not necessarily mutually exclusive under partial observability.
+\item Regimes are defined purely through constraints on existing primitives;
+no prescriptive interpretation is implied.
+\item The intended use is diagnostic: to state which regimes are supported,
+excluded, or undecidable given the evidence.
+\item Under partial observability, regimes are not necessarily mutually exclusive.
 \end{itemize}
 
 \subsection{Phase logic under underdetermination}
-Since $\mathcal{K}_{compat}$ is typically large, phase logic is formulated as a
-three-valued (or set-valued) logic: \emph{ruled out}, \emph{admissible}, or
-\emph{forced}.
+Because $\mathcal{K}_{compat}(D;E,\Pi)$ is typically non-singleton, phase logic is
+formulated as a three-valued (or set-valued) diagnostic logic:
+\emph{ruled out}, \emph{admissible}, or \emph{forced}.
 
 \begin{definition}[Phase status relative to $D$]
 \label{def:phase_status}
-Let $\mathbf{R}$ be any regime predicate on continua (or states).
+Let $\mathbf{R}$ be any regime predicate.
 Define:
 \begin{align*}
-\mathbf{R}\ \textbf{ruled out} &\iff \forall K \in \mathcal{K}_{compat}(D;E,\Pi):\ \neg \mathbf{R}(K),\\
-\mathbf{R}\ \textbf{forced} &\iff \forall K \in \mathcal{K}_{compat}(D;E,\Pi):\ \mathbf{R}(K),\\
-\mathbf{R}\ \textbf{admissible} &\iff \exists K \in \mathcal{K}_{compat}(D;E,\Pi):\ \mathbf{R}(K).
+\mathbf{R}\ \textbf{ruled out}
+&\iff \forall K \in \mathcal{K}_{compat}(D;E,\Pi):\ \neg \mathbf{R}(K),\\
+\mathbf{R}\ \textbf{forced}
+&\iff \forall K \in \mathcal{K}_{compat}(D;E,\Pi):\ \mathbf{R}(K),\\
+\mathbf{R}\ \textbf{admissible}
+&\iff \exists K \in \mathcal{K}_{compat}(D;E,\Pi):\ \mathbf{R}(K).
 \end{align*}
 \end{definition}
 
 \paragraph{Key consequence.}
-A unique phase label is justified only when some regime is \textbf{forced} and
-all incompatible regimes are \textbf{ruled out}. Otherwise, the correct
-diagnostic output is a \emph{set} of admissible regimes.
+A unique phase label is justified only when some regime is forced and all
+incompatible regimes are ruled out.
+Otherwise, the correct diagnostic output is a set of admissible regimes.
 
-\paragraph{Proposition (Generic non-uniqueness of phase classification).}
-For finite traces $D$ under realistic $(E,\Pi)$, multiple regimes among
-$\{\mathbf{R_{INERTIA}},\mathbf{R_{ADAPT}},\mathbf{R_{TRANSITION}}\}$ are
-typically admissible simultaneously, i.e.\ phase classification is not forced.
-
-\begin{proof}[Proof sketch]
-Finite traces constrain only a projection $\Sigma_{obs}$, not the full internal
-state. Different internal explanations can preserve feasibility while differing
-in whether they require an internal reconfiguration or a structural transition.
-Hence multiple regimes remain compatible with $D$.
-\end{proof}
+\paragraph{Generic non-uniqueness of phase classification.}
+For finite observation traces under partial observability, multiple regimes among
+$\{\mathbf{R_{INERTIA}}, \mathbf{R_{ADAPT}}, \mathbf{R_{TRANSITION}}\}$ may remain
+admissible simultaneously.
+Phase classification is therefore generally not forced.
 
 \paragraph{Interpretation.}
-Ambiguous phase outcomes are not a defect; they are a faithful reflection of
-epistemic limits. The formalism prevents over-commitment.
+Ambiguous phase outcomes are not a defect of the framework; they reflect
+irreducible epistemic limits and prevent unwarranted diagnostic commitment.
 
 \subsection{STOP dominance and logical precedence}
 Some regimes dominate others by logical precedence.
 
-\paragraph{Proposition (STOP dominates regime classification).}
+\paragraph{STOP dominance.}
 If $\mathbf{R_{STOP}}$ is forced by $D$, then no non-STOP regime can be forced.
-Moreover, any classification that asserts a non-STOP regime as forced is
-inconsistent with the definition of feasibility collapse.
-
-\begin{proof}[Proof sketch]
-If $M_{feasible}=\varnothing$ holds for all compatible realizations, then there
-exists no internally consistent model satisfying the constraints. Any forced
-non-STOP regime would require a feasible realization, contradiction.
-\end{proof}
+Any classification asserting a forced non-STOP regime under feasibility collapse
+is inconsistent with the definition of STOP.
 
 \subsection{What phase logic does \emph{not} do}
 Phase logic does not:
@@ -166,6 +157,5 @@ Phase logic does not:
 (iii) encode performance objectives or KPI targets;
 (iv) assume controllability or optimizability of $K_{EA}$.
 
-It only provides a disciplined way to state which diagnostic regimes are
-supported, excluded, or undecidable from evidence under explicit
-non-identifiability.
+It provides a disciplined language for stating which diagnostic regimes are
+supported, excluded, or undecidable under explicit non-identifiability.
