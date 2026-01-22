@@ -1,7 +1,7 @@
 ﻿\section{Limits and Non-Claims}
 \label{sec:limits-nonclaims}
 
-This document presents a \emph{diagnostic} formalization of
+This document presents a strictly \emph{diagnostic} formalization of
 (i) structural diagnosability conditions and
 (ii) phase-logic predicates, including STOP,
 under the assumptions and symbol vocabulary fixed by the formal setting and by
@@ -21,9 +21,9 @@ paper:
   improve an enterprise system, nor to select actions that move the system within
   or between phase regions.
 
-  \item \textbf{No algorithmic procedure claim.}
-  The paper does not provide algorithms, procedures, or operational recipes for
-  computing diagnoses or enforcing constraints in real organizations.
+  \item \textbf{No algorithmic or procedural claim.}
+  The paper does not provide algorithms, procedures, heuristics, or operational
+  recipes for computing diagnoses or enforcing constraints in real organizations.
 
   \item \textbf{No KPI or managerial metric claim.}
   The paper does not define KPIs, performance targets, maturity models, or
@@ -39,7 +39,8 @@ paper:
 
   \item \textbf{No completeness claim under partial observability.}
   Under incomplete observability, the framework does not guarantee that every
-  true internal failure mode is diagnosable from the available observations.
+  true internal failure mode or degradation is diagnosable from the available
+  observations.
 
   \item \textbf{No universality beyond the formal setting.}
   The definitions are not claimed to be universally adequate for every
@@ -50,8 +51,8 @@ paper:
 \subsection{Why Control and Optimization Questions Are Ill-Posed Here}
 \label{subsec:why-control-illposed}
 
-A recurrent reviewer misreading is to treat any phase-space representation as
-implicitly actionable.
+A recurrent misreading is to treat any phase-space representation as implicitly
+actionable.
 Within the present formalism, such an inference is invalid for structural
 reasons:
 
@@ -62,8 +63,8 @@ reasons:
   realizations is $\mathcal{K}_{\text{compat}}$''.
   A control or optimization statement requires additional objects: a policy or
   action space, a transition model under interventions, and a goal functional.
-  None of these are introduced here, and introducing them would violate the
-  diagnostic-only scope.
+  None of these objects are introduced here, and introducing them would violate
+  the diagnostic-only scope.
 
   \item \textbf{Underdetermination under partial observability.}
   When observations are incomplete, inverse inference is generally non-unique.
@@ -95,9 +96,8 @@ conclusion under the formal semantics:
 \begin{itemize}
   \item \textbf{STOP is an epistemic classification.}
   STOP indicates that, under the admitted predicates and available observations,
-  the system lies in a region where diagnosability fails, existence or consistency
-  constraints are violated, or the formal interface does not support
-  non-degenerate inference.
+  diagnosability fails, existence or consistency constraints are violated, or the
+  formal interface does not support non-degenerate inference.
 
   \item \textbf{STOP may be maximally informative.}
   In certain regimes, the statement ``no non-degenerate diagnosis is justified
@@ -172,9 +172,9 @@ Even within its intended scope, the framework cannot guarantee:
   \item \textbf{Operational feasibility of interventions,}
   since interventions are not elements of the formal language employed here.
 
-  \item \textbf{Empirical validity of a chosen mapping} from a real organization
-  to the formal objects; such mappings require external evidence and validation
-  beyond the scope of this paper.
+  \item \textbf{Empirical validity of a chosen mapping}
+  from a real organization to the formal objects; such mappings require external
+  evidence and validation beyond the scope of this paper.
 \end{enumerate}
 
 \subsection{Interpretive Takeaway}

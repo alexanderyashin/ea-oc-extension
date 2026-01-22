@@ -3,10 +3,11 @@
 
 In this paper, the term ``implications'' refers exclusively to \emph{epistemic
 consequences} of the formal setting.
-These consequences restrict what can be inferred or asserted from a given
-observation interface and a fixed vocabulary boundary
+These consequences constrain what can be inferred, asserted, or ruled out given
+a fixed observation interface and a fixed vocabulary boundary
 (\texttt{ETS.K\_EA.v1.1}).
-They do not constitute operational, managerial, or normative recommendations.
+They do not constitute operational, managerial, normative, or methodological
+recommendations.
 
 \subsection{Implications for Inference Under Incomplete Observability}
 \label{subsec:imp-incomplete-observability}
@@ -17,27 +18,27 @@ The formal definitions and results entail the following epistemic limitations:
   \item \textbf{Non-uniqueness is the default.}
   In the absence of explicit identifiability conditions, the inverse relation
   from observations to internal structure is set-valued.
-  Multiple incompatible internal realizations may remain observationally
-  indistinguishable.
+  Multiple mutually incompatible internal realizations may remain
+  observationally indistinguishable.
 
   \item \textbf{Apparent stability may be epistemic rather than structural.}
-  A stable pattern in observations does not entail stability of the underlying
+  Stable patterns in observations do not entail stability of the underlying
   internal structure.
-  Such stability may result from observational coarseness, masking effects, or
-  information loss at the interface.
+  Such apparent stability may result from observational coarseness, masking
+  effects, or information loss at the observation interface.
 
   \item \textbf{Additional data does not guarantee improved diagnosability.}
   Supplementary observations may be epistemically irrelevant if they do not
   refine the indistinguishability classes induced by the observation operator.
-  Claims of improved diagnosability therefore require formal justification, not
-  intuitive appeal.
+  Claims of improved diagnosability therefore require formal justification
+  relative to the model and interface, not intuitive appeal.
 
   \item \textbf{Boundary effects dominate near critical regions.}
   In the vicinity of phase boundaries, including STOP, small changes in
   observations or assumptions may induce discontinuous changes in admissible
   inferences.
-  This sensitivity reflects epistemic instability, not necessarily operational
-  volatility.
+  This sensitivity reflects epistemic instability of inference, not necessarily
+  volatility of the underlying system.
 \end{enumerate}
 
 \subsection{Implications for the Meaning of Phase Regions}
@@ -48,17 +49,18 @@ interpreted as follows:
 
 \begin{itemize}
   \item \textbf{A classification within the formal semantics.}
-  Phase regions are defined relative to explicit assumptions, primitives, and
+  Phase regions are defined relative to explicit primitives, assumptions, and
   the declared observation interface.
+  They have no meaning outside this formal context.
 
   \item \textbf{Not an assessment of desirability.}
-  A region is neither favorable nor unfavorable in a managerial or operational
-  sense; it expresses only diagnosability and existence conditions within the
-  model.
+  A region is neither favorable nor unfavorable in a managerial, operational,
+  or normative sense.
+  It expresses only diagnosability and existence conditions within the model.
 
   \item \textbf{Not a guarantee of recoverability or control.}
   Membership in a non-STOP region does not imply that the system is recoverable,
-  controllable, or improvable under any intervention scheme.
+  controllable, stabilizable, or improvable under any intervention scheme.
 \end{itemize}
 
 \subsection{Implications of STOP}
@@ -68,17 +70,18 @@ The STOP classification has the following epistemic implications:
 
 \begin{enumerate}
   \item \textbf{Inference collapse.}
-  Under the given observation interface and assumptions, non-degenerate
-  structural diagnosis is not justified.
+  Under the given observation interface and formal assumptions, non-degenerate
+  structural diagnosis is not epistemically justified.
 
   \item \textbf{Constraint violation or undecidability.}
   STOP indicates either violation of existence or consistency constraints, or a
-  loss of diagnosability required to support meaningful structural claims.
+  loss of diagnosability required to support meaningful structural claims within
+  the admitted vocabulary.
 
   \item \textbf{Non-substitutability.}
   STOP cannot be replaced by any positive diagnostic classification without
   introducing additional assumptions, new primitives, or semantic extensions
-  beyond the admitted vocabulary.
+  beyond the declared formal boundary.
 \end{enumerate}
 
 \subsection{Implications for Claims and Reporting}
@@ -94,11 +97,12 @@ scientifically valid report:
   underdetermined.
 
   \item \textbf{No operational conclusions from epistemic classifications.}
-  Translating a diagnostic region into a decision or recommendation requires an
-  explicit policy or control model, which lies outside the scope of this paper.
+  Translating a diagnostic classification into a decision, recommendation, or
+  intervention requires an explicit policy, control, or optimization model,
+  none of which is provided or assumed here.
 
   \item \textbf{No universality without a declared mapping.}
   Any application to a concrete enterprise must explicitly specify the mapping
-  from empirical artifacts and observations to the formal objects of the model;
-  without such a mapping, reported results lack interpretable meaning.
+  from empirical artifacts and observations to the formal objects of the model.
+  Without such a mapping, reported results lack determinate interpretive content.
 \end{enumerate}

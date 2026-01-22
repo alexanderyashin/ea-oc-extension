@@ -2,21 +2,21 @@
 
 \paragraph{Context and motivation.}
 A broad range of literatures address enterprises and complex socio-technical systems, including systems theory, control and optimization, enterprise architecture (EA) and information systems (IS), and managerial diagnostics.
-Despite overlapping terminology—such as state, structure, observation, and performance—these traditions are typically oriented toward objectives that differ fundamentally from the problem considered here.
+Despite partially overlapping terminology—such as state, structure, observation, and performance—these traditions are typically oriented toward objectives that differ fundamentally from the problem examined here.
 
-This paper focuses on \emph{structural diagnosability} under incomplete observability: whether the available observation surface permits a principled distinction between structurally incompatible enterprise states, or whether such a distinction is formally impossible.
+The present work focuses on \emph{structural diagnosability} under incomplete observability: whether the available observation surface permits a principled distinction between structurally incompatible enterprise states, or whether such a distinction is formally impossible.
 The contribution is diagnostic rather than prescriptive.
-Negative outcomes—non-identifiability, undecidability, or STOP conditions—are treated as informative epistemic results rather than as failures to be remedied.
+Negative outcomes—non-identifiability, undecidability, or STOP conditions—are treated as informative epistemic results rather than as deficiencies to be remedied.
 
 \paragraph{Systems theory and observability.}
 Classical systems theory studies observability and identifiability for systems whose model class is fixed or parameterized a priori.
 The central question is whether internal states or parameters can be reconstructed from outputs under known inputs and dynamics, as formalized in both linear and nonlinear settings (e.g.\ \cite{kalman1960_filtering,hermannkrener1977_nonlinear_obs,isidori1995_nonlinear_control}).
 
-The enterprise setting addressed here differs in a structurally relevant way.
+The enterprise setting considered here differs in a structurally decisive way.
 No single fixed model class is assumed: feasible structure is constrained by organizational, technical, legal, and economic boundaries, and these constraints may evolve with the state of the system itself.
 Observation channels are heterogeneous, partial, and often endogenous.
 Accordingly, the diagnostic question is not whether a state can be reconstructed within a known model, but whether the available evidence suffices to distinguish among \emph{structurally incompatible} enterprise states.
-The focus thus shifts from reconstruction to diagnostic decidability.
+The focus therefore shifts from reconstruction to diagnostic decidability.
 
 \paragraph{Model-based diagnosis and fault isolation.}
 Model-based diagnosis and fault isolation provide formal tools for detecting inconsistencies between observations and a given model, and for isolating fault hypotheses \cite{reiter1987_diagnosis,iserermann2005_fdi_status}.
@@ -24,7 +24,7 @@ These approaches presuppose a well-defined fault taxonomy, a stable observation 
 
 Enterprises systematically violate these assumptions.
 Structural incompatibilities are often global rather than local, fault classes are not exhaustively enumerable, and feasibility constraints cannot be factored out of the diagnostic problem.
-The present work adopts the diagnostic stance of explicit hypothesis spaces and admissibility conditions, but without assuming that a complete fault taxonomy or a uniquely identifiable structure exists.
+The present work adopts the diagnostic emphasis on explicit hypothesis spaces and admissibility conditions, but without assuming that a complete fault taxonomy or a uniquely identifiable structure exists.
 
 \paragraph{Control theory and optimization.}
 Control and optimization frameworks presuppose a controllable interface, an objective function, and a stable mapping from interventions to outcomes.
@@ -33,7 +33,7 @@ These assumptions enable performance-oriented reasoning, but they implicitly req
 Structural diagnosability precedes such reasoning.
 If multiple incompatible enterprise states are consistent with the same observation surface, optimization relative to any single assumed state introduces unwarranted certainty.
 For this reason, the paper does not propose control policies or optimization schemes.
-Instead, it isolates a necessary precondition for rational intervention: that the enterprise state is diagnostically well-posed under available evidence.
+Instead, it isolates a necessary epistemic precondition for rational intervention: that the enterprise state is diagnostically well-posed under available evidence.
 Where this precondition fails, the correct outcome is a negative diagnostic result.
 
 \paragraph{EA/IS frameworks and architectural practice.}
@@ -43,14 +43,14 @@ Architectural descriptions are often treated as authoritative abstractions of th
 
 From a diagnostic perspective, however, enterprises typically maintain multiple concurrent structural representations (e.g., declared, current, feasible).
 The mapping from observations to structural claims is neither injective nor stable.
-In practice, EA resolves this through process, consensus, and social validation.
+In practice, EA resolves this indeterminacy through process, consensus, and social validation.
 In contrast, the present work treats the issue as one of formal diagnosability: whether the observation surface suffices, in principle, to justify a structural claim independently of governance or agreement mechanisms.
 
 \paragraph{KPI-driven evaluation and managerial case literature.}
 KPI-driven approaches evaluate enterprises through selected indicators, while managerial case literature emphasizes narrative coherence and retrospective causal explanation.
-Both can support action under uncertainty, but neither directly addresses the epistemic question of whether a structural diagnosis is warranted.
+Both may support action under uncertainty, but neither directly addresses the epistemic question of whether a structural diagnosis is warranted.
 
-Indicators and narratives may remain actionable even when the underlying structure is not uniquely identifiable.
+Indicators and narratives can remain actionable even when the underlying structure is not uniquely identifiable.
 Structural diagnosability, by contrast, requires explicit recognition of non-uniqueness: that the same observations may be compatible with mutually exclusive structural interpretations.
 Accordingly, this paper avoids KPI logic and case-based prescriptions, and treats non-identifiability as an explicit diagnostic outcome, consistent with classical discussions of falsifiability and underdetermination \cite{popper1959_logic,quine1951_two_dogmas}.
 
