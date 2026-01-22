@@ -1,2 +1,50 @@
 ﻿\section{Conclusion}
-TODO (skeleton).
+\label{sec:conclusion}
+
+This paper introduced a strictly diagnostic framing of \emph{structural diagnosability} for enterprise-scale systems under incomplete observability.
+The central contribution is not a new control mechanism, optimization strategy, or governance prescription, but a formal re-articulation of when
+a system can be meaningfully diagnosed at all.
+
+The first contribution is the formulation of \emph{diagnosability} as a property of the observable state space rather than of intervention capacity.
+By explicitly separating observable manifestations from internal structure, the paper defines diagnosability in terms of whether the current observations
+permit a non-empty and non-degenerate set of internally consistent structural hypotheses.
+This reframing makes explicit that loss of diagnosability is a structural condition, not a failure of measurement effort or analytical sophistication.
+
+The second contribution is the introduction of a phase-logic over diagnosability.
+Rather than treating diagnosability as a continuous or monotonic quantity, the paper formalizes discrete diagnostic phases
+(including stable diagnosis, marginal diagnosability, and non-diagnosable states) and the threshold transitions between them.
+Within this logic, phase transitions correspond to structural changes in the admissible hypothesis space, not to managerial decisions or policy shifts.
+
+The third contribution is the elevation of \emph{STOP} as a first-class diagnostic outcome.
+STOP is not interpreted as inaction or failure, but as a formally valid conclusion reached when diagnosability collapses.
+In such states, any prescriptive or optimization-oriented action would be epistemically unjustified.
+Recognizing STOP as a legitimate terminal diagnostic result is essential for maintaining scientific coherence under severe uncertainty.
+
+The falsifiability boundaries of the framework are explicit.
+The core claims would be refuted if it could be shown that:
+(a) diagnosability can be preserved despite an empty or internally inconsistent hypothesis space;
+(b) phase transitions can be eliminated in favor of a fully continuous diagnostic regime without loss of explanatory power; or
+(c) STOP-like terminal conditions can be replaced by universally valid prescriptive rules without additional structural assumptions.
+Any such result would contradict the phase-logic and boundary conditions formalized here.
+
+Equally explicit are the non-claims.
+This paper does not propose methods for controlling, optimizing, steering, or stabilizing enterprises.
+It does not provide decision rules, best practices, governance models, or performance improvements.
+No claim is made that diagnosability implies controllability, nor that correct diagnosis enables successful intervention.
+All prescriptive interpretations lie strictly outside the scope of this work.
+
+This document depends on earlier formal artifacts for its definitions and primitives.
+In particular, the ontological grounding and operator definitions are inherited from the archival artifacts commonly referred to as PDF-0 and PDF-1,
+which provide the foundational formal context in which the present diagnostic analysis is situated.
+The current paper should be read as a dependent, non-expansive contribution within that artifact lineage.
+
+Future work is limited to artifact-level extensions rather than conceptual expansion.
+This includes consolidation and expansion of the bibliographic base, formal tightening of selected proof sketches,
+and the possible inclusion of executable or mechanically checkable demonstrations within the existing formal framework (e.g.\ as part of PDF-1–level artifacts).
+No new diagnostic claims or prescriptive extensions are implied by these directions.
+
+In summary, the paper establishes diagnosability as a structurally bounded property,
+introduces a phase-logic for reasoning about its loss,
+and legitimizes STOP as a scientifically necessary outcome.
+Its value lies in clarifying limits rather than promising solutions,
+and in restoring epistemic discipline where interventionist narratives are structurally unsupported.
