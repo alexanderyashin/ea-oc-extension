@@ -1,20 +1,42 @@
 ﻿\section{Input Admissibility}
 
 \subsection{Normative Requirement}
-An input is \textbf{admissible} under OPS-0 if and only if it satisfies all declared input constraints
-defined by this contract and is classifiable by reference to the appendix registries (CT-xx tables).
+An input is classified as \textbf{admissible} under OPS-0 if and only if it satisfies
+all applicable \textbf{contract-level constraints} defined in this document
+and is classifiable by reference to the appendix contract registries (CT-xx tables).
 
-RUN-OPS0-01 \textbf{MUST NOT} define concrete admissibility criteria, formats, or schemas.
-Input admissibility in this run is therefore \textbf{declarative only}.
+RUN-OPS0-01 \textbf{MUST NOT} define, infer, or operationalize any concrete admissibility criteria,
+formats, schemas, thresholds, or validation mechanisms.
+Input admissibility in this run is therefore \textbf{strictly declarative} and
+limited to classification outcomes only.
 
-\subsection{Missingness and Ambiguity}
-If required input properties are missing, incomplete, or ambiguous, the input \textbf{MUST}
-be classified as \emph{partially admissible} or \emph{non-admissible} with an explicit
-\texttt{epistemic\_status} indicating the nature of the deficiency.
+No implicit assumptions, defaults, or best-effort interpretations of inputs are permitted.
 
-If ambiguity prevents classification, the input \textbf{MUST} result in \textbf{STOP / NO-GO}
-without further processing.
+\subsection{Missingness, Ambiguity, and Classification Limits}
+If required input properties are missing, incomplete, inconsistent, or ambiguous,
+the tool \textbf{MUST} attempt classification only at the level permitted by the contract.
 
-\subsection{Binding to Registries}
-Input admissibility classes and ambiguity categories are normatively bound to appendix registries (CT-xx tables).
-In RUN-OPS0-01, these registries are referenced for completeness but \textbf{MUST NOT} be populated or executed.
+The resulting classification \textbf{MUST} be explicitly reflected via
+\texttt{epistemic\_status} and \textbf{MUST NOT} enable continuation, imputation,
+or compensatory logic.
+
+If ambiguity, incompleteness, or inconsistency prevents unambiguous classification
+within the declared contract surface,
+the tool \textbf{MUST} emit a terminal \textbf{STOP / NO-GO} outcome
+and terminate the run without further processing.
+
+No intermediate or degraded execution modes are permitted.
+
+\subsection{Binding to Registries (Exclusive)}
+All input admissibility classes, ambiguity categories, and classification outcomes
+are \textbf{normatively bound} to appendix contract registries (CT-xx tables).
+
+In RUN-OPS0-01:
+\begin{itemize}
+  \item registries are referenced for structural completeness only;
+  \item registries \textbf{MUST NOT} be populated, executed, or interpreted;
+  \item no admissibility class may be inferred outside explicit registry or contract constraints.
+\end{itemize}
+
+Any input not explicitly classifiable as admissible by registry binding in a later run
+\textbf{MUST} be treated as \emph{non-admissible} under OPS-0.

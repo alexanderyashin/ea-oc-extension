@@ -1,21 +1,70 @@
 ﻿\section{STOP / NO-GO Enforcement}
 
 \subsection{Terminal Epistemic Boundary}
-\textbf{STOP} is a \textbf{terminal epistemic boundary} within OPS-0.
-Once STOP is reached, the current run \textbf{MUST} be considered terminated for the purposes of this contract.
+\textbf{STOP} is the \textbf{sole terminal epistemic boundary} within OPS-0.
+Once STOP is reached, the current run \textbf{MUST} be considered terminated
+for all purposes of this contract.
 
-OPS-0 \textbf{MUST NOT} define recovery, remediation, continuation, or optimization behavior following STOP.
-Any activity occurring after STOP is \textbf{outside} the OPS-0 contract and requires an external witness
-and a new run.
+OPS-0 \textbf{MUST NOT} define recovery, remediation, continuation,
+optimization, control behavior, or compensatory logic following STOP.
+Any activity occurring after STOP is \textbf{outside} the OPS-0 contract
+and requires an external, out-of-band witness and a new run.
 
-\subsection{Phase Precedence}
-Phase precedence within OPS-0 is strictly ordered as follows:
+Such an external witness:
+\begin{itemize}
+  \item has \textbf{no normative authority} within OPS-0;
+  \item \textbf{MUST NOT} retroactively alter classifications, outcomes,
+        or legitimacy judgments produced under this contract.
+\end{itemize}
+
+\subsection{Phase Precedence (Classification Only)}
+OPS-0 classifies diagnostic outcomes using the following strict
+precedence order:
 \[
 \text{STOP} \; > \; \text{COLLAPSE} \; > \; \text{INERTIA} \; > \; \text{SUCCESS}.
 \]
-This precedence order \textbf{MUST} be applied consistently across all sections and appendix registries.
 
-\subsection{Binding to Registries}
-STOP / NO-GO conditions and classifications are normatively bound to appendix registries (CT-xx tables),
-which specify triggering conditions and classification outcomes in later runs.
-RUN-OPS0-01 \textbf{MUST NOT} define detection rules, triggers, or enforcement mechanisms.
+This ordering is a \textbf{pure classification rule}.
+It \textbf{MUST NOT} be interpreted as an execution sequence,
+control flow, algorithm, workflow, or temporal process.
+
+If multiple classifications would otherwise apply,
+the highest-precedence classification \textbf{MUST} be reported.
+No lower-precedence classification may coexist with,
+override, downgrade, or qualify a higher-precedence one.
+
+\subsection{NO-GO Definition (Prohibited Patterns)}
+\textbf{NO-GO} denotes a set of \textbf{explicitly prohibited patterns}
+of tool output or tool-visible behavior under OPS-0.
+
+NO-GO:
+\begin{itemize}
+  \item is \textbf{not} a phase;
+  \item is \textbf{not} a terminal epistemic state;
+  \item identifies behavior that is \textbf{forbidden} and \textbf{non-conformant}.
+\end{itemize}
+
+The presence or detection of a NO-GO pattern:
+\begin{itemize}
+  \item does \textbf{not} authorize continuation, fallback, or recovery;
+  \item does \textbf{not} replace or weaken STOP when STOP conditions apply;
+  \item may co-occur with STOP, in which case STOP remains the
+        \textbf{sole terminal outcome}.
+\end{itemize}
+
+\subsection{Binding to Registries (Exclusive Authority)}
+All STOP triggers, NO-GO patterns, and classification bindings are defined
+\emph{exclusively} in the Appendix contract tables (CT-xx),
+which constitute the \textbf{sole authoritative registry surface}
+for OPS-0.
+
+Main sections:
+\begin{itemize}
+  \item may reference registry identifiers for orientation only;
+  \item \textbf{MUST NOT} define, extend, populate, reinterpret,
+        or operationalize registry content.
+\end{itemize}
+
+RUN-OPS0-01 \textbf{MUST NOT} define detection rules, triggers,
+tests, heuristics, metrics, or enforcement mechanisms.
+It specifies \emph{classification outcomes and terminal emission only}.

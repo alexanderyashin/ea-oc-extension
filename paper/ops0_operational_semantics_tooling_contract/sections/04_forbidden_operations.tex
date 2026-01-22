@@ -1,18 +1,43 @@
 ﻿\section{Forbidden Operations}
 
 \subsection{Normative Definition}
-An operation is \textbf{forbidden} under OPS-0 if it violates any scope lock, non-claim, epistemic legitimacy requirement,
-or crosses a STOP / NO-GO boundary as defined by this contract.
+Within OPS-0, an operation is classified as \textbf{forbidden} if it violates any
+\textbf{scope lock}, \textbf{diagnostic-only constraint}, \textbf{non-claim requirement},
+or if its execution, interpretation, or continuation would cross a
+\textbf{STOP / NO-GO boundary} as defined by this contract.
 
-RUN-OPS0-01 \textbf{MUST NOT} provide a populated forbidden-operation list.
-Forbidden status is established exclusively through normative constraints and registry bindings defined elsewhere.
+RUN-OPS0-01 \textbf{MUST NOT} define, enumerate, populate, or operationalize any forbidden-operation list.
+Forbidden status in this run is established \textbf{exclusively} through contract-level prohibitions,
+precedence rules, and registry bindings referenced elsewhere in OPS-0.
 
-\subsection{Binding to Registries}
-The classification of forbidden operations is normatively bound to appendix registries (CT-xx tables),
-which, in later runs, enumerate operation classes that are explicitly disallowed.
-In RUN-OPS0-01, these registries are referenced for completeness but remain unpopulated.
+No forbidden operation may be partially executed, conditionally allowed, or treated as recoverable
+under this contract.
 
-\subsection{Precedence Rule}
-In case of ambiguity or overlap, \textbf{forbidden status takes precedence} over admissibility.
-If an operation is both tentatively admissible and forbidden under different constraints,
-it \textbf{MUST} be treated as forbidden without exception.
+\subsection{Registry Binding (Exclusive)}
+The classification of forbidden operations is \textbf{normatively bound} to appendix contract registries (CT-xx),
+which, in later runs, may enumerate explicitly disallowed operation classes and patterns.
+
+In RUN-OPS0-01:
+\begin{itemize}
+  \item appendix registries \textbf{MUST} be referenced for structural completeness only;
+  \item appendix registries \textbf{MUST NOT} be populated, evaluated, or interpreted;
+  \item no forbidden status may be inferred outside explicit registry or contract prohibition.
+\end{itemize}
+
+Any operation not explicitly permitted by registry binding in a later run
+and not explicitly prohibited by this contract
+\textbf{MUST} still be treated as \emph{non-admissible} under the closed-world assumption.
+
+\subsection{Precedence Rule (Hard)}
+OPS-0 enforces a strict \textbf{prohibition precedence rule}.
+
+In any case of ambiguity, overlap, or conflicting classification signals:
+\begin{itemize}
+  \item \textbf{forbidden status takes absolute precedence} over admissibility;
+  \item the operation \textbf{MUST} be treated as forbidden;
+  \item no clarification, disambiguation, or continuation is permitted within the same run.
+\end{itemize}
+
+If such a conflict is detected during evaluation or classification,
+the tool \textbf{MUST} emit a terminal STOP in accordance with the applicable STOP registry binding
+and terminate the run.

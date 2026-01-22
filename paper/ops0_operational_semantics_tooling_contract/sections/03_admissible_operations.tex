@@ -1,18 +1,34 @@
 ﻿\section{Admissible Operations}
 
 \subsection{Normative Definition}
-Within OPS-0, an operation is \textbf{admissible} if and only if it satisfies all applicable contract constraints
-defined in this document and is classified as admissible by reference to the appendix registries (CT-xx tables).
+Within OPS-0, an operation is considered \textbf{admissible} \emph{if and only if} it is
+\textbf{explicitly classified as admissible} by reference to the applicable appendix contract registries (CT-xx)
+and does not violate any scope, boundary, or non-claim constraints defined in this document.
 
-RUN-OPS0-01 \textbf{MUST NOT} define or populate any operation registry and \textbf{MUST NOT} assign operational semantics.
-Admissibility in this run is therefore \textbf{structural and declarative only}.
+RUN-OPS0-01 \textbf{MUST NOT} define, populate, interpret, or execute any operation registry and
+\textbf{MUST NOT} assign operational, behavioral, or computational semantics to any operation.
+Accordingly, admissibility in RUN-OPS0-01 is \textbf{structural and declarative only} and carries
+\textbf{no executable meaning}.
 
-\subsection{Binding to Registries}
-This section \textbf{MUST} be read together with the corresponding appendix tables (CT-xx), which enumerate
-operation classes and their admissibility status in later runs.
-In RUN-OPS0-01, these tables are referenced but \textbf{MUST NOT} be populated or relied upon for execution.
+\subsection{Registry Binding (Exclusive)}
+All admissibility classifications for operations are \textbf{exclusively bound} to appendix contract tables (CT-xx).
+These registries constitute the \emph{sole authoritative surface} for determining whether an operation class
+is admissible, non-admissible, or STOP-triggering.
 
-\subsection{Scope Constraint}
-Any tool-visible action not explicitly classified as admissible by the applicable CT-xx registry
-in a later run \textbf{MUST} be treated as \emph{non-admissible} under OPS-0.
-No implicit admissibility, inference, or default allowance is permitted.
+In RUN-OPS0-01, appendix registries are \textbf{referenced only}:
+\begin{itemize}
+  \item they \textbf{MUST NOT} be populated;
+  \item they \textbf{MUST NOT} be evaluated;
+  \item they \textbf{MUST NOT} be relied upon for execution, inference, or decision-making.
+\end{itemize}
+
+Any apparent operation naming in OPS-0 outside of registry reference has \textbf{no normative force}.
+
+\subsection{Closed-World Scope Constraint}
+OPS-0 enforces a \textbf{closed-world assumption} with respect to admissible operations.
+
+Any tool-visible action, transformation, or behavior that is \textbf{not explicitly classified as admissible}
+by an applicable CT-xx registry in a later run \textbf{MUST} be treated as \emph{non-admissible} under OPS-0.
+
+No implicit admissibility, inference, heuristic allowance, default permission, or best-effort continuation
+is permitted under this contract.

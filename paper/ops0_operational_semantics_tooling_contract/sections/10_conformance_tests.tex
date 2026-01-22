@@ -1,91 +1,142 @@
-﻿\section{Conformance Tests (Normative Test Matrix)}
+﻿\section{Conformance Tests (Normative Classification Matrix)}
 \label{sec:ops0_conformance_tests}
 
 \subsection{Scope and intent}
-This section defines a \textbf{normative} conformance test matrix that future OPS-0 engines/toolkits \textbf{MUST} pass to be considered contract-conformant.
-It specifies tests as contractual requirements only:
+This section defines a \textbf{normative conformance classification matrix}
+for OPS-0 outputs.
+
+The matrix specifies \emph{contractual requirements only}.
+It \textbf{MUST NOT} be interpreted as:
 \begin{itemize}
-  \item no code,
-  \item no metrics,
-  \item no benchmarks,
-  \item no implementation guidance,
-  \item no examples or case studies.
+  \item executable test code,
+  \item an implementation guide,
+  \item a benchmark or metric definition,
+  \item a quality assurance procedure,
+  \item an example or case study.
 \end{itemize}
 
-\subsection{Failure classification}
-Each test defines a failure classification that \textbf{MUST} be used consistently:
+Any engine, toolkit, or process claiming OPS-0 conformance
+\textbf{MUST} satisfy all classifications defined in this section.
+
+\subsection{Failure classifications (canonical)}
+Each conformance test yields exactly one of the following
+\textbf{contract-level classifications}:
+
 \begin{itemize}
-  \item \textbf{STOP}: terminal epistemic boundary (output invalid; process terminates).
-  \item \textbf{NO-GO}: contractually disallowed emission or behavior (must be rejected).
-  \item \textbf{NON-CONFORMANT}: required contract surface missing/incomplete/inconsistent; output rejected.
+  \item \textbf{STOP} —
+        terminal epistemic boundary;
+        the output is invalid and the run terminates.
+  \item \textbf{NO-GO} —
+        contractually forbidden emission or behavior;
+        the output \textbf{MUST NOT} be produced.
+  \item \textbf{NON-CONFORMANT} —
+        required contract surface missing, incomplete,
+        inconsistent, or violated;
+        the output is rejected.
 \end{itemize}
 
-\subsection{Normative conformance test matrix}
+These classifications are mutually exclusive
+and carry no remediation or recovery semantics.
+
+\subsection{Normative conformance classification matrix}
 \renewcommand{\arraystretch}{1.2}
 \begin{center}
 \begin{tabular}{p{0.11\linewidth} p{0.23\linewidth} p{0.28\linewidth} p{0.26\linewidth} p{0.10\linewidth}}
 \hline
-\textbf{Test-ID} & \textbf{Purpose} & \textbf{Trigger / Input Pattern} & \textbf{Expected Outcome (Contract)} & \textbf{Failure} \\
+\textbf{Test-ID} &
+\textbf{Purpose} &
+\textbf{Trigger / Input Pattern} &
+\textbf{Required Contract Classification} &
+\textbf{Result} \\
 \hline
 
 T-OPS0-01 &
-STOP terminal behavior &
-Required anchors missing or unverifiable (e.g., ETS hash unknown/mismatch; required provenance fields absent) &
-Tool MUST emit \textbf{STOP} as terminal outcome; MUST NOT emit partial guidance as substitute &
+STOP terminal classification &
+Any required reproducibility or provenance anchor
+is missing, undeclared, or unverifiable
+(e.g.\ ETS hash missing or mismatched) &
+The process \textbf{MUST} emit \textbf{STOP}
+as a terminal classification and \textbf{MUST NOT}
+emit substitute, downgraded, or advisory output &
 STOP \\
 
 T-OPS0-02 &
-ETS hash mismatch enforcement &
-Provided ETS artefact differs from the embedded \texttt{ets\_hash} or cannot be reconciled &
-Output MUST be rejected; process MUST STOP; mismatch MUST be explicitly recorded via \texttt{stop\_reason} &
+ETS hash lock enforcement &
+Declared ETS artefact does not match
+the embedded \texttt{ets\_hash}
+or the match cannot be established &
+The output is invalid;
+the process \textbf{MUST} emit \textbf{STOP}
+and declare an explicit \texttt{stop\_reason} &
 STOP \\
 
 T-OPS0-03 &
-Provenance presence and completeness &
-Any output artefact instance produced under OPS-0 governance &
-Authorship \& Origin block MUST be embedded; Required Field Registry MUST be complete and non-empty; immutable identifiers present &
+Provenance declaration completeness &
+Any OPS-0 output artefact instance &
+The Authorship \& Origin disclosure
+and all required provenance fields
+\textbf{MUST} be declared and complete &
 NON-CONFORMANT \\
 
 T-OPS0-04 &
-Non-appropriation rule enforcement &
-Attempted output without OC/ESTRA lineage self-identification or with removable lineage identifiers &
-Output MUST be rejected as violating non-appropriation; provenance surface MUST declare OC/ESTRA lineage contract &
+Non-appropriation enforcement &
+Output lacks OC/ESTRA lineage declaration
+or permits removal of lineage identifiers &
+The output is rejected
+as violating the non-appropriation contract &
 NON-CONFORMANT \\
 
 T-OPS0-05 &
-Determinism / reproducibility (same inputs) &
-Two runs with identical inputs and declared \texttt{determinism\_claim = deterministic} &
-Outputs MUST be identical in content (allowing only declared variance such as \texttt{timestamp\_utc}); anchors must match &
+Deterministic reproducibility &
+Two runs with identical declared inputs
+and \texttt{determinism\_claim = deterministic} &
+Outputs \textbf{MUST} be identical in content
+(except explicitly declared variance);
+anchors \textbf{MUST} match &
 NON-CONFORMANT \\
 
 T-OPS0-06 &
 Determinism declaration correctness &
-Determinism cannot be guaranteed (environment-dependent or time-dependent variation affects content) &
-Tool MUST set \texttt{determinism\_claim = non-deterministic} and MUST set \texttt{epistemic\_status} to \texttt{partial} or \texttt{stop} &
+Determinism cannot be guaranteed
+while \texttt{determinism\_claim = deterministic} &
+The output declaration is invalid;
+\texttt{determinism\_claim}
+and \texttt{epistemic\_status}
+are contract-violating &
 NON-CONFORMANT \\
 
 T-OPS0-07 &
-Traceability chain integrity &
-Outputs derived via predicates (predicate-driven outputs) &
-Tool MUST provide input identifiers, predicate surface identifier (\texttt{predicate\_set\_id}), and output surface classification; chain Inputs$\rightarrow$Predicates$\rightarrow$Outputs$\rightarrow$Provenance linkable &
+Traceability chain linkability &
+Outputs derived via predicates &
+Declared identifiers \textbf{MUST} permit
+linkability
+Inputs$\rightarrow$Predicates$\rightarrow$Outputs$\rightarrow$Provenance &
 NON-CONFORMANT \\
 
 T-OPS0-08 &
-No prescriptive text emission &
-Any prompt/input pattern (including ambiguous or incomplete inputs) &
-Tool MUST NOT emit prescriptive recommendations; diagnostic-only language enforced; if not possible, MUST STOP &
+Prescriptive output prohibition &
+Any input or prompt pattern &
+The tool \textbf{MUST NOT} emit prescriptive,
+advisory, or action-oriented text;
+if unavoidable, the process \textbf{MUST} STOP &
 NO-GO \\
 
 T-OPS0-09 &
-No-Go enforcement test &
-Trigger patterns that would cause a tool to step outside scope (implementation details, UI/API behavior, optimization/control semantics) &
-Tool MUST refuse the emission; MUST classify as NO-GO or STOP (if anchors missing) without providing implementation instructions &
+NO-GO pattern enforcement &
+Requests or emissions outside OPS-0 scope
+(e.g.\ implementation details,
+control or optimization semantics) &
+The emission is forbidden
+and \textbf{MUST NOT} be produced &
 NO-GO \\
 
 T-OPS0-10 &
-Phase precedence ordering &
-Inputs where multiple phase conditions would simultaneously be suggested by the tool output surface &
-Tool MUST enforce ordering \textbf{STOP $>$ COLLAPSE $>$ INERTIA $>$ SUCCESS} in any phase declaration surface; if ordering cannot be established, MUST STOP &
+Phase precedence classification &
+Multiple phase classifications implied &
+The highest-precedence classification
+\textbf{MUST} be reported
+(STOP$>$COLLAPSE$>$INERTIA$>$SUCCESS);
+otherwise \textbf{MUST} STOP &
 NON-CONFORMANT \\
 
 \hline
@@ -93,6 +144,10 @@ NON-CONFORMANT \\
 \end{center}
 
 \subsection{Conformance gate}
-A toolkit claiming OPS-0 conformance \textbf{MUST} pass all tests T-OPS0-01 through T-OPS0-10.
-Any single failure yields \textbf{rejection} of the output as contract-nonconformant.
+A process, toolkit, or output claiming OPS-0 conformance
+\textbf{MUST} satisfy all classifications
+T-OPS0-01 through T-OPS0-10.
 
+Any single failure results in
+\textbf{rejection} of the output
+as OPS-0 non-conformant.

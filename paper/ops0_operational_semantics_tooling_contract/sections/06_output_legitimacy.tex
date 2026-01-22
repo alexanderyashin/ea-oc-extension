@@ -1,23 +1,50 @@
 ﻿\section{Output Legitimacy}
 
 \subsection{Normative Requirement}
-An output is \textbf{legitimate} under OPS-0 if and only if it:
+An output is classified as \textbf{legitimate} under OPS-0 if and only if it satisfies
+\emph{all} of the following contract-level conditions:
+
 \begin{itemize}
-  \item is traceable to admissible inputs under this contract;
-  \item declares an explicit \texttt{epistemic\_status};
-  \item includes a provenance and authorship reference;
-  \item contains no prescriptive guidance, recommendations, or action proposals.
+  \item it is traceable exclusively to inputs that are admissible under OPS-0;
+  \item it declares an explicit \texttt{epistemic\_status} consistent with the run outcome;
+  \item it embeds mandatory provenance and authorship information as required by this contract;
+  \item it contains \textbf{no} prescriptive guidance, recommendations, action proposals,
+        optimization objectives, recovery logic, or control semantics of any kind.
 \end{itemize}
 
-RUN-OPS0-01 \textbf{MUST NOT} define output formats or validation mechanisms.
-Legitimacy is assessed solely at the contract level.
+RUN-OPS0-01 \textbf{MUST NOT} define output formats, schemas, validation procedures,
+rendering rules, or enforcement mechanisms.
+Legitimacy is assessed \textbf{solely} at the contract and classification level.
 
-\subsection{STOP Classification}
-If an output violates any legitimacy requirement or crosses a STOP / NO-GO boundary,
-it \textbf{MUST} be classified as \textbf{STOP} and treated as terminal.
+No output may claim legitimacy by implication, context, or external interpretation.
 
-No downgraded, advisory, or recovery output \textbf{MAY} be produced following STOP.
+\subsection{Illegitimacy and STOP Classification}
+If an output fails to satisfy any legitimacy condition,
+or if its production would require crossing a STOP / NO-GO boundary,
+the output \textbf{MUST} be classified as \textbf{STOP}
+and the run \textbf{MUST} terminate immediately.
 
-\subsection{Binding to Registries}
-Output legitimacy classes and STOP classifications are normatively bound to appendix registries (CT-xx tables),
-which are referenced but remain unpopulated in RUN-OPS0-01.
+After STOP:
+\begin{itemize}
+  \item no downgraded, advisory, explanatory, or compensatory outputs are permitted;
+  \item no alternative or partial outputs may be emitted;
+  \item no recovery, continuation, or reinterpretation is allowed within OPS-0.
+\end{itemize}
+
+Any artefact produced beyond STOP is \textbf{outside} the OPS-0 contract
+and carries no normative standing.
+
+\subsection{Binding to Registries (Exclusive)}
+All output legitimacy classes, illegitimacy conditions,
+and STOP classifications are \textbf{normatively bound}
+to appendix contract registries (CT-xx tables).
+
+In RUN-OPS0-01:
+\begin{itemize}
+  \item these registries are referenced for completeness only;
+  \item registries \textbf{MUST NOT} be populated, executed, or interpreted;
+  \item no legitimacy class may be inferred outside explicit contract or registry binding.
+\end{itemize}
+
+Any output not explicitly classifiable as legitimate by registry binding in a later run
+\textbf{MUST} be treated as \emph{non-legitimate} under OPS-0.

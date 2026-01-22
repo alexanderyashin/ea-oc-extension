@@ -2,85 +2,208 @@
 \label{sec:ops0_repro_trace}
 
 \subsection{Scope and intent}
-This section specifies the minimal reproducibility and traceability obligations for OPS-0 outputs.
-It defines \emph{determinism requirements}, \emph{build anchors}, \emph{evidence labeling}, \emph{missingness/uncertainty handling}, and the \emph{traceability chain} from inputs to predicates to outputs and provenance.
-It does not define implementations, pipelines, CI systems, storage formats, or APIs.
+This section defines the \emph{minimal contract-level obligations}
+for reproducibility and traceability of OPS-0 outputs.
 
-\subsection{Determinism requirements}
-\paragraph{Determinism obligation.}
-If an output declares \texttt{determinism\_claim = deterministic} in its provenance registry, then:
+It specifies \emph{declarative determinism requirements},
+\emph{mandatory build anchors},
+\emph{evidence labeling},
+\emph{missingness and uncertainty classification},
+and a \emph{traceability linkage model}
+from inputs to predicates to outputs and provenance.
+
+This section is \textbf{diagnostic-only}.
+It \textbf{MUST NOT} define or imply implementations,
+build pipelines, CI systems, storage layouts,
+data formats, APIs, execution order,
+or verification procedures.
+
+\subsection{Determinism declaration}
+\paragraph{Deterministic declaration.}
+If an output declares
+\texttt{determinism\_claim = deterministic},
+then the following conditions \textbf{MUST} hold:
+
 \begin{itemize}
-  \item identical inputs (including the ETS artefact and all referenced sources) \textbf{MUST} yield identical outputs;
-  \item the provenance fields defined in \S\ref{sec:ops0_required_field_registry} \textbf{MUST} remain stable, except for \texttt{timestamp\_utc} and fields explicitly declared to vary;
-  \item any nondeterministic behavior (randomness, time-dependent variation, environment-dependent ordering) \textbf{MUST NOT} affect content outputs.
+  \item identical declared inputs
+        (including ETS artefact and referenced sources)
+        \textbf{MUST} yield identical output content;
+  \item all provenance fields defined in
+        \S\ref{sec:ops0_required_field_registry}
+        \textbf{MUST} remain identical across rebuilds,
+        except for \texttt{timestamp\_utc}
+        and fields explicitly declared to vary;
+  \item nondeterministic factors
+        (randomness, timing, environment-dependent ordering)
+        \textbf{MUST NOT} affect output content.
 \end{itemize}
 
 \paragraph{Non-deterministic declaration.}
-If determinism cannot be guaranteed, the output \textbf{MUST} set \texttt{determinism\_claim = non-deterministic} and \textbf{MUST} set \texttt{epistemic\_status} to \texttt{partial} or \texttt{stop} as applicable.
-A non-deterministic output \textbf{MUST NOT} be represented as contract-conformant for deterministic obligations.
+If deterministic behavior cannot be declared,
+the output \textbf{MUST} declare
+\texttt{determinism\_claim = non-deterministic}
+and \textbf{MUST} declare
+\texttt{epistemic\_status} as
+\texttt{partial} or \texttt{stop}, as applicable.
 
-\subsection{Build anchors and pinning}
-\paragraph{Pinning obligations.}
-To support reproducibility, an OPS-0 output \textbf{MUST} anchor to:
+A non-deterministic output
+\textbf{MUST NOT} be represented
+as conformant with deterministic obligations.
+
+\subsection{Build anchors (declarative)}
+\paragraph{Anchor obligation.}
+Every OPS-0 output \textbf{MUST} declare
+the following reproducibility anchors:
+
 \begin{itemize}
-  \item the exact ETS artefact identifier and hash (\texttt{ets\_id}, \texttt{ets\_hash});
-  \item the tool/runtime name and version (\texttt{tool\_name}, \texttt{tool\_version});
-  \item the governing contract identifier (\texttt{contract\_id});
-  \item a run identifier (\texttt{run\_id}).
+  \item the governing ETS identifier and hash
+        (\texttt{ets\_id}, \texttt{ets\_hash});
+  \item the producing tool or runtime name and version
+        (\texttt{tool\_name}, \texttt{tool\_version});
+  \item the governing OPS-0 contract identifier
+        (\texttt{contract\_id});
+  \item a run context identifier
+        (\texttt{run\_id}).
 \end{itemize}
-If any anchor is missing or cannot be established, the process \textbf{MUST} yield \textbf{STOP}.
+
+If any required anchor is missing,
+ambiguous, or undeclared,
+the process \textbf{MUST} emit \textbf{STOP}
+as a terminal classification outcome.
 
 \paragraph{No silent upgrades.}
-A tool/runtime upgrade that changes \texttt{tool\_version} \textbf{MUST NOT} be silent: a new output instance must reflect the new version in provenance.
-If identical inputs yield different outputs across tool versions, this is not a contract violation by itself, but it \textbf{MUST} be detectable via provenance anchors.
+A change in \texttt{tool\_version}
+\textbf{MUST NOT} be silent.
+A new output instance \textbf{MUST}
+declare the updated version explicitly.
 
-\subsection{Evidence grading labels (labels only)}
-OPS-0 distinguishes \emph{labels} for evidence profile without making empirical claims inside this contract text.
-Every output that references evidence \textbf{SHOULD} include an evidence label from the following set (exact semantics are external to this contract and must not be expanded here):
+If identical inputs yield different outputs
+across different tool versions,
+this is \textbf{not} a contract violation by itself,
+but the difference \textbf{MUST}
+be observable via declared provenance anchors.
+
+\subsection{Evidence profile labels (declarative only)}
+OPS-0 permits \emph{evidence profile labels}
+as \textbf{pure declarations}.
+These labels \textbf{MUST NOT}
+be interpreted as verified facts
+within this contract.
+
+An output \textbf{MAY} declare
+one of the following labels:
+
 \begin{itemize}
-  \item \texttt{E0} --- no external evidence referenced.
-  \item \texttt{E1} --- public qualitative references only.
-  \item \texttt{E2} --- public quantitative references (non-executable).
-  \item \texttt{E3} --- executable reproduction possible from public inputs.
-  \item \texttt{E4} --- audited traceability pack exists (public).
+  \item \texttt{E0} --- no external evidence referenced;
+  \item \texttt{E1} --- public qualitative references only;
+  \item \texttt{E2} --- public quantitative references
+        (non-executable);
+  \item \texttt{E3} --- executable reproduction claimed
+        from public inputs;
+  \item \texttt{E4} --- audited traceability pack declared
+        as existing and public.
 \end{itemize}
-These labels are \textbf{declarative} and \textbf{MUST NOT} be presented as validated facts unless independently verified outside this contract.
 
-\subsection{Handling missingness and uncertainty}
-\paragraph{Epistemic status rule.}
-Every output \textbf{MUST} declare \texttt{epistemic\_status} as one of:
-\texttt{complete}, \texttt{partial}, or \texttt{stop}.
+These labels are \textbf{declarative only}
+and \textbf{MUST NOT}
+be presented as validated, audited,
+or empirically confirmed facts
+unless verified outside OPS-0.
+
+\subsection{Missingness and uncertainty classification}
+\paragraph{Epistemic status declaration.}
+Every OPS-0 output \textbf{MUST} declare
+\texttt{epistemic\_status}
+as one of:
+\texttt{complete},
+\texttt{partial},
+or \texttt{stop}.
 
 \paragraph{Partial outputs.}
-A \texttt{partial} output is permitted \textbf{only} if:
+A \texttt{partial} output \textbf{MAY}
+be declared only if:
+
 \begin{itemize}
-  \item the output explicitly marks the missing elements (as missing, unknown, or not assessed);
-  \item the provenance registry includes \texttt{inputs\_summary} and the applicable conditional fields;
-  \item no implied completion is stated.
+  \item all missing, unknown,
+        or unassessed elements
+        are explicitly identified as such;
+  \item the provenance registry
+        declares \texttt{inputs\_summary}
+        and all conditionally required fields;
+  \item no implied completion,
+        extrapolation,
+        or unstated inference is asserted.
 \end{itemize}
 
-\paragraph{STOP as terminal boundary.}
-If a required anchor cannot be established (e.g., ETS hash unknown/mismatched, required provenance fields missing, or traceability chain cannot be formed), the process \textbf{MUST} emit \textbf{STOP}.
-STOP is terminal: it is not an ``error'' to be recovered from within the same output instance, and it \textbf{MUST NOT} be converted into ``best-effort'' guidance.
+\paragraph{STOP as terminal classification.}
+If any required anchor cannot be declared,
+including but not limited to
+ETS hash mismatch,
+missing provenance fields,
+or an unformable traceability chain,
+the process \textbf{MUST} emit \textbf{STOP}.
 
-\subsection{Traceability chain}
+STOP is terminal.
+It \textbf{MUST NOT} be treated
+as a recoverable error,
+downgraded output,
+or ``best-effort'' result
+within the same output instance.
+
+\subsection{Traceability chain (linkability requirement)}
 \paragraph{Traceability obligation.}
-OPS-0 outputs \textbf{MUST} be traceable as a chain:
+OPS-0 outputs \textbf{MUST}
+be linkable as the following
+conceptual chain:
+
 \[
-\text{Inputs} \rightarrow \text{Predicates} \rightarrow \text{Outputs} \rightarrow \text{Provenance}.
+\text{Inputs}
+\;\rightarrow\;
+\text{Predicates}
+\;\rightarrow\;
+\text{Outputs}
+\;\rightarrow\;
+\text{Provenance}.
 \]
-This chain is conceptual and may be realized by any compliant implementation; the contract constrains only the required linkability.
+
+This chain defines a \emph{linkability requirement},
+not an execution process or algorithm.
 
 \paragraph{Inputs.}
-Inputs \textbf{MUST} be identifiable by stable identifiers (not necessarily content), including at minimum the ETS artefact and any other referenced sources necessary to interpret predicates and results.
+Inputs \textbf{MUST}
+be identifiable by stable identifiers,
+not necessarily by full content,
+and \textbf{MUST} include at minimum
+the governing ETS artefact
+and any other sources required
+to interpret predicates and results.
 
 \paragraph{Predicates.}
-Where outputs are derived via predicates, the output \textbf{MUST} identify the predicate surface via \texttt{predicate\_set\_id} and \textbf{MUST NOT} claim predicate outcomes that cannot be linked to inputs.
+Where outputs are derived via predicates,
+the output \textbf{MUST} declare
+\texttt{predicate\_set\_id}
+and \textbf{MUST NOT}
+assert predicate outcomes
+that cannot be linked
+to declared inputs.
 
 \paragraph{Outputs.}
-Outputs \textbf{MUST} remain diagnostic-only and \textbf{MUST NOT} include prescriptive recommendations.
-If a tool emits prescriptive text, it violates OPS-0 conformance (\S\ref{sec:ops0_conformance_tests}).
+Outputs \textbf{MUST}
+remain diagnostic-only and
+\textbf{MUST NOT}
+contain prescriptive guidance,
+recommendations,
+or action proposals.
+
+Any prescriptive output
+constitutes a contract violation
+(\S\ref{sec:ops0_conformance_tests}).
 
 \paragraph{Provenance.}
-The provenance registry (\S\ref{sec:ops0_required_field_registry}) closes the chain by binding the outputs to anchors (ETS hash, tool version, run id, UTC timestamp) and to epistemic status.
-
+The provenance registry
+(\S\ref{sec:ops0_required_field_registry})
+closes the traceability chain
+by binding outputs to declared anchors
+(ETS hash, tool version, run identifier,
+UTC timestamp)
+and to declared epistemic status.

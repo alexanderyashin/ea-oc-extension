@@ -2,105 +2,221 @@
 \label{sec:ops0_provenance_signature}
 
 \subsection{Scope and intent}
-This section defines the mandatory provenance and authorship signature surface for \textbf{OPS-0} artefacts and tool outputs governed by this contract.
-It is \textbf{diagnostic-only}: it specifies \emph{what must be present} and \emph{what must be consistent} for provenance, lineage, and non-appropriation, without defining any implementation, APIs, schemas, cryptography, or signing mechanics.
+This section defines the mandatory provenance and authorship
+\emph{disclosure surface} for \textbf{OPS-0} artefacts and tool outputs
+governed by this contract.
 
-\subsection{Normative keywords}
-The key words \textbf{MUST}, \textbf{MUST NOT}, \textbf{SHALL}, \textbf{SHALL NOT}, \textbf{SHOULD}, and \textbf{MAY} are to be interpreted as normative requirements.
+It is \textbf{diagnostic-only}.
+It specifies \emph{which information MUST be declared and classified
+as present, absent, or inconsistent} for provenance, lineage,
+and non-appropriation.
 
-\subsection{Mandatory embedded ``Authorship \& Origin'' block}
-Every output artefact produced under OPS-0 governance (including reports, figures, tables, generated text, derived datasets, logs, and derived documents) \textbf{MUST} embed an \textbf{Authorship \& Origin} block that:
+This section explicitly \textbf{MUST NOT} define or imply:
+implementations, APIs, schemas, data formats, canonical serializations,
+cryptography, signing mechanisms, verification methods,
+or validation procedures.
+
+\subsection{Normative keywords (canonical)}
+Within OPS-0, normative requirements are expressed
+\emph{exclusively} using the keywords
+\textbf{MUST}, \textbf{MUST NOT}, and \textbf{MAY}.
+
+All other modal verbs or descriptive language
+(including SHALL, SHOULD, or similar)
+are non-normative and carry no contractual force.
+
+\subsection{Mandatory embedded ``Authorship \& Origin'' disclosure}
+Every output artefact produced under OPS-0 governance
+(including reports, figures, tables, generated text,
+derived datasets, logs, and derived documents)
+\textbf{MUST} embed an \textbf{Authorship \& Origin} disclosure that:
+
 \begin{itemize}
-  \item is included \textbf{inside} the artefact itself (not only in external metadata);
+  \item is included \textbf{inside} the artefact itself
+        (not only in external or out-of-band metadata);
   \item is human-readable and unambiguously discoverable;
-  \item is complete according to the \textbf{Required Field Registry} (\S\ref{sec:ops0_required_field_registry});
-  \item is consistent with the governing inputs (especially the ETS hash) (\S\ref{sec:ops0_immutability_stop});
-  \item is treated as part of the normative contract surface (absence or incompleteness is non-conformant).
+  \item declares all fields listed in the
+        \textbf{Required Field Registry}
+        (\S\ref{sec:ops0_required_field_registry});
+  \item is internally consistent with the declared governing inputs,
+        in particular the ETS identifier and ETS hash
+        (\S\ref{sec:ops0_immutability_stop});
+  \item is treated as part of the normative contract surface,
+        such that absence, incompleteness, or inconsistency
+        is classified as non-conformant.
 \end{itemize}
 
-\subsection{Immutable lineage identifiers}
+This disclosure specifies \emph{declared provenance information only}.
+It \textbf{MUST NOT} prescribe how such information is generated,
+verified, stored, protected, or cryptographically bound.
+
+\subsection{Immutable lineage declarations}
 \label{sec:ops0_immutability_stop}
-The following lineage identifiers are \textbf{immutable} for a given output artefact instance:
+For a given output artefact instance,
+the following lineage elements are
+\textbf{immutable declarations} within OPS-0:
+
 \begin{itemize}
   \item \textbf{Artifact class}: \texttt{OPS-0}.
-  \item \textbf{PDF lineage}: an explicit identifier pointing to the applicable PDF lineage context (e.g., \texttt{PDF-0}, \texttt{PDF-2}, \texttt{PDF-3} as used in the repository).
-  \item \textbf{ETS reference and hash}: explicit ETS identifier (e.g., \texttt{ETS.K\_EA.v1.1}) and an explicit cryptographic hash value of the ETS input used (\textbf{hash value as a string}).
-  \item \textbf{Tool name and version}: name and version of the tool/runtime that produced the output (as a string).
-  \item \textbf{Run-ID}: an identifier for the run context (as a string).
-  \item \textbf{Timestamp (UTC)}: a UTC timestamp string for when the output was produced.
+  \item \textbf{PDF lineage}: a declared lineage identifier
+        (e.g., \texttt{PDF-0}, \texttt{PDF-2}, \texttt{PDF-3}),
+        used \emph{solely} as provenance context and
+        \textbf{not} as a source of normative semantics.
+  \item \textbf{ETS reference and hash}:
+        a declared ETS identifier
+        (e.g., \texttt{ETS.K\_EA.v1.1})
+        and a declared cryptographic hash string
+        of the ETS artefact asserted to govern the output.
+  \item \textbf{Tool name and version}:
+        declared producing tool or runtime name and version.
+  \item \textbf{Run-ID}:
+        a declared identifier string for the run context.
+  \item \textbf{Timestamp (UTC)}:
+        a declared UTC timestamp string indicating
+        when the output was produced.
 \end{itemize}
 
 \paragraph{Hash mismatch rule (terminal).}
-If the embedded ETS hash does not match the ETS artefact that governed the output (or cannot be established), the output is \textbf{invalid} and the process \textbf{MUST} yield \textbf{STOP} as terminal outcome.
-No partial substitution, ``best-effort'' inference, or implicit fallbacks are permitted under this contract.
+If the declared ETS hash does not match
+the ETS artefact asserted to govern the output,
+or if such a match cannot be established
+from the declaration itself,
+the output is \textbf{invalid} and the process
+\textbf{MUST} emit \textbf{STOP}
+as a terminal classification outcome.
 
-\subsection{Non-appropriation and attribution contract}
-All OPS-0 outputs \textbf{MUST} self-identify as belonging to the OC/ESTRA lineage and \textbf{MUST NOT} be presented as rebrandable, authorless, or transferrable without the embedded provenance.
+No inference, approximation, substitution,
+fallback, or ``best-effort'' interpretation
+is permitted under this contract.
+
+\subsection{Non-appropriation and attribution disclosure}
+All OPS-0 outputs \textbf{MUST} self-identify
+as produced under an OC/ESTRA lineage
+contract surface and \textbf{MUST NOT}
+be presented as rebrandable, authorless,
+or freely transferrable without the embedded
+provenance disclosure.
 
 \paragraph{Non-appropriation rule.}
 An OPS-0 output:
+
 \begin{itemize}
-  \item \textbf{MUST} include an explicit statement that the output is produced under an OC/ESTRA lineage contract surface;
-  \item \textbf{MUST NOT} allow removal of lineage identifiers without rendering the output non-conformant;
-  \item \textbf{MUST} declare that citation/attribution is required when reused;
-  \item \textbf{MUST NOT} claim exclusivity, ownership transfer, or rebranding rights by default.
+  \item \textbf{MUST} include an explicit declaration
+        that it is produced under an OC/ESTRA
+        lineage contract surface;
+  \item \textbf{MUST NOT} permit removal of lineage
+        declarations without rendering the output
+        non-conformant;
+  \item \textbf{MUST} declare that citation or attribution
+        is required when the output is reused;
+  \item \textbf{MUST NOT} claim exclusivity,
+        ownership transfer, or rebranding rights
+        by default.
 \end{itemize}
 
-\paragraph{Authorial responsibility scope.}
-The Authorship \& Origin block \textbf{SHALL} distinguish:
-\begin{itemize}
-  \item \textbf{Human author/editor} (the responsible human operator of the run);
-  \item \textbf{Tool-assisted generation} (the producing tool/runtime, including version).
-\end{itemize}
-No claim is made here about legal authorship; this contract only specifies provenance disclosure requirements.
+\paragraph{Authorial responsibility disclosure.}
+The Authorship \& Origin disclosure \textbf{MAY}
+distinguish between:
 
-\subsection{Machine-readable provenance: Required Field Registry}
+\begin{itemize}
+  \item a \textbf{human author or editor}
+        (responsible human operator of the run);
+  \item \textbf{tool-assisted generation}
+        (producing tool or runtime, including version).
+\end{itemize}
+
+No claim is made here regarding legal authorship.
+OPS-0 specifies disclosure and classification
+requirements only.
+
+\subsection{Required Field Registry (declarative)}
 \label{sec:ops0_required_field_registry}
-This contract defines a \textbf{field registry} (field list + constraints) for machine-readable provenance.
-It intentionally does \textbf{not} define a full JSON schema, canonical serialization, or signing format.
+OPS-0 defines a \textbf{field registry}
+as a \emph{declarative list of required provenance fields}.
+
+The registry specifies \emph{which fields MUST be declared};
+it \textbf{MUST NOT} define encoding,
+serialization, validation logic,
+or transmission mechanisms.
 
 \paragraph{Registry principles.}
 \begin{itemize}
-  \item Each field \textbf{MUST} have a single, unambiguous meaning.
-  \item Required fields \textbf{MUST} be present for every OPS-0 output.
-  \item Field values \textbf{MUST} be stable under deterministic rebuilds with identical inputs.
-  \item Unknown values \textbf{MUST} be represented explicitly as ``unknown'' (not omitted) where allowed.
+  \item Each field \textbf{MUST} have a single,
+        unambiguous declared meaning.
+  \item Required fields \textbf{MUST} be declared
+        for every OPS-0 output.
+  \item Field values \textbf{MUST} be declared explicitly;
+        unknown values \textbf{MUST} be represented
+        as \texttt{unknown} where applicable.
 \end{itemize}
 
-\paragraph{Required fields (MUST be present).}
+\paragraph{Required fields (MUST be declared).}
 \begin{itemize}
-  \item \texttt{artifact\_class}: MUST equal \texttt{OPS-0}.
-  \item \texttt{artifact\_id}: MUST be a stable identifier string for the output instance (format left unspecified).
-  \item \texttt{pdf\_lineage}: MUST be an explicit lineage identifier string (e.g., \texttt{PDF-0}/\texttt{PDF-2}/\texttt{PDF-3}).
-  \item \texttt{ets\_id}: MUST identify the ETS artefact (e.g., \texttt{ETS.K\_EA.v1.1}).
-  \item \texttt{ets\_hash}: MUST be a cryptographic hash string of the ETS input used; mismatch $\Rightarrow$ STOP.
-  \item \texttt{tool\_name}: MUST be the producing tool/runtime name as used in the environment.
-  \item \texttt{tool\_version}: MUST be the producing tool/runtime version string.
-  \item \texttt{run\_id}: MUST identify the run context string.
-  \item \texttt{timestamp\_utc}: MUST be a UTC timestamp string.
-  \item \texttt{operator\_id}: MUST identify the responsible human operator (string; format left unspecified).
-  \item \texttt{contract\_id}: MUST identify the governing OPS-0 contract version or document reference (string).
-  \item \texttt{determinism\_claim}: MUST be either \texttt{deterministic} or \texttt{non-deterministic} (no other values).
-  \item \texttt{epistemic\_status}: MUST be one of \texttt{complete}, \texttt{partial}, \texttt{stop}.
+  \item \texttt{artifact\_class}:
+        MUST equal \texttt{OPS-0}.
+  \item \texttt{artifact\_id}:
+        MUST be a declared identifier string
+        for the output instance.
+  \item \texttt{pdf\_lineage}:
+        MUST be a declared lineage identifier string.
+  \item \texttt{ets\_id}:
+        MUST declare the governing ETS identifier.
+  \item \texttt{ets\_hash}:
+        MUST declare the ETS hash string;
+        mismatch implies STOP.
+  \item \texttt{tool\_name}:
+        MUST declare the producing tool or runtime name.
+  \item \texttt{tool\_version}:
+        MUST declare the producing tool or runtime version.
+  \item \texttt{run\_id}:
+        MUST declare the run context identifier.
+  \item \texttt{timestamp\_utc}:
+        MUST declare a UTC timestamp string.
+  \item \texttt{operator\_id}:
+        MUST declare the responsible human operator identifier.
+  \item \texttt{contract\_id}:
+        MUST declare the governing OPS-0 contract reference.
+  \item \texttt{determinism\_claim}:
+        MUST be declared as
+        \texttt{deterministic} or \texttt{non-deterministic}.
+  \item \texttt{epistemic\_status}:
+        MUST be declared as
+        \texttt{complete}, \texttt{partial}, or \texttt{stop}.
 \end{itemize}
 
-\paragraph{Conditionally required fields (MUST be present when applicable).}
+\paragraph{Conditionally required fields.}
 \begin{itemize}
-  \item \texttt{inputs\_summary}: MUST be present when \texttt{epistemic\_status} is \texttt{complete} or \texttt{partial}; MUST summarize input artefacts as identifiers (not contents).
-  \item \texttt{predicate\_set\_id}: MUST be present when outputs are derived via explicit predicates; MUST identify the predicate set reference string.
-  \item \texttt{output\_surface}: MUST be present when multiple output modalities exist; MUST be one of \texttt{text}, \texttt{table}, \texttt{figure}, \texttt{dataset}, \texttt{document}.
-  \item \texttt{stop\_reason}: MUST be present when \texttt{epistemic\_status} is \texttt{stop}; MUST be a short, explicit reason string.
+  \item \texttt{inputs\_summary}:
+        MUST be declared when
+        \texttt{epistemic\_status} is
+        \texttt{complete} or \texttt{partial}.
+  \item \texttt{predicate\_set\_id}:
+        MUST be declared when outputs
+        reference explicit predicate sets.
+  \item \texttt{output\_surface}:
+        MUST be declared when multiple
+        output modalities exist.
+  \item \texttt{stop\_reason}:
+        MUST be declared when
+        \texttt{epistemic\_status} is \texttt{stop}.
 \end{itemize}
 
-\paragraph{Forbidden practices (MUST NOT).}
+\paragraph{Forbidden practices.}
 \begin{itemize}
-  \item Required fields MUST NOT be omitted.
-  \item ETS hash MUST NOT be inferred, approximated, or replaced.
-  \item Provenance MUST NOT be stored exclusively externally (e.g., only in a repository commit message).
-  \item A tool MUST NOT emit outputs without embedding provenance.
+  \item Required declarations \textbf{MUST NOT} be omitted.
+  \item ETS identifiers or hashes \textbf{MUST NOT}
+        be inferred, approximated, or substituted.
+  \item Provenance disclosure \textbf{MUST NOT}
+        be provided exclusively out-of-band.
 \end{itemize}
 
 \subsection{Conformance consequence}
-A missing, incomplete, inconsistent, or mutable provenance surface is a \textbf{contract violation}.
-Such an output is \textbf{NON-CONFORMANT} and \textbf{MUST} be rejected by OPS-0 conformance tests (\S\ref{sec:ops0_conformance_tests}).
+A missing, incomplete, inconsistent,
+or mutable provenance declaration
+is a \textbf{contract violation}.
 
+Such an output is classified as
+\textbf{NON-CONFORMANT} and
+\textbf{MUST} be rejected by OPS-0
+conformance tests
+(\S\ref{sec:ops0_conformance_tests}).
