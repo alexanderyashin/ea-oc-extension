@@ -1,0 +1,122 @@
+% ==============================================================================
+% PDF-2 — Structural Diagnosability & Phase Logic
+% Section 06a: Falsifiability by Example — Counterexample Templates (Epistemic)
+%
+% Purpose:
+%   Provide explicit counterexample templates (logical refuters) showing how core
+%   proposition types could be falsified under admissible assumptions.
+%
+% Constraints:
+%   - No new primitives
+%   - No prescriptive language
+%   - No algorithms / operational procedures
+%   - No empirical content
+%   - Epistemic falsification only (existence-of-construction statements)
+% ==============================================================================
+
+\subsection{Falsifiability by example: counterexample templates (epistemic)}
+\label{subsec:falsifiability-by-example}
+
+This subsection gives \emph{counterexample templates} in a strict epistemic
+sense. Each template specifies:
+(i) admissible assumptions,
+(ii) a construction class,
+(iii) which proposition type would be refuted \emph{if} such a construction
+exists.
+No operational testing or search procedure is implied.
+
+\paragraph{CE-1 (Non-separability under the adopted observational interface).}
+\begin{enumerate}
+  \item \textbf{Assumptions.}
+  Fix the observational regime $(E,\Pi)$ and the induced notion of admissible
+  observation traces $D \subseteq \Sigma_{obs}(K_{EA},E)$ as used in
+  \Cref{sec:pdf2_structural_diagnosability}. Assume the formal setting permits
+  reasoning over the compatibility set $\mathcal{K}_{compat}(D;E,\Pi)$.
+  \item \textbf{Construction class.}
+  Two distinct internal structures (two distinct continua
+  $K^{(1)}_{EA} \neq K^{(2)}_{EA}$ admissible in the formal setting) such that
+  the \emph{same} observation trace is admissible for both:
+  \[
+    D \subseteq \Sigma_{obs}(K^{(1)}_{EA},E)
+    \quad\text{and}\quad
+    D \subseteq \Sigma_{obs}(K^{(2)}_{EA},E).
+  \]
+  Equivalently, a witness that
+  $\lvert \mathcal{K}_{compat}(D;E,\Pi) \rvert > 1$ holds for the claimed
+  diagnosability regime.
+  \item \textbf{Falsified proposition (if such constructions exist).}
+  Any proposition asserting \emph{uniqueness} of structural inference from $D$
+  under the stated $(E,\Pi)$ (i.e., $\lvert\mathcal{K}_{compat}(D;E,\Pi)\rvert=1$
+  or an equivalent uniqueness claim) is refuted by a single CE-1 witness.
+\end{enumerate}
+
+\paragraph{CE-2 (STOP false positive under admitted states).}
+\begin{enumerate}
+  \item \textbf{Assumptions.}
+  A STOP predicate is used as an epistemic classifier (not a recommendation) and
+  is intended to hold only when diagnosis is not defined or degenerates under
+  the paper's formal semantics and admissibility assumptions.
+  \item \textbf{Construction class.}
+  An admissible situation in which STOP is asserted, yet there exists at least
+  one compatible realization supporting non-degenerate epistemic diagnosis within
+  the same formal setting:
+  \[
+    \text{STOP}(D;E,\Pi) = \text{true}
+    \quad\text{and}\quad
+    \exists K \in \mathcal{K}_{compat}(D;E,\Pi)\ \text{such that the claimed
+    diagnostic statement is well-defined for } K.
+  \]
+  (No algorithm is required; the construction is existential.)
+  \item \textbf{Falsified proposition (if such constructions exist).}
+  Any proposition asserting \emph{soundness} of the STOP predicate in the sense
+  “STOP implies diagnosability loss under the formal semantics” is refuted.
+\end{enumerate}
+
+\paragraph{CE-3 (STOP false negative under diagnosability loss).}
+\begin{enumerate}
+  \item \textbf{Assumptions.}
+  The paper's formal scope includes an admissible state space and a notion of
+  diagnosability loss (e.g., feasibility collapse, non-identifiability to the
+  point that no invariant diagnostic statement remains).
+  \item \textbf{Construction class.}
+  A situation in which STOP is \emph{not} asserted, yet diagnosability has
+  degenerated in the relevant sense under the same formal assumptions:
+  \[
+    \text{STOP}(D;E,\Pi) = \text{false}
+    \quad\text{and}\quad
+    \forall \text{ candidate diagnostic statements } Q \text{ in scope, }
+    Q \text{ is not invariant over } \mathcal{K}_{compat}(D;E,\Pi),
+  \]
+  or equivalently, the formal prerequisites for meaningful diagnosis fail while
+  STOP remains false.
+  \item \textbf{Falsified proposition (if such constructions exist).}
+  Any proposition asserting \emph{completeness} of the STOP predicate with
+  respect to the stated notion of diagnosability loss is refuted.
+\end{enumerate}
+
+\paragraph{CE-4 (Phase assignment non-invariance under admissible equivalences).}
+\begin{enumerate}
+  \item \textbf{Assumptions.}
+  Phase logic assigns phase labels/regions as epistemic classifications that are
+  intended to be representation-invariant under admissible equivalences
+  (e.g., relabelings or semantics-preserving encodings within the formal
+  setting).
+  \item \textbf{Construction class.}
+  Two representations of the \emph{same} admitted underlying structure (equivalent
+  in the intended sense of the formal setting) that yield different phase
+  assignments:
+  \[
+    K^{(1)}_{EA} \equiv K^{(2)}_{EA}
+    \quad\text{but}\quad
+    \text{Phase}(K^{(1)}_{EA};E,\Pi) \neq \text{Phase}(K^{(2)}_{EA};E,\Pi).
+  \]
+  \item \textbf{Falsified proposition (if such constructions exist).}
+  Any proposition claiming that phase labels are well-defined on equivalence
+  classes (i.e., representation-invariant) is refuted by a single CE-4 witness.
+\end{enumerate}
+
+\paragraph{Remark (status of falsification).}
+These templates define \emph{logical refuters} for proposition types used in the
+paper. They do not prescribe how to find such constructions, and they do not
+claim empirical prevalence. The falsification mode is epistemic: existence of a
+single admissible counterexample suffices.
