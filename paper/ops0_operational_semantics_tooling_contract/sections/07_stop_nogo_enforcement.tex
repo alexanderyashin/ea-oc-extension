@@ -1,21 +1,50 @@
 ﻿\section{STOP / NO-GO Enforcement}
+\label{sec:ops0_stop_nogo_enforcement}
 
 \subsection{Terminal Epistemic Boundary}
 \textbf{STOP} is the \textbf{sole terminal epistemic boundary} within OPS-0.
 Once STOP is reached, the current run \textbf{MUST} be considered terminated
 for all purposes of this contract.
 
+\paragraph{Terminality is prohibitive.}
+Within OPS-0, ``terminal'' is \textbf{not} merely descriptive.
+It is \textbf{prohibitive}: after STOP, the governed tool/process
+\textbf{MUST NOT} perform any further tool-visible operations,
+transformations, evaluations, projections, or emissions.
+
+\paragraph{Post-STOP emission ban (hard).}
+After STOP, the tool/process \textbf{MUST NOT} emit any additional artifacts,
+reports, figures, tables, explanatory text, auxiliary logs, downgraded
+outputs, alternative results, or ``best-effort'' continuations.
+
+The only permitted emission at the STOP boundary is the explicit
+STOP artifact itself and the minimal provenance binding required by OPS-0.
+No other output modality is permitted under this contract.
+
+\paragraph{No recovery semantics.}
 OPS-0 \textbf{MUST NOT} define recovery, remediation, continuation,
 optimization, control behavior, or compensatory logic following STOP.
-Any activity occurring after STOP is \textbf{outside} the OPS-0 contract
-and requires an external, out-of-band witness and a new run.
 
+Any behavior or artifact produced beyond STOP is \textbf{forbidden}
+and \textbf{MUST} be treated as \textbf{NON-CONFORMANT} under the OPS-0
+conformance matrix (\S\ref{sec:ops0_conformance_tests}).
+
+\paragraph{Outside-contract does not mean permitted.}
+Statements of the form ``outside OPS-0'' are boundary markers only.
+They \textbf{MUST NOT} be interpreted as permission, allowance,
+fallback authorization, or a legitimate continuation mode.
+
+\paragraph{External witness note (non-authorizing).}
+OPS-0 may acknowledge that continuation beyond STOP requires an external,
+out-of-band witness and a new run.
 Such an external witness:
 \begin{itemize}
   \item has \textbf{no normative authority} within OPS-0;
   \item \textbf{MUST NOT} retroactively alter classifications, outcomes,
         or legitimacy judgments produced under this contract.
 \end{itemize}
+This acknowledgement \textbf{MUST NOT} be interpreted as authorizing any
+post-STOP tool behavior under OPS-0.
 
 \subsection{Phase Precedence (Classification Only)}
 OPS-0 classifies diagnostic outcomes using the following strict
@@ -28,10 +57,20 @@ This ordering is a \textbf{pure classification rule}.
 It \textbf{MUST NOT} be interpreted as an execution sequence,
 control flow, algorithm, workflow, or temporal process.
 
-If multiple classifications would otherwise apply,
+\paragraph{Precedence is evaluated before reporting.}
+If STOP applies, it \textbf{MUST} be reported and emitted as terminal
+(\S\ref{sec:ops0_conformance_tests}; Appendix CT-06).
+No phase label, projection, metric, or narrative may be emitted
+in addition to STOP.
+
+If multiple non-STOP phase classifications would otherwise apply,
 the highest-precedence classification \textbf{MUST} be reported.
 No lower-precedence classification may coexist with,
 override, downgrade, or qualify a higher-precedence one.
+
+If a conflict or ambiguity prevents a unique precedence-respecting
+classification within the contract surface, the tool/process \textbf{MUST}
+emit STOP and terminate.
 
 \subsection{NO-GO Definition (Prohibited Patterns)}
 \textbf{NO-GO} denotes a set of \textbf{explicitly prohibited patterns}
@@ -44,9 +83,11 @@ NO-GO:
   \item identifies behavior that is \textbf{forbidden} and \textbf{non-conformant}.
 \end{itemize}
 
+\paragraph{NO-GO does not authorize fallback.}
 The presence or detection of a NO-GO pattern:
 \begin{itemize}
-  \item does \textbf{not} authorize continuation, fallback, or recovery;
+  \item does \textbf{not} authorize continuation, fallback, degraded modes,
+        or compensatory outputs;
   \item does \textbf{not} replace or weaken STOP when STOP conditions apply;
   \item may co-occur with STOP, in which case STOP remains the
         \textbf{sole terminal outcome}.

@@ -1,6 +1,22 @@
 ﻿\appendix
 \section{Appendix: Contract Tables (Core Registries v1)}
-This appendix defines \emph{normative, diagnostic-only} contract registries for OPS-0 tooling. The tables below specify what a tool \textbf{MAY} do (Operation Registry), what \textbf{MUST} trigger a terminal STOP (STOP Triggers Registry), and what a tool \textbf{MUST NOT} do (No-Go Registry). STOP is a terminal epistemic boundary: \textbf{no recovery, no workaround, no advice}.
+\label{sec:ops0_contract_tables}
+
+This appendix defines \emph{normative, diagnostic-only} contract registries for OPS-0 tooling.
+The tables below specify what a tool \textbf{MAY} do (Operation Registry), what \textbf{MUST} trigger
+a terminal STOP (STOP Triggers Registry), and what a tool \textbf{MUST NOT} do (No-Go Registry).
+STOP is a terminal epistemic boundary: \textbf{no recovery, no workaround, no advice}.
+
+\paragraph{Exclusive authority (binding).}
+All STOP triggers, NO-GO patterns, and their registry identifiers are defined \emph{exclusively} in this appendix (CT-xx).
+Main sections may reference CT identifiers for orientation only and \textbf{MUST NOT} define, extend, reinterpret, populate,
+or operationalize registry content.
+
+\paragraph{NO-GO vs STOP (binding clarification).}
+NO-GO denotes prohibited output/behavior patterns. NO-GO is \textbf{not} a phase and \textbf{not} a terminal epistemic state.
+Where a NO-GO pattern is detected or requested within OPS-0 scope enforcement, the run \textbf{MUST} terminate via STOP
+(using the applicable STOP trigger(s), in particular STOP-06 where relevant). NO-GO \emph{labels forbidden patterns};
+STOP remains the \textbf{sole} terminal epistemic outcome in this contract.
 
 \subsection{Contract Table Registry}
 \begin{itemize}

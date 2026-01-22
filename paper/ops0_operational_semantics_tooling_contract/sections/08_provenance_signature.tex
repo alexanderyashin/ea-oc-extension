@@ -6,14 +6,21 @@ This section defines the mandatory provenance and authorship
 \emph{disclosure surface} for \textbf{OPS-0} artefacts and tool outputs
 governed by this contract.
 
-It is \textbf{diagnostic-only}.
+Provenance and authorship disclosures are
+\textbf{normative outputs} under OPS-0 and
+are subject to the same STOP, NO-GO,
+and conformance constraints
+as any other output artefact.
+
+This section is \textbf{diagnostic-only}.
 It specifies \emph{which information MUST be declared and classified
 as present, absent, or inconsistent} for provenance, lineage,
 and non-appropriation.
 
 This section explicitly \textbf{MUST NOT} define or imply:
-implementations, APIs, schemas, data formats, canonical serializations,
-cryptography, signing mechanisms, verification methods,
+implementations, APIs, schemas, data formats,
+canonical serializations, cryptography,
+signing mechanisms, verification methods,
 or validation procedures.
 
 \subsection{Normative keywords (canonical)}
@@ -42,19 +49,25 @@ derived datasets, logs, and derived documents)
         in particular the ETS identifier and ETS hash
         (\S\ref{sec:ops0_immutability_stop});
   \item is treated as part of the normative contract surface,
-        such that absence, incompleteness, or inconsistency
-        is classified as non-conformant.
+        such that absence, incompleteness, inconsistency,
+        or mutation is classified as non-conformant.
 \end{itemize}
 
 This disclosure specifies \emph{declared provenance information only}.
 It \textbf{MUST NOT} prescribe how such information is generated,
-verified, stored, protected, or cryptographically bound.
+verified, stored, protected,
+or cryptographically bound.
 
 \subsection{Immutable lineage declarations}
 \label{sec:ops0_immutability_stop}
 For a given output artefact instance,
 the following lineage elements are
-\textbf{immutable declarations} within OPS-0:
+\textbf{immutable declarations} within OPS-0.
+
+Immutability applies across
+copying, aggregation, re-emission,
+embedding, or derivative publication
+of the output artefact.
 
 \begin{itemize}
   \item \textbf{Artifact class}: \texttt{OPS-0}.
@@ -65,7 +78,7 @@ the following lineage elements are
   \item \textbf{ETS reference and hash}:
         a declared ETS identifier
         (e.g., \texttt{ETS.K\_EA.v1.1})
-        and a declared cryptographic hash string
+        \textbf{and} a declared cryptographic hash string
         of the ETS artefact asserted to govern the output.
   \item \textbf{Tool name and version}:
         declared producing tool or runtime name and version.
@@ -76,17 +89,26 @@ the following lineage elements are
         when the output was produced.
 \end{itemize}
 
-\paragraph{Hash mismatch rule (terminal).}
+\paragraph{ETS artefact presence requirement (binding).}
+A declared \texttt{ets\_hash} \textbf{MUST} refer to a
+\emph{specific, identifiable ETS artefact instance}.
+If the governing ETS artefact cannot be identified,
+referenced, or distinguished from other versions
+based on the declaration itself,
+the provenance declaration is \textbf{incomplete}.
+
+\paragraph{Hash mismatch or unresolvable reference (terminal).}
 If the declared ETS hash does not match
 the ETS artefact asserted to govern the output,
-or if such a match cannot be established
-from the declaration itself,
+\textbf{or if such a match cannot be established because
+the ETS artefact is absent, unidentified, or ambiguous},
 the output is \textbf{invalid} and the process
 \textbf{MUST} emit \textbf{STOP}
 as a terminal classification outcome.
 
 No inference, approximation, substitution,
-fallback, or ``best-effort'' interpretation
+fallback, aggregation-based reinterpretation,
+or ``best-effort'' interpretation
 is permitted under this contract.
 
 \subsection{Non-appropriation and attribution disclosure}
@@ -104,9 +126,9 @@ An OPS-0 output:
   \item \textbf{MUST} include an explicit declaration
         that it is produced under an OC/ESTRA
         lineage contract surface;
-  \item \textbf{MUST NOT} permit removal of lineage
-        declarations without rendering the output
-        non-conformant;
+  \item \textbf{MUST NOT} permit removal or mutation
+        of lineage declarations without rendering
+        the output non-conformant;
   \item \textbf{MUST} declare that citation or attribution
         is required when the output is reused;
   \item \textbf{MUST NOT} claim exclusivity,
@@ -163,7 +185,7 @@ or transmission mechanisms.
         MUST declare the governing ETS identifier.
   \item \texttt{ets\_hash}:
         MUST declare the ETS hash string;
-        mismatch implies STOP.
+        mismatch or unresolvable reference implies STOP.
   \item \texttt{tool\_name}:
         MUST declare the producing tool or runtime name.
   \item \texttt{tool\_version}:
@@ -212,11 +234,12 @@ or transmission mechanisms.
 
 \subsection{Conformance consequence}
 A missing, incomplete, inconsistent,
-or mutable provenance declaration
+mutable, or partially removed
+provenance declaration
 is a \textbf{contract violation}.
 
 Such an output is classified as
-\textbf{NON-CONFORMANT} and
-\textbf{MUST} be rejected by OPS-0
-conformance tests
+\textbf{NON-CONFORMANT}
+and \textbf{MUST} be rejected
+by OPS-0 conformance tests
 (\S\ref{sec:ops0_conformance_tests}).

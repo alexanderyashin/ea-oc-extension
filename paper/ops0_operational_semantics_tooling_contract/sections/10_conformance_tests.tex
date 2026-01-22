@@ -1,42 +1,87 @@
 ﻿\section{Conformance Tests (Normative Classification Matrix)}
 \label{sec:ops0_conformance_tests}
 
-\subsection{Scope and intent}
+\subsection{Scope and intent (Binding)}
 This section defines a \textbf{normative conformance classification matrix}
-for OPS-0 outputs.
+for OPS-0 outputs and runs.
 
-The matrix specifies \emph{contractual requirements only}.
-It \textbf{MUST NOT} be interpreted as:
+The matrix specifies \emph{contract-level classification requirements only}.
+It \textbf{DOES NOT} define and \textbf{MUST NOT} be interpreted as:
 \begin{itemize}
-  \item executable test code,
-  \item an implementation guide,
-  \item a benchmark or metric definition,
-  \item a quality assurance procedure,
-  \item an example or case study.
+  \item executable test code or test procedures,
+  \item an implementation guide or reference architecture,
+  \item a benchmark, metric system, or scoring framework,
+  \item a quality assurance, validation, or verification process,
+  \item an example, illustration, or case study.
 \end{itemize}
 
-Any engine, toolkit, or process claiming OPS-0 conformance
-\textbf{MUST} satisfy all classifications defined in this section.
+The term ``test'' is used \textbf{exclusively} in the
+\emph{contractual sense of classification predicates}.
+It denotes required outcomes under stated conditions,
+not executable evaluations or procedural checks.
 
-\subsection{Failure classifications (canonical)}
-Each conformance test yields exactly one of the following
-\textbf{contract-level classifications}:
+Any engine, toolkit, process, or artefact
+claiming OPS-0 conformance
+\textbf{MUST} satisfy all classifications
+defined in this section
+\emph{exactly as stated}.
+No alternative interpretation,
+procedural substitution,
+weakening, approximation,
+or partial satisfaction
+is permitted.
+
+\subsection{Failure classifications (Canonical)}
+Each conformance classification yields
+\textbf{exactly one}
+of the following
+\textbf{contract-level outcomes}:
 
 \begin{itemize}
   \item \textbf{STOP} —
-        terminal epistemic boundary;
-        the output is invalid and the run terminates.
+        terminal epistemic classification;
+        the output is invalid and the run
+        \textbf{MUST} terminate immediately.
   \item \textbf{NO-GO} —
-        contractually forbidden emission or behavior;
+        contractually forbidden emission
+        or tool-visible behavior;
         the output \textbf{MUST NOT} be produced.
   \item \textbf{NON-CONFORMANT} —
-        required contract surface missing, incomplete,
-        inconsistent, or violated;
+        required contract surface is missing,
+        incomplete, inconsistent, or violated;
         the output is rejected.
 \end{itemize}
 
-These classifications are mutually exclusive
-and carry no remediation or recovery semantics.
+These classifications are
+\textbf{mutually exclusive}
+and carry \textbf{no}
+remediation, recovery,
+downgrade, continuation,
+compensatory, or corrective semantics.
+
+\subsection{Evaluation precedence (Binding)}
+Conformance classification under OPS-0
+\textbf{MUST} respect the following
+strict precedence order:
+
+\begin{enumerate}
+  \item \textbf{STOP} conditions are evaluated first.
+  \item \textbf{NO-GO} conditions are evaluated second.
+  \item \textbf{NON-CONFORMANT} conditions are evaluated last.
+\end{enumerate}
+
+If any STOP condition applies,
+the process \textbf{MUST} emit STOP immediately
+and \textbf{MUST NOT} perform, complete,
+or rely on any further classification,
+phase determination,
+derivation, or output emission.
+
+No partial execution,
+partial evaluation,
+intermediate result generation,
+or deferred classification
+is permitted prior to or after STOP.
 
 \subsection{Normative conformance classification matrix}
 \renewcommand{\arraystretch}{1.2}
@@ -53,21 +98,25 @@ and carry no remediation or recovery semantics.
 T-OPS0-01 &
 STOP terminal classification &
 Any required reproducibility or provenance anchor
-is missing, undeclared, or unverifiable
-(e.g.\ ETS hash missing or mismatched) &
+is missing, undeclared, unverifiable,
+or only implicitly asserted &
 The process \textbf{MUST} emit \textbf{STOP}
 as a terminal classification and \textbf{MUST NOT}
-emit substitute, downgraded, or advisory output &
+emit substitute, downgraded, partial,
+or advisory output &
 STOP \\
 
 T-OPS0-02 &
-ETS hash lock enforcement &
-Declared ETS artefact does not match
-the embedded \texttt{ets\_hash}
-or the match cannot be established &
+ETS artefact presence and hash lock &
+The governing ETS artefact is not present,
+not referenceable, or its hash
+cannot be validated against the declared
+\texttt{ets\_hash} &
 The output is invalid;
 the process \textbf{MUST} emit \textbf{STOP}
-and declare an explicit \texttt{stop\_reason} &
+and declare an explicit \texttt{stop\_reason};
+an ETS hash without a corresponding artefact
+\textbf{MUST NOT} be treated as valid &
 STOP \\
 
 T-OPS0-03 &
@@ -75,13 +124,15 @@ Provenance declaration completeness &
 Any OPS-0 output artefact instance &
 The Authorship \& Origin disclosure
 and all required provenance fields
-\textbf{MUST} be declared and complete &
+\textbf{MUST} be declared, explicit,
+and internally consistent &
 NON-CONFORMANT \\
 
 T-OPS0-04 &
 Non-appropriation enforcement &
 Output lacks OC/ESTRA lineage declaration
-or permits removal of lineage identifiers &
+or permits removal, obfuscation,
+or replacement of lineage identifiers &
 The output is rejected
 as violating the non-appropriation contract &
 NON-CONFORMANT \\
@@ -92,62 +143,78 @@ Two runs with identical declared inputs
 and \texttt{determinism\_claim = deterministic} &
 Outputs \textbf{MUST} be identical in content
 (except explicitly declared variance);
-anchors \textbf{MUST} match &
+all reproducibility anchors \textbf{MUST} match &
 NON-CONFORMANT \\
 
 T-OPS0-06 &
 Determinism declaration correctness &
 Determinism cannot be guaranteed
 while \texttt{determinism\_claim = deterministic} &
-The output declaration is invalid;
+The declaration is invalid;
 \texttt{determinism\_claim}
 and \texttt{epistemic\_status}
 are contract-violating &
 NON-CONFORMANT \\
 
 T-OPS0-07 &
-Traceability chain linkability &
+Traceability chain closure &
 Outputs derived via predicates &
 Declared identifiers \textbf{MUST} permit
-linkability
-Inputs$\rightarrow$Predicates$\rightarrow$Outputs$\rightarrow$Provenance &
+closed-chain linkability:
+Inputs$\rightarrow$Predicates$\rightarrow$Outputs$\rightarrow$Provenance;
+any break in the chain is disallowed &
 NON-CONFORMANT \\
 
 T-OPS0-08 &
 Prescriptive output prohibition &
-Any input or prompt pattern &
+Any input, prompt, or internal state &
 The tool \textbf{MUST NOT} emit prescriptive,
-advisory, or action-oriented text;
-if unavoidable, the process \textbf{MUST} STOP &
+advisory, optimization,
+or action-oriented text;
+if such emission would occur,
+the process \textbf{MUST} STOP &
 NO-GO \\
 
 T-OPS0-09 &
-NO-GO pattern enforcement &
-Requests or emissions outside OPS-0 scope
-(e.g.\ implementation details,
-control or optimization semantics) &
-The emission is forbidden
-and \textbf{MUST NOT} be produced &
+Closed-world scope enforcement &
+Any request, behavior, or emission
+not explicitly classified as admissible
+by OPS-0 &
+The emission is forbidden under the
+closed-world rule and \textbf{MUST NOT}
+be produced &
 NO-GO \\
 
 T-OPS0-10 &
-Phase precedence classification &
-Multiple phase classifications implied &
+Phase precedence enforcement &
+Multiple phase classifications implied
+or reported &
 The highest-precedence classification
 \textbf{MUST} be reported
 (STOP$>$COLLAPSE$>$INERTIA$>$SUCCESS);
-otherwise \textbf{MUST} STOP &
+any lower-phase emission before STOP
+constitutes a violation &
 NON-CONFORMANT \\
 
 \hline
 \end{tabular}
 \end{center}
 
-\subsection{Conformance gate}
-A process, toolkit, or output claiming OPS-0 conformance
+\subsection{Conformance gate (Hard)}
+A process, toolkit, or output
+claiming OPS-0 conformance
 \textbf{MUST} satisfy all classifications
 T-OPS0-01 through T-OPS0-10.
 
-Any single failure results in
-\textbf{rejection} of the output
-as OPS-0 non-conformant.
+Any single failure:
+\begin{itemize}
+  \item \textbf{MUST} result in rejection
+        of the output as OPS-0 non-conformant;
+  \item \textbf{MUST NOT} be compensated,
+        deferred, downgraded, bypassed,
+        or contextually excused;
+  \item \textbf{MUST NOT} be concealed
+        by partial results,
+        explanatory text,
+        or auxiliary artefacts.
+\end{itemize}

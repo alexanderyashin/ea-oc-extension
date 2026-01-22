@@ -10,7 +10,22 @@ formats, schemas, thresholds, or validation mechanisms.
 Input admissibility in this run is therefore \textbf{strictly declarative} and
 limited to classification outcomes only.
 
-No implicit assumptions, defaults, or best-effort interpretations of inputs are permitted.
+No implicit assumptions, defaults, heuristics, or best-effort interpretations
+of inputs are permitted.
+
+\subsection{Closed-world assumption}
+OPS-0 applies a \textbf{closed-world assumption} to input admissibility.
+
+Any input property, structure, or condition
+that is not \textbf{explicitly declared} and
+\textbf{explicitly classifiable} within the contract surface
+and by reference to the appendix registries
+\textbf{MUST} be treated as \textbf{non-admissible}.
+
+Absence of classification authority
+\emph{constitutes non-admissibility}.
+No deferral, provisional acceptance,
+or implicit admissibility is permitted.
 
 \subsection{Missingness, Ambiguity, and Classification Limits}
 If required input properties are missing, incomplete, inconsistent, or ambiguous,
@@ -18,14 +33,15 @@ the tool \textbf{MUST} attempt classification only at the level permitted by the
 
 The resulting classification \textbf{MUST} be explicitly reflected via
 \texttt{epistemic\_status} and \textbf{MUST NOT} enable continuation, imputation,
-or compensatory logic.
+fallback, or compensatory logic.
 
 If ambiguity, incompleteness, or inconsistency prevents unambiguous classification
 within the declared contract surface,
-the tool \textbf{MUST} emit a terminal \textbf{STOP / NO-GO} outcome
+the tool \textbf{MUST} emit a terminal \textbf{STOP} or \textbf{NO-GO} outcome
 and terminate the run without further processing.
 
-No intermediate or degraded execution modes are permitted.
+No intermediate, degraded, exploratory,
+or speculative execution modes are permitted.
 
 \subsection{Binding to Registries (Exclusive)}
 All input admissibility classes, ambiguity categories, and classification outcomes
@@ -35,8 +51,13 @@ In RUN-OPS0-01:
 \begin{itemize}
   \item registries are referenced for structural completeness only;
   \item registries \textbf{MUST NOT} be populated, executed, or interpreted;
-  \item no admissibility class may be inferred outside explicit registry or contract constraints.
+  \item no admissibility class may be inferred
+        outside explicit registry bindings
+        or explicit contract constraints.
 \end{itemize}
 
-Any input not explicitly classifiable as admissible by registry binding in a later run
-\textbf{MUST} be treated as \emph{non-admissible} under OPS-0.
+Any input that cannot be
+\textbf{explicitly classified as admissible}
+by registry binding and contract reference
+\textbf{MUST} be treated as \textbf{non-admissible}
+under OPS-0 in this run.

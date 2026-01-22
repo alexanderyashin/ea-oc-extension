@@ -26,7 +26,8 @@ then the following conditions \textbf{MUST} hold:
 
 \begin{itemize}
   \item identical declared inputs
-        (including ETS artefact and referenced sources)
+        (including ETS artefact and referenced sources,
+        which MUST be identifiable beyond a bare hash declaration)
         \textbf{MUST} yield identical output content;
   \item all provenance fields defined in
         \S\ref{sec:ops0_required_field_registry}
@@ -168,6 +169,9 @@ conceptual chain:
 
 This chain defines a \emph{linkability requirement},
 not an execution process or algorithm.
+If any link in this chain cannot be established
+based on declared identifiers,
+the process \textbf{MUST} emit \textbf{STOP}.
 
 \paragraph{Inputs.}
 Inputs \textbf{MUST}

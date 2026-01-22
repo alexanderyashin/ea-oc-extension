@@ -1,28 +1,85 @@
 ﻿\section{Purpose and Scope (Locked)}
 
 \subsection{Purpose}
-OPS-0 defines a \textbf{contract scaffold} that \textbf{MUST} constrain the \emph{observable classification outcomes} of tools and the admissibility of tool-visible transformations applied to EA-OC-EXTENSION artefacts.
-Within this contract, \textbf{enforcement} denotes \emph{classification and terminal outcome emission only} (including STOP) and explicitly excludes execution control, remediation, optimization, governance, or behavioral steering.
+OPS-0 defines a \textbf{contract scaffold} that \textbf{MUST} constrain the
+\emph{observable classification outcomes} of tools and the admissibility of
+tool-visible transformations applied to EA-OC-EXTENSION artefacts.
 
-The contract is \textbf{diagnostic-only}: it classifies and validates admissibility boundaries and emits explicit terminal outcomes, without prescribing actions, outcomes, implementations, procedures, or operational mechanisms.
+Within this contract, \textbf{enforcement} denotes \emph{classification and
+terminal outcome emission only} (including STOP) and explicitly excludes
+execution control, remediation, optimization, governance, orchestration,
+or behavioral steering of any kind.
 
-OPS-0 \textbf{MUST NOT} introduce new Ontology of Continua (OC) primitives and \textbf{MUST NOT} reinterpret, extend, or modify the semantics of \texttt{ETS.K\_EA.v1.1}.
-OPS-0 \textbf{MUST NOT} provide recommendations, remediation guidance, optimization objectives, control strategies, recovery logic, or execution semantics of any kind.
+The contract is \textbf{diagnostic-only}: it classifies admissibility boundaries
+and validates contract conformance by emitting explicit terminal outcomes,
+without prescribing actions, results, implementations, procedures,
+pipelines, or operational mechanisms.
+
+OPS-0 \textbf{MUST NOT} introduce new Ontology of Continua (OC) primitives and
+\textbf{MUST NOT} reinterpret, extend, override, or modify the semantics of
+\texttt{ETS.K\_EA.v1.1}.
+
+OPS-0 \textbf{MUST NOT} provide recommendations, remediation guidance,
+optimization objectives, control strategies, recovery logic,
+or execution semantics of any kind, whether explicit or implied.
 
 \subsection{Scope Lock}
-This RUN-OPS0-01 deliverable \textbf{MUST} provide \emph{only} the following contract-level elements:
+This RUN-OPS0-01 deliverable \textbf{MUST} provide \emph{only} the following
+contract-level elements:
+
 \begin{itemize}
-  \item the locked artifact class definition (\emph{Operational Semantics \& Tooling Contract});
-  \item explicit diagnostic-only, non-prescriptive, and non-claim boundary conditions;
-  \item a complete section map with \emph{normative references} to appendix registries (CT-xx tables), without defining, populating, or operationalizing registry content;
-  \item a lineage statement to PDF-0, PDF-2, and PDF-3 establishing separation of concerns and provenance context only.
+  \item the locked artifact class definition
+        (\emph{Operational Semantics \& Tooling Contract});
+  \item explicit diagnostic-only, non-prescriptive,
+        and non-claim boundary conditions;
+  \item a complete section map with \emph{normative references}
+        to appendix registries (CT-xx tables);
+  \item normatively populated but \textbf{non-executable},
+        \textbf{non-procedural}, and \textbf{classification-only}
+        contract registries in the appendix;
+  \item a lineage statement to PDF-0, PDF-2, and PDF-3
+        establishing separation of concerns
+        and provenance context only.
 \end{itemize}
 
-No section of OPS-0 may introduce obligations, semantics, detection logic, thresholds, or requirements beyond these elements.
-Any content not listed above \textbf{MUST NOT} be considered part of OPS-0 and is \textbf{explicitly out of scope} for this run.
+Appendix registries included in RUN-OPS0-01:
+\begin{itemize}
+  \item \textbf{MAY} define identifiers, names, and declarative classifications;
+  \item \textbf{MAY} bind STOP, NO-GO, and admissibility outcomes normatively;
+  \item \textbf{MUST NOT} define algorithms, procedures, detection rules,
+        heuristics, metrics, evaluation steps, or execution semantics;
+  \item \textbf{MUST NOT} be interpretable as implementation guidance
+        or operational logic.
+\end{itemize}
+
+No section of OPS-0 may introduce additional obligations, semantics,
+detection logic, thresholds, metrics, requirements,
+or evaluative criteria beyond the elements listed above.
+
+Any content not explicitly listed in this subsection
+\textbf{MUST NOT} be considered part of OPS-0
+and is \textbf{explicitly out of scope} for this run,
+regardless of interpretative convenience.
 
 \subsection{Run Finality and Reservation}
-RUN-OPS0-01 constitutes a \textbf{closed, scope-locked, and self-contained contract artefact}.
-The absence of populated registries, concrete formats, mechanisms, schemas, detection rules, examples, or implementations is \textbf{intentional} and \textbf{MUST NOT} be interpreted as incompleteness, provisional status, or deferred validity.
+RUN-OPS0-01 constitutes a \textbf{closed, scope-locked,
+and self-contained contract artefact}.
 
-All substantive content population, including registry entries, concrete formats, mechanisms, schemas, examples, and tests, \textbf{MUST} be deferred to RUN-OPS0-02 and subsequent runs and has no normative effect on RUN-OPS0-01.
+The presence of normatively populated appendix registries
+is \textbf{intentional} and \textbf{does not} imply executability,
+procedural completeness, or implementation readiness.
+
+OPS-0 explicitly disclaims:
+\begin{itemize}
+  \item executable detection mechanisms,
+  \item validation procedures,
+  \item test cases or benchmarks,
+  \item schemas, formats, or rendering rules,
+  \item implementation guidance of any kind.
+\end{itemize}
+
+All executable logic, detection mechanisms,
+schemas, tests, examples, or tooling realizations
+\textbf{MUST} be deferred to RUN-OPS0-02
+or subsequent runs and have \textbf{no normative effect}
+on RUN-OPS0-01.

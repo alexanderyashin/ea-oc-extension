@@ -5,46 +5,83 @@ An output is classified as \textbf{legitimate} under OPS-0 if and only if it sat
 \emph{all} of the following contract-level conditions:
 
 \begin{itemize}
-  \item it is traceable exclusively to inputs that are admissible under OPS-0;
+  \item it is traceable \textbf{exclusively} to inputs that are admissible under OPS-0;
   \item it declares an explicit \texttt{epistemic\_status} consistent with the run outcome;
-  \item it embeds mandatory provenance and authorship information as required by this contract;
-  \item it contains \textbf{no} prescriptive guidance, recommendations, action proposals,
-        optimization objectives, recovery logic, or control semantics of any kind.
+  \item it embeds mandatory provenance and authorship information
+        as required by this contract;
+  \item it contains \textbf{no} prescriptive guidance, recommendations,
+        action proposals, optimization objectives, recovery logic,
+        or control semantics of any kind.
 \end{itemize}
 
-RUN-OPS0-01 \textbf{MUST NOT} define output formats, schemas, validation procedures,
-rendering rules, or enforcement mechanisms.
-Legitimacy is assessed \textbf{solely} at the contract and classification level.
+Narrative, explanatory, descriptive, or informational content
+is \textbf{not} automatically legitimate by virtue of being
+``non-prescriptive''.
+All outputs are subject to the same legitimacy classification
+regardless of modality or tone.
 
-No output may claim legitimacy by implication, context, or external interpretation.
+RUN-OPS0-01 \textbf{MUST NOT} define output formats, schemas,
+validation procedures, rendering rules, or enforcement mechanisms.
+Legitimacy is assessed \textbf{solely} at the contract
+and classification level.
+
+No output may claim legitimacy by implication,
+context, intent, or external interpretation.
+
+\subsection{Closed-world legitimacy rule}
+OPS-0 applies a \textbf{closed-world assumption} to output legitimacy.
+
+Any output that cannot be
+\textbf{explicitly classified as legitimate}
+within the declared contract surface
+and by reference to the appendix registries
+\textbf{MUST} be treated as \textbf{non-legitimate}.
+
+Absence of legitimacy classification authority
+\emph{constitutes illegitimacy}.
+No provisional, partial, downgraded,
+or best-effort legitimacy is permitted.
 
 \subsection{Illegitimacy and STOP Classification}
 If an output fails to satisfy any legitimacy condition,
-or if its production would require crossing a STOP / NO-GO boundary,
+or if its production would require crossing
+a STOP or NO-GO boundary,
 the output \textbf{MUST} be classified as \textbf{STOP}
 and the run \textbf{MUST} terminate immediately.
 
 After STOP:
 \begin{itemize}
-  \item no downgraded, advisory, explanatory, or compensatory outputs are permitted;
-  \item no alternative or partial outputs may be emitted;
-  \item no recovery, continuation, or reinterpretation is allowed within OPS-0.
+  \item no downgraded, advisory, explanatory,
+        narrative, or compensatory outputs are permitted;
+  \item no alternative, partial, or deferred outputs may be emitted;
+  \item no recovery, continuation, or reinterpretation
+        is allowed within OPS-0.
 \end{itemize}
 
-Any artefact produced beyond STOP is \textbf{outside} the OPS-0 contract
-and carries no normative standing.
+Any artefact produced beyond STOP
+is \textbf{non-conformant} and
+carries no normative standing
+under the OPS-0 contract.
 
 \subsection{Binding to Registries (Exclusive)}
-All output legitimacy classes, illegitimacy conditions,
-and STOP classifications are \textbf{normatively bound}
+All output legitimacy classes,
+illegitimacy conditions,
+and STOP classifications
+are \textbf{normatively bound}
 to appendix contract registries (CT-xx tables).
 
 In RUN-OPS0-01:
 \begin{itemize}
-  \item these registries are referenced for completeness only;
-  \item registries \textbf{MUST NOT} be populated, executed, or interpreted;
-  \item no legitimacy class may be inferred outside explicit contract or registry binding.
+  \item registries are referenced for structural completeness only;
+  \item registries \textbf{MUST NOT} be populated,
+        executed, or interpreted;
+  \item no legitimacy class may be inferred
+        outside explicit contract
+        and registry bindings.
 \end{itemize}
 
-Any output not explicitly classifiable as legitimate by registry binding in a later run
-\textbf{MUST} be treated as \emph{non-legitimate} under OPS-0.
+Any output that cannot be
+\textbf{explicitly classified as legitimate}
+by contract and registry reference
+\textbf{MUST} be treated as \textbf{non-legitimate}
+under OPS-0 in this run.
