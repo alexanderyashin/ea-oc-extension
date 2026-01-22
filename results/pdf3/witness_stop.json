@@ -1,0 +1,256 @@
+{
+  "spec_id": "ETS.K_EA.v1.1",
+  "spec_sha256": "c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6  configs/ETS.K_EA.v1.1.yaml",
+  "synthetic_config": {
+    "seed": 17,
+    "steps": 40,
+    "p_edge": 0.03,
+    "nodes": 40,
+    "tau_EA": 25,
+    "shock_scale": 0.25,
+    "allow_undefined_surface": false,
+    "force_stop_at": 12,
+    "force_inertia_at": [],
+    "force_collapse_at": [],
+    "force_recover_at": [],
+    "single_field": null,
+    "single_field_amplitude": 0.0
+  },
+  "rows": [
+    {
+      "t": 0,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.0109919548562466,
+        "regulation": 0.15334538855933955,
+        "market": 0.23024738716193838,
+        "tech": -0.10518731111776725,
+        "norms": 0.13305371889897633
+      }
+    },
+    {
+      "t": 1,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.08581342334944503,
+        "regulation": -0.21937345712269823,
+        "market": 0.19759616804509345,
+        "tech": -0.22810540888735847,
+        "norms": 0.23394310144388603
+      }
+    },
+    {
+      "t": 2,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.17773937673639006,
+        "regulation": -0.1246733198113022,
+        "market": 0.24484710000326526,
+        "tech": 0.016129509939460274,
+        "norms": -0.1631521150550021
+      }
+    },
+    {
+      "t": 3,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.21723097410013043,
+        "regulation": 0.08070532927801072,
+        "market": 0.03009391315350851,
+        "tech": 0.008965413497102004,
+        "norms": 0.12030073836334604
+      }
+    },
+    {
+      "t": 4,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.11704771180594453,
+        "regulation": 0.20202591690630972,
+        "market": -0.1516258950087485,
+        "tech": -0.08557703998799593,
+        "norms": 0.008910566525286656
+      }
+    },
+    {
+      "t": 5,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.19426194245638362,
+        "regulation": -0.23317817766184223,
+        "market": 0.24781430460719833,
+        "tech": 0.00916985905351897,
+        "norms": -0.019230948103939438
+      }
+    },
+    {
+      "t": 6,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.23246049247809736,
+        "regulation": 0.10174970176191678,
+        "market": 0.20160664713647053,
+        "tech": -0.01816555483272181,
+        "norms": 0.23568628030412592
+      }
+    },
+    {
+      "t": 7,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.24695349383490356,
+        "regulation": -0.1958262933821755,
+        "market": 0.09587863434629218,
+        "tech": -0.22815121687914647,
+        "norms": 0.2443342042318039
+      }
+    },
+    {
+      "t": 8,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.16239803022804694,
+        "regulation": 0.027227460707639928,
+        "market": 0.03227922278208395,
+        "tech": -0.1129189959992683,
+        "norms": -0.050528099611899135
+      }
+    },
+    {
+      "t": 9,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.03338912386387105,
+        "regulation": 0.13414767105264586,
+        "market": -0.05754451557213569,
+        "tech": 0.005898991857062441,
+        "norms": 0.0868244045429028
+      }
+    },
+    {
+      "t": 10,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.036259969648021306,
+        "regulation": 0.1343703950672696,
+        "market": -0.15000890091386276,
+        "tech": -0.11148584005670853,
+        "norms": -0.03611055834504745
+      }
+    },
+    {
+      "t": 11,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.05188773256513546,
+        "regulation": 0.034582249396376274,
+        "market": -0.13468793913793414,
+        "tech": -0.1366924030910942,
+        "norms": 0.05189499210092868
+      }
+    },
+    {
+      "t": 12,
+      "phase_raw": "STOP",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 1.0
+      },
+      "fields": {
+        "law": 0.0895394954281295,
+        "regulation": 0.12973614283736934,
+        "market": -0.10909382260478018,
+        "tech": 0.20622014254143467,
+        "norms": -0.03993621691164051
+      }
+    }
+  ],
+  "note": "Executable witness run: stop (synthetic; not an empirical claim)."
+}

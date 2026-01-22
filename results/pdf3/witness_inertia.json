@@ -1,0 +1,747 @@
+{
+  "spec_id": "ETS.K_EA.v1.1",
+  "spec_sha256": "c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6  configs/ETS.K_EA.v1.1.yaml",
+  "synthetic_config": {
+    "seed": 11,
+    "steps": 40,
+    "p_edge": 0.03,
+    "nodes": 40,
+    "tau_EA": 25,
+    "shock_scale": 0.25,
+    "allow_undefined_surface": false,
+    "force_stop_at": null,
+    "force_inertia_at": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "force_collapse_at": [],
+    "force_recover_at": [],
+    "single_field": null,
+    "single_field_amplitude": 0.0
+  },
+  "rows": [
+    {
+      "t": 0,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.02381022324509069,
+        "regulation": 0.029886193040247977,
+        "market": 0.21210529201186468,
+        "tech": -0.017174964950113336,
+        "norms": 0.003920636531135557
+      }
+    },
+    {
+      "t": 1,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.03840569459193127,
+        "regulation": -0.13638464240871429,
+        "market": -0.05579998074350795,
+        "tech": -0.06534055431868219,
+        "norms": 0.0784835900248037
+      }
+    },
+    {
+      "t": 2,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.23730543854296254,
+        "regulation": 0.05276415589389144,
+        "market": -0.18568266894720625,
+        "tech": 0.10133203307374095,
+        "norms": 0.048958012904592285
+      }
+    },
+    {
+      "t": 3,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.06304342026436194,
+        "regulation": 0.02653748520921012,
+        "market": -0.13312672674709197,
+        "tech": -0.13076491100566046,
+        "norms": -0.20769904086686491
+      }
+    },
+    {
+      "t": 4,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.23886299035333464,
+        "regulation": -0.002299547580911443,
+        "market": -0.06595975073317989,
+        "tech": 0.1891493633646949,
+        "norms": -0.11652486383826738
+      }
+    },
+    {
+      "t": 5,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.22422064180198403,
+        "regulation": -0.1303660593903126,
+        "market": -0.055498916149720356,
+        "tech": 0.15258324769117765,
+        "norms": 0.22330941116618003
+      }
+    },
+    {
+      "t": 6,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.10262372878424092,
+        "regulation": -0.1052837605362148,
+        "market": -0.16513165845478267,
+        "tech": -0.021024558045892205,
+        "norms": -0.23245932001810493
+      }
+    },
+    {
+      "t": 7,
+      "phase_raw": "SUCCESS",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 0.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.13084249205582388,
+        "regulation": 0.00044756189623007536,
+        "market": 0.20358900376686695,
+        "tech": 0.24000053796669457,
+        "norms": -0.19199996106613226
+      }
+    },
+    {
+      "t": 8,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.047202604754298993,
+        "regulation": 0.2142129553188285,
+        "market": 0.13455083144001878,
+        "tech": -0.047521216192070226,
+        "norms": 0.02409332398966979
+      }
+    },
+    {
+      "t": 9,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.1581703620653207,
+        "regulation": -0.11245580267032296,
+        "market": 0.05338883834564495,
+        "tech": 0.2387728811367687,
+        "norms": 0.1557286182023226
+      }
+    },
+    {
+      "t": 10,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.2133186128896048,
+        "regulation": 0.22494949538440462,
+        "market": -0.23506447728912344,
+        "tech": -0.11374235491604046,
+        "norms": -0.04688494637502655
+      }
+    },
+    {
+      "t": 11,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.05310373527324441,
+        "regulation": 0.1344326422207912,
+        "market": 0.20279742933566364,
+        "tech": -0.1557613655201524,
+        "norms": 0.19962558704532296
+      }
+    },
+    {
+      "t": 12,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.1697938714923195,
+        "regulation": 0.217751808363927,
+        "market": 0.15129718615688653,
+        "tech": 0.22657981463527593,
+        "norms": 0.19850604633962682
+      }
+    },
+    {
+      "t": 13,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.17678923487832904,
+        "regulation": 0.16112340243292217,
+        "market": 0.07677211095231445,
+        "tech": 0.13203223245249623,
+        "norms": -0.23311711431677223
+      }
+    },
+    {
+      "t": 14,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.03403051057782375,
+        "regulation": -0.23532026837356979,
+        "market": -0.11378446891133298,
+        "tech": -0.12938818964842308,
+        "norms": -0.04165018405098425
+      }
+    },
+    {
+      "t": 15,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.18629912808648963,
+        "regulation": -0.1954819753987101,
+        "market": 0.2450536706802655,
+        "tech": 0.05564306551939746,
+        "norms": 0.10306158907725826
+      }
+    },
+    {
+      "t": 16,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.018887336856286185,
+        "regulation": 0.1518571898991396,
+        "market": -0.09684328403065567,
+        "tech": 0.1737612552989301,
+        "norms": -0.038650401979862026
+      }
+    },
+    {
+      "t": 17,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.20759321668700836,
+        "regulation": 0.041423572392285335,
+        "market": 0.0859908754932906,
+        "tech": 0.07127573920568131,
+        "norms": -0.23665054702597893
+      }
+    },
+    {
+      "t": 18,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.24502187548596083,
+        "regulation": -0.07352045562476645,
+        "market": -0.16943732052480104,
+        "tech": 0.10557014369303874,
+        "norms": 0.12106460106662859
+      }
+    },
+    {
+      "t": 19,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.1619314243363743,
+        "regulation": 0.11626234910075783,
+        "market": -0.2464954461338365,
+        "tech": -0.0888422256057177,
+        "norms": -0.06353407801534455
+      }
+    },
+    {
+      "t": 20,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.09649329406396823,
+        "regulation": 0.1355610983687663,
+        "market": -0.15016551610015288,
+        "tech": 0.22909507916972982,
+        "norms": 0.01600159293621406
+      }
+    },
+    {
+      "t": 21,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.049077201956799044,
+        "regulation": 0.047651066109640206,
+        "market": -0.07686428745190343,
+        "tech": 0.22926424003544255,
+        "norms": 0.14153350848992496
+      }
+    },
+    {
+      "t": 22,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.0028750974499047732,
+        "regulation": -0.12667155067177677,
+        "market": -0.24682835184560814,
+        "tech": 0.06566110688890031,
+        "norms": 0.057688536718880246
+      }
+    },
+    {
+      "t": 23,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.18911041318773752,
+        "regulation": -0.019820126700904106,
+        "market": 0.21324902035274496,
+        "tech": -0.02867449161298391,
+        "norms": -0.22876196918142228
+      }
+    },
+    {
+      "t": 24,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.24982365147555058,
+        "regulation": -0.12490090727398512,
+        "market": 0.16620562853327542,
+        "tech": -0.023596049150901965,
+        "norms": -0.18825322727881721
+      }
+    },
+    {
+      "t": 25,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.14819300611482367,
+        "regulation": -0.20997614233992196,
+        "market": 0.12383060298982457,
+        "tech": 0.09750214965144216,
+        "norms": -0.12894746451912975
+      }
+    },
+    {
+      "t": 26,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.015271420847756345,
+        "regulation": -0.1002808474889425,
+        "market": 0.21526003298850432,
+        "tech": 0.12068989282419734,
+        "norms": 0.03078547768717399
+      }
+    },
+    {
+      "t": 27,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.03542514976010658,
+        "regulation": -0.07244748658828165,
+        "market": 0.2336564025883784,
+        "tech": 0.16470731448799442,
+        "norms": 0.05018218916447387
+      }
+    },
+    {
+      "t": 28,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.13875379100955892,
+        "regulation": -0.00555750424687651,
+        "market": -0.0665675537577739,
+        "tech": 0.05368809331732732,
+        "norms": -0.10632752993087913
+      }
+    },
+    {
+      "t": 29,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.013923381504583054,
+        "regulation": 0.1356508431628587,
+        "market": -0.047280959278222845,
+        "tech": -0.1898278645479632,
+        "norms": -0.11855640615102225
+      }
+    },
+    {
+      "t": 30,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.17093136614553128,
+        "regulation": 0.05367171767515294,
+        "market": 0.09291963844610923,
+        "tech": 0.2403183086797432,
+        "norms": -0.06126838243161897
+      }
+    },
+    {
+      "t": 31,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.008168267288551856,
+        "regulation": -0.16040494517967946,
+        "market": -0.12228437337779485,
+        "tech": 0.24812668990565245,
+        "norms": -0.24557102004488274
+      }
+    },
+    {
+      "t": 32,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.0633865781147448,
+        "regulation": 0.1096297367072327,
+        "market": -0.11791852301091804,
+        "tech": 0.06382825561026617,
+        "norms": 0.11776552205471402
+      }
+    },
+    {
+      "t": 33,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.1693685207944754,
+        "regulation": -0.07554026321846474,
+        "market": 0.1579219301158219,
+        "tech": 0.07469088306823563,
+        "norms": -0.0690529273964835
+      }
+    },
+    {
+      "t": 34,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": -0.23231436434662567,
+        "regulation": 0.13301447715008397,
+        "market": 0.15408548631536162,
+        "tech": 0.24614416751773288,
+        "norms": 0.144360928918416
+      }
+    },
+    {
+      "t": 35,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.19979978152695754,
+        "regulation": -0.044128882804347236,
+        "market": -0.1170959559106306,
+        "tech": -0.034778093032164226,
+        "norms": -0.1289619753453461
+      }
+    },
+    {
+      "t": 36,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.0368824947675489,
+        "regulation": -0.11702321533014343,
+        "market": -0.013256951982311693,
+        "tech": 0.029797412449929006,
+        "norms": -0.10644646461959051
+      }
+    },
+    {
+      "t": 37,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.00813190333713354,
+        "regulation": -0.11325176846271917,
+        "market": -0.0675187723858523,
+        "tech": -0.07381650890658364,
+        "norms": -0.08722261510154067
+      }
+    },
+    {
+      "t": 38,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.1344373224446322,
+        "regulation": -0.23363265184727344,
+        "market": 0.08916331793046106,
+        "tech": -0.05677672991765548,
+        "norms": -0.15451574204655133
+      }
+    },
+    {
+      "t": 39,
+      "phase_raw": "INERTIA",
+      "f": {
+        "f_exist": 0.0,
+        "f_stab": 0.0,
+        "f_inertia": 1.0,
+        "f_collapse": 0.0,
+        "f_stop": 0.0
+      },
+      "fields": {
+        "law": 0.15299291374400592,
+        "regulation": 0.03888274113049661,
+        "market": 0.08407302228172714,
+        "tech": 0.2104010811205287,
+        "norms": -0.12323231885985775
+      }
+    }
+  ],
+  "note": "Executable witness run: inertia (synthetic; not an empirical claim)."
+}
