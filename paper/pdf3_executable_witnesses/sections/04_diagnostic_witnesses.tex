@@ -1,0 +1,115 @@
+﻿% ==============================================================================
+% PDF-3 — Executable Witnesses & Diagnostic Closure
+% Section: Diagnostic Witness Definitions (Non-Executable)
+% Constraints: diagnostic-only; no execution; no new primitives; STOP is terminal.
+% ==============================================================================
+
+\section{Diagnostic Witnesses (Non-Executable)}
+
+This section defines a minimal and sufficient set of \emph{diagnostic witnesses}
+for PDF-3. Each witness is specified at a purely formal, non-executable level.
+
+\textbf{Scope constraints (hard).}
+All semantics are inherited \emph{without modification} from the frozen artifacts:
+PDF-0 (KEA Whitepaper), PDF-1 (Executable Demonstration Artifact), and
+PDF-2 (Structural Diagnosability \& Phase Logic). No new predicates, thresholds,
+metrics, or diagrams are introduced.
+
+\textbf{Epistemic stance.}
+All witnesses are \textbf{diagnostic-only}, \textbf{non-optimizing}, and
+\textbf{non-prescriptive}. The witnesses do not imply control, remediation,
+intervention, or optimization.
+
+\subsection{Witness Set Overview}
+
+\begin{center}
+\begin{tabular}{|l|l|p{8.2cm}|}
+\hline
+\textbf{Witness} & \textbf{Target Class} & \textbf{Diagnostic Role} \\
+\hline
+W\textsubscript{S} & SUCCESS &
+Demonstrates sustained structural viability under the already-defined phase logic. \\
+\hline
+W\textsubscript{I} & INERTIA &
+Demonstrates bounded persistence without structural progression, while remaining diagnosable. \\
+\hline
+W\textsubscript{C} & COLLAPSE &
+Demonstrates irreversible loss of structural viability as classified by the inherited semantics. \\
+\hline
+W\textsubscript{STOP} & STOP &
+Demonstrates terminal epistemic non-diagnosability (diagnostic closure by STOP). \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Witness W\textsubscript{S}: SUCCESS}
+
+\textbf{Purpose (diagnostic role).}
+Witness that the evaluated configuration is classified as SUCCESS under the inherited semantics.
+
+\textbf{Inputs (conceptual; non-executable).}
+A phase-space configuration admissible under the definitions and constraints of PDF-1,
+evaluated via the phase logic of PDF-2.
+
+\textbf{Expected diagnostic classification.}
+SUCCESS.
+
+\textbf{Termination condition.}
+Terminates once SUCCESS classification is obtained under continued diagnosability
+(i.e., without triggering STOP).
+
+\subsection{Witness W\textsubscript{I}: INERTIA}
+
+\textbf{Purpose (diagnostic role).}
+Witness that the evaluated configuration is classified as INERTIA: persistent, bounded,
+and diagnosable, yet non-progressive under the inherited semantics.
+
+\textbf{Inputs (conceptual; non-executable).}
+A phase-space configuration remaining within admissible bounds as defined in PDF-1/2,
+while the inherited classification yields INERTIA.
+
+\textbf{Expected diagnostic classification.}
+INERTIA.
+
+\textbf{Termination condition.}
+Terminates upon transition (under the inherited phase logic) to SUCCESS, COLLAPSE, or STOP.
+
+\subsection{Witness W\textsubscript{C}: COLLAPSE}
+
+\textbf{Purpose (diagnostic role).}
+Witness that the evaluated configuration is classified as COLLAPSE under the inherited semantics.
+
+\textbf{Inputs (conceptual; non-executable).}
+A phase-space configuration that, when evaluated using the frozen PDF-1/2 semantics,
+is classified as COLLAPSE.
+
+\textbf{Expected diagnostic classification.}
+COLLAPSE.
+
+\textbf{Termination condition.}
+Terminates immediately upon COLLAPSE classification.
+
+\subsection{Witness W\textsubscript{STOP}: STOP}
+
+\textbf{Purpose (diagnostic role).}
+Witness that evaluation terminates epistemically via STOP due to loss of diagnosability.
+
+\textbf{Inputs (conceptual; non-executable).}
+A phase-space configuration for which the inherited diagnosability conditions
+from PDF-1/2 are not met, yielding STOP.
+
+\textbf{Expected diagnostic classification.}
+STOP.
+
+\textbf{Termination condition.}
+Immediate termination upon STOP.
+
+\textbf{STOP clause (mandatory).}
+STOP is treated as a \textbf{terminal epistemic outcome}, not as a failure,
+error, or defect. STOP does not imply remediation or intervention.
+
+\subsection{Non-Prescription Clause}
+
+These witness definitions do not prescribe action and do not optimize any objective.
+They only define how diagnostic closure is witnessed under the frozen semantics.
+Any prescriptive use is out of scope for PDF-3.
