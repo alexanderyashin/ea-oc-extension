@@ -1,12 +1,43 @@
 ﻿\section{High-Level Structure}
 
-The intended structure of this artifact includes:
+\paragraph{Structural Role.}
+PDF-3 is not organized as a narrative, method description, or executable module.
+Its structure follows directly from its declared artifact class:
+a diagnostic closure and registry layer positioned above executable and semantic artifacts.
 
+As such, the structure of PDF-3 is intentionally minimal and non-creative.
+It exists to make explicit what is already fixed elsewhere.
+
+\paragraph{Constituent Structural Elements.}
+The artifact consists exclusively of the following structural components:
 \begin{itemize}
-  \item a registry of witness references associated with upstream executable witnesses,
-  \item references to their originating diagnostic predicates and phase classifications,
-  \item explicit closure markers linking witness labels to frozen upstream artifacts.
+  \item a canonical registry of diagnostic witness labels used for closure bookkeeping,
+  \item explicit references from each witness label to its originating diagnostic predicates
+        and phase classifications defined in upstream artifacts,
+  \item closure markers that bind each witness label to a frozen dependency set
+        (PDF-0, PDF-1, PDF-2).
 \end{itemize}
 
-No witnesses are implemented, instantiated, or executed within this artifact.
-All executable bindings, if any, exist exclusively in upstream artifacts.
+No additional structural elements are permitted without violating the declared
+scope and role of the artifact.
+
+\paragraph{Absence of Execution by Construction.}
+No witnesses are implemented, instantiated, or executed within PDF-3.
+This absence is not a limitation or omission.
+It is a direct consequence of the artifact’s position in the document chain.
+
+All executable bindings, operational procedures, and evaluation logic reside
+exclusively in upstream artifacts (in particular PDF-1).
+Embedding or duplicating execution logic here would constitute a structural error,
+resulting in semantic ambiguity and invalidating dependency closure.
+
+\paragraph{Closure Invariant.}
+PDF-3 satisfies the following invariant:
+
+\begin{quote}
+Every diagnostic label appearing in this artifact is fully determined by,
+and referentially reducible to, frozen upstream semantics.
+\end{quote}
+
+The artifact introduces no new axes of variation, interpretation, or execution.
+Its structure is exhausted by registry, reference, and closure.

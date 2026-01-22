@@ -1,147 +1,197 @@
 ﻿% ==============================================================================
 % PDF-3 — Executable Witnesses & Diagnostic Closure
 % Section: Diagnostic Witness Definitions (Non-Executable)
-% Constraints: diagnostic-only; no execution; no new primitives; STOP is terminal.
+% Artifact role: closure interface over inherited diagnostic semantics
+% Constraints: diagnostic-only; non-executable; no new primitives; STOP is terminal
 % ==============================================================================
 
 \section{Diagnostic Witnesses (Non-Executable)}
 
-This section specifies a small canonical registry set of \emph{diagnostic witness
-labels} used for closure bookkeeping in PDF-3. Each witness is defined at a purely
-formal, non-executable, and referential level.
+\paragraph{Role of Witnesses in PDF-3.}
+In PDF-3, a \emph{diagnostic witness} is neither an execution trace,
+nor an algorithm, proof, or empirical observation.
+It is a \emph{structural closure token} that certifies the outcome
+of an evaluation performed entirely in upstream artifacts.
 
-\textbf{Scope constraints (hard).}
-All semantics are inherited \emph{without modification} from the frozen upstream
-artifacts: PDF-0 (KEA Whitepaper), PDF-1 (Executable Demonstration Artifact), and
-PDF-2 (Structural Diagnosability \& Phase Logic). No new predicates, thresholds,
-metrics, formal conditions, or diagrams are introduced in this section.
+Witnesses exist to make diagnostic outcomes:
+\begin{itemize}
+  \item referentially explicit,
+  \item unambiguous across documents,
+  \item stable under frozen dependencies.
+\end{itemize}
 
-\textbf{Epistemic stance.}
-All witnesses are strictly \textbf{diagnostic-only}, \textbf{non-optimizing}, and
-\textbf{non-prescriptive}. They do not imply control, remediation, intervention,
-optimization, or evaluation beyond inherited diagnostic classification.
+They provide a formally fixed interface between executable diagnostics
+and downstream interpretation, without reintroducing execution or semantics.
 
-\subsection{Witness Set Overview}
+\paragraph{Non-Executability by Construction.}
+All witnesses defined in this section are intentionally non-executable.
+This is not an omission but a structural necessity imposed by the artifact hierarchy.
+
+\begin{quote}
+Evaluation, execution, and classification occur exclusively in upstream artifacts.
+PDF-3 records only the diagnostic closure of those evaluations.
+\end{quote}
+
+Any executable content at this level would duplicate or override inherited semantics,
+violating dependency closure and invalidating the artifact class.
+
+\paragraph{Hard Semantic Constraint.}
+All semantics used to justify witness registration are inherited
+\emph{verbatim and without modification} from the frozen upstream artifacts:
+PDF-0 (KEA Whitepaper), PDF-1 (Executable Demonstration Artifact),
+and PDF-2 (Structural Diagnosability \& Phase Logic).
+
+PDF-3 introduces no predicates, thresholds, metrics, evaluative procedures,
+or formal conditions of its own.
+
+\paragraph{Epistemic Discipline.}
+All witnesses are strictly:
+\begin{itemize}
+  \item diagnostic-only,
+  \item non-optimizing,
+  \item non-prescriptive.
+\end{itemize}
+
+No witness implies control, remediation, intervention, optimization,
+or normative judgment beyond inherited diagnostic classification.
+
+\subsection{Canonical Witness Set (Closure Completeness)}
+
+PDF-3 fixes a minimal, finite, and sufficient canonical set
+of diagnostic witness labels.
 
 \begin{center}
-\begin{tabular}{|l|l|p{8.2cm}|}
+\begin{tabular}{|l|l|p{8.6cm}|}
 \hline
-\textbf{Witness} & \textbf{Target Class} & \textbf{Diagnostic Role (Labeling)} \\
+\textbf{Witness} & \textbf{Target Class} & \textbf{Structural Diagnostic Meaning} \\
 \hline
-W\textsubscript{S} & SUCCESS &
-Labels classification as SUCCESS under the inherited phase semantics. \\
+$W_{\mathrm{S}}$ & SUCCESS &
+Inherited evaluation yields SUCCESS under preserved diagnosability. \\
 \hline
-W\textsubscript{I} & INERTIA &
-Labels classification as INERTIA: bounded persistence without structural progression,
-while remaining diagnosable under inherited semantics. \\
+$W_{\mathrm{I}}$ & INERTIA &
+Inherited evaluation yields INERTIA:
+bounded, persistent diagnosability without structural progression. \\
 \hline
-W\textsubscript{C} & COLLAPSE &
-Labels classification as COLLAPSE, as defined by the inherited phase semantics. \\
+$W_{\mathrm{C}}$ & COLLAPSE &
+Inherited evaluation yields COLLAPSE:
+irreversible loss of structural viability. \\
 \hline
-W\textsubscript{STOP} & STOP &
-Labels terminal epistemic non-diagnosability (diagnostic closure via STOP). \\
+$W_{\mathrm{STOP}}$ & STOP &
+Inherited diagnosability conditions fail;
+evaluation terminates without classification. \\
 \hline
 \end{tabular}
 \end{center}
 
-\subsection{Witness registration principle (purely inherited)}
+\paragraph{Closure Completeness Statement.}
+This witness set is \emph{exhaustive} with respect to inherited semantics:
 
-A witness label W\textsubscript{X} is \emph{registrable} in PDF-3 if and only if an
-upstream inherited evaluation (as defined in PDF-1/2) yields the corresponding
-diagnostic class X. PDF-3 does not define, implement, or execute the evaluation;
-it only records the closure label under the frozen semantics.
+\begin{quote}
+For every admissible evaluation outcome under the frozen upstream semantics,
+there exists a witness label in this set that is registrable in PDF-3.
+\end{quote}
 
-\subsection{Witness W\_S: SUCCESS}
+No additional witness category can be introduced
+without modifying upstream diagnostic logic.
 
-\textbf{Purpose (diagnostic role).}
-Registers that the evaluated configuration is classified as SUCCESS under inherited
-semantics.
+\subsection{Witness Registration Principle}
 
-\textbf{Inputs (conceptual; non-executable).}
-A phase-space configuration admissible under the frozen definitions of PDF-1,
-evaluated via the phase logic of PDF-2.
+A witness label $W_X$ is registrable in PDF-3 if and only if:
 
-\textbf{Expected diagnostic classification.}
-SUCCESS (as a label under inherited semantics).
+\begin{quote}
+An evaluation performed under frozen upstream semantics
+(PDF-1 and PDF-2) yields the diagnostic class $X$,
+and no violation of diagnosability invalidates that evaluation.
+\end{quote}
 
-\textbf{Termination condition.}
-Terminates once SUCCESS classification is registered under continued diagnosability
-(i.e., without triggering STOP).
+PDF-3 neither defines nor executes this evaluation.
+It records only the resulting closure label.
 
-\textbf{Refutation / falsifiability (inherited).}
-W\_S is refuted if the inherited classifier does not yield SUCCESS for the referenced
-configuration, or if STOP is triggered for that configuration during the attempted
-registration under the frozen semantics.
+\subsection{\texorpdfstring{Witness $W_{\mathrm{S}}$: SUCCESS}{Witness WS: SUCCESS}}
 
-\subsection{Witness W\_I: INERTIA}
+\textbf{Diagnostic role.}
+Registers that a referenced configuration is classified as SUCCESS
+under inherited semantics.
 
-\textbf{Purpose (diagnostic role).}
-Registers that the evaluated configuration is classified as INERTIA under inherited
-semantics.
+\textbf{Conceptual input (non-executable).}
+A phase-space configuration admissible under the frozen constraints of PDF-1,
+evaluated using the phase logic defined in PDF-2.
 
-\textbf{Inputs (conceptual; non-executable).}
-A phase-space configuration remaining within admissible bounds as defined in PDF-1/2,
-for which the inherited classification yields INERTIA.
+\textbf{Closure condition.}
+The inherited classifier yields SUCCESS
+and diagnosability is preserved.
 
-\textbf{Expected diagnostic classification.}
-INERTIA (as a label under inherited semantics).
+\textbf{Refutation (inherited).}
+$W_{\mathrm{S}}$ is invalid if:
+\begin{itemize}
+  \item the inherited classifier does not yield SUCCESS, or
+  \item diagnosability is lost and STOP is triggered.
+\end{itemize}
 
-\textbf{Termination condition.}
-Terminates upon transition (under inherited phase logic) to SUCCESS, COLLAPSE, or STOP.
+\subsection{\texorpdfstring{Witness $W_{\mathrm{I}}$: INERTIA}{Witness WI: INERTIA}}
 
-\textbf{Refutation / falsifiability (inherited).}
-W\_I is refuted if the inherited classifier does not yield INERTIA for the referenced
-configuration (e.g., yields SUCCESS/COLLAPSE/STOP instead), or if the configuration is
-not admissible under the frozen upstream constraints.
+\textbf{Diagnostic role.}
+Registers that a referenced configuration is classified as INERTIA
+under inherited semantics.
 
-\subsection{Witness W\_C: COLLAPSE}
+\textbf{Conceptual input (non-executable).}
+A phase-space configuration remaining admissible under frozen constraints
+while yielding the INERTIA classification.
 
-\textbf{Purpose (diagnostic role).}
-Registers that the evaluated configuration is classified as COLLAPSE under inherited
-semantics.
+\textbf{Closure condition.}
+The inherited classifier yields INERTIA
+without loss of diagnosability.
 
-\textbf{Inputs (conceptual; non-executable).}
-A phase-space configuration that, when evaluated using frozen PDF-1/2 semantics,
-is classified as COLLAPSE.
+\textbf{Refutation (inherited).}
+$W_{\mathrm{I}}$ is invalid if:
+\begin{itemize}
+  \item the classifier yields SUCCESS, COLLAPSE, or STOP, or
+  \item admissibility conditions are violated.
+\end{itemize}
 
-\textbf{Expected diagnostic classification.}
-COLLAPSE (as a label under inherited semantics).
+\subsection{\texorpdfstring{Witness $W_{\mathrm{C}}$: COLLAPSE}{Witness WC: COLLAPSE}}
 
-\textbf{Termination condition.}
-Terminates immediately upon COLLAPSE classification.
+\textbf{Diagnostic role.}
+Registers irreversible loss of structural viability
+classified as COLLAPSE under inherited semantics.
 
-\textbf{Refutation / falsifiability (inherited).}
-W\_C is refuted if the inherited classifier does not yield COLLAPSE for the referenced
-configuration, or if the configuration reference cannot be evaluated under the frozen
-upstream evaluation semantics.
+\textbf{Conceptual input (non-executable).}
+A configuration that, when evaluated under frozen upstream semantics,
+yields COLLAPSE.
 
-\subsection{Witness W\_{STOP}: STOP}
+\textbf{Closure condition.}
+Immediate classification as COLLAPSE.
 
-\textbf{Purpose (diagnostic role).}
-Registers termination of evaluation via STOP due to loss of diagnosability.
+\textbf{Refutation (inherited).}
+$W_{\mathrm{C}}$ is invalid if the inherited classifier
+does not yield COLLAPSE.
 
-\textbf{Inputs (conceptual; non-executable).}
-A phase-space configuration for which inherited diagnosability conditions from
-PDF-1/2 are not met, yielding STOP.
+\subsection{\texorpdfstring{Witness $W_{\mathrm{STOP}}$: STOP}{Witness WSTOP: STOP}}
 
-\textbf{Expected diagnostic classification.}
-STOP.
+\textbf{Diagnostic role.}
+Registers terminal epistemic non-diagnosability.
 
-\textbf{Termination condition.}
-Immediate termination upon STOP.
+\textbf{Conceptual input (non-executable).}
+A configuration for which inherited diagnosability conditions
+are not satisfied.
 
-\textbf{STOP clause (mandatory).}
-STOP is a \textbf{terminal epistemic boundary condition} of diagnosis, not a failure,
-error, defect, or system state. STOP does not imply remediation, intervention, or
-evaluation of quality.
+\textbf{Closure condition.}
+Immediate termination of evaluation via STOP.
 
-\textbf{Refutation / falsifiability (inherited).}
-W\_{STOP} is refuted if the inherited diagnosability conditions remain satisfied for
-the referenced configuration (i.e., STOP is not yielded) under the frozen semantics.
+\textbf{STOP Axiom (Terminality).}
+STOP is a \emph{terminal epistemic boundary condition}.
+It is not a failure, error, defect, or system state.
+No diagnostic, evaluative, inferential, or prescriptive
+operation is permitted beyond STOP.
 
-\subsection{Non-Prescription Clause}
+\textbf{Refutation (inherited).}
+$W_{\mathrm{STOP}}$ is invalid if diagnosability remains satisfied
+under frozen upstream semantics.
 
-These witness definitions do not prescribe actions, strategies, or optimizations.
-They solely register diagnostic closure under frozen semantics. Any prescriptive or
-operational interpretation constitutes a category error relative to the declared
-artifact class of PDF-3.
+\subsection{Non-Prescription Invariant}
+
+Witness registration in PDF-3 has no operational consequences.
+It neither implies nor authorizes action, intervention,
+optimization, or decision-making.
+
+The role of PDF-3 is exhausted by diagnostic closure.

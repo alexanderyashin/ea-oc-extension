@@ -1,46 +1,94 @@
 ﻿\section{Scope and Positioning}
 
-This artifact depends exclusively on the following frozen upstream documents:
+\paragraph{Scope Definition.}
+PDF-3 operates exclusively as a \emph{diagnostic closure and registry layer}
+within a fixed artifact chain.
+Its scope is strictly limited to referencing, labeling, and closing
+diagnostic outcomes defined elsewhere.
 
+PDF-3 depends \emph{only and entirely} on a frozen set of upstream artifacts.
+It introduces no independent semantics, diagnostics, execution logic,
+interpretive authority, or evaluative criteria of its own.
+
+\paragraph{Complete Upstream Dependency Set.}
+All content in PDF-3 is defined relative to the following upstream artifacts:
 \begin{itemize}
-  \item PDF-0: KEA Whitepaper (Foundational Formal Specification)
-  \item PDF-1: Executable Demonstration Artifact
-  \item PDF-2: Structural Diagnosability \& Phase Logic
+  \item PDF-0: KEA Whitepaper (foundational formal specification),
+  \item PDF-1: Executable Demonstration Artifact (executable bindings and evaluation procedures),
+  \item PDF-2: Structural Diagnosability \& Phase Logic (diagnostic phase semantics).
+\end{itemize}
+No other documents, implementations, datasets, or interpretations
+are within scope for this artifact.
+
+\paragraph{Non-Extension Guarantee.}
+PDF-3 does not modify, reinterpret, extend, refine, operationalize,
+or contextualize any content originating in the upstream artifacts.
+
+All semantics, classifications, predicates, thresholds, phase definitions,
+and diagnostic meanings are inherited \emph{verbatim and without transformation}.
+Any semantic effect observable in PDF-3 is reducible to upstream definitions.
+
+\paragraph{Position Within the Artifact Chain.}
+PDF-3 occupies a strictly terminal position in the artifact sequence.
+Its role is limited to:
+\begin{itemize}
+  \item anchoring witness labels to inherited diagnostic classifications,
+  \item declaring explicit refutation conditions for those labels,
+  \item formally closing the diagnostic classification space defined upstream.
 \end{itemize}
 
-PDF-3 does not modify, reinterpret, extend, or operationalize any content from
-these upstream artifacts. All referenced semantics, classifications, and phase
-definitions are inherited without alteration.
+PDF-3 performs no inference, evaluation, execution, or validation.
+It records diagnostic closure only.
 
-The role of PDF-3 is strictly that of a closure and registry layer. It provides
-explicit anchoring of diagnostic labels and witness references to upstream
-artifacts, without introducing new claims, validations, executions, or
-standalone interpretive authority.
+\paragraph{Non-Autonomy Constraint.}
+PDF-3 is \emph{intentionally non-autonomous}.
+Its validity, meaning, and interpretability are entirely derivative:
+\begin{quote}
+\emph{In the absence of the frozen upstream artifacts,
+PDF-3 has no semantic content, no diagnostic meaning,
+and no executable interpretation.}
+\end{quote}
+This non-autonomy is not a limitation but a defining structural property
+of the artifact class.
 
-PDF-3 is not intended to be self-sufficient or independently meaningful. Its
-function is defined entirely by its position within the frozen artifact chain.
+\subsection{Dependency Closure (Frozen Set)}
 
-\subsection{Dependency closure (frozen set)}
+\paragraph{Frozen Dependency Set.}
+PDF-3 is defined only relative to an immutable dependency set.
+The following upstream artifacts are treated as frozen inputs
+for all inherited semantics referenced in this document:
 
-PDF-3 is valid only relative to a frozen dependency set. The following upstream
-artifacts are treated as immutable inputs for all inherited semantics used here:
+% Layout-only helper: make long fixed-width identifiers breakable.
+% This introduces no semantics; it only enables line breaks.
+\newcommand{\shaBreak}[1]{\texttt{\expandafter\shaBreakAux#1\relax}}
+\def\shaBreakAux#1{%
+  \ifx#1\relax\else #1\allowbreak\expandafter\shaBreakAux\fi
+}
 
 \begin{center}
 \begin{tabular}{|l|p{9.8cm}|}
 \hline
-\textbf{Dependency} & \textbf{Frozen reference (informational anchor)} \\
+\textbf{Dependency} & \textbf{Frozen Reference (Informational Anchor)} \\
 \hline
 PDF-0 & KEA Whitepaper (foundational formal specification) \\
 \hline
-PDF-1 & Executable Demonstration Artifact (execution bindings live here) \\
+PDF-1 & Executable Demonstration Artifact (execution bindings and evaluation procedures) \\
 \hline
-PDF-2 & Structural Diagnosability \& Phase Logic (phase semantics live here) \\
+PDF-2 & Structural Diagnosability \& Phase Logic (diagnostic phase semantics) \\
 \hline
-SHA-256 anchor & c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6 \\
+SHA-256 anchor & \shaBreak{c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6} \\
 \hline
 \end{tabular}
 \end{center}
 
-The SHA-256 anchor above is recorded as an external integrity handle for the frozen
-chain state as used in the current run. PDF-3 does not perform verification; it only
-records the closure reference.
+\paragraph{Closure Validity Condition.}
+The dependency set above constitutes a \emph{validity boundary} for PDF-3.
+Any modification, replacement, extension, or reinterpretation
+of the upstream artifacts invalidates this document
+as a diagnostic closure artifact.
+
+\paragraph{Integrity Handle (Recorded, Not Verified).}
+The SHA-256 anchor is recorded solely as an external integrity handle
+identifying the frozen chain state used in the current run.
+PDF-3 performs no verification and asserts no trust mechanism;
+it records the dependency closure reference only.

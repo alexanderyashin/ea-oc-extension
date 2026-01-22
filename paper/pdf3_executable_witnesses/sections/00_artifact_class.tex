@@ -1,24 +1,72 @@
 ﻿\section{Artifact Class}
 
-This document is classified as an \emph{Executable Witness \& Diagnostic Closure Artifact}.
+This document is classified as an
+\emph{Executable Witness Registry and Diagnostic Closure Artifact}.
 
-The term \emph{Executable} refers exclusively to executable bindings and procedures
-defined in upstream artifacts (in particular, PDF-1). This document itself contains
-no runnable components, implementations, or execution logic.
+\paragraph{Artifact Nature.}
+PDF-3 is a \emph{registry-level closure artifact}.
+It introduces no new semantics, diagnostic logic, predicates, metrics,
+thresholds, evaluative procedures, or interpretations.
 
-Its role is to provide a structural container and registry for witness references and
-to formally close diagnostic classifications established under inherited semantics
-from upstream artifacts.
+All diagnostic meaning, executability, and formal validity are
+\emph{strictly inherited} from a frozen set of upstream artifacts
+(PDF-0, PDF-1, PDF-2).
+PDF-3 neither amends nor supplements those semantics.
 
-No new semantics, logic, predicates, metrics, thresholds, or interpretations are
-introduced in this artifact. All diagnostic meaning is strictly inherited.
+\paragraph{Meaning of ``Executable''.}
+The qualifier \emph{Executable} applies exclusively to diagnostic bindings,
+procedures, and evaluation mechanisms defined in upstream artifacts
+(in particular PDF-1).
 
-\subsection{What is structurally fixed by PDF-3 (non-semantic)}
+PDF-3 itself contains no runnable components, algorithms, implementations,
+or execution logic, and does not claim executability as an isolated artifact.
 
-PDF-3 fixes only structural (bookkeeping) elements:
+Executability in PDF-3 is therefore \emph{referential}:
+it denotes explicit attachment to inherited executable semantics,
+not intrinsic operational capability.
+
+\paragraph{Primary Function.}
+The sole function of PDF-3 is to provide a formally closed registry that:
+
 \begin{itemize}
-  \item a minimal canonical witness label set for closure bookkeeping,
-  \item explicit anchoring of witness labels to inherited diagnostic classes,
-  \item an explicit dependency-closure statement over the frozen upstream artifacts,
-  \item refutation conditions for witness registration (i.e., when a witness label is not justified under inherited semantics).
+  \item fixes a canonical and finite set of diagnostic witness labels,
+  \item anchors each witness label to an inherited diagnostic class or outcome,
+  \item specifies explicit refutation conditions for witness registration,
+  \item declares dependency closure over a frozen upstream artifact set.
+\end{itemize}
+
+PDF-3 performs no evaluation and authorizes no execution.
+It records diagnostic closure only.
+
+\paragraph{Diagnostic Closure Invariant.}
+Upon publication of PDF-3, the following invariant holds:
+
+\begin{quote}
+\emph{All admissible diagnostic outcomes under the inherited semantics are
+exhaustively labeled, mutually exclusive, and refutable.
+No additional witness category can be introduced without modifying
+upstream semantics.}
+\end{quote}
+
+This invariant constitutes the diagnostic closure provided by PDF-3.
+
+\paragraph{Non-Semantic Scope.}
+PDF-3 operates purely at the structural and bookkeeping level.
+It fixes classification boundaries, label admissibility,
+and dependency constraints, but performs no inference,
+computation, execution, or validation.
+
+Any future executable realization, empirical instantiation,
+or formal proof must reference the witness labels defined here
+without altering their inherited meaning.
+
+\subsection{Structurally Fixed Elements (Non-Semantic)}
+
+Relative to the inherited semantics, PDF-3 irreversibly fixes:
+
+\begin{itemize}
+  \item a minimal and canonical witness label set for diagnostic closure,
+  \item a total mapping between witness labels and inherited diagnostic classes,
+  \item an explicit dependency-closure declaration over frozen upstream artifacts,
+  \item explicit refutation conditions specifying when a witness label is unjustified.
 \end{itemize}
