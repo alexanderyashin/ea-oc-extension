@@ -76,3 +76,20 @@ Thumbs.db
 
 # --- project PDFs (keep sources, ignore build outputs) ---
 /paper/**/main.pdf
+
+# Generated run artifacts
+results/*.json
+results/*.csv
+results/*.txt
+results/pdf1/**
+
+# Allow explicit PDF-3 evidence
+!results/pdf3/
+!results/pdf3/witness_*.json
+
+# Ignore all generated results by default
+results/**
+
+# Allow the PDF-3 evidence pack
+!results/pdf3/
+!results/pdf3/witness_*.json
