@@ -19,7 +19,8 @@ STOP) are treated as informative endpoints rather than failures.
 Classical systems theory studies observability and identifiability for systems
 whose model class is fixed or parameterized a priori. The central question is
 whether internal states or parameters can be reconstructed from outputs under
-known inputs and dynamics.
+known inputs and dynamics, as formalized in linear and nonlinear settings
+(e.g.\ \cite{kalman1960_filtering,hermannkrener1977_nonlinear_obs,isidori1995_nonlinear_control}).
 
 In contrast, the enterprise setting addressed here does not assume a single
 fixed model class. Feasible structure is itself constrained by organizational,
@@ -34,9 +35,9 @@ diagnostic decidability.
 \paragraph{Model-based diagnosis and fault isolation.}
 Engineering approaches to model-based diagnosis and fault isolation provide
 formal tools for detecting inconsistencies between observations and a given
-model, and for isolating fault hypotheses. These approaches rely on a well-
-defined fault taxonomy, a stable observation interface, and a separation
-between system structure and control logic.
+model, and for isolating fault hypotheses \cite{reiter1987_diagnosis,iserermann2005_fdi_status}.
+These approaches rely on a well-defined fault taxonomy, a stable observation
+interface, and a separation between system structure and control logic.
 
 Enterprises violate these assumptions in a systematic way. Structural
 incompatibilities are often global rather than local, fault classes are not
@@ -50,7 +51,7 @@ Control and optimization frameworks presuppose a controllable interface, an
 objective function (often expressed via KPIs or utility), and a stable mapping
 from interventions to outcomes. These assumptions enable performance-oriented
 reasoning, but they implicitly require that the system state is sufficiently
-well-defined to support optimization.
+well-defined to support optimization \cite{sontag1998_mathematical_control}.
 
 Structural diagnosability precedes any such reasoning. If multiple incompatible
 enterprise states are consistent with the same observation surface, optimizing
@@ -85,7 +86,8 @@ is not uniquely identifiable. Structural diagnosability, by contrast, requires
 explicit acknowledgment of non-uniqueness: that the same observations may be
 compatible with mutually exclusive structural interpretations. This paper
 therefore avoids KPI logic and case-based prescriptions, and treats
-non-identifiability as an explicit diagnostic outcome.
+non-identifiability as an explicit diagnostic outcome, consistent with classical
+discussions of falsifiability and underdetermination \cite{popper1959_logic,quine1951_two_dogmas}.
 
 \paragraph{What this paper does \emph{not} attempt to do.}
 To avoid scope confusion, we state explicitly what is out of scope:
