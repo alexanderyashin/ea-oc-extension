@@ -1,19 +1,274 @@
 ﻿\appendix
-\section{Appendix: Contract Tables (Registries Placeholder)}
-This appendix provides placeholders for forthcoming contract tables. RUN-OPS0-01 contains \textbf{headings only}.
+\section{Appendix: Contract Tables (Core Registries v1)}
+This appendix defines \emph{normative, diagnostic-only} contract registries for OPS-0 tooling. The tables below specify what a tool \textbf{MAY} do (Operation Registry), what \textbf{MUST} trigger a terminal STOP (STOP Triggers Registry), and what a tool \textbf{MUST NOT} do (No-Go Registry). STOP is a terminal epistemic boundary: \textbf{no recovery, no workaround, no advice}.
 
-\subsection{Contract Table Registry (placeholder list)}
+\subsection{Contract Table Registry}
 \begin{itemize}
   \item CT-01: Artifact Classes \& Identifiers (Reserved)
-  \item CT-02: Operation Registry (Reserved)
-  \item CT-03: Forbidden Operation Classes (Reserved)
+  \item CT-02: Operation Registry (v1) \hfill \emph{(this run)}
+  \item CT-03: No-Go Registry (v1) \hfill \emph{(this run)}
   \item CT-04: Input Admissibility Matrix (Reserved)
   \item CT-05: Output Legitimacy Matrix (Reserved)
-  \item CT-06: STOP/NO-GO Triggers (Reserved)
-  \item CT-07: Provenance Fields \& Signature Surface (Reserved)
+  \item CT-06: STOP Triggers Registry (v1) \hfill \emph{(this run)}
+  \item CT-07: Provenance Fields \& Signature Surface (Reserved; RUN-OPS0-03)
   \item CT-08: Reproducibility \& Traceability Obligations (Reserved)
-  \item CT-09: Conformance Test Catalogue (Reserved)
+  \item CT-09: Conformance Test Catalogue (Reserved; later section)
 \end{itemize}
 
+\subsection{CT-02: Operation Registry (v1)}
+\noindent\textbf{Scope note (binding):} All operations in this registry are \textbf{diagnostic-only}. At the operation level, any prescriptive, optimization, control, or recommendation semantics are \textbf{forbidden}. If an operation cannot be executed under admissible inputs and observability, the tool \textbf{MUST} emit STOP per CT-06.
+
+\begin{center}
+\small
+\begin{longtable}{|p{1.7cm}|p{2.2cm}|p{3.0cm}|p{3.0cm}|p{3.2cm}|p{3.0cm}|p{3.0cm}|p{3.0cm}|p{2.6cm}|}
+\hline
+\textbf{Op-ID} & \textbf{Name} & \textbf{Intent (diagnostic-only)} & \textbf{Required Inputs (minimal)} & \textbf{Output Artifacts (type + must-carry fields pointer)} & \textbf{Allowed Actions (constraints/predicates only)} & \textbf{Forbidden Actions (explicit)} & \textbf{STOP Behavior (inadmissible/failed)} & \textbf{Notes (ETS-lock / layer tie)} \\
+\hline
+\endfirsthead}
+
+\hline
+\textbf{Op-ID} & \textbf{Name} & \textbf{Intent (diagnostic-only)} & \textbf{Required Inputs (minimal)} & \textbf{Output Artifacts (type + must-carry fields pointer)} & \textbf{Allowed Actions (constraints/predicates only)} & \textbf{Forbidden Actions (explicit)} & \textbf{STOP Behavior (inadmissible/failed)} & \textbf{Notes (ETS-lock / layer tie)} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+Op-$\Omega$ &
+Admissible Region Declaration/Check &
+Represent and check declared admissibility region $\Omega$ (and boundary $\partial\Omega$ if declared), strictly as diagnostic scope. &
+Declared $\Omega$ (and optionally $\partial\Omega$); artifact identifiers; provenance context. &
+\texttt{Artifact:OmegaDecl/OmegaCheck} (MUST carry CT-07 pointer). &
+Evaluate whether inputs/claims are inside declared admissibility; record result as predicate outcomes. &
+No expansion of $\Omega$; no ``fix'' guidance; no suggestions to modify scope. &
+If $\Omega$ not provided / inconsistent / not evaluable: emit STOP (CT-06). &
+MUST NOT reinterpret ETS.K\_EA.v1.1 semantics; ETS hash lock applies (Op-PROV/Op-STOP). \\
+\hline
+
+Op-A &
+Axis Declaration/Check &
+Declare/check admissible axis set $A$ used in diagnostics; ensure axis identity and meaning remain within declared contract. &
+Declared axis list $A$ (names/definitions as already in OPS-0); mapping references; provenance context. &
+\texttt{Artifact:AxisDecl/AxisCheck} (MUST carry CT-07 pointer). &
+Verify axis presence, identity, and admissible mapping references; record admissibility/unknowns. &
+No KPI substitution as axis; no invention of new axes; no semantic drift. &
+If required axes missing/ambiguous/not observable: emit STOP (CT-06). &
+Axis set is contract surface; any drift suspicion escalates to STOP-DRIFT (CT-06). \\
+\hline
+
+Op-$\Theta$ &
+Threshold Check &
+Evaluate declared threshold predicates $\Theta$ under admissible inputs; report violations as diagnostic outcomes. &
+Declared thresholds $\Theta$ (as defined in OPS-0); required evidence inputs; provenance context. &
+\texttt{Artifact:ThresholdEval} (MUST carry CT-07 pointer). &
+Compute/verify predicate truth values and record violations; no remediation. &
+No ``optimize to satisfy $\Theta$'' language; no control objective definitions. &
+If thresholds cannot be evaluated (observability lost) or imply $\Omega$ collapse per contract: emit STOP (CT-06). &
+Threshold semantics remain as declared; do not introduce new threshold types or meanings. \\
+\hline
+
+Op-C &
+Cycle Evidence Check &
+Evaluate existence/closure of declared cycles $C$ strictly as evidence predicates. &
+Declared cycles $C$ (as defined in OPS-0); required evidence inputs; provenance context. &
+\texttt{Artifact:CycleEval} (MUST carry CT-07 pointer). &
+Record whether required cycles are evidenced/closed within declared tolerances. &
+No ``create cycles'' advice; no prescriptive process design. &
+If cycle evidence is required but not observable / inadmissible: emit STOP (CT-06). &
+Diagnostic-only: cycles are evaluated as predicates, not constructed. \\
+\hline
+
+Op-k &
+Continuumness/Coherence Metric Eval &
+Evaluate $k$ (and any declared derived indicators) as diagnostic measurements under contract. &
+Declared $k$ definition(s) as per OPS-0; required evidence inputs; provenance context. &
+\texttt{Artifact:kEval} (MUST carry CT-07 pointer). &
+Compute/report $k$; report undefined when inputs missing; do not infer beyond evidence. &
+No target-setting; no maximize/minimize; no control-loop semantics. &
+If $k$ cannot be computed due to missing inputs/observability: emit STOP (CT-06) when required. &
+Any computed value MUST be traceable to evidence inputs (CT-08 reserved). \\
+\hline
+
+Op-$\Pi$ &
+Diagnostic Projection / Phase Mapping &
+Perform diagnostic projection (e.g., phase-space mapping) as a representation of evaluated predicates/metrics. &
+Declared projection definition (OPS-0); evaluated predicate/metric outputs; provenance context. &
+\texttt{Artifact:PhaseMap/Projection} (MUST carry CT-07 pointer). &
+Map already-evaluated results into declared projection space; preserve boundaries/STOP regions. &
+No optimization over phase space; no ``best path'' outputs; no recommendation surfaces. &
+If projection cannot be formed without inventing data or violating admissibility: emit STOP (CT-06). &
+Projection is representational only; MUST preserve STOP terminality. \\
+\hline
+
+Op-$\Psi7$ &
+External Witness Boundary (Terminal) &
+Declare/record that any transition beyond STOP requires an external $\Psi$-witness (outside tool scope). &
+External witness reference (if provided); provenance context. &
+\texttt{Artifact:PsiWitnessRef} (MUST carry CT-07 pointer). &
+Only record presence/absence of external witness reference; no inference of success. &
+No claiming recovery; no ``STOP resolved'' without external witness reference. &
+If tool is asked to conclude recovery/success without witness: emit STOP (CT-06) + log No-Go. &
+Boundary marker: tool cannot generate $\Psi$ witness; it can only reference it if provided. \\
+\hline
+
+Op-STOP &
+STOP Emission (Terminal) &
+Emit a terminal STOP decision when contract predicates cannot be evaluated or are violated per CT-06. &
+Trigger condition + required evidence references + provenance context. &
+\texttt{Artifact:STOP} (MUST carry CT-07 pointer). &
+Emit STOP with explicit Trigger-ID(s), minimal evidence pointers, and ETS lock references. &
+No workaround guidance; no remediation plan; no ``next steps'' recommendations. &
+N/A (STOP is the terminal behavior). &
+STOP is terminal epistemic boundary by contract; must be explicit and machine-auditable later. \\
+\hline
+
+Op-PROV &
+Provenance Binding (Minimal) &
+Bind outputs to provenance context and ETS lock surface (without defining schema here). &
+Tool identity/version; ETS identifier + hash/lock reference; input artifact IDs; timestamps (as available). &
+\texttt{Artifact:ProvenanceStub} (MUST carry CT-07 pointer). &
+Attach minimal provenance stub to every emitted artifact; record ETS hash mismatch suspicion. &
+No silent reinterpretation; no silent version drift; no unverifiable outputs. &
+If provenance cannot be produced or ETS lock cannot be established: emit STOP (CT-06). &
+Schema deferred to CT-07; requirement here is existence of provenance binding, not its full structure. \\
+\hline
+
+\end{longtable}
+\end{center}
+
+\subsection{CT-06: STOP Triggers Registry (v1)}
+\noindent\textbf{Binding rule:} If any trigger condition below holds, the tool \textbf{MUST} emit a terminal STOP artifact (Op-STOP) and a provenance stub (Op-PROV). The tool \textbf{MUST NOT} provide advice, remediation, optimization, or prescriptive actions. STOP precedence is strict: if multiple triggers apply, the tool \textbf{MUST} list all applicable Trigger-IDs.
+
+\begin{center}
+\small
+\begin{longtable}{|p{1.8cm}|p{6.3cm}|p{4.1cm}|p{5.2cm}|p{3.0cm}|}
+\hline
+\textbf{Trigger-ID} & \textbf{Condition (contract predicate; no new primitives)} & \textbf{Required Evidence / Inputs} & \textbf{Mandatory Output Behavior (STOP + provenance; no advice)} & \textbf{Notes (layer / precedence)} \\
+\hline
+\endfirsthead}
+
+\hline
+\textbf{Trigger-ID} & \textbf{Condition (contract predicate; no new primitives)} & \textbf{Required Evidence / Inputs} & \textbf{Mandatory Output Behavior (STOP + provenance; no advice)} & \textbf{Notes (layer / precedence)} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+STOP-01 &
+Input inadmissibility: required inputs for declared operations (CT-02) are missing beyond declared tolerance, malformed, or outside admissible $\Omega$ (or $\partial\Omega$ where declared). &
+Declared $\Omega$/$\partial\Omega$; required inputs list; observed input IDs. &
+Emit STOP (Trigger-ID=STOP-01), list missing/invalid inputs by identifier, bind provenance stub, and terminate. &
+Applies before any derived evaluation; precedence high. \\
+\hline
+
+STOP-02 &
+Observability lost: required predicates (e.g., $\Theta$, $C$, $k$) cannot be evaluated due to insufficient observability of required evidence inputs. &
+Predicate definitions + evidence requirements; observed evidence availability/quality indicators. &
+Emit STOP (Trigger-ID=STOP-02), explicitly state which predicates are not evaluable, bind provenance stub, and terminate. &
+Diagnostic integrity gate; no imputation allowed. \\
+\hline
+
+STOP-03 &
+Boundary violation: evaluation would require stepping outside declared admissibility (outside $\Omega$ or violating declared boundary constraints). &
+Declared $\Omega$/$\partial\Omega$; attempted evaluation scope. &
+Emit STOP (Trigger-ID=STOP-03), record attempted out-of-bound step as non-executed, bind provenance stub, and terminate. &
+Contract-scope protection; no scope expansion permitted. \\
+\hline
+
+STOP-04 &
+Threshold violations implying contract-level collapse: a declared $\Theta$ predicate indicates collapse of admissible region or invalidity of subsequent evaluation under contract. &
+Declared $\Theta$ predicates; evidence inputs; threshold evaluation results (if computable). &
+Emit STOP (Trigger-ID=STOP-04), report violated threshold identifiers, bind provenance stub, and terminate. &
+STOP terminal; tool must not ``continue anyway''. \\
+\hline
+
+STOP-05 &
+Semantic drift suspicion: ETS lock mismatch (hash mismatch / unknown ETS identifier / unknown tool version for the declared ETS), or any ambiguity that would force reinterpretation of ETS.K\_EA.v1.1 semantics. &
+ETS identifier + declared lock surface; tool identity/version; input artifact provenance. &
+Emit STOP (Trigger-ID=STOP-05), record mismatch/suspicion, bind provenance stub, and terminate. &
+Hard gate: prevents silent reinterpretation. \\
+\hline
+
+STOP-06 &
+Forbidden request surface: user/system requests prescriptive guidance, optimization targets, control objectives, or remediation steps (any request that violates diagnostic-only scope). &
+Request text/context (as reference); contract scope statement. &
+Emit STOP (Trigger-ID=STOP-06), cite contract prohibition (diagnostic-only), bind provenance stub, and terminate. &
+Scope enforcement; also covered by No-Go CT-03. \\
+\hline
+
+\end{longtable}
+\end{center}
+
+\subsection{CT-03: No-Go Registry (v1)}
+\noindent\textbf{Binding rule:} Any pattern below is prohibited. A conformant tool \textbf{MUST NOT} produce such outputs or behaviors. Detection hints are non-executable and do not define tests or implementations.
+
+\begin{center}
+\small
+\begin{longtable}{|p{1.8cm}|p{6.8cm}|p{5.2cm}|p{4.5cm}|}
+\hline
+\textbf{NoGo-ID} & \textbf{Prohibited Pattern (tool must not do)} & \textbf{Rationale (contract-level; diagnostic-only)} & \textbf{Detection/Test Hint (no code)} \\
+\hline
+\endfirsthead}
+
+\hline
+\textbf{NoGo-ID} & \textbf{Prohibited Pattern (tool must not do)} & \textbf{Rationale (contract-level; diagnostic-only)} & \textbf{Detection/Test Hint (no code)} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+NOGO-01 &
+Prescriptive recommendations (e.g., ``do X to fix Y'', ``you should implement...''). &
+Violates diagnostic-only scope; converts diagnosis into advice/consulting behavior not permitted by OPS-0. &
+Scan outputs for imperative recommendation language; require STOP-06 instead. \\
+\hline
+
+NOGO-02 &
+Optimization/control semantics (maximize/minimize any metric, define objective functions, propose control loops). &
+OPS-0 contract is not an optimizer; metrics are for diagnostics, not control targets. &
+Detect target-setting verbs (maximize/minimize/optimize/target KPI) and objective declarations. \\
+\hline
+
+NOGO-03 &
+KPI substitution as axes: introducing KPIs as axes $A$ or redefining axis meaning into KPI language. &
+Axes are contract semantics; KPI substitution is semantic drift and invalidates comparability. &
+Check axis declarations against allowed axis vocabulary; flag KPI terms in axis definitions. \\
+\hline
+
+NOGO-04 &
+Recovery from STOP (STOP treated as non-terminal), including ``workarounds'' or continuation beyond STOP without external witness. &
+STOP is terminal epistemic boundary by contract; recovery requires external $\Psi$ witness reference only. &
+Verify that STOP outputs terminate; any post-STOP continuation is nonconformant unless only referencing external witness. \\
+\hline
+
+NOGO-05 &
+COLLAPSE$\rightarrow$SUCCESS without external $\Psi$ witness: asserting success/valid transition after collapse/STOP based only on internal tool inference. &
+Forbids unjustified jumps across epistemic boundary; prevents hallucinated success. &
+Search for success claims following STOP markers; require Op-$\Psi7$ reference only. \\
+\hline
+
+NOGO-06 &
+Empirical validity claims without evidence pack: claiming empirical truth, accuracy, or real-world effectiveness beyond available evidence references. &
+Maintains scientific/evidential integrity; contract tables do not authorize empirical claims. &
+Detect phrases asserting empirical validation; require explicit evidence pack reference or abstain. \\
+\hline
+
+NOGO-07 &
+Silent semantic reinterpretation of ETS / ETS hash drift: using different ETS semantics or versions without explicit lock mismatch STOP. &
+Prevents hidden model drift; preserves repeatability and auditability. &
+Require ETS identifier + lock reference in provenance stub; mismatch must trigger STOP-05. \\
+\hline
+
+NOGO-08 &
+Inventing new OC primitives or reframing ETS.K\_EA.v1.1 semantics within tooling contract outputs. &
+RUN-OPS0-02 scope prohibits new primitives and reinterpretation; contract tables must stay within declared surface. &
+Review for newly introduced symbols/constructs not in OPS-0; treat as drift and STOP-05/STOP-06 as applicable. \\
+\hline
+
+\end{longtable}
+\end{center}
+
 \subsection{Reserved}
-All appendix tables are reserved for RUN-OPS0-02+.
+CT-01, CT-04, CT-05, CT-07, CT-08, CT-09 remain reserved for subsequent runs as per OPS-0 plan.
