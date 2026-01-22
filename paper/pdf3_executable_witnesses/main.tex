@@ -1,7 +1,7 @@
 ﻿% ==============================================================================
 % PDF-3 — Executable Witnesses & Diagnostic Closure
 % Artifact class: Executable Witness & Diagnostic Closure Artifact
-% Status: Skeleton only (no witnesses, no execution, no claims)
+% Status: Closure/registry layer (no execution logic in this artifact)
 % ==============================================================================
 
 \documentclass[11pt]{article}
@@ -14,6 +14,16 @@
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+PDF-3 is a closure and registry artifact for diagnostic witness labels used across the
+frozen KEA artifact chain (PDF-0/1/2). It introduces no new semantics, predicates,
+metrics, thresholds, or execution logic. Its sole function is structural: (i) to anchor
+a minimal witness label set to inherited phase classifications, (ii) to provide explicit
+dependency closure to upstream immutable artifacts, and (iii) to state refutation
+conditions for witness registration under inherited semantics (including STOP as a
+terminal epistemic boundary).
+\end{abstract}
 
 \input{sections/00_artifact_class.tex}
 \input{sections/01_scope_and_positioning.tex}

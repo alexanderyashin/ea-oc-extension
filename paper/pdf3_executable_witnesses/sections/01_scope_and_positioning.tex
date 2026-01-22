@@ -8,5 +8,39 @@ This artifact depends exclusively on the following frozen upstream documents:
   \item PDF-2: Structural Diagnosability \& Phase Logic
 \end{itemize}
 
-PDF-3 does not modify, reinterpret, or extend these artifacts. It serves solely
-as a closure layer referencing them as immutable dependencies.
+PDF-3 does not modify, reinterpret, extend, or operationalize any content from
+these upstream artifacts. All referenced semantics, classifications, and phase
+definitions are inherited without alteration.
+
+The role of PDF-3 is strictly that of a closure and registry layer. It provides
+explicit anchoring of diagnostic labels and witness references to upstream
+artifacts, without introducing new claims, validations, executions, or
+standalone interpretive authority.
+
+PDF-3 is not intended to be self-sufficient or independently meaningful. Its
+function is defined entirely by its position within the frozen artifact chain.
+
+\subsection{Dependency closure (frozen set)}
+
+PDF-3 is valid only relative to a frozen dependency set. The following upstream
+artifacts are treated as immutable inputs for all inherited semantics used here:
+
+\begin{center}
+\begin{tabular}{|l|p{9.8cm}|}
+\hline
+\textbf{Dependency} & \textbf{Frozen reference (informational anchor)} \\
+\hline
+PDF-0 & KEA Whitepaper (foundational formal specification) \\
+\hline
+PDF-1 & Executable Demonstration Artifact (execution bindings live here) \\
+\hline
+PDF-2 & Structural Diagnosability \& Phase Logic (phase semantics live here) \\
+\hline
+SHA-256 anchor & c2385be94c79f52c9cbe6ee4437994c8833224cdce50ed8665241c0fdb7ecce6 \\
+\hline
+\end{tabular}
+\end{center}
+
+The SHA-256 anchor above is recorded as an external integrity handle for the frozen
+chain state as used in the current run. PDF-3 does not perform verification; it only
+records the closure reference.
