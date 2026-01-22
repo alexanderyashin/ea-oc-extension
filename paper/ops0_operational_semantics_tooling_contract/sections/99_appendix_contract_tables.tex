@@ -18,13 +18,15 @@ This appendix defines \emph{normative, diagnostic-only} contract registries for 
 \subsection{CT-02: Operation Registry (v1)}
 \noindent\textbf{Scope note (binding):} All operations in this registry are \textbf{diagnostic-only}. At the operation level, any prescriptive, optimization, control, or recommendation semantics are \textbf{forbidden}. If an operation cannot be executed under admissible inputs and observability, the tool \textbf{MUST} emit STOP per CT-06.
 
-\begin{center}
+\begingroup
 \small
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
 \begin{longtable}{|p{1.7cm}|p{2.2cm}|p{3.0cm}|p{3.0cm}|p{3.2cm}|p{3.0cm}|p{3.0cm}|p{3.0cm}|p{2.6cm}|}
 \hline
 \textbf{Op-ID} & \textbf{Name} & \textbf{Intent (diagnostic-only)} & \textbf{Required Inputs (minimal)} & \textbf{Output Artifacts (type + must-carry fields pointer)} & \textbf{Allowed Actions (constraints/predicates only)} & \textbf{Forbidden Actions (explicit)} & \textbf{STOP Behavior (inadmissible/failed)} & \textbf{Notes (ETS-lock / layer tie)} \\
 \hline
-\endfirsthead}
+\endfirsthead
 
 \hline
 \textbf{Op-ID} & \textbf{Name} & \textbf{Intent (diagnostic-only)} & \textbf{Required Inputs (minimal)} & \textbf{Output Artifacts (type + must-carry fields pointer)} & \textbf{Allowed Actions (constraints/predicates only)} & \textbf{Forbidden Actions (explicit)} & \textbf{STOP Behavior (inadmissible/failed)} & \textbf{Notes (ETS-lock / layer tie)} \\
@@ -33,6 +35,9 @@ This appendix defines \emph{normative, diagnostic-only} contract registries for 
 
 \hline
 \endfoot
+
+\hline
+\endlastfoot
 
 Op-$\Omega$ &
 Admissible Region Declaration/Check &
@@ -134,18 +139,20 @@ Schema deferred to CT-07; requirement here is existence of provenance binding, n
 \hline
 
 \end{longtable}
-\end{center}
+\endgroup
 
 \subsection{CT-06: STOP Triggers Registry (v1)}
 \noindent\textbf{Binding rule:} If any trigger condition below holds, the tool \textbf{MUST} emit a terminal STOP artifact (Op-STOP) and a provenance stub (Op-PROV). The tool \textbf{MUST NOT} provide advice, remediation, optimization, or prescriptive actions. STOP precedence is strict: if multiple triggers apply, the tool \textbf{MUST} list all applicable Trigger-IDs.
 
-\begin{center}
+\begingroup
 \small
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
 \begin{longtable}{|p{1.8cm}|p{6.3cm}|p{4.1cm}|p{5.2cm}|p{3.0cm}|}
 \hline
 \textbf{Trigger-ID} & \textbf{Condition (contract predicate; no new primitives)} & \textbf{Required Evidence / Inputs} & \textbf{Mandatory Output Behavior (STOP + provenance; no advice)} & \textbf{Notes (layer / precedence)} \\
 \hline
-\endfirsthead}
+\endfirsthead
 
 \hline
 \textbf{Trigger-ID} & \textbf{Condition (contract predicate; no new primitives)} & \textbf{Required Evidence / Inputs} & \textbf{Mandatory Output Behavior (STOP + provenance; no advice)} & \textbf{Notes (layer / precedence)} \\
@@ -154,6 +161,9 @@ Schema deferred to CT-07; requirement here is existence of provenance binding, n
 
 \hline
 \endfoot
+
+\hline
+\endlastfoot
 
 STOP-01 &
 Input inadmissibility: required inputs for declared operations (CT-02) are missing beyond declared tolerance, malformed, or outside admissible $\Omega$ (or $\partial\Omega$ where declared). &
@@ -198,18 +208,20 @@ Scope enforcement; also covered by No-Go CT-03. \\
 \hline
 
 \end{longtable}
-\end{center}
+\endgroup
 
 \subsection{CT-03: No-Go Registry (v1)}
 \noindent\textbf{Binding rule:} Any pattern below is prohibited. A conformant tool \textbf{MUST NOT} produce such outputs or behaviors. Detection hints are non-executable and do not define tests or implementations.
 
-\begin{center}
+\begingroup
 \small
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
 \begin{longtable}{|p{1.8cm}|p{6.8cm}|p{5.2cm}|p{4.5cm}|}
 \hline
 \textbf{NoGo-ID} & \textbf{Prohibited Pattern (tool must not do)} & \textbf{Rationale (contract-level; diagnostic-only)} & \textbf{Detection/Test Hint (no code)} \\
 \hline
-\endfirsthead}
+\endfirsthead
 
 \hline
 \textbf{NoGo-ID} & \textbf{Prohibited Pattern (tool must not do)} & \textbf{Rationale (contract-level; diagnostic-only)} & \textbf{Detection/Test Hint (no code)} \\
@@ -218,6 +230,9 @@ Scope enforcement; also covered by No-Go CT-03. \\
 
 \hline
 \endfoot
+
+\hline
+\endlastfoot
 
 NOGO-01 &
 Prescriptive recommendations (e.g., ``do X to fix Y'', ``you should implement...''). &
@@ -268,7 +283,7 @@ Review for newly introduced symbols/constructs not in OPS-0; treat as drift and 
 \hline
 
 \end{longtable}
-\end{center}
+\endgroup
 
 \subsection{Reserved}
 CT-01, CT-04, CT-05, CT-07, CT-08, CT-09 remain reserved for subsequent runs as per OPS-0 plan.
