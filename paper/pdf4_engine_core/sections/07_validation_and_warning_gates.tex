@@ -68,3 +68,22 @@ completeness conditions:
 
 Completeness checks assess \emph{structural integrity only}. They do not evaluate
 semantic adequacy, empirical validity, or interpretive quality.
+
+\subsection{Operation graph conformance gate}
+
+\paragraph{Rule.}
+The specification must not imply any diagnostic operation graph other than the
+strictly directed, acyclic graph defined in Section~\ref{sec:stop}.
+
+\paragraph{Failure conditions.}
+The artefact is non-admissible under OPS-1 if it implies:
+\begin{itemize}
+  \item cyclic diagnostic paths;
+  \item feedback, control, retry, or recovery edges;
+  \item non-terminal or reversible STOP semantics;
+  \item adaptive, heuristic, or decision-based branching.
+\end{itemize}
+
+\paragraph{Scope.}
+This gate is structural and declarative. It is independent of any concrete
+implementation strategy and concerns admissibility of the specification only.

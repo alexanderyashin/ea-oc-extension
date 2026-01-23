@@ -65,6 +65,49 @@ downgraded, overridden, or reinterpreted without changing the declared inputs.
 STOP is singular and absolute per case. There is no notion of partial, layered,
 probabilistic, or conditional STOP.
 
+\subsection{Diagnostic operation graph (normative)}
+
+The Engine Core admits a single, strictly directed diagnostic operation graph.
+The graph is \textbf{acyclic}, \textbf{read-only}, and \textbf{terminal}.
+
+\paragraph{Nodes.}
+The diagnostic graph consists of the following abstract operation nodes:
+\begin{itemize}
+  \item \texttt{InputDeclaration}: reception of $(S,\mathcal{I},\Theta)$;
+  \item \texttt{StructuralValidation}: validation of kernel invariants and input consistency;
+  \item \texttt{InvariantEvaluation}: evaluation of declared invariants;
+  \item \texttt{STOP}: terminal non-admissibility state;
+  \item \texttt{ResultEmission}: emission of $R$ with $\mathrm{STOP}=0$.
+\end{itemize}
+
+\paragraph{Edges (allowed).}
+The only admissible directed edges are:
+\[
+\texttt{InputDeclaration}
+\rightarrow
+\texttt{StructuralValidation}
+\rightarrow
+\texttt{InvariantEvaluation}
+\rightarrow
+\{\texttt{STOP},\ \texttt{ResultEmission}\}
+\]
+
+\paragraph{STOP as terminal sink.}
+\texttt{STOP} is a terminal sink node.
+There exists \emph{no outgoing edge} from \texttt{STOP}.
+
+\paragraph{Forbidden edges (normative).}
+The following edges are \textbf{explicitly forbidden}:
+\begin{itemize}
+  \item any edge leaving \texttt{STOP};
+  \item any feedback or backward edge between any nodes;
+  \item any retry, recovery, or re-evaluation edge;
+  \item any edge conditioned on optimization, preference, or goal criteria;
+  \item any edge introducing control, steering, or adaptive behavior.
+\end{itemize}
+
+Any artefact implying a graph outside this definition is non-admissible under OPS-1.
+
 \subsection{Minimal audit trail for STOP}
 
 When STOP is triggered, the kernel records a minimal audit trail in the provenance
