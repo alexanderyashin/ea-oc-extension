@@ -19,7 +19,8 @@ Consumers of diagnostic output must not treat classifications or STOP as:
   \item recommendations, guidance, or action directives;
   \item root-cause analyses or explanatory narratives;
   \item forecasts, predictions, or risk estimates;
-  \item compliance judgments, managerial assessments, or performance evaluations.
+  \item compliance judgments, managerial assessments, or performance evaluations;
+  \item priorities, rankings, weights, targets, or any notion of ``what matters most''.
 \end{itemize}
 
 Such interpretations require additional assumptions, evidence, or authority that
@@ -35,8 +36,8 @@ decision-making.
 
 Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is an
 \textbf{exchangeable consumer} of OPS-1. OPS-2 may display, transport, or package
-results, but it must not define, reinterpret, operationalize, or extend OPS-1
-semantics.
+results, but it must not define, reinterpret, operationalize, aggregate, rank, or
+extend OPS-1 semantics.
 
 \paragraph{Binary compliance.}
 Compliance is \textbf{binary}: conformant or \emph{non-ESTRA}. Intent, usability
@@ -114,45 +115,83 @@ The following extension classes are \textbf{explicitly forbidden}.
 
 \paragraph{Semantic control and steering.}
 \begin{itemize}
-  \item any optimization, recommendation, prioritization, or decision semantics;
+  \item any optimization, recommendation, prioritization, ranking, weighting, scoring,
+        targeting, or decision semantics;
   \item any control logic influencing or steering diagnostic outcomes;
   \item any feedback edge or adaptive branching affecting evaluation.
 \end{itemize}
 
 \paragraph{Learning and adaptation.}
 \begin{itemize}
-  \item any form of learning, fitting, calibration, or adaptation influencing
-        invariants, thresholds, classification, or terminal STOP;
+  \item any form of learning, fitting, calibration, adaptation, or tuning influencing
+        invariants, thresholds, classification, provenance identity, admissibility, or
+        terminal STOP;
   \item any use of historical cases to modify kernel behavior.
 \end{itemize}
 
 \paragraph{STOP violation.}
 \begin{itemize}
-  \item any retry, recovery, bypass, or continuation path after terminal STOP;
-  \item any reinterpretation of STOP as warning, error, signal, or advisory.
+  \item any retry, recovery, bypass, continuation path, or ``soft STOP'' behavior after
+        terminal STOP;
+  \item any reinterpretation of STOP as warning, error, signal, advisory, or ``needs review''.
 \end{itemize}
 
 \paragraph{Non-determinism and provenance violation.}
 \begin{itemize}
   \item any semantically relevant non-determinism;
-  \item any partial, probabilistic, inferred, or reconstructed provenance;
-  \item any post-hoc correction, repair, normalization, or retrofitting of evidence.
+  \item any partial, probabilistic, inferred, reconstructed, or narrative provenance;
+  \item any post-hoc correction, repair, normalization, or retrofitting of evidence or
+        diagnostic artefacts.
 \end{itemize}
 
 \paragraph{Registry and evidence manipulation.}
 \begin{itemize}
   \item mutable registries or evidence stores;
-  \item overwriting, replacing, deleting, or rewriting evidence artefacts;
-  \item opaque preprocessing or hidden sampling or filtering.
+  \item overwriting, replacing, deleting, rewriting, or reordering evidence artefacts
+        based on relevance or ``importance'';
+  \item opaque preprocessing, hidden sampling, hidden filtering, or undisclosed
+        selection criteria.
 \end{itemize}
 
-\paragraph{UX-driven semantics.}
+\paragraph{Renderer and reporting semantics (presentation-driven meaning).}
 \begin{itemize}
-  \item any user interface, visualization, or interaction layer that alters,
-        constrains, or implies diagnostic meaning;
-  \item any UX-driven simplification that hides terminal STOP conditions or
-        admissibility boundaries.
+  \item any visualization, UI, report, or default view that implies preference,
+        importance, priority, ``severity'', ``criticality'', or ``health'' from OPS-1 outputs;
+  \item any ranking, top-$N$, ordering by ``risk/impact/value'', heatmap semantics,
+        traffic-light semantics, or highlight rules that act as a normative lens;
+  \item any report text that interprets outputs as guidance, recommended action, or
+        procedural next step.
 \end{itemize}
+
+\paragraph{Evidence import semantics (adapter-driven meaning).}
+\begin{itemize}
+  \item any import adapter that filters, cleans, normalizes, imputes, smooths, deduplicates
+        by relevance, treats outliers, or otherwise transforms evidence in a semantics-bearing
+        way;
+  \item any adapter behavior where independent implementers could ingest the same external
+        evidence and obtain materially different semantics without an explicitly declared,
+        reversible mapping rule.
+\end{itemize}
+
+\paragraph{Graded or stratified verification (gate-driven meaning).}
+\begin{itemize}
+  \item any ``quality levels'', ``maturity tiers'', or graded acceptance (e.g., pass-with-advice,
+        bronze/silver/gold), regardless of naming;
+  \item any gate output that acts as a score, ranking, or preference signal rather than a
+        strict binary predicate (pass/fail).
+\end{itemize}
+
+\paragraph{Witness packaging semantics (packaging-driven narrative).}
+\begin{itemize}
+  \item curated subsets, ``highlights'', ``executive packs'', ``most important artefacts'', or
+        any selection/reordering intended to create narrative, weight, or reading guidance;
+  \item any packaging that changes meaning by emphasizing, suppressing, or sequencing artefacts.
+\end{itemize}
+
+\paragraph{Binary auto-disqualification rule.}
+If any extension can change a reader's decision preference without changing the
+underlying computed artefacts, it introduces normative semantics and is therefore
+\textbf{non-ESTRA}.
 
 Presence of any forbidden class immediately disqualifies the artefact from OPS-1
 and ESTRA conformance, regardless of tooling, intent, or external justification.
