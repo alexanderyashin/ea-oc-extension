@@ -22,21 +22,28 @@ The kernel has no notion of \emph{start}, \emph{progress}, or \emph{completion}
 beyond the existence of the evaluation result $R$ or a terminal STOP.
 Any higher-level lifecycle management belongs to external tooling.
 
-\subsection{Structural determinacy}
+\subsection{Determinism as architectural invariant}
 
-The Engine Core satisfies \textbf{structural determinacy}:
+OPS-1 fixes determinism as an \textbf{architectural invariant} of the kernel.
+Determinism is not a best-effort execution property, not a process guarantee, and
+not a toolchain attribute. It is a necessary condition for OPS-1 conformance.
 
-\begin{quote}
-For identical declared inputs $(S,\mathcal{I},\Theta,M)$, the kernel yields an
-identical result $R$.
-\end{quote}
+\paragraph{Deterministic domains (non-negotiable).}
+For identical declared inputs $(S,\mathcal{I},\Theta,M)$, the kernel must yield an
+identical result $R$ in the following domains:
 
-Structural determinacy is a property of the kernel as a mapping between declared
-structures. It is independent of implementation strategy, execution timing, or
-platform-specific behavior.
+\begin{itemize}
+  \item \textbf{Diagnostic result determinism:} identical admissibility classification and identical diagnostic outputs.
+  \item \textbf{Operation graph traversal determinism:} traversal and evaluation order are determined solely by declared structures.
+  \item \textbf{STOP detection determinism:} STOP / NO-GO recognition is deterministic and input-complete.
+  \item \textbf{Provenance assignment determinism:} attribution of outputs to declared inputs and referenced artefacts is deterministic.
+  \item \textbf{Registry state determinism (logical):} registry evolution is append-only and order-stable in the logical sense of reference introduction.
+\end{itemize}
 
-\paragraph{What determinacy does \emph{not} mean.}
-Structural determinacy does not imply:
+Any deviation in these domains constitutes a violation of OPS-1 determinism.
+
+\paragraph{What determinism does \emph{not} mean.}
+Kernel determinism does not imply:
 \begin{itemize}
   \item predictability of future states of the diagnosed system;
   \item stability of the system over time;
@@ -45,6 +52,33 @@ Structural determinacy does not imply:
 \end{itemize}
 
 It is solely a property of admissibility evaluation within the kernel boundary.
+
+\subsection{Bounded non-determinism (strictly cosmetic)}
+
+OPS-1 permits non-determinism \emph{only} where it has no semantic impact on any
+diagnostic result, STOP evaluation, provenance attribution, or registry meaning.
+
+\paragraph{Permitted (strictly bounded).}
+The following are permitted only if they are demonstrably semantics-free:
+
+\begin{itemize}
+  \item ordering of physically independent artefacts, \emph{if and only if} ordering has no effect on diagnostic meaning;
+  \item rendering and layout properties (purely cosmetic presentation);
+  \item non-normative metadata that does not influence evaluation semantics.
+\end{itemize}
+
+\paragraph{Forbidden (disqualifying).}
+Any non-determinism is forbidden if it can influence:
+
+\begin{itemize}
+  \item diagnostic outputs or admissibility classification;
+  \item STOP / NO-GO evaluation or terminal recognition;
+  \item provenance assignment or traceability links;
+  \item selection of execution paths (heuristic, adaptive, or conditional by non-declared factors);
+  \item time-, load-, or environment-dependent behavior with semantic impact.
+\end{itemize}
+
+If such non-determinism is present or required, OPS-1 conformance is violated.
 
 \subsection{No hidden state rule}
 
@@ -75,13 +109,11 @@ deployment environments, which are external to kernel semantics.
 
 \subsection{No execution control semantics}
 
-The Engine Core defines no execution control primitives.
 In particular, it does not support:
 \begin{itemize}
   \item pause, resume, or step-wise execution;
   \item conditional branching or scenario switching;
   \item fallback, degraded, or recovery modes;
-  \item re-entry after STOP.
 \end{itemize}
 
 Execution either yields a result $R$ or terminates at STOP. No admissible third

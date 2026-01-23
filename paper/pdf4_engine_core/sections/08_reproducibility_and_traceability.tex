@@ -5,6 +5,26 @@ required of an OPS-1 Engine Core artefact. These guarantees are \emph{structural
 they concern the ability to reproduce diagnostic results from declared inputs,
 not the empirical behavior of the diagnosed system.
 
+\subsection{Reproducibility as architectural invariant (binary)}
+
+OPS-1 treats reproducibility as a \textbf{binary architectural property}:
+an artefact is either reproducible or it is not. No intermediate status is
+recognized.
+
+\paragraph{Necessary condition for validity.}
+Given identical declared inputs, the Engine Core must reproduce identical
+diagnostic results. If this condition fails, the artefact is invalid under OPS-1.
+
+\paragraph{Not a process property.}
+Reproducibility is not a matter of process discipline, execution hygiene, or
+environment management. It is fixed at the level of kernel semantics and declared
+inputs.
+
+\paragraph{Non-reproducibility implies STOP-admissibility.}
+If reproducibility cannot be established for an output, the situation is
+STOP-admissible: diagnostic admissibility is violated, and the output must not be
+treated as an OPS-1 result.
+
 \subsection{Registry and evidence as architecture (non-technical)}
 
 OPS-1 treats \textbf{registry} and \textbf{evidence} as architectural constructs,
@@ -31,6 +51,11 @@ deleted.
 Registry entries are append-only. Once a reference or link exists, it must not be
 mutated, replaced, or deleted. A registry that permits mutation is non-admissible
 under OPS-1.
+
+\paragraph{Order-stable registry semantics.}
+Registry introduction order is semantically stable in the logical sense that
+references, once introduced, remain introduced. No re-ordering may change meaning
+or affect provenance or diagnosis.
 
 \paragraph{Append-only evidence referencing.}
 Once an evidence artefact is referenced, the reference must remain valid without
@@ -63,11 +88,6 @@ Every diagnostic output must be transitively traceable to:
 The traceability requirement concerns \emph{referencing} and \emph{link integrity}
 only; it imposes no explanatory narrative.
 
-\paragraph{Missing provenance implies STOP-admissibility.}
-If provenance completeness cannot be established for an output, the situation is
-STOP-admissible: diagnostic admissibility is violated, and the output must not be
-treated as an OPS-1 result.
-
 \subsection{Stable identifiers and manifests (format-agnostic)}
 
 The Engine Core must expose stable identifiers for:
@@ -89,16 +109,17 @@ The following are explicitly non-admissible under OPS-1:
   \item \textbf{Mutable registry:} any ability to edit, rewrite, replace, or
         delete registry entries.
   \item \textbf{Evidence normalization or cleaning:} any transformation of
-        evidence content that changes meaning, even if claimed to be
-        ``non-semantic''.
-  \item \textbf{Aggregation with meaning change:} any aggregation that alters the
-        semantic content of referenced artefacts.
+        evidence content that changes meaning, regardless of how it is labeled.
+  \item \textbf{Aggregation with semantic effect:} any aggregation that alters
+        the meaning of evidence or changes diagnostic interpretation.
   \item \textbf{Post-hoc correction of evidence:} any after-the-fact repair,
-        overwrite, replacement, or substitution of evidence content.
+        replacement, or rewriting of evidence to retrofit consistency.
   \item \textbf{Opaque preprocessing:} any uninspectable transformation or
         hidden intermediate that breaks traceability.
   \item \textbf{Hidden sampling or filtering:} any undisclosed selection,
-        exclusion, or reduction of evidence that cannot be traced.
+        exclusion, or prioritization that prevents complete provenance.
+  \item \textbf{Semantically relevant non-determinism:} any non-determinism that
+        can influence diagnosis, STOP evaluation, or provenance assignment.
 \end{itemize}
 
 These prohibitions are architectural invariants. They are independent of
