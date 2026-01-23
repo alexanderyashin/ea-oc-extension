@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
 
 from ea_oc_ext.engine.model import Phase
 
@@ -30,16 +29,22 @@ def is_transition_allowed(prev: Phase, nxt: Phase, ctx: TransitionContext) -> bo
     # ETS lists allowed *changes*; it does not forbid staying in the same phase.
     if prev == nxt and prev != "STOP":
         return True
+
     if prev == "STOP":
         return False
+
     if prev == "COLLAPSE":
         return nxt == "STOP"
+
     if prev == "INERTIA":
         if nxt == "SUCCESS":
             return ctx.external_psi_restores_potentials
         return nxt in ("COLLAPSE", "STOP")
+
     if prev == "SUCCESS":
         return nxt in ("INERTIA", "COLLAPSE", "STOP")
+
+    # Defensive default: unknown phase label => transition not allowed.
     return False
 
 
