@@ -1,13 +1,61 @@
 ﻿\section{Reproducibility and Traceability}
+
+This section specifies the minimal reproducibility and traceability guarantees
+required of an OPS-1 Engine Core artefact. These guarantees are \emph{structural}:
+they concern the ability to reproduce diagnostic results from declared inputs,
+not the empirical behavior of the diagnosed system.
+
 \subsection{Evidence hooks (append-only)}
-% TODO
 
-\subsection{Provenance (inputs -> outputs mapping)}
-% TODO
+The Engine Core exposes \emph{hooks} for attaching evidence artefacts and logs,
+but does not interpret, evaluate, or reason about their content.
 
-\subsection{Hashing / manifests}
-% TODO
+\paragraph{Append-only rule.}
+All evidence attachments must be append-only. Once referenced, no record may be
+modified or deleted. This rule exists to preserve traceability, not to enforce
+evidentiary sufficiency.
 
-\subsection{Run logs (what must be recorded)}
-% TODO
+\paragraph{No semantic use.}
+Attached evidence must not influence kernel evaluation, classification, or STOP
+semantics. Any semantic use of evidence occurs outside the Engine Core boundary.
 
+\subsection{Provenance (inputs-to-outputs mapping)}
+
+Each diagnostic result $R$ must be traceable to its declared inputs via a minimal
+provenance mapping:
+\[
+(S,\mathcal{I},\Theta) \;\mapsto\; R
+\]
+
+Traceability is established through stable identifiers (hashes or canonical
+digests), not through explanatory narratives or causal accounts.
+
+\paragraph{No explanatory burden.}
+Provenance supports reproducibility and conformance checks only. It must not be
+extended to justify decisions, explain causality, or defend outcomes.
+
+\subsection{Hashing and manifests}
+
+The Engine Core must expose stable identifiers for:
+\begin{itemize}
+  \item input state snapshots;
+  \item invariant sets;
+  \item threshold objects;
+  \item the Engine Core version.
+\end{itemize}
+
+The choice of hashing algorithms, digest formats, or manifest encodings is
+external to kernel semantics, provided identifiers are stable and inspectable.
+
+\subsection{Run logs (minimal)}
+
+If run logs are produced, they must be limited to:
+\begin{itemize}
+  \item timestamps;
+  \item identifiers of inputs and outputs;
+  \item STOP occurrence (if any);
+  \item build or environment identifiers (optional).
+\end{itemize}
+
+Run logs are observational artefacts only. They must not encode recommendations,
+interpretations, recovery logic, or procedural guidance.

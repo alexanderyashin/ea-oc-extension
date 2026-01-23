@@ -1,12 +1,104 @@
 ﻿\section{Interfaces and I/O Contracts}
+
+This section defines the \textbf{structural} input/output contracts of the Engine
+Core. The contracts are intentionally minimal: they enable reproducible diagnostic
+evaluation while explicitly forbidding control, optimization, adaptation, or
+prescriptive semantics.
+
 \subsection{Inputs (schemas, required fields)}
-% TODO
+
+The Engine Core consumes a single evaluation request:
+\[
+Q := \langle S,\; \mathcal{I},\; \Theta,\; M \rangle
+\]
+where $S$ is the state snapshot, $\mathcal{I}$ the declared invariant set, $\Theta$
+the declared threshold objects, and $M$ a minimal metadata envelope.
+
+\paragraph{Required input components.}
+\begin{itemize}
+  \item \textbf{State snapshot $S$.} Immutable and read-only. Partiality is allowed
+        only if missing fields are explicitly represented in the observability
+        descriptor $\mathcal{O}$.
+  \item \textbf{Invariant set $\mathcal{I}$.} Explicit, versioned, and inspectable
+        predicates $I_k : S \rightarrow \{0,1\}$.
+  \item \textbf{Threshold objects $\Theta$.} Explicit, typed boundary parameters
+        referenced by invariants. Thresholds are never tuned or adapted by the kernel.
+  \item \textbf{Metadata envelope $M$.} Minimal contextual metadata such as
+        \texttt{case\_id}, \texttt{engine\_version}, and stable identifiers of the
+        input set. Metadata must not influence evaluation semantics.
+\end{itemize}
+
+\paragraph{Observability as explicit input.}
+Unknown or indeterminate values must be represented explicitly (e.g.\ via
+$\mathcal{O}$). The kernel must not replace missing observability by assumptions,
+defaults, heuristics, or probabilistic completion.
 
 \subsection{Outputs (artefacts, schemas)}
-% TODO
+
+The Engine Core produces a single evaluation result:
+\[
+R := \langle \mathbf{v},\; \mathbf{c},\; \mathrm{STOP},\; P \rangle
+\]
+with:
+\begin{itemize}
+  \item $\mathbf{v}\in\{0,1\}^n$ — invariant satisfaction vector;
+  \item $\mathbf{c}$ — finite structural classification label;
+  \item $\mathrm{STOP}\in\{0,1\}$ — terminal halt flag;
+  \item $P$ — minimal append-only provenance record.
+\end{itemize}
+
+\paragraph{No prescriptive fields.}
+Outputs must not contain recommendations, priorities, rankings, objectives, or
+action proposals. The presence of such fields invalidates OPS-1 conformance.
+
+\paragraph{Provenance payload (minimal).}
+At minimum, the provenance record binds outputs to inputs via stable identifiers:
+\[
+P := \langle h(S),\, h(\mathcal{I}),\, h(\Theta),\, \mathbf{v},\, \mathbf{c},\, \mathrm{STOP} \rangle
+\]
+External systems may attach additional identifiers (e.g.\ run IDs or build hashes),
+provided these do not alter kernel semantics.
 
 \subsection{Error surfaces (typed failure outputs)}
-% TODO
+
+The Engine Core strictly distinguishes \textbf{structural STOP} from
+\textbf{tooling or implementation errors}.
+
+\paragraph{STOP (kernel-level).}
+STOP is a first-class terminal boundary of diagnostic admissibility
+(see Section~\ref{sec:stop}). It is neither a recoverable error nor advice.
+
+\paragraph{Implementation errors (non-kernel).}
+Failures such as parsing errors, missing files, corrupted input containers, or
+environment misconfiguration are \emph{external} to Engine Core semantics. They may
+be represented by surrounding tooling as typed errors, but:
+\begin{itemize}
+  \item they must not be conflated with STOP;
+  \item they must not introduce recovery logic into the kernel;
+  \item they must not affect classification semantics.
+\end{itemize}
+
+The kernel defines $R$ only for admissible inputs. Input admission and tooling
+reliability are external concerns.
 
 \subsection{Versioning and compatibility contract}
-% TODO
+
+\paragraph{Version identifiers.}
+The Engine Core must expose a version identifier (e.g.\ semantic version or content
+hash) via metadata $M$ and/or provenance $P$.
+
+\paragraph{Compatibility rule (minimal).}
+Results are comparable as kernel outputs only if:
+\begin{itemize}
+  \item $h(\mathcal{I})$ is identical;
+  \item $h(\Theta)$ is identical;
+  \item the Engine Core version identifier is identical.
+\end{itemize}
+
+If any of these differ, comparison may still be performed externally, but it must
+be treated as cross-version analysis and not as a property of the kernel.
+
+\paragraph{No implicit upgrades.}
+The kernel must not silently reinterpret invariants, thresholds, classifications,
+or STOP semantics across versions. Any change requires an explicit version change
+and updated identifiers.

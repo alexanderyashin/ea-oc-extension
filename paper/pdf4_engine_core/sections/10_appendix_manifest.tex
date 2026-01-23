@@ -1,9 +1,52 @@
 ﻿\section{Appendix: Manifest}
+
+This appendix records the structural manifests required to assess PDF-4 as a
+review-ready OPS-1 artefact. The manifests are descriptive and non-executable.
+
 \subsection{File manifest}
-% TODO
+
+The PDF-4 artefact consists of the following files and sections:
+
+\begin{itemize}
+  \item \texttt{main.tex} — document entry point and section ordering;
+  \item \texttt{sections/00\_abstract.tex} — positioning and scope summary;
+  \item \texttt{sections/01\_problem\_statement.tex} — motivation and exclusions;
+  \item \texttt{sections/02\_engine\_scope\_and\_nonclaims.tex} — kernel boundary;
+  \item \texttt{sections/03\_core\_objects\_and\_invariants.tex} — objects and invariants;
+  \item \texttt{sections/04\_engine\_interfaces\_and\_io\_contracts.tex} — I/O contracts;
+  \item \texttt{sections/05\_execution\_model\_and\_determinism.tex} — execution semantics;
+  \item \texttt{sections/06\_failure\_modes\_and\_stop\_conditions.tex} — STOP semantics;
+  \item \texttt{sections/07\_validation\_and\_warning\_gates.tex} — conformance gates;
+  \item \texttt{sections/08\_reproducibility\_and\_traceability.tex} — provenance rules;
+  \item \texttt{sections/09\_limits\_and\_non\_goals.tex} — explicit limits.
+\end{itemize}
+
+No additional normative content exists outside this list.
 
 \subsection{Build manifest}
-% TODO
+
+The artefact is considered valid only if:
+\begin{itemize}
+  \item the document builds with \texttt{EXIT\_CODE = 0};
+  \item no true warnings (LaTeX/Package/Class) are emitted;
+  \item all cross-references resolve;
+  \item no placeholder markers remain in normative sections.
+\end{itemize}
+
+Build tooling, environments, and containerization are external to the kernel
+semantics and therefore not specified here.
 
 \subsection{Schema manifest}
-% TODO
+
+The Engine Core relies on the following conceptual schemas:
+\begin{itemize}
+  \item \emph{State snapshot schema} for $S$ (fields, values, observability);
+  \item \emph{Invariant schema} for $\mathcal{I}$ (predicates over $S$);
+  \item \emph{Threshold schema} for $\Theta$ (typed boundary parameters);
+  \item \emph{Result schema} for $R$ (classification and STOP flag);
+  \item \emph{Provenance schema} for $P$ (append-only identifiers).
+\end{itemize}
+
+Concrete serialization formats (YAML, JSON, tables, etc.) are intentionally left
+unspecified. Any format is admissible provided it preserves structure, identity,
+and traceability.

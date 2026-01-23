@@ -1,6 +1,47 @@
 ﻿\section{Problem Statement}
+
 \subsection{Why an Engine Core artefact exists}
-% TODO: placeholders only
+
+In large-scale systems and organizations, diagnostic mechanisms are frequently
+entangled with control, optimization, or governance processes. As a consequence,
+diagnostic artefacts inherit implicit objectives, adaptive behavior, and
+prescriptive semantics that obscure their epistemic status.
+
+The Engine Core artefact exists to enforce a strict separation between
+\emph{diagnosis} and \emph{intervention}. It defines a formally constrained
+diagnostic kernel whose outputs are limited to structural classification and
+irreversible STOP boundaries. By construction, the Engine Core cannot recommend
+actions, optimize outcomes, or modify its own behavior.
+
+This separation is not a design preference but a structural requirement.
+Without an explicitly bounded diagnostic kernel, diagnostic results become
+inseparable from the control or governance mechanisms that consume them, and
+their validity cannot be assessed independently.
+
+The Engine Core therefore functions as a stable diagnostic anchor. Higher-level
+tooling may consume its outputs, but responsibility for interpretation,
+decision-making, and action attribution remains strictly external to the kernel.
 
 \subsection{What is explicitly out of scope}
-% TODO: placeholders only
+
+PDF-4 intentionally excludes all concerns that would transform diagnosis into
+control, prescription, or interpretation.
+
+\paragraph{Out-of-scope domains.}
+The Engine Core does not address:
+\begin{itemize}
+  \item decision-making, prioritization, or trade-off resolution;
+  \item transformation planning, roadmaps, or execution sequencing;
+  \item organizational roles, accountability, or governance structures;
+  \item performance management, KPIs, or success criteria;
+  \item user interaction, facilitation, or interpretive guidance.
+\end{itemize}
+
+These concerns may be handled by external artefacts or processes, but they must
+not be embedded into the Engine Core itself.
+
+\paragraph{Deliberate incompleteness.}
+The Engine Core does not aim to be a complete system or organizational model.
+Its incompleteness is structural, not incidental: the artefact derives its
+diagnostic validity from the explicit refusal to encode control, optimization,
+or prescriptive semantics.

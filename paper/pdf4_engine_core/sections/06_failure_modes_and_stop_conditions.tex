@@ -1,15 +1,82 @@
 ﻿\section{Failure Modes and STOP Conditions}
+\label{sec:stop}
+
+This section defines \textbf{STOP} as a structural and irreversible boundary of
+diagnostic admissibility. STOP is neither an error, nor a warning, nor a
+recommendation. It denotes the condition under which further diagnostic
+evaluation is formally non-admissible.
+
 \subsection{Structural failures}
-% TODO
+
+A \emph{structural failure} occurs when required preconditions for diagnostic
+evaluation are violated in a way that invalidates admissibility itself.
+
+Examples include:
+\begin{itemize}
+  \item internal inconsistency of the invariant set $\mathcal{I}$;
+  \item contradictions between declared invariants and threshold objects $\Theta$;
+  \item violation of kernel invariants (e.g.\ non-intervention, non-adaptivity).
+\end{itemize}
+
+Structural failures are properties of the declared input configuration and
+trigger STOP immediately. They do not represent execution faults or runtime errors.
 
 \subsection{Observability loss}
-% TODO
+
+Observability loss occurs when the state snapshot $S$ lacks sufficient declared
+information to evaluate required invariants and this insufficiency is explicitly
+encoded in the observability descriptor $\mathcal{O}$.
+
+\paragraph{No implicit completion.}
+The kernel must not compensate observability loss by assumptions, defaults,
+heuristics, or probabilistic inference. If required observability is missing,
+diagnostic admissibility is violated and STOP applies.
 
 \subsection{Threshold violations}
-% TODO
+
+Threshold violations occur when invariant predicates that reference declared
+threshold objects $\Theta$ evaluate to false.
+
+\paragraph{Hard boundary semantics.}
+Thresholds are treated as hard structural boundaries. There is no notion of soft
+constraints, grace margins, tolerances, or gradual degradation inside the kernel.
+Any violation constitutes loss of admissibility.
 
 \subsection{STOP region semantics}
-% TODO
+
+STOP defines a terminal admissibility region in the diagnostic domain:
+\[
+\mathrm{STOP} = 1 \;\Rightarrow\; \nexists\, R' \text{ such that } R \prec R'
+\]
+
+That is, there exists no admissible diagnostic result that can succeed $R$ for the
+same declared case.
+
+\paragraph{Irreversibility (structural).}
+Irreversibility is structural, not temporal. STOP does not denote a moment in
+time or a process stage. It denotes the absence of any admissible continuation
+within the kernel’s domain.
+
+\paragraph{Monotonicity.}
+Once STOP holds for a declared case, it remains true for that case. STOP cannot be
+downgraded, overridden, or reinterpreted without changing the declared inputs.
+
+\paragraph{Singularity.}
+STOP is singular and absolute per case. There is no notion of partial, layered,
+probabilistic, or conditional STOP.
 
 \subsection{Minimal audit trail for STOP}
-% TODO
+
+When STOP is triggered, the kernel records a minimal audit trail in the provenance
+record $P$:
+\begin{itemize}
+  \item identifier of the input snapshot $h(S)$;
+  \item identifier of the invariant set $h(\mathcal{I})$;
+  \item identifier of the threshold objects $h(\Theta)$;
+  \item the structural classification label $\mathbf{c}$;
+  \item the STOP flag.
+\end{itemize}
+
+This audit trail exists solely to support traceability and conformance checks. It
+must not be extended to provide causal narratives, remediation advice, recovery
+logic, or policy justification.

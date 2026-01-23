@@ -1,15 +1,148 @@
 ﻿\section{Core Objects and Invariants}
+
+This section defines the \emph{minimal} object model of the Engine Core as a
+diagnostic-only kernel. All objects introduced here are \textbf{structural}:
+they encode admissibility and terminal boundaries only and carry no managerial,
+prescriptive, predictive, or optimization semantics.
+
 \subsection{Data model (entities)}
-% TODO
+
+\paragraph{State snapshot.}
+A \emph{state snapshot} is an immutable input object:
+\[
+S \;:=\; \langle \mathcal{F}, \mathcal{V}, \mathcal{O} \rangle
+\]
+where:
+\begin{itemize}
+  \item $\mathcal{F}$ is a finite set of observable fields (named, typed);
+  \item $\mathcal{V}$ is a valuation mapping fields to values (possibly partial);
+  \item $\mathcal{O}$ is an observability descriptor indicating which values are
+        known, unknown, or indeterminate, and why.
+\end{itemize}
+
+The Engine Core treats $S$ as read-only. It neither modifies $S$ nor imputes,
+estimates, or infers missing values.
+
+\paragraph{Invariant set.}
+An \emph{invariant} is a declared predicate over the snapshot:
+\[
+I_k : S \rightarrow \{0,1\}
+\]
+The \emph{invariant set} is a finite, explicitly declared collection:
+\[
+\mathcal{I} := \{ I_1, I_2, \dots, I_n \}
+\]
+
+Invariants are external declarations consumed by the kernel. The kernel does not
+synthesize, refine, or adapt invariants.
+
+\paragraph{Threshold objects.}
+Thresholds are declared boundary parameters referenced by invariants:
+\[
+\Theta := \{\theta_1, \theta_2, \dots\}
+\]
+A threshold object is a typed and versioned parameter, scalar or structured.
+Thresholds are inputs to evaluation; they are not tuned, optimized, or learned.
+
+\paragraph{Evaluation result.}
+Given $(S, \mathcal{I}, \Theta)$, evaluation yields a structural result:
+\[
+R := \langle \mathbf{v},\, \mathbf{c},\, \mathrm{STOP} \rangle
+\]
+where:
+\begin{itemize}
+  \item $\mathbf{v} \in \{0,1\}^n$ is the vector of invariant satisfaction bits;
+  \item $\mathbf{c}$ is a finite structural classification label;
+  \item $\mathrm{STOP} \in \{0,1\}$ is the terminal halt flag.
+\end{itemize}
+
+The result encodes diagnostic admissibility only. It does not represent quality,
+performance, preference, or desirability.
+
+\paragraph{Provenance record (minimal).}
+For each evaluation, the Engine Core produces an append-only provenance record:
+\[
+P := \langle h(S),\, h(\mathcal{I}),\, h(\Theta),\, \mathbf{v},\, \mathbf{c},\, \mathrm{STOP} \rangle
+\]
+where $h(\cdot)$ denotes stable identifiers (hashes or canonical digests). The
+record supports traceability and conformance checking only; it provides no causal
+or explanatory narrative.
 
 \subsection{State and transitions}
-% TODO
+
+The Engine Core is a stateless evaluator with a terminal boundary. For a single
+case, the kernel admits exactly one abstract step:
+\[
+(S, \mathcal{I}, \Theta) \;\Rightarrow\; R
+\]
+
+There is no internal iteration, retry policy, or adaptive transition structure.
+
+\paragraph{No hidden state rule.}
+The kernel must not depend on hidden or mutable state between runs (e.g.\ caches,
+learned parameters, implicit memory). Any such dependency violates OPS-1
+conformance.
 
 \subsection{Invariants (must-hold properties)}
-% TODO
+
+The following are \emph{kernel invariants}: properties that must hold for the
+Engine Core to exist as an OPS-1 diagnostic kernel. Violation of any kernel
+invariant renders produced outputs ontologically void (non-OPS-1).
+
+\begin{enumerate}
+  \item \textbf{Non-intervention.} The kernel has no causal influence on the
+        diagnosed system.
+  \item \textbf{Non-adaptivity.} Kernel behavior does not change as a function of
+        past evaluations.
+  \item \textbf{Monotonic STOP.} Once STOP holds for a case, no further diagnostic
+        state exists for that case.
+  \item \textbf{Invariant transparency.} All applied invariants are explicitly
+        declared and inspectable.
+  \item \textbf{Structural determinacy.} For identical $(S,\mathcal{I},\Theta)$,
+        the kernel yields the same $R$. This property concerns admissibility, not
+        execution timing or implementation strategy.
+  \item \textbf{Provenance preservation.} Each result is traceable to
+        $(S,\mathcal{I},\Theta)$ via an append-only record.
+  \item \textbf{Non-expansiveness.} The kernel introduces no new primitives,
+        axes, or semantics during operation.
+  \item \textbf{Diagnostic sufficiency.} Outputs express diagnostic validity or
+        invalidity only; no prescriptions or recommendations.
+\end{enumerate}
 
 \subsection{Threshold objects (\texorpdfstring{$\Theta$}{Theta}) and regions}
-% TODO
+
+Thresholds $\Theta$ define admissible regions \emph{only through} invariant
+predicates. The Engine Core does not interpret thresholds as targets, goals, or
+optimization criteria.
+
+\paragraph{Region notion (structural).}
+A \emph{region} is the induced set of snapshots satisfying a given invariant set:
+\[
+\Omega(\mathcal{I}) := \{ S \mid \forall I_k \in \mathcal{I}: I_k(S)=1 \}
+\]
+
+Regions encode structural admissibility only. They are not search spaces,
+performance landscapes, or optimization domains.
 
 \subsection{STOP as first-class outcome}
-% TODO
+
+STOP is a first-class terminal outcome:
+\[
+\mathrm{STOP}=1 \;\Rightarrow\; \text{no further diagnostic evaluation is admissible.}
+\]
+
+\paragraph{STOP is not an error surface.}
+STOP is not a recoverable failure, not a warning, and not advice. It denotes a
+formal boundary beyond which diagnostic evaluation is invalid
+(see Section~\ref{sec:stop}).
+
+\paragraph{Classification categories (minimal).}
+The kernel uses a finite, non-ordered set of structural categories, for example:
+\begin{itemize}
+  \item \texttt{admissible},
+  \item \texttt{boundary-violating},
+  \item \texttt{non-diagnosable},
+  \item \texttt{stop-eligible}.
+\end{itemize}
+
+Category labels are structural identifiers only and carry no prescriptive meaning.

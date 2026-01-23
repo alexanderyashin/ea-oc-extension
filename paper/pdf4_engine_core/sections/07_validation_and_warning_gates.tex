@@ -1,12 +1,70 @@
 ﻿\section{Validation and Warning Gates}
+
+This section defines the \textbf{conformance gates} that determine whether a
+PDF-4 Engine Core artefact is admissible as OPS-1 compliant. These gates apply to
+the \emph{artefact and its build process}, not to the diagnosed system and not to
+any external tooling that consumes diagnostic outputs.
+
 \subsection{Build gate (EXIT\_CODE)}
-% TODO
+
+The primary conformance gate is the build gate.
+
+\paragraph{Rule.}
+An OPS-1 admissible artefact must build successfully with:
+\[
+\texttt{EXIT\_CODE} = 0
+\]
+
+Any non-zero exit code renders the artefact non-admissible, independent of its
+intended semantics or declared scope.
+
+\paragraph{Rationale.}
+A failing build indicates structural inconsistency or ambiguity in the artefact
+definition and therefore invalidates it as a normative specification.
 
 \subsection{True warnings gate (strict)}
-% TODO
+
+\paragraph{Definition.}
+\emph{True warnings} are warnings emitted by the document toolchain
+(\LaTeX{}, packages, classes) that indicate semantic ambiguity, structural
+inconsistency, or unresolved references.
+
+\paragraph{Rule.}
+The following warning classes must be empty:
+\begin{itemize}
+  \item \texttt{LaTeX Warning};
+  \item \texttt{Package Warning};
+  \item \texttt{Class Warning}.
+\end{itemize}
+
+If any true warning is present, the artefact fails conformance validation.
+
+\paragraph{Scope.}
+This gate concerns only ambiguity in the specification artefact itself. It does
+not assert correctness of external implementations or interpretations.
 
 \subsection{Allowed cosmetic noise (non-gated)}
-% TODO
+
+The following diagnostics are explicitly \emph{non-gated}:
+\begin{itemize}
+  \item overfull or underfull box warnings;
+  \item line-breaking or spacing diagnostics;
+  \item font substitution notices with identical metrics.
+\end{itemize}
+
+These messages may be recorded for editorial purposes but must not affect OPS-1
+conformance status.
 
 \subsection{Artefact completeness checks}
-% TODO
+
+An OPS-1 admissible PDF-4 artefact must satisfy the following structural
+completeness conditions:
+\begin{itemize}
+  \item all referenced sections exist and are non-empty;
+  \item all cross-references resolve without warnings;
+  \item no placeholder markers (e.g.\ \texttt{TODO}) remain in normative sections;
+  \item section ordering matches the declared document structure.
+\end{itemize}
+
+Completeness checks assess \emph{structural integrity only}. They do not evaluate
+semantic adequacy, empirical validity, or interpretive quality.

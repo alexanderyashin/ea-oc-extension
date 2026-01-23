@@ -1,9 +1,70 @@
 ﻿\section{Scope and Non-Claims}
+
 \subsection{Diagnostic-only boundary}
-% TODO
+
+This artefact defines the \emph{Engine Core} as a \textbf{diagnostic-only kernel}.
+Its scope is strictly limited to:
+(i) accepting a declared structural state snapshot,
+(ii) evaluating that snapshot against a declared invariant set,
+(iii) emitting a structural classification, and
+(iv) irreversibly terminating evaluation when STOP conditions apply.
+
+The Engine Core has \textbf{no causal influence} on the diagnosed system.
+It must not be embedded or interpreted as an actuator, controller, optimizer,
+governance mechanism, or decision authority.
+
+\paragraph{Closed operation set (normative).}
+The following operations exhaust the admissible behavior of the kernel:
+\begin{itemize}
+  \item \textbf{OBSERVE:} accept a read-only state snapshot;
+  \item \textbf{EVALUATE:} evaluate declared invariants on that snapshot;
+  \item \textbf{CLASSIFY:} map invariant satisfaction to a finite structural label;
+  \item \textbf{STOP/HALT:} terminate evaluation irreversibly for the given case.
+\end{itemize}
+
+These operations denote \emph{structural roles}, not procedural steps.
+No additional operations, phases, or control constructs exist inside the kernel.
 
 \subsection{No-prescription / no-management claims}
-% TODO
+
+This document makes \textbf{no prescriptive} and \textbf{no managerial} claims.
+
+\paragraph{Explicit non-claims.}
+The Engine Core does not:
+\begin{itemize}
+  \item recommend actions, remediations, or interventions;
+  \item define roadmaps, sequences, or execution plans;
+  \item set targets, KPIs, objectives, or success criteria;
+  \item prioritize options or rank alternatives;
+  \item allocate resources or define governance processes;
+  \item provide best practices, frameworks, or transformation methodology.
+\end{itemize}
+
+Any process, facilitation, governance, or decision-making that consumes diagnostic
+output is \textbf{external} to the Engine Core and must be handled by higher layers.
 
 \subsection{What the engine does not infer}
-% TODO
+
+The Engine Core must not infer missing structure or enrich semantics.
+It operates solely on explicitly provided inputs.
+
+\paragraph{Forbidden inference classes.}
+The kernel does not:
+\begin{itemize}
+  \item infer intent, priorities, accountability, or organizational motives;
+  \item infer causal narratives beyond invariant reference;
+  \item forecast future states or simulate counterfactual scenarios;
+  \item learn from history or adapt thresholds or rules;
+  \item complete missing observability via assumptions or heuristics.
+\end{itemize}
+
+\paragraph{Structural determinacy (scope-limited).}
+The only determinacy claim is internal:
+for identical declared inputs (state snapshot, invariant set, thresholds),
+the kernel yields the same classification and STOP decision.
+This is not a claim about determinism of the world, the enterprise, or outcomes.
+
+\paragraph{STOP as boundary, not signal.}
+STOP is not advice, not an error, and not a recoverable warning.
+It denotes a terminal boundary where further diagnostic evaluation is formally
+non-admissible for the given case (see Section~\ref{sec:stop}).

@@ -1,6 +1,28 @@
 ﻿\section{Abstract}
-\begin{itemize}
-  \item TODO: placeholder bullet 1
-  \item TODO: placeholder bullet 2
-  \item TODO: placeholder bullet 3
-\end{itemize}
+
+This document defines the \emph{Engine Core} as a \textbf{diagnostic-only kernel}
+within the OPS-1 layer. The Engine Core is specified as a minimal, non-adaptive,
+non-intervening evaluator that assesses immutable structural state snapshots
+against explicitly declared invariants and terminates evaluation irreversibly
+when STOP conditions apply.
+
+PDF-4 strictly restricts the Engine Core to diagnostic semantics.
+The kernel introduces no control logic, no optimization objectives, no learning
+or adaptation mechanisms, and no prescriptive, managerial, or interpretive layer.
+All admissible operations are closed, explicitly declared, and structurally
+bounded.
+
+The Engine Core is defined as a formally constrained mapping from declared inputs
+to declared diagnostic outputs. Its sole function is to determine structural
+admissibility or non-admissibility with respect to invariants and thresholds.
+STOP is treated as a first-class terminal boundary, not as an error, warning,
+or recoverable condition.
+
+This artefact provides a normative diagnostic anchor for higher-level tooling
+and documents. Directionality is strictly one-way: OPS-1 definitions may be
+referenced by external artefacts, while PDF-4 itself does not depend on or
+inherit operational, methodological, or governance semantics.
+
+PDF-4 does not specify implementations, execution environments, workflows,
+or organizational processes. It defines the Engine Core exclusively as a
+self-contained diagnostic boundary.

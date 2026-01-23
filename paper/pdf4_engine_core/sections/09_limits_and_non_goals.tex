@@ -1,9 +1,53 @@
 ﻿\section{Limits and Non-Goals}
+
+This section defines the \textbf{explicit limits} of the Engine Core and clarifies
+what is intentionally not addressed by PDF-4. These limits are constitutive: they
+define the boundary of admissible interpretation for OPS-1 diagnostic semantics.
+
 \subsection{Interpretation boundaries}
-% TODO
 
-\subsection{Known failure cases}
-% TODO
+Diagnostic outputs produced by the Engine Core are \emph{structural
+classifications only}. They express admissibility or non-admissibility with
+respect to declared invariants.
 
-\subsection{What would require external evidence}
-% TODO
+Any interpretation beyond invariant satisfaction is external to the kernel.
+
+\paragraph{No semantic lifting.}
+Consumers of diagnostic output must not treat classifications as:
+\begin{itemize}
+  \item recommendations or action guidance;
+  \item root-cause analyses or explanatory narratives;
+  \item forecasts, predictions, or risk estimates;
+  \item compliance judgments or managerial assessments.
+\end{itemize}
+
+Such interpretations require additional assumptions, evidence, or authority that
+are explicitly outside the Engine Core boundary.
+
+\subsection{Known non-diagnostic cases}
+
+The Engine Core cannot produce admissible diagnostic results when:
+\begin{itemize}
+  \item required observability is missing or indeterminate;
+  \item invariants are inconsistent, underspecified, or contradictory;
+  \item threshold objects are ambiguous or incompatible;
+  \item kernel invariants are violated.
+\end{itemize}
+
+In these cases, diagnostic admissibility itself is violated and STOP applies. STOP
+does not compensate for these conditions; it denotes their formal recognition.
+
+\subsection{What requires external evidence or authority}
+
+The following concerns necessarily require evidence, processes, or authority
+\emph{outside} the Engine Core:
+\begin{itemize}
+  \item remediation planning or corrective action design;
+  \item prioritization, sequencing, or trade-off resolution;
+  \item assignment of organizational responsibility or accountability;
+  \item economic, performance, or impact evaluation;
+  \item governance, approval, or decision authority.
+\end{itemize}
+
+PDF-4 explicitly declines to address these concerns in order to preserve the
+diagnostic neutrality and ontological integrity of the kernel.
