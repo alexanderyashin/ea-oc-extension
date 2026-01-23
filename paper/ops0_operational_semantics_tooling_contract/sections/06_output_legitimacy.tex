@@ -6,7 +6,7 @@ An output is classified as \textbf{legitimate} under OPS-0 if and only if it sat
 
 \begin{itemize}
   \item it is traceable \textbf{exclusively} to inputs that are admissible under OPS-0;
-  \item it declares an explicit \texttt{epistemic\_status} consistent with the run outcome;
+  \item it declares an explicit \texttt{epistemic\_status} consistent with the run outcome;      
   \item it embeds mandatory provenance and authorship information
         as required by this contract;
   \item it contains \textbf{no} prescriptive guidance, recommendations,
@@ -75,9 +75,9 @@ In RUN-OPS0-01:
   \item registries are referenced for structural completeness only;
   \item registries \textbf{MUST NOT} be populated,
         executed, or interpreted;
-  \item no legitimacy class may be inferred
-        outside explicit contract
-        and registry bindings.
+  \item any output that would require registry population, execution,
+        or interpretation outside explicit contract
+        and registry bindings \textbf{MUST} be treated as \textbf{non-legitimate}.
 \end{itemize}
 
 Any output that cannot be
