@@ -1,0 +1,22 @@
+% Section 07 - Misuse Patterns and STOP Triggers
+% Purpose: Make STOP triggers explicit for typical misuse; keep OPS-2A constitutive.
+% Constraints: diagnostic-only; no recovery guidance.
+
+\section{Misuse Patterns and STOP Triggers}
+
+\paragraph{Action-seeking misuse.}
+Requests for prescriptions, optimization, prioritization, rollout plans, or managerial advice
+are out of scope. Such requests MUST be classified as \texttt{STOP} within OPS-2A.
+
+\paragraph{Evidence inflation misuse.}
+Any prompt attempting to upgrade confidence without provided evidence (e.g., ``confirm it is correct'',
+``prove it works'', ``benchmark it'', ``certify compliance'') is out of scope and MUST be classified
+as \texttt{STOP} unless the required evidence is explicitly included as input.
+
+\paragraph{Control-loop misuse.}
+Iterative prompts intended to ``get around'' STOP, to search for loopholes, or to refine outputs
+toward an operational goal constitute misuse and MUST be classified as \texttt{STOP}.
+
+\paragraph{Scope creep.}
+Any attempt to extend OPS-2A into OPS-1 execution semantics, OPS-0 enforcement surfaces, or
+enterprise-operational recommendations is out of scope and MUST be classified as \texttt{STOP}.

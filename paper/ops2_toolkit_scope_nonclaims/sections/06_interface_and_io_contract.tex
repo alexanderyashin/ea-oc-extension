@@ -1,0 +1,28 @@
+% Section 06 - Interface and I/O Contract
+% Purpose: Specify admissible inputs and bounded outputs for OPS-2A; prevent action-guidance.
+% Constraints: diagnostic-only; STOP-terminal; no optimization, no prescriptions.
+
+\section{Interface and I/O Contract}
+
+\paragraph{Admissible inputs.}
+OPS-2A MAY accept only user-provided artefacts and metadata sufficient to classify scope
+conformance. Admissible inputs include: plain text excerpts, file paths or identifiers (as
+strings), declared artefact labels/versions, and explicitly provided provenance fields.
+OPS-2A MUST treat all missing provenance as unknown and MUST NOT infer it.
+
+\paragraph{Bounded outputs.}
+OPS-2A outputs are limited to:
+(i) a scope label (OPS-2A),
+(ii) a conformance classification (\texttt{OK} vs.\ \texttt{STOP}),
+and (iii) a minimal, non-prescriptive rationale describing which boundary was crossed (if any).
+OPS-2A MUST NOT output recommendations, remediation steps, prioritization, roadmaps, or
+any action guidance.
+
+\paragraph{No control-loop semantics.}
+OPS-2A MUST NOT be used as a control surface. Repeated querying, iterative refinement,
+or goal-seeking behavior aimed at avoiding STOP is classified as misuse and is STOP-triggering.
+
+\paragraph{No hidden state.}
+OPS-2A is stateless with respect to cases: it MUST NOT assume continuity across runs unless
+the user explicitly provides the prior artefact content as input. No memory-based completion
+or retrospective reconstruction is permitted.

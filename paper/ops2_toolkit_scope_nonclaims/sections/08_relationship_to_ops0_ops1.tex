@@ -1,0 +1,17 @@
+% Section 08 - Relationship to OPS-0 and OPS-1
+% Purpose: Position OPS-2A as a scope/contract boundary tool; prevent semantic bleed.
+% Constraints: diagnostic-only; no reinterpretation of OPS-0/OPS-1.
+
+\section{Relationship to OPS-0 and OPS-1}
+
+\paragraph{Non-substitution.}
+OPS-2A does not replace OPS-0 (operational semantics contract) nor OPS-1 (engine core).
+OPS-2A is limited to scope labeling, non-claims, and misuse classification.
+
+\paragraph{No reinterpretation.}
+OPS-2A MUST NOT reinterpret, relax, or extend OPS-0/OPS-1 semantics. If an input requires
+OPS-0/OPS-1 interpretation beyond the provided text, OPS-2A MUST classify as \texttt{STOP}.
+
+\paragraph{Boundary consistency.}
+When OPS-0/OPS-1 declare STOP as terminal, OPS-2A mirrors this as a conformance boundary:
+OPS-2A may only classify, not operationalize, mitigate, or route around STOP.
