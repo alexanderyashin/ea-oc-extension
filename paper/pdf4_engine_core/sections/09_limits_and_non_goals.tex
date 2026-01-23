@@ -1,197 +1,371 @@
 ﻿\section{Limits and Non-Goals}
 
-This section defines the \textbf{explicit limits} of the Engine Core and clarifies
-what is intentionally excluded from PDF-4. These limits are constitutive: they
-define the boundary of admissible interpretation for OPS-1 diagnostic semantics.
+This section defines the \textbf{explicit limits} of the Engine Core and
+fixes what is intentionally excluded from PDF-4.
+These limits are \textbf{constitutive}.
+They define the boundary of admissible interpretation
+for OPS-1 diagnostic semantics.
 
 \subsection{Interpretation boundaries}
 
-Diagnostic outputs produced by the Engine Core are \emph{structural
-classifications only}. They express admissibility or non-admissibility with
-respect to declared invariants and terminal STOP conditions.
+Diagnostic outputs produced by the Engine Core are
+\textbf{structural classifications only}.
+They express admissibility or non-admissibility
+with respect to declared invariants
+and terminal STOP conditions.
 
-Any interpretation beyond invariant satisfaction is external to the kernel and
-has no standing within OPS-1.
+Any interpretation beyond invariant satisfaction
+is \textbf{external} to the kernel
+and has \textbf{no standing} within OPS-1.
 
-\paragraph{No semantic lifting.}
-Consumers of diagnostic output must not treat classifications or STOP as:
+\paragraph{No semantic lifting (prohibition).}
+Consumers of diagnostic output \textbf{must not}
+treat classifications or STOP as:
 \begin{itemize}
   \item recommendations, guidance, or action directives;
   \item root-cause analyses or explanatory narratives;
   \item forecasts, predictions, or risk estimates;
-  \item compliance judgments, managerial assessments, or performance evaluations;
-  \item priorities, rankings, weights, targets, or any notion of ``what matters most''.
+  \item compliance judgments, managerial assessments,
+        or performance evaluations;
+  \item priorities, rankings, weights, targets,
+        or any notion of ``what matters most''.
 \end{itemize}
 
-Such interpretations require additional assumptions, evidence, or authority that
-are explicitly excluded from the Engine Core boundary.
+Any such interpretation requires additional assumptions,
+evidence, or authority and is \textbf{excluded}
+from the Engine Core boundary.
 
 \subsection{OPS-1 vs.\ OPS-2 responsibility split}
 
-OPS-1 is a \textbf{contract and authority layer}. It fixes admissibility,
-invariants, terminal STOP semantics, determinism, reproducibility, and provenance
-identity.
-OPS-1 does not address usage, presentation, tooling, orchestration, or
-decision-making.
+OPS-1 is a \textbf{contract and authority layer}.
+It fixes admissibility, invariants,
+terminal STOP semantics,
+determinism, reproducibility,
+and provenance identity.
 
-Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is an
-\textbf{exchangeable consumer} of OPS-1. OPS-2 may display, transport, or package
-results, but it must not define, reinterpret, operationalize, aggregate, rank, or
-extend OPS-1 semantics.
+OPS-1 \textbf{does not} address usage,
+presentation, tooling,
+orchestration, or decision-making.
 
-\paragraph{Binary compliance.}
-Compliance is \textbf{binary}: conformant or \emph{non-ESTRA}. Intent, usability
-goals, product considerations, or domain expectations do not soften this
-boundary.
+Any toolkit surface (CLI, GUI, scripts, integrations)
+belongs to OPS-2 and is an
+\textbf{exchangeable consumer} of OPS-1.
+OPS-2 may display, transport,
+or package results,
+but it \textbf{must not} define,
+reinterpret, operationalize,
+aggregate, rank, or extend OPS-1 semantics.
+
+\paragraph{Binary compliance (invariant).}
+Compliance is \textbf{binary}:
+conformant or \emph{non-ESTRA}.
+Intent, usability goals,
+product considerations,
+or domain expectations
+\textbf{do not} soften this boundary.
 
 \paragraph{Auto-disqualification by category error.}
-Any representation of OPS-1 as a ``method'', ``tool'', ``framework'',
-``best practice'', ``playbook'', or ``how-to'' is a category error.
-If an OPS-2 layer (or its documentation) implies ``you should do X'' from
-classification or terminal STOP, it introduces prescriptive semantics and is
-therefore \textbf{non-ESTRA}.
+Any representation of OPS-1 as a
+``method'', ``tool'',
+``framework'', ``best practice'',
+``playbook'', or ``how-to''
+is a category error.
+If any OPS-2 layer
+(or its documentation)
+implies ``you should do X''
+from a classification
+or from terminal STOP,
+it introduces prescriptive semantics
+and is therefore \textbf{non-ESTRA}.
 
 \subsection{Known non-diagnostic cases}
 
-The Engine Core cannot produce admissible diagnostic results when:
+The Engine Core \textbf{cannot}
+produce admissible diagnostic results
+when:
 \begin{itemize}
-  \item required observability is missing, indeterminate, or explicitly absent;
-  \item invariants are inconsistent, underspecified, or contradictory;
-  \item threshold objects are ambiguous, incompatible, or ill-defined;
+  \item required observability is missing,
+        indeterminate,
+        or explicitly absent;
+  \item invariants are inconsistent,
+        underspecified,
+        or contradictory;
+  \item threshold objects are ambiguous,
+        incompatible,
+        or ill-defined;
   \item kernel invariants are violated;
-  \item provenance completeness cannot be established;
-  \item determinism or reproducibility, as architectural invariants, is violated.
+  \item provenance completeness
+        cannot be established;
+  \item determinism or reproducibility,
+        as architectural invariants,
+        is violated.
 \end{itemize}
 
-In all such cases, diagnostic admissibility itself is violated and terminal STOP
-applies. STOP does not compensate for these conditions; it denotes their formal
-recognition.
+In all such cases,
+diagnostic admissibility itself
+is \textbf{violated}
+and terminal STOP \textbf{applies}.
+STOP does \textbf{not} compensate
+for these conditions;
+it denotes their formal recognition.
 
 \subsection{What requires external evidence or authority}
 
-The following concerns necessarily require evidence, processes, or authority
-\emph{outside} the Engine Core:
+The following concerns
+\textbf{necessarily require}
+evidence, processes,
+or authority \textbf{outside}
+the Engine Core:
 \begin{itemize}
-  \item remediation planning or corrective action design;
-  \item prioritization, sequencing, or trade-off resolution;
-  \item assignment of organizational responsibility or accountability;
-  \item economic, performance, or impact evaluation;
-  \item governance, approval, or decision authority.
+  \item remediation planning
+        or corrective action design;
+  \item prioritization,
+        sequencing,
+        or trade-off resolution;
+  \item assignment of organizational
+        responsibility or accountability;
+  \item economic, performance,
+        or impact evaluation;
+  \item governance, approval,
+        or decision authority.
 \end{itemize}
 
-PDF-4 explicitly declines to address these concerns in order to preserve the
-diagnostic neutrality and ontological integrity of the kernel.
+PDF-4 \textbf{explicitly declines}
+to address these concerns
+in order to preserve
+diagnostic neutrality
+and ontological integrity
+of the kernel.
 
 \subsection{Explicit exclusion of workflows and methods}
 
-PDF-4 does not define workflows, procedures, methods, playbooks, recipes, or
-execution instructions of any kind.
+PDF-4 \textbf{does not} define
+workflows, procedures,
+methods, playbooks,
+recipes, or execution instructions
+of any kind.
 
-The diagnostic operation graph defined in PDF-4 exists solely to fix admissibility
-boundaries and terminal STOP enforcement. It must not be interpreted as:
+The diagnostic operation graph
+defined in PDF-4 exists
+\textbf{solely} to fix
+admissibility boundaries
+and terminal STOP enforcement.
+It \textbf{must not} be interpreted as:
 \begin{itemize}
-  \item a process model or workflow description;
-  \item a decision tree or control structure;
-  \item an execution sequence to be followed by agents or systems;
-  \item a method for optimization, steering, intervention, or management.
+  \item a process model
+        or workflow description;
+  \item a decision tree
+        or control structure;
+  \item an execution sequence
+        to be followed
+        by agents or systems;
+  \item a method for optimization,
+        steering, intervention,
+        or management.
 \end{itemize}
 
-Any interpretation of the operation graph as a workflow, method, or procedural
-guidance is non-admissible under OPS-1 and outside the declared scope of PDF-4.
+Any interpretation of the operation graph
+as a workflow, method,
+or procedural guidance
+is \textbf{non-admissible}
+under OPS-1
+and outside the declared
+scope of PDF-4.
 
-\subsection{Determinism and reproducibility are not negotiated by process}
+\subsection{Determinism and reproducibility are not process-negotiable}
 
-OPS-1 fixes determinism and reproducibility as \textbf{architectural invariants}.
-Accordingly, PDF-4 does not define, recommend, imply, or tolerate any process-level
-mechanisms intended to ``achieve'', ``improve'', or ``enforce'' them.
+OPS-1 fixes determinism
+and reproducibility
+as \textbf{architectural invariants}.
+Accordingly, PDF-4 \textbf{does not}
+define, recommend,
+imply, or tolerate
+any process-level mechanisms
+intended to ``achieve'',
+``improve'',
+or ``enforce'' them.
 
-If determinism or reproducibility would require procedural controls to hold, the
-artefact is non-admissible under OPS-1 and produced outputs are invalid.
+If determinism or reproducibility
+would require procedural controls
+to hold,
+the artefact is
+\textbf{non-admissible}
+under OPS-1
+and produced outputs
+are \textbf{invalid}.
 
 \subsection{Forbidden extensions (auto-disqualifying)}
 
-The following extension classes are \textbf{explicitly forbidden}.
-\textbf{If any of them is present, the artefact is NOT ESTRA-conformant.}
+The following extension classes
+are \textbf{explicitly forbidden}.
+\textbf{If any is present,
+the artefact is NOT ESTRA-conformant.}
 
 \paragraph{Semantic control and steering.}
 \begin{itemize}
-  \item any optimization, recommendation, prioritization, ranking, weighting, scoring,
-        targeting, or decision semantics;
-  \item any control logic influencing or steering diagnostic outcomes;
-  \item any feedback edge or adaptive branching affecting evaluation.
+  \item any optimization,
+        recommendation,
+        prioritization,
+        ranking,
+        weighting,
+        scoring,
+        targeting,
+        or decision semantics;
+  \item any control logic
+        influencing or steering
+        diagnostic outcomes;
+  \item any feedback edge
+        or adaptive branching
+        affecting evaluation.
 \end{itemize}
 
 \paragraph{Learning and adaptation.}
 \begin{itemize}
-  \item any form of learning, fitting, calibration, adaptation, or tuning influencing
-        invariants, thresholds, classification, provenance identity, admissibility, or
-        terminal STOP;
-  \item any use of historical cases to modify kernel behavior.
+  \item any learning, fitting,
+        calibration, adaptation,
+        or tuning influencing
+        invariants, thresholds,
+        classification,
+        provenance identity,
+        admissibility,
+        or terminal STOP;
+  \item any use of historical cases
+        to modify kernel behavior.
 \end{itemize}
 
 \paragraph{STOP violation.}
 \begin{itemize}
-  \item any retry, recovery, bypass, continuation path, or ``soft STOP'' behavior after
-        terminal STOP;
-  \item any reinterpretation of STOP as warning, error, signal, advisory, or ``needs review''.
+  \item any retry, recovery,
+        bypass, continuation path,
+        or ``soft STOP''
+        after terminal STOP;
+  \item any reinterpretation of STOP
+        as warning, error,
+        signal, advisory,
+        or ``needs review''.
 \end{itemize}
 
 \paragraph{Non-determinism and provenance violation.}
 \begin{itemize}
-  \item any semantically relevant non-determinism;
-  \item any partial, probabilistic, inferred, reconstructed, or narrative provenance;
-  \item any post-hoc correction, repair, normalization, or retrofitting of evidence or
-        diagnostic artefacts.
+  \item any semantically relevant
+        non-determinism;
+  \item any partial, probabilistic,
+        inferred, reconstructed,
+        or narrative provenance;
+  \item any post-hoc correction,
+        repair, normalization,
+        or retrofitting of evidence
+        or diagnostic artefacts.
 \end{itemize}
 
 \paragraph{Registry and evidence manipulation.}
 \begin{itemize}
-  \item mutable registries or evidence stores;
-  \item overwriting, replacing, deleting, rewriting, or reordering evidence artefacts
-        based on relevance or ``importance'';
-  \item opaque preprocessing, hidden sampling, hidden filtering, or undisclosed
+  \item mutable registries
+        or evidence stores;
+  \item overwriting, replacing,
+        deleting, rewriting,
+        or reordering evidence
+        based on relevance
+        or ``importance'';
+  \item opaque preprocessing,
+        hidden sampling,
+        hidden filtering,
+        or undisclosed
         selection criteria.
 \end{itemize}
 
 \paragraph{Renderer and reporting semantics (presentation-driven meaning).}
 \begin{itemize}
-  \item any visualization, UI, report, or default view that implies preference,
-        importance, priority, ``severity'', ``criticality'', or ``health'' from OPS-1 outputs;
-  \item any ranking, top-$N$, ordering by ``risk/impact/value'', heatmap semantics,
-        traffic-light semantics, or highlight rules that act as a normative lens;
-  \item any report text that interprets outputs as guidance, recommended action, or
-        procedural next step.
+  \item any visualization, UI,
+        report, or default view
+        that implies preference,
+        importance, priority,
+        ``severity'',
+        ``criticality'',
+        or ``health''
+        from OPS-1 outputs;
+  \item any ranking, top-$N$,
+        ordering by ``risk'',
+        ``impact'',
+        or ``value'',
+        heatmap semantics,
+        traffic-light semantics,
+        or highlight rules
+        acting as a normative lens;
+  \item any report text
+        interpreting outputs
+        as guidance,
+        recommended action,
+        or procedural next step.
 \end{itemize}
 
 \paragraph{Evidence import semantics (adapter-driven meaning).}
 \begin{itemize}
-  \item any import adapter that filters, cleans, normalizes, imputes, smooths, deduplicates
-        by relevance, treats outliers, or otherwise transforms evidence in a semantics-bearing
-        way;
-  \item any adapter behavior where independent implementers could ingest the same external
-        evidence and obtain materially different semantics without an explicitly declared,
+  \item any import adapter
+        that filters, cleans,
+        normalizes, imputes,
+        smooths, deduplicates
+        by relevance,
+        treats outliers,
+        or otherwise transforms
+        evidence
+        in a semantics-bearing way;
+  \item any adapter behavior
+        where independent implementers
+        ingest the same external evidence
+        and obtain materially different
+        semantics
+        without an explicitly declared,
         reversible mapping rule.
 \end{itemize}
 
 \paragraph{Graded or stratified verification (gate-driven meaning).}
 \begin{itemize}
-  \item any ``quality levels'', ``maturity tiers'', or graded acceptance (e.g., pass-with-advice,
-        bronze/silver/gold), regardless of naming;
-  \item any gate output that acts as a score, ranking, or preference signal rather than a
-        strict binary predicate (pass/fail).
+  \item any ``quality levels'',
+        ``maturity tiers'',
+        or graded acceptance
+        (e.g.\ pass-with-advice,
+        bronze/silver/gold),
+        regardless of naming;
+  \item any gate output
+        acting as a score,
+        ranking,
+        or preference signal
+        rather than a strict
+        binary predicate
+        (pass/fail).
 \end{itemize}
 
 \paragraph{Witness packaging semantics (packaging-driven narrative).}
 \begin{itemize}
-  \item curated subsets, ``highlights'', ``executive packs'', ``most important artefacts'', or
-        any selection/reordering intended to create narrative, weight, or reading guidance;
-  \item any packaging that changes meaning by emphasizing, suppressing, or sequencing artefacts.
+  \item curated subsets,
+        ``highlights'',
+        ``executive packs'',
+        ``most important artefacts'',
+        or any selection
+        or reordering
+        intended to create
+        narrative, weight,
+        or reading guidance;
+  \item any packaging
+        that changes meaning
+        by emphasizing,
+        suppressing,
+        or sequencing artefacts.
 \end{itemize}
 
-\paragraph{Binary auto-disqualification rule.}
-If any extension can change a reader's decision preference without changing the
-underlying computed artefacts, it introduces normative semantics and is therefore
-\textbf{non-ESTRA}.
+\paragraph{Binary auto-disqualification rule (invariant).}
+If any extension can change
+a reader's decision preference
+without changing the underlying
+computed artefacts,
+it introduces normative semantics
+and is therefore \textbf{non-ESTRA}.
 
-Presence of any forbidden class immediately disqualifies the artefact from OPS-1
-and ESTRA conformance, regardless of tooling, intent, or external justification.
+Presence of any forbidden class
+\textbf{immediately disqualifies}
+the artefact from OPS-1
+and ESTRA conformance,
+regardless of tooling,
+intent,
+or external justification.

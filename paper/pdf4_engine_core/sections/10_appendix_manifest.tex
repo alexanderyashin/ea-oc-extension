@@ -1,12 +1,14 @@
 ﻿\section{Appendix: Manifest}
 
-This appendix records the structural manifests required to assess PDF-4 as a
-review-ready OPS-1 artefact. The manifests are descriptive and non-executable.
+This appendix records the structural manifests required to assess PDF-4
+as a review-ready OPS-1 artefact.
+The manifests are \textbf{descriptive} and \textbf{non-executable}.
+They introduce \textbf{no} normative, prescriptive,
+or methodological semantics.
 
 \subsection{File manifest}
 
 The PDF-4 artefact consists of the following files and sections:
-
 \begin{itemize}
   \item \texttt{main.tex} — document entry point and section ordering;
   \item \texttt{sections/00\_abstract.tex} — positioning and scope summary;
@@ -23,15 +25,18 @@ The PDF-4 artefact consists of the following files and sections:
 
 No additional normative content exists outside this list.
 
-\paragraph{OPS-2 is external by definition.}
-Any toolkit surface (CLI/GUI/scripts/integrations), documentation, product framing,
-or usage guidance belongs to OPS-2 and is \emph{not} part of this OPS-1 artefact.
-Such surfaces may consume the OPS-1 contract but must not be treated as sources of
-OPS-1 authority or semantics.
+\paragraph{OPS-2 is external by definition (invariant).}
+Any toolkit surface (CLI, GUI, scripts, integrations),
+documentation, product framing,
+or usage guidance belongs to OPS-2
+and is \textbf{not} part of this OPS-1 artefact.
+Such surfaces may consume the OPS-1 contract
+but \textbf{must not} be treated
+as sources of OPS-1 authority or semantics.
 
 \subsection{Build manifest}
 
-The artefact is considered valid only if:
+The artefact is considered valid \textbf{only if}:
 \begin{itemize}
   \item the document builds with \texttt{EXIT\_CODE = 0};
   \item no true warnings (LaTeX/Package/Class) are emitted;
@@ -39,25 +44,43 @@ The artefact is considered valid only if:
   \item no placeholder markers remain in normative sections.
 \end{itemize}
 
-Build tooling, environments, and containerization are external to the kernel
-semantics and therefore not specified here.
+Build tooling, environments,
+and containerization are external
+to kernel semantics
+and are therefore \textbf{not} specified here.
 
 \subsection{Schema manifest}
 
 The Engine Core relies on the following conceptual schemas:
 \begin{itemize}
-  \item \emph{State snapshot schema} for $S$ (fields, values, observability);
-  \item \emph{Invariant schema} for $\mathcal{I}$ (predicates over $S$);
-  \item \emph{Threshold schema} for $\Theta$ (typed boundary parameters);
-  \item \emph{Result schema} for $R$ (classification and STOP flag);
-  \item \emph{Provenance schema} for $P$ (append-only identifiers).
+  \item \emph{State snapshot schema} for $S$
+        (fields, values, observability);
+  \item \emph{Invariant schema} for $\mathcal{I}$
+        (predicates over $S$);
+  \item \emph{Threshold schema} for $\Theta$
+        (typed boundary parameters);
+  \item \emph{Result schema} for $R$
+        (classification and STOP flag);
+  \item \emph{Provenance schema} for $P$
+        (append-only identifiers).
 \end{itemize}
 
-Concrete serialization formats (YAML, JSON, tables, etc.) are intentionally left
-unspecified. Any format is admissible provided it preserves structure, identity,
+Concrete serialization formats
+(YAML, JSON, tables, etc.)
+are intentionally unspecified.
+Any format is admissible
+\textbf{only if} it preserves
+structure, identity,
 and traceability.
 
-\paragraph{No method/tool semantics by serialization.}
-No serialization format, wrapper, or consumer layer may add prescriptive fields,
-recommendations, or ``how-to'' semantics to the OPS-1 contract. Any such addition
-is external and non-conformant to OPS-1 by definition.
+\paragraph{No method or tool semantics by serialization (prohibition).}
+No serialization format,
+wrapper,
+or consumer layer
+\textbf{may} add prescriptive fields,
+recommendations,
+or ``how-to'' semantics
+to the OPS-1 contract.
+Any such addition is external
+and \textbf{non-conformant}
+to OPS-1 by definition.

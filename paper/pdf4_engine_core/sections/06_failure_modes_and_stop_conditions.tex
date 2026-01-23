@@ -2,14 +2,16 @@
 \label{sec:stop}
 
 This section defines \textbf{terminal STOP} as a structural and irreversible
-boundary of diagnostic admissibility. STOP is neither an error, nor a warning,
-nor a recommendation. It denotes the condition under which further diagnostic
-evaluation is formally non-admissible.
+boundary of diagnostic admissibility.
+STOP is \textbf{not} an error, \textbf{not} a warning, and \textbf{not} a
+recommendation.
+It denotes the condition under which further diagnostic evaluation is
+formally non-admissible.
 
 \subsection{Structural failures}
 
 A \emph{structural failure} occurs when required preconditions for diagnostic
-evaluation are violated in a way that invalidates admissibility itself.
+evaluation are violated in a manner that invalidates admissibility itself.
 
 Examples include:
 \begin{itemize}
@@ -18,30 +20,34 @@ Examples include:
   \item violation of kernel invariants (e.g.\ non-intervention, non-adaptivity).
 \end{itemize}
 
-Structural failures are properties of the declared input configuration. They
-trigger terminal STOP immediately. They do not represent execution faults,
-runtime errors, or implementation failures.
+Structural failures are properties of the declared input configuration.
+They \textbf{trigger} terminal STOP immediately.
+They \textbf{do not} represent execution faults, runtime errors,
+or implementation failures.
 
 \subsection{Observability loss}
 
 Observability loss occurs when the state snapshot $S$ lacks sufficient declared
-information to evaluate required invariants and this insufficiency is explicitly
-encoded in the observability descriptor $\mathcal{O}$.
+information to evaluate required invariants and this insufficiency is
+explicitly encoded in the observability descriptor $\mathcal{O}$.
 
-\paragraph{No implicit completion.}
-The kernel must not compensate observability loss by assumptions, defaults,
-heuristics, estimation, or probabilistic inference. If required observability is
-missing, diagnostic admissibility is violated and terminal STOP applies.
+\paragraph{No implicit completion (prohibition).}
+The kernel \textbf{must not} compensate observability loss by assumptions,
+defaults, heuristics, estimation, or probabilistic inference.
+If required observability is missing, diagnostic admissibility is
+\textbf{violated} and terminal STOP \textbf{applies}.
 
 \subsection{Threshold violations}
 
 Threshold violations occur when invariant predicates that reference declared
 threshold objects $\Theta$ evaluate to false.
 
-\paragraph{Hard boundary semantics.}
-Thresholds are treated as hard structural boundaries. There is no notion of soft
-constraints, grace margins, tolerances, or gradual degradation inside the kernel.
-Any violation constitutes loss of admissibility and triggers terminal STOP.
+\paragraph{Hard boundary semantics (invariant).}
+Thresholds are treated as hard structural boundaries.
+There is \textbf{no} notion of soft constraints, grace margins, tolerances,
+or gradual degradation inside the kernel.
+Any violation \textbf{constitutes} loss of admissibility and
+\textbf{triggers} terminal STOP.
 
 \subsection{STOP region semantics}
 
@@ -50,37 +56,44 @@ STOP defines a terminal admissibility region in the diagnostic domain:
 \mathrm{STOP} = 1 \;\Rightarrow\; \nexists\, R' \text{ such that } R \prec R'
 \]
 
-That is, there exists no admissible diagnostic result that can succeed $R$ for the
-same declared case.
+That is, no admissible diagnostic result exists that can succeed $R$
+for the same declared case.
 
-\paragraph{Irreversibility (structural).}
-Irreversibility is structural, not temporal. STOP does not denote a moment in
-time, a process stage, or an execution phase. It denotes the absence of any
-admissible continuation within the kernel’s domain.
+\paragraph{Irreversibility (structural invariant).}
+Irreversibility is structural, not temporal.
+STOP \textbf{does not} denote a moment in time, a process stage,
+or an execution phase.
+It denotes the absence of any admissible continuation within the
+kernel’s domain.
 
-\paragraph{Monotonicity.}
-Once STOP holds for a declared case, it remains true for that case. STOP cannot be
-downgraded, overridden, weakened, or reinterpreted without changing the declared
-inputs.
+\paragraph{Monotonicity (invariant).}
+Once STOP holds for a declared case, it \textbf{remains} true for that case.
+STOP \textbf{cannot} be downgraded, overridden, weakened, or reinterpreted
+without changing the declared inputs.
 
-\paragraph{Singularity.}
-STOP is singular and absolute per case. There is no notion of partial, layered,
-probabilistic, conditional, or recoverable STOP.
+\paragraph{Singularity (invariant).}
+STOP is singular and absolute per case.
+There is \textbf{no} notion of partial, layered, probabilistic,
+conditional, or recoverable STOP.
 
 \subsection{Diagnostic operation graph (normative)}
 
 The Engine Core admits a single, strictly directed diagnostic operation graph.
-The graph is \textbf{acyclic}, \textbf{read-only}, and \textbf{terminal}. This
-graph is normative and closed.
+The graph is \textbf{acyclic}, \textbf{read-only}, and \textbf{terminal}.
+This graph is \textbf{normative} and \textbf{closed}.
 
 \paragraph{Nodes.}
 The diagnostic graph consists of the following abstract operation nodes:
 \begin{itemize}
   \item \texttt{InputDeclaration}: reception of $(S,\mathcal{I},\Theta)$;
-  \item \texttt{StructuralValidation}: validation of kernel invariants and input consistency;
-  \item \texttt{InvariantEvaluation}: evaluation of declared invariants;
-  \item \texttt{STOP}: terminal non-admissibility state;
-  \item \texttt{ResultEmission}: emission of $R$ with $\mathrm{STOP}=0$.
+  \item \texttt{StructuralValidation}:
+        validation of kernel invariants and input consistency;
+  \item \texttt{InvariantEvaluation}:
+        evaluation of declared invariants;
+  \item \texttt{STOP}:
+        terminal non-admissibility state;
+  \item \texttt{ResultEmission}:
+        emission of $R$ with $\mathrm{STOP}=0$.
 \end{itemize}
 
 \paragraph{Edges (allowed).}
@@ -95,27 +108,29 @@ The only admissible directed edges are:
 \{\texttt{STOP},\ \texttt{ResultEmission}\}
 \]
 
-\paragraph{STOP as terminal sink.}
+\paragraph{STOP as terminal sink (invariant).}
 \texttt{STOP} is a terminal sink node.
-There exists \emph{no outgoing edge} from \texttt{STOP}.
+There exists \textbf{no outgoing edge} from \texttt{STOP}.
 
-\paragraph{Forbidden edges (normative).}
+\paragraph{Forbidden edges (prohibition).}
 The following edges are \textbf{explicitly forbidden}:
 \begin{itemize}
   \item any edge leaving \texttt{STOP};
   \item any feedback, backward, or cyclic edge between any nodes;
   \item any retry, recovery, continuation, or re-evaluation edge;
-  \item any edge conditioned on optimization, preference, ranking, or goal criteria;
-  \item any edge introducing control, steering, learning, or adaptive behavior.
+  \item any edge conditioned on optimization, preference,
+        ranking, or goal criteria;
+  \item any edge introducing control, steering,
+        learning, or adaptive behavior.
 \end{itemize}
 
-Any artefact implying a graph outside this definition is non-admissible under
-OPS-1.
+Any artefact implying a diagnostic graph outside this definition is
+\textbf{non-admissible} under OPS-1.
 
 \subsection{Minimal audit trail for STOP}
 
-When terminal STOP is triggered, the kernel records a minimal audit trail in the
-append-only provenance record $P$:
+When terminal STOP is triggered, the kernel records a minimal audit trail
+in the append-only provenance record $P$:
 \begin{itemize}
   \item identifier of the input snapshot $h(S)$;
   \item identifier of the invariant set $h(\mathcal{I})$;
@@ -124,6 +139,8 @@ append-only provenance record $P$:
   \item the STOP flag.
 \end{itemize}
 
-This audit trail exists solely to support traceability and conformance checks. It
-must not be extended to provide causal narratives, remediation advice, recovery
-logic, decision guidance, or policy justification.
+This audit trail exists \textbf{solely} to support traceability and
+conformance checks.
+It \textbf{must not} be extended to provide causal narratives,
+remediation advice, recovery logic, decision guidance,
+or policy justification.

@@ -3,17 +3,18 @@
 \subsection{Diagnostic-only boundary}
 
 This artefact defines the \emph{Engine Core} as a \textbf{diagnostic-only kernel}.
-Its scope is strictly and exhaustively limited to:
+Its scope is fixed, closed, and exhaustively limited to:
 (i) accepting a declared structural state snapshot,
 (ii) evaluating that snapshot against a declared invariant set,
 (iii) emitting a structural classification, and
 (iv) irreversibly terminating evaluation when terminal STOP conditions apply.
 
 The Engine Core has \textbf{no causal influence} on the diagnosed system.
-It must not be embedded, exposed, or interpreted as an actuator, controller,
-optimizer, governance mechanism, decision authority, or intervention layer.
+It \textbf{is not} an actuator, controller, optimizer, governance mechanism,
+decision authority, or intervention layer.
+Any embedding, exposure, or interpretation as such is \textbf{invalid}.
 
-\paragraph{Closed operation set (normative).}
+\paragraph{Closed operation set (invariant).}
 The following operations exhaust the admissible behavior of the kernel:
 \begin{itemize}
   \item \textbf{OBSERVE:} accept a read-only state snapshot;
@@ -24,45 +25,49 @@ The following operations exhaust the admissible behavior of the kernel:
 
 These operations denote \emph{structural roles}, not procedural steps.
 No additional operations, phases, execution controls, or behavioral constructs
-exist inside the kernel.
+exist within the kernel.
+Any extension beyond this set is \textbf{non-admissible}.
 
 \subsection{OPS-1 contract vs.\ toolkits (OPS-2)}
 
 OPS-1 is an \textbf{architecture-and-contract layer}.
 It defines admissibility, invariants, prohibitions, authority, determinism,
 reproducibility, and provenance identity.
-It is \textbf{not} usage-centered, tool-centered, or user-centered:
-OPS-1 does not know users, workflows, commands, interfaces, or decisions.
+OPS-1 \textbf{does not} define usage, tooling, workflows, interfaces, or decisions.
 
 Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is, by
 definition, an \textbf{exchangeable consumer} of the OPS-1 contract.
-OPS-2 may change without changing OPS-1; OPS-1 must not be defined,
+OPS-2 \textbf{may} change independently; OPS-1 \textbf{must not} be defined,
 reinterpreted, or operationalized by OPS-2.
+Any dependency in the opposite direction is \textbf{invalid}.
 
-\paragraph{Binary compliance.}
+\paragraph{Binary compliance (invariant).}
 OPS-1 compliance is \textbf{binary}: \emph{conformant} or \emph{non-ESTRA}.
-Intent, usability goals, or product considerations do not soften this boundary.
-A well-intended toolkit that introduces prohibited semantics is \textbf{not} ESTRA.
+Intent, usability goals, or product considerations are \textbf{irrelevant}.
+Any toolkit that introduces prohibited semantics is \textbf{non-conformant}.
 
-\paragraph{Non-normativity of toolkits.}
-Toolkits are never normative. They must not create new semantic degrees of
-freedom, reinterpret terminal STOP, weaken invariants, or turn structural labels
+\paragraph{Non-normativity of toolkits (prohibition).}
+Toolkits are \textbf{never normative}.
+They \textbf{must not} introduce new semantic degrees of freedom,
+reinterpret terminal STOP, weaken invariants, or transform structural labels
 into prescriptions.
-UX, adoption, or product arguments do not justify any semantic change to OPS-1.
+UX, adoption, or product arguments \textbf{do not justify} any semantic change
+to OPS-1.
 
 \paragraph{Auto-disqualification (boundary violation).}
 Any representation of OPS-1 as a ``method'', ``tool'', ``framework'',
 ``best practice'', ``playbook'', or ``how-to'' is a category error.
-If a consumer layer induces or implies ``you should do X'' from OPS-1 output or
-from terminal STOP, that representation is \textbf{non-conformant} and therefore
+Any consumer layer that induces or implies ``you should do X'' from OPS-1 output
+or from terminal STOP is \textbf{non-conformant} and therefore
 \textbf{non-ESTRA}.
 
 \subsection{No-prescription / no-management claims}
 
-This document makes \textbf{no prescriptive} and \textbf{no managerial} claims.
+This document contains \textbf{no prescriptive} and \textbf{no managerial}
+statements.
 
-\paragraph{Explicit non-claims.}
-The Engine Core does not:
+\paragraph{Explicit non-claims (prohibition).}
+The Engine Core does \textbf{not}:
 \begin{itemize}
   \item recommend actions, remediations, or interventions;
   \item define roadmaps, sequences, or execution plans;
@@ -77,11 +82,11 @@ output is \textbf{external} to the Engine Core and outside OPS-1 authority.
 
 \subsection{What the engine does not infer}
 
-The Engine Core must not infer missing structure or enrich semantics.
+The Engine Core \textbf{does not} infer missing structure or enrich semantics.
 It operates exclusively on explicitly declared inputs.
 
-\paragraph{Forbidden inference classes.}
-The kernel does not:
+\paragraph{Forbidden inference classes (prohibition).}
+The kernel does \textbf{not}:
 \begin{itemize}
   \item infer intent, priorities, accountability, or organizational motives;
   \item infer causal narratives beyond declared invariant reference;
@@ -90,13 +95,15 @@ The kernel does not:
   \item complete missing observability via assumptions, heuristics, or estimation.
 \end{itemize}
 
-\paragraph{Structural determinacy (scope-limited).}
+\paragraph{Structural determinacy (descriptive).}
 The only determinacy claim is internal and structural:
 for identical declared inputs (state snapshot, invariant set, thresholds),
 the kernel yields the same classification and terminal STOP decision.
-This is not a claim about determinism of the world, organizations, or outcomes.
+This statement applies \textbf{only} to kernel behavior and makes
+\textbf{no claim} about determinism of the world, organizations, or outcomes.
 
-\paragraph{STOP as boundary, not signal.}
-Terminal STOP is not advice, not an error, and not a recoverable warning.
+\paragraph{STOP as boundary, not signal (invariant).}
+Terminal STOP is \textbf{not} advice, \textbf{not} an error,
+and \textbf{not} a recoverable warning.
 It denotes a structural boundary beyond which further diagnostic evaluation is
 formally non-admissible for the given case (see Section~\ref{sec:stop}).

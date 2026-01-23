@@ -1,83 +1,110 @@
 ﻿\section{Reproducibility and Traceability}
 
 This section specifies the minimal reproducibility and traceability guarantees
-required of an OPS-1 Engine Core artefact. These guarantees are \emph{structural}:
-they concern the ability to reproduce diagnostic results from declared inputs
-only. They do not concern the empirical behavior of the diagnosed system.
+required of an OPS-1 Engine Core artefact.
+These guarantees are \textbf{structural}.
+They concern the ability to reproduce diagnostic results from declared inputs
+only.
+They \textbf{do not} concern the empirical behavior of the diagnosed system.
 
 \subsection{Reproducibility as architectural invariant (binary)}
 
 OPS-1 treats reproducibility as a \textbf{binary architectural property}:
-an artefact is either reproducible or it is not. No intermediate status,
-gradation, or confidence level is admissible.
+an artefact is either reproducible or non-reproducible.
+No intermediate status, gradation, or confidence level is admissible.
 
-\paragraph{Necessary condition for validity.}
-Given identical declared inputs, the Engine Core must reproduce identical
-diagnostic results. If this condition fails, the artefact is invalid under OPS-1.
+\paragraph{Necessary condition for validity (invariant).}
+Given identical declared inputs, the Engine Core \textbf{must} reproduce
+identical diagnostic results.
+If this condition fails, the artefact is \textbf{invalid} under OPS-1.
 
-\paragraph{Not a process property.}
-Reproducibility is not a matter of process discipline, execution hygiene,
-toolchain choice, or environment management. It is fixed exclusively at the
-level of kernel semantics and declared inputs.
+\paragraph{Not a process property (descriptive).}
+Reproducibility is \textbf{not} a matter of process discipline,
+execution hygiene, toolchain choice, or environment management.
+It is fixed exclusively at the level of kernel semantics
+and declared inputs.
 
-\paragraph{Non-reproducibility implies terminal STOP-admissibility.}
-If reproducibility cannot be established for an output, diagnostic admissibility
-is violated. The situation is terminal STOP-admissible, and the output must not
-be treated as an OPS-1 result.
+\paragraph{Non-reproducibility implies terminal STOP-admissibility (invariant).}
+If reproducibility cannot be established for an output,
+diagnostic admissibility is \textbf{violated}.
+The situation is terminal STOP-admissible,
+and the output \textbf{must not} be treated as an OPS-1 result.
 
 \subsection{Registry and evidence as architecture (non-technical)}
 
-OPS-1 treats the \textbf{append-only registry} and \textbf{immutable evidence} as
-architectural constructs, not as tooling, storage systems, or processes.
+OPS-1 treats the \textbf{append-only registry} and
+\textbf{immutable evidence} as architectural constructs,
+not as tooling, storage systems, or processes.
 
 \paragraph{Registry (logical, reference-only).}
-The registry is a logical reference space that contains \emph{references} and
-\emph{links} only. It carries no interpretation, no aggregation semantics, and no
-decision or filter logic. Registry contents must not influence evaluation,
-classification, terminal STOP semantics, or admissibility boundaries.
+The registry is a logical reference space that contains
+\emph{references} and \emph{links} only.
+It carries \textbf{no} interpretation,
+\textbf{no} aggregation semantics,
+and \textbf{no} decision or filter logic.
+Registry contents \textbf{must not} influence evaluation,
+classification, terminal STOP semantics,
+or admissibility boundaries.
 
 \paragraph{Evidence (immutable, context-free).}
-Evidence denotes immutable artefacts referenced by the registry. Evidence is
-context-free in OPS-1 kernel semantics: within OPS-1 the Engine Core must not
-interpret, normalize, clean, sample, filter, aggregate, or otherwise transform
-evidence.
+Evidence denotes immutable artefacts referenced by the registry.
+Evidence is \textbf{context-free} in OPS-1 kernel semantics.
+Within OPS-1, the Engine Core \textbf{must not} interpret,
+normalize, clean, sample, filter, aggregate,
+or otherwise transform evidence.
 
-Evidence is immutable after creation: it must never be overwritten, replaced, or
-deleted. Any change to content constitutes a different artefact and must be
-represented only as a new, separately referencable evidence artefact.
+Evidence is immutable after creation.
+It \textbf{must not} be overwritten, replaced, or deleted.
+Any content change \textbf{constitutes} a different artefact
+and is admissible \textbf{only} as a new,
+separately referencable evidence artefact.
 
 \subsection{Append-only invariants}
 
-\paragraph{Append-only registry rule.}
-Registry entries are append-only. Once a reference or link exists, it must not be
-mutated, replaced, reordered, or deleted. Any registry that permits mutation is
-non-admissible under OPS-1.
+\paragraph{Append-only registry rule (invariant).}
+Registry entries are append-only.
+Once a reference or link exists,
+it \textbf{must not} be mutated, replaced,
+reordered, or deleted.
+Any registry that permits mutation is
+\textbf{non-admissible} under OPS-1.
 
-\paragraph{Order-stable registry semantics.}
-Registry introduction order is semantically stable in the logical sense that
-references, once introduced, remain introduced. No re-ordering is permitted to
-change meaning, provenance identity, or diagnostic interpretation.
+\paragraph{Order-stable registry semantics (invariant).}
+Registry introduction order is semantically stable
+in the logical sense that references,
+once introduced, remain introduced.
+No re-ordering is permitted to change meaning,
+provenance identity,
+or diagnostic interpretation.
 
-\paragraph{Append-only evidence referencing.}
-Once an evidence artefact is referenced, that reference must remain valid without
-post-hoc alteration. Any later artefact with changed content must be treated as a
-distinct evidence artefact and referenced separately.
+\paragraph{Append-only evidence referencing (invariant).}
+Once an evidence artefact is referenced,
+that reference \textbf{must} remain valid
+without post-hoc alteration.
+Any later artefact with changed content
+\textbf{must} be treated as a distinct
+evidence artefact and referenced separately.
 
 \subsection{Provenance (complete or invalid)}
 
-Each diagnostic result $R$ must be traceable to its declared inputs via a
+Each diagnostic result $R$ \textbf{must} be traceable
+to its declared inputs via a
 \textbf{complete} provenance mapping:
 \[
 (S,\mathcal{I},\Theta) \;\mapsto\; R
 \]
 
-\paragraph{Completeness requirement.}
-Provenance is \emph{complete or invalid}. There is no admissible notion of partial,
-probabilistic, approximate, inferred, or reconstructed provenance within OPS-1.
-If any required link is missing, provenance is invalid.
+\paragraph{Completeness requirement (invariant).}
+Provenance is \textbf{complete or invalid}.
+There is \textbf{no} admissible notion of partial,
+probabilistic, approximate, inferred,
+or reconstructed provenance within OPS-1.
+If any required link is missing,
+provenance is \textbf{invalid}.
 
-\paragraph{Transitive traceability.}
-Every diagnostic output must be transitively traceable to:
+\paragraph{Transitive traceability (invariant).}
+Every diagnostic output \textbf{must} be transitively
+traceable to:
 \begin{itemize}
   \item the specific input snapshot $S$;
   \item the specific invariant set $\mathcal{I}$;
@@ -86,12 +113,14 @@ Every diagnostic output must be transitively traceable to:
   \item all evidence artefacts referenced for that output (if any).
 \end{itemize}
 
-The traceability requirement concerns \emph{referencing} and \emph{link integrity}
-only. It provides no explanatory narrative, causal account, or justification.
+This traceability requirement concerns
+\emph{referencing} and \emph{link integrity} only.
+It provides \textbf{no} explanatory narrative,
+causal account, or justification.
 
 \subsection{Stable identifiers and manifests (format-agnostic)}
 
-The Engine Core must expose stable identifiers for:
+The Engine Core \textbf{must} expose stable identifiers for:
 \begin{itemize}
   \item input state snapshots;
   \item invariant sets;
@@ -99,30 +128,45 @@ The Engine Core must expose stable identifiers for:
   \item the Engine Core version.
 \end{itemize}
 
-The choice of identifier algorithms, encodings, manifests, or serialization
-formats is external to kernel semantics, provided identifiers are stable,
+The choice of identifier algorithms,
+encodings, manifests,
+or serialization formats is external
+to kernel semantics,
+provided identifiers are stable,
 inspectable, and unambiguous.
 
 \subsection{Explicit prohibitions (non-negotiable)}
 
-The following are explicitly non-admissible under OPS-1:
-
+The following are \textbf{explicitly non-admissible}
+under OPS-1:
 \begin{itemize}
-  \item \textbf{Mutable registry:} any ability to edit, rewrite, replace, reorder,
-        or delete registry entries.
-  \item \textbf{Evidence normalization or cleaning:} any transformation of
-        evidence content that changes meaning, regardless of labeling.
-  \item \textbf{Aggregation with semantic effect:} any aggregation that alters
-        the meaning of evidence or changes diagnostic interpretation.
-  \item \textbf{Post-hoc correction of evidence:} any after-the-fact repair,
-        replacement, rewriting, or retrofitting of evidence to enforce consistency.
-  \item \textbf{Opaque preprocessing:} any uninspectable transformation or hidden
-        intermediate that breaks traceability.
-  \item \textbf{Hidden sampling or filtering:} any undisclosed selection,
-        exclusion, prioritization, or weighting that prevents complete provenance.
-  \item \textbf{Semantically relevant non-determinism:} any non-determinism that
-        can influence diagnosis, terminal STOP evaluation, or provenance identity.
+  \item \textbf{Mutable registry:}
+        any ability to edit, rewrite, replace,
+        reorder, or delete registry entries.
+  \item \textbf{Evidence normalization or cleaning:}
+        any transformation of evidence content
+        that changes meaning,
+        regardless of labeling.
+  \item \textbf{Aggregation with semantic effect:}
+        any aggregation that alters the meaning
+        of evidence or changes diagnostic interpretation.
+  \item \textbf{Post-hoc correction of evidence:}
+        any after-the-fact repair, replacement,
+        rewriting, or retrofitting of evidence
+        to enforce consistency.
+  \item \textbf{Opaque preprocessing:}
+        any uninspectable transformation or
+        hidden intermediate that breaks traceability.
+  \item \textbf{Hidden sampling or filtering:}
+        any undisclosed selection, exclusion,
+        prioritization, or weighting that prevents
+        complete provenance.
+  \item \textbf{Semantically relevant non-determinism:}
+        any non-determinism that can influence
+        diagnosis, terminal STOP evaluation,
+        or provenance identity.
 \end{itemize}
 
-These prohibitions are architectural invariants. They are independent of
-implementation strategy and must hold for OPS-1 conformance.
+These prohibitions are \textbf{architectural invariants}.
+They are independent of implementation strategy
+and \textbf{must} hold for OPS-1 conformance.
