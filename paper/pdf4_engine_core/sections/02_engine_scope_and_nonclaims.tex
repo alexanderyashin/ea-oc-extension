@@ -9,12 +9,14 @@ Its scope is fixed, closed, and exhaustively limited to:
 (iii) emitting a structural classification, and
 (iv) irreversibly terminating evaluation when terminal STOP conditions apply.
 
-The Engine Core has \textbf{no causal influence} on the diagnosed system.
-It \textbf{is not} an actuator, controller, optimizer, governance mechanism,
+The Engine Core has \textbf{no causal influence} on the diagnosed system
+(see \texttt{I\_nonintervention}).
+It is not an actuator, controller, optimizer, governance mechanism,
 decision authority, or intervention layer.
-Any embedding, exposure, or interpretation as such is \textbf{invalid}.
+Any embedding or interpretation as such is invalid
+(see \texttt{P\_control}, \texttt{P\_prescription}).
 
-\paragraph{Closed operation set (invariant).}
+\paragraph{Closed operation set (structural invariant).}
 The following operations exhaust the admissible behavior of the kernel:
 \begin{itemize}
   \item \textbf{OBSERVE:} accept a read-only state snapshot;
@@ -23,51 +25,49 @@ The following operations exhaust the admissible behavior of the kernel:
   \item \textbf{STOP/HALT:} irreversibly terminate evaluation for the given case.
 \end{itemize}
 
-These operations denote \emph{structural roles}, not procedural steps.
+These operations denote structural roles, not procedural steps.
 No additional operations, phases, execution controls, or behavioral constructs
-exist within the kernel.
-Any extension beyond this set is \textbf{non-admissible}.
+exist within the kernel (see \texttt{I\_nonexp}, \texttt{P\_workflow}).
 
 \subsection{OPS-1 contract vs.\ toolkits (OPS-2)}
 
-OPS-1 is an \textbf{architecture-and-contract layer}.
-It defines admissibility, invariants, prohibitions, authority, determinism,
+OPS-1 is an architecture-and-contract layer.
+It defines admissibility, invariants, prohibitions, determinism,
 reproducibility, and provenance identity.
-OPS-1 \textbf{does not} define usage, tooling, workflows, interfaces, or decisions.
+OPS-1 does not define usage, tooling, workflows, interfaces, or decisions
+(see \texttt{I\_diagonly}).
 
 Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is, by
-definition, an \textbf{exchangeable consumer} of the OPS-1 contract.
-OPS-2 \textbf{may} change independently; OPS-1 \textbf{must not} be defined,
-reinterpreted, or operationalized by OPS-2.
-Any dependency in the opposite direction is \textbf{invalid}.
+definition, an exchangeable consumer of the OPS-1 contract.
+OPS-2 may change independently; OPS-1 must not be defined, reinterpreted,
+or operationalized by OPS-2.
+Any dependency in the opposite direction is invalid.
 
-\paragraph{Binary compliance (invariant).}
-OPS-1 compliance is \textbf{binary}: \emph{conformant} or \emph{non-ESTRA}.
-Intent, usability goals, or product considerations are \textbf{irrelevant}.
-Any toolkit that introduces prohibited semantics is \textbf{non-conformant}.
+\paragraph{Binary compliance.}
+OPS-1 compliance is binary: conformant or non-ESTRA
+(see \texttt{I\_binary}, \texttt{D\_graded}).
+Intent, usability goals, or product considerations are irrelevant.
 
-\paragraph{Non-normativity of toolkits (prohibition).}
-Toolkits are \textbf{never normative}.
-They \textbf{must not} introduce new semantic degrees of freedom,
-reinterpret terminal STOP, weaken invariants, or transform structural labels
-into prescriptions.
-UX, adoption, or product arguments \textbf{do not justify} any semantic change
-to OPS-1.
+\paragraph{Non-normativity of toolkits.}
+Toolkits are never normative.
+They must not introduce new semantic degrees of freedom,
+reinterpret terminal STOP, weaken invariants,
+or transform structural labels into prescriptions
+(see \texttt{P\_policy}, \texttt{P\_prescription}).
 
-\paragraph{Auto-disqualification (boundary violation).}
+\paragraph{Auto-disqualification.}
 Any representation of OPS-1 as a ``method'', ``tool'', ``framework'',
 ``best practice'', ``playbook'', or ``how-to'' is a category error.
 Any consumer layer that induces or implies ``you should do X'' from OPS-1 output
-or from terminal STOP is \textbf{non-conformant} and therefore
-\textbf{non-ESTRA}.
+or from terminal STOP is non-conformant and therefore non-ESTRA
+(see \texttt{D\_adaptive\_ext}).
 
 \subsection{No-prescription / no-management claims}
 
-This document contains \textbf{no prescriptive} and \textbf{no managerial}
-statements.
+This document contains no prescriptive and no managerial statements by design.
 
-\paragraph{Explicit non-claims (prohibition).}
-The Engine Core does \textbf{not}:
+\paragraph{Explicit non-claims.}
+The Engine Core does not:
 \begin{itemize}
   \item recommend actions, remediations, or interventions;
   \item define roadmaps, sequences, or execution plans;
@@ -77,16 +77,53 @@ The Engine Core does \textbf{not}:
   \item provide best practices, frameworks, methodologies, or transformation guidance.
 \end{itemize}
 
-Any process, facilitation, governance, or decision-making that consumes diagnostic
-output is \textbf{external} to the Engine Core and outside OPS-1 authority.
+Any process or decision-making that consumes diagnostic output is external to the
+Engine Core and outside OPS-1 authority
+(see \texttt{P\_policy}, \texttt{P\_prescription}).
+
+\subsection{External Dependencies and Assumptions}
+
+OPS-1 is intentionally minimal.
+It assumes the existence of external artefacts but does not inherit their
+semantics implicitly.
+
+\paragraph{Mandatory dependencies.}
+The following artefacts are required to instantiate OPS-1 semantics:
+\begin{itemize}
+  \item \textbf{ETS.K\_EA}: provides the semantic symbol space for facts,
+        invariants, and the STOP token.
+  \item \textbf{OPS-0}: defines the non-prescriptive, diagnostic-only boundary.
+\end{itemize}
+
+Absence of a mandatory dependency means OPS-1 cannot be instantiated,
+but does not invalidate the specification itself.
+
+\paragraph{Contextual dependencies (non-normative).}
+The following artefacts provide background context only:
+\begin{itemize}
+  \item \textbf{OC Core}: ontological grounding;
+  \item \textbf{JPHQ (monograph)}: extended formal context.
+\end{itemize}
+
+OPS-1 does not inherit semantics from contextual artefacts automatically.
+
+\paragraph{Explicitly not required.}
+OPS-1 does not require OPS-2 or higher layers, any EA framework,
+any implementation, dataset, benchmark, or runtime environment.
+
+\paragraph{Traceability note.}
+This document may declare a SHA-256 hash for provenance.
+Verification requires access to the originating artefact.
+If unavailable, the hash functions as a provenance identifier,
+not as a reproducibility guarantee.
 
 \subsection{What the engine does not infer}
 
-The Engine Core \textbf{does not} infer missing structure or enrich semantics.
+The Engine Core does not infer missing structure or enrich semantics.
 It operates exclusively on explicitly declared inputs.
 
-\paragraph{Forbidden inference classes (prohibition).}
-The kernel does \textbf{not}:
+\paragraph{Forbidden inference classes.}
+The kernel does not:
 \begin{itemize}
   \item infer intent, priorities, accountability, or organizational motives;
   \item infer causal narratives beyond declared invariant reference;
@@ -96,14 +133,15 @@ The kernel does \textbf{not}:
 \end{itemize}
 
 \paragraph{Structural determinacy (descriptive).}
-The only determinacy claim is internal and structural:
-for identical declared inputs (state snapshot, invariant set, thresholds),
-the kernel yields the same classification and terminal STOP decision.
-This statement applies \textbf{only} to kernel behavior and makes
-\textbf{no claim} about determinism of the world, organizations, or outcomes.
+For identical declared inputs $(S,\mathcal{I},\Theta)$,
+the kernel yields the same classification and terminal STOP decision
+(see \texttt{I\_det}).
+This claim applies only to kernel behavior and makes no claim about
+determinism of the world, organizations, or outcomes.
 
-\paragraph{STOP as boundary, not signal (invariant).}
-Terminal STOP is \textbf{not} advice, \textbf{not} an error,
-and \textbf{not} a recoverable warning.
+\paragraph{STOP as boundary, not signal.}
+Terminal STOP is not advice, not an error,
+and not a recoverable warning.
 It denotes a structural boundary beyond which further diagnostic evaluation is
-formally non-admissible for the given case (see Section~\ref{sec:stop}).
+formally non-admissible for the given case
+(see \texttt{I\_stop\_mono}).

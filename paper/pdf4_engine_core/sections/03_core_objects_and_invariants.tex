@@ -1,10 +1,113 @@
 ﻿\section{Core Objects and Invariants}
 
-This section defines the \emph{minimal} object model of the Engine Core as a
-\textbf{diagnostic-only} kernel. All objects introduced here are strictly
-\textbf{structural}: they encode admissibility and terminal boundaries only.
-They carry no managerial, prescriptive, predictive, optimization, or decision
+This section defines the \emph{minimal} object model of the Engine Core as a    
+\textbf{diagnostic-only} kernel. All objects introduced here are strictly       
+\textbf{structural}: they encode admissibility and terminal boundaries only.    
+They carry no managerial, prescriptive, predictive, optimization, or decision   
 semantics.
+
+\subsection{Normative Core (authoritative)}
+
+This subsection is the \textbf{sole authoritative source} of OPS-1 norms for the
+Engine Core. All other sections \textbf{must reference} these identifiers
+(\texttt{I\_*}, \texttt{P\_*}, \texttt{D\_*}) and \textbf{must not} restate norms
+except by explicit reference.
+
+\subsubsection{Kernel invariants (\texttt{I\_*})}
+
+Kernel invariants are necessary conditions for the Engine Core to exist as an
+OPS-1 diagnostic kernel. Violation of any kernel invariant implies terminal
+invalidity (non-OPS-1). Kernel invariants are \textbf{not} the same as declared
+invariants $\mathcal{I}$ (which are external predicates over $S$; see below).
+
+\paragraph{STOP trigger (structural).}
+Terminal STOP is determined by a \emph{declared} STOP predicate over the declared
+inputs and the evaluation outcome:
+\[
+\mathrm{STOP} := \mathrm{STOP\_predicate}(S,\mathcal{I},\Theta,\mathcal{O},\mathbf{v}) \in \{0,1\}.
+\]
+Kernel invariants constrain admissibility of the evaluation itself; if a kernel
+invariant is violated, the evaluation is non-admissible and terminal STOP applies.
+
+\begin{description}
+  \item[\texttt{I\_nonintervention}] Non-intervention:
+    the kernel has no causal influence on the diagnosed system.
+  \item[\texttt{I\_nonadaptive}] Non-adaptivity:
+    kernel behavior does not change as a function of past evaluations.
+  \item[\texttt{I\_det}] Determinism:
+    for identical $(S,\mathcal{I},\Theta)$ the kernel yields the same $R$.
+  \item[\texttt{I\_inv\_transparent}] Invariant transparency:
+    all applied invariants are explicitly declared and inspectable.
+  \item[\texttt{I\_prov}] Provenance preservation:
+    each result is traceable to $(S,\mathcal{I},\Theta)$ via an append-only record.
+  \item[\texttt{I\_nonexp}] Non-expansiveness:
+    the kernel introduces no new primitives, axes, or semantics during operation.
+  \item[\texttt{I\_diagonly}] Diagnostic-only outputs:
+    outputs express admissibility/invalidity only and contain no prescriptions.
+  \item[\texttt{I\_registry\_nodecision}] Registry non-decisionality:
+    the registry contains references only and must not participate in evaluation,
+    classification, or STOP semantics.
+  \item[\texttt{I\_evidence\_immutable}] Evidence immutability:
+    referenced evidence artefacts are immutable (no overwrite/replace/delete).
+  \item[\texttt{I\_stop\_mono}] Monotonic terminal STOP:
+    once STOP holds for a case, no further diagnostic state exists for that case.
+  \item[\texttt{I\_binary}] Binary conformance only:
+    conformance is defined as valid/invalid, with no graded or partial status.
+\end{description}
+
+\subsubsection{Prohibitions (\texttt{P\_*})}
+
+Prohibitions define forbidden semantic classes. If any prohibited semantic is
+introduced (explicitly or implicitly), the artefact is non-OPS-1.
+
+\begin{description}
+  \item[\texttt{P\_feedback}] Any feedback loop semantics.
+  \item[\texttt{P\_learning}] Any learning, adaptation, or stateful tuning.
+  \item[\texttt{P\_optimization}] Any optimization objective or target-seeking.
+  \item[\texttt{P\_prescription}] Any recommendation, prescription, or intervention.
+  \item[\texttt{P\_control}] Any control-action semantics (actuation).
+  \item[\texttt{P\_workflow}] Any workflow/UX/process semantics inside OPS-1.
+  \item[\texttt{P\_policy}] Any policy or decision semantics (including prioritization).
+\end{description}
+
+\subsubsection{Auto-disqualifying conditions (\texttt{D\_*})}
+
+Auto-disqualifying conditions are binary triggers that imply immediate STOP and
+invalidate OPS-1 conformance. They are not ``warnings'' and admit no recovery.
+
+\begin{description}
+  \item[\texttt{D\_nondet}] Non-deterministic execution violates \texttt{I\_det}.
+  \item[\texttt{D\_prov\_loss}] Provenance loss violates \texttt{I\_prov}.
+  \item[\texttt{D\_evidence\_mut}] Evidence mutation violates \texttt{I\_evidence\_immutable}.   
+  \item[\texttt{D\_registry\_decision}] Registry participates in semantics, violating
+    \texttt{I\_registry\_nodecision}.
+  \item[\texttt{D\_adaptive\_ext}] Any extension introduces \texttt{P\_feedback} or
+    \texttt{P\_learning}, violating \texttt{I\_nonadaptive}.
+  \item[\texttt{D\_graded}] Any graded/partial conformance claim violates \texttt{I\_binary}.    
+\end{description}
+
+\subsubsection{Minimal proof sketches (non-exhaustive)}
+
+These sketches are provided to justify the necessity of the above constraints.
+They introduce no additional semantics.
+
+\paragraph{STOP monotonicity.}
+OPS-1 validity is defined by a finite set of binary constraints and a terminal
+STOP predicate. Since OPS-1 provides no operator for restoring violated kernel
+constraints and admits no transitions out of STOP, once STOP holds, STOP is
+terminal by construction.
+
+\paragraph{Cycles imply feedback.}
+A cycle in an operation graph implies that some output of an earlier step can
+influence a later invocation of the same step. This introduces dependency on
+past execution states, which is feedback semantics (\texttt{P\_feedback}) and
+therefore violates non-adaptivity (\texttt{I\_nonadaptive}).
+
+\paragraph{Binary conformance is necessary.}
+Any graded conformance requires weighting, prioritization, or trade-offs among
+violations. Such mechanisms introduce decision/optimization semantics
+(\texttt{P\_policy}, \texttt{P\_optimization}), hence OPS-1 restricts conformance
+to a binary valid/invalid judgment (\texttt{I\_binary}).
 
 \subsection{Data model (entities)}
 
@@ -21,9 +124,7 @@ where:
         known, unknown, or indeterminate, and why.
 \end{itemize}
 
-The Engine Core treats $S$ as read-only.
-It \textbf{does not} modify $S$ and \textbf{does not} impute, estimate, or infer
-missing values.
+The Engine Core treats $S$ as read-only and does not infer missing values.
 
 \paragraph{Invariant set.}
 An \emph{invariant} is a declared predicate over the snapshot:
@@ -36,7 +137,8 @@ The \emph{invariant set} is a finite, explicitly declared collection:
 \]
 
 Invariants are external declarations consumed by the kernel.
-The kernel \textbf{does not} synthesize, refine, adapt, or reinterpret invariants.
+The kernel does not synthesize, refine, adapt, or reinterpret invariants
+(see \texttt{I\_inv\_transparent}, \texttt{I\_nonadaptive}).
 
 \paragraph{Threshold objects.}
 Thresholds are declared boundary parameters referenced by invariants:
@@ -44,8 +146,8 @@ Thresholds are declared boundary parameters referenced by invariants:
 \Theta := \{\theta_1, \theta_2, \dots\}
 \]
 A threshold object is a typed and versioned parameter, scalar or structured.
-Thresholds are evaluation inputs.
-They are \textbf{not} tuned, optimized, calibrated, or learned.
+Thresholds are evaluation inputs and are not tuned, optimized, calibrated, or learned
+(see \texttt{P\_optimization}, \texttt{P\_learning}).
 
 \paragraph{Evaluation result.}
 Given $(S, \mathcal{I}, \Theta)$, evaluation yields a structural result:
@@ -59,9 +161,8 @@ where:
   \item $\mathrm{STOP} \in \{0,1\}$ is the terminal halt flag.
 \end{itemize}
 
-The result encodes diagnostic admissibility only.
-It \textbf{does not} express quality, performance, preference, desirability,
-priority, or ranking.
+The result encodes diagnostic admissibility only (see \texttt{I\_diagonly},
+\texttt{P\_prescription}, \texttt{P\_policy}).
 
 \paragraph{Provenance record (minimal).}
 For each evaluation, the Engine Core produces an \textbf{append-only} provenance
@@ -70,18 +171,14 @@ record:
 P := \langle h(S),\, h(\mathcal{I}),\, h(\Theta),\, \mathbf{v},\, \mathbf{c},\, \mathrm{STOP} \rangle
 \]
 where $h(\cdot)$ denotes stable identifiers (hashes or canonical digests).
-The record supports traceability and conformance checking only.
-It provides no causal, explanatory, or justificatory narrative.
+The record supports traceability and conformance checking only
+(see \texttt{I\_prov}).
 
 \paragraph{Registry (append-only registry; logical reference space).}
 A \emph{registry} is a logical reference space whose sole role is to
 \emph{declare and preserve} references to artefacts related to an evaluation.
-The registry is \textbf{not} a data model, storage system, process, method,
-workflow, or control structure.
-
-The registry carries \textbf{references only}.
-It contains no interpretation, aggregation semantics, filter logic,
-decision logic, or evaluation semantics.
+The registry carries \textbf{references only}
+(see \texttt{I\_registry\_nodecision}).
 
 \paragraph{Registry entries (types, without formats).}
 A registry entry is an append-only reference record.
@@ -101,16 +198,16 @@ Entry types include:
 \end{itemize}
 
 Registry entries are append-only.
-Once a reference exists, it \textbf{must not} be mutated, replaced, or deleted.
+Once a reference exists, it must not be mutated, replaced, or deleted.
 
 \paragraph{Evidence (immutable evidence).}
 \emph{Evidence} denotes immutable artefacts referenced by the registry.
-Within OPS-1, evidence is \textbf{context-free}:
-the Engine Core \textbf{does not} interpret evidence, normalize it, clean it,
-sample it, filter it, aggregate it, or derive semantics from it.
+Within OPS-1, evidence is context-free:
+the Engine Core does not interpret evidence or derive semantics from it
+(see \texttt{I\_evidence\_immutable}).
 
 Evidence is immutable after creation.
-It \textbf{must not} be overwritten, replaced, or deleted.
+It must not be overwritten, replaced, or deleted.
 Any content change constitutes a different artefact and is admissible only as a
 new, separately referencable evidence artefact.
 
@@ -123,58 +220,20 @@ For a single case, the kernel admits exactly one abstract step:
 \]
 
 There is no internal iteration, retry policy, recovery mechanism, or adaptive
-transition structure.
+transition structure (see \texttt{I\_nonadaptive}, \texttt{P\_feedback},
+\texttt{P\_learning}).
 
 \paragraph{No hidden state rule (invariant).}
-The kernel \textbf{must not} depend on hidden or mutable state between runs
+The kernel must not depend on hidden or mutable state between runs
 (e.g.\ caches, learned parameters, implicit memory).
-Any such dependency is \textbf{non-conformant} with OPS-1.
-
-\subsection{Invariants (must-hold properties)}
-
-The following are \emph{kernel invariants}:
-properties that \textbf{must hold} for the Engine Core to exist as an OPS-1
-diagnostic kernel.
-Violation of any kernel invariant renders produced outputs
-\textbf{ontologically void} (non-OPS-1).
-
-\begin{enumerate}
-  \item \textbf{Non-intervention.}
-        The kernel has no causal influence on the diagnosed system.
-  \item \textbf{Non-adaptivity.}
-        Kernel behavior does not change as a function of past evaluations.
-  \item \textbf{Monotonic terminal STOP.}
-        Once STOP holds for a case, no further diagnostic state exists for that
-        case.
-  \item \textbf{Invariant transparency.}
-        All applied invariants are explicitly declared and inspectable.
-  \item \textbf{Structural determinacy.}
-        For identical $(S,\mathcal{I},\Theta)$, the kernel yields the same $R$.
-        This property concerns admissibility only and excludes execution timing
-        or implementation strategy.
-  \item \textbf{Provenance preservation.}
-        Each result is traceable to $(S,\mathcal{I},\Theta)$ via an append-only
-        record.
-  \item \textbf{Non-expansiveness.}
-        The kernel introduces no new primitives, axes, or semantics during
-        operation.
-  \item \textbf{Diagnostic sufficiency.}
-        Outputs express diagnostic validity or invalidity only.
-        They \textbf{do not} contain prescriptions or recommendations.
-  \item \textbf{Registry non-decisionality.}
-        The append-only registry contains references only and \textbf{must not}
-        participate in evaluation, classification, or STOP semantics.
-  \item \textbf{Evidence immutability.}
-        Evidence artefacts referenced by the registry are immutable.
-        Post-hoc modification, replacement, or deletion is \textbf{non-admissible}.
-\end{enumerate}
+Any such dependency is non-conformant with OPS-1
+(see \texttt{I\_nonadaptive}, \texttt{P\_learning}, \texttt{D\_adaptive\_ext}).
 
 \subsection{Threshold objects (\texorpdfstring{$\Theta$}{Theta}) and regions}
 
 Thresholds $\Theta$ define admissible regions \textbf{only through} invariant
-predicates.
-The Engine Core \textbf{does not} interpret thresholds as targets, goals, or
-optimization criteria.
+predicates. The Engine Core does not interpret thresholds as targets, goals, or
+optimization criteria (see \texttt{P\_optimization}).
 
 \paragraph{Region notion (structural).}
 A \emph{region} is the induced set of snapshots satisfying a given invariant set:
@@ -183,8 +242,8 @@ A \emph{region} is the induced set of snapshots satisfying a given invariant set
 \]
 
 Regions encode structural admissibility only.
-They are \textbf{not} search spaces, performance landscapes, or optimization
-domains.
+They are not search spaces, performance landscapes, or optimization domains
+(see \texttt{P\_optimization}).
 
 \subsection{STOP as first-class outcome}
 
@@ -194,13 +253,11 @@ STOP is a first-class terminal outcome:
 \]
 
 \paragraph{STOP is not an error surface.}
-STOP is \textbf{not} a recoverable failure, \textbf{not} a warning,
-and \textbf{not} advice.
+STOP is not a recoverable failure, not a warning, and not advice.
 It denotes a formal boundary beyond which diagnostic evaluation is invalid
 (see Section~\ref{sec:stop}).
 
 \paragraph{Classification categories (minimal).}
-The kernel uses a finite, non-ordered set of structural categories:
 \begin{itemize}
   \item \texttt{admissible},
   \item \texttt{boundary-violating},
@@ -209,5 +266,5 @@ The kernel uses a finite, non-ordered set of structural categories:
 \end{itemize}
 
 Category labels are structural identifiers only.
-They \textbf{must not} be ranked, mapped to prescriptions,
-or treated as decision outputs.
+They must not be ranked, mapped to prescriptions,
+or treated as decision outputs (see \texttt{I\_diagonly}, \texttt{P\_policy}).

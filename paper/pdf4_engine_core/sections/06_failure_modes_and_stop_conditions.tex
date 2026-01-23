@@ -17,7 +17,8 @@ Examples include:
 \begin{itemize}
   \item internal inconsistency of the invariant set $\mathcal{I}$;
   \item contradictions between declared invariants and threshold objects $\Theta$;
-  \item violation of kernel invariants (e.g.\ non-intervention, non-adaptivity).
+  \item violation of kernel invariants
+        (see \texttt{I\_nonintervention}, \texttt{I\_nonadaptive}).
 \end{itemize}
 
 Structural failures are properties of the declared input configuration.
@@ -31,23 +32,28 @@ Observability loss occurs when the state snapshot $S$ lacks sufficient declared
 information to evaluate required invariants and this insufficiency is
 explicitly encoded in the observability descriptor $\mathcal{O}$.
 
-\paragraph{No implicit completion (prohibition).}
-The kernel \textbf{must not} compensate observability loss by assumptions,
+\paragraph{No implicit completion.}
+The kernel must not compensate observability loss by assumptions,
 defaults, heuristics, estimation, or probabilistic inference.
-If required observability is missing, diagnostic admissibility is
-\textbf{violated} and terminal STOP \textbf{applies}.
+This is a direct consequence of non-adaptivity and the prohibition of
+learning/inference semantics (see \texttt{I\_nonadaptive}, \texttt{P\_learning}).
+
+If required observability is missing, diagnostic admissibility is violated and
+terminal STOP applies. This condition is \emph{distinct} from provenance loss:
+observability concerns the declared completeness of $S$ at evaluation time.
 
 \subsection{Threshold violations}
 
 Threshold violations occur when invariant predicates that reference declared
 threshold objects $\Theta$ evaluate to false.
 
-\paragraph{Hard boundary semantics (invariant).}
+\paragraph{Hard boundary semantics.}
 Thresholds are treated as hard structural boundaries.
-There is \textbf{no} notion of soft constraints, grace margins, tolerances,
-or gradual degradation inside the kernel.
-Any violation \textbf{constitutes} loss of admissibility and
-\textbf{triggers} terminal STOP.
+There is no notion of soft constraints, grace margins, tolerances,
+or gradual degradation inside the kernel
+(see \texttt{P\_optimization}).
+Any violation constitutes loss of admissibility and
+triggers terminal STOP.
 
 \subsection{STOP region semantics}
 
@@ -59,28 +65,31 @@ STOP defines a terminal admissibility region in the diagnostic domain:
 That is, no admissible diagnostic result exists that can succeed $R$
 for the same declared case.
 
-\paragraph{Irreversibility (structural invariant).}
+\paragraph{Irreversibility.}
 Irreversibility is structural, not temporal.
-STOP \textbf{does not} denote a moment in time, a process stage,
+STOP does not denote a moment in time, a process stage,
 or an execution phase.
 It denotes the absence of any admissible continuation within the
-kernel’s domain.
+kernel’s domain
+(see \texttt{I\_stop\_mono}).
 
-\paragraph{Monotonicity (invariant).}
-Once STOP holds for a declared case, it \textbf{remains} true for that case.
-STOP \textbf{cannot} be downgraded, overridden, weakened, or reinterpreted
-without changing the declared inputs.
+\paragraph{Monotonicity.}
+Once STOP holds for a declared case, it remains true for that case.
+STOP cannot be downgraded, overridden, weakened, or reinterpreted
+without changing the declared inputs
+(see \texttt{I\_stop\_mono}).
 
-\paragraph{Singularity (invariant).}
+\paragraph{Singularity.}
 STOP is singular and absolute per case.
-There is \textbf{no} notion of partial, layered, probabilistic,
-conditional, or recoverable STOP.
+There is no notion of partial, layered, probabilistic,
+conditional, or recoverable STOP
+(see \texttt{I\_binary}).
 
 \subsection{Diagnostic operation graph (normative)}
 
 The Engine Core admits a single, strictly directed diagnostic operation graph.
 The graph is \textbf{acyclic}, \textbf{read-only}, and \textbf{terminal}.
-This graph is \textbf{normative} and \textbf{closed}.
+This graph is normative and closed.
 
 \paragraph{Nodes.}
 The diagnostic graph consists of the following abstract operation nodes:
@@ -108,24 +117,51 @@ The only admissible directed edges are:
 \{\texttt{STOP},\ \texttt{ResultEmission}\}
 \]
 
-\paragraph{STOP as terminal sink (invariant).}
+\paragraph{STOP as terminal sink.}
 \texttt{STOP} is a terminal sink node.
-There exists \textbf{no outgoing edge} from \texttt{STOP}.
+There exists no outgoing edge from \texttt{STOP}
+(see \texttt{I\_stop\_mono}).
 
-\paragraph{Forbidden edges (prohibition).}
-The following edges are \textbf{explicitly forbidden}:
+\paragraph{Forbidden edges.}
+The following edges are explicitly forbidden:
 \begin{itemize}
   \item any edge leaving \texttt{STOP};
-  \item any feedback, backward, or cyclic edge between any nodes;
+  \item any feedback, backward, or cyclic edge between any nodes
+        (see \texttt{P\_feedback}, \texttt{I\_nonadaptive});
   \item any retry, recovery, continuation, or re-evaluation edge;
   \item any edge conditioned on optimization, preference,
-        ranking, or goal criteria;
+        ranking, or goal criteria
+        (see \texttt{P\_optimization}, \texttt{P\_policy});
   \item any edge introducing control, steering,
-        learning, or adaptive behavior.
+        learning, or adaptive behavior
+        (see \texttt{P\_control}, \texttt{P\_learning}).
 \end{itemize}
 
 Any artefact implying a diagnostic graph outside this definition is
-\textbf{non-admissible} under OPS-1.
+non-admissible under OPS-1.
+
+\subsection{Micro-instantiation (formal traces)}
+
+The following minimal traces illustrate how violations of OPS-1 constraints
+necessarily trigger terminal STOP. They are semantic counterexamples, not
+implementation examples.
+
+\paragraph{Trace A: Determinism violation.}
+Given identical declared inputs $(S,\mathcal{I},\Theta)$, assume evaluation
+produces two distinct results $R \neq R'$.
+This violates determinism (\texttt{I\_det}) and immediately triggers
+auto-disqualification (\texttt{D\_nondet}), hence STOP.
+
+\paragraph{Trace B: Provenance loss.}
+Assume an evaluation result lacks a complete append-only provenance record.
+This violates provenance preservation (\texttt{I\_prov}) and triggers
+auto-disqualification (\texttt{D\_prov\_loss}), hence STOP.
+
+\paragraph{Trace C: Forbidden extension.}
+Assume an extension introduces behavior dependent on past evaluations.
+This introduces feedback or adaptation (\texttt{P\_feedback},
+\texttt{P\_learning}), violating non-adaptivity (\texttt{I\_nonadaptive}) and
+triggering auto-disqualification (\texttt{D\_adaptive\_ext}), hence STOP.
 
 \subsection{Minimal audit trail for STOP}
 
@@ -139,8 +175,8 @@ in the append-only provenance record $P$:
   \item the STOP flag.
 \end{itemize}
 
-This audit trail exists \textbf{solely} to support traceability and
+This audit trail exists solely to support traceability and
 conformance checks.
-It \textbf{must not} be extended to provide causal narratives,
+It must not be extended to provide causal narratives,
 remediation advice, recovery logic, decision guidance,
 or policy justification.
