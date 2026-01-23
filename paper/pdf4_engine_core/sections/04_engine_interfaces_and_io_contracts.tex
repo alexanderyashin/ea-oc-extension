@@ -104,10 +104,21 @@ or admissibility boundaries.
 Conformance is binary: conformant or \emph{not ESTRA}. Any layer that introduces a
 forbidden class (see Limits and Non-Goals) is non-admissible regardless of tooling.
 
-\paragraph{Toolkit / CLI / GUI compatibility boundary.}
-Toolkit/CLI/GUI may vary freely \emph{only} within the allowed extension space
-above. No interface layer may weaken invariants or gates, nor may it introduce
-control semantics, feedback loops, learning, heuristic shortcuts, or STOP bypass.
+\paragraph{Toolkit / CLI / GUI boundary (OPS-2 as consumer only).}
+Any toolkit surface (CLI/GUI/scripts/integrations) is outside OPS-1 and belongs to
+OPS-2. OPS-2 is an \textbf{exchangeable consumer} of the OPS-1 contract: it consumes
+$Q$ and displays $R$, but it does not define, reinterpret, or extend OPS-1 semantics.
+
+OPS-2 variation is admissible \emph{only} within the closed extension space above.
+No interface layer may weaken invariants or gates, nor may it introduce control
+semantics, feedback loops, learning, heuristic shortcuts, or STOP bypass.
+
+\paragraph{Auto-disqualification by semantic contamination.}
+If a toolkit layer (or its documentation/positioning) implies that the Engine Core
+is a ``tool'', ``method'', ``framework'', ``best practice'', ``playbook'', or
+``how-to'', that representation is non-conformant by definition.
+If a toolkit layer induces or implies ``you should do X'' from $R$ or from STOP,
+it introduces prescriptive semantics and is therefore \textbf{non-ESTRA}.
 
 \subsection{Versioning and compatibility contract}
 

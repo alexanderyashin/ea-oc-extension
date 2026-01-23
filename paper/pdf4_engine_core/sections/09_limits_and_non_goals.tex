@@ -24,6 +24,27 @@ Consumers of diagnostic output must not treat classifications as:
 Such interpretations require additional assumptions, evidence, or authority that
 are explicitly outside the Engine Core boundary.
 
+\subsection{OPS-1 vs.\ OPS-2 responsibility split}
+
+OPS-1 is a \textbf{contract and authority layer}. It fixes admissibility,
+invariants, STOP semantics, and provenance identity.
+OPS-1 does not address usage, presentation, tooling, or decision-making.
+
+Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is an
+\textbf{exchangeable consumer} of OPS-1. OPS-2 may display or transport results,
+but it must not define, reinterpret, or extend OPS-1 semantics.
+
+\paragraph{Binary compliance.}
+Compliance is \textbf{binary}: conformant or \emph{non-ESTRA}. Good intent,
+usability goals, or product considerations do not soften this boundary.
+
+\paragraph{Auto-disqualification by category error.}
+Any representation of OPS-1 as a ``method'', ``tool'', ``framework'',
+``best practice'', ``playbook'', or ``how-to'' is a category error.
+If an OPS-2 layer (or its documentation) implies ``you should do X'' from
+classification or STOP, it introduces prescriptive semantics and is therefore
+\textbf{non-ESTRA}.
+
 \subsection{Known non-diagnostic cases}
 
 The Engine Core cannot produce admissible diagnostic results when:
@@ -83,7 +104,7 @@ artefact is non-admissible under OPS-1 and produced outputs are invalid.
 
 \subsection{Forbidden extensions (auto-disqualifying)}
 
-The following extension classes are \textbf{explicitly forbidden}.  
+The following extension classes are \textbf{explicitly forbidden}.
 \textbf{If any of them is present, the artefact is NOT ESTRA-conformant.}
 
 \paragraph{Semantic control and steering.}
@@ -123,7 +144,9 @@ The following extension classes are \textbf{explicitly forbidden}.
 \paragraph{UX-driven semantics.}
 \begin{itemize}
   \item any user interface, visualization, or interaction layer that alters,
-        constrains, or implies diagnostic meaning.
+        constrains, or implies diagnostic meaning;
+  \item any UX-driven simplification that hides STOP conditions or admissibility
+        boundaries.
 \end{itemize}
 
 Presence of any forbidden class immediately disqualifies the artefact from OPS-1

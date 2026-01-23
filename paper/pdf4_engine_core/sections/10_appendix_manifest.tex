@@ -23,6 +23,12 @@ The PDF-4 artefact consists of the following files and sections:
 
 No additional normative content exists outside this list.
 
+\paragraph{OPS-2 is external by definition.}
+Any toolkit surface (CLI/GUI/scripts/integrations), documentation, product framing,
+or usage guidance belongs to OPS-2 and is \emph{not} part of this OPS-1 artefact.
+Such surfaces may consume the OPS-1 contract but must not be treated as sources of
+OPS-1 authority or semantics.
+
 \subsection{Build manifest}
 
 The artefact is considered valid only if:
@@ -50,3 +56,8 @@ The Engine Core relies on the following conceptual schemas:
 Concrete serialization formats (YAML, JSON, tables, etc.) are intentionally left
 unspecified. Any format is admissible provided it preserves structure, identity,
 and traceability.
+
+\paragraph{No method/tool semantics by serialization.}
+No serialization format, wrapper, or consumer layer may add prescriptive fields,
+recommendations, or ``how-to'' semantics to the OPS-1 contract. Any such addition
+is external and non-conformant to OPS-1 by definition.

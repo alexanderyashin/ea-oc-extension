@@ -25,6 +25,32 @@ The following operations exhaust the admissible behavior of the kernel:
 These operations denote \emph{structural roles}, not procedural steps.
 No additional operations, phases, or control constructs exist inside the kernel.
 
+\subsection{OPS-1 contract vs.\ toolkits (OPS-2)}
+
+OPS-1 is an \textbf{architecture-and-contract layer}.
+It defines invariants, prohibitions, authority, and validity conditions.
+It is \textbf{not} usage-centered, tool-centered, or user-centered:
+OPS-1 does not know users, workflows, commands, screens, or decisions.
+
+Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is, by
+definition, an \textbf{exchangeable consumer} of the OPS-1 contract.
+OPS-2 may change without changing OPS-1; OPS-1 must not be redefined by OPS-2.
+
+\paragraph{Binary compliance.}
+OPS-1 compliance is \textbf{binary}: \emph{conformant} or \emph{non-ESTRA}.
+A well-intended toolkit that introduces prohibited semantics is \textbf{not} ESTRA.
+
+\paragraph{Non-normativity of toolkits.}
+Toolkits are never normative. They must not \emph{create} new semantic degrees of
+freedom, reinterpret STOP, or turn structural labels into prescriptions.
+UX or product arguments do not justify any semantic change to OPS-1.
+
+\paragraph{Auto-disqualification (boundary violation).}
+Any representation of OPS-1 as a ``method'', ``tool'', ``framework'',
+``best practice'', ``playbook'', or ``how-to'' is a category error.
+If a consumer layer induces or implies ``you should do X'' from OPS-1 output,
+that representation is \textbf{non-conformant} and therefore \textbf{non-ESTRA}.
+
 \subsection{No-prescription / no-management claims}
 
 This document makes \textbf{no prescriptive} and \textbf{no managerial} claims.
