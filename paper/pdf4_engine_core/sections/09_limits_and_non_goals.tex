@@ -81,28 +81,50 @@ mechanisms to ``achieve'' or ``improve'' them.
 If determinism or reproducibility would require procedural controls to hold, the
 artefact is non-admissible under OPS-1 and produced outputs are invalid.
 
-\subsection{Verbotsspace: registry/evidence manipulation (architectural)}
+\subsection{Forbidden extensions (auto-disqualifying)}
 
-OPS-1 fixes registry and evidence as architectural invariants. Therefore, the
-Engine Core explicitly \textbf{does not} define, permit, or imply any of the
-following:
+The following extension classes are \textbf{explicitly forbidden}.  
+\textbf{If any of them is present, the artefact is NOT ESTRA-conformant.}
 
+\paragraph{Semantic control and steering.}
 \begin{itemize}
-  \item \textbf{Mutable registry:} editing, rewriting, replacing, or deleting
-        registry entries.
-  \item \textbf{Evidence overwrite or replacement:} any ability to overwrite,
-        replace, or delete evidence artefacts after creation.
-  \item \textbf{Evidence normalization/cleaning:} any transformation intended to
-        ``clean'', ``normalize'', or otherwise alter evidence content.
-  \item \textbf{Aggregation with meaning change:} any aggregation step that
-        modifies the semantic content of evidence.
-  \item \textbf{Post-hoc correction:} any after-the-fact repair of evidence or
-        registry meant to retrofit consistency or improve appearance.
-  \item \textbf{Opaque preprocessing:} any uninspectable transformation that
-        breaks traceability.
-  \item \textbf{Hidden sampling/filtering:} any undisclosed selection/exclusion
-        that prevents complete provenance.
+  \item any optimization, recommendation, prioritization, or decision semantics;
+  \item any control logic influencing or steering diagnosis outcomes;
+  \item any feedback edge or adaptive branching affecting evaluation.
 \end{itemize}
 
-If any of the above is present or required, OPS-1 conformance is violated and
-produced outputs are non-admissible under the declared scope of PDF-4.
+\paragraph{Learning and adaptation.}
+\begin{itemize}
+  \item any form of learning, fitting, calibration, or adaptation influencing
+        invariants, thresholds, classification, or STOP;
+  \item any use of historical cases to modify kernel behavior.
+\end{itemize}
+
+\paragraph{STOP violation.}
+\begin{itemize}
+  \item any retry, recovery, bypass, or continuation path after STOP;
+  \item any reinterpretation of STOP as warning, error, or advisory signal.
+\end{itemize}
+
+\paragraph{Non-determinism and provenance violation.}
+\begin{itemize}
+  \item any semantically relevant non-determinism;
+  \item any partial, probabilistic, or inferred provenance;
+  \item any post-hoc correction, repair, or normalization of evidence.
+\end{itemize}
+
+\paragraph{Registry and evidence manipulation.}
+\begin{itemize}
+  \item mutable registries or evidence stores;
+  \item overwriting, replacing, deleting, or rewriting evidence artefacts;
+  \item opaque preprocessing or hidden sampling/filtering.
+\end{itemize}
+
+\paragraph{UX-driven semantics.}
+\begin{itemize}
+  \item any user interface, visualization, or interaction layer that alters,
+        constrains, or implies diagnostic meaning.
+\end{itemize}
+
+Presence of any forbidden class immediately disqualifies the artefact from OPS-1
+and ESTRA conformance, regardless of tooling, intent, or external justification.

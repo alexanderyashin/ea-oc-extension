@@ -81,6 +81,34 @@ be represented by surrounding tooling as typed errors, but:
 The kernel defines $R$ only for admissible inputs. Input admission and tooling
 reliability are external concerns.
 
+\subsection{Extension points and compatibility boundary (OPS-1)}
+
+\paragraph{Allowed extension points (closed list).}
+The following extension points are \textbf{explicitly allowed}. This list is
+\textbf{closed}: if an extension is not in this list, it is non-admissible under
+OPS-1.
+\begin{itemize}
+  \item \textbf{Presentation/rendering layers} (cosmetic-only; no semantic effect).
+  \item \textbf{Non-normative reporting views} (read-only; no decision effect).
+  \item \textbf{Evidence import adapters} (strict: no semantic change; full provenance).
+  \item \textbf{Additional verification gates} (stricter allowed; never weaker).
+  \item \textbf{Witness packaging} (bundling artefacts; no new meaning).
+\end{itemize}
+
+\paragraph{Semantic neutrality constraint.}
+Every allowed extension is admissible only if it introduces \textbf{no new semantic
+degrees of freedom}: it must not alter classification, STOP, provenance identity,
+or admissibility boundaries.
+
+\paragraph{Binary conformance.}
+Conformance is binary: conformant or \emph{not ESTRA}. Any layer that introduces a
+forbidden class (see Limits and Non-Goals) is non-admissible regardless of tooling.
+
+\paragraph{Toolkit / CLI / GUI compatibility boundary.}
+Toolkit/CLI/GUI may vary freely \emph{only} within the allowed extension space
+above. No interface layer may weaken invariants or gates, nor may it introduce
+control semantics, feedback loops, learning, heuristic shortcuts, or STOP bypass.
+
 \subsection{Versioning and compatibility contract}
 
 \paragraph{Version identifiers.}
