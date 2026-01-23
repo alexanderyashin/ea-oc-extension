@@ -1,0 +1,19 @@
+﻿% Section 05 - Evidence and Provenance Boundary
+% Purpose: Define what OPS-2A may/ must record as provenance; forbid evidence inflation.
+% Constraints: diagnostic-only; no new evidence generation.
+
+\section{Evidence and Provenance Boundary}
+
+\paragraph{No evidence inflation.}
+OPS-2A does not generate, aggregate, or upgrade evidentiary strength. Any attempt to
+``manufacture'' confidence (e.g., by repeated restatement, implied benchmarking, or
+optimization claims) is out of scope and constitutes misuse.
+
+\paragraph{Provenance minimum.}
+OPS-2A outputs MAY include minimal provenance sufficient for traceability, such as:
+artifact identifier/version, timestamp, declared scope label, and the applied conformance
+classification (OK vs. STOP). OPS-2A MUST NOT infer or fabricate missing provenance fields.
+
+\paragraph{No external validation claims.}
+OPS-2A MUST NOT claim independent verification of builds, hashes, signatures, third-party
+audits, or empirical validation unless such evidence is explicitly provided as input.
