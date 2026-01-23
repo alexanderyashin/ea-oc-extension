@@ -1,64 +1,70 @@
 ﻿\section{Limits and Non-Goals}
 
 This section defines the \textbf{explicit limits} of the Engine Core and clarifies
-what is intentionally not addressed by PDF-4. These limits are constitutive: they
+what is intentionally excluded from PDF-4. These limits are constitutive: they
 define the boundary of admissible interpretation for OPS-1 diagnostic semantics.
 
 \subsection{Interpretation boundaries}
 
 Diagnostic outputs produced by the Engine Core are \emph{structural
 classifications only}. They express admissibility or non-admissibility with
-respect to declared invariants.
+respect to declared invariants and terminal STOP conditions.
 
-Any interpretation beyond invariant satisfaction is external to the kernel.
+Any interpretation beyond invariant satisfaction is external to the kernel and
+has no standing within OPS-1.
 
 \paragraph{No semantic lifting.}
-Consumers of diagnostic output must not treat classifications as:
+Consumers of diagnostic output must not treat classifications or STOP as:
 \begin{itemize}
-  \item recommendations or action guidance;
+  \item recommendations, guidance, or action directives;
   \item root-cause analyses or explanatory narratives;
   \item forecasts, predictions, or risk estimates;
-  \item compliance judgments or managerial assessments.
+  \item compliance judgments, managerial assessments, or performance evaluations.
 \end{itemize}
 
 Such interpretations require additional assumptions, evidence, or authority that
-are explicitly outside the Engine Core boundary.
+are explicitly excluded from the Engine Core boundary.
 
 \subsection{OPS-1 vs.\ OPS-2 responsibility split}
 
 OPS-1 is a \textbf{contract and authority layer}. It fixes admissibility,
-invariants, STOP semantics, and provenance identity.
-OPS-1 does not address usage, presentation, tooling, or decision-making.
+invariants, terminal STOP semantics, determinism, reproducibility, and provenance
+identity.
+OPS-1 does not address usage, presentation, tooling, orchestration, or
+decision-making.
 
 Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is an
-\textbf{exchangeable consumer} of OPS-1. OPS-2 may display or transport results,
-but it must not define, reinterpret, or extend OPS-1 semantics.
+\textbf{exchangeable consumer} of OPS-1. OPS-2 may display, transport, or package
+results, but it must not define, reinterpret, operationalize, or extend OPS-1
+semantics.
 
 \paragraph{Binary compliance.}
-Compliance is \textbf{binary}: conformant or \emph{non-ESTRA}. Good intent,
-usability goals, or product considerations do not soften this boundary.
+Compliance is \textbf{binary}: conformant or \emph{non-ESTRA}. Intent, usability
+goals, product considerations, or domain expectations do not soften this
+boundary.
 
 \paragraph{Auto-disqualification by category error.}
 Any representation of OPS-1 as a ``method'', ``tool'', ``framework'',
 ``best practice'', ``playbook'', or ``how-to'' is a category error.
 If an OPS-2 layer (or its documentation) implies ``you should do X'' from
-classification or STOP, it introduces prescriptive semantics and is therefore
-\textbf{non-ESTRA}.
+classification or terminal STOP, it introduces prescriptive semantics and is
+therefore \textbf{non-ESTRA}.
 
 \subsection{Known non-diagnostic cases}
 
 The Engine Core cannot produce admissible diagnostic results when:
 \begin{itemize}
-  \item required observability is missing or indeterminate;
+  \item required observability is missing, indeterminate, or explicitly absent;
   \item invariants are inconsistent, underspecified, or contradictory;
-  \item threshold objects are ambiguous or incompatible;
+  \item threshold objects are ambiguous, incompatible, or ill-defined;
   \item kernel invariants are violated;
   \item provenance completeness cannot be established;
-  \item determinism or reproducibility (as architectural invariants) is violated.
+  \item determinism or reproducibility, as architectural invariants, is violated.
 \end{itemize}
 
-In these cases, diagnostic admissibility itself is violated and STOP applies. STOP
-does not compensate for these conditions; it denotes their formal recognition.
+In all such cases, diagnostic admissibility itself is violated and terminal STOP
+applies. STOP does not compensate for these conditions; it denotes their formal
+recognition.
 
 \subsection{What requires external evidence or authority}
 
@@ -77,8 +83,8 @@ diagnostic neutrality and ontological integrity of the kernel.
 
 \subsection{Explicit exclusion of workflows and methods}
 
-PDF-4 does not define workflows, procedures, methods, playbooks, or execution
-recipes of any kind.
+PDF-4 does not define workflows, procedures, methods, playbooks, recipes, or
+execution instructions of any kind.
 
 The diagnostic operation graph defined in PDF-4 exists solely to fix admissibility
 boundaries and terminal STOP enforcement. It must not be interpreted as:
@@ -86,18 +92,17 @@ boundaries and terminal STOP enforcement. It must not be interpreted as:
   \item a process model or workflow description;
   \item a decision tree or control structure;
   \item an execution sequence to be followed by agents or systems;
-  \item a method for optimization, steering, or intervention.
+  \item a method for optimization, steering, intervention, or management.
 \end{itemize}
 
 Any interpretation of the operation graph as a workflow, method, or procedural
-guidance is non-admissible under OPS-1 and falls outside the declared scope of
-PDF-4.
+guidance is non-admissible under OPS-1 and outside the declared scope of PDF-4.
 
 \subsection{Determinism and reproducibility are not negotiated by process}
 
 OPS-1 fixes determinism and reproducibility as \textbf{architectural invariants}.
-Therefore, PDF-4 explicitly does not define, recommend, or imply any process-level
-mechanisms to ``achieve'' or ``improve'' them.
+Accordingly, PDF-4 does not define, recommend, imply, or tolerate any process-level
+mechanisms intended to ``achieve'', ``improve'', or ``enforce'' them.
 
 If determinism or reproducibility would require procedural controls to hold, the
 artefact is non-admissible under OPS-1 and produced outputs are invalid.
@@ -110,43 +115,43 @@ The following extension classes are \textbf{explicitly forbidden}.
 \paragraph{Semantic control and steering.}
 \begin{itemize}
   \item any optimization, recommendation, prioritization, or decision semantics;
-  \item any control logic influencing or steering diagnosis outcomes;
+  \item any control logic influencing or steering diagnostic outcomes;
   \item any feedback edge or adaptive branching affecting evaluation.
 \end{itemize}
 
 \paragraph{Learning and adaptation.}
 \begin{itemize}
   \item any form of learning, fitting, calibration, or adaptation influencing
-        invariants, thresholds, classification, or STOP;
+        invariants, thresholds, classification, or terminal STOP;
   \item any use of historical cases to modify kernel behavior.
 \end{itemize}
 
 \paragraph{STOP violation.}
 \begin{itemize}
-  \item any retry, recovery, bypass, or continuation path after STOP;
-  \item any reinterpretation of STOP as warning, error, or advisory signal.
+  \item any retry, recovery, bypass, or continuation path after terminal STOP;
+  \item any reinterpretation of STOP as warning, error, signal, or advisory.
 \end{itemize}
 
 \paragraph{Non-determinism and provenance violation.}
 \begin{itemize}
   \item any semantically relevant non-determinism;
-  \item any partial, probabilistic, or inferred provenance;
-  \item any post-hoc correction, repair, or normalization of evidence.
+  \item any partial, probabilistic, inferred, or reconstructed provenance;
+  \item any post-hoc correction, repair, normalization, or retrofitting of evidence.
 \end{itemize}
 
 \paragraph{Registry and evidence manipulation.}
 \begin{itemize}
   \item mutable registries or evidence stores;
   \item overwriting, replacing, deleting, or rewriting evidence artefacts;
-  \item opaque preprocessing or hidden sampling/filtering.
+  \item opaque preprocessing or hidden sampling or filtering.
 \end{itemize}
 
 \paragraph{UX-driven semantics.}
 \begin{itemize}
   \item any user interface, visualization, or interaction layer that alters,
         constrains, or implies diagnostic meaning;
-  \item any UX-driven simplification that hides STOP conditions or admissibility
-        boundaries.
+  \item any UX-driven simplification that hides terminal STOP conditions or
+        admissibility boundaries.
 \end{itemize}
 
 Presence of any forbidden class immediately disqualifies the artefact from OPS-1

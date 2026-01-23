@@ -1,46 +1,56 @@
 ﻿\section{Execution Model and Determinism}
 
 This section specifies the execution model of the Engine Core strictly as a
-\textbf{diagnostic evaluator}. It intentionally excludes any notion of process
-orchestration, workflow control, scheduling, or runtime management.
+\textbf{diagnostic-only} evaluator. It explicitly excludes any notion of process
+orchestration, workflow control, scheduling, runtime management, or operational
+governance.
 
 \subsection{Run lifecycle}
 
-A single kernel run is defined as an atomic evaluation:
+A single kernel run is defined as one atomic evaluation:
 \[
 (S,\;\mathcal{I},\;\Theta,\;M)\;\Rightarrow\;R
 \]
 where $M$ denotes explicit execution metadata (e.g.\ version identifiers or
-environment descriptors) that are recorded for traceability but do not influence
-evaluation semantics.
+environment descriptors) that are recorded for traceability \textbf{only} and do
+not influence evaluation, classification, STOP, or provenance semantics.
 
 There is exactly one input bundle and exactly one result. The Engine Core does not
-manage sessions, pipelines, retries, or long-lived execution contexts.
+manage sessions, pipelines, retries, recovery, or long-lived execution contexts.
 
 \paragraph{No internal lifecycle.}
 The kernel has no notion of \emph{start}, \emph{progress}, or \emph{completion}
 beyond the existence of the evaluation result $R$ or a terminal STOP.
-Any higher-level lifecycle management belongs to external tooling.
+Any higher-level lifecycle management is external and non-normative with respect
+to OPS-1.
 
 \subsection{Determinism as architectural invariant}
 
 OPS-1 fixes determinism as an \textbf{architectural invariant} of the kernel.
 Determinism is not a best-effort execution property, not a process guarantee, and
-not a toolchain attribute. It is a necessary condition for OPS-1 conformance.
+not a toolchain attribute. It is a necessary and non-negotiable condition for
+OPS-1 conformance.
 
 \paragraph{Deterministic domains (non-negotiable).}
 For identical declared inputs $(S,\mathcal{I},\Theta,M)$, the kernel must yield an
-identical result $R$ in the following domains:
+identical result $R$ in all of the following domains:
 
 \begin{itemize}
-  \item \textbf{Diagnostic result determinism:} identical admissibility classification and identical diagnostic outputs.
-  \item \textbf{Operation graph traversal determinism:} traversal and evaluation order are determined solely by declared structures.
-  \item \textbf{STOP detection determinism:} STOP / NO-GO recognition is deterministic and input-complete.
-  \item \textbf{Provenance assignment determinism:} attribution of outputs to declared inputs and referenced artefacts is deterministic.
-  \item \textbf{Registry state determinism (logical):} registry evolution is append-only and order-stable in the logical sense of reference introduction.
+  \item \textbf{Diagnostic result determinism:} identical admissibility
+        classification and identical diagnostic outputs.
+  \item \textbf{Operation graph traversal determinism:} traversal and evaluation
+        order are determined solely by declared structures.
+  \item \textbf{STOP detection determinism:} terminal STOP recognition is
+        deterministic and input-complete.
+  \item \textbf{Provenance assignment determinism:} attribution of outputs to
+        declared inputs and referenced artefacts is deterministic.
+  \item \textbf{Registry state determinism (logical):} registry evolution is
+        append-only and order-stable in the logical sense of reference
+        introduction.
 \end{itemize}
 
-Any deviation in these domains constitutes a violation of OPS-1 determinism.
+Any deviation in any of these domains constitutes a violation of OPS-1
+determinism.
 
 \paragraph{What determinism does \emph{not} mean.}
 Kernel determinism does not imply:
@@ -48,21 +58,24 @@ Kernel determinism does not imply:
   \item predictability of future states of the diagnosed system;
   \item stability of the system over time;
   \item repeatability of real-world observations;
-  \item causal explanation or forecasting of outcomes.
+  \item causal explanation, attribution, or forecasting of outcomes.
 \end{itemize}
 
-It is solely a property of admissibility evaluation within the kernel boundary.
+Determinism is solely a property of admissibility evaluation within the kernel
+boundary.
 
 \subsection{Bounded non-determinism (strictly cosmetic)}
 
-OPS-1 permits non-determinism \emph{only} where it has no semantic impact on any
-diagnostic result, STOP evaluation, provenance attribution, or registry meaning.
+OPS-1 permits non-determinism \emph{only} where it has \textbf{no semantic impact}
+on diagnostic results, terminal STOP evaluation, provenance identity, or registry
+meaning.
 
 \paragraph{Permitted (strictly bounded).}
-The following are permitted only if they are demonstrably semantics-free:
+The following are permitted \emph{only if} they are demonstrably semantics-free:
 
 \begin{itemize}
-  \item ordering of physically independent artefacts, \emph{if and only if} ordering has no effect on diagnostic meaning;
+  \item ordering of physically independent artefacts, \emph{if and only if}
+        ordering has no effect on diagnostic meaning;
   \item rendering and layout properties (purely cosmetic presentation);
   \item non-normative metadata that does not influence evaluation semantics.
 \end{itemize}
@@ -72,9 +85,9 @@ Any non-determinism is forbidden if it can influence:
 
 \begin{itemize}
   \item diagnostic outputs or admissibility classification;
-  \item STOP / NO-GO evaluation or terminal recognition;
+  \item terminal STOP recognition or NO-GO evaluation;
   \item provenance assignment or traceability links;
-  \item selection of execution paths (heuristic, adaptive, or conditional by non-declared factors);
+  \item selection of execution paths by heuristic, adaptive, or conditional logic;
   \item time-, load-, or environment-dependent behavior with semantic impact.
 \end{itemize}
 
@@ -92,8 +105,8 @@ The Engine Core must not depend on hidden or mutable internal state.
   \item time-dependent behavior not represented in inputs.
 \end{itemize}
 
-Any dependency that is not explicitly represented in $(S,\mathcal{I},\Theta,M)$
-invalidates OPS-1 conformance.
+Any dependency not explicitly represented in $(S,\mathcal{I},\Theta,M)$ invalidates
+OPS-1 conformance.
 
 \subsection{Environment independence (semantic)}
 
@@ -104,17 +117,19 @@ The kernel is environment-independent in a \emph{semantic} sense:
   \item evaluation semantics must not depend on external services or side effects.
 \end{itemize}
 
-This requirement does not impose constraints on build tooling, containers, or
-deployment environments, which are external to kernel semantics.
+This constraint applies exclusively to kernel semantics. It imposes no requirements
+on build tooling, containers, deployment environments, or infrastructure, all of
+which are external to OPS-1.
 
 \subsection{No execution control semantics}
 
-In particular, it does not support:
+The Engine Core admits no execution control semantics of any kind. In particular,
+it does not admit:
 \begin{itemize}
   \item pause, resume, or step-wise execution;
   \item conditional branching or scenario switching;
-  \item fallback, degraded, or recovery modes;
+  \item fallback, degraded, recovery, or continuation modes.
 \end{itemize}
 
-Execution either yields a result $R$ or terminates at STOP. No admissible third
-state exists.
+Execution yields exactly one admissible outcome: either a result $R$ or a terminal
+STOP. No admissible third state exists.

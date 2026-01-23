@@ -1,9 +1,9 @@
 ﻿\section{Core Objects and Invariants}
 
 This section defines the \emph{minimal} object model of the Engine Core as a
-diagnostic-only kernel. All objects introduced here are \textbf{structural}:
-they encode admissibility and terminal boundaries only and carry no managerial,
-prescriptive, predictive, or optimization semantics.
+\textbf{diagnostic-only} kernel. All objects introduced here are \textbf{structural}:
+they encode admissibility and terminal boundaries only. They carry no managerial,
+prescriptive, predictive, optimization, or decision semantics.
 
 \subsection{Data model (entities)}
 
@@ -34,7 +34,7 @@ The \emph{invariant set} is a finite, explicitly declared collection:
 \]
 
 Invariants are external declarations consumed by the kernel. The kernel does not
-synthesize, refine, or adapt invariants.
+synthesize, refine, adapt, or reinterpret invariants.
 
 \paragraph{Threshold objects.}
 Thresholds are declared boundary parameters referenced by invariants:
@@ -42,7 +42,8 @@ Thresholds are declared boundary parameters referenced by invariants:
 \Theta := \{\theta_1, \theta_2, \dots\}
 \]
 A threshold object is a typed and versioned parameter, scalar or structured.
-Thresholds are inputs to evaluation; they are not tuned, optimized, or learned.
+Thresholds are inputs to evaluation; they are not tuned, optimized, calibrated,
+or learned.
 
 \paragraph{Evaluation result.}
 Given $(S, \mathcal{I}, \Theta)$, evaluation yields a structural result:
@@ -57,10 +58,10 @@ where:
 \end{itemize}
 
 The result encodes diagnostic admissibility only. It does not represent quality,
-performance, preference, or desirability.
+performance, preference, desirability, or priority.
 
 \paragraph{Provenance record (minimal).}
-For each evaluation, the Engine Core produces an append-only provenance record:
+For each evaluation, the Engine Core produces an \textbf{append-only} provenance record:
 \[
 P := \langle h(S),\, h(\mathcal{I}),\, h(\Theta),\, \mathbf{v},\, \mathbf{c},\, \mathrm{STOP} \rangle
 \]
@@ -68,13 +69,13 @@ where $h(\cdot)$ denotes stable identifiers (hashes or canonical digests). The
 record supports traceability and conformance checking only; it provides no causal
 or explanatory narrative.
 
-\paragraph{Registry (logical reference space).}
-A \emph{registry} is a logical, non-technical reference space whose sole role is
-to \emph{declare and preserve} references to artefacts related to an evaluation.
-The registry is \textbf{not} a data model, storage system, process, or method.
+\paragraph{Registry (append-only registry; logical reference space).}
+A \emph{registry} is a logical reference space whose sole role is to \emph{declare and preserve}
+references to artefacts related to an evaluation. The registry is \textbf{not} a
+data model, storage system, process, method, workflow, or control structure.
 
 The registry carries \textbf{references only}; it contains no interpretation,
-aggregation semantics, filter logic, or decision logic.
+aggregation semantics, filter logic, decision logic, or evaluation semantics.
 
 \paragraph{Registry entries (types, without formats).}
 A registry entry is an append-only reference record. The Engine Core requires
@@ -95,11 +96,11 @@ include:
 Registry entries are append-only. Once a reference exists, it must not be
 mutated, replaced, or deleted.
 
-\paragraph{Evidence (immutable artefacts).}
+\paragraph{Evidence (immutable evidence).}
 \emph{Evidence} denotes immutable artefacts referenced by the registry. Evidence
-is \textbf{context-free} in kernel semantics: it may be consumed by external
-actors, but within OPS-1 the Engine Core must not interpret evidence, normalize
-it, or derive semantics from it.
+is \textbf{context-free} in kernel semantics: within OPS-1 the Engine Core does not
+interpret evidence, normalize it, clean it, sample it, filter it, aggregate it,
+or derive semantics from it.
 
 Evidence is immutable after creation: it must never be overwritten, replaced, or
 deleted. Any change to content constitutes a different artefact and must be
@@ -113,7 +114,7 @@ case, the kernel admits exactly one abstract step:
 (S, \mathcal{I}, \Theta) \;\Rightarrow\; R
 \]
 
-There is no internal iteration, retry policy, or adaptive transition structure.
+There is no internal iteration, retry policy, recovery, or adaptive transition structure.
 
 \paragraph{No hidden state rule.}
 The kernel must not depend on hidden or mutable state between runs (e.g.\ caches,
@@ -131,7 +132,7 @@ invariant renders produced outputs ontologically void (non-OPS-1).
         diagnosed system.
   \item \textbf{Non-adaptivity.} Kernel behavior does not change as a function of
         past evaluations.
-  \item \textbf{Monotonic STOP.} Once STOP holds for a case, no further diagnostic
+  \item \textbf{Monotonic terminal STOP.} Once STOP holds for a case, no further diagnostic
         state exists for that case.
   \item \textbf{Invariant transparency.} All applied invariants are explicitly
         declared and inspectable.
@@ -144,7 +145,7 @@ invariant renders produced outputs ontologically void (non-OPS-1).
         axes, or semantics during operation.
   \item \textbf{Diagnostic sufficiency.} Outputs express diagnostic validity or
         invalidity only; no prescriptions or recommendations.
-  \item \textbf{Registry non-decisionality.} The registry contains references
+  \item \textbf{Registry non-decisionality.} The append-only registry contains references
         only and must not participate in evaluation, classification, or STOP
         semantics.
   \item \textbf{Evidence immutability.} Evidence artefacts referenced by the
@@ -180,7 +181,7 @@ formal boundary beyond which diagnostic evaluation is invalid
 (see Section~\ref{sec:stop}).
 
 \paragraph{Classification categories (minimal).}
-The kernel uses a finite, non-ordered set of structural categories, for example:
+The kernel uses a finite, non-ordered set of structural categories:
 \begin{itemize}
   \item \texttt{admissible},
   \item \texttt{boundary-violating},
@@ -188,4 +189,5 @@ The kernel uses a finite, non-ordered set of structural categories, for example:
   \item \texttt{stop-eligible}.
 \end{itemize}
 
-Category labels are structural identifiers only and carry no prescriptive meaning.
+Category labels are structural identifiers only. They must not be ranked, mapped
+to prescriptions, or treated as decision outputs.

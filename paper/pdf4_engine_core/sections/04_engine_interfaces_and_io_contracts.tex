@@ -1,13 +1,13 @@
 ﻿\section{Interfaces and I/O Contracts}
 
 This section defines the \textbf{structural} input/output contracts of the Engine
-Core. The contracts are intentionally minimal: they enable reproducible diagnostic
-evaluation while explicitly forbidding control, optimization, adaptation, or
-prescriptive semantics.
+Core as a \textbf{diagnostic-only} kernel. The contracts are intentionally minimal:
+they enable reproducible diagnostic evaluation while \textbf{explicitly forbidding}
+control, optimization, adaptation, learning, or prescriptive semantics.
 
 \subsection{Inputs (schemas, required fields)}
 
-The Engine Core consumes a single evaluation request:
+The Engine Core consumes exactly one evaluation request:
 \[
 Q := \langle S,\; \mathcal{I},\; \Theta,\; M \rangle
 \]
@@ -16,26 +16,28 @@ the declared threshold objects, and $M$ a minimal metadata envelope.
 
 \paragraph{Required input components.}
 \begin{itemize}
-  \item \textbf{State snapshot $S$.} Immutable and read-only. Partiality is allowed
-        only if missing fields are explicitly represented in the observability
-        descriptor $\mathcal{O}$.
+  \item \textbf{State snapshot $S$.} Immutable and read-only. Partiality is
+        admissible \emph{only} if missing fields are explicitly represented in the
+        observability descriptor $\mathcal{O}$.
   \item \textbf{Invariant set $\mathcal{I}$.} Explicit, versioned, and inspectable
         predicates $I_k : S \rightarrow \{0,1\}$.
   \item \textbf{Threshold objects $\Theta$.} Explicit, typed boundary parameters
-        referenced by invariants. Thresholds are never tuned or adapted by the kernel.
+        referenced by invariants. Thresholds are inputs only; they are never tuned,
+        adapted, calibrated, or learned by the kernel.
   \item \textbf{Metadata envelope $M$.} Minimal contextual metadata such as
         \texttt{case\_id}, \texttt{engine\_version}, and stable identifiers of the
-        input set. Metadata must not influence evaluation semantics.
+        input set. Metadata must not influence evaluation, classification, STOP,
+        or provenance semantics.
 \end{itemize}
 
 \paragraph{Observability as explicit input.}
 Unknown or indeterminate values must be represented explicitly (e.g.\ via
 $\mathcal{O}$). The kernel must not replace missing observability by assumptions,
-defaults, heuristics, or probabilistic completion.
+defaults, heuristics, estimation, or probabilistic completion.
 
 \subsection{Outputs (artefacts, schemas)}
 
-The Engine Core produces a single evaluation result:
+The Engine Core produces exactly one evaluation result:
 \[
 R := \langle \mathbf{v},\; \mathbf{c},\; \mathrm{STOP},\; P \rangle
 \]
@@ -43,30 +45,33 @@ with:
 \begin{itemize}
   \item $\mathbf{v}\in\{0,1\}^n$ — invariant satisfaction vector;
   \item $\mathbf{c}$ — finite structural classification label;
-  \item $\mathrm{STOP}\in\{0,1\}$ — terminal halt flag;
-  \item $P$ — minimal append-only provenance record.
+  \item $\mathrm{STOP}\in\{0,1\}$ — terminal STOP flag;
+  \item $P$ — minimal \textbf{append-only} provenance record.
 \end{itemize}
 
 \paragraph{No prescriptive fields.}
-Outputs must not contain recommendations, priorities, rankings, objectives, or
-action proposals. The presence of such fields invalidates OPS-1 conformance.
+Outputs must not contain recommendations, priorities, rankings, objectives,
+targets, success criteria, or action proposals. The presence of any such field
+invalidates OPS-1 conformance.
 
 \paragraph{Provenance payload (minimal).}
 At minimum, the provenance record binds outputs to inputs via stable identifiers:
 \[
 P := \langle h(S),\, h(\mathcal{I}),\, h(\Theta),\, \mathbf{v},\, \mathbf{c},\, \mathrm{STOP} \rangle
 \]
-External systems may attach additional identifiers (e.g.\ run IDs or build hashes),
-provided these do not alter kernel semantics.
+External systems may attach additional identifiers (e.g.\ run IDs or build hashes)
+\emph{only} if they introduce no new semantics and do not alter classification,
+STOP meaning, admissibility boundaries, or provenance identity.
 
 \subsection{Error surfaces (typed failure outputs)}
 
-The Engine Core strictly distinguishes \textbf{structural STOP} from
+The Engine Core strictly distinguishes \textbf{terminal STOP} from
 \textbf{tooling or implementation errors}.
 
 \paragraph{STOP (kernel-level).}
-STOP is a first-class terminal boundary of diagnostic admissibility
-(see Section~\ref{sec:stop}). It is neither a recoverable error nor advice.
+STOP is a first-class, terminal boundary of diagnostic admissibility
+(see Section~\ref{sec:stop}). It is neither a recoverable error, nor a warning,
+nor advice.
 
 \paragraph{Implementation errors (non-kernel).}
 Failures such as parsing errors, missing files, corrupted input containers, or
@@ -74,21 +79,20 @@ environment misconfiguration are \emph{external} to Engine Core semantics. They 
 be represented by surrounding tooling as typed errors, but:
 \begin{itemize}
   \item they must not be conflated with STOP;
-  \item they must not introduce recovery logic into the kernel;
-  \item they must not affect classification semantics.
+  \item they must not introduce recovery, retry, or fallback logic into the kernel;
+  \item they must not affect invariant evaluation, classification, or STOP semantics.
 \end{itemize}
 
-The kernel defines $R$ only for admissible inputs. Input admission and tooling
-reliability are external concerns.
+The kernel defines $R$ only for admissible inputs. Input admission, error handling,
+and tooling reliability are external concerns.
 
 \subsection{Extension points and compatibility boundary (OPS-1)}
 
 \paragraph{Allowed extension points (closed list).}
 The following extension points are \textbf{explicitly allowed}. This list is
-\textbf{closed}: if an extension is not in this list, it is non-admissible under
-OPS-1.
+\textbf{closed}: any extension not listed here is non-admissible under OPS-1.
 \begin{itemize}
-  \item \textbf{Presentation/rendering layers} (cosmetic-only; no semantic effect).
+  \item \textbf{Presentation or rendering layers} (cosmetic-only; no semantic effect).
   \item \textbf{Non-normative reporting views} (read-only; no decision effect).
   \item \textbf{Evidence import adapters} (strict: no semantic change; full provenance).
   \item \textbf{Additional verification gates} (stricter allowed; never weaker).
@@ -96,26 +100,28 @@ OPS-1.
 \end{itemize}
 
 \paragraph{Semantic neutrality constraint.}
-Every allowed extension is admissible only if it introduces \textbf{no new semantic
-degrees of freedom}: it must not alter classification, STOP, provenance identity,
-or admissibility boundaries.
+Every allowed extension is admissible \emph{only} if it introduces
+\textbf{no new semantic degrees of freedom}. It must not alter classification,
+STOP semantics, provenance identity, or admissibility boundaries.
 
 \paragraph{Binary conformance.}
-Conformance is binary: conformant or \emph{not ESTRA}. Any layer that introduces a
-forbidden class (see Limits and Non-Goals) is non-admissible regardless of tooling.
+Conformance is \textbf{binary}: conformant or \emph{non-ESTRA}. Any layer that
+introduces a forbidden class (see Limits and Non-Goals) is non-admissible,
+regardless of tooling quality or intent.
 
 \paragraph{Toolkit / CLI / GUI boundary (OPS-2 as consumer only).}
 Any toolkit surface (CLI/GUI/scripts/integrations) is outside OPS-1 and belongs to
 OPS-2. OPS-2 is an \textbf{exchangeable consumer} of the OPS-1 contract: it consumes
-$Q$ and displays $R$, but it does not define, reinterpret, or extend OPS-1 semantics.
+$Q$ and renders or transports $R$, but it must not define, reinterpret, extend, or
+operationalize OPS-1 semantics.
 
 OPS-2 variation is admissible \emph{only} within the closed extension space above.
-No interface layer may weaken invariants or gates, nor may it introduce control
-semantics, feedback loops, learning, heuristic shortcuts, or STOP bypass.
+No interface layer may weaken invariants or gates, nor introduce control semantics,
+feedback loops, learning, heuristic shortcuts, or STOP bypass.
 
 \paragraph{Auto-disqualification by semantic contamination.}
-If a toolkit layer (or its documentation/positioning) implies that the Engine Core
-is a ``tool'', ``method'', ``framework'', ``best practice'', ``playbook'', or
+If a toolkit layer (or its documentation or positioning) implies that the Engine
+Core is a ``tool'', ``method'', ``framework'', ``best practice'', ``playbook'', or
 ``how-to'', that representation is non-conformant by definition.
 If a toolkit layer induces or implies ``you should do X'' from $R$ or from STOP,
 it introduces prescriptive semantics and is therefore \textbf{non-ESTRA}.
@@ -123,19 +129,19 @@ it introduces prescriptive semantics and is therefore \textbf{non-ESTRA}.
 \subsection{Versioning and compatibility contract}
 
 \paragraph{Version identifiers.}
-The Engine Core must expose a version identifier (e.g.\ semantic version or content
-hash) via metadata $M$ and/or provenance $P$.
+The Engine Core must expose a version identifier (e.g.\ content hash or semantic
+version) via metadata $M$ and/or provenance $P$.
 
 \paragraph{Compatibility rule (minimal).}
-Results are comparable as kernel outputs only if:
+Results are comparable as kernel outputs \emph{only if}:
 \begin{itemize}
   \item $h(\mathcal{I})$ is identical;
   \item $h(\Theta)$ is identical;
   \item the Engine Core version identifier is identical.
 \end{itemize}
 
-If any of these differ, comparison may still be performed externally, but it must
-be treated as cross-version analysis and not as a property of the kernel.
+If any of these differ, comparison may occur externally, but it is cross-version
+analysis and not a kernel property.
 
 \paragraph{No implicit upgrades.}
 The kernel must not silently reinterpret invariants, thresholds, classifications,

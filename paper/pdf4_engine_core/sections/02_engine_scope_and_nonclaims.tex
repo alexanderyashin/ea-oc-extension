@@ -3,15 +3,15 @@
 \subsection{Diagnostic-only boundary}
 
 This artefact defines the \emph{Engine Core} as a \textbf{diagnostic-only kernel}.
-Its scope is strictly limited to:
+Its scope is strictly and exhaustively limited to:
 (i) accepting a declared structural state snapshot,
 (ii) evaluating that snapshot against a declared invariant set,
 (iii) emitting a structural classification, and
-(iv) irreversibly terminating evaluation when STOP conditions apply.
+(iv) irreversibly terminating evaluation when terminal STOP conditions apply.
 
 The Engine Core has \textbf{no causal influence} on the diagnosed system.
-It must not be embedded or interpreted as an actuator, controller, optimizer,
-governance mechanism, or decision authority.
+It must not be embedded, exposed, or interpreted as an actuator, controller,
+optimizer, governance mechanism, decision authority, or intervention layer.
 
 \paragraph{Closed operation set (normative).}
 The following operations exhaust the admissible behavior of the kernel:
@@ -19,37 +19,43 @@ The following operations exhaust the admissible behavior of the kernel:
   \item \textbf{OBSERVE:} accept a read-only state snapshot;
   \item \textbf{EVALUATE:} evaluate declared invariants on that snapshot;
   \item \textbf{CLASSIFY:} map invariant satisfaction to a finite structural label;
-  \item \textbf{STOP/HALT:} terminate evaluation irreversibly for the given case.
+  \item \textbf{STOP/HALT:} irreversibly terminate evaluation for the given case.
 \end{itemize}
 
 These operations denote \emph{structural roles}, not procedural steps.
-No additional operations, phases, or control constructs exist inside the kernel.
+No additional operations, phases, execution controls, or behavioral constructs
+exist inside the kernel.
 
 \subsection{OPS-1 contract vs.\ toolkits (OPS-2)}
 
 OPS-1 is an \textbf{architecture-and-contract layer}.
-It defines invariants, prohibitions, authority, and validity conditions.
+It defines admissibility, invariants, prohibitions, authority, determinism,
+reproducibility, and provenance identity.
 It is \textbf{not} usage-centered, tool-centered, or user-centered:
-OPS-1 does not know users, workflows, commands, screens, or decisions.
+OPS-1 does not know users, workflows, commands, interfaces, or decisions.
 
 Any toolkit surface (CLI/GUI/scripts/integrations) belongs to OPS-2 and is, by
 definition, an \textbf{exchangeable consumer} of the OPS-1 contract.
-OPS-2 may change without changing OPS-1; OPS-1 must not be redefined by OPS-2.
+OPS-2 may change without changing OPS-1; OPS-1 must not be defined,
+reinterpreted, or operationalized by OPS-2.
 
 \paragraph{Binary compliance.}
 OPS-1 compliance is \textbf{binary}: \emph{conformant} or \emph{non-ESTRA}.
+Intent, usability goals, or product considerations do not soften this boundary.
 A well-intended toolkit that introduces prohibited semantics is \textbf{not} ESTRA.
 
 \paragraph{Non-normativity of toolkits.}
-Toolkits are never normative. They must not \emph{create} new semantic degrees of
-freedom, reinterpret STOP, or turn structural labels into prescriptions.
-UX or product arguments do not justify any semantic change to OPS-1.
+Toolkits are never normative. They must not create new semantic degrees of
+freedom, reinterpret terminal STOP, weaken invariants, or turn structural labels
+into prescriptions.
+UX, adoption, or product arguments do not justify any semantic change to OPS-1.
 
 \paragraph{Auto-disqualification (boundary violation).}
 Any representation of OPS-1 as a ``method'', ``tool'', ``framework'',
 ``best practice'', ``playbook'', or ``how-to'' is a category error.
-If a consumer layer induces or implies ``you should do X'' from OPS-1 output,
-that representation is \textbf{non-conformant} and therefore \textbf{non-ESTRA}.
+If a consumer layer induces or implies ``you should do X'' from OPS-1 output or
+from terminal STOP, that representation is \textbf{non-conformant} and therefore
+\textbf{non-ESTRA}.
 
 \subsection{No-prescription / no-management claims}
 
@@ -61,36 +67,36 @@ The Engine Core does not:
   \item recommend actions, remediations, or interventions;
   \item define roadmaps, sequences, or execution plans;
   \item set targets, KPIs, objectives, or success criteria;
-  \item prioritize options or rank alternatives;
-  \item allocate resources or define governance processes;
-  \item provide best practices, frameworks, or transformation methodology.
+  \item prioritize options, rank alternatives, or compare desirability;
+  \item allocate resources or define governance or control processes;
+  \item provide best practices, frameworks, methodologies, or transformation guidance.
 \end{itemize}
 
 Any process, facilitation, governance, or decision-making that consumes diagnostic
-output is \textbf{external} to the Engine Core and must be handled by higher layers.
+output is \textbf{external} to the Engine Core and outside OPS-1 authority.
 
 \subsection{What the engine does not infer}
 
 The Engine Core must not infer missing structure or enrich semantics.
-It operates solely on explicitly provided inputs.
+It operates exclusively on explicitly declared inputs.
 
 \paragraph{Forbidden inference classes.}
 The kernel does not:
 \begin{itemize}
   \item infer intent, priorities, accountability, or organizational motives;
-  \item infer causal narratives beyond invariant reference;
+  \item infer causal narratives beyond declared invariant reference;
   \item forecast future states or simulate counterfactual scenarios;
-  \item learn from history or adapt thresholds or rules;
-  \item complete missing observability via assumptions or heuristics.
+  \item learn from history or adapt thresholds, invariants, or rules;
+  \item complete missing observability via assumptions, heuristics, or estimation.
 \end{itemize}
 
 \paragraph{Structural determinacy (scope-limited).}
-The only determinacy claim is internal:
+The only determinacy claim is internal and structural:
 for identical declared inputs (state snapshot, invariant set, thresholds),
-the kernel yields the same classification and STOP decision.
-This is not a claim about determinism of the world, the enterprise, or outcomes.
+the kernel yields the same classification and terminal STOP decision.
+This is not a claim about determinism of the world, organizations, or outcomes.
 
 \paragraph{STOP as boundary, not signal.}
-STOP is not advice, not an error, and not a recoverable warning.
-It denotes a terminal boundary where further diagnostic evaluation is formally
-non-admissible for the given case (see Section~\ref{sec:stop}).
+Terminal STOP is not advice, not an error, and not a recoverable warning.
+It denotes a structural boundary beyond which further diagnostic evaluation is
+formally non-admissible for the given case (see Section~\ref{sec:stop}).
