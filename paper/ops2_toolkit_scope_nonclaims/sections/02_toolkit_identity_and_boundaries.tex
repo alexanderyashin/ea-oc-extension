@@ -1,0 +1,25 @@
+﻿% Section 02 — Toolkit Identity and Boundaries
+% Purpose: State OPS-2 identity, upper/lower boundaries, and firewall constraints.
+% Constraints: no new semantics; no implementation references.
+
+\section{Toolkit Identity and Boundaries}
+
+\subsection{Identity}
+OPS-2 is defined as a tooling-level diagnostic machine. Its behavior is constrained
+to admissibility checks, classification emission, provenance binding, and terminal
+STOP enforcement.
+
+\subsection{Lower boundary}
+OPS-2 does not define or alter the underlying enterprise semantics, predicates, or
+phase logic. Any semantic authority remains outside OPS-2 and cannot be introduced
+through tooling.
+
+\subsection{Upper boundary}
+OPS-2 does not prescribe actions, recommend changes, optimize objectives, or provide
+control-loop behavior. Any attempt to induce `you should do X'' from diagnostic
+outputs is rejected.
+
+\subsection{Category-exclusion firewall}
+OPS-2 explicitly blocks prohibited categories (prescription, recovery, optimization,
+control, scope extension, semantic drift) and treats them as STOP-triggering misuse
+patterns under the consolidated matrix.

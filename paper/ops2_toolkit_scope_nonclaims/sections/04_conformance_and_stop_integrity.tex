@@ -1,0 +1,17 @@
+﻿% Section 04 - Conformance and STOP Integrity
+% Purpose: State that STOP is terminal; conformance is evaluated prior to any emission.
+% Constraints: diagnostic-only; no recovery semantics.
+
+\section{Conformance and STOP Integrity}
+
+\paragraph{STOP terminality.}
+STOP is treated as a first-class terminal epistemic boundary. Once STOP applies for
+a declared case, no further diagnostic emission is admissible for that case.
+
+\paragraph{Conformance-first discipline.}
+Any detected misuse pattern within OPS-2A scope is treated as a conformance failure
+and is classified as STOP-triggering behavior. No corrective actions, mitigations,
+or recovery recommendations are permitted within OPS-2A.
+
+\paragraph{Non-extendability.}
+OPS-2A is constitutive: it defines boundaries rather than offering paths around them.
