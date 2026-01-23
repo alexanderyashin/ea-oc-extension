@@ -5,36 +5,70 @@ required of an OPS-1 Engine Core artefact. These guarantees are \emph{structural
 they concern the ability to reproduce diagnostic results from declared inputs,
 not the empirical behavior of the diagnosed system.
 
-\subsection{Evidence hooks (append-only)}
+\subsection{Registry and evidence as architecture (non-technical)}
 
-The Engine Core exposes \emph{hooks} for attaching evidence artefacts and logs,
-but does not interpret, evaluate, or reason about their content.
+OPS-1 treats \textbf{registry} and \textbf{evidence} as architectural constructs,
+not as tooling, storage, or process.
 
-\paragraph{Append-only rule.}
-All evidence attachments must be append-only. Once referenced, no record may be
-modified or deleted. This rule exists to preserve traceability, not to enforce
-evidentiary sufficiency.
+\paragraph{Registry (logical, reference-only).}
+The registry is a logical reference space that contains \emph{references} and
+\emph{links} only. It carries no interpretation, no aggregation semantics, and no
+decision or filter logic. Registry contents must not influence evaluation,
+classification, or STOP semantics.
 
-\paragraph{No semantic use.}
-Attached evidence must not influence kernel evaluation, classification, or STOP
-semantics. Any semantic use of evidence occurs outside the Engine Core boundary.
+\paragraph{Evidence (immutable, context-free).}
+Evidence denotes immutable artefacts referenced by the registry. Evidence is
+context-free in OPS-1 kernel semantics: it may be inspected externally, but it
+must not be interpreted, normalized, cleaned, sampled, filtered, or aggregated by
+the Engine Core.
 
-\subsection{Provenance (inputs-to-outputs mapping)}
+Evidence is immutable after creation: it must never be overwritten, replaced, or
+deleted.
 
-Each diagnostic result $R$ must be traceable to its declared inputs via a minimal
-provenance mapping:
+\subsection{Append-only invariants}
+
+\paragraph{Append-only registry rule.}
+Registry entries are append-only. Once a reference or link exists, it must not be
+mutated, replaced, or deleted. A registry that permits mutation is non-admissible
+under OPS-1.
+
+\paragraph{Append-only evidence referencing.}
+Once an evidence artefact is referenced, the reference must remain valid without
+post-hoc alteration. Any later artefact with changed content must be treated as a
+distinct evidence artefact and referenced separately.
+
+\subsection{Provenance (complete or invalid)}
+
+Each diagnostic result $R$ must be traceable to its declared inputs via a
+\textbf{complete} provenance mapping:
 \[
 (S,\mathcal{I},\Theta) \;\mapsto\; R
 \]
 
-Traceability is established through stable identifiers (hashes or canonical
-digests), not through explanatory narratives or causal accounts.
+\paragraph{Completeness requirement.}
+Provenance is \emph{complete or invalid}. There is no admissible notion of
+partial, probabilistic, or approximate provenance within OPS-1. If any required
+link is missing, provenance is invalid.
 
-\paragraph{No explanatory burden.}
-Provenance supports reproducibility and conformance checks only. It must not be
-extended to justify decisions, explain causality, or defend outcomes.
+\paragraph{Transitive traceability.}
+Every diagnostic output must be transitively traceable to:
+\begin{itemize}
+  \item the specific input snapshot $S$;
+  \item the specific invariant set $\mathcal{I}$;
+  \item the specific threshold objects $\Theta$;
+  \item the Engine Core version identifier;
+  \item all evidence artefacts referenced for that output (if any).
+\end{itemize}
 
-\subsection{Hashing and manifests}
+The traceability requirement concerns \emph{referencing} and \emph{link integrity}
+only; it imposes no explanatory narrative.
+
+\paragraph{Missing provenance implies STOP-admissibility.}
+If provenance completeness cannot be established for an output, the situation is
+STOP-admissible: diagnostic admissibility is violated, and the output must not be
+treated as an OPS-1 result.
+
+\subsection{Stable identifiers and manifests (format-agnostic)}
 
 The Engine Core must expose stable identifiers for:
 \begin{itemize}
@@ -44,18 +78,28 @@ The Engine Core must expose stable identifiers for:
   \item the Engine Core version.
 \end{itemize}
 
-The choice of hashing algorithms, digest formats, or manifest encodings is
+The choice of identifier algorithms, encodings, or manifest representations is
 external to kernel semantics, provided identifiers are stable and inspectable.
 
-\subsection{Run logs (minimal)}
+\subsection{Explicit prohibitions (non-negotiable)}
 
-If run logs are produced, they must be limited to:
+The following are explicitly non-admissible under OPS-1:
+
 \begin{itemize}
-  \item timestamps;
-  \item identifiers of inputs and outputs;
-  \item STOP occurrence (if any);
-  \item build or environment identifiers (optional).
+  \item \textbf{Mutable registry:} any ability to edit, rewrite, replace, or
+        delete registry entries.
+  \item \textbf{Evidence normalization or cleaning:} any transformation of
+        evidence content that changes meaning, even if claimed to be
+        ``non-semantic''.
+  \item \textbf{Aggregation with meaning change:} any aggregation that alters the
+        semantic content of referenced artefacts.
+  \item \textbf{Post-hoc correction of evidence:} any after-the-fact repair,
+        overwrite, replacement, or substitution of evidence content.
+  \item \textbf{Opaque preprocessing:} any uninspectable transformation or
+        hidden intermediate that breaks traceability.
+  \item \textbf{Hidden sampling or filtering:} any undisclosed selection,
+        exclusion, or reduction of evidence that cannot be traced.
 \end{itemize}
 
-Run logs are observational artefacts only. They must not encode recommendations,
-interpretations, recovery logic, or procedural guidance.
+These prohibitions are architectural invariants. They are independent of
+implementation strategy and must hold for OPS-1 conformance.

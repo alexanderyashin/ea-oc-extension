@@ -31,7 +31,8 @@ The Engine Core cannot produce admissible diagnostic results when:
   \item required observability is missing or indeterminate;
   \item invariants are inconsistent, underspecified, or contradictory;
   \item threshold objects are ambiguous or incompatible;
-  \item kernel invariants are violated.
+  \item kernel invariants are violated;
+  \item provenance completeness cannot be established.
 \end{itemize}
 
 In these cases, diagnostic admissibility itself is violated and STOP applies. STOP
@@ -69,3 +70,29 @@ boundaries and terminal STOP enforcement. It must not be interpreted as:
 Any interpretation of the operation graph as a workflow, method, or procedural
 guidance is non-admissible under OPS-1 and falls outside the declared scope of
 PDF-4.
+
+\subsection{Verbotsspace: registry/evidence manipulation (architectural)}
+
+OPS-1 fixes registry and evidence as architectural invariants. Therefore, the
+Engine Core explicitly \textbf{does not} define, permit, or imply any of the
+following:
+
+\begin{itemize}
+  \item \textbf{Mutable registry:} editing, rewriting, replacing, or deleting
+        registry entries.
+  \item \textbf{Evidence overwrite or replacement:} any ability to overwrite,
+        replace, or delete evidence artefacts after creation.
+  \item \textbf{Evidence normalization/cleaning:} any transformation intended to
+        ``clean'', ``normalize'', or otherwise alter evidence content.
+  \item \textbf{Aggregation with meaning change:} any aggregation step that
+        modifies the semantic content of evidence.
+  \item \textbf{Post-hoc correction:} any after-the-fact repair of evidence or
+        registry meant to retrofit consistency or improve appearance.
+  \item \textbf{Opaque preprocessing:} any uninspectable transformation that
+        breaks traceability.
+  \item \textbf{Hidden sampling/filtering:} any undisclosed selection/exclusion
+        that prevents complete provenance.
+\end{itemize}
+
+If any of the above is present or required, OPS-1 conformance is violated and
+produced outputs are non-admissible under the declared scope of PDF-4.

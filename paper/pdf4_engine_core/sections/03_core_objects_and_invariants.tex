@@ -68,6 +68,43 @@ where $h(\cdot)$ denotes stable identifiers (hashes or canonical digests). The
 record supports traceability and conformance checking only; it provides no causal
 or explanatory narrative.
 
+\paragraph{Registry (logical reference space).}
+A \emph{registry} is a logical, non-technical reference space whose sole role is
+to \emph{declare and preserve} references to artefacts related to an evaluation.
+The registry is \textbf{not} a data model, storage system, process, or method.
+
+The registry carries \textbf{references only}; it contains no interpretation,
+aggregation semantics, filter logic, or decision logic.
+
+\paragraph{Registry entries (types, without formats).}
+A registry entry is an append-only reference record. The Engine Core requires
+only that entries be uniquely identifiable and stably referencable. Entry types
+include:
+\begin{itemize}
+  \item \textbf{Identity entries:} stable identifiers for $S$, $\mathcal{I}$,
+        $\Theta$, Engine Core version.
+  \item \textbf{Artefact reference entries:} references to evidence artefacts and
+        auxiliary observational artefacts (e.g.\ run logs), without semantic use.
+  \item \textbf{Provenance link entries:} references establishing a complete
+        mapping from each diagnostic output to its declared inputs and referenced
+        evidence artefacts.
+  \item \textbf{Conformance entries:} references asserting that kernel invariants
+        and strict warning gates were satisfied for a produced output.
+\end{itemize}
+
+Registry entries are append-only. Once a reference exists, it must not be
+mutated, replaced, or deleted.
+
+\paragraph{Evidence (immutable artefacts).}
+\emph{Evidence} denotes immutable artefacts referenced by the registry. Evidence
+is \textbf{context-free} in kernel semantics: it may be consumed by external
+actors, but within OPS-1 the Engine Core must not interpret evidence, normalize
+it, or derive semantics from it.
+
+Evidence is immutable after creation: it must never be overwritten, replaced, or
+deleted. Any change to content constitutes a different artefact and must be
+represented only as a new, separately referencable evidence artefact.
+
 \subsection{State and transitions}
 
 The Engine Core is a stateless evaluator with a terminal boundary. For a single
@@ -107,6 +144,12 @@ invariant renders produced outputs ontologically void (non-OPS-1).
         axes, or semantics during operation.
   \item \textbf{Diagnostic sufficiency.} Outputs express diagnostic validity or
         invalidity only; no prescriptions or recommendations.
+  \item \textbf{Registry non-decisionality.} The registry contains references
+        only and must not participate in evaluation, classification, or STOP
+        semantics.
+  \item \textbf{Evidence immutability.} Evidence artefacts referenced by the
+        registry are immutable; post-hoc modification, replacement, or deletion
+        is non-admissible.
 \end{enumerate}
 
 \subsection{Threshold objects (\texorpdfstring{$\Theta$}{Theta}) and regions}
