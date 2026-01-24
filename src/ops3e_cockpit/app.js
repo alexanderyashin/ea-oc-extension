@@ -8,9 +8,10 @@ HARD BOUNDARIES:
 - STOP TRANSPARENT: STOP is always shown when present.
 
 INPUTS (ONLY):
-- ./data/trace.json
-- ./data/graph.json (preferred) OR ./data/graph.dot (fallback, raw text)
-- ./data/spec.yaml (optional, raw text)
+- ./data/trace.json (default)
+- ./data/graph.json (default) OR ./data/graph.dot
+- OPTIONAL: ./data/spec.yaml
+- OPTIONAL: ./data/manifest.json (discovery only; read-only)
 */
 
 "use strict";
@@ -19,7 +20,8 @@ const PATHS = {
   trace: "./data/trace.json",
   graphJson: "./data/graph.json",
   graphDot: "./data/graph.dot",
-  specYaml: "./data/spec.yaml"
+  specYaml: "./data/spec.yaml",
+  manifest: "./data/manifest.json"
 };
 
 const $ = (id) => document.getElementById(id);
@@ -82,11 +84,11 @@ function renderTrace(trace) {
   finalStatus.className = "pill " + cls;
   finalStatus.textContent = label;
 
-  const reasonFallback = (label === "STOP") ? "STOP (no reason provided in trace.json)" : "—";
+  const reasonFallback = (label === "STOP") ? "STOP (no reason provided in trace)" : "—";
   $("finalReason").textContent = safeStr(final.reason, reasonFallback);
 
   const steps = Array.isArray(trace?.steps) ? trace.steps : [];
-  if (!Array.isArray(trace?.steps)) showDiag("trace.json: missing/invalid 'steps' array.");
+  if (!Array.isArray(trace?.steps)) showDiag("trace: missing/invalid 'steps' array.");
 
   // Timeline ticks
   const ticks = $("ticks");
@@ -156,7 +158,6 @@ function renderTrace(trace) {
 /* ---------------- GRAPH RENDER (STATIC SVG) ---------------- */
 
 function topoLayer(nodes, edges) {
-  // Deterministic Kahn topo to compute a "rank"/layer; handles missing/extra edges robustly.
   const ids = new Set(nodes.map(n => n.id));
   const indeg = new Map();
   const out = new Map();
@@ -168,12 +169,10 @@ function topoLayer(nodes, edges) {
     out.get(e.from).push(e.to);
   });
 
-  // initial queue sorted for determinism
   let q = Array.from(ids).filter(id => (indeg.get(id) || 0) === 0).sort();
   const layer = new Map();
   ids.forEach(id => layer.set(id, 0));
 
-  // process
   while (q.length) {
     const id = q.shift();
     const nexts = (out.get(id) || []).slice().sort();
@@ -186,7 +185,6 @@ function topoLayer(nodes, edges) {
       }
     });
   }
-
   return layer;
 }
 
@@ -196,10 +194,9 @@ function renderGraphFromJson(graph) {
 
   const nodes = Array.isArray(graph?.nodes) ? graph.nodes : [];
   const edges = Array.isArray(graph?.edges) ? graph.edges : [];
-  if (!Array.isArray(graph?.nodes)) showDiag("graph.json: missing/invalid 'nodes' array.");
-  if (!Array.isArray(graph?.edges)) showDiag("graph.json: missing/invalid 'edges' array.");
+  if (!Array.isArray(graph?.nodes)) showDiag("graph: missing/invalid 'nodes' array.");
+  if (!Array.isArray(graph?.edges)) showDiag("graph: missing/invalid 'edges' array.");
 
-  // identify STOP nodes
   const stopIds = new Set();
   nodes.forEach(n => {
     const kind = (n.kind || "").toUpperCase();
@@ -217,7 +214,6 @@ function renderGraphFromJson(graph) {
     byRank.get(r).push(n);
   });
 
-  // deterministic ordering
   for (const [r, arr] of byRank.entries()) {
     arr.sort((a, b) => String(a.id).localeCompare(String(b.id)));
   }
@@ -225,14 +221,11 @@ function renderGraphFromJson(graph) {
   const width = svg.clientWidth || 1200;
   const height = 520;
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-
-  // clear svg
   while (svg.firstChild) svg.removeChild(svg.firstChild);
 
   const ns = "http://www.w3.org/2000/svg";
   const mk = (tag) => document.createElementNS(ns, tag);
 
-  // defs + arrow marker
   const defs = mk("defs");
   const marker = mk("marker");
   marker.setAttribute("id", "arrow");
@@ -248,13 +241,12 @@ function renderGraphFromJson(graph) {
   defs.appendChild(marker);
   svg.appendChild(defs);
 
-  // layout constants
   const ranks = Array.from(byRank.keys()).sort((a, b) => a - b);
   const marginX = 30, marginY = 30;
   const nodeW = 160, nodeH = 40;
   const gapX = 20, gapY = 72;
 
-  const pos = new Map(); // id -> {x,y}
+  const pos = new Map();
   ranks.forEach((r, idxR) => {
     const y = marginY + idxR * gapY;
     const arr = byRank.get(r) || [];
@@ -265,7 +257,6 @@ function renderGraphFromJson(graph) {
     });
   });
 
-  // render edges
   edges.forEach(e => {
     const a = pos.get(e.from);
     const b = pos.get(e.to);
@@ -303,7 +294,6 @@ function renderGraphFromJson(graph) {
     }
   });
 
-  // render nodes
   nodes.forEach(n => {
     const p = pos.get(n.id) || { x: marginX, y: marginY };
     const g = mk("g");
@@ -361,60 +351,107 @@ function renderGraphFromJson(graph) {
   });
 }
 
-/* ---------------- MAIN LOAD ---------------- */
+/* ---------------- DISCOVERY (MANIFEST) ---------------- */
 
-async function loadOptionalSpec() {
+function normalizeManifest(m) {
+  // expected minimal schema (optional):
+  // { "trace": "trace.json", "graph": "graph.json"|"graph.dot", "spec": "spec.yaml" }
+  if (!m || typeof m !== "object") return null;
+  const trace = (typeof m.trace === "string") ? m.trace : null;
+  const graph = (typeof m.graph === "string") ? m.graph : null;
+  const spec  = (typeof m.spec === "string")  ? m.spec  : null;
+  if (!trace && !graph && !spec) return null;
+  return { trace, graph, spec };
+}
+
+async function loadOptionalSpec(specPath) {
   try {
-    const txt = await fetchText(PATHS.specYaml);
+    const txt = await fetchText(specPath);
     $("specRaw").textContent = txt;
   } catch {
-    // optional: keep placeholder
     $("specRaw").textContent = "—";
   }
+}
+
+async function tryLoadArtefacts(tracePath, graphPath, graphFallbackDot) {
+  let any = false;
+
+  // TRACE
+  try {
+    const trace = await fetchJson(tracePath);
+    renderTrace(trace);
+    any = true;
+  } catch (e) {
+    showDiag(`Failed to load trace (${tracePath}): ${e.message}`);
+  }
+
+  // GRAPH
+  try {
+    if (graphPath && graphPath.toLowerCase().endsWith(".dot")) {
+      const dot = await fetchText(graphPath);
+      $("graphRaw").textContent = dot;
+      showDiag("Graph loaded as raw DOT text (no Graphviz execution). Prefer JSON for SVG DAG.");
+      any = true;
+    } else {
+      const graph = await fetchJson(graphPath);
+      renderGraphFromJson(graph);
+      any = true;
+    }
+  } catch (e) {
+    // fallback to dot if provided
+    if (graphFallbackDot) {
+      try {
+        const dot = await fetchText(graphFallbackDot);
+        $("graphRaw").textContent = dot;
+        showDiag("graph.dot fallback loaded as raw text only (no Graphviz execution).");
+        any = true;
+      } catch (e2) {
+        showDiag(`Failed to load graph (${graphPath}) and fallback (${graphFallbackDot}): ${e2.message}`);
+      }
+    } else {
+      showDiag(`Failed to load graph (${graphPath}): ${e.message}`);
+    }
+  }
+
+  return any;
 }
 
 async function loadAll() {
   $("tracePath").textContent = PATHS.trace;
   $("graphPath").textContent = `${PATHS.graphJson} (preferred) or ${PATHS.graphDot} (fallback)`;
-  $("specPath").textContent = `${PATHS.specYaml} (optional)`;
+  $("specPath").textContent = `${PATHS.specYaml} (optional), ${PATHS.manifest} (optional)`;
 
   setLoadState("info", "Fetching artefacts (GET only)…");
 
-  let ok = false;
-
-  // TRACE
+  // First: optional manifest discovery
+  let manifest = null;
   try {
-    const trace = await fetchJson(PATHS.trace);
-    renderTrace(trace);
-    ok = true;
-  } catch (e) {
-    showDiag(`Failed to load trace.json (${PATHS.trace}): ${e.message}`);
-  }
-
-  // GRAPH
-  try {
-    const graph = await fetchJson(PATHS.graphJson);
-    renderGraphFromJson(graph);
-    ok = true;
-  } catch (e) {
-    // fallback: DOT raw
-    try {
-      const dot = await fetchText(PATHS.graphDot);
-      $("graphRaw").textContent = dot;
-      // keep SVG empty intentionally (no Graphviz execution)
-      showDiag("graph.dot loaded as raw text only (no Graphviz execution). Prefer graph.json for DAG SVG.");
-      ok = true;
-    } catch (e2) {
-      showDiag(`Failed to load graph.json (${PATHS.graphJson}) and graph.dot (${PATHS.graphDot}): ${e2.message}`);
+    const m = await fetchJson(PATHS.manifest);
+    manifest = normalizeManifest(m);
+    if (manifest) {
+      showDiag(`manifest.json loaded (discovery): trace=${manifest.trace || "—"}, graph=${manifest.graph || "—"}, spec=${manifest.spec || "—"}`);
+    } else {
+      showDiag("manifest.json present but did not match expected schema; using defaults.");
     }
+  } catch {
+    // normal: no manifest
   }
 
-  await loadOptionalSpec();
+  // Determine paths
+  const tracePath = manifest?.trace ? `./data/${manifest.trace}` : PATHS.trace;
+  const graphPath = manifest?.graph ? `./data/${manifest.graph}` : PATHS.graphJson;
+  const specPath  = manifest?.spec  ? `./data/${manifest.spec}`  : PATHS.specYaml;
 
-  if (ok) {
+  const any = await tryLoadArtefacts(tracePath, graphPath, PATHS.graphDot);
+  await loadOptionalSpec(specPath);
+
+  if (any) {
     setLoadState("ok", "Snapshot loaded. No actions available (read-only).");
   } else {
     setLoadState("stop", "No inputs loaded. Place artefacts into ./data/ and refresh.");
+    showDiag("Expected default filenames: data/trace.json and data/graph.json (or data/graph.dot).");
+    showDiag("Search in repo returned none → artefacts likely not produced yet, or have different names.");
+    showDiag("If OPS-3A outputs different names, drop data/manifest.json to point to them (read-only).");
   }
 }
 
