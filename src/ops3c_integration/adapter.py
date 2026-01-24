@@ -78,65 +78,6 @@ def _extract_edges(spec: Dict[str, Any]) -> Iterable[Tuple[str, str]]:
     return out
 
 
-@dataclass
-class IntegrationWrapper:
-    """
-    Boundary wrapper for OPS-3A:
-    - Misuse rejection (C.1) at boundary
-    - Integration correctness (C.2): no recovery, no reorder, no STOP weakening
-    - Pipeline determinism (C.3): stable hashing + trace capture
-    """
-    registered_extensions: Set[str]
-
-    _stopped: bool = False
-    _in_call: bool = False
-
-    def run(self, spec: Dict[str, Any], *, extensions: Optional[Dict[str, Any]] = None) -> CoreResult:
-        if self._stopped:
-            raise MisuseError("STOP already observed in this wrapper instance: further calls forbidden.")
-        if self._in_call:
-            raise MisuseError("Re-entry / execution loop detected: wrapper is non-reentrant.")
-
-        # ---- Misuse checks at boundary (no core edits) ----
-        # 1) Extensions must be registered (unregistered => hard fail)
-        if extensions:
-            unknown = set(extensions.keys()) - set(self.registered_extensions)
-            if unknown:
-                raise MisuseError(f"Unregistered extensions: {sorted(unknown)}")
-
-        # 2) Graph must be acyclic if graph present
-        edges = list(_extract_edges(spec))
-        if edges and _detect_cycle(edges):
-            raise MisuseError("Invalid graph: cycle detected (execution loops forbidden).")
-
-        # 3) If caller tries to smuggle nondeterminism markers, hard fail (boundary policy)
-        #    This does not assert core uses them; it enforces "no quiet nondeterminism" at integration.
-        forbidden_keys = {"time", "timestamp", "rand", "random", "env", "seed"}
-        if any(k in spec for k in forbidden_keys):
-            raise MisuseError(f"Spec contains forbidden nondeterminism key(s): {sorted(set(spec.keys()) & forbidden_keys)}")
-
-        # Determinism envelope: stable hash for spec+extensions
-        envelope = {"spec": spec, "extensions": sorted(list(extensions.keys())) if extensions else []}
-        envelope_hash = _stable_json_hash(envelope)
-
-        # ---- Core call (no reordering, no retry) ----
-        self._in_call = True
-        try:
-            res = run_core(spec, extensions=extensions)
-        finally:
-            self._in_call = False
-
-        # ---- STOP propagation (terminal) ----
-        # If core signals stop OR trace contains STOP marker, wrapper becomes terminal.
-        if res.stop or _trace_has_stop(res.trace):
-            self._stopped = True
-
-        # Attach envelope hash to trace wrapper-side (does not modify core trace)
-        res.trace = _wrap_trace(res.trace, envelope_hash=envelope_hash)
-
-        return res
-
-
 def _trace_has_stop(trace: Any) -> bool:
     """
     Best-effort STOP detection without assuming trace schema.
@@ -172,3 +113,63 @@ def _wrap_trace(trace: Any, *, envelope_hash: str) -> Any:
         merged["ops3c_envelope_hash"] = envelope_hash
         return merged
     return {"ops3c_envelope_hash": envelope_hash, "trace": trace}
+
+
+@dataclass
+class IntegrationWrapper:
+    """
+    Boundary wrapper for OPS-3A:
+    - Misuse rejection (C.1) at boundary
+    - Integration correctness (C.2): no recovery, no reorder, no STOP weakening
+    - Pipeline determinism (C.3): stable hashing + trace capture
+    """
+    registered_extensions: Set[str]
+
+    _stopped: bool = False
+    _in_call: bool = False
+
+    def run(self, spec: Dict[str, Any], *, extensions: Optional[Dict[str, Any]] = None) -> CoreResult:
+        if self._stopped:
+            raise MisuseError("STOP already observed in this wrapper instance: further calls forbidden.")
+        if self._in_call:
+            raise MisuseError("Re-entry / execution loop detected: wrapper is non-reentrant.")
+
+        # ---- Misuse checks at boundary (no core edits) ----
+        # 1) Extensions must be registered (unregistered => hard fail)
+        if extensions:
+            unknown = set(extensions.keys()) - set(self.registered_extensions)
+            if unknown:
+                raise MisuseError(f"Unregistered extensions: {sorted(unknown)}")
+
+        # 2) Graph must be acyclic if graph present
+        edges = list(_extract_edges(spec))
+        if edges and _detect_cycle(edges):
+            raise MisuseError("Invalid graph: cycle detected (execution loops forbidden).")
+
+        # 3) If caller tries to smuggle nondeterminism markers, hard fail (boundary policy)
+        #    This does not assert core uses them; it enforces "no quiet nondeterminism" at integration.
+        forbidden_keys = {"time", "timestamp", "rand", "random", "env", "seed"}
+        if any(k in spec for k in forbidden_keys):
+            raise MisuseError(
+                f"Spec contains forbidden nondeterminism key(s): {sorted(set(spec.keys()) & forbidden_keys)}"
+            )
+
+        # Determinism envelope: stable hash for spec+extensions
+        envelope = {"spec": spec, "extensions": sorted(list(extensions.keys())) if extensions else []}
+        envelope_hash = _stable_json_hash(envelope)
+
+        # ---- Core call (no reordering, no retry) ----
+        self._in_call = True
+        try:
+            res = run_core(spec, extensions=extensions)
+        finally:
+            self._in_call = False
+
+        # ---- STOP propagation (terminal) ----
+        # If core signals stop OR trace contains STOP marker, wrapper becomes terminal.
+        if res.stop or _trace_has_stop(res.trace):
+            self._stopped = True
+
+        # Attach envelope hash to trace wrapper-side (NO mutation; CoreResult may be frozen)
+        wrapped_trace = _wrap_trace(res.trace, envelope_hash=envelope_hash)
+        return CoreResult(trace=wrapped_trace, output=res.output, stop=res.stop)
