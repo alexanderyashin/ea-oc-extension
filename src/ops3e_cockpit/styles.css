@@ -1,0 +1,184 @@
+:root{
+  --bg:#0b0e14;
+  --panel:#111628;
+  --panel2:#0f1322;
+  --text:#e6e8ef;
+  --muted:#9aa3b2;
+  --line:#26304a;
+
+  --good:#2bd576;
+  --warn:#ffcc66;
+  --stop:#ff5c77;
+  --info:#6aa3ff;
+
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+}
+code, pre{ font-family:var(--mono); }
+h1{ margin:0; font-size:18px; }
+h2{ margin:0 0 10px 0; font-size:16px; }
+
+.topbar{
+  padding:18px 18px 8px 18px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.subtitle{ margin:6px 0 0 0; color:var(--muted); font-size:13px; }
+.badges{ display:flex; gap:8px; flex-wrap:wrap; }
+.badge{
+  border:1px solid var(--line);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.2px;
+  user-select:none;
+}
+.badge.ro{ border-color:#3a4a7a; }
+.badge.diag{ border-color:#3a7a6a; }
+.badge.nocontrol{ border-color:#7a3a55; }
+
+.disclaimer{
+  margin:12px 18px 0 18px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--panel2);
+  font-size:13px;
+  color:var(--muted);
+}
+
+.grid{
+  padding:18px;
+  display:grid;
+  gap:14px;
+  grid-template-columns: 1fr 1fr;
+}
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px;
+}
+#graphCard{ grid-column: 1 / span 2; }
+
+.muted{ color:var(--muted); }
+.small{ font-size:12px; }
+.mono{ font-family:var(--mono); }
+
+.statusline{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  font-size:12px;
+  user-select:none;
+}
+.pill.ok{ border-color:rgba(43,213,118,.5); color:var(--good); }
+.pill.warn{ border-color:rgba(255,204,102,.5); color:var(--warn); }
+.pill.stop{ border-color:rgba(255,92,119,.55); color:var(--stop); }
+.pill.info{ border-color:rgba(106,163,255,.55); color:var(--info); }
+
+.traceHeader{
+  display:grid;
+  gap:10px;
+  margin-bottom:10px;
+}
+.kvrow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.k{
+  display:inline-block;
+  min-width:92px;
+  color:var(--muted);
+  font-size:12px;
+}
+.v{
+  color:var(--text);
+  font-size:12px;
+}
+
+.timeline{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px;
+  background:rgba(0,0,0,.12);
+}
+.ticks{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.tick{
+  width:18px;
+  height:10px;
+  border-radius:4px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+}
+.tick.ok{ border-color:rgba(43,213,118,.35); }
+.tick.warn{ border-color:rgba(255,204,102,.35); }
+.tick.stop{ border-color:rgba(255,92,119,.45); }
+.tick.info{ border-color:rgba(106,163,255,.35); }
+
+.steps{ margin:10px 0 0 18px; padding:0; }
+.step{
+  margin:6px 0;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(0,0,0,.10);
+}
+.stepHead{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+}
+.stepLeft{ display:flex; gap:10px; align-items:center; }
+.stepIndex{ font-family:var(--mono); color:var(--muted); font-size:12px; }
+.stepOp{ font-family:var(--mono); font-size:12px; }
+.stepNote{ margin-top:6px; color:var(--muted); font-size:12px; }
+
+.graphWrap{
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  background:rgba(0,0,0,.12);
+}
+
+pre{
+  margin:10px 0 0 0;
+  padding:10px;
+  background:rgba(0,0,0,.15);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:auto;
+}
+
+.proofs summary{ cursor:pointer; color:var(--muted); }
+.proofs ul{ margin:8px 0 0 18px; color:var(--muted); font-size:13px; }
+
+.hint{ margin-top:10px; }
+
+.footer{ padding:12px 18px 20px 18px; }

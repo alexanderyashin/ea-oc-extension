@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OPS-CHILD-E — Read-Only Diagnostic Cockpit</title>
+  <meta name="description" content="Read-only cockpit for OPS-3A artefacts: trace.json + graph.json/graph.dot (snapshot-only)" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <h1>OPS-CHILD-E — Read-Only Diagnostic Cockpit</h1>
+      <p class="subtitle">Snapshot visualization of OPS-3A artefacts. No execution. No control. No state.</p>
+    </div>
+    <div class="badges" aria-label="Boundary indicators">
+      <span class="badge ro">READ-ONLY</span>
+      <span class="badge diag">DIAGNOSTIC-ONLY</span>
+      <span class="badge nocontrol">NO CONTROL</span>
+    </div>
+  </header>
+
+  <section class="disclaimer" role="note">
+    <strong>Visualization does not alter execution.</strong>
+    This UI does not call any engine, does not write files, and does not persist state.
+    It only renders <code>trace.json</code> and <code>graph.json</code>/<code>graph.dot</code> (and optional <code>spec.yaml</code>).
+  </section>
+
+  <main class="grid">
+    <section class="card" id="inputsCard">
+      <h2>Inputs</h2>
+      <p class="muted small">
+        Default paths (snapshot-only):<br/>
+        <code id="tracePath"></code><br/>
+        <code id="graphPath"></code><br/>
+        <code id="specPath"></code>
+      </p>
+
+      <div class="statusline">
+        <span class="pill info" id="loadState">LOADING…</span>
+        <span class="muted small" id="loadNote"></span>
+      </div>
+
+      <details class="proofs">
+        <summary>Misuse proofs (UI-level)</summary>
+        <ul>
+          <li><strong>No engine calls:</strong> no imports/references to OPS-3A/core/CLI.</li>
+          <li><strong>No file writes:</strong> GET-only fetch of artefacts; no POST/PUT; no FS APIs.</li>
+          <li><strong>No persistence:</strong> no localStorage/sessionStorage/IndexedDB; no cookies; no SW.</li>
+          <li><strong>No actions:</strong> no buttons; no replay; no recovery; no “fix/optimize”.</li>
+          <li><strong>STOP transparent:</strong> always rendered (header + steps; graph highlight if present).</li>
+        </ul>
+      </details>
+
+      <div class="muted small hint">
+        Place artefacts into <code>src/ops3e_cockpit/data/</code> and refresh.
+      </div>
+    </section>
+
+    <section class="card" id="traceCard">
+      <h2>Trace View</h2>
+
+      <div class="traceHeader">
+        <div class="kvrow">
+          <span class="k">Final</span>
+          <span class="pill info" id="finalStatus">—</span>
+        </div>
+        <div class="kvrow">
+          <span class="k">STOP reason</span>
+          <span class="v mono" id="finalReason">—</span>
+        </div>
+      </div>
+
+      <div class="timeline" aria-label="Linear step scale">
+        <div class="ticks" id="ticks"></div>
+      </div>
+
+      <ol class="steps" id="steps"></ol>
+      <div class="muted small" id="traceMeta"></div>
+    </section>
+
+    <section class="card" id="graphCard">
+      <h2>Graph View</h2>
+      <p class="muted small">
+        Static DAG snapshot. No editing. No interactive actions. STOP is terminal.
+      </p>
+      <div class="graphWrap">
+        <svg id="graphSvg" width="100%" height="520" role="img" aria-label="DAG visualization"></svg>
+      </div>
+
+      <details class="raw">
+        <summary>Raw graph input (read-only)</summary>
+        <pre id="graphRaw">—</pre>
+      </details>
+    </section>
+
+    <section class="card" id="specCard">
+      <h2>Spec metadata (optional)</h2>
+      <p class="muted small">
+        <code>spec.yaml</code> is shown as raw text (no YAML semantics required).
+      </p>
+      <pre id="specRaw">—</pre>
+    </section>
+
+    <section class="card" id="diagCard" hidden>
+      <h2>Diagnostics</h2>
+      <ul id="diagList"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted small">
+      OPS-CHILD-E cockpit — strictly read-only visualization layer. Snapshot-only. No control semantics.
+    </span>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
