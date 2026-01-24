@@ -1,27 +1,21 @@
+"use strict";
+
 /*
 OPS-CHILD-E — Read-Only Diagnostic Cockpit
 
-HARD BOUNDARIES:
-- READ-ONLY: no writes, no engine calls.
-- SNAPSHOT-ONLY: renders existing artefacts only.
-- NO STATE: no localStorage/sessionStorage/IndexedDB/cookies.
-- STOP TRANSPARENT: STOP is always shown when present.
-
-INPUTS (ONLY):
-- ./data/trace.json (default)
-- ./data/graph.json (default) OR ./data/graph.dot
-- OPTIONAL: ./data/spec.yaml
-- OPTIONAL: ./data/manifest.json (discovery only; read-only)
+BOUNDARIES:
+- READ-ONLY (in-memory file reading only)
+- NO ENGINE CALLS
+- NO WRITES
+- NO PERSISTENCE (no localStorage/sessionStorage/IndexedDB/cookies/SW)
+- SNAPSHOT-ONLY visualization
 */
-
-"use strict";
 
 const PATHS = {
   trace: "./data/trace.json",
   graphJson: "./data/graph.json",
   graphDot: "./data/graph.dot",
   specYaml: "./data/spec.yaml",
-  manifest: "./data/manifest.json"
 };
 
 const $ = (id) => document.getElementById(id);
@@ -40,6 +34,13 @@ function showDiag(msg) {
   const li = document.createElement("li");
   li.textContent = msg;
   ul.appendChild(li);
+}
+
+function clearDiag() {
+  const card = $("diagCard");
+  const ul = $("diagList");
+  ul.innerHTML = "";
+  card.hidden = true;
 }
 
 async function fetchText(path) {
@@ -90,7 +91,6 @@ function renderTrace(trace) {
   const steps = Array.isArray(trace?.steps) ? trace.steps : [];
   if (!Array.isArray(trace?.steps)) showDiag("trace: missing/invalid 'steps' array.");
 
-  // Timeline ticks
   const ticks = $("ticks");
   ticks.innerHTML = "";
   for (let i = 0; i < steps.length; i++) {
@@ -102,7 +102,6 @@ function renderTrace(trace) {
     ticks.appendChild(d);
   }
 
-  // Step list
   const ol = $("steps");
   ol.innerHTML = "";
   steps.forEach((st, idx) => {
@@ -213,7 +212,6 @@ function renderGraphFromJson(graph) {
     if (!byRank.has(r)) byRank.set(r, []);
     byRank.get(r).push(n);
   });
-
   for (const [r, arr] of byRank.entries()) {
     arr.sort((a, b) => String(a.id).localeCompare(String(b.id)));
   }
@@ -351,108 +349,165 @@ function renderGraphFromJson(graph) {
   });
 }
 
-/* ---------------- DISCOVERY (MANIFEST) ---------------- */
+/* ---------------- FILE PICKER / DROP (IN-MEMORY ONLY) ---------------- */
 
-function normalizeManifest(m) {
-  // expected minimal schema (optional):
-  // { "trace": "trace.json", "graph": "graph.json"|"graph.dot", "spec": "spec.yaml" }
-  if (!m || typeof m !== "object") return null;
-  const trace = (typeof m.trace === "string") ? m.trace : null;
-  const graph = (typeof m.graph === "string") ? m.graph : null;
-  const spec  = (typeof m.spec === "string")  ? m.spec  : null;
-  if (!trace && !graph && !spec) return null;
-  return { trace, graph, spec };
+function readFileAsText(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result || ""));
+    r.onerror = () => reject(new Error("FileReader error"));
+    r.readAsText(file);
+  });
 }
 
-async function loadOptionalSpec(specPath) {
+function looksLikeTraceJson(obj) {
+  return obj && typeof obj === "object" && Array.isArray(obj.steps);
+}
+
+function looksLikeGraphJson(obj) {
+  return obj && typeof obj === "object" && Array.isArray(obj.nodes) && Array.isArray(obj.edges);
+}
+
+async function loadFromFiles(files) {
+  clearDiag();
+  setLoadState("info", "Reading selected files (in-memory)…");
+
+  let traceObj = null;
+  let graphObj = null;
+  let graphDot = null;
+  let specTxt = null;
+
+  const fileArr = Array.from(files || []);
+  if (fileArr.length === 0) {
+    setLoadState("warn", "No files selected.");
+    return false;
+  }
+
+  for (const f of fileArr) {
+    const name = (f.name || "").toLowerCase();
+    const txt = await readFileAsText(f);
+
+    if (name.endsWith(".dot")) {
+      graphDot = txt;
+      continue;
+    }
+    if (name.endsWith(".yaml") || name.endsWith(".yml")) {
+      specTxt = txt;
+      continue;
+    }
+    if (name.endsWith(".json")) {
+      try {
+        const obj = JSON.parse(txt);
+        if (!traceObj && looksLikeTraceJson(obj)) { traceObj = obj; continue; }
+        if (!graphObj && looksLikeGraphJson(obj)) { graphObj = obj; continue; }
+
+        // name-based fallback
+        if (!traceObj && name.includes("trace")) traceObj = obj;
+        else if (!graphObj && name.includes("graph")) graphObj = obj;
+        else showDiag(`JSON file not recognized (kept ignored): ${f.name}`);
+      } catch {
+        showDiag(`Invalid JSON: ${f.name}`);
+      }
+      continue;
+    }
+
+    // unknown
+    showDiag(`Ignored file type: ${f.name}`);
+  }
+
+  if (!traceObj) showDiag("No trace.json detected. Expected JSON with {steps:[...]}.");
+  if (!graphObj && !graphDot) showDiag("No graph detected. Provide graph.json ({nodes,edges}) or graph.dot.");
+
+  // render
+  if (traceObj) renderTrace(traceObj);
+
+  if (graphObj) {
+    renderGraphFromJson(graphObj);
+  } else if (graphDot) {
+    $("graphRaw").textContent = graphDot;
+    // keep SVG empty (no Graphviz execution)
+    showDiag("Graph loaded as raw DOT text only (no Graphviz execution).");
+  }
+
+  $("specRaw").textContent = specTxt ? specTxt : "—";
+
+  const ok = Boolean(traceObj || graphObj || graphDot || specTxt);
+  setLoadState(ok ? "ok" : "stop", ok ? `Loaded ${fileArr.length} file(s).` : "No usable inputs.");
+  return ok;
+}
+
+/* ---------------- STATIC FALLBACK (OPTIONAL) ---------------- */
+
+async function loadStaticFallbackIfNoUpload() {
+  // keep old behavior: try ./data/*
   try {
-    const txt = await fetchText(specPath);
-    $("specRaw").textContent = txt;
+    const trace = await fetchJson(PATHS.trace);
+    renderTrace(trace);
+    setLoadState("ok", "Loaded static ./data/trace.json");
+    return true;
+  } catch (e) {
+    showDiag(`Static trace missing: ${e.message}`);
+  }
+
+  try {
+    const graph = await fetchJson(PATHS.graphJson);
+    renderGraphFromJson(graph);
+    setLoadState("ok", "Loaded static ./data/graph.json");
+    return true;
+  } catch (e) {
+    // fallback to dot
+    try {
+      const dot = await fetchText(PATHS.graphDot);
+      $("graphRaw").textContent = dot;
+      showDiag("Static graph.dot loaded as raw text only (no Graphviz execution).");
+      setLoadState("ok", "Loaded static ./data/graph.dot");
+      return true;
+    } catch (e2) {
+      showDiag(`Static graph missing: ${e2.message}`);
+    }
+  }
+
+  try {
+    const spec = await fetchText(PATHS.specYaml);
+    $("specRaw").textContent = spec;
   } catch {
     $("specRaw").textContent = "—";
   }
+
+  setLoadState("warn", "No static inputs found. Use file picker / drag & drop.");
+  return false;
 }
 
-async function tryLoadArtefacts(tracePath, graphPath, graphFallbackDot) {
-  let any = false;
+/* ---------------- WIRE UI ---------------- */
 
-  // TRACE
-  try {
-    const trace = await fetchJson(tracePath);
-    renderTrace(trace);
-    any = true;
-  } catch (e) {
-    showDiag(`Failed to load trace (${tracePath}): ${e.message}`);
-  }
+function wireUploadUI() {
+  const input = $("fileInput");
+  const zone = $("dropZone");
 
-  // GRAPH
-  try {
-    if (graphPath && graphPath.toLowerCase().endsWith(".dot")) {
-      const dot = await fetchText(graphPath);
-      $("graphRaw").textContent = dot;
-      showDiag("Graph loaded as raw DOT text (no Graphviz execution). Prefer JSON for SVG DAG.");
-      any = true;
-    } else {
-      const graph = await fetchJson(graphPath);
-      renderGraphFromJson(graph);
-      any = true;
+  input.addEventListener("change", async () => {
+    await loadFromFiles(input.files);
+  });
+
+  // drag & drop (in-memory only)
+  zone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    zone.classList.add("dropActive");
+  });
+  zone.addEventListener("dragleave", () => zone.classList.remove("dropActive"));
+  zone.addEventListener("drop", async (e) => {
+    e.preventDefault();
+    zone.classList.remove("dropActive");
+    const dt = e.dataTransfer;
+    if (dt && dt.files && dt.files.length) {
+      await loadFromFiles(dt.files);
     }
-  } catch (e) {
-    // fallback to dot if provided
-    if (graphFallbackDot) {
-      try {
-        const dot = await fetchText(graphFallbackDot);
-        $("graphRaw").textContent = dot;
-        showDiag("graph.dot fallback loaded as raw text only (no Graphviz execution).");
-        any = true;
-      } catch (e2) {
-        showDiag(`Failed to load graph (${graphPath}) and fallback (${graphFallbackDot}): ${e2.message}`);
-      }
-    } else {
-      showDiag(`Failed to load graph (${graphPath}): ${e.message}`);
-    }
-  }
-
-  return any;
+  });
 }
 
-async function loadAll() {
-  $("tracePath").textContent = PATHS.trace;
-  $("graphPath").textContent = `${PATHS.graphJson} (preferred) or ${PATHS.graphDot} (fallback)`;
-  $("specPath").textContent = `${PATHS.specYaml} (optional), ${PATHS.manifest} (optional)`;
-
-  setLoadState("info", "Fetching artefacts (GET only)…");
-
-  // First: optional manifest discovery
-  let manifest = null;
-  try {
-    const m = await fetchJson(PATHS.manifest);
-    manifest = normalizeManifest(m);
-    if (manifest) {
-      showDiag(`manifest.json loaded (discovery): trace=${manifest.trace || "—"}, graph=${manifest.graph || "—"}, spec=${manifest.spec || "—"}`);
-    } else {
-      showDiag("manifest.json present but did not match expected schema; using defaults.");
-    }
-  } catch {
-    // normal: no manifest
-  }
-
-  // Determine paths
-  const tracePath = manifest?.trace ? `./data/${manifest.trace}` : PATHS.trace;
-  const graphPath = manifest?.graph ? `./data/${manifest.graph}` : PATHS.graphJson;
-  const specPath  = manifest?.spec  ? `./data/${manifest.spec}`  : PATHS.specYaml;
-
-  const any = await tryLoadArtefacts(tracePath, graphPath, PATHS.graphDot);
-  await loadOptionalSpec(specPath);
-
-  if (any) {
-    setLoadState("ok", "Snapshot loaded. No actions available (read-only).");
-  } else {
-    setLoadState("stop", "No inputs loaded. Place artefacts into ./data/ and refresh.");
-    showDiag("Expected default filenames: data/trace.json and data/graph.json (or data/graph.dot).");
-    showDiag("Search in repo returned none → artefacts likely not produced yet, or have different names.");
-    showDiag("If OPS-3A outputs different names, drop data/manifest.json to point to them (read-only).");
-  }
-}
-
-window.addEventListener("DOMContentLoaded", loadAll);
+window.addEventListener("DOMContentLoaded", async () => {
+  wireUploadUI();
+  clearDiag();
+  setLoadState("info", "IDLE");
+  // optional fallback if someone uses ./data/ mode
+  await loadStaticFallbackIfNoUpload();
+});

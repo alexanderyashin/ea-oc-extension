@@ -182,3 +182,20 @@ pre{
 .hint{ margin-top:10px; }
 
 .footer{ padding:12px 18px 20px 18px; }
+
+.uploadBox{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+  background:rgba(0,0,0,.10);
+}
+.uploadRow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-bottom:8px;
+}
+.dropActive{
+  outline:2px solid rgba(106,163,255,.55);
+  outline-offset:2px;
+}

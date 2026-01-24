@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OPS-CHILD-E — Read-Only Diagnostic Cockpit</title>
-  <meta name="description" content="Read-only cockpit for OPS-3A artefacts: trace.json + graph.json/graph.dot (snapshot-only)" />
+  <meta name="description" content="Read-only cockpit for OPS-3A artefacts: trace + graph (snapshot-only)" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -23,37 +23,42 @@
   <section class="disclaimer" role="note">
     <strong>Visualization does not alter execution.</strong>
     This UI does not call any engine, does not write files, and does not persist state.
-    It only renders <code>trace.json</code> and <code>graph.json</code>/<code>graph.dot</code> (and optional <code>spec.yaml</code>).
+    You can load a dataset locally via file picker (in-memory only).
   </section>
 
   <main class="grid">
     <section class="card" id="inputsCard">
       <h2>Inputs</h2>
-      <p class="muted small">
-        Default paths (snapshot-only):<br/>
-        <code id="tracePath"></code><br/>
-        <code id="graphPath"></code><br/>
-        <code id="specPath"></code>
-      </p>
 
-      <div class="statusline">
-        <span class="pill info" id="loadState">LOADING…</span>
-        <span class="muted small" id="loadNote"></span>
+      <div class="uploadBox" id="dropZone" aria-label="Dataset drop zone">
+        <div class="uploadRow">
+          <input id="fileInput" type="file" multiple
+                 accept=".json,.dot,.yaml,.yml,text/plain,application/json" />
+        </div>
+        <div class="muted small">
+          Load dataset: select <code>trace.json</code> + <code>graph.json</code> (or <code>graph.dot</code>) and optional <code>spec.yaml</code>.
+          <br/>
+          You can also drag &amp; drop files into this box.
+        </div>
+        <div class="statusline">
+          <span class="pill info" id="loadState">IDLE</span>
+          <span class="muted small" id="loadNote">No dataset loaded.</span>
+        </div>
       </div>
 
       <details class="proofs">
         <summary>Misuse proofs (UI-level)</summary>
         <ul>
           <li><strong>No engine calls:</strong> no imports/references to OPS-3A/core/CLI.</li>
-          <li><strong>No file writes:</strong> GET-only fetch of artefacts; no POST/PUT; no FS APIs.</li>
+          <li><strong>No file writes:</strong> reads files in-memory only (FileReader).</li>
           <li><strong>No persistence:</strong> no localStorage/sessionStorage/IndexedDB; no cookies; no SW.</li>
-          <li><strong>No actions:</strong> no buttons; no replay; no recovery; no “fix/optimize”.</li>
-          <li><strong>STOP transparent:</strong> always rendered (header + steps; graph highlight if present).</li>
+          <li><strong>No actions:</strong> no replay/recovery/optimization buttons.</li>
+          <li><strong>STOP transparent:</strong> STOP always rendered when present.</li>
         </ul>
       </details>
 
       <div class="muted small hint">
-        Place artefacts into <code>src/ops3e_cockpit/data/</code> and refresh.
+        Optional static mode still supported: place files into <code>./data/</code>.
       </div>
     </section>
 
@@ -97,7 +102,7 @@
     <section class="card" id="specCard">
       <h2>Spec metadata (optional)</h2>
       <p class="muted small">
-        <code>spec.yaml</code> is shown as raw text (no YAML semantics required).
+        Shown as raw text (no YAML semantics required).
       </p>
       <pre id="specRaw">—</pre>
     </section>
