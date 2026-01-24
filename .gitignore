@@ -93,3 +93,10 @@ results/**
 # Allow the PDF-3 evidence pack
 !results/pdf3/
 !results/pdf3/witness_*.json
+
+# Root stray LaTeX build artifacts (defensive ignore)
+main.aux
+main.log
+main.fls
+main.fdb_latexmk
+
