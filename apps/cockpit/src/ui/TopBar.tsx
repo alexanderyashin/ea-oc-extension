@@ -1,4 +1,4 @@
-import { useGraphStore } from "../store/graph.store";
+﻿import { useGraphStore } from "../store/graph.store";
 import type { ShockIntensity, ShockScope, ShockType } from "../compute/types";
 import { IS_DEMO } from "../gates/tier";
 
@@ -17,7 +17,7 @@ export function TopBar() {
   return (
     <div className="topbar">
       <div className="title" style={{ display: "flex", gap: 10, alignItems: "center" }}>
-        <span>EA-OC Cockpit — SIMULATION-0</span>
+        <span>EA-OC Cockpit - SIMULATION-0</span>
         {IS_DEMO ? (
           <span
             title="Public demo (partial). Full-only capabilities are gated."
@@ -82,29 +82,15 @@ export function TopBar() {
             Reset
           </button>
 
-          {simLocked ? (
-            <span style={{ opacity: 0.9, fontWeight: 700 }}>STOP</span>
-          ) : (
-            <span style={{ opacity: 0.6 }}>OK</span>
-          )}
+          <span style={{ opacity: simLocked ? 0.95 : 0.6, fontWeight: 700 }}>
+            {simLocked ? "STOP" : "OK"}
+          </span>
         </div>
 
         <div style={{ width: 10 }} />
 
-        <button className="btn" onClick={() => openModal("integrations")} title="Integrations (gated in demo)">
-          Integrations
-        </button>
-
-        <button className="btn" onClick={() => openModal("archimate")} title="Profile switching (gated in demo)">
-          ArchiMate
-        </button>
-
-        <button className="btn" onClick={() => openModal("save")} title="Save/Export (gated in demo)">
-          Save
-        </button>
-
-        <button className="btn" onClick={() => openModal("report")} title="Report/Export (gated in demo)">
-          Report
+        <button className="btn" onClick={() => openModal("integrations")} title="Extended (gated in demo)">
+          Extended (Full build)
         </button>
       </div>
     </div>

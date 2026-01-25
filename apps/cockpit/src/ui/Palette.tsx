@@ -1,4 +1,4 @@
-import { EMAP0_NODE_KINDS, type Emap0NodeKind } from "../model/emap0.profile";
+﻿import { EMAP0_NODE_KINDS, type Emap0NodeKind } from "../model/emap0.profile";
 import { useGraphStore } from "../store/graph.store";
 
 export function Palette() {

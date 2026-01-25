@@ -1,53 +1,125 @@
+﻿import { useMemo } from "react";
 import { useGraphStore } from "../store/graph.store";
-import type { LedgerEvent } from "../compute/types";
+import type { LedgerEvent, NodeState } from "../compute/types";
 
-function renderEvent(e: LedgerEvent) {
-  if (e.type === "info") {
-    return (
-      <div>
-        <span style={{ opacity: 0.7 }}>t={e.step}</span> — {e.message}
-      </div>
-    );
+function fmtState(s: NodeState): string {
+  return s;
+}
+
+function fmtNum(n: number): string {
+  // keep readable, stable
+  return Number.isFinite(n) ? n.toFixed(3) : String(n);
+}
+
+function renderTitle(e: LedgerEvent): string {
+  switch (e.type) {
+    case "threshold_crossed":
+      return `threshold_crossed: ${e.nodeLabel}`;
+    case "info":
+      return "info";
+    case "global_stop":
+      return "global_stop";
+    default: {
+      const _exhaustive: never = e;
+      return String(_exhaustive);
+    }
   }
+}
 
-  if (e.type === "global_stop") {
-    return (
-      <div style={{ fontWeight: 700 }}>
-        <span style={{ opacity: 0.7 }}>t={e.step}</span> — GLOBAL STOP: {e.reason}
-      </div>
-    );
+function renderBody(e: LedgerEvent): string {
+  switch (e.type) {
+    case "threshold_crossed":
+      return [
+        `step: ${e.step}`,
+        `nodeId: ${e.nodeId}`,
+        `nodeLabel: ${e.nodeLabel}`,
+        `state: ${fmtState(e.prev)} → ${fmtState(e.threshold)}`,
+        `score: ${fmtNum(e.scorePrev)} → ${fmtNum(e.scoreNext)}`,
+      ].join("\n");
+    case "info":
+      return `step: ${e.step}\n${e.message}`;
+    case "global_stop":
+      return `step: ${e.step}\nreason: ${e.reason}`;
+    default: {
+      const _exhaustive: never = e;
+      return String(_exhaustive);
+    }
   }
+}
 
-  // threshold_crossed
-  return (
-    <div>
-      <span style={{ opacity: 0.7 }}>t={e.step}</span> —{" "}
-      <span style={{ fontWeight: 700 }}>{e.threshold}</span>{" "}
-      @ <span style={{ opacity: 0.9 }}>{e.nodeLabel}</span>{" "}
-      <span style={{ opacity: 0.65 }}>({e.nodeId})</span>
-    </div>
-  );
+function eventKey(e: LedgerEvent, idx: number): string {
+  // LedgerEvent has no id; construct a stable-ish key from content + index
+  // (index makes duplicates safe while keeping React happy)
+  switch (e.type) {
+    case "threshold_crossed":
+      return `tc:${e.step}:${e.nodeId}:${e.prev}:${e.threshold}:${idx}`;
+    case "info":
+      return `info:${e.step}:${e.message}:${idx}`;
+    case "global_stop":
+      return `stop:${e.step}:${e.reason}:${idx}`;
+    default: {
+      const _exhaustive: never = e;
+      return `x:${String(_exhaustive)}:${idx}`;
+    }
+  }
 }
 
 export function Ledger() {
   const ledger = useGraphStore((s) => s.ledger);
   const simLocked = useGraphStore((s) => s.simLocked);
 
+  const items = useMemo(() => ledger.slice().reverse(), [ledger]);
+
   return (
     <div className="panel bottom">
-      <div className="panelHeader">
-        <div>Ledger</div>
-        <div style={{ opacity: 0.75, fontWeight: 600 }}>{simLocked ? "STOP (locked)" : "Unlocked"}</div>
+      <div
+        className="panelHeader"
+        style={{ display: "flex", justifyContent: "space-between", gap: 12 }}
+      >
+        <div>Ledger (factual)</div>
+        <div style={{ opacity: 0.75, fontWeight: 700 }}>
+          {simLocked ? "STOP locked" : "OK"}
+        </div>
       </div>
 
-      <div className="panelBody" style={{ opacity: 0.92 }}>
-        {ledger.length === 0 ? (
-          <div style={{ opacity: 0.75 }}>Ledger empty. Run Shock to produce factual events.</div>
+      <div className="panelBody" style={{ overflow: "auto" }}>
+        {items.length === 0 ? (
+          <div style={{ opacity: 0.8 }}>
+            No events yet. Add nodes, connect them, then run Shock.
+          </div>
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            {ledger.map((e, idx) => (
-              <div key={idx} style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", paddingBottom: 6 }}>
-                {renderEvent(e)}
+            {items.map((e, idx) => (
+              <div
+                key={eventKey(e, idx)}
+                style={{
+                  paddingBottom: 6,
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: 10,
+                  }}
+                >
+                  <div style={{ fontWeight: 800 }}>{renderTitle(e)}</div>
+                  <div style={{ opacity: 0.7, fontSize: 12 }}>step {e.step}</div>
+                </div>
+
+                <div
+                  style={{
+                    opacity: 0.9,
+                    marginTop: 2,
+                    whiteSpace: "pre-wrap",
+                    fontFamily:
+                      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                    fontSize: 12,
+                  }}
+                >
+                  {renderBody(e)}
+                </div>
               </div>
             ))}
           </div>

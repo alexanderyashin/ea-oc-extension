@@ -1,7 +1,7 @@
-import "./App.css";
+﻿import "./App.css";
 import "@xyflow/react/dist/style.css";
 
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import {
   ReactFlow,
   Background,
@@ -17,6 +17,8 @@ import { Palette } from "./ui/Palette";
 import { Inspector } from "./ui/Inspector";
 import { Ledger } from "./ui/Ledger";
 import { StubModal } from "./ui/StubModal";
+import { StartHereHints } from "./ui/StartHereHints";
+import { Emap0Node } from "./ui/nodes/Emap0Node";
 
 export default function App() {
   const nodes = useGraphStore((s) => s.nodes);
@@ -37,17 +39,27 @@ export default function App() {
   const onNodeClick: NodeMouseHandler<RfNode> = (_, n) => selectNode(n.id);
   const onEdgeClick: EdgeMouseHandler<RfEdge> = (_, e) => selectEdge(e.id);
 
+  const nodeTypes = useMemo(() => ({ emap0: Emap0Node }), []);
+
   return (
     <div className="cockpit">
       <TopBar />
       <Palette />
 
       <div className="panel center">
-        <div className="panelHeader">Canvas</div>
+        <div className="panelHeader">
+          <div>Canvas</div>
+          <div style={{ opacity: 0.75, fontWeight: 600 }}>
+            Add → Name → Connect → Shock
+          </div>
+        </div>
+
         <div className="rfWrap">
+          <StartHereHints />
           <ReactFlow<RfNode, RfEdge>
             nodes={nodes}
             edges={edges}
+            nodeTypes={nodeTypes}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}

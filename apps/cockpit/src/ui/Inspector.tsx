@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+﻿import { useMemo } from "react";
 import { useGraphStore } from "../store/graph.store";
 
 export function Inspector() {
@@ -29,9 +29,7 @@ export function Inspector() {
 
         {selectedNode && (
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <div style={{ fontWeight: 700 }}>
-              Node: {selectedNode.data.kind}
-            </div>
+            <div style={{ fontWeight: 700 }}>Node: {selectedNode.data.kind}</div>
 
             <div className="kv">
               <div style={{ opacity: 0.8 }}>id</div>
@@ -42,9 +40,13 @@ export function Inspector() {
               <div style={{ opacity: 0.8 }}>name</div>
               <input
                 className="input"
-                value={String(selectedNode.data.attrs.name ?? "")}
+                value={String(selectedNode.data.attrs?.name ?? "")}
                 onChange={(e) => setName(e.target.value)}
               />
+            </div>
+
+            <div style={{ marginTop: 6, opacity: 0.7 }}>
+              Tip: connect nodes using the visible handles on the node sides.
             </div>
           </div>
         )}
@@ -60,7 +62,7 @@ export function Inspector() {
               </div>
 
               <div style={{ opacity: 0.8 }}>kind</div>
-              <div>{String((selectedEdge.label ?? selectedEdge.data?.kind ?? "edge"))}</div>
+              <div>{String(selectedEdge.label ?? selectedEdge.data?.kind ?? "edge")}</div>
 
               <div style={{ opacity: 0.8 }}>from</div>
               <div style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>

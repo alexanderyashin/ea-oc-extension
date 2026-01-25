@@ -1,4 +1,4 @@
-import { create } from "zustand";
+﻿import { create } from "zustand";
 import {
   addEdge,
   applyEdgeChanges,
@@ -15,7 +15,14 @@ import { EMAP0_NODE_KINDS, type Emap0NodeKind } from "../model/emap0.profile";
 import type { JsonValue } from "../model/canonical";
 
 import { simulateShock } from "../compute/simulate";
-import type { LedgerEvent, NodeState, ShockIntensity, ShockScope, ShockType, SimConfig } from "../compute/types";
+import type {
+  LedgerEvent,
+  NodeState,
+  ShockIntensity,
+  ShockScope,
+  ShockType,
+  SimConfig,
+} from "../compute/types";
 
 export type CanonicalData = {
   id: string;
@@ -34,6 +41,7 @@ type Selected =
 function toRfNodes(): RfNode[] {
   return SEED_GRAPH_EMAP0.nodes.map((n) => ({
     id: n.id as unknown as string,
+    type: "emap0",
     position: { x: n.pos?.x ?? 0, y: n.pos?.y ?? 0 },
     data: {
       id: n.id as unknown as string,
@@ -54,19 +62,38 @@ function toRfEdges(): RfEdge[] {
   }));
 }
 
+// Session-deterministic ids (stable within one app session / hot run).
+let __idCounter = 0;
 function nextId(prefix: string): string {
-  return `${prefix}_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
+  __idCounter += 1;
+  return `${prefix}_${__idCounter}`;
 }
 
 function stateStyle(s: NodeState | undefined): RfNode["style"] | undefined {
-  // Keep it simple: border + subtle background.
-  // No deps, no custom node types.
   if (!s) return undefined;
 
-  if (s === "OK") return { border: "1px solid rgba(0,255,0,0.28)", background: "rgba(0,255,0,0.06)" };
-  if (s === "WARN") return { border: "1px solid rgba(255,215,0,0.35)", background: "rgba(255,215,0,0.08)" };
-  if (s === "RED") return { border: "1px solid rgba(255,80,80,0.45)", background: "rgba(255,80,80,0.10)" };
-  return { border: "2px solid rgba(255,0,0,0.85)", background: "rgba(255,0,0,0.14)" }; // STOP
+  if (s === "OK") {
+    return {
+      border: "1px solid rgba(0,255,0,0.28)",
+      background: "rgba(0,255,0,0.06)",
+    };
+  }
+  if (s === "WARN") {
+    return {
+      border: "1px solid rgba(255,215,0,0.35)",
+      background: "rgba(255,215,0,0.08)",
+    };
+  }
+  if (s === "RED") {
+    return {
+      border: "1px solid rgba(255,80,80,0.45)",
+      background: "rgba(255,80,80,0.10)",
+    };
+  }
+  return {
+    border: "2px solid rgba(255,0,0,0.85)",
+    background: "rgba(255,0,0,0.14)",
+  }; // STOP
 }
 
 export interface GraphState {
@@ -75,9 +102,12 @@ export interface GraphState {
 
   selected: Selected;
 
-  modal: null | "integrations" | "archimate" | "save" | "report";
-
+  modal: null | "integrations" | "archimate" | "save" | "report" | "extended";
   paletteKinds: readonly string[];
+
+  // Session-only UX hints
+  showHints: boolean;
+  dismissHints: () => void;
 
   // Simulation slice (SIMULATION-0)
   simConfig: SimConfig;
@@ -100,7 +130,6 @@ export interface GraphState {
   openModal: (m: NonNullable<GraphState["modal"]>) => void;
   closeModal: () => void;
 
-  // Simulation actions
   setShockType: (t: ShockType) => void;
   setShockScope: (s: ShockScope) => void;
   setShockIntensity: (i: ShockIntensity) => void;
@@ -115,10 +144,11 @@ export const useGraphStore = create<GraphState>((set, get) => ({
   selected: { type: "none" },
 
   modal: null,
-
   paletteKinds: EMAP0_NODE_KINDS,
 
-  // SIMULATION-0 defaults
+  showHints: true,
+  dismissHints: () => set({ showHints: false }),
+
   simConfig: { shockType: "infra_capacity_drop", scope: "all_systems", intensity: 0.3 },
   simLocked: false,
   nodeStates: {},
@@ -152,11 +182,12 @@ export const useGraphStore = create<GraphState>((set, get) => ({
       const id = nextId("n");
       const node: RfNode = {
         id,
-        position: { x: 80 + Math.random() * 240, y: 80 + Math.random() * 200 },
+        type: "emap0",
+        position: { x: 120 + Math.random() * 420, y: 120 + Math.random() * 280 },
         data: {
           id,
           kind,
-          attrs: { name: `${kind} ${id.slice(-4)}` },
+          attrs: { name: `${kind} ${id}` },
         },
         draggable: true,
       };
@@ -170,6 +201,7 @@ export const useGraphStore = create<GraphState>((set, get) => ({
   updateSelectedNodeName: (name) => {
     const sel = get().selected;
     if (sel.type !== "node") return;
+
     set((s) => ({
       nodes: s.nodes.map((n) => {
         if (n.id !== sel.id) return n;
@@ -178,6 +210,7 @@ export const useGraphStore = create<GraphState>((set, get) => ({
           data: {
             ...n.data,
             attrs: {
+              ...(n.data.attrs ?? {}),
               name,
             },
           },
@@ -189,7 +222,6 @@ export const useGraphStore = create<GraphState>((set, get) => ({
   openModal: (m) => set({ modal: m }),
   closeModal: () => set({ modal: null }),
 
-  // SIMULATION-0 setters (blocked when STOP locked)
   setShockType: (t) => {
     if (get().simLocked) return;
     set((s) => ({ simConfig: { ...s.simConfig, shockType: t } }));
@@ -216,7 +248,6 @@ export const useGraphStore = create<GraphState>((set, get) => ({
       selectedNodeId
     );
 
-    // Apply node styles based on nodeStates
     set((st) => ({
       simLocked: res.stop,
       nodeStates: res.nodeStates,
@@ -229,7 +260,6 @@ export const useGraphStore = create<GraphState>((set, get) => ({
   },
 
   resetShock: () => {
-    // Reset visuals + ledger + lock
     set((st) => ({
       simLocked: false,
       nodeStates: {},
