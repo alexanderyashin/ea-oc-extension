@@ -6,7 +6,6 @@
 import type { Edge, EdgeKind, JsonValue, Node, NodeKind } from "./canonical";
 
 export type ProfileId = string;
-
 export type Severity = "INFO" | "WARN" | "ERROR";
 
 export interface ProfileRuleIssue {
@@ -15,11 +14,7 @@ export interface ProfileRuleIssue {
   readonly message: string;
 }
 
-export type AttributeType =
-  | "string"
-  | "number"
-  | "boolean"
-  | "json"; // accept any JsonValue
+export type AttributeType = "string" | "number" | "boolean" | "json";
 
 export interface RequiredAttribute {
   readonly key: string;
@@ -94,9 +89,7 @@ export type Emap0EdgeKind = (typeof EMAP0_EDGE_KINDS)[number];
  * - All nodes require attrs.name (string)
  * - Edges require nothing mandatory in v0, but we keep optional typed hints.
  */
-const REQ_NODE_COMMON: readonly RequiredAttribute[] = [
-  { key: "name", type: "string" },
-];
+const REQ_NODE_COMMON: readonly RequiredAttribute[] = [{ key: "name", type: "string" }];
 
 export const EMAP0_PROFILE: Profile = {
   id: "emap0",
@@ -114,7 +107,6 @@ export const EMAP0_PROFILE: Profile = {
     {
       kind: "depends_on",
       allowSelfLoop: false,
-      // optional endpoint shaping (kept minimal)
       requiredAttrs: [{ key: "strength", type: "number" }],
     },
     { kind: "serves", allowSelfLoop: false },
@@ -153,7 +145,6 @@ export function isAttributeType(value: JsonValue | undefined, t: AttributeType):
     case "json":
       return true;
     default: {
-      // exhaustive guard
       const _exhaustive: never = t;
       return _exhaustive;
     }

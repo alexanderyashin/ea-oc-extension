@@ -12,7 +12,8 @@ export const SEED_GRAPH_EMAP0: Graph = {
 
   meta: {
     title: "Demo Seed (EMAP-0)",
-    description: "Minimal enterprise slice: actor -> capability -> application -> system with a data flow.",
+    description:
+      "Minimal enterprise slice: actor -> capability -> application -> system with a data flow.",
     tags: ["demo", "emap0"],
   },
 
@@ -21,54 +22,42 @@ export const SEED_GRAPH_EMAP0: Graph = {
       id: asNodeId("n_actor_business"),
       kind: "Actor",
       label: "Business User",
-      attrs: {
-        name: "Business User",
-      },
+      attrs: { name: "Business User" },
       pos: { x: 120, y: 120 },
     },
     {
       id: asNodeId("n_cap_order_mgmt"),
       kind: "Capability",
       label: "Order Management",
-      attrs: {
-        name: "Order Management",
-      },
+      attrs: { name: "Order Management" },
       pos: { x: 340, y: 120 },
     },
     {
       id: asNodeId("n_app_erp"),
       kind: "Application",
       label: "ERP",
-      attrs: {
-        name: "ERP",
-      },
+      attrs: { name: "ERP" },
       pos: { x: 560, y: 120 },
     },
     {
       id: asNodeId("n_sys_core"),
       kind: "System",
       label: "Core Platform",
-      attrs: {
-        name: "Core Platform",
-      },
+      attrs: { name: "Core Platform" },
       pos: { x: 780, y: 120 },
     },
     {
       id: asNodeId("n_data_orders"),
       kind: "DataObject",
       label: "Orders",
-      attrs: {
-        name: "Orders",
-      },
+      attrs: { name: "Orders" },
       pos: { x: 560, y: 260 },
     },
     {
       id: asNodeId("n_external_payments"),
       kind: "External",
       label: "Payments Provider",
-      attrs: {
-        name: "Payments Provider",
-      },
+      attrs: { name: "Payments Provider" },
       pos: { x: 780, y: 260 },
     },
   ],
@@ -93,9 +82,7 @@ export const SEED_GRAPH_EMAP0: Graph = {
       kind: "depends_on",
       from: asNodeId("n_app_erp"),
       to: asNodeId("n_sys_core"),
-      attrs: {
-        strength: 0.8,
-      },
+      attrs: { strength: 0.8 },
     },
     {
       id: asEdgeId("e_owns_1"),
