@@ -49,9 +49,7 @@ export default function App() {
       <div className="panel center">
         <div className="panelHeader">
           <div>Canvas</div>
-          <div style={{ opacity: 0.75, fontWeight: 600 }}>
-            Add → Name → Connect → Shock
-          </div>
+          <div style={{ opacity: 0.75, fontWeight: 800 }}>Add → Name → Connect → Shock</div>
         </div>
 
         <div className="rfWrap">
@@ -69,8 +67,8 @@ export default function App() {
             fitView
           >
             <Background />
-            <Controls />
             <MiniMap />
+            <Controls />
           </ReactFlow>
         </div>
       </div>

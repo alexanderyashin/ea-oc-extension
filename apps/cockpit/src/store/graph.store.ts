@@ -126,6 +126,7 @@ export interface GraphState {
   clearSelection: () => void;
 
   updateSelectedNodeName: (name: string) => void;
+  updateNodeName: (id: string, name: string) => void;
 
   openModal: (m: NonNullable<GraphState["modal"]>) => void;
   closeModal: () => void;
@@ -166,11 +167,15 @@ export const useGraphStore = create<GraphState>((set, get) => ({
 
   onConnect: (connection) =>
     set((s) => {
+      const source = connection.source ?? "";
+      const target = connection.target ?? "";
+      if (!source || !target) return s;
+
       const id = nextId("e");
       const edge: RfEdge = {
         id,
-        source: connection.source ?? "",
-        target: connection.target ?? "",
+        source,
+        target,
         label: "connects",
         data: { kind: "connects", attrs: {} },
       };
@@ -202,6 +207,9 @@ export const useGraphStore = create<GraphState>((set, get) => ({
     const sel = get().selected;
     if (sel.type !== "node") return;
 
+    const trimmed = name.trim();
+    const finalName = trimmed.length ? trimmed : "Unnamed";
+
     set((s) => ({
       nodes: s.nodes.map((n) => {
         if (n.id !== sel.id) return n;
@@ -211,7 +219,28 @@ export const useGraphStore = create<GraphState>((set, get) => ({
             ...n.data,
             attrs: {
               ...(n.data.attrs ?? {}),
-              name,
+              name: finalName,
+            },
+          },
+        };
+      }),
+    }));
+  },
+
+  updateNodeName: (id, name) => {
+    const trimmed = name.trim();
+    const finalName = trimmed.length ? trimmed : "Unnamed";
+
+    set((s) => ({
+      nodes: s.nodes.map((n) => {
+        if (n.id !== id) return n;
+        return {
+          ...n,
+          data: {
+            ...n.data,
+            attrs: {
+              ...(n.data.attrs ?? {}),
+              name: finalName,
             },
           },
         };

@@ -7,6 +7,7 @@ const TITLES: Record<string, string> = {
   archimate: "ArchiMate Profile",
   save: "Save",
   report: "Report",
+  extended: "Extended (Full build)",
 };
 
 const FEATURE_IDS: Record<string, string> = {
@@ -14,6 +15,7 @@ const FEATURE_IDS: Record<string, string> = {
   archimate: "profile.archimate.switch",
   save: "artifact.save",
   report: "artifact.report",
+  extended: "extended.full",
 };
 
 export function StubModal() {
@@ -42,8 +44,8 @@ export function StubModal() {
 
         <div className="modalBody">
           <div style={{ opacity: 0.9, marginBottom: 10 }}>
-            This shell is diagnostic-only (SIMULATION-0). The UI surface exists, but no persistence / integrations /
-            reporting implementation is shipped in this demo artifact.
+            This shell is diagnostic-only (SIMULATION-0). The UI surface exists, but no persistence / exports are
+            implemented here.
           </div>
 
           <div style={{ opacity: 0.75, fontSize: 13 }}>
