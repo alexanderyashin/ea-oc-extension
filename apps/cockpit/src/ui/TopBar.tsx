@@ -1,5 +1,6 @@
 import { useGraphStore } from "../store/graph.store";
 import type { ShockIntensity, ShockScope, ShockType } from "../compute/types";
+import { IS_DEMO } from "../gates/tier";
 
 export function TopBar() {
   const openModal = useGraphStore((s) => s.openModal);
@@ -15,7 +16,24 @@ export function TopBar() {
 
   return (
     <div className="topbar">
-      <div className="title">EA-OC Cockpit — SIMULATION-0</div>
+      <div className="title" style={{ display: "flex", gap: 10, alignItems: "center" }}>
+        <span>EA-OC Cockpit — SIMULATION-0</span>
+        {IS_DEMO ? (
+          <span
+            title="Public demo (partial). Full-only capabilities are gated."
+            style={{
+              fontSize: 12,
+              fontWeight: 800,
+              padding: "2px 8px",
+              borderRadius: 999,
+              border: "1px solid rgba(255,255,255,0.25)",
+              opacity: 0.9,
+            }}
+          >
+            DEMO
+          </span>
+        ) : null}
+      </div>
 
       <div className="actions" style={{ alignItems: "center" }}>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -73,16 +91,19 @@ export function TopBar() {
 
         <div style={{ width: 10 }} />
 
-        <button className="btn" onClick={() => openModal("integrations")}>
+        <button className="btn" onClick={() => openModal("integrations")} title="Integrations (gated in demo)">
           Integrations
         </button>
-        <button className="btn" onClick={() => openModal("archimate")}>
-          Archimate
+
+        <button className="btn" onClick={() => openModal("archimate")} title="Profile switching (gated in demo)">
+          ArchiMate
         </button>
-        <button className="btn" onClick={() => openModal("save")}>
+
+        <button className="btn" onClick={() => openModal("save")} title="Save/Export (gated in demo)">
           Save
         </button>
-        <button className="btn" onClick={() => openModal("report")}>
+
+        <button className="btn" onClick={() => openModal("report")} title="Report/Export (gated in demo)">
           Report
         </button>
       </div>
