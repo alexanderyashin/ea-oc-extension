@@ -2,7 +2,7 @@
    Pure validation helpers for canonical Graph + attached Profile.
 */
 
-import type { Edge, Graph, Node, NodeId } from "./canonical";
+import type { Edge, Graph, JsonValue, Node } from "./canonical";
 import type { Profile, Severity } from "./emap0.profile";
 import {
   edgeKindAllowed,
@@ -41,11 +41,25 @@ function collectDuplicateIds<T extends { readonly id: unknown }>(
     const raw = items[i]?.id;
     const id = typeof raw === "string" ? raw : String(raw);
     if (!isNonEmptyString(id)) {
-      issues.push(issue("ERROR", `INVALID_${idName.toUpperCase()}`, `Invalid ${idName}`, `${pathPrefix}/${i}/id`));
+      issues.push(
+        issue(
+          "ERROR",
+          `INVALID_${idName.toUpperCase()}`,
+          `Invalid ${idName}`,
+          `${pathPrefix}/${i}/id`,
+        ),
+      );
       continue;
     }
     if (seen.has(id)) {
-      issues.push(issue("ERROR", `DUP_${idName.toUpperCase()}`, `Duplicate ${idName}: ${id}`, `${pathPrefix}/${i}/id`));
+      issues.push(
+        issue(
+          "ERROR",
+          `DUP_${idName.toUpperCase()}`,
+          `Duplicate ${idName}: ${id}`,
+          `${pathPrefix}/${i}/id`,
+        ),
+      );
     } else {
       seen.add(id);
     }
@@ -101,7 +115,6 @@ export function validateNode(node: Node, profile: Profile, idx: number): Validat
     issues.push(issue("ERROR", "NODE_KIND_NOT_ALLOWED", `Node kind not allowed: '${node.kind}'`, `${path}/kind`));
   }
 
-  // Required attrs by constraint
   const c = getNodeConstraint(profile, node.kind);
   if (c?.requiredAttrs) {
     issues.push(...validateRequiredAttrs(c.requiredAttrs, node.attrs as Record<string, unknown>, path));
@@ -140,16 +153,10 @@ export function validateEdge(edge: Edge, profile: Profile, idx: number, nodeIds:
 
   const c = getEdgeConstraint(profile, edge.kind);
   if (c) {
-    // self-loop constraint
     if (from === to && c.allowSelfLoop === false) {
       issues.push(issue("ERROR", "SELF_LOOP_NOT_ALLOWED", "Self-loop is not allowed for this edge kind", path));
     }
 
-    // endpoint constraints (optional)
-    // We can only check kinds if both nodes exist (nodeIds already verified, but we don't have node kinds here).
-    // This check is performed in validateGraph where node lookup is available.
-
-    // required attrs by edge constraint
     if (c.requiredAttrs) {
       issues.push(...validateRequiredAttrs(c.requiredAttrs, edge.attrs as Record<string, unknown>, path));
     }
@@ -162,30 +169,27 @@ export function validateGraph(graph: Graph, profile: Profile): ValidationIssue[]
   const issues: ValidationIssue[] = [];
 
   if (graph.schemaVersion !== "v0") {
-    issues.push(issue("ERROR", "UNSUPPORTED_SCHEMA", `Unsupported schemaVersion: '${String(graph.schemaVersion)}'`, `/schemaVersion`));
+    issues.push(
+      issue("ERROR", "UNSUPPORTED_SCHEMA", `Unsupported schemaVersion: '${String(graph.schemaVersion)}'`, `/schemaVersion`),
+    );
   }
   if (!isNonEmptyString(graph.profileId)) {
     issues.push(issue("ERROR", "MISSING_PROFILE_ID", "profileId must be a non-empty string", `/profileId`));
   }
 
-  // Duplicate IDs
   issues.push(...collectDuplicateIds(graph.nodes, "/nodes", "nodeId"));
   issues.push(...collectDuplicateIds(graph.edges, "/edges", "edgeId"));
 
-  // Node validations
   for (let i = 0; i < graph.nodes.length; i++) {
     issues.push(...validateNode(graph.nodes[i], profile, i));
   }
 
-  // Node id set for referential integrity
   const nodeIds = new Set<string>(graph.nodes.map((n) => n.id as unknown as string));
 
-  // Edge validations (basic)
   for (let i = 0; i < graph.edges.length; i++) {
     issues.push(...validateEdge(graph.edges[i], profile, i, nodeIds));
   }
 
-  // Edge endpoint constraints (need node lookup)
   const nodeIndex = indexNodes(graph.nodes);
   for (let i = 0; i < graph.edges.length; i++) {
     const e = graph.edges[i];
@@ -224,17 +228,18 @@ export function validateGraph(graph: Graph, profile: Profile): ValidationIssue[]
   return issues;
 }
 
-/** Convenience: strict boolean validity */
 export function isGraphValid(graph: Graph, profile: Profile): boolean {
   return validateGraph(graph, profile).every((x) => x.severity !== "ERROR");
 }
 
-/** Convenience: stable set of node ids (pure) */
 export function collectNodeIds(nodes: readonly Node[]): Set<string> {
   return new Set<string>(nodes.map((n) => n.id as unknown as string));
 }
 
 /** Optional helper used by future adapters (pure). */
-export function assertAttributeType(value: JsonValue | undefined, t: "string" | "number" | "boolean" | "json"): boolean {
+export function assertAttributeType(
+  value: JsonValue | undefined,
+  t: "string" | "number" | "boolean" | "json",
+): boolean {
   return isAttributeType(value, t);
 }
