@@ -14,6 +14,9 @@ import { SEED_GRAPH_EMAP0 } from "../model/seed.graph";
 import { EMAP0_NODE_KINDS, type Emap0NodeKind } from "../model/emap0.profile";
 import type { JsonValue } from "../model/canonical";
 
+import { simulateShock } from "../compute/simulate";
+import type { LedgerEvent, NodeState, ShockIntensity, ShockScope, ShockType, SimConfig } from "../compute/types";
+
 export type CanonicalData = {
   id: string;
   kind: string;
@@ -55,6 +58,17 @@ function nextId(prefix: string): string {
   return `${prefix}_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
 }
 
+function stateStyle(s: NodeState | undefined): RfNode["style"] | undefined {
+  // Keep it simple: border + subtle background.
+  // No deps, no custom node types.
+  if (!s) return undefined;
+
+  if (s === "OK") return { border: "1px solid rgba(0,255,0,0.28)", background: "rgba(0,255,0,0.06)" };
+  if (s === "WARN") return { border: "1px solid rgba(255,215,0,0.35)", background: "rgba(255,215,0,0.08)" };
+  if (s === "RED") return { border: "1px solid rgba(255,80,80,0.45)", background: "rgba(255,80,80,0.10)" };
+  return { border: "2px solid rgba(255,0,0,0.85)", background: "rgba(255,0,0,0.14)" }; // STOP
+}
+
 export interface GraphState {
   nodes: RfNode[];
   edges: RfEdge[];
@@ -64,6 +78,12 @@ export interface GraphState {
   modal: null | "integrations" | "archimate" | "save" | "report";
 
   paletteKinds: readonly string[];
+
+  // Simulation slice (SIMULATION-0)
+  simConfig: SimConfig;
+  simLocked: boolean; // STOP lock
+  nodeStates: Record<string, NodeState>;
+  ledger: LedgerEvent[];
 
   onNodesChange: (changes: NodeChange<RfNode>[]) => void;
   onEdgesChange: (changes: EdgeChange<RfEdge>[]) => void;
@@ -79,6 +99,13 @@ export interface GraphState {
 
   openModal: (m: NonNullable<GraphState["modal"]>) => void;
   closeModal: () => void;
+
+  // Simulation actions
+  setShockType: (t: ShockType) => void;
+  setShockScope: (s: ShockScope) => void;
+  setShockIntensity: (i: ShockIntensity) => void;
+  runShock: () => void;
+  resetShock: () => void;
 }
 
 export const useGraphStore = create<GraphState>((set, get) => ({
@@ -90,6 +117,12 @@ export const useGraphStore = create<GraphState>((set, get) => ({
   modal: null,
 
   paletteKinds: EMAP0_NODE_KINDS,
+
+  // SIMULATION-0 defaults
+  simConfig: { shockType: "infra_capacity_drop", scope: "all_systems", intensity: 0.3 },
+  simLocked: false,
+  nodeStates: {},
+  ledger: [],
 
   onNodesChange: (changes) =>
     set((s) => ({
@@ -145,7 +178,6 @@ export const useGraphStore = create<GraphState>((set, get) => ({
           data: {
             ...n.data,
             attrs: {
-              ...n.data.attrs,
               name,
             },
           },
@@ -156,4 +188,53 @@ export const useGraphStore = create<GraphState>((set, get) => ({
 
   openModal: (m) => set({ modal: m }),
   closeModal: () => set({ modal: null }),
+
+  // SIMULATION-0 setters (blocked when STOP locked)
+  setShockType: (t) => {
+    if (get().simLocked) return;
+    set((s) => ({ simConfig: { ...s.simConfig, shockType: t } }));
+  },
+  setShockScope: (sc) => {
+    if (get().simLocked) return;
+    set((s) => ({ simConfig: { ...s.simConfig, scope: sc } }));
+  },
+  setShockIntensity: (i) => {
+    if (get().simLocked) return;
+    set((s) => ({ simConfig: { ...s.simConfig, intensity: i } }));
+  },
+
+  runShock: () => {
+    if (get().simLocked) return;
+
+    const s = get();
+    const selectedNodeId = s.selected.type === "node" ? s.selected.id : null;
+
+    const res = simulateShock(
+      s.simConfig,
+      s.nodes.map((n) => ({ id: n.id, data: n.data })),
+      s.edges.map((e) => ({ id: e.id, source: e.source, target: e.target })),
+      selectedNodeId
+    );
+
+    // Apply node styles based on nodeStates
+    set((st) => ({
+      simLocked: res.stop,
+      nodeStates: res.nodeStates,
+      ledger: res.ledger,
+      nodes: st.nodes.map((n) => ({
+        ...n,
+        style: stateStyle(res.nodeStates[n.id]),
+      })),
+    }));
+  },
+
+  resetShock: () => {
+    // Reset visuals + ledger + lock
+    set((st) => ({
+      simLocked: false,
+      nodeStates: {},
+      ledger: [],
+      nodes: st.nodes.map((n) => ({ ...n, style: undefined })),
+    }));
+  },
 }));
