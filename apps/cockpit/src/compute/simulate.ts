@@ -92,6 +92,12 @@ export function simulateShock(
 
   // Cascade steps
   const cascadeSteps = 5;
+
+  // We want ledger entries to be factual about score deltas.
+  // So we snapshot scores before cascade, and per step.
+  const scorePrevByStep: Record<string, number>[] = [];
+  scorePrevByStep[0] = { ...scores };
+
   propagateCascades({
     nodeIds,
     edges: edges.map((e) => ({ source: e.source, target: e.target, id: e.id })),
@@ -101,8 +107,13 @@ export function simulateShock(
   });
 
   // Re-evaluate states after each step deterministically by re-running stateFromScore on updated scores.
-  // We emit ledger events only when state worsens.
+  // We emit ledger events only when state worsens, with scorePrev/scoreNext.
   for (let t = 1; t <= cascadeSteps; t++) {
+    // snapshot "prev" scores for this step based on last snapshot
+    const prevScores = scorePrevByStep[t - 1] ?? { ...scores };
+    const nextScores = { ...scores };
+    scorePrevByStep[t] = nextScores;
+
     for (const id of nodeIds) {
       const prev = states[id];
       const next = stateFromScore(scores[id]);
@@ -114,7 +125,7 @@ export function simulateShock(
           nodeLabel: nodeLabel[id],
           threshold: next,
           prev,
-          scorePrev: Number.NaN, // we don't keep per-step prev score; still factual enough for MVP
+          scorePrev: prevScores[id] ?? Number.NaN,
           scoreNext: scores[id],
         });
       }

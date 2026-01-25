@@ -2,6 +2,12 @@ export type ShockType = "infra_capacity_drop" | "node_failure_rate";
 export type ShockScope = "selected" | "all_systems";
 export type ShockIntensity = 0.1 | 0.3 | 0.5;
 
+export type SimConfig = {
+  shockType: ShockType;
+  scope: ShockScope;
+  intensity: ShockIntensity;
+};
+
 export type NodeState = "OK" | "WARN" | "RED" | "STOP";
 
 export type LedgerEvent =
@@ -25,12 +31,6 @@ export type LedgerEvent =
       step: number;
       reason: string;
     };
-
-export type SimConfig = {
-  shockType: ShockType;
-  scope: ShockScope;
-  intensity: ShockIntensity;
-};
 
 export type SimResult = {
   nodeStates: Record<string, NodeState>;
