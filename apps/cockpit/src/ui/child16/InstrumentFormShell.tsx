@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { ZonesBoard, type ZoneSpec } from "./Zones";
 import { StopRupture } from "./StopRupture";
 
@@ -82,7 +82,7 @@ export const InstrumentFormShell: React.FC<InstrumentFormShellProps> = ({
         </div>
 
         <div style={{ marginTop: 6, fontSize: 12, opacity: 0.75, lineHeight: 1.4 }}>
-          DIAGNOSTIC SHELL — ZONES FIXED / STATES S0–S4 / STOP IS TERMINAL RUPTURE
+          DIAGNOSTIC SHELL - ZONES FIXED / STATES S0-S4 / STOP IS TERMINAL RUPTURE
         </div>
       </header>
 
