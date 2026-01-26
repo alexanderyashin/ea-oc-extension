@@ -26,9 +26,7 @@ export function TopBar() {
       <div className="title" style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <span style={{ fontWeight: 900 }}>
-              ESTRA Cockpit {IS_DEMO ? "(DEMO)" : ""}
-            </span>
+            <span style={{ fontWeight: 900 }}>ESTRA Cockpit {IS_DEMO ? "(DEMO)" : ""}</span>
 
             {IS_DEMO ? (
               <span
@@ -53,9 +51,7 @@ export function TopBar() {
             Observe continuum state, thresholds Θ, and STOP under deterministic shocks.
           </div>
 
-          <div style={{ fontSize: 11, opacity: 0.70 }}>
-            No control. No optimization. No output.
-          </div>
+          <div style={{ fontSize: 11, opacity: 0.70 }}>No control. No optimization. No output.</div>
         </div>
       </div>
 
@@ -98,7 +94,12 @@ export function TopBar() {
             <option value={0.5}>50%</option>
           </select>
 
-          <button className="btn" onClick={runShock} disabled={simLocked} title="Run Shock (deterministic)">
+          <button
+            className="btn"
+            onClick={runShock}
+            disabled={simLocked}
+            title="Run Shock (deterministic)"
+          >
             Run Shock
           </button>
 
