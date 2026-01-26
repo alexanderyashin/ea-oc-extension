@@ -1,4 +1,3 @@
-import type React from "react";
 import { ZonesBoard, type ZoneSpec } from "./Zones";
 import { StopRupture } from "./StopRupture";
 
@@ -14,12 +13,12 @@ export interface InstrumentFormShellProps {
   globalState?: InstrumentState;
 }
 
-export const InstrumentFormShell: React.FC<InstrumentFormShellProps> = ({
+export function InstrumentFormShell({
   title = "INSTRUMENT FORM",
   stopActive,
   zones,
   globalState,
-}) => {
+}: InstrumentFormShellProps) {
   return (
     <div
       style={{
@@ -93,4 +92,4 @@ export const InstrumentFormShell: React.FC<InstrumentFormShellProps> = ({
       <StopRupture active={stopActive} />
     </div>
   );
-};
+}
