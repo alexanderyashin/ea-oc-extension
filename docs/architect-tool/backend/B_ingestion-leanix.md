@@ -10,130 +10,234 @@ status: "ACTIVE"
 
 # B. Ingestion — SAP LeanIX (MVP)
 
-## 0) Источник: что считаем истинной единицей данных
+## 0) Граница и смысл ingestion (MVP)
 
-В LeanIX основной объект — **Fact Sheet** и связи между ними (**Relations**). :contentReference[oaicite:0]{index=0}  
-В MVP мы извлекаем:
-- Application Fact Sheets
-- Interface Fact Sheets (если доступны)
-- Relations между ними (и/или Application↔Application зависимости)
+Ingestion делает только:
+- извлечение фактов из источника,
+- нормализацию в **RawSnapshot**,
+- преобразование RawSnapshot → **CanonicalGraph** (см. A),
+- запись ошибок в `errors[]` (без “умных” выводов).
 
-LeanIX предоставляет API и документацию по аутентификации (через Technical Users / access token). :contentReference[oaicite:1]{index=1}  
-Работа с relations описана через операции/мутации (в частности update/patch в их API). :contentReference[oaicite:2]{index=2}
-
-> Важно: ingestion — это **только извлечение + нормализация**. Никакой интерпретации.
-
----
-
-## 1) Контракт: RawSnapshot (до нормализации)
-
-RawSnapshot фиксирует “что мы видели в LeanIX”:
-
-- `meta`
-  - `sourceSystem = "leanix"`
-  - `workspace` (string)
-  - `capturedAt` (ISO8601)
-  - `connectorVersion`
-  - `queries[]` (список запросов/эндпойнтов)
-- `factsheets[]` (сырой массив объектов)
-- `relations[]` (сырой массив отношений)
-- `errors[]` (мягкие ошибки: missing fields, partial reads)
-- `rawHash` (хэш сырого контента)
-
-RawSnapshot хранится как артефакт воспроизводимости (опционально для MVP, но рекомендовано).
+Ingestion **не делает**:
+- никаких рекомендаций / интерпретаций / BI,
+- никаких write-back операций в LeanIX (update/patch/import) в MVP,
+- никаких UI-полей и представлений,
+- никаких “обогащений” из внешних справочников.
 
 ---
 
-## 2) Маппинг LeanIX → CanonicalGraph
+## 1) Контракт RawSnapshot (до нормализации)
 
-### 2.1 Fact Sheet → Node
+RawSnapshot — артефакт воспроизводимости: “что именно было увидено в LeanIX”.
+Он должен быть достаточен, чтобы повторно построить тот же CanonicalGraph при той же версии коннектора.
 
-**Application Fact Sheet → Node(kind="application")**
-- `id`: `application:leanix:<workspace>:<factSheetId>`
-- attrs:
-  - `name`: Fact Sheet name
-  - `externalId`: factSheetId
-  - `lifecycle`/`criticality`/`owner`/`tags`: только если доступны в фактах
+### 1.1 Структура
 
-**Interface Fact Sheet → Node(kind="interface")**
-- `id`: `interface:leanix:<workspace>:<factSheetId>`
-- attrs:
-  - `name`
-  - `category` (если поле существует; в LeanIX встречается обсуждение категорий интерфейсов) :contentReference[oaicite:3]{index=3}
-  - `externalId`
+```json
+{
+  "meta": {
+    "sourceSystem": "leanix",
+    "workspace": "string",
+    "capturedAt": "ISO8601",
+    "connectorVersion": "semver",
+    "queries": ["string", "..."]
+  },
+  "factsheets": [ { /* minimal fields */ } ],
+  "relations":  [ { /* minimal fields */ } ],
+  "errors":     [ { "code": "string", "message": "string", "refs": ["string"] } ],
+  "rawHash": "sha256:..."
+}
+1.2 Minimal fields (MVP)
+factsheets[] (минимум):
 
-Provenance:
-- `sourceObjectType = "FactSheet"`
-- `sourceObjectId = factSheetId`
+id (externalId в LeanIX)
 
-### 2.2 Relations → Edge
+type (например "Application", "Interface")
 
-В LeanIX есть семантические relation types (например Requires/Required By и др.). :contentReference[oaicite:4]{index=4}  
-Мы не навязываем смысл глубже MVP: переносим relation type как `relationType` и выбираем Canonical `kind` по правилам ниже.
+name (может отсутствовать — см. политику unknown)
 
-#### Правила выбора edge kind (MVP)
+relations[] (минимум):
 
-1) Application → Application:
-- если relationType соответствует “requires/depends” (или workspace-эквивалент) → `depends_on`
+id (externalId relation)
 
-2) Application ↔ Interface:
-- если relation описывает “provider/exposes” → `exposes_interface`
-- если relation описывает “consumer/uses” → `consumes_interface`
+type (строка — исходный тип связи)
 
-3) Иначе:
-- relation остаётся **неиспользованной в MVP** (но может быть сохранена в RawSnapshot для будущего Full scope)
+from (factsheet id)
 
-Edge fields:
-- `id`: `edge:<kind>:leanix:<workspace>:<relationId>` (если relationId доступен)
-- `source`, `target`: по mapped node ids
-- attrs:
-  - `relationType`: исходный тип
-  - `externalId`: relationId
-  - дополнительные поля — только как факты (например strength), если LeanIX предоставляет
+to (factsheet id)
 
-Provenance:
-- `sourceObjectType = "Relation"`
-- `sourceObjectId = relationId`
+1.3 rawHash (MVP правило)
+rawHash — хэш канонически сериализованного RawSnapshot после:
 
----
+удаления явно нестабильных полей (если источник их добавляет),
 
-## 3) Технические принципы адаптера (MVP)
+сортировки массивов factsheets и relations по стабильному ключу (id),
 
-### 3.1 Аутентификация
+стабильной JSON-сериализации (ключи объектов по лексикографическому порядку).
 
-LeanIX рекомендует технических пользователей и токены доступа для API-запросов. :contentReference[oaicite:5]{index=5}  
-В спецификации ingestion:
-- секреты не пишутся в repo
-- конфиг через env (например `LEANIX_API_TOKEN`, `LEANIX_WORKSPACE`)
-- логирование без утечек секретов
+rawHash — для трассировки “это тот же вход”.
+Детерминизм CanonicalGraph отдельно фиксируется contentHash (см. A/D).
 
-### 3.2 Детерминизм
+2) Маппинг RawSnapshot → CanonicalGraph
+2.1 Fact Sheet → Node
+Application Fact Sheet → Node(kind="application")
+id:
 
-- все выгрузки приводятся к стабильному порядку
-- id вычисляются строго по правилам
-- `contentHash` считается после нормализации (см. A-док)
+application:leanix:<workspace>:<factSheetId>
 
-### 3.3 Политика unknown/missing
+kind: "application"
 
-Если не найден обязательный минимум:
-- нет `factSheetId` → объект отбрасывается, пишется ошибка в `errors[]`
-- есть id, но нет name → допускается, но `name=""` запрещён; ставим `name` как `<unknown>` и фиксируем в errors
+attrs (MVP):
 
----
+name: из factsheet.name (если отсутствует → <unknown>, см. 3.3)
 
-## 4) MVP-граница ingestion (явно)
+externalId: factsheet.id
 
-MVP ingestion **не делает**:
-- загрузку/выгрузку обратно в LeanIX (никаких update/patch в MVP)
-  - хотя LeanIX описывает механизмы изменения relations, это не требуется для нашего MVP :contentReference[oaicite:6]{index=6}
-- интерпретацию lifecycle/technology/business capability
-- правки метамодели, кастомные типы, meta-model configuration
+остальные поля (lifecycle/criticality/owner/tags) — только если явно присутствуют в raw фактах (как факты, без вычислений)
 
----
+provenance:
 
-## 5) Точки расширения (для Full Product)
+sourceSystem: "leanix"
 
-- Meta-model introspection (чтение типов, кастомных relation types, subtype management)
-- Permissions, user/group mapping
-- Import/export processors через Integration REST API (вне MVP) :contentReference[oaicite:7]{index=7}
+sourceObjectType: "FactSheet"
+
+sourceObjectId: <factSheetId>
+
+ingestedAt: = meta.capturedAt
+
+connectorVersion: = meta.connectorVersion
+
+Interface Fact Sheet → Node(kind="interface")
+id:
+
+interface:leanix:<workspace>:<factSheetId>
+
+kind: "interface"
+
+attrs (MVP):
+
+name (или <unknown>)
+
+externalId
+
+category / protocol — только если реально присутствуют в raw фактах (иначе не выдумывать)
+
+provenance: как выше (FactSheet)
+
+В MVP мы не делаем meta-model introspection. Если типы/категории не доступны напрямую — они просто отсутствуют.
+
+2.2 Relation → Edge
+Общая форма Edge
+id:
+
+edge:<kind>:leanix:<workspace>:<relationId>
+
+kind: выбирается по правилам ниже
+
+source, target: mapped node ids
+
+attrs (MVP):
+
+relationType: raw relation.type
+
+externalId: raw relation.id
+
+иные поля — только если это факты из источника (например strength), без вычислений
+
+provenance:
+
+sourceSystem: "leanix"
+
+sourceObjectType: "Relation"
+
+sourceObjectId: <relationId>
+
+ingestedAt: = meta.capturedAt
+
+connectorVersion: = meta.connectorVersion
+
+Правила выбора kind (MVP)
+Мы не интерпретируем семантику глубже MVP. Используем только типы узлов (Application/Interface) и raw relation.type.
+
+Application → Application
+Если оба конца — Application, то:
+
+kind = "depends_on"
+
+Application → Interface
+Если from — Application, to — Interface, то:
+
+kind = "exposes_interface" или "consumes_interface" — только если raw relation.type однозначно различим по заранее заданному списку (см. 2.3).
+
+Иначе (любая неоднозначность):
+
+связь не включается в CanonicalGraph (MVP),
+
+но фиксируется в errors[] RawSnapshot как code="RELATION_DROPPED".
+
+2.3 Таблица соответствия relation.type → kind (MVP)
+Чтобы избежать “магии”, коннектор обязан иметь явную конфигурацию маппинга (в коде или конфиге), например:
+
+dependsTypes = ["depends", "requires", ...]
+
+exposesTypes = ["exposes", "provides", ...]
+
+consumesTypes = ["consumes", "uses", ...]
+
+Если relation.type не попадает ни в один список:
+
+правило 3) — drop + ошибка.
+
+В демо-фикстурах используется:
+
+depends → depends_on
+
+exposes → exposes_interface
+
+consumes → consumes_interface
+
+3) Детерминизм и нормализация (обязательные правила)
+3.1 Стабильные ID
+ID нельзя генерировать счётчиками/рандомом.
+В MVP: <kind>:leanix:<workspace>:<externalId> — единственный допустимый путь.
+
+3.2 Сортировка
+Перед вычислением contentHash CanonicalGraph:
+
+nodes сортируются по id
+
+edges сортируются по (source, target, kind, id)
+
+(см. D. Determinism)
+
+3.3 unknown/missing политика (MVP)
+отсутствует factsheet.id → объект отбрасывается + errors[] (code="FACTSHEET_DROPPED_NO_ID")
+
+есть id, но отсутствует/пустой name → name = "<unknown>" + errors[] (code="FACTSHEET_UNKNOWN_NAME")
+
+relation без id или без from/to → relation отбрасывается + errors[] (code="RELATION_DROPPED_MISSING_FIELDS")
+
+relation с концами, которые не найдены в factsheets → relation отбрасывается + errors[] (code="RELATION_DROPPED_UNKNOWN_ENDPOINT")
+
+4) Fixtures (демо-артефакты)
+MVP должен быть способен воспроизвести следующие фикстуры:
+
+docs/architect-tool/backend/fixtures/rawsnapshot.leanix.sample.json
+
+docs/architect-tool/backend/fixtures/canonicalgraph.sample.json
+
+docs/architect-tool/backend/fixtures/simulationresult.sample.json
+
+5) Точки расширения (вне MVP)
+Возможные расширения (не реализуются в MVP, но допускаются архитектурно):
+
+meta-model introspection (типы/подтипы/кастомные relation types),
+
+расширенная онтология (capability/process/org),
+
+import/export processors и write-back,
+
+политика прав/ролей/групп,
+
+частичные снапшоты и диффы.
 
