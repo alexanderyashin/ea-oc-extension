@@ -15,6 +15,7 @@ import { EMAP0_NODE_KINDS, type Emap0NodeKind } from "../model/emap0.profile";
 import type { JsonValue } from "../model/canonical";
 
 import { simulateShock } from "../compute/simulate";
+import { computeMetrics } from "../compute/metrics";
 import type {
   LedgerEvent,
   NodeState,
@@ -22,6 +23,7 @@ import type {
   ShockScope,
   ShockType,
   SimConfig,
+  MetricSet,
 } from "../compute/types";
 
 export type CanonicalData = {
@@ -115,6 +117,9 @@ export interface GraphState {
   nodeStates: Record<string, NodeState>;
   ledger: LedgerEvent[];
 
+  // Metrics overlay (post-pass, does not affect simulation)
+  metrics: MetricSet | null;
+
   onNodesChange: (changes: NodeChange<RfNode>[]) => void;
   onEdgesChange: (changes: EdgeChange<RfEdge>[]) => void;
   onConnect: (connection: Connection) => void;
@@ -154,6 +159,7 @@ export const useGraphStore = create<GraphState>((set, get) => ({
   simLocked: false,
   nodeStates: {},
   ledger: [],
+  metrics: null,
 
   onNodesChange: (changes) =>
     set((s) => ({
@@ -277,13 +283,26 @@ export const useGraphStore = create<GraphState>((set, get) => ({
       selectedNodeId
     );
 
+    // Post-pass metrics (must not affect simulation outcome)
+    const metrics = computeMetrics({
+      cfg: s.simConfig,
+      nodes: s.nodes.map((n) => ({ id: n.id })),
+      edges: s.edges.map((e) => ({ source: e.source, target: e.target })),
+      selectedNodeId,
+      simResult: res,
+    });
+
+    // Attach overlay to result (local) and store it
+    const resWithMetrics = { ...res, metrics };
+
     set((st) => ({
-      simLocked: res.stop,
-      nodeStates: res.nodeStates,
-      ledger: res.ledger,
+      simLocked: resWithMetrics.stop,
+      nodeStates: resWithMetrics.nodeStates,
+      ledger: resWithMetrics.ledger,
+      metrics: resWithMetrics.metrics ?? null,
       nodes: st.nodes.map((n) => ({
         ...n,
-        style: stateStyle(res.nodeStates[n.id]),
+        style: stateStyle(resWithMetrics.nodeStates[n.id]),
       })),
     }));
   },
@@ -293,6 +312,7 @@ export const useGraphStore = create<GraphState>((set, get) => ({
       simLocked: false,
       nodeStates: {},
       ledger: [],
+      metrics: null,
       nodes: st.nodes.map((n) => ({ ...n, style: undefined })),
     }));
   },

@@ -32,9 +32,15 @@ export type LedgerEvent =
       reason: string;
     };
 
+// Metrics overlay (post-pass)
+export type MetricSet = import("./metrics/types").MetricSet;
+
 export type SimResult = {
   nodeStates: Record<string, NodeState>;
   nodeScores: Record<string, number>;
   ledger: LedgerEvent[];
   stop: boolean;
+
+  // post-pass metrics overlay; must not affect simulation outcome
+  metrics?: MetricSet;
 };
