@@ -1,0 +1,14 @@
+{
+  "version": "metrics-mvp@1",
+  "nodeMetrics": [
+    {
+      "nodeId": "APP:OrderService",
+      "m1_dependencyDepth": { "out": 4, "in": 2 },
+      "m2_blastRadius": { "out": 17, "in": 6 },
+      "m3_cascadeSusceptibility": { "inReach": 6, "inDegree": 2 },
+      "m4_structuralCriticality": { "vector": [17, 6, 4, 2, 6, 2], "note": "lex" },
+      "m5_thresholdProximity": { "stopMargin": 0.12, "warnMargin": 0.47 }
+    }
+  ],
+  "graphMetrics": {}
+}
