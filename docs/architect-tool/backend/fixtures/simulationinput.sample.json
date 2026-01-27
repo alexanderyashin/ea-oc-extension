@@ -1,5 +1,13 @@
 ﻿{
-  "graph": { "$ref": "./canonicalgraph.sample.json" },
+  "meta": {
+    "schemaVersion": "SIMIN-0.1",
+    "capturedAt": "2026-01-27T12:00:00Z",
+    "graphRef": "fixtures/canonicalgraph.sample.json",
+    "determinism": {
+      "hashAlgo": "sha256",
+      "graphContentHash": "sha256:7676b9f123fe60d010a1d7021fae3442f82a6b4fb372470c734c76950a1fd963"
+    }
+  },
   "scenario": {
     "shockType": "DEMO_SHOCK",
     "intensity": 0.3,
