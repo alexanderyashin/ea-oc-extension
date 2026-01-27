@@ -12,7 +12,7 @@ status: "ACTIVE"
 
 ## 0) Принцип
 
-Симуляция принимает **канонические факты** (CanonicalGraph) + **параметры сценария**  
+Симуляция принимает **канонические факты** (CanonicalGraph) + **параметры сценария**
 и возвращает **формальный результат** (states + ledger + stop) **без рекомендаций**.
 
 Симуляция:
@@ -29,42 +29,44 @@ status: "ACTIVE"
 
 `SimulationInput` — единственный допустимый вход в engine.
 
-Состав:
+Состав (MVP):
+- `meta` (обяз.)
+- `graphRef` (обяз., ссылка на CanonicalGraph)
+- `scenario` (обяз.)
+- `options` (опц.)
 
-- `meta`
-- `graph`
-- `scenario`
-- `options` (опционально)
+> Важно: в MVP **не передаём граф инлайн**. Engine должен принимать ссылку `graphRef`
+> и далее резолвить её к CanonicalGraph (в демо/fixtures — через файловый путь).
+> Инлайн-граф допускается только позже (Full Product), отдельным расширением контракта.
 
 #### 1.1.1 meta (обяз.)
 
 - `schemaVersion` (например: `SI-0.1`)
 - `capturedAt` (ISO8601; время формирования input)
-- `graphRef`
-  - `snapshotId` (строка из CanonicalGraph.meta.snapshotId)
-  - `contentHash` (строка из CanonicalGraph.meta.determinism.contentHash)
-- `determinism`
-  - `strict` (bool, default true)
-  - `seed` (string | number; фиксирует любые псевдослучайности, если они появятся)
 
-> MVP: engine должен корректно работать при `strict=true` и фиксированном `seed`.
+#### 1.1.2 graphRef (обяз.)
 
-#### 1.1.2 graph (обяз.)
+`graphRef` фиксирует *какой именно граф* используется.
 
-- `graph` = CanonicalGraph (см. `A_canonical-model.md`)
-- Требование: `graph.meta.determinism.contentHash` должен быть заполнен и согласован с `canonicalJson`.
+Поля:
+- `path` (string; относительный путь к файлу CanonicalGraph, например `./canonicalgraph.sample.json`)
+- `snapshotId` (строка из `CanonicalGraph.meta.snapshotId`)
+- `contentHash` (строка из `CanonicalGraph.meta.determinism.contentHash`)
+
+Инварианты:
+- `contentHash` обязателен и должен совпадать с `CanonicalGraph.meta.determinism.contentHash`.
+- `contentHash` считается как `sha256(canonicalGraphJson)` по правилам `D_determinism.md`.
 
 #### 1.1.3 scenario (обяз.)
 
 `scenario` задаёт “что именно моделируем”, но **не содержит рекомендаций**.
 
 MVP-поля:
-
 - `shockType` (enum)
 - `intensity` (number | enum)
 - `targetSelector` (enum: `all` | `selected`)
 - `targets` (string[]; обязательны при `selected`)
-- `label` (string; человекочитаемый тег сценария, например `demo-seed-1`)
+- `seed` (string | number; фиксирует любые псевдослучайности, если они появятся)
 
 Рекомендованный MVP-набор `shockType`:
 - `capacity_drop`
@@ -87,7 +89,6 @@ MVP-поля:
 `SimulationResult` — единственный допустимый выход engine.
 
 Состав:
-
 - `meta`
 - `stop`
 - `nodeStates`
@@ -103,7 +104,9 @@ MVP-поля:
   - `snapshotId`
   - `contentHash`
 - `scenarioRef`
-  - `label`
+  - `shockType`
+  - `intensity`
+  - `targetSelector`
   - `seed` (если использовался)
 - `determinism`
   - `hashAlgo` (`sha256`)
@@ -149,7 +152,6 @@ STOP/LOCK:
 `ledger[]` — список **фактов симуляции**. Это “судовой журнал”, а не интерпретация.
 
 Форма записи (MVP):
-
 - `ts` (ISO8601)
 - `code` (string; машинный код события)
 - `message` (string; человекочитаемая формулировка факта)
@@ -202,7 +204,6 @@ MVP-требование:
 ## 4) Явные запреты (non-negotiable)
 
 Симуляция (и её результат) **не имеет права**:
-
 - выдавать рекомендации, приоритеты, планы действий
 - вычислять “score зрелости” или “целевые KPI”
 - давать “оптимизацию портфеля”
@@ -220,8 +221,7 @@ MVP-требование:
 ## 5) Связь с fixtures (MVP)
 
 В репозитории fixtures являются нормативными примерами:
-
-- `fixtures/simulationinput.sample.json` — пример `SimulationInput`
+- `fixtures/simulationinput.sample.json` — пример `SimulationInput` (в MVP использует `graphRef`)
 - `fixtures/simulationresult.sample.json` — пример `SimulationResult`
 - `fixtures/canonicalgraph.sample.json` — пример `CanonicalGraph`
 
