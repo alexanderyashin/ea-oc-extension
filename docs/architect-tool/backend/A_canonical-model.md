@@ -1,6 +1,6 @@
 ---
 title: "A. Canonical Model"
-purpose: "Определить каноническую headless модель системы для ingestion→simulation"
+purpose: "Определить каноническую headless модель системы для ingestion → simulation"
 audience: ["Core dev", "Connector dev", "Simulation dev"]
 language: "RU"
 evidence_profile: "Design-spec (schema + invariants)"
@@ -10,190 +10,228 @@ status: "ACTIVE"
 
 # A. Каноническая модель (Canonical Graph)
 
-## 0) Зачем нужна каноническая модель
+## 0) Назначение модели
 
-Мы отделяем:
-- **внешние источники** (LeanIX, позже другие) — всегда разные по полям/типам/семантике,
-- от **внутреннего ядра** (CanonicalGraph) — единый контракт для симуляции и дальнейших вычислений.
+Каноническая модель отделяет:
+- **внешние источники данных** (LeanIX и др.), которые могут быть нестабильны,
+- от **внутреннего детерминированного ядра** (CanonicalGraph),
+  являющегося единственным контрактом для симуляции.
 
-Каноническая модель обязана быть:
-- **детерминированной**
-- **расширяемой** (новые типы узлов/рёбер без поломки MVP)
-- **headless** (никаких UI-структур)
-- **без BI/рекомендаций** (модель хранит факты, не выводы)
-
----
-
-## 1) Концепт: Graph + Attributes
-
-### 1.1 Типы сущностей
-
-Модель представляет систему как ориентированный мультиграф:
-
-- `Node` — сущность (приложение, интерфейс, внешний актор и т.д.)
-- `Edge` — отношение (зависимость, интеграция, вызов, поток)
-
-Обе сущности имеют:
-- стабильный `id`
-- `kind` (тип)
-- `attrs` (словарь атрибутов, JSON-совместимый)
-- `provenance` (откуда взялось)
-- `timestamps` (время снапшота/загрузки)
-
-### 1.2 Схема (логическая)
-
-**CanonicalGraph**
-- `meta`
-- `nodes[]`
-- `edges[]`
-
-**meta**
-- `schemaVersion` (например: `CG-0.1`)
-- `sourceSystem` (например: `leanix`)
-- `snapshotId` (строка)
-- `capturedAt` (ISO8601)
-- `determinism`
-  - `sortOrder` (описание сортировки)
-  - `hashAlgo` (например: sha256)
-  - `contentHash` (хэш нормализованного контента)
+Модель обязана быть:
+- **детерминированной** (см. D_determinism.md)
+- **headless** (никаких UI-полей)
+- **расширяемой без поломки MVP**
+- **без BI / рекомендаций / оптимизаций**
 
 ---
 
-## 2) MVP-онтология узлов и рёбер
+## 1) Базовый концепт
 
-### 2.1 Узлы (MVP)
+Система представляется как **ориентированный мультиграф**:
 
-1) `application`
-- смысл: развертываемая или управляемая прикладная система
-- минимальные attrs (MVP):
-  - `name` (string)
-  - `lifecycle` (optional: string)
-  - `criticality` (optional: string/number)
-  - `owner` (optional: string)
-  - `tags` (optional: string[])
-  - `externalId` (optional: string; id в источнике)
+- `Node` — сущность
+- `Edge` — направленное отношение
 
-2) `interface`
-- смысл: контракт взаимодействия (API/интерфейс/интеграционный объект)
-- минимальные attrs:
-  - `name`
-  - `category` (optional: e.g. api/logical/other; если доступно)
-  - `protocol` (optional)
-  - `externalId`
+### 1.1 Общие поля
 
-3) `system` (опционально в MVP как "контейнер" или "placeholder")
-- если источник даёт «системы/домены», но мы не хотим расширять онтологию — допускается как нейтральный контейнер
-- attrs: `name`, `externalId`
+Каждый `Node` и `Edge` **обязан** содержать:
 
-> Примечание: в MVP **не вводим** capabilities, business processes, org units как обязательные node kinds.
-
-### 2.2 Рёбра (MVP)
-
-1) `depends_on` (Application → Application)
-- смысл: логическая/техническая зависимость
-
-2) `exposes_interface` (Application → Interface)
-- смысл: приложение публикует интерфейс
-
-3) `consumes_interface` (Application → Interface)
-- смысл: приложение использует интерфейс
-
-4) `connects_to` (Interface → Interface) (опционально)
-- смысл: явная связка интерфейсов, если источник так моделирует интеграцию
-
-#### Общие attrs ребра (MVP)
-- `strength` (optional: number 0..1 или градация)
-- `direction` (optional: string; если требуется зафиксировать семантику)
-- `externalId`
-- `relationType` (string; исходный тип отношения из источника)
+- `id` — стабильный строковый идентификатор
+- `kind` — тип сущности/отношения
+- `attrs` — JSON-совместимый словарь атрибутов
+- `provenance` — происхождение данных
 
 ---
 
-## 3) Идентичность и детерминизм
+## 2) Структура CanonicalGraph
 
-### 3.1 ID-стратегия (строго)
+```text
+CanonicalGraph
+├─ meta
+│  ├─ schemaVersion
+│  ├─ sourceSystem
+│  ├─ snapshotId
+│  ├─ capturedAt
+│  └─ determinism
+├─ nodes[]
+└─ edges[]
+2.1 meta
+schemaVersion — версия схемы (например CG-0.1)
 
-`id` должен быть **стабилен** относительно источника.
+sourceSystem — основной источник снапшота
+
+snapshotId — идентификатор снапшота
+
+capturedAt — ISO8601 timestamp
+
+determinism
+
+sortOrder
+
+hashAlgo
+
+contentHash
+
+3) MVP-онтология узлов
+3.1 Допустимые Node.kind (MVP)
+1) application
+Смысл: прикладная система или сервис.
+
+Обязательные attrs:
+
+name (string)
+
+externalId (string)
+
+Допустимые attrs (optional):
+
+lifecycle
+
+criticality
+
+owner
+
+tags
+
+2) interface
+Смысл: контракт взаимодействия (API / интеграционный объект).
+
+Обязательные attrs:
+
+name
+
+externalId
+
+Допустимые attrs:
+
+category
+
+protocol
+
+3) system (допустим, но не обязателен в MVP)
+Нейтральный контейнер, если источник его предоставляет.
+
+Обязательные attrs:
+
+name
+
+externalId
+
+❗ В MVP запрещены другие Node.kind
+(capability, process, orgUnit и т.д.).
+
+4) MVP-онтология рёбер
+4.1 Допустимые Edge.kind (MVP)
+1) depends_on
+application → application
+
+2) exposes_interface
+application → interface
+
+3) consumes_interface
+application → interface
+
+4) connects_to (опционально)
+interface → interface
+
+4.2 Атрибуты рёбер
+Обязательные attrs:
+
+externalId
+
+relationType (исходный тип из источника)
+
+Допустимые attrs:
+
+strength
+
+❗ Направление связи определяется самой дугой.
+Поле direction запрещено.
+
+5) Идентичность и ID-стратегия
+5.1 Базовое правило
+id должен быть стабилен относительно источника.
 
 Рекомендуемый формат:
-- `id = "<kind>:<source>:<workspace>:<externalId>"`
 
-Если `externalId` отсутствует, допускается fallback (только как крайняя мера):
-- `id = "<kind>:<source>:<workspace>:hash(<stableKeyFields>)"`
+<kind>:<source>:<workspace>:<externalId>
+5.2 Fallback (крайний случай)
+Если externalId отсутствует:
 
-`stableKeyFields` должны быть перечислены и неизменны (например `name + type`), иначе это не ID, а лотерея.
+<kind>:<source>:<workspace>:hash(<stableKeyFields>)
+stableKeyFields обязаны быть:
 
-### 3.2 Детерминированная нормализация
+перечислены
 
-Перед вычислением `contentHash`:
-- nodes сортируются по `id` (лексикографически)
-- edges сортируются по `(sourceId, targetId, kind, id)` (или `(sourceId,targetId,kind,externalId)` если id выводится из внешнего)
-- attrs сериализуются с:
-  - фиксированным порядком ключей
-  - стабильным представлением чисел/дат
-  - без случайных полей
+неизменны
 
----
+документированы
 
-## 4) Provenance (обязательное поле)
+6) Provenance (обязателен)
+Каждый Node и Edge содержит:
 
-Каждый `Node` и `Edge` содержит `provenance`:
+sourceSystem
 
-- `sourceSystem` (например: `leanix`)
-- `sourceObjectType` (например: `FactSheet`, `Relation`)
-- `sourceObjectId` (id из источника)
-- `sourcePath` (optional: endpoint/query)
-- `ingestedAt` (ISO8601)
-- `connectorVersion` (semver; версия ingestion-адаптера)
+sourceObjectType
 
-Это критично для:
-- трассировки ошибок
-- воспроизводимости
-- юридической и научной проверяемости (откуда факт)
+sourceObjectId
 
----
+sourcePath (optional)
 
-## 5) Контракт до симуляции
+ingestedAt
 
-### 5.1 SimulationInput (проекция)
+connectorVersion
 
-Симуляция **не обязана** принимать весь граф. MVP-контракт:
+7) Контракт до симуляции
+7.1 SimulationInput
+graph — CanonicalGraph или его подграф
 
-- `graph`: CanonicalGraph (или subset)
-- `scenario`:
-  - `shockType` (enum)
-  - `intensity` (number or enum)
-  - `targetSelector` (enum: all / selected)
-  - `seed` (string/number; фиксирует псевдослучайность, если она будет введена)
-- `options`:
-  - `strictDeterminism` (bool, default true)
-  - `unknownHandling` (enum: drop / keep-as-unknown)
+scenario
 
-### 5.2 SimulationResult
+shockType
 
-- `stop` (bool) — признак STOP/LOCK
-- `nodeStates` (map nodeId → state)
-- `edgeStates` (optional)
-- `ledger[]` — список фактов (события, причины, пороги), **без рекомендаций**
-- `resultHash` (хэш результата)
+intensity
 
----
+targetSelector
 
-## 6) Явные запреты модели
+seed
 
-- Нельзя хранить “оценки зрелости”, “рекомендованные действия”, “приоритеты работ”
-- Нельзя включать BI-метрики, которые выглядят как KPI-управление
-- Нельзя кодировать UI-поля (layout, coordinates, colors) в CanonicalGraph
-  - UI может иметь свой view-model, но **не здесь**
+options
 
----
+strictDeterminism (default true)
 
-## 7) Версионирование схемы
+unknownHandling (drop | keep-as-unknown)
 
-- `CG-0.1` — MVP: applications/interfaces/dependencies
-- Любое расширение (новые kinds/attrs) либо:
-  - backward-compatible (minor), либо
-  - через bump major и миграцию
+7.2 SimulationResult
+stop (bool)
 
-Схема обязана быть описана как контракт — это важнее, чем удобство.
+nodeStates (map)
 
+edgeStates (optional)
+
+ledger[]
+
+resultHash
+
+8) Явные запреты
+KPI / maturity / recommendations
+
+BI-метрики
+
+UI-поля (layout, coords, colors)
+
+runtime-счётчики
+
+нефиксированные timestamps в attrs
+
+9) Версионирование
+CG-0.1 — MVP
+
+расширения:
+
+backward-compatible → minor
+
+breaking → major + миграция
+
+Схема — это контракт.
+Контракт важнее удобства.

@@ -7,7 +7,7 @@
     "determinism": {
       "sortOrder": "nodes by id; edges by (source,target,kind,id)",
       "hashAlgo": "sha256",
-      "contentHash": "sha256:PLACEHOLDER"
+      "contentHash": "sha256:7676b9f123fe60d010a1d7021fae3442f82a6b4fb372470c734c76950a1fd963"
     }
   },
   "nodes": [

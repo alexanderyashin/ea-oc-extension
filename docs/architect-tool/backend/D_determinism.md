@@ -18,15 +18,15 @@ status: "ACTIVE"
 
 ### 2.1 Nodes
 Сортировать по:
-1) id (лексикографически, Unicode code point order)
+1) `id` (лексикографически, Unicode code point order)
 2) если равны — запрещено (ID обязан быть уникальным)
 
 ### 2.2 Edges
 Сортировать по tuple:
-1) source
-2) 	arget
-3) kind
-4) id
+1) `source`
+2) `target`
+3) `kind`
+4) `id`
 
 ## 3) Каноническая сериализация JSON
 Требования:
@@ -35,16 +35,16 @@ status: "ACTIVE"
 - запрещены поля, зависящие от времени выполнения (random ids, UI coords, etc.)
 - числа: реализация должна обеспечивать стабильный формат (без неявных экспонент), если это влияет на hashing
 
-Результат сериализации называется canonicalJson.
+Результат сериализации называется `canonicalJson`.
 
 ## 4) Хэширование
-- hashAlgo = sha256
-- contentHash = sha256(canonicalJson)
-- esultHash = sha256(canonicalResultJson)
+- `hashAlgo = sha256`
+- `contentHash = sha256(canonicalJson)`
+- `resultHash = sha256(canonicalResultJson)`
 
 ## 5) Нормализация unknown/missing
 - отсутствует внешний ID у объекта источника → объект отбрасывается + запись в errors/ledger
-- отсутствует name при наличии внешнего ID → name = "<unknown>" + запись в errors/ledger
+- отсутствует `name` при наличии внешнего ID → `name = "<unknown>"` + запись в errors/ledger
 
 ## 6) Запреты
 - нельзя использовать счётчики в рантайме для генерации ID
