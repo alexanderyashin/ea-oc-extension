@@ -1,46 +1,56 @@
----
-title: "Architect Tool Backend — Index"
-purpose: "Навигация по backend-ядру (модель, ingestion, границы MVP)"
-audience: ["Core dev", "Connector dev", "Simulation dev"]
-language: "RU"
-evidence_profile: "Design-spec (no runtime claims)"
-role: "Backend documentation root"
-status: "ACTIVE"
----
+TITLE: Architect Tool Backend — Index
+PURPOSE: Navigation across the backend core (model, ingestion, MVP boundaries)
+AUDIENCE: Core dev, Connector dev, Simulation dev
+LANGUAGE: EN
+EVIDENCE_PROFILE: Design-spec (no runtime claims)
+ROLE: Backend documentation root
+STATUS: ACTIVE
 
-# Backend ядро Architect Tool — Index
+Backend core of the Architect Tool — Index
 
-Этот раздел фиксирует **headless backend**: каноническая модель, ingestion-адаптеры, и контракт данных до симуляции.
-UI здесь **не предполагается**.
+This section fixes the headless backend: the canonical model, ingestion adapters, and the data contract up to simulation.
+No UI is assumed here.
 
-## Документы
+Documents
 
-1. **A. Каноническая модель**
-   - `A_canonical-model.md`
-   - Что такое Canonical Graph, какие узлы/рёбра, какие атрибуты, какие инварианты детерминизма.
+A. Canonical Model
 
-2. **B. Ingestion: SAP LeanIX (MVP)**
-   - `B_ingestion-leanix.md`
-   - Как маппим LeanIX Fact Sheets/Relations в Canonical Graph. Как обеспечиваем стабильные id, версионирование снапшотов, ошибки/пропуски.
+File: A_canonical-model.md
 
-3. **C. Граница MVP vs Full Product**
-   - `C_mvp-vs-full-scope.md`
-   - Что считаем в MVP (Applications/Interfaces/Dependencies) и что строго откладываем.
+Defines what the Canonical Graph is, which nodes and edges exist, which attributes are allowed, and which determinism invariants apply.
 
-## Непереговорные ограничения (backend)
+B. Ingestion: SAP LeanIX (MVP)
 
-- Headless & embeddable (модуль/библиотека; без UI-предположений)
-- Никакого BI: не строим «дашборды истин»
-- Никаких рекомендаций/советов/оптимизаций (backend не говорит “делайте так”)
-- Детерминизм: одинаковый вход → одинаковый выход
-- Совместимость с существующим ESTRA/engine принципом: **ledger + STOP/LOCK** как факт, не как совет
+File: B_ingestion-leanix.md
 
-## Контракт потока данных (кратко)
+Describes how LeanIX Fact Sheets and Relations are mapped into the Canonical Graph, how stable IDs and snapshot versioning are ensured, and how errors and omissions are handled.
 
-**Ingestion → Canonical Model → Simulation Input**
+C. MVP vs Full Product Boundary
 
-- Ingestion читает внешний источник (LeanIX), выдаёт **RawSnapshot**.
-- Normalizer приводит RawSnapshot к **CanonicalGraph**.
-- Simulation принимает **SimulationInput** (проекция CanonicalGraph + параметры сценария) и выдаёт **SimulationResult** (с ledger).
+File: C_mvp-vs-full-scope.md
 
-Детали: см. `A_canonical-model.md` и `B_ingestion-leanix.md`.
+Defines what is considered MVP scope (Applications, Interfaces, Dependencies) and what is strictly deferred.
+
+Non-negotiable backend constraints
+
+Headless and embeddable (module or library; no UI assumptions)
+
+No BI: no construction of truth dashboards
+
+No recommendations, advice, or optimizations (the backend never says do this)
+
+Determinism: identical input produces identical output
+
+Compatibility with existing ESTRA and engine principles: ledger plus STOP or LOCK as fact, not as advice
+
+Data flow contract (summary)
+
+Ingestion to Canonical Model to Simulation Input
+
+Ingestion reads an external source (LeanIX) and produces RawSnapshot.
+
+The normalizer transforms RawSnapshot into CanonicalGraph.
+
+Simulation accepts SimulationInput (a projection of CanonicalGraph plus scenario parameters) and produces SimulationResult with ledger.
+
+For details, see A_canonical-model.md and B_ingestion-leanix.md.

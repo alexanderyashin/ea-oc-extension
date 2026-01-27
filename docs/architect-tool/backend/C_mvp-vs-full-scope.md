@@ -1,86 +1,115 @@
----
-title: "C. MVP vs Full Product Scope"
-purpose: "Зафиксировать границу: что делаем сейчас (MVP) и что строго позже"
-audience: ["Core dev", "Stakeholders", "Engine dev"]
-language: "RU"
-evidence_profile: "Scope contract"
-role: "Scope boundary spec"
-status: "ACTIVE"
----
+TITLE: C. MVP vs Full Product Scope
+PURPOSE: Fix the boundary between what is done now (MVP) and what is strictly deferred
+AUDIENCE: Core dev, Stakeholders, Engine dev
+LANGUAGE: EN
+EVIDENCE_PROFILE: Scope contract
+ROLE: Scope boundary spec
+STATUS: ACTIVE
 
-# C. Граница MVP vs Full Product
+C. MVP vs Full Product Boundary
 
-## 0) Принцип
+Principle
 
-MVP делает **минимально достаточный** слой:
-- чтобы ingest'ить реальную систему (LeanIX)
-- привести к CanonicalGraph
-- подать в существующий deterministic ESTRA-compatible engine
+The MVP delivers a minimally sufficient layer:
 
-MVP **не** превращает систему в BI/дашборд/советчика.
+to ingest a real system (LeanIX),
 
----
+to transform it into CanonicalGraph,
 
-## 1) MVP (Phase 1): что входит
+to feed it into an existing deterministic ESTRA-compatible engine.
 
-### 1.1 Ingestion (LeanIX → CanonicalGraph)
-- Application Fact Sheets → `application` nodes
-- Interface Fact Sheets → `interface` nodes (если доступны)
-- Relations → edges:
-  - `depends_on`
-  - `exposes_interface`
-  - `consumes_interface`
-- Provenance на каждом узле/ребре
-- Детерминированная нормализация (stable sort + stable hash)
-- RawSnapshot (опционально, но рекомендовано как артефакт воспроизводимости)
+The MVP does NOT turn the system into BI, a dashboard, or an advisor.
 
-### 1.2 Контракт для симуляции
-- SimulationInput = CanonicalGraph + scenario params (без UI)
-- SimulationResult = stop/lock + ledger + states (без рекомендаций)
+MVP (Phase 1): what is included
 
-### 1.3 Явные запреты MVP
-- нет рекомендаций
-- нет “оптимизации портфеля”
-- нет оценок зрелости, KPI
-- нет экспорта отчётов в PDF/PowerPoint (вообще)
-- нет write-back в LeanIX
+1.1 Ingestion (LeanIX to CanonicalGraph)
 
----
+Application Fact Sheets mapped to application nodes
 
-## 2) Full Product (Phase 2+): что позже
+Interface Fact Sheets mapped to interface nodes (if available)
 
-### 2.1 Модель (расширение онтологии)
-- Business Capabilities
-- Business Processes / Value Streams
-- Org Units / User Groups / Ownership структурно
-- Tech Components / Platforms / Data Objects
-- Environments (prod/non-prod), deployment topology
-- События/инциденты/изменения как отдельные сущности (если понадобится)
+Relations mapped to edges:
 
-### 2.2 Ingestion (мульти-источники)
-- ServiceNow (CMDB, incidents)
-- GitHub (repos, dependencies), CI/CD
-- Cloud providers (accounts, services, connectivity)
-- Финансы/бюджеты (только как факты)
+depends_on
 
-### 2.3 Engine / Simulation
-- более сложные сценарии (мульти-шоки, временные окна, неоднородные пороги)
-- калибровка параметров на внешних данных
-- расширенная ledger-формализация (но всё ещё без рекомендаций)
+exposes_interface
 
-### 2.4 Контроль доступа / безопасность
-- RBAC на уровне ingestion-конфигов и артефактов
-- аудит логов
-- redaction персональных данных
+consumes_interface
 
----
+Provenance on every node and edge
 
-## 3) Граница “инструмент vs демонстратор” (на будущее)
+Deterministic normalization (stable sort plus stable hash)
 
-Даже Full Product **не** становится BI-консалтинг-роботом.
-Строгая линия:
-- можно: показывать структуру, пороги, факты, следствия в смысле модели
-- нельзя: говорить “сократите X”, “увеличьте Y”, “нанять людей”, “поменяйте оргструктуру”
+RawSnapshot (optional, but recommended as a reproducibility artifact)
 
-Любая формулировка, похожая на рекомендацию, — out of scope.
+1.2 Simulation contract
 
+SimulationInput equals CanonicalGraph plus scenario parameters (no UI)
+
+SimulationResult equals stop or lock plus ledger plus states (no recommendations)
+
+1.3 Explicit MVP prohibitions
+
+no recommendations
+
+no portfolio optimization
+
+no maturity assessments or KPIs
+
+no export of reports to PDF or PowerPoint (at all)
+
+no write-back to LeanIX
+
+Full Product (Phase 2 and beyond): what comes later
+
+2.1 Model (ontology expansion)
+
+Business Capabilities
+
+Business Processes and Value Streams
+
+Org Units, User Groups, Ownership as first-class structures
+
+Technology Components, Platforms, Data Objects
+
+Environments (prod and non-prod), deployment topology
+
+Events, incidents, changes as separate entities (if needed)
+
+2.2 Ingestion (multi-source)
+
+ServiceNow (CMDB, incidents)
+
+GitHub (repositories, dependencies), CI/CD
+
+Cloud providers (accounts, services, connectivity)
+
+Finance and budgets (facts only)
+
+2.3 Engine and simulation
+
+more complex scenarios (multi-shocks, time windows, heterogeneous thresholds)
+
+parameter calibration based on external data
+
+extended ledger formalization (still without recommendations)
+
+2.4 Access control and security
+
+RBAC at the level of ingestion configurations and artifacts
+
+audit logging
+
+redaction of personal data
+
+Boundary between tool and demonstrator (future)
+
+Even the Full Product does NOT become a BI consulting robot.
+
+Strict line:
+
+allowed: showing structure, thresholds, facts, and consequences in terms of the model
+
+forbidden: statements like reduce X, increase Y, hire people, change org structure
+
+Any wording that resembles a recommendation is out of scope.

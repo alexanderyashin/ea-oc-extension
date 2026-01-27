@@ -1,228 +1,305 @@
----
-title: "E. Simulation Contract (MVP)"
-purpose: "Формально зафиксировать вход/выход симуляции и запреты (no BI, no recommendations)"
-audience: ["Engine dev", "Core dev", "Audit"]
-language: "RU"
-evidence_profile: "Design-spec (I/O contract + invariants)"
-role: "Simulation interface contract"
-status: "ACTIVE"
----
+TITLE: E. Simulation Contract (MVP)
+PURPOSE: Formally define simulation input and output and explicit prohibitions (no BI, no recommendations)
+AUDIENCE: Engine dev, Core dev, Audit
+LANGUAGE: EN
+EVIDENCE_PROFILE: Design-spec (I/O contract and invariants)
+ROLE: Simulation interface contract
+STATUS: ACTIVE
 
-# E. Контракт симуляции (MVP)
+E. Simulation Contract (MVP)
 
-## 0) Принцип
+Principle
 
-Симуляция принимает **канонические факты** (CanonicalGraph) + **параметры сценария**
-и возвращает **формальный результат** (states + ledger + stop) **без рекомендаций**.
+The simulation accepts canonical facts (CanonicalGraph) plus scenario parameters
+and returns a formal result (states plus ledger plus stop) without recommendations.
 
-Симуляция:
-- не является BI / дашбордом,
-- не является “советчиком”,
-- не оптимизирует,
-- не генерирует управленческие действия.
+The simulation:
 
----
+is not BI or a dashboard
 
-## 1) Объекты контракта
+is not an advisor
 
-### 1.1 SimulationInput
+does not optimize
 
-`SimulationInput` — единственный допустимый вход в engine.
+does not generate management actions
 
-Состав (MVP):
-- `meta` (обяз.)
-- `graphRef` (обяз., ссылка на CanonicalGraph)
-- `scenario` (обяз.)
-- `options` (опц.)
+Contract objects
 
-> Важно: в MVP **не передаём граф инлайн**. Engine должен принимать ссылку `graphRef`
-> и далее резолвить её к CanonicalGraph (в демо/fixtures — через файловый путь).
-> Инлайн-граф допускается только позже (Full Product), отдельным расширением контракта.
+1.1 SimulationInput
 
-#### 1.1.1 meta (обяз.)
+SimulationInput is the only allowed input to the engine.
 
-- `schemaVersion` (например: `SI-0.1`)
-- `capturedAt` (ISO8601; время формирования input)
+Composition (MVP):
 
-#### 1.1.2 graphRef (обяз.)
+meta (mandatory)
 
-`graphRef` фиксирует *какой именно граф* используется.
+graphRef (mandatory, reference to CanonicalGraph)
 
-Поля:
-- `path` (string; относительный путь к файлу CanonicalGraph, например `./canonicalgraph.sample.json`)
-- `snapshotId` (строка из `CanonicalGraph.meta.snapshotId`)
-- `contentHash` (строка из `CanonicalGraph.meta.determinism.contentHash`)
+scenario (mandatory)
 
-Инварианты:
-- `contentHash` обязателен и должен совпадать с `CanonicalGraph.meta.determinism.contentHash`.
-- `contentHash` считается как `sha256(canonicalGraphJson)` по правилам `D_determinism.md`.
+options (optional)
 
-#### 1.1.3 scenario (обяз.)
+Important: in MVP the graph is NOT passed inline.
+The engine MUST accept a graphRef and resolve it to a CanonicalGraph
+(in demo and fixtures via file path).
+Inline graph transfer is allowed only later (Full Product) as a separate contract extension.
 
-`scenario` задаёт “что именно моделируем”, но **не содержит рекомендаций**.
+1.1.1 meta (mandatory)
 
-MVP-поля:
-- `shockType` (enum)
-- `intensity` (number | enum)
-- `targetSelector` (enum: `all` | `selected`)
-- `targets` (string[]; обязательны при `selected`)
-- `seed` (string | number; фиксирует любые псевдослучайности, если они появятся)
+schemaVersion (for example SI-0.1)
 
-Рекомендованный MVP-набор `shockType`:
-- `capacity_drop`
-- `node_failure`
-- `dependency_disruption`
+capturedAt (ISO8601; time when the input was formed)
 
-> Важно: значения и семантика shockType — часть engine, но контракт фиксирует форму.
+1.1.2 graphRef (mandatory)
 
-#### 1.1.4 options (опционально)
+graphRef fixes which exact graph is used.
 
-- `strictDeterminism` (bool, default true)
-- `unknownHandling` (enum: `drop` | `keep-as-unknown`; default `drop`)
-- `maxLedgerEntries` (number; optional guard)
-- `stopOnThreshold` (bool, default true)
+Fields:
 
----
+path (string; relative path to the CanonicalGraph file, for example ./canonicalgraph.sample.json)
 
-### 1.2 SimulationResult
+snapshotId (value from CanonicalGraph.meta.snapshotId)
 
-`SimulationResult` — единственный допустимый выход engine.
+contentHash (value from CanonicalGraph.meta.determinism.contentHash)
 
-Состав:
-- `meta`
-- `stop`
-- `nodeStates`
-- `edgeStates` (опционально)
-- `ledger[]`
-- `resultHash`
+Invariants:
 
-#### 1.2.1 meta (обяз.)
+contentHash is mandatory and MUST match CanonicalGraph.meta.determinism.contentHash
 
-- `schemaVersion` (например: `SR-0.1`)
-- `producedAt` (ISO8601)
-- `graphRef`
-  - `snapshotId`
-  - `contentHash`
-- `scenarioRef`
-  - `shockType`
-  - `intensity`
-  - `targetSelector`
-  - `seed` (если использовался)
-- `determinism`
-  - `hashAlgo` (`sha256`)
-  - `resultHash` (дублирует верхний `resultHash` для удобства аудита)
+contentHash is computed as sha256(canonicalGraphJson) according to D_determinism.md
 
-#### 1.2.2 stop (обяз.)
+1.1.3 scenario (mandatory)
 
-- `stop: boolean`
+scenario defines what is being simulated but contains no recommendations.
 
-Смысл:
-- `stop=false` — симуляция завершилась без “LOCK/STOP” условия
-- `stop=true` — достигнут STOP/LOCK (терминальное состояние демонстратора)
+MVP fields:
 
-STOP/LOCK:
-- **не** означает “что делать”
-- означает: “в рамках модели достигнут порог, при котором дальнейшая эволюция запрещена/неопределена”
+shockType (enum)
 
-#### 1.2.3 nodeStates (обяз.)
+intensity (number or enum)
 
-- `nodeStates: { [nodeId: string]: NodeState }`
+targetSelector (enum: all or selected)
 
-`NodeState` (MVP enum):
-- `OK`
-- `WARN`
-- `FAIL`
-- `STOP` (опционально, если engine различает `FAIL` и `STOP`)
+targets (string array; mandatory when targetSelector is selected)
 
-Требование:
-- ключи `nodeStates` должны быть подмножеством `graph.nodes[].id`
-- порядок ключей при сериализации результата — детерминированный (лексикографический по nodeId)
+seed (string or number; fixes any pseudo-randomness if present)
 
-#### 1.2.4 edgeStates (опционально)
+Recommended MVP shockType set:
 
-- `edgeStates: { [edgeId: string]: EdgeState }` (если engine считает рёбра)
+capacity_drop
 
-`EdgeState` (MVP enum):
-- `OK`
-- `WARN`
-- `FAIL`
+node_failure
 
-#### 1.2.5 ledger (обяз.)
+dependency_disruption
 
-`ledger[]` — список **фактов симуляции**. Это “судовой журнал”, а не интерпретация.
+Important: shockType values and semantics belong to the engine;
+the contract only fixes the shape.
 
-Форма записи (MVP):
-- `ts` (ISO8601)
-- `code` (string; машинный код события)
-- `message` (string; человекочитаемая формулировка факта)
-- `refs` (string[]; ссылки на сущности/снапшоты/пороговые коды)
+1.1.4 options (optional)
 
-Запреты для ledger:
-- запрещены рекомендации (“сделайте X”, “нужно увеличить Y”)
-- запрещены KPI/планы работ
-- запрещён “management advice” любого вида
-- разрешены только:
-  - фиксация событий,
-  - фиксация порогов/условий,
-  - фиксация причинно-следственных шагов *в терминах модели*.
+strictDeterminism (boolean, default true)
 
-#### 1.2.6 resultHash (обяз.)
+unknownHandling (enum: drop or keep-as-unknown; default drop)
 
-- `resultHash = sha256(canonicalResultJson)`
+maxLedgerEntries (number; optional guard)
 
-`canonicalResultJson`:
-- результат, сериализованный детерминированно (см. `D_determinism.md`)
-- без нестабильных полей и с фиксированным порядком ключей
+stopOnThreshold (boolean, default true)
 
----
+1.2 SimulationResult
 
-## 2) Детерминизм и воспроизводимость
+SimulationResult is the only allowed output of the engine.
 
-MVP-требование:
+Composition:
 
-- один и тот же `CanonicalGraph` (по `contentHash`)
-- один и тот же `scenario` (включая `seed`)
-- одна и та же версия engine
+meta
 
-⇒ должны давать **бит-в-бит одинаковый** `SimulationResult` и `resultHash`.
+stop
 
-Любое нарушение считается дефектом детерминизма.
+nodeStates
 
----
+edgeStates (optional)
 
-## 3) Политика unknown/missing
+ledger array
 
-Симуляция **не должна** “додумывать” отсутствующие данные.
+resultHash
 
-Если вход неполон:
-- применяется `options.unknownHandling`:
-  - `drop`: объект/связь игнорируется, факт фиксируется в ledger
-  - `keep-as-unknown`: объект остаётся, но состояния/логика должны быть строго определены (в MVP не рекомендуется)
+1.2.1 meta (mandatory)
 
----
+schemaVersion (for example SR-0.1)
 
-## 4) Явные запреты (non-negotiable)
+producedAt (ISO8601)
 
-Симуляция (и её результат) **не имеет права**:
-- выдавать рекомендации, приоритеты, планы действий
-- вычислять “score зрелости” или “целевые KPI”
-- давать “оптимизацию портфеля”
-- предлагать изменения оргструктуры, найм, бюджет
-- экспортировать отчёты (PDF/PPT) как часть engine контракта
+graphRef
 
-Разрешено только:
-- фиксировать структуру,
-- фиксировать пороги,
-- фиксировать STOP/LOCK,
-- фиксировать фактологический ledger.
+snapshotId
 
----
+contentHash
 
-## 5) Связь с fixtures (MVP)
+scenarioRef
 
-В репозитории fixtures являются нормативными примерами:
-- `fixtures/simulationinput.sample.json` — пример `SimulationInput` (в MVP использует `graphRef`)
-- `fixtures/simulationresult.sample.json` — пример `SimulationResult`
-- `fixtures/canonicalgraph.sample.json` — пример `CanonicalGraph`
+shockType
 
-Изменение формы контракта требует синхронного обновления fixtures.
+intensity
+
+targetSelector
+
+seed (if used)
+
+determinism
+
+hashAlgo (sha256)
+
+resultHash (duplicates the top-level resultHash for audit convenience)
+
+1.2.2 stop (mandatory)
+
+stop: boolean
+
+Meaning:
+
+stop = false — simulation finished without a LOCK or STOP condition
+
+stop = true — STOP or LOCK has been reached (terminal state of the demonstrator)
+
+STOP or LOCK:
+
+does NOT mean what to do
+
+means that within the model a threshold has been reached where further evolution is forbidden or undefined
+
+1.2.3 nodeStates (mandatory)
+
+nodeStates is a map from nodeId to NodeState
+
+NodeState (MVP enum):
+
+OK
+
+WARN
+
+FAIL
+
+STOP (optional, if the engine distinguishes FAIL and STOP)
+
+Requirements:
+
+nodeStates keys MUST be a subset of graph.nodes[].id
+
+key order during result serialization MUST be deterministic (lexicographic by nodeId)
+
+1.2.4 edgeStates (optional)
+
+edgeStates is a map from edgeId to EdgeState (if the engine evaluates edges)
+
+EdgeState (MVP enum):
+
+OK
+
+WARN
+
+FAIL
+
+1.2.5 ledger (mandatory)
+
+ledger is a list of simulation facts.
+It is a logbook, not an interpretation.
+
+Entry format (MVP):
+
+ts (ISO8601)
+
+code (string; machine-readable event code)
+
+message (string; human-readable fact description)
+
+refs (string array; references to entities, snapshots, or threshold codes)
+
+Ledger prohibitions:
+
+recommendations are forbidden (for example do X, increase Y)
+
+KPIs or work plans are forbidden
+
+management advice of any kind is forbidden
+
+Allowed content:
+
+recording of events
+
+recording of thresholds or conditions
+
+recording of causal steps in terms of the model
+
+1.2.6 resultHash (mandatory)
+
+resultHash equals sha256(canonicalResultJson)
+
+canonicalResultJson:
+
+deterministically serialized result (see D_determinism.md)
+
+without unstable fields
+
+with fixed key ordering
+
+Determinism and reproducibility
+
+MVP requirement:
+
+the same CanonicalGraph (by contentHash)
+
+the same scenario (including seed)
+
+the same engine version
+
+must produce bit-for-bit identical SimulationResult and resultHash.
+
+Any deviation is considered a determinism defect.
+
+unknown or missing data policy
+
+The simulation MUST NOT infer missing data.
+
+If input is incomplete:
+
+options.unknownHandling is applied:
+
+drop: object or relation is ignored and a fact is written to the ledger
+
+keep-as-unknown: object remains, but states and logic must be strictly defined (not recommended in MVP)
+
+Explicit prohibitions (non-negotiable)
+
+The simulation and its result MUST NOT:
+
+issue recommendations, priorities, or action plans
+
+compute maturity scores or target KPIs
+
+provide portfolio optimization
+
+propose org structure changes, hiring, or budgeting
+
+export reports (PDF or PPT) as part of the engine contract
+
+Only the following is allowed:
+
+recording structure
+
+recording thresholds
+
+recording STOP or LOCK
+
+recording a factual ledger
+
+Relation to fixtures (MVP)
+
+In the repository, fixtures are normative examples:
+
+fixtures/simulationinput.sample.json — SimulationInput example (uses graphRef in MVP)
+
+fixtures/simulationresult.sample.json — SimulationResult example
+
+fixtures/canonicalgraph.sample.json — CanonicalGraph example
+
+Any change to the contract shape requires synchronized updates of the fixtures.

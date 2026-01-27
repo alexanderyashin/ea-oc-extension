@@ -1,226 +1,254 @@
----
-title: "B. Ingestion — SAP LeanIX (MVP)"
-purpose: "Определить MVP-адаптер LeanIX → CanonicalGraph и контракт RawSnapshot"
-audience: ["Connector dev", "Core dev"]
-language: "RU"
-evidence_profile: "Doc-driven mapping (LeanIX concepts → CanonicalGraph)"
-role: "LeanIX ingestion spec"
-status: "ACTIVE"
----
+TITLE: B. Ingestion — SAP LeanIX (MVP)
+PURPOSE: Define the MVP adapter LeanIX to CanonicalGraph and the RawSnapshot contract
+AUDIENCE: Connector dev, Core dev
+LANGUAGE: EN
+EVIDENCE_PROFILE: Doc-driven mapping (LeanIX concepts to CanonicalGraph)
+ROLE: LeanIX ingestion spec
+STATUS: ACTIVE
 
-# B. Ingestion — SAP LeanIX (MVP)
+B. Ingestion — SAP LeanIX (MVP)
 
-## 0) Граница и смысл ingestion (MVP)
+Boundary and purpose of ingestion (MVP)
 
-Ingestion делает только:
-- извлечение фактов из источника,
-- нормализацию в **RawSnapshot**,
-- преобразование RawSnapshot → **CanonicalGraph** (см. A),
-- запись ошибок в `errors[]` (без “умных” выводов).
+Ingestion performs only:
 
-Ingestion **не делает**:
-- никаких рекомендаций / интерпретаций / BI,
-- никаких write-back операций в LeanIX (update/patch/import) в MVP,
-- никаких UI-полей и представлений,
-- никаких “обогащений” из внешних справочников.
+extraction of facts from the source,
 
----
+normalization into RawSnapshot,
 
-## 1) Контракт RawSnapshot (до нормализации)
+transformation RawSnapshot to CanonicalGraph (see A),
 
-RawSnapshot — артефакт воспроизводимости: “что именно было увидено в LeanIX”.
-Он должен быть достаточен, чтобы повторно построить тот же CanonicalGraph при той же версии коннектора.
+recording of errors into errors[] (without any smart conclusions).
 
-### 1.1 Структура
+Ingestion does NOT perform:
 
-```json
-{
-  "meta": {
-    "sourceSystem": "leanix",
-    "workspace": "string",
-    "capturedAt": "ISO8601",
-    "connectorVersion": "semver",
-    "queries": ["string", "..."]
-  },
-  "factsheets": [ { /* minimal fields */ } ],
-  "relations":  [ { /* minimal fields */ } ],
-  "errors":     [ { "code": "string", "message": "string", "refs": ["string"] } ],
-  "rawHash": "sha256:..."
-}
+recommendations, interpretations, or BI of any kind,
+
+write-back operations to LeanIX (update, patch, import) in MVP,
+
+any UI fields or representations,
+
+any enrichments from external reference data.
+
+RawSnapshot contract (pre-normalization)
+
+RawSnapshot is a reproducibility artifact: what exactly was observed in LeanIX.
+It MUST be sufficient to reconstruct the same CanonicalGraph with the same connector version.
+
+1.1 Structure
+
+RawSnapshot consists of:
+
+meta
+
+sourceSystem: leanix
+
+workspace: string
+
+capturedAt: ISO8601
+
+connectorVersion: semver
+
+queries: list of strings
+
+factsheets: list of objects with minimal fields
+
+relations: list of objects with minimal fields
+
+errors: list of objects with code, message, refs
+
+rawHash: sha256 hash
+
 1.2 Minimal fields (MVP)
-factsheets[] (минимум):
 
-id (externalId в LeanIX)
+factsheets minimal fields:
 
-type (например "Application", "Interface")
+id (externalId in LeanIX)
 
-name (может отсутствовать — см. политику unknown)
+type (for example Application or Interface)
 
-relations[] (минимум):
+name (may be missing, see unknown policy)
 
-id (externalId relation)
+relations minimal fields:
 
-type (строка — исходный тип связи)
+id (externalId of relation)
+
+type (string, original relation type)
 
 from (factsheet id)
 
 to (factsheet id)
 
-1.3 rawHash (MVP правило)
-rawHash — хэш канонически сериализованного RawSnapshot после:
+1.3 rawHash (MVP rule)
 
-удаления явно нестабильных полей (если источник их добавляет),
+rawHash is the hash of canonically serialized RawSnapshot after:
 
-сортировки массивов factsheets и relations по стабильному ключу (id),
+removal of explicitly unstable fields (if provided by the source),
 
-стабильной JSON-сериализации (ключи объектов по лексикографическому порядку).
+sorting of factsheets and relations arrays by a stable key (id),
 
-rawHash — для трассировки “это тот же вход”.
-Детерминизм CanonicalGraph отдельно фиксируется contentHash (см. A/D).
+stable JSON serialization with lexicographic object key ordering.
 
-2) Маппинг RawSnapshot → CanonicalGraph
-2.1 Fact Sheet → Node
-Application Fact Sheet → Node(kind="application")
-id:
+rawHash is used for tracing that this is the same input.
+Determinism of CanonicalGraph is separately fixed by contentHash (see A and D).
 
+Mapping RawSnapshot to CanonicalGraph
+
+2.1 FactSheet to Node
+
+Application FactSheet maps to Node with kind application.
+
+id format:
 application:leanix:<workspace>:<factSheetId>
 
-kind: "application"
+kind: application
 
 attrs (MVP):
 
-name: из factsheet.name (если отсутствует → <unknown>, см. 3.3)
+name from factsheet.name (if missing, set to <unknown>, see section 3.3)
 
-externalId: factsheet.id
+externalId from factsheet.id
 
-остальные поля (lifecycle/criticality/owner/tags) — только если явно присутствуют в raw фактах (как факты, без вычислений)
+other fields such as lifecycle, criticality, owner, tags are included ONLY if explicitly present in raw facts, without computation
 
 provenance:
 
-sourceSystem: "leanix"
+sourceSystem: leanix
 
-sourceObjectType: "FactSheet"
+sourceObjectType: FactSheet
 
-sourceObjectId: <factSheetId>
+sourceObjectId: factSheetId
 
-ingestedAt: = meta.capturedAt
+ingestedAt: meta.capturedAt
 
-connectorVersion: = meta.connectorVersion
+connectorVersion: meta.connectorVersion
 
-Interface Fact Sheet → Node(kind="interface")
-id:
+Interface FactSheet maps to Node with kind interface.
 
+id format:
 interface:leanix:<workspace>:<factSheetId>
 
-kind: "interface"
+kind: interface
 
 attrs (MVP):
 
-name (или <unknown>)
+name (or <unknown>)
 
 externalId
 
-category / protocol — только если реально присутствуют в raw фактах (иначе не выдумывать)
+category and protocol ONLY if explicitly present in raw facts, otherwise omitted
 
-provenance: как выше (FactSheet)
+provenance: same as above (FactSheet)
 
-В MVP мы не делаем meta-model introspection. Если типы/категории не доступны напрямую — они просто отсутствуют.
+In MVP, no meta-model introspection is performed.
+If types or categories are not directly available, they are simply absent.
 
-2.2 Relation → Edge
-Общая форма Edge
-id:
+2.2 Relation to Edge
 
+General Edge form:
+
+id format:
 edge:<kind>:leanix:<workspace>:<relationId>
 
-kind: выбирается по правилам ниже
+kind: selected by the rules below
 
-source, target: mapped node ids
+source and target: mapped node ids
 
 attrs (MVP):
 
-relationType: raw relation.type
+relationType from raw relation.type
 
-externalId: raw relation.id
+externalId from raw relation.id
 
-иные поля — только если это факты из источника (например strength), без вычислений
+other fields ONLY if they are direct facts from the source (for example strength), without computation
 
 provenance:
 
-sourceSystem: "leanix"
+sourceSystem: leanix
 
-sourceObjectType: "Relation"
+sourceObjectType: Relation
 
-sourceObjectId: <relationId>
+sourceObjectId: relationId
 
-ingestedAt: = meta.capturedAt
+ingestedAt: meta.capturedAt
 
-connectorVersion: = meta.connectorVersion
+connectorVersion: meta.connectorVersion
 
-Правила выбора kind (MVP)
-Мы не интерпретируем семантику глубже MVP. Используем только типы узлов (Application/Interface) и raw relation.type.
+Rules for selecting kind (MVP)
 
-Application → Application
-Если оба конца — Application, то:
+No deep semantic interpretation is performed beyond MVP.
+Only node types (Application or Interface) and raw relation.type are used.
 
-kind = "depends_on"
+Application to Application:
 
-Application → Interface
-Если from — Application, to — Interface, то:
+if both endpoints are Application, then kind equals depends_on
 
-kind = "exposes_interface" или "consumes_interface" — только если raw relation.type однозначно различим по заранее заданному списку (см. 2.3).
+Application to Interface:
 
-Иначе (любая неоднозначность):
+if from is Application and to is Interface, then kind is exposes_interface or consumes_interface ONLY if raw relation.type is unambiguously distinguishable via a predefined list (see section 2.3)
 
-связь не включается в CanonicalGraph (MVP),
+Otherwise, in case of any ambiguity:
 
-но фиксируется в errors[] RawSnapshot как code="RELATION_DROPPED".
+the relation is NOT included in CanonicalGraph (MVP),
 
-2.3 Таблица соответствия relation.type → kind (MVP)
-Чтобы избежать “магии”, коннектор обязан иметь явную конфигурацию маппинга (в коде или конфиге), например:
+but is recorded in RawSnapshot errors[] with code RELATION_DROPPED.
 
-dependsTypes = ["depends", "requires", ...]
+2.3 Mapping table relation.type to kind (MVP)
 
-exposesTypes = ["exposes", "provides", ...]
+To avoid magic, the connector MUST have an explicit mapping configuration (in code or config), for example:
 
-consumesTypes = ["consumes", "uses", ...]
+dependsTypes equals list of depends, requires, etc.
 
-Если relation.type не попадает ни в один список:
+exposesTypes equals list of exposes, provides, etc.
 
-правило 3) — drop + ошибка.
+consumesTypes equals list of consumes, uses, etc.
 
-В демо-фикстурах используется:
+If relation.type does not belong to any list:
 
-depends → depends_on
+rule applies: drop plus error.
 
-exposes → exposes_interface
+In demo fixtures the following mappings are used:
 
-consumes → consumes_interface
+depends maps to depends_on
 
-3) Детерминизм и нормализация (обязательные правила)
-3.1 Стабильные ID
-ID нельзя генерировать счётчиками/рандомом.
-В MVP: <kind>:leanix:<workspace>:<externalId> — единственный допустимый путь.
+exposes maps to exposes_interface
 
-3.2 Сортировка
-Перед вычислением contentHash CanonicalGraph:
+consumes maps to consumes_interface
 
-nodes сортируются по id
+Determinism and normalization (mandatory rules)
 
-edges сортируются по (source, target, kind, id)
+3.1 Stable IDs
 
-(см. D. Determinism)
+IDs MUST NOT be generated using counters or randomness.
+In MVP, <kind>:leanix:<workspace>:<externalId> is the only allowed approach.
 
-3.3 unknown/missing политика (MVP)
-отсутствует factsheet.id → объект отбрасывается + errors[] (code="FACTSHEET_DROPPED_NO_ID")
+3.2 Sorting
 
-есть id, но отсутствует/пустой name → name = "<unknown>" + errors[] (code="FACTSHEET_UNKNOWN_NAME")
+Before computing CanonicalGraph contentHash:
 
-relation без id или без from/to → relation отбрасывается + errors[] (code="RELATION_DROPPED_MISSING_FIELDS")
+nodes are sorted by id
 
-relation с концами, которые не найдены в factsheets → relation отбрасывается + errors[] (code="RELATION_DROPPED_UNKNOWN_ENDPOINT")
+edges are sorted by source, target, kind, id
 
-4) Fixtures (демо-артефакты)
-MVP должен быть способен воспроизвести следующие фикстуры:
+See D. Determinism.
+
+3.3 unknown or missing policy (MVP)
+
+missing factsheet.id
+object is dropped and recorded in errors[] with code FACTSHEET_DROPPED_NO_ID
+
+id present but name missing or empty
+name is set to <unknown> and recorded in errors[] with code FACTSHEET_UNKNOWN_NAME
+
+relation missing id or from or to
+relation is dropped and recorded in errors[] with code RELATION_DROPPED_MISSING_FIELDS
+
+relation endpoints not found in factsheets
+relation is dropped and recorded in errors[] with code RELATION_DROPPED_UNKNOWN_ENDPOINT
+
+Fixtures (demo artifacts)
+
+MVP MUST be able to reproduce the following fixtures:
 
 docs/architect-tool/backend/fixtures/rawsnapshot.leanix.sample.json
 
@@ -228,16 +256,16 @@ docs/architect-tool/backend/fixtures/canonicalgraph.sample.json
 
 docs/architect-tool/backend/fixtures/simulationresult.sample.json
 
-5) Точки расширения (вне MVP)
-Возможные расширения (не реализуются в MVP, но допускаются архитектурно):
+Extension points (outside MVP)
 
-meta-model introspection (типы/подтипы/кастомные relation types),
+Possible extensions (not implemented in MVP, but architecturally allowed):
 
-расширенная онтология (capability/process/org),
+meta-model introspection (types, subtypes, custom relation types),
 
-import/export processors и write-back,
+extended ontology (capability, process, org),
 
-политика прав/ролей/групп,
+import and export processors and write-back,
 
-частичные снапшоты и диффы.
+access control and roles,
 
+partial snapshots and diffs.

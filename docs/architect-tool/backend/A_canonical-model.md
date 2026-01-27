@@ -1,89 +1,128 @@
----
 title: "A. Canonical Model"
-purpose: "Определить каноническую headless модель системы для ingestion → simulation"
+purpose: "Define a canonical headless model of the system for ingestion → simulation"
 audience: ["Core dev", "Connector dev", "Simulation dev"]
-language: "RU"
+language: "EN"
 evidence_profile: "Design-spec (schema + invariants)"
 role: "Canonical data model spec"
 status: "ACTIVE"
----
 
-# A. Каноническая модель (Canonical Graph)
+A. Canonical Model (Canonical Graph)
 
-## 0) Назначение модели
+0) Model purpose
 
-Каноническая модель отделяет:
-- **внешние источники данных** (LeanIX и др.), которые могут быть нестабильны,
-- от **внутреннего детерминированного ядра** (CanonicalGraph),
-  являющегося единственным контрактом для симуляции.
+The canonical model separates:
 
-Модель обязана быть:
-- **детерминированной** (см. D_determinism.md)
-- **headless** (никаких UI-полей)
-- **расширяемой без поломки MVP**
-- **без BI / рекомендаций / оптимизаций**
+external data sources (LeanIX, etc.), which may be unstable,
 
----
+from the internal deterministic core (CanonicalGraph),
+which serves as the single contract for simulation.
 
-## 1) Базовый концепт
+The model MUST be:
 
-Система представляется как **ориентированный мультиграф**:
+deterministic (see D_determinism.md),
 
-- `Node` — сущность
-- `Edge` — направленное отношение
+headless (no UI-related fields),
 
-### 1.1 Общие поля
+extensible without breaking the MVP,
 
-Каждый `Node` и `Edge` **обязан** содержать:
+free of BI / recommendations / optimizations.
 
-- `id` — стабильный строковый идентификатор
-- `kind` — тип сущности/отношения
-- `attrs` — JSON-совместимый словарь атрибутов
-- `provenance` — происхождение данных
+1) Basic concept
 
----
+The system is represented as a directed multigraph:
 
-## 2) Структура CanonicalGraph
+Node — an entity,
 
-```text
+Edge — a directed relationship.
+
+1.1 Common fields
+
+Each Node and Edge MUST contain:
+
+id — a stable string identifier,
+
+kind — the type of entity / relationship,
+
+attrs — a JSON-compatible attribute map,
+
+provenance — data origin information.
+
+2) CanonicalGraph structure
+
 CanonicalGraph
 ├─ meta
-│  ├─ schemaVersion
-│  ├─ sourceSystem
-│  ├─ snapshotId
-│  ├─ capturedAt
-│  └─ determinism
+│ ├─ schemaVersion
+│ ├─ sourceSystem
+│ ├─ snapshotId
+│ ├─ capturedAt
+│ └─ determinism
 ├─ nodes[]
 └─ edges[]
-2.1 meta
-schemaVersion — версия схемы (например CG-0.1)
 
-sourceSystem — основной источник снапшота
+2.1 meta (mandatory)
 
-snapshotId — идентификатор снапшота
+schemaVersion — schema version (e.g. CG-0.1)
+
+sourceSystem — primary source of the snapshot
+
+snapshotId — snapshot identifier
 
 capturedAt — ISO8601 timestamp
 
-determinism
+determinism:
 
-sortOrder
+sortOrder — textual description of canonical sorting
 
-hashAlgo
+hashAlgo — sha256
 
-contentHash
+contentHash — sha256(canonicalJson)
 
-3) MVP-онтология узлов
-3.1 Допустимые Node.kind (MVP)
-1) application
-Смысл: прикладная система или сервис.
+The source of truth for sorting, serialization, and hashing is D_determinism.md.
+Any deviation is considered a contract violation.
 
-Обязательные attrs:
+3) Canonical serialization and contentHash
+
+3.1 canonicalJson
+
+canonicalJson is a JSON string produced strictly according to the rules defined in D_determinism.md:
+
+deterministic sorting of nodes[] and edges[],
+
+lexicographic ordering of keys,
+
+single-line serialization (compressed JSON),
+
+UTF-8 encoding.
+
+No other forms of serialization are considered canonical.
+
+3.2 contentHash
+
+contentHash = sha256(canonicalJson)
+
+Requirements:
+
+contentHash is mandatory,
+
+used for auditability and reproducibility,
+
+used as a content identifier when passed into simulation,
+
+MUST match recomputation using the procedure defined in D_determinism.md.
+
+4) MVP node ontology (Node.kind)
+
+4.1 application
+
+Meaning: an application system or service.
+
+Mandatory attrs:
 
 name (string)
 
 externalId (string)
 
-Допустимые attrs (optional):
+Allowed attrs (optional):
 
 lifecycle
 
@@ -93,82 +132,92 @@ owner
 
 tags
 
-2) interface
-Смысл: контракт взаимодействия (API / интеграционный объект).
+4.2 interface
 
-Обязательные attrs:
+Meaning: an interaction contract (API / integration object).
+
+Mandatory attrs:
 
 name
 
 externalId
 
-Допустимые attrs:
+Allowed attrs:
 
 category
 
 protocol
 
-3) system (допустим, но не обязателен в MVP)
-Нейтральный контейнер, если источник его предоставляет.
+4.3 system (optional)
 
-Обязательные attrs:
+A neutral container, if provided by the source.
+
+Mandatory attrs:
 
 name
 
 externalId
 
-❗ В MVP запрещены другие Node.kind
-(capability, process, orgUnit и т.д.).
+❗ In MVP, other Node.kind values (capability, process, orgUnit, etc.) are forbidden.
 
-4) MVP-онтология рёбер
-4.1 Допустимые Edge.kind (MVP)
-1) depends_on
+5) MVP edge ontology (Edge.kind)
+
+5.1 Allowed Edge.kind values (MVP)
+
+depends_on  
 application → application
 
-2) exposes_interface
+exposes_interface  
 application → interface
 
-3) consumes_interface
+consumes_interface  
 application → interface
 
-4) connects_to (опционально)
+connects_to (optional)  
 interface → interface
 
-4.2 Атрибуты рёбер
-Обязательные attrs:
+5.2 Edge attributes
+
+Mandatory attrs:
 
 externalId
 
-relationType (исходный тип из источника)
+relationType (original type from the source)
 
-Допустимые attrs:
+Allowed attrs:
 
 strength
 
-❗ Направление связи определяется самой дугой.
-Поле direction запрещено.
+The direction of a relationship is defined by the edge itself.
+The field direction is forbidden.
 
-5) Идентичность и ID-стратегия
-5.1 Базовое правило
-id должен быть стабилен относительно источника.
+6) Identity and ID strategy
 
-Рекомендуемый формат:
+6.1 Base rule
+
+The id MUST be stable relative to the source.
+
+Recommended format:
 
 <kind>:<source>:<workspace>:<externalId>
-5.2 Fallback (крайний случай)
-Если externalId отсутствует:
+
+6.2 Fallback (edge case)
+
+If externalId is missing:
 
 <kind>:<source>:<workspace>:hash(<stableKeyFields>)
-stableKeyFields обязаны быть:
 
-перечислены
+stableKeyFields MUST be:
 
-неизменны
+explicitly listed,
 
-документированы
+immutable,
 
-6) Provenance (обязателен)
-Каждый Node и Edge содержит:
+documented.
+
+7) Provenance (mandatory)
+
+Each Node and Edge contains:
 
 sourceSystem
 
@@ -182,56 +231,15 @@ ingestedAt
 
 connectorVersion
 
-7) Контракт до симуляции
-7.1 SimulationInput
-graph — CanonicalGraph или его подграф
+8) Relation to simulation
 
-scenario
+CanonicalGraph:
 
-shockType
+does not contain scenarios,
 
-intensity
+does not contain states,
 
-targetSelector
+does not contain logic.
 
-seed
-
-options
-
-strictDeterminism (default true)
-
-unknownHandling (drop | keep-as-unknown)
-
-7.2 SimulationResult
-stop (bool)
-
-nodeStates (map)
-
-edgeStates (optional)
-
-ledger[]
-
-resultHash
-
-8) Явные запреты
-KPI / maturity / recommendations
-
-BI-метрики
-
-UI-поля (layout, coords, colors)
-
-runtime-счётчики
-
-нефиксированные timestamps в attrs
-
-9) Версионирование
-CG-0.1 — MVP
-
-расширения:
-
-backward-compatible → minor
-
-breaking → major + миграция
-
-Схема — это контракт.
-Контракт важнее удобства.
+It is used exclusively by reference from SimulationInput.graphRef
+(see E_simulation-contract.md).

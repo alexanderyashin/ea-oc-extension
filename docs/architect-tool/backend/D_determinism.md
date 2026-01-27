@@ -1,117 +1,119 @@
-﻿---
-title: "D. Determinism"
-purpose: "Формальные правила: каноническая сортировка/сериализация/хэширование"
-audience: ["Core dev", "Connector dev", "Audit"]
-language: "RU"
-evidence_profile: "Design-spec (deterministic rules)"
-role: "Determinism contract"
-status: "ACTIVE"
----
+﻿TITLE: D. Determinism
+PURPOSE: Formal rules: canonical sorting / serialization / hashing
+AUDIENCE: Core dev, Connector dev, Audit
+LANGUAGE: EN
+EVIDENCE_PROFILE: Design-spec (deterministic rules)
+ROLE: Determinism contract
+STATUS: ACTIVE
 
-# D. Детерминизм (backend contract)
+D. Determinism (backend contract)
 
-## 1) Принцип
-Одинаковый входной снимок (RawSnapshot) при одинаковой версии адаптера/нормализатора/engine
-должен давать **бит-в-бит одинаковый** CanonicalGraph, SimulationResult и одинаковые хэши.
+Principle
 
-## 2) Канонический порядок (нормализация)
+The same input snapshot (RawSnapshot), given the same adapter, normalizer, and engine version,
+MUST produce bit-for-bit identical CanonicalGraph, SimulationResult, and identical hashes.
 
-### 2.1 Nodes
-Сортировать `nodes[]` по:
-1) `id` (лексикографически, Unicode code point order)
-2) если равны — **запрещено** (ID обязан быть уникальным)
+Canonical order (normalization)
 
-### 2.2 Edges
-Сортировать `edges[]` по tuple:
-1) `source`
-2) `target`
-3) `kind`
-4) `id`
+2.1 Nodes
 
-Если `id` равны — **запрещено** (ID ребра обязан быть уникальным).
+Sort nodes[] by:
 
-## 3) Каноническая сериализация JSON (canonicalJson)
+id (lexicographically, Unicode code point order)
 
-### 3.1 Что такое canonicalJson
-`canonicalJson` — это **строка JSON**, полученная после:
-1) `ConvertFrom-Json` (парсинг в объект),
-2) `ConvertTo-Json -Depth 100 -Compress` (обратная сериализация в одну строку).
+if equal — FORBIDDEN (IDs MUST be unique)
 
-Это нормативная процедура для MVP, так как именно она используется для вычисления эталонных fixture-хэшей.
+2.2 Edges
 
-### 3.2 Требования к сериализации
-- порядок ключей: **лексикографический** (как отдаёт `ConvertTo-Json`; для MVP это считается источником истины)
-- даты: только ISO8601 строкой (`YYYY-MM-DDTHH:mm:ssZ`)
-- запрещены поля, зависящие от времени выполнения (случайные id, UI coords, now-тimestamps и т.п.)
-- числа: реализация должна обеспечивать **стабильную строковую форму** при сериализации (если влияет на hashing)
+Sort edges[] by the tuple:
 
-### 3.3 Запрет на “pretty JSON”
-`canonicalJson` в MVP **всегда** считается на `-Compress` (одна строка).
-Любые форматированные/pretty варианты JSON не являются canonical и не должны хэшироваться.
+source
 
-## 4) Хэширование (sha256)
+target
 
-### 4.1 Алгоритм
-- `hashAlgo = sha256`
-- кодировка строки перед хэшированием: **UTF-8**
+kind
 
-### 4.2 Формулы
-- `contentHash = sha256(canonicalGraphJson)`
-- `resultHash  = sha256(canonicalResultJson)`
+id
 
-Где:
-- `canonicalGraphJson` = canonicalJson для CanonicalGraph
-- `canonicalResultJson` = canonicalJson для SimulationResult
+If id values are equal — FORBIDDEN (edge IDs MUST be unique).
 
-### 4.3 Нормативный PowerShell-референс (MVP)
-CanonicalGraph:
+Canonical JSON serialization (canonicalJson)
 
-```powershell
-$canonical = Get-Content docs/architect-tool/backend/fixtures/canonicalgraph.sample.json -Raw |
-  ConvertFrom-Json |
-  ConvertTo-Json -Depth 100 -Compress
+3.1 Definition of canonicalJson
 
-$hash = [System.BitConverter]::ToString(
-  [System.Security.Cryptography.SHA256]::Create().ComputeHash(
-    [System.Text.Encoding]::UTF8.GetBytes($canonical)
-  )
-).Replace("-", "").ToLower()
+canonicalJson is a JSON string obtained by:
 
-"sha256:$hash"
+parsing the JSON into an object
 
-SimulationResult:
+serializing it back into a single-line JSON string using compressed mode
 
-$resultCanonical = Get-Content docs/architect-tool/backend/fixtures/simulationresult.sample.json -Raw |
-  ConvertFrom-Json |
-  ConvertTo-Json -Depth 100 -Compress
+This is the normative MVP procedure, because this exact process is used to compute reference fixture hashes.
 
-$rh = [System.BitConverter]::ToString(
-  [System.Security.Cryptography.SHA256]::Create().ComputeHash(
-    [System.Text.Encoding]::UTF8.GetBytes($resultCanonical)
-  )
-).Replace("-", "").ToLower()
+3.2 Serialization requirements
 
-"sha256:$rh"
+key order: lexicographic (as produced by the serializer; for MVP this is the source of truth)
 
+dates: ISO8601 strings only (YYYY-MM-DDTHH:mm:ssZ)
 
-Примечание: это не “пример”, а нормативный эталон для MVP (fixtures обязаны совпадать).
+runtime-dependent fields are forbidden (random IDs, UI coordinates, now-timestamps, etc.)
 
-5) Нормализация unknown/missing
+numbers: the implementation MUST ensure a stable string representation if it affects hashing
 
-отсутствует внешний ID у объекта источника → объект отбрасывается + запись в errors[] (RawSnapshot) и/или ledger[] (SimulationResult)
+3.3 Prohibition of pretty JSON
 
-отсутствует name при наличии внешнего ID → name = "<unknown>" + запись в errors[]/ledger[]
+In MVP, canonicalJson is ALWAYS computed in compressed, single-line form.
+Any formatted or pretty JSON variants are not canonical and MUST NOT be hashed.
 
-6) Запреты (non-negotiable)
+Hashing (sha256)
 
-нельзя использовать счётчики/рандом в рантайме для генерации ID
+4.1 Algorithm
 
-нельзя включать нестабильные поля в attrs (например timestamp "now")
+hash algorithm: sha256
 
-нельзя менять правила сортировки/сериализации без:
+string encoding before hashing: UTF-8
 
-обновления этого документа,
+4.2 Formulas
 
-пересчёта fixture-хэшей,
+contentHash = sha256(canonicalGraphJson)
 
-фиксации изменения версией схемы/контракта (в соответствующих документах A/E).
+resultHash = sha256(canonicalResultJson)
+
+Where:
+
+canonicalGraphJson is canonicalJson for CanonicalGraph
+
+canonicalResultJson is canonicalJson for SimulationResult
+
+4.3 Normative PowerShell reference (MVP)
+
+There exists a normative PowerShell procedure used to compute canonical hashes for:
+
+CanonicalGraph
+
+SimulationResult
+
+This procedure is NOT an example.
+It is the normative reference for MVP, and fixture hashes MUST match exactly.
+
+Normalization of unknown or missing values
+
+missing external ID in a source object
+→ object is dropped and a record is written to errors[] (RawSnapshot) and or ledger[] (SimulationResult)
+
+missing name while an external ID is present
+→ name is set to "<unknown>" and a record is written to errors[] or ledger[]
+
+Prohibitions (non-negotiable)
+
+runtime counters or randomness MUST NOT be used to generate IDs
+
+unstable fields MUST NOT be included in attrs (for example timestamp "now")
+
+sorting or serialization rules MUST NOT be changed without:
+
+updating this document
+
+recomputing fixture hashes
+
+recording the change via a schema or contract version bump
+in the corresponding documents A and E
