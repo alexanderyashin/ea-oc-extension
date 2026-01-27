@@ -1,0 +1,31 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://estra.local/schema/SIMIN-0.1/SimulationInput.json",
+  "title": "SimulationInput (SIMIN-0.1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["graph", "scenario", "options"],
+  "properties": {
+    "graph": { "$ref": "./CanonicalGraph.CG-0.1.schema.json" },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shockType", "intensity", "targetSelector", "seed"],
+      "properties": {
+        "shockType": { "type": "string", "minLength": 1 },
+        "intensity": { "oneOf": [{ "type": "number" }, { "type": "string" }] },
+        "targetSelector": { "type": "string", "enum": ["all", "selected"] },
+        "seed": { "oneOf": [{ "type": "string" }, { "type": "number" }] }
+      }
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strictDeterminism", "unknownHandling"],
+      "properties": {
+        "strictDeterminism": { "type": "boolean" },
+        "unknownHandling": { "type": "string", "enum": ["drop", "keep-as-unknown"] }
+      }
+    }
+  }
+}

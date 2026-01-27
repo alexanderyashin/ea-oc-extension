@@ -1,0 +1,17 @@
+﻿{
+  "stop": false,
+  "nodeStates": {
+    "application:leanix:demo:fs_app_1": "OK",
+    "application:leanix:demo:fs_app_2": "WARN",
+    "interface:leanix:demo:fs_if_1": "OK"
+  },
+  "ledger": [
+    {
+      "ts": "2026-01-27T12:00:01Z",
+      "code": "SIM_START",
+      "message": "Simulation started",
+      "refs": ["demo-seed-1"]
+    }
+  ],
+  "resultHash": "sha256:PLACEHOLDER"
+}

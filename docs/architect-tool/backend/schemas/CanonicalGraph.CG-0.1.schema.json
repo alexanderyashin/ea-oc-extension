@@ -1,0 +1,92 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://estra.local/schema/CG-0.1/CanonicalGraph.json",
+  "title": "CanonicalGraph (CG-0.1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "nodes", "edges"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "sourceSystem", "snapshotId", "capturedAt", "determinism"],
+      "properties": {
+        "schemaVersion": { "type": "string", "const": "CG-0.1" },
+        "sourceSystem": { "type": "string", "minLength": 1 },
+        "snapshotId": { "type": "string", "minLength": 1 },
+        "capturedAt": { "type": "string", "format": "date-time" },
+        "determinism": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sortOrder", "hashAlgo", "contentHash"],
+          "properties": {
+            "sortOrder": { "type": "string", "minLength": 1 },
+            "hashAlgo": { "type": "string", "enum": ["sha256"] },
+            "contentHash": { "type": "string", "minLength": 16 }
+          }
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Edge" }
+    }
+  },
+  "$defs": {
+    "JsonValue": {
+      "anyOf": [
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "integer" },
+        { "type": "boolean" },
+        { "type": "null" },
+        { "type": "array", "items": { "$ref": "#/$defs/JsonValue" } },
+        { "type": "object", "additionalProperties": { "$ref": "#/$defs/JsonValue" } }
+      ]
+    },
+    "Provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceSystem", "sourceObjectType", "sourceObjectId", "ingestedAt", "connectorVersion"],
+      "properties": {
+        "sourceSystem": { "type": "string", "minLength": 1 },
+        "sourceObjectType": { "type": "string", "minLength": 1 },
+        "sourceObjectId": { "type": "string", "minLength": 1 },
+        "sourcePath": { "type": "string" },
+        "ingestedAt": { "type": "string", "format": "date-time" },
+        "connectorVersion": { "type": "string", "minLength": 1 }
+      }
+    },
+    "Node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "attrs", "provenance"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["application", "interface", "system"] },
+        "attrs": { "type": "object", "additionalProperties": { "$ref": "#/$defs/JsonValue" } },
+        "provenance": { "$ref": "#/$defs/Provenance" }
+      }
+    },
+    "Edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "source", "target", "attrs", "provenance"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": {
+          "type": "string",
+          "enum": ["depends_on", "exposes_interface", "consumes_interface", "connects_to"]
+        },
+        "source": { "type": "string", "minLength": 1 },
+        "target": { "type": "string", "minLength": 1 },
+        "attrs": { "type": "object", "additionalProperties": { "$ref": "#/$defs/JsonValue" } },
+        "provenance": { "$ref": "#/$defs/Provenance" }
+      }
+    }
+  }
+}

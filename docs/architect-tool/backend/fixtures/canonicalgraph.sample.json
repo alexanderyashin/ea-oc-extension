@@ -1,0 +1,95 @@
+﻿{
+  "meta": {
+    "schemaVersion": "CG-0.1",
+    "sourceSystem": "leanix",
+    "snapshotId": "demo:2026-01-27T12:00:00Z",
+    "capturedAt": "2026-01-27T12:00:00Z",
+    "determinism": {
+      "sortOrder": "nodes by id; edges by (source,target,kind,id)",
+      "hashAlgo": "sha256",
+      "contentHash": "sha256:PLACEHOLDER"
+    }
+  },
+  "nodes": [
+    {
+      "id": "application:leanix:demo:fs_app_1",
+      "kind": "application",
+      "attrs": { "name": "SAP S/4HANA", "externalId": "fs_app_1" },
+      "provenance": {
+        "sourceSystem": "leanix",
+        "sourceObjectType": "FactSheet",
+        "sourceObjectId": "fs_app_1",
+        "ingestedAt": "2026-01-27T12:00:00Z",
+        "connectorVersion": "0.1.0"
+      }
+    },
+    {
+      "id": "application:leanix:demo:fs_app_2",
+      "kind": "application",
+      "attrs": { "name": "MDG", "externalId": "fs_app_2" },
+      "provenance": {
+        "sourceSystem": "leanix",
+        "sourceObjectType": "FactSheet",
+        "sourceObjectId": "fs_app_2",
+        "ingestedAt": "2026-01-27T12:00:00Z",
+        "connectorVersion": "0.1.0"
+      }
+    },
+    {
+      "id": "interface:leanix:demo:fs_if_1",
+      "kind": "interface",
+      "attrs": { "name": "OData API", "externalId": "fs_if_1" },
+      "provenance": {
+        "sourceSystem": "leanix",
+        "sourceObjectType": "FactSheet",
+        "sourceObjectId": "fs_if_1",
+        "ingestedAt": "2026-01-27T12:00:00Z",
+        "connectorVersion": "0.1.0"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:depends_on:leanix:demo:rel_1",
+      "kind": "depends_on",
+      "source": "application:leanix:demo:fs_app_2",
+      "target": "application:leanix:demo:fs_app_1",
+      "attrs": { "relationType": "depends", "externalId": "rel_1" },
+      "provenance": {
+        "sourceSystem": "leanix",
+        "sourceObjectType": "Relation",
+        "sourceObjectId": "rel_1",
+        "ingestedAt": "2026-01-27T12:00:00Z",
+        "connectorVersion": "0.1.0"
+      }
+    },
+    {
+      "id": "edge:exposes_interface:leanix:demo:rel_2",
+      "kind": "exposes_interface",
+      "source": "application:leanix:demo:fs_app_1",
+      "target": "interface:leanix:demo:fs_if_1",
+      "attrs": { "relationType": "exposes", "externalId": "rel_2" },
+      "provenance": {
+        "sourceSystem": "leanix",
+        "sourceObjectType": "Relation",
+        "sourceObjectId": "rel_2",
+        "ingestedAt": "2026-01-27T12:00:00Z",
+        "connectorVersion": "0.1.0"
+      }
+    },
+    {
+      "id": "edge:consumes_interface:leanix:demo:rel_3",
+      "kind": "consumes_interface",
+      "source": "application:leanix:demo:fs_app_2",
+      "target": "interface:leanix:demo:fs_if_1",
+      "attrs": { "relationType": "consumes", "externalId": "rel_3" },
+      "provenance": {
+        "sourceSystem": "leanix",
+        "sourceObjectType": "Relation",
+        "sourceObjectId": "rel_3",
+        "ingestedAt": "2026-01-27T12:00:00Z",
+        "connectorVersion": "0.1.0"
+      }
+    }
+  ]
+}

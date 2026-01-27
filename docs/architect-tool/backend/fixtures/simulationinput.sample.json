@@ -1,0 +1,13 @@
+﻿{
+  "graph": { "$ref": "./canonicalgraph.sample.json" },
+  "scenario": {
+    "shockType": "DEMO_SHOCK",
+    "intensity": 0.3,
+    "targetSelector": "all",
+    "seed": "demo-seed-1"
+  },
+  "options": {
+    "strictDeterminism": true,
+    "unknownHandling": "drop"
+  }
+}
