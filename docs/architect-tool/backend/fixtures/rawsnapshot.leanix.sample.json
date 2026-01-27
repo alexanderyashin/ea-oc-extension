@@ -4,7 +4,11 @@
     "workspace": "demo",
     "capturedAt": "2026-01-27T12:00:00Z",
     "connectorVersion": "0.1.0",
-    "queries": ["factsheets(applications)", "factsheets(interfaces)", "relations(app-int, app-app)"]
+    "queries": [
+      "factsheets(applications)",
+      "factsheets(interfaces)",
+      "relations(app-int, app-app)"
+    ]
   },
   "factsheets": [
     { "id": "fs_app_1", "type": "Application", "name": "SAP S/4HANA" },
@@ -12,9 +16,9 @@
     { "id": "fs_if_1",  "type": "Interface",   "name": "OData API" }
   ],
   "relations": [
-    { "id": "rel_1", "type": "depends", "from": "fs_app_2", "to": "fs_app_1" },
-    { "id": "rel_2", "type": "exposes", "from": "fs_app_1", "to": "fs_if_1" },
-    { "id": "rel_3", "type": "consumes","from": "fs_app_2", "to": "fs_if_1" }
+    { "id": "rel_1", "type": "depends",  "from": "fs_app_2", "to": "fs_app_1" },
+    { "id": "rel_2", "type": "exposes",  "from": "fs_app_1", "to": "fs_if_1" },
+    { "id": "rel_3", "type": "consumes", "from": "fs_app_2", "to": "fs_if_1" }
   ],
   "errors": [],
   "rawHash": "sha256:PLACEHOLDER"
