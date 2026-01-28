@@ -98,9 +98,17 @@ function stateStyle(s: NodeState | undefined): RfNode["style"] | undefined {
   }; // STOP
 }
 
+type BaselineGraph = {
+  nodes: RfNode[];
+  edges: RfEdge[];
+};
+
 export interface GraphState {
   nodes: RfNode[];
   edges: RfEdge[];
+
+  // baseline graph (for reset)
+  baseline: BaselineGraph;
 
   selected: Selected;
 
@@ -139,181 +147,189 @@ export interface GraphState {
   setShockType: (t: ShockType) => void;
   setShockScope: (s: ShockScope) => void;
   setShockIntensity: (i: ShockIntensity) => void;
+
   runShock: () => void;
   resetShock: () => void;
 }
 
-export const useGraphStore = create<GraphState>((set, get) => ({
-  nodes: toRfNodes(),
-  edges: toRfEdges(),
+export const useGraphStore = create<GraphState>((set, get) => {
+  const seedNodes = toRfNodes();
+  const seedEdges = toRfEdges();
 
-  selected: { type: "none" },
+  return {
+    nodes: seedNodes,
+    edges: seedEdges,
+    baseline: { nodes: seedNodes, edges: seedEdges },
 
-  modal: null,
-  paletteKinds: EMAP0_NODE_KINDS,
+    selected: { type: "none" },
 
-  showHints: true,
-  dismissHints: () => set({ showHints: false }),
+    modal: null,
+    paletteKinds: EMAP0_NODE_KINDS,
 
-  simConfig: { shockType: "infra_capacity_drop", scope: "all_systems", intensity: 0.3 },
-  simLocked: false,
-  nodeStates: {},
-  ledger: [],
-  metrics: null,
+    showHints: true,
+    dismissHints: () => set({ showHints: false }),
 
-  onNodesChange: (changes) =>
-    set((s) => ({
-      nodes: applyNodeChanges<RfNode>(changes, s.nodes),
-    })),
+    simConfig: { shockType: "infra_capacity_drop", scope: "all_systems", intensity: 0.3 },
+    simLocked: false,
+    nodeStates: {},
+    ledger: [],
+    metrics: null,
 
-  onEdgesChange: (changes) =>
-    set((s) => ({
-      edges: applyEdgeChanges<RfEdge>(changes, s.edges),
-    })),
-
-  onConnect: (connection) =>
-    set((s) => {
-      const source = connection.source ?? "";
-      const target = connection.target ?? "";
-      if (!source || !target) return s;
-
-      const id = nextId("e");
-      const edge: RfEdge = {
-        id,
-        source,
-        target,
-        label: "connects",
-        data: { kind: "connects", attrs: {} },
-      };
-      return { edges: addEdge(edge, s.edges) };
-    }),
-
-  addNodeFromPalette: (kind) =>
-    set((s) => {
-      const id = nextId("n");
-      const node: RfNode = {
-        id,
-        type: "emap0",
-        position: { x: 120 + Math.random() * 420, y: 120 + Math.random() * 280 },
-        data: {
-          id,
-          kind,
-          attrs: { name: `${kind} ${id}` },
-        },
-        draggable: true,
-      };
-      return { nodes: [...s.nodes, node] };
-    }),
-
-  selectNode: (id) => set({ selected: { type: "node", id } }),
-  selectEdge: (id) => set({ selected: { type: "edge", id } }),
-  clearSelection: () => set({ selected: { type: "none" } }),
-
-  updateSelectedNodeName: (name) => {
-    const sel = get().selected;
-    if (sel.type !== "node") return;
-
-    const trimmed = name.trim();
-    const finalName = trimmed.length ? trimmed : "Unnamed";
-
-    set((s) => ({
-      nodes: s.nodes.map((n) => {
-        if (n.id !== sel.id) return n;
-        return {
-          ...n,
-          data: {
-            ...n.data,
-            attrs: {
-              ...(n.data.attrs ?? {}),
-              name: finalName,
-            },
-          },
-        };
-      }),
-    }));
-  },
-
-  updateNodeName: (id, name) => {
-    const trimmed = name.trim();
-    const finalName = trimmed.length ? trimmed : "Unnamed";
-
-    set((s) => ({
-      nodes: s.nodes.map((n) => {
-        if (n.id !== id) return n;
-        return {
-          ...n,
-          data: {
-            ...n.data,
-            attrs: {
-              ...(n.data.attrs ?? {}),
-              name: finalName,
-            },
-          },
-        };
-      }),
-    }));
-  },
-
-  openModal: (m) => set({ modal: m }),
-  closeModal: () => set({ modal: null }),
-
-  setShockType: (t) => {
-    if (get().simLocked) return;
-    set((s) => ({ simConfig: { ...s.simConfig, shockType: t } }));
-  },
-  setShockScope: (sc) => {
-    if (get().simLocked) return;
-    set((s) => ({ simConfig: { ...s.simConfig, scope: sc } }));
-  },
-  setShockIntensity: (i) => {
-    if (get().simLocked) return;
-    set((s) => ({ simConfig: { ...s.simConfig, intensity: i } }));
-  },
-
-  runShock: () => {
-    if (get().simLocked) return;
-
-    const s = get();
-    const selectedNodeId = s.selected.type === "node" ? s.selected.id : null;
-
-    const res = simulateShock(
-      s.simConfig,
-      s.nodes.map((n) => ({ id: n.id, data: n.data })),
-      s.edges.map((e) => ({ id: e.id, source: e.source, target: e.target })),
-      selectedNodeId
-    );
-
-    // Post-pass metrics (must not affect simulation outcome)
-    const metrics = computeMetrics({
-      cfg: s.simConfig,
-      nodes: s.nodes.map((n) => ({ id: n.id })),
-      edges: s.edges.map((e) => ({ source: e.source, target: e.target })),
-      selectedNodeId,
-      simResult: res,
-    });
-
-    // Attach overlay to result (local) and store it
-    const resWithMetrics = { ...res, metrics };
-
-    set((st) => ({
-      simLocked: resWithMetrics.stop,
-      nodeStates: resWithMetrics.nodeStates,
-      ledger: resWithMetrics.ledger,
-      metrics: resWithMetrics.metrics ?? null,
-      nodes: st.nodes.map((n) => ({
-        ...n,
-        style: stateStyle(resWithMetrics.nodeStates[n.id]),
+    onNodesChange: (changes) =>
+      set((s) => ({
+        nodes: applyNodeChanges<RfNode>(changes, s.nodes),
       })),
-    }));
-  },
 
-  resetShock: () => {
-    set((st) => ({
-      simLocked: false,
-      nodeStates: {},
-      ledger: [],
-      metrics: null,
-      nodes: st.nodes.map((n) => ({ ...n, style: undefined })),
-    }));
-  },
-}));
+    onEdgesChange: (changes) =>
+      set((s) => ({
+        edges: applyEdgeChanges<RfEdge>(changes, s.edges),
+      })),
+
+    onConnect: (connection) =>
+      set((s) => {
+        const source = connection.source ?? "";
+        const target = connection.target ?? "";
+        if (!source || !target) return s;
+
+        const id = nextId("e");
+        const edge: RfEdge = {
+          id,
+          source,
+          target,
+          label: "connects",
+          data: { kind: "connects", attrs: {} },
+        };
+        return { edges: addEdge(edge, s.edges) };
+      }),
+
+    addNodeFromPalette: (kind) =>
+      set((s) => {
+        const id = nextId("n");
+        const node: RfNode = {
+          id,
+          type: "emap0",
+          position: { x: 120 + Math.random() * 420, y: 120 + Math.random() * 280 },
+          data: {
+            id,
+            kind,
+            attrs: { name: `${kind} ${id}` },
+          },
+          draggable: true,
+        };
+        return { nodes: [...s.nodes, node] };
+      }),
+
+    selectNode: (id) => set({ selected: { type: "node", id } }),
+    selectEdge: (id) => set({ selected: { type: "edge", id } }),
+    clearSelection: () => set({ selected: { type: "none" } }),
+
+    updateSelectedNodeName: (name) => {
+      const sel = get().selected;
+      if (sel.type !== "node") return;
+
+      const trimmed = name.trim();
+      const finalName = trimmed.length ? trimmed : "Unnamed";
+
+      set((s) => ({
+        nodes: s.nodes.map((n) => {
+          if (n.id !== sel.id) return n;
+          return {
+            ...n,
+            data: {
+              ...n.data,
+              attrs: {
+                ...(n.data.attrs ?? {}),
+                name: finalName,
+              },
+            },
+          };
+        }),
+      }));
+    },
+
+    updateNodeName: (id, name) => {
+      const trimmed = name.trim();
+      const finalName = trimmed.length ? trimmed : "Unnamed";
+
+      set((s) => ({
+        nodes: s.nodes.map((n) => {
+          if (n.id !== id) return n;
+          return {
+            ...n,
+            data: {
+              ...n.data,
+              attrs: {
+                ...(n.data.attrs ?? {}),
+                name: finalName,
+              },
+            },
+          };
+        }),
+      }));
+    },
+
+    openModal: (m) => set({ modal: m }),
+    closeModal: () => set({ modal: null }),
+
+    setShockType: (t) => {
+      if (get().simLocked) return;
+      set((s) => ({ simConfig: { ...s.simConfig, shockType: t } }));
+    },
+    setShockScope: (sc) => {
+      if (get().simLocked) return;
+      set((s) => ({ simConfig: { ...s.simConfig, scope: sc } }));
+    },
+    setShockIntensity: (i) => {
+      if (get().simLocked) return;
+      set((s) => ({ simConfig: { ...s.simConfig, intensity: i } }));
+    },
+
+    runShock: () => {
+      if (get().simLocked) return;
+
+      const s = get();
+      const selectedNodeId = s.selected.type === "node" ? s.selected.id : null;
+
+      const res = simulateShock(
+        s.simConfig,
+        s.nodes.map((n) => ({ id: n.id, data: n.data })),
+        s.edges.map((e) => ({ id: e.id, source: e.source, target: e.target })),
+        selectedNodeId
+      );
+
+      // Post-pass metrics (must not affect simulation outcome)
+      const metrics = computeMetrics({
+        cfg: s.simConfig,
+        nodes: s.nodes.map((n) => ({ id: n.id })),
+        edges: s.edges.map((e) => ({ source: e.source, target: e.target })),
+        selectedNodeId,
+        simResult: res,
+      });
+
+      const resWithMetrics = { ...res, metrics };
+
+      set((st) => ({
+        simLocked: resWithMetrics.stop,
+        nodeStates: resWithMetrics.nodeStates,
+        ledger: resWithMetrics.ledger,
+        metrics: resWithMetrics.metrics ?? null,
+        nodes: st.nodes.map((n) => ({
+          ...n,
+          style: stateStyle(resWithMetrics.nodeStates[n.id]),
+        })),
+      }));
+    },
+
+    resetShock: () => {
+      set((st) => ({
+        simLocked: false,
+        nodeStates: {},
+        ledger: [],
+        metrics: null,
+        selected: { type: "none" },
+        nodes: st.baseline.nodes.map((n) => ({ ...n, style: undefined })),
+        edges: st.baseline.edges.map((e) => ({ ...e })),
+      }));
+    },
+  };
+});
