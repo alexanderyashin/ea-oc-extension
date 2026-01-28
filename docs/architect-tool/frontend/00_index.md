@@ -1,0 +1,1 @@
+- **D. LeanIX Import UI** — `D_leanix-import-ui.md` (Iteration 2: file-based import, facts-only hashes + baseline graph)

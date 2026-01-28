@@ -103,12 +103,70 @@ type BaselineGraph = {
   edges: RfEdge[];
 };
 
+export type ImportFacts = {
+  rawHash: string;
+  contentHash: string;
+  timestamp: string; // ISO
+};
+
+type ImportedCanonicalGraphLike = {
+  nodes?: Array<{
+    id: string;
+    kind: string;
+    attrs?: Record<string, JsonValue>;
+    pos?: { x?: number; y?: number };
+  }>;
+  edges?: Array<{
+    id: string;
+    from: string;
+    to: string;
+    kind: string;
+    attrs?: Record<string, JsonValue>;
+  }>;
+};
+
+function canonicalLikeToRfNodes(g: ImportedCanonicalGraphLike): RfNode[] {
+  const nodes = Array.isArray(g.nodes) ? g.nodes : [];
+  return nodes.map((n) => ({
+    id: String(n.id),
+    type: "emap0",
+    position: { x: n.pos?.x ?? 0, y: n.pos?.y ?? 0 },
+    data: {
+      id: String(n.id),
+      kind: String(n.kind),
+      attrs: { ...(n.attrs ?? {}) },
+    },
+    draggable: true,
+  }));
+}
+
+function canonicalLikeToRfEdges(g: ImportedCanonicalGraphLike): RfEdge[] {
+  const edges = Array.isArray(g.edges) ? g.edges : [];
+  return edges.map((e) => ({
+    id: String(e.id),
+    source: String(e.from),
+    target: String(e.to),
+    label: String(e.kind),
+    data: { kind: e.kind, attrs: e.attrs ?? {} },
+  }));
+}
+
 export interface GraphState {
   nodes: RfNode[];
   edges: RfEdge[];
 
   // baseline graph (for reset)
   baseline: BaselineGraph;
+
+  // LeanIX import slice (facts-only, no interpretation)
+  rawSnapshot: unknown | null; // RawSnapshot (LeanIX) is backend contract; frontend stores as opaque
+  importFacts: ImportFacts | null; // hashes + timestamp, as facts
+  importedCanonical: ImportedCanonicalGraphLike | null; // canonical graph returned by backend (wiring only)
+
+  // Import actions (UI wiring only)
+  loadRawSnapshot: (file: File) => Promise<void>;
+  buildCanonicalGraph: () => Promise<BaselineGraph>;
+  setBaselineGraph: (g: BaselineGraph) => void;
 
   selected: Selected;
 
@@ -160,6 +218,81 @@ export const useGraphStore = create<GraphState>((set, get) => {
     nodes: seedNodes,
     edges: seedEdges,
     baseline: { nodes: seedNodes, edges: seedEdges },
+
+    rawSnapshot: null,
+    importFacts: null,
+    importedCanonical: null,
+
+    loadRawSnapshot: async (file: File) => {
+      // UI/wiring only. No normalization, no interpretation.
+      // Endpoint must match backend ingestion contract.
+      const form = new FormData();
+      form.append("file", file);
+
+      const res = await fetch("/api/ingest/leanix", { method: "POST", body: form });
+
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(
+          `Некорректный файл или неподдерживаемая версия. Backend ingestion отклонил загрузку. status=${res.status} ${text}`
+        );
+      }
+
+      const payload: any = await res.json();
+
+      const rawSnapshot = payload?.rawSnapshot ?? null;
+      const rawHash = String(payload?.rawHash ?? "");
+      const contentHash = String(payload?.contentHash ?? "");
+      const timestamp = String(payload?.timestamp ?? new Date().toISOString());
+
+      // canonical graph may already be built in backend (preferred for determinism)
+      const canonical = (payload?.canonicalGraph ?? payload?.canonical ?? null) as ImportedCanonicalGraphLike | null;
+
+      if (!rawSnapshot && !canonical) {
+        // Honest: backend returned nothing meaningful
+        throw new Error("Пустые данные: импорт завершён без объектов (rawSnapshot/canonicalGraph отсутствуют).");
+      }
+
+      set({
+        rawSnapshot,
+        importFacts: { rawHash, contentHash, timestamp },
+        importedCanonical: canonical,
+      });
+    },
+
+    buildCanonicalGraph: async () => {
+      // Wiring only: use canonical graph returned by backend ingestion.
+      const s = get();
+
+      if (!s.importedCanonical) {
+        // Honest: this wiring expects backend to provide canonicalGraph for iteration-2.
+        throw new Error(
+          "Нельзя построить CanonicalGraph: backend ingestion не вернул canonicalGraph. " +
+            "Iteration 2 UI-wiring ожидает canonicalGraph в ответе /api/ingest/leanix."
+        );
+      }
+
+      const nodes = canonicalLikeToRfNodes(s.importedCanonical);
+      const edges = canonicalLikeToRfEdges(s.importedCanonical);
+
+      // Note: no evaluation, no cleaning. Facts-only mapping.
+      if (nodes.length === 0 && edges.length === 0) {
+        throw new Error("Пустые данные: импорт завершён без объектов (0 nodes, 0 edges).");
+      }
+
+      const baseline: BaselineGraph = { nodes, edges };
+      set({ nodes, edges });
+      return baseline;
+    },
+
+    setBaselineGraph: (g: BaselineGraph) => {
+      // Baseline becomes imported graph. Reset returns to it.
+      set({
+        baseline: { nodes: g.nodes, edges: g.edges },
+        nodes: g.nodes,
+        edges: g.edges,
+      });
+    },
 
     selected: { type: "none" },
 
@@ -321,6 +454,8 @@ export const useGraphStore = create<GraphState>((set, get) => {
     },
 
     resetShock: () => {
+      // Explicit user reset: clears simulation slice and restores baseline graph.
+      // This is not "bypassing STOP": STOP remains terminal for the episode until reset.
       set((st) => ({
         simLocked: false,
         nodeStates: {},
