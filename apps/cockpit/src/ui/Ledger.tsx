@@ -14,11 +14,11 @@ function fmtNum(n: number): string {
 function renderTitle(e: LedgerEvent): string {
   switch (e.type) {
     case "threshold_crossed":
-      return `threshold_crossed: ${e.nodeLabel}`;
+      return `status_change: ${e.nodeLabel}`;
     case "info":
       return "info";
     case "global_stop":
-      return "global_stop";
+      return "GLOBAL STOP";
     default: {
       const _exhaustive: never = e;
       return String(_exhaustive);
@@ -104,7 +104,14 @@ export function Ledger() {
                     gap: 10,
                   }}
                 >
-                  <div style={{ fontWeight: 800 }}>{renderTitle(e)}</div>
+                  <div
+                    style={{
+                      fontWeight: 800,
+                      opacity: e.type === "global_stop" ? 1 : 0.95,
+                    }}
+                  >
+                    {renderTitle(e)}
+                  </div>
                   <div style={{ opacity: 0.7, fontSize: 12 }}>step {e.step}</div>
                 </div>
 
