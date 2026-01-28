@@ -1,5 +1,6 @@
 ﻿import { useMemo } from "react";
 import { useGraphStore } from "../store/graph.store";
+import { LeanIxImportPanel } from "./import/LeanIxImportPanel";
 
 function fmt(n: unknown): string {
   if (typeof n === "number") return Number.isFinite(n) ? n.toFixed(3) : String(n);
@@ -125,6 +126,11 @@ export function Inspector() {
       <div className="panelHeader">Inspector</div>
 
       <div className="panelBody">
+        {/* Import is a contextual integration tool: keep it inside Inspector panel (no layout changes). */}
+        <LeanIxImportPanel />
+
+        <div style={{ height: 12 }} />
+
         {selected.type === "none" && (
           <div style={{ color: "rgba(255,255,255,0.75)" }}>
             Select a node or edge to view attributes.

@@ -43,9 +43,15 @@ export default function App() {
 
   return (
     <div className="cockpit">
+      {/* TOP: TopBar already has className="topbar" inside */}
       <TopBar />
-      <Palette />
 
+      {/* LEFT */}
+      <div className="panel left">
+        <Palette />
+      </div>
+
+      {/* CENTER */}
       <div className="panel center">
         <div className="panelHeader">
           <div>Canvas</div>
@@ -73,8 +79,17 @@ export default function App() {
         </div>
       </div>
 
-      <Inspector />
-      <Ledger />
+      {/* RIGHT */}
+      <div className="panel right">
+        <Inspector />
+      </div>
+
+      {/* BOTTOM */}
+      <div className="panel bottom">
+        <Ledger />
+      </div>
+
+      {/* OVERLAY (not part of grid) */}
       <StubModal />
     </div>
   );

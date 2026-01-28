@@ -22,19 +22,28 @@ export function StubModal() {
   const modal = useGraphStore((s) => s.modal);
   const close = useGraphStore((s) => s.closeModal);
 
+  // CRITICAL FIX:
+  // If no modal is active, render nothing.
+  // Otherwise .modalOverlay (fixed, inset:0) would cover the entire UI.
   if (!modal) return null;
 
   const title = TITLES[modal] ?? "Dialog";
   const featureId = FEATURE_IDS[modal] ?? modal;
 
+  // DEMO tier: always show locked-feature dialog
   if (IS_DEMO) {
     return <LockedFeatureDialog title={title} featureId={featureId} onClose={close} />;
   }
 
-  // FULL tier: keep honest stub (no fake implementation claims).
+  // FULL tier: honest stub shell (no fake implementation claims)
   return (
     <div className="modalOverlay" onClick={close} role="presentation">
-      <div className="modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
+      <div
+        className="modal"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+      >
         <div className="modalHeader">
           <div>{title}</div>
           <button className="btn" onClick={close}>
@@ -44,8 +53,8 @@ export function StubModal() {
 
         <div className="modalBody">
           <div style={{ opacity: 0.9, marginBottom: 10 }}>
-            This shell is diagnostic-only (SIMULATION-0). The UI surface exists, but no persistence / exports are
-            implemented here.
+            This shell is diagnostic-only (SIMULATION-0). The UI surface exists,
+            but no persistence / exports are implemented here.
           </div>
 
           <div style={{ opacity: 0.75, fontSize: 13 }}>
