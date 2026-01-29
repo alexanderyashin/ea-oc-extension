@@ -1,6 +1,6 @@
 ---
-title: "D. LeanIX Import UI"
-purpose: "Определить UI-флоу импорта SAP LeanIX export в Cockpit (Iteration 2: UI + wiring, без изменения семантики)"
+title: "D. LeanIX Import UI (Iteration 2)"
+purpose: "Определить UI-флоу импорта SAP LeanIX export в Cockpit (UI + wiring, без изменения семантики симуляции/метрик)"
 audience: ["Frontend dev", "Tool architect", "Backend dev (ingestion endpoint)"]
 language: "RU"
 evidence_profile: "Design-spec (UI contract + invariants + failure modes)"
@@ -10,132 +10,107 @@ status: "ACTIVE"
 
 # D. LeanIX Import UI (Iteration 2)
 
-## 0) Контекст и инварианты (binding)
+## 0) Инварианты (binding)
 
-Цель Iteration 2 — добавить в Frontend Tool MVP **полноценный импорт-флоу** для SAP LeanIX:
-- ingestion уже существует в backend;
-- UI делает upload, показывает факты и делает baseline graph;
-- **никакой** интерпретации, BI, рекомендаций, “улучшений”, write-back.
+Цель Iteration 2 — добавить в Frontend Tool MVP полноценный **импорт-флоу** для SAP LeanIX:
 
-**READ-ONLY / НЕИЗМЕНЯЕМО:**
-- CanonicalGraph
-- RawSnapshot (LeanIX)
-- Determinism & hashing
-- SimulationInput / SimulationResult
-- Metrics Engine (M1–M4)
-- STOP / simLocked семантика
+- ingestion уже существует в backend (`/api/ingest/leanix`);
+- UI делает upload, показывает **факты**, и фиксирует **baseline graph**;
+- никакой интерпретации, BI, рекомендаций, “улучшений”, авто-фиксов.
 
-Frontend **НЕ ИМЕЕТ ПРАВА**:
-- менять CanonicalGraph;
-- “чистить”, “лечить”, нормализовать или “улучшать” данные;
-- обходить STOP / simLocked;
-- автозапускать симуляции;
-- делать write-back в LeanIX;
-- генерировать выводы/оценки качества/риски.
+Frontend НЕ должен:
+- нормализовать данные;
+- “лечить” CanonicalGraph;
+- автоматически запускать симуляцию;
+- делать write-back.
 
 ---
 
-## 1) UX Entry Point (I1)
+## 1) Entry Point (I1)
 
-В Cockpit появляется точка входа:
+В Cockpit присутствует точка входа:
 - UI элемент **Import LeanIX**
-- принимает LeanIX export (MVP: file-based)
-- рядом — краткая фиксация: “Поддерживаемый формат: как в backend ingestion”.
-
-В UI явно показывается:
-- что загружается **сырой экспорт**;
-- что после загрузки строится CanonicalGraph;
-- что **baseline** обновится на импортированный граф.
+- file-based upload
+- явная подпись: **supported format only** (ровно то, что принимает backend ingestion)
 
 ---
 
-## 2) Visibility (I2): факты импорта
+## 2) Wiring (I2): UI → Store
 
-После успешного импорта UI должен отобразить **строго факты**:
+Frontend вызывает строго действия store:
+
+1) `loadRawSnapshot(file)`
+   - отправляет файл в backend ingestion (`/api/ingest/leanix`)
+   - получает факт-артефакты:
+     - `rawSnapshot` (opaque)
+     - `rawHash`
+     - `contentHash`
+     - `timestamp`
+   - может получить `canonicalGraph` (предпочтительно)
+
+2) `buildCanonicalGraph()`
+   - строит `CanonicalGraph` по контракту
+   - в MVP wiring ожидает `canonicalGraph`, возвращённый backend ingestion
+   - без нормализации/лечения
+
+3) `setBaselineGraph(graph)`
+   - импортированный CanonicalGraph становится baseline
+
+Важно:
+- импорт НЕ запускает симуляцию автоматически.
+
+---
+
+## 3) Import Result Visibility (I3): facts only
+
+UI обязан показывать факты:
 
 - `rawHash`
 - `contentHash`
 - `timestamp`
 
-Формулировка статуса должна быть нейтральной:
-- “Данные загружены. Модель построена.”
+А также фактические counts:
+- `nodes`
+- `edges`
+- `node kinds` (по `node.data.kind`)
+
+Без оценок качества и без выводов.
 
 ---
 
-## 3) Baseline Graph (I3)
+## 4) Baseline Semantics (I4)
 
-CanonicalGraph, полученный из LeanIX, становится baseline:
-
-- baselineGraph := imported CanonicalGraph
-- resetShock() возвращает именно baselineGraph
-- НЕТ авто-шоков, НЕТ авто-симуляций, НЕТ auto-run метрик (кроме существующих ручных триггеров, если они уже есть)
-
----
-
-## 4) Import Result Surface (I4): facts-only summary
-
-Показывается summary:
-- количество `nodes`
-- количество `edges`
-- типы узлов: `application / interface / dependency` (или то, что реально присутствует в CanonicalGraph)
-
-**Запрещено**:
-- любые “оценки качества”
-- “слишком сложно”, “рискованно”
-- “плохая архитектура” и любые выводы
+Инвариант:
+- Imported `CanonicalGraph` становится baseline.
+- `resetShock()` восстанавливает **ровно baseline**, очищая эпизод симуляции (ledger/nodeStates/metrics).
+- Никакой “утечки мутаций”: baseline не должен меняться от runtime-операций.
 
 ---
 
-## 5) Failure Modes (I5): честные ошибки
+## 5) Honest Failure Modes (I5)
 
-UI должен явно фиксировать (без эвфемизмов):
+UI обязан показывать явные сообщения (фактуально):
 
-1) Некорректный файл:
-- “Некорректный файл. Backend ingestion отклонил загрузку.”
+- invalid file / parse / ingestion reject → `import failed: ...` (с текстом ошибки backend, если есть)
+- unsupported format → явная ошибка
+- empty snapshot / empty canonicalGraph → явная ошибка или notice
 
-2) Неподдерживаемая версия:
-- “Неподдерживаемая версия export.”
-
-3) Пустые данные:
-- “Пустые данные: импорт завершён без объектов.”
-
-Дополнительно:
-- показывать техническую строку ошибки (status code / message), если она есть, без интерпретаций.
+Запрещены:
+- silent fallbacks
+- auto-fix
+- “helpful advice”
 
 ---
 
-## 6) Wiring contract (frontend ↔ store)
+## 6) Definition of Done (DoD)
 
-Frontend вызывает строго **действия уровня store**:
-
-- `loadRawSnapshot(file)`  
-  Загружает LeanIX export в backend ingestion и получает:
-  - `rawSnapshot`
-  - `rawHash`
-  - `contentHash`
-  - `timestamp`
-
-- `buildCanonicalGraph()`  
-  Строит CanonicalGraph **по контракту** (используя уже существующую сборку, без “лечения”).
-
-- `setBaselineGraph(graph)`  
-  Делает baseline текущим graph.
-
-После этого:
-- `resetShock()` возвращает baselineGraph.
-
----
-
-## 7) Definition of Done (DoD)
-
-- Пользователь может загрузить LeanIX export
-- CanonicalGraph строится и становится baseline
-- Хеши отображаются как факты
-- Reset возвращает LeanIX baseline
-- Симуляция и метрики работают поверх импортированных данных
-- Ошибки импорта честно показаны
-- Никакой запрещённой функциональности не добавлено
+- Пользователь может загрузить LeanIX export файлом
+- CanonicalGraph построен и отображён на canvas (как текущий граф)
+- Показаны факты: hashes/timestamp + counts
+- Reset возвращает к импортированному baseline
+- Симуляция и метрики работают поверх импортированных данных (только при ручном запуске)
+- Ошибки честные и явные
 - Документация обновлена
-- Gates: typecheck + build GREEN
+- Gates: `typecheck` + `build` GREEN
 - Commit + push
 - Full report в ARCHITECT TOOL HQ

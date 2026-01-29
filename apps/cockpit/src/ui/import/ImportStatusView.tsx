@@ -8,7 +8,7 @@ export type ImportFacts = {
   timestamp?: string; // ISO string
   nodes?: number;
   edges?: number;
-  nodeTypeCounts?: Record<string, number>;
+  nodeKindCounts?: Record<string, number>;
 };
 
 export function ImportStatusView(props: {
@@ -18,7 +18,10 @@ export function ImportStatusView(props: {
 }) {
   const { phase, facts, errorText } = props;
 
-  const Box: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+  const Box: React.FC<{ title: string; children: React.ReactNode }> = ({
+    title,
+    children,
+  }) => (
     <div style={{ border: "1px solid #e5e7eb", borderRadius: 12, padding: 12, marginTop: 12 }}>
       <div style={{ fontWeight: 700, marginBottom: 8 }}>{title}</div>
       <div style={{ fontSize: 13, lineHeight: 1.4 }}>{children}</div>
@@ -44,9 +47,7 @@ export function ImportStatusView(props: {
   if (phase === "error") {
     return (
       <Box title="Import status (error)">
-        <div style={{ whiteSpace: "pre-wrap" }}>
-          {errorText || "Ошибка импорта."}
-        </div>
+        <div style={{ whiteSpace: "pre-wrap" }}>{errorText || "Ошибка импорта."}</div>
       </Box>
     );
   }
@@ -54,30 +55,52 @@ export function ImportStatusView(props: {
   // success
   return (
     <Box title="Import status (success)">
-      <div>Данные загружены. Модель построена.</div>
+      <div>Данные загружены. CanonicalGraph построен. Baseline обновлён.</div>
 
       <div style={{ marginTop: 10 }}>
-        <div style={{ fontWeight: 700, marginBottom: 6 }}>Hashes</div>
-        <div><span style={{ opacity: 0.7 }}>rawHash:</span> {facts?.rawHash ?? "—"}</div>
-        <div><span style={{ opacity: 0.7 }}>contentHash:</span> {facts?.contentHash ?? "—"}</div>
-        <div><span style={{ opacity: 0.7 }}>timestamp:</span> {facts?.timestamp ?? "—"}</div>
+        <div style={{ fontWeight: 700, marginBottom: 6 }}>Facts: hashes</div>
+        <div>
+          <span style={{ opacity: 0.7 }}>rawHash:</span>{" "}
+          <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>
+            {facts?.rawHash ?? "—"}
+          </span>
+        </div>
+        <div>
+          <span style={{ opacity: 0.7 }}>contentHash:</span>{" "}
+          <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>
+            {facts?.contentHash ?? "—"}
+          </span>
+        </div>
+        <div>
+          <span style={{ opacity: 0.7 }}>timestamp:</span>{" "}
+          <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>
+            {facts?.timestamp ?? "—"}
+          </span>
+        </div>
       </div>
 
       <div style={{ marginTop: 10 }}>
-        <div style={{ fontWeight: 700, marginBottom: 6 }}>Graph summary (facts only)</div>
-        <div><span style={{ opacity: 0.7 }}>nodes:</span> {facts?.nodes ?? "—"}</div>
-        <div><span style={{ opacity: 0.7 }}>edges:</span> {facts?.edges ?? "—"}</div>
+        <div style={{ fontWeight: 700, marginBottom: 6 }}>Facts: graph counts</div>
+        <div>
+          <span style={{ opacity: 0.7 }}>nodes:</span> {facts?.nodes ?? "—"}
+        </div>
+        <div>
+          <span style={{ opacity: 0.7 }}>edges:</span> {facts?.edges ?? "—"}
+        </div>
       </div>
 
       <div style={{ marginTop: 10 }}>
-        <div style={{ fontWeight: 700, marginBottom: 6 }}>Node types</div>
-        {facts?.nodeTypeCounts && Object.keys(facts.nodeTypeCounts).length > 0 ? (
-          <div>
-            {Object.entries(facts.nodeTypeCounts).map(([k, v]) => (
-              <div key={k}>
-                <span style={{ opacity: 0.7 }}>{k}:</span> {v}
-              </div>
-            ))}
+        <div style={{ fontWeight: 700, marginBottom: 6 }}>Facts: node kinds</div>
+        {facts?.nodeKindCounts && Object.keys(facts.nodeKindCounts).length > 0 ? (
+          <div style={{ display: "grid", gap: 4 }}>
+            {Object.entries(facts.nodeKindCounts)
+              .sort((a, b) => a[0].localeCompare(b[0]))
+              .map(([k, v]) => (
+                <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
+                  <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>{k}</span>
+                  <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>{v}</span>
+                </div>
+              ))}
           </div>
         ) : (
           <div>—</div>

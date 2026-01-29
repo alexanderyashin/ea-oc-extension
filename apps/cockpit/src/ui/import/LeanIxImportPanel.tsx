@@ -9,15 +9,15 @@ import type { ImportFacts } from "./ImportStatusView";
 
 type ImportPhase = "idle" | "uploading" | "success" | "error";
 
-// NOTE: path may differ in repo; adjust import to your actual store hook.
 import { useGraphStore } from "../../store/graph.store";
 
-function countNodeTypes(nodes: any[]): Record<string, number> {
-  // Facts-only count. We do not re-map/clean types, only read what's present.
+function countNodeKinds(nodes: any[]): Record<string, number> {
+  // Facts-only count: read what is present in the current RF nodes.
+  // For our canonical RF nodes, the factual kind is stored as node.data.kind.
   const counts: Record<string, number> = {};
   for (const n of nodes) {
-    const t = String(n?.type ?? "unknown");
-    counts[t] = (counts[t] ?? 0) + 1;
+    const k = String(n?.data?.kind ?? "unknown");
+    counts[k] = (counts[k] ?? 0) + 1;
   }
   return counts;
 }
@@ -32,7 +32,6 @@ export function LeanIxImportPanel() {
 
   const importedFacts = useGraphStore((s: any) => s.importFacts);
 
-  // IMPORTANT: do NOT return new objects from selector (causes infinite loop).
   // Subscribe to stable references separately.
   const nodesArr = useGraphStore((s: any) => s.nodes);
   const edgesArr = useGraphStore((s: any) => s.edges);
@@ -42,7 +41,7 @@ export function LeanIxImportPanel() {
 
     const nodes = Array.isArray(nodesArr) ? nodesArr.length : undefined;
     const edges = Array.isArray(edgesArr) ? edgesArr.length : undefined;
-    const nodeTypeCounts = Array.isArray(nodesArr) ? countNodeTypes(nodesArr) : undefined;
+    const nodeKindCounts = Array.isArray(nodesArr) ? countNodeKinds(nodesArr) : undefined;
 
     return {
       rawHash: importedFacts.rawHash,
@@ -50,7 +49,7 @@ export function LeanIxImportPanel() {
       timestamp: importedFacts.timestamp,
       nodes,
       edges,
-      nodeTypeCounts,
+      nodeKindCounts,
     };
   }, [importedFacts, nodesArr, edgesArr]);
 
@@ -84,15 +83,24 @@ export function LeanIxImportPanel() {
 
   return (
     <div style={{ border: "1px solid #e5e7eb", borderRadius: 16, padding: 14 }}>
-      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "space-between",
+          gap: 12,
+        }}
+      >
         <div style={{ fontWeight: 800, fontSize: 16 }}>Import LeanIX</div>
-        <div style={{ fontSize: 12, opacity: 0.7 }}>MVP: file-based • формат: как в backend ingestion</div>
+        <div style={{ fontSize: 12, opacity: 0.7 }}>
+          Supported format only: LeanIX export file as accepted by backend ingestion (/api/ingest/leanix)
+        </div>
       </div>
 
       <div style={{ marginTop: 10 }}>
         <input
           type="file"
-          accept=".json,.zip,application/json,application/zip"
+          accept=".json,application/json"
           onChange={onPickFile}
           disabled={phase === "uploading"}
         />
