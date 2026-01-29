@@ -156,6 +156,20 @@
   height: 100%;
   position: relative;
   z-index: 0;
+
+  /* FIX: keep MiniMap/Controls inside the canvas with a safe inset */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* FIX: remove ReactFlow / xyflow attribution badge (likely the white bar "1") */
+.rfWrap .react-flow__attribution {
+  display: none !important;
+}
+
+/* FIX: ensure MiniMap sits in bottom-right and doesn't drift into Ledger area */
+.rfWrap .react-flow__minimap {
+  margin: 0 !important;
 }
 
 /* Inputs / selects (contrast + selected state) */
