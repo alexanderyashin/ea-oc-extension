@@ -5,7 +5,6 @@ import { useCallback, useMemo } from "react";
 import {
   ReactFlow,
   Background,
-  Controls,
   MiniMap,
   type NodeMouseHandler,
   type EdgeMouseHandler,
@@ -73,8 +72,17 @@ export default function App() {
             fitView
           >
             <Background />
-            <MiniMap />
-            <Controls />
+
+            {/* ② MiniMap to bottom-right (and styled), ① Controls removed */}
+            <MiniMap
+              position="bottom-right"
+              style={{
+                backgroundColor: "#0f1115",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: 8,
+                margin: 12,
+              }}
+            />
           </ReactFlow>
         </div>
       </div>
