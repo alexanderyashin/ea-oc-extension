@@ -100,10 +100,12 @@ main.log
 main.fls
 main.fdb_latexmk
 
-@(
-"",
-"# --- TEMP: patent bundle staged locally (will be moved to ESTRA Toolkit repo) ---",
-"patent/",
-"patent_*.txt",
-"patent_*.ps1"
-) | Add-Content -Encoding UTF8 .gitignore
+
+
+# --- TEMP: patent bundle staged locally (will be moved to ESTRA Toolkit repo) ---
+patent/
+patent_*.txt
+patent_*.ps1
+
+# root npm lock should not exist (monorepo uses per-app lock)
+/package-lock.json
