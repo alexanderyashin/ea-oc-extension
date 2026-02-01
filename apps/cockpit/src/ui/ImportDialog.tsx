@@ -294,6 +294,8 @@ export function ImportDialog({ open, onClose }: Props) {
     onClose();
   }
 
+  const isBusy = phase === "reading" || phase === "parsing" || phase === "validating";
+
   return (
     <div className="modalOverlay" onClick={onClose} role="presentation">
       <div className="modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
@@ -314,37 +316,21 @@ export function ImportDialog({ open, onClose }: Props) {
 
           <div style={{ border: "1px solid rgba(0,0,0,0.08)", borderRadius: 12, padding: 12 }}>
             <div style={{ fontWeight: 800, marginBottom: 6 }}>Source</div>
+
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
               <div style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", opacity: 0.9 }}>
-                LeanIX CSV (folder/files)
+                LeanIX CSV (directory)
               </div>
 
               {supportsDirectoryPicker() ? (
-                <button
-                  className="btn"
-                  onClick={onPickDirectory}
-                  disabled={phase === "reading" || phase === "parsing" || phase === "validating"}
-                >
+                <button className="btn" onClick={onPickDirectory} disabled={isBusy}>
                   Pick folder…
                 </button>
               ) : (
-                <button
-                  className="btn"
-                  onClick={() => fileInputRef.current?.click()}
-                  disabled={phase === "reading" || phase === "parsing" || phase === "validating"}
-                >
-                  Pick files…
+                <button className="btn" onClick={() => fileInputRef.current?.click()} disabled={isBusy}>
+                  Pick folder…
                 </button>
               )}
-
-              {/* fallback always available */}
-              <button
-                className="btn"
-                onClick={() => fileInputRef.current?.click()}
-                disabled={phase === "reading" || phase === "parsing" || phase === "validating"}
-              >
-                Pick files…
-              </button>
 
               <input
                 ref={fileInputRef}
@@ -358,8 +344,12 @@ export function ImportDialog({ open, onClose }: Props) {
             </div>
 
             <div style={{ marginTop: 8, fontSize: 13, opacity: 0.75 }}>
-              Expected structure: <code>fact_sheets/*.csv</code>, <code>relations/*.csv</code>, optional{" "}
-              <code>manifest.json</code>.
+              Select the folder that contains <code>fact_sheets/</code> and <code>relations/</code> (e.g.{" "}
+              <code>fixtures/leanix/sample-v1</code>). Do not select individual files.
+              <div style={{ marginTop: 6 }}>
+                Expected structure: <code>fact_sheets/*.csv</code>, <code>relations/*.csv</code>, optional{" "}
+                <code>manifest.json</code>.
+              </div>
             </div>
           </div>
 
@@ -451,9 +441,7 @@ export function ImportDialog({ open, onClose }: Props) {
           </div>
 
           <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center" }}>
-            <div style={{ fontSize: 13, opacity: 0.75 }}>
-              Mapping is blocked if fatal validation errors exist.
-            </div>
+            <div style={{ fontSize: 13, opacity: 0.75 }}>Mapping is blocked if fatal validation errors exist.</div>
 
             <button className="btn" onClick={onMapToGraph} disabled={!canMap}>
               Map to graph
