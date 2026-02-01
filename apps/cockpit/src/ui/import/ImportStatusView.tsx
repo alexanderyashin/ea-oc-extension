@@ -1,3 +1,4 @@
+// apps/cockpit/src/ui/import/ImportStatusView.tsx
 import React from "react";
 
 type ImportPhase = "idle" | "uploading" | "success" | "error";
@@ -18,10 +19,7 @@ export function ImportStatusView(props: {
 }) {
   const { phase, facts, errorText } = props;
 
-  const Box: React.FC<{ title: string; children: React.ReactNode }> = ({
-    title,
-    children,
-  }) => (
+  const Box: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
     <div style={{ border: "1px solid #e5e7eb", borderRadius: 12, padding: 12, marginTop: 12 }}>
       <div style={{ fontWeight: 700, marginBottom: 8 }}>{title}</div>
       <div style={{ fontSize: 13, lineHeight: 1.4 }}>{children}</div>
@@ -31,7 +29,7 @@ export function ImportStatusView(props: {
   if (phase === "idle") {
     return (
       <Box title="Import status">
-        <div>Ожидание файла LeanIX export.</div>
+        <div>Waiting for input.</div>
       </Box>
     );
   }
@@ -39,7 +37,7 @@ export function ImportStatusView(props: {
   if (phase === "uploading") {
     return (
       <Box title="Import status">
-        <div>Загрузка файла…</div>
+        <div>Loading…</div>
       </Box>
     );
   }
@@ -47,7 +45,7 @@ export function ImportStatusView(props: {
   if (phase === "error") {
     return (
       <Box title="Import status (error)">
-        <div style={{ whiteSpace: "pre-wrap" }}>{errorText || "Ошибка импорта."}</div>
+        <div style={{ whiteSpace: "pre-wrap" }}>{errorText || "Import error."}</div>
       </Box>
     );
   }
@@ -55,22 +53,25 @@ export function ImportStatusView(props: {
   // success
   return (
     <Box title="Import status (success)">
-      <div>Данные загружены. CanonicalGraph построен. Baseline обновлён.</div>
+      <div>Loaded. Graph baseline updated.</div>
 
       <div style={{ marginTop: 10 }}>
         <div style={{ fontWeight: 700, marginBottom: 6 }}>Facts: hashes</div>
+
         <div>
           <span style={{ opacity: 0.7 }}>rawHash:</span>{" "}
           <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>
             {facts?.rawHash ?? "—"}
           </span>
         </div>
+
         <div>
           <span style={{ opacity: 0.7 }}>contentHash:</span>{" "}
           <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>
             {facts?.contentHash ?? "—"}
           </span>
         </div>
+
         <div>
           <span style={{ opacity: 0.7 }}>timestamp:</span>{" "}
           <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>

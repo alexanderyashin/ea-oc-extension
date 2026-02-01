@@ -1,7 +1,8 @@
+// apps/cockpit/src/gates/tier.ts
 export type BuildTier = "demo" | "full";
 
 function normalizeTier(v: unknown): BuildTier {
-  const s = String(v ?? "").trim().toLowerCase();
+  const s = String(v ?? "").toLowerCase().trim();
   return s === "full" ? "full" : "demo";
 }
 

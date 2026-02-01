@@ -1,3 +1,4 @@
+// apps/cockpit/src/ui/LockedFeatureDialog.tsx
 type Props = {
   title: string;
   featureId: string;
