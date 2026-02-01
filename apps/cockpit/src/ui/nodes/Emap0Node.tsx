@@ -22,7 +22,7 @@ function kindMeta(kind: string): { icon: string; radius: number; headerBg: strin
     return { icon: "⚙️", radius: 12, headerBg: "rgba(255,255,255,0.075)", bodyBg: "rgba(255,255,255,0.035)" };
   }
   if (k.includes("data") || k.includes("store") || k.includes("db")) {
-    return { icon: "🗄️", radius: 8, headerBg: "rgba(255,255,255,0.070)", bodyBg: "rgba(255,255,255,0.032)" };
+    return { icon: "🗄️", radius: 8, headerBg: "rgba(255,255,255,0.070)", bodyBg: "rgba(255,255,255, 0.032)" };
   }
   return { icon: "⬚", radius: 12, headerBg: "rgba(255,255,255,0.060)", bodyBg: "rgba(255,255,255,0.030)" };
 }
@@ -57,7 +57,7 @@ export function Emap0Node(props: NodeProps) {
     card: {
       borderRadius: meta.radius,
       border: "1px solid rgba(255,255,255,0.16)",
-      overflow: "hidden",
+      overflow: "visible", // IMPORTANT: do not clip big handles outside the card
       minWidth: 180,
       boxShadow: "0 6px 20px rgba(0,0,0,0.30)",
       background: "rgba(20,22,26,0.85)",
@@ -74,10 +74,14 @@ export function Emap0Node(props: NodeProps) {
       display: "flex",
       alignItems: "center",
       gap: 8,
+      borderTopLeftRadius: meta.radius,
+      borderTopRightRadius: meta.radius,
     },
     body: {
       padding: "8px 8px 8px 8px",
       background: meta.bodyBg,
+      borderBottomLeftRadius: meta.radius,
+      borderBottomRightRadius: meta.radius,
     },
     labelWrap: {
       marginTop: 6,
@@ -108,13 +112,34 @@ export function Emap0Node(props: NodeProps) {
     },
   };
 
-  const handleStyle: CSSProperties = {
-    width: 12,
-    height: 12,
+  // Large hit-area with small visible dot inside
+  const HIT = 44;
+  const DOT = 12;
+
+  // IMPORTANT:
+  // Do NOT offset (left/right) manually. XYFlow positions handles via its own transforms.
+  // Manual offsets shift the anchor point and make edges "hang in the air".
+  const handleHit: CSSProperties = {
+    width: HIT,
+    height: HIT,
+    borderRadius: 999,
+    background: "transparent",
+    border: "none",
+    boxShadow: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "crosshair",
+  };
+
+  const handleDot: CSSProperties = {
+    width: DOT,
+    height: DOT,
     borderRadius: 999,
     background: "rgba(255,255,255,0.65)",
     border: "2px solid rgba(0,0,0,0.55)",
     boxShadow: "0 0 0 2px rgba(255,255,255,0.12)",
+    pointerEvents: "none",
   };
 
   const commit = () => {
@@ -135,9 +160,11 @@ export function Emap0Node(props: NodeProps) {
           type="target"
           position={Position.Left}
           className="emapHandle"
-          style={handleStyle}
+          style={handleHit}
           title="Target handle (drop connection here)"
-        />
+        >
+          <div style={handleDot} />
+        </Handle>
 
         <div style={styles.header}>
           <span style={{ opacity: 0.95 }}>{meta.icon}</span>
@@ -154,9 +181,11 @@ export function Emap0Node(props: NodeProps) {
           type="source"
           position={Position.Right}
           className="emapHandle"
-          style={handleStyle}
+          style={handleHit}
           title="Source handle (drag from here to connect)"
-        />
+        >
+          <div style={handleDot} />
+        </Handle>
       </div>
 
       <div style={styles.labelWrap}>
