@@ -112,34 +112,32 @@ export function Emap0Node(props: NodeProps) {
     },
   };
 
-  // Large hit-area with small visible dot inside
+  // Keep the HANDLE element small so the edge anchor stays correct.
+  // Enlarge the clickable area via an internal overlay element.
+  const HANDLE = 10;
   const HIT = 44;
-  const DOT = 12;
 
-  // IMPORTANT:
-  // Do NOT offset (left/right) manually. XYFlow positions handles via its own transforms.
-  // Manual offsets shift the anchor point and make edges "hang in the air".
-  const handleHit: CSSProperties = {
-    width: HIT,
-    height: HIT,
-    borderRadius: 999,
-    background: "transparent",
-    border: "none",
-    boxShadow: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "crosshair",
-  };
-
-  const handleDot: CSSProperties = {
-    width: DOT,
-    height: DOT,
+  const handleBase: CSSProperties = {
+    width: HANDLE,
+    height: HANDLE,
     borderRadius: 999,
     background: "rgba(255,255,255,0.65)",
     border: "2px solid rgba(0,0,0,0.55)",
     boxShadow: "0 0 0 2px rgba(255,255,255,0.12)",
-    pointerEvents: "none",
+    position: "relative",
+    cursor: "crosshair",
+  };
+
+  // Invisible hitbox centered on the small handle (does not change handle size / anchor).
+  const hitbox: CSSProperties = {
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    width: HIT,
+    height: HIT,
+    transform: "translate(-50%, -50%)",
+    borderRadius: 999,
+    background: "transparent",
   };
 
   const commit = () => {
@@ -156,14 +154,10 @@ export function Emap0Node(props: NodeProps) {
       onClick={() => selectNode(props.id)}
     >
       <div style={styles.card}>
-        <Handle
-          type="target"
-          position={Position.Left}
-          className="emapHandle"
-          style={handleHit}
-          title="Target handle (drop connection here)"
-        >
-          <div style={handleDot} />
+        <Handle type="target" position={Position.Left} className="emapHandle" title="Target handle (drop connection here)">
+          <div style={handleBase}>
+            <div style={hitbox} />
+          </div>
         </Handle>
 
         <div style={styles.header}>
@@ -177,14 +171,10 @@ export function Emap0Node(props: NodeProps) {
           </div>
         </div>
 
-        <Handle
-          type="source"
-          position={Position.Right}
-          className="emapHandle"
-          style={handleHit}
-          title="Source handle (drag from here to connect)"
-        >
-          <div style={handleDot} />
+        <Handle type="source" position={Position.Right} className="emapHandle" title="Source handle (drag from here to connect)">
+          <div style={handleBase}>
+            <div style={hitbox} />
+          </div>
         </Handle>
       </div>
 

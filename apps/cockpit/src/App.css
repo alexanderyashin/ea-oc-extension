@@ -313,17 +313,30 @@ select.input option {
 
 /*
   Handle visuals & hitbox:
-  - Hitbox is large (44x44) but transparent.
-  - Visible dot is small (12x12) centered via ::before.
-  - This keeps edge anchors correct (no manual left/right offsets).
+  - Anchor stays small (10x10) so edges connect correctly.
+  - Hitbox is large (44x44) via ::after (transparent).
+  - Visible dot is small (12x12) via ::before.
 */
 .emapHandle {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.10);
+  cursor: crosshair;
+  position: relative;
+}
+
+.emapHandle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 44px;
   height: 44px;
-  border: none;
-  background: transparent;
+  transform: translate(-50%, -50%);
   border-radius: 999px;
-  cursor: crosshair;
+  background: transparent;
 }
 
 .emapHandle::before {
