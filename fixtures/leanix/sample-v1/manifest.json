@@ -1,0 +1,31 @@
+﻿{
+  "name": "leanix-synthetic-sample-v1",
+  "purpose": "interoperability fixtures (synthetic, deterministic)",
+  "version": "1.0.0",
+  "generator": {
+    "script": "generate.py",
+    "seed": 1337
+  },
+  "counts": {
+    "applications": 60,
+    "it_components": 40,
+    "business_capabilities": 35,
+    "providers": 25,
+    "data_objects": 40
+  },
+  "files": {
+    "fact_sheets": [
+      "fact_sheets/applications.csv",
+      "fact_sheets/it_components.csv",
+      "fact_sheets/business_capabilities.csv",
+      "fact_sheets/providers.csv",
+      "fact_sheets/data_objects.csv"
+    ],
+    "relations": [
+      "relations/app_to_capability.csv",
+      "relations/app_to_it_component.csv",
+      "relations/app_to_provider.csv",
+      "relations/app_to_data_object.csv"
+    ]
+  }
+}

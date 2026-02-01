@@ -1,0 +1,61 @@
+id,name,type,lifecycle,status,description
+APP-001,Application 01,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-001).
+APP-002,Application 02,Application,Active,Deprecated,Synthetic application for import/parsing tests (APP-002).
+APP-003,Application 03,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-003).
+APP-004,Application 04,Application,Phase In,Planned,Synthetic application for import/parsing tests (APP-004).
+APP-005,Application 05,Application,Phase Out,Deprecated,Synthetic application for import/parsing tests (APP-005).
+APP-006,Application 06,Application,Active,Planned,Synthetic application for import/parsing tests (APP-006).
+APP-007,Application 07,Application,Phase Out,Deprecated,Synthetic application for import/parsing tests (APP-007).
+APP-008,Application 08,Application,Phase In,Deprecated,Synthetic application for import/parsing tests (APP-008).
+APP-009,Application 09,Application,Active,Active,Synthetic application for import/parsing tests (APP-009).
+APP-010,Application 10,Application,Phase Out,Deprecated,Synthetic application for import/parsing tests (APP-010).
+APP-011,Application 11,Application,Phase Out,Active,Synthetic application for import/parsing tests (APP-011).
+APP-012,Application 12,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-012).
+APP-013,Application 13,Application,Active,Planned,Synthetic application for import/parsing tests (APP-013).
+APP-014,Application 14,Application,Phase Out,Deprecated,Synthetic application for import/parsing tests (APP-014).
+APP-015,Application 15,Application,Active,Deprecated,Synthetic application for import/parsing tests (APP-015).
+APP-016,Application 16,Application,Plan,Planned,Synthetic application for import/parsing tests (APP-016).
+APP-017,Application 17,Application,Retire,Active,Synthetic application for import/parsing tests (APP-017).
+APP-018,Application 18,Application,Phase Out,Active,Synthetic application for import/parsing tests (APP-018).
+APP-019,Application 19,Application,Phase In,Planned,Synthetic application for import/parsing tests (APP-019).
+APP-020,Application 20,Application,Retire,Planned,Synthetic application for import/parsing tests (APP-020).
+APP-021,Application 21,Application,Retire,Planned,Synthetic application for import/parsing tests (APP-021).
+APP-022,Application 22,Application,Phase In,Deprecated,Synthetic application for import/parsing tests (APP-022).
+APP-023,Application 23,Application,Plan,Deprecated,Synthetic application for import/parsing tests (APP-023).
+APP-024,Application 24,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-024).
+APP-025,Application 25,Application,Retire,Active,Synthetic application for import/parsing tests (APP-025).
+APP-026,Application 26,Application,Plan,Planned,Synthetic application for import/parsing tests (APP-026).
+APP-027,Application 27,Application,Retire,Active,Synthetic application for import/parsing tests (APP-027).
+APP-028,Application 28,Application,Plan,Deprecated,Synthetic application for import/parsing tests (APP-028).
+APP-029,Application 29,Application,Phase In,Active,Synthetic application for import/parsing tests (APP-029).
+APP-030,Application 30,Application,Plan,Planned,Synthetic application for import/parsing tests (APP-030).
+APP-031,Application 31,Application,Phase In,Planned,Synthetic application for import/parsing tests (APP-031).
+APP-032,Application 32,Application,Retire,Planned,Synthetic application for import/parsing tests (APP-032).
+APP-033,Application 33,Application,Plan,Deprecated,Synthetic application for import/parsing tests (APP-033).
+APP-034,Application 34,Application,Active,Planned,Synthetic application for import/parsing tests (APP-034).
+APP-035,Application 35,Application,Retire,Active,Synthetic application for import/parsing tests (APP-035).
+APP-036,Application 36,Application,Retire,Active,Synthetic application for import/parsing tests (APP-036).
+APP-037,Application 37,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-037).
+APP-038,Application 38,Application,Active,Active,Synthetic application for import/parsing tests (APP-038).
+APP-039,Application 39,Application,Retire,Active,Synthetic application for import/parsing tests (APP-039).
+APP-040,Application 40,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-040).
+APP-041,Application 41,Application,Retire,Active,Synthetic application for import/parsing tests (APP-041).
+APP-042,Application 42,Application,Plan,Deprecated,Synthetic application for import/parsing tests (APP-042).
+APP-043,Application 43,Application,Phase Out,Deprecated,Synthetic application for import/parsing tests (APP-043).
+APP-044,Application 44,Application,Retire,Planned,Synthetic application for import/parsing tests (APP-044).
+APP-045,Application 45,Application,Plan,Deprecated,Synthetic application for import/parsing tests (APP-045).
+APP-046,Application 46,Application,Phase Out,Deprecated,Synthetic application for import/parsing tests (APP-046).
+APP-047,Application 47,Application,Active,Deprecated,Synthetic application for import/parsing tests (APP-047).
+APP-048,Application 48,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-048).
+APP-049,Application 49,Application,Active,Planned,Synthetic application for import/parsing tests (APP-049).
+APP-050,Application 50,Application,Plan,Deprecated,Synthetic application for import/parsing tests (APP-050).
+APP-051,Application 51,Application,Phase In,Active,Synthetic application for import/parsing tests (APP-051).
+APP-052,Application 52,Application,Phase In,Planned,Synthetic application for import/parsing tests (APP-052).
+APP-053,Application 53,Application,Plan,Active,Synthetic application for import/parsing tests (APP-053).
+APP-054,Application 54,Application,Phase Out,Deprecated,Synthetic application for import/parsing tests (APP-054).
+APP-055,Application 55,Application,Active,Active,Synthetic application for import/parsing tests (APP-055).
+APP-056,Application 56,Application,Retire,Active,Synthetic application for import/parsing tests (APP-056).
+APP-057,Application 57,Application,Phase Out,Planned,Synthetic application for import/parsing tests (APP-057).
+APP-058,Application 58,Application,Retire,Deprecated,Synthetic application for import/parsing tests (APP-058).
+APP-059,Application 59,Application,Plan,Planned,Synthetic application for import/parsing tests (APP-059).
+APP-060,Application 60,Application,Active,Deprecated,Synthetic application for import/parsing tests (APP-060).

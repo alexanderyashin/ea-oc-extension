@@ -1,0 +1,41 @@
+id,name,type,lifecycle,status,description
+ITC-001,IT Component 01,ITComponent,Phase In,Active,Synthetic IT component for tests (ITC-001).
+ITC-002,IT Component 02,ITComponent,Phase Out,Planned,Synthetic IT component for tests (ITC-002).
+ITC-003,IT Component 03,ITComponent,Phase Out,Active,Synthetic IT component for tests (ITC-003).
+ITC-004,IT Component 04,ITComponent,Phase In,Planned,Synthetic IT component for tests (ITC-004).
+ITC-005,IT Component 05,ITComponent,Retire,Planned,Synthetic IT component for tests (ITC-005).
+ITC-006,IT Component 06,ITComponent,Phase In,Active,Synthetic IT component for tests (ITC-006).
+ITC-007,IT Component 07,ITComponent,Phase In,Planned,Synthetic IT component for tests (ITC-007).
+ITC-008,IT Component 08,ITComponent,Phase Out,Deprecated,Synthetic IT component for tests (ITC-008).
+ITC-009,IT Component 09,ITComponent,Phase Out,Deprecated,Synthetic IT component for tests (ITC-009).
+ITC-010,IT Component 10,ITComponent,Active,Active,Synthetic IT component for tests (ITC-010).
+ITC-011,IT Component 11,ITComponent,Phase In,Deprecated,Synthetic IT component for tests (ITC-011).
+ITC-012,IT Component 12,ITComponent,Active,Planned,Synthetic IT component for tests (ITC-012).
+ITC-013,IT Component 13,ITComponent,Retire,Active,Synthetic IT component for tests (ITC-013).
+ITC-014,IT Component 14,ITComponent,Retire,Planned,Synthetic IT component for tests (ITC-014).
+ITC-015,IT Component 15,ITComponent,Phase In,Deprecated,Synthetic IT component for tests (ITC-015).
+ITC-016,IT Component 16,ITComponent,Phase Out,Deprecated,Synthetic IT component for tests (ITC-016).
+ITC-017,IT Component 17,ITComponent,Active,Active,Synthetic IT component for tests (ITC-017).
+ITC-018,IT Component 18,ITComponent,Plan,Deprecated,Synthetic IT component for tests (ITC-018).
+ITC-019,IT Component 19,ITComponent,Retire,Active,Synthetic IT component for tests (ITC-019).
+ITC-020,IT Component 20,ITComponent,Phase Out,Planned,Synthetic IT component for tests (ITC-020).
+ITC-021,IT Component 21,ITComponent,Retire,Planned,Synthetic IT component for tests (ITC-021).
+ITC-022,IT Component 22,ITComponent,Phase Out,Planned,Synthetic IT component for tests (ITC-022).
+ITC-023,IT Component 23,ITComponent,Phase In,Planned,Synthetic IT component for tests (ITC-023).
+ITC-024,IT Component 24,ITComponent,Phase Out,Deprecated,Synthetic IT component for tests (ITC-024).
+ITC-025,IT Component 25,ITComponent,Phase Out,Deprecated,Synthetic IT component for tests (ITC-025).
+ITC-026,IT Component 26,ITComponent,Phase Out,Active,Synthetic IT component for tests (ITC-026).
+ITC-027,IT Component 27,ITComponent,Retire,Planned,Synthetic IT component for tests (ITC-027).
+ITC-028,IT Component 28,ITComponent,Phase In,Planned,Synthetic IT component for tests (ITC-028).
+ITC-029,IT Component 29,ITComponent,Plan,Planned,Synthetic IT component for tests (ITC-029).
+ITC-030,IT Component 30,ITComponent,Plan,Planned,Synthetic IT component for tests (ITC-030).
+ITC-031,IT Component 31,ITComponent,Plan,Planned,Synthetic IT component for tests (ITC-031).
+ITC-032,IT Component 32,ITComponent,Phase Out,Deprecated,Synthetic IT component for tests (ITC-032).
+ITC-033,IT Component 33,ITComponent,Retire,Planned,Synthetic IT component for tests (ITC-033).
+ITC-034,IT Component 34,ITComponent,Phase In,Active,Synthetic IT component for tests (ITC-034).
+ITC-035,IT Component 35,ITComponent,Retire,Deprecated,Synthetic IT component for tests (ITC-035).
+ITC-036,IT Component 36,ITComponent,Phase Out,Active,Synthetic IT component for tests (ITC-036).
+ITC-037,IT Component 37,ITComponent,Phase Out,Active,Synthetic IT component for tests (ITC-037).
+ITC-038,IT Component 38,ITComponent,Phase In,Planned,Synthetic IT component for tests (ITC-038).
+ITC-039,IT Component 39,ITComponent,Plan,Planned,Synthetic IT component for tests (ITC-039).
+ITC-040,IT Component 40,ITComponent,Phase In,Planned,Synthetic IT component for tests (ITC-040).
