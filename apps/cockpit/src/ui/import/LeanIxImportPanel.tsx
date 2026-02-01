@@ -3,23 +3,47 @@ import { ImportStatusView } from "./ImportStatusView";
 import type { ImportFacts } from "./ImportStatusView";
 
 // IMPORTANT:
-// - UI only. No semantics changes.
+// - UI only. Facts-only.
 // - No normalization / no interpretation.
-// - Calls store actions only.
+// - Preferred path: call store actions (backend ingestion).
+// - DEMO fallback: if backend is unavailable (e.g. 404), show file facts + hashes,
+//   but DO NOT change the graph.
 
 type ImportPhase = "idle" | "uploading" | "success" | "error";
 
 import { useGraphStore } from "../../store/graph.store";
 
 function countNodeKinds(nodes: any[]): Record<string, number> {
-  // Facts-only count: read what is present in the current RF nodes.
-  // For our canonical RF nodes, the factual kind is stored as node.data.kind.
   const counts: Record<string, number> = {};
   for (const n of nodes) {
     const k = String(n?.data?.kind ?? "unknown");
     counts[k] = (counts[k] ?? 0) + 1;
   }
   return counts;
+}
+
+// Best-effort SHA-256 for demo facts.
+// If crypto.subtle is unavailable, returns null (still fine: facts-only).
+async function sha256Hex(buf: ArrayBuffer): Promise<string | null> {
+  try {
+    const cryptoObj = (globalThis as any)?.crypto;
+    const subtle = cryptoObj?.subtle;
+    if (!subtle) return null;
+
+    const hash = await subtle.digest("SHA-256", buf);
+    const bytes = new Uint8Array(hash);
+    let hex = "";
+    for (const b of bytes) hex += b.toString(16).padStart(2, "0");
+    return hex;
+  } catch {
+    return null;
+  }
+}
+
+function safeIso(ts: number | string | undefined): string {
+  if (typeof ts === "number" && Number.isFinite(ts)) return new Date(ts).toISOString();
+  if (typeof ts === "string" && ts.trim().length) return ts;
+  return new Date().toISOString();
 }
 
 export function LeanIxImportPanel() {
@@ -36,22 +60,29 @@ export function LeanIxImportPanel() {
   const nodesArr = useGraphStore((s: any) => s.nodes);
   const edgesArr = useGraphStore((s: any) => s.edges);
 
+  // DEMO facts (file-only), used only when backend path is unavailable.
+  const [demoFacts, setDemoFacts] = useState<ImportFacts | undefined>(undefined);
+
   const facts: ImportFacts | undefined = useMemo(() => {
-    if (!importedFacts) return undefined;
+    // Prefer backend facts if present.
+    if (importedFacts) {
+      const nodes = Array.isArray(nodesArr) ? nodesArr.length : undefined;
+      const edges = Array.isArray(edgesArr) ? edgesArr.length : undefined;
+      const nodeKindCounts = Array.isArray(nodesArr) ? countNodeKinds(nodesArr) : undefined;
 
-    const nodes = Array.isArray(nodesArr) ? nodesArr.length : undefined;
-    const edges = Array.isArray(edgesArr) ? edgesArr.length : undefined;
-    const nodeKindCounts = Array.isArray(nodesArr) ? countNodeKinds(nodesArr) : undefined;
+      return {
+        rawHash: importedFacts.rawHash,
+        contentHash: importedFacts.contentHash,
+        timestamp: importedFacts.timestamp,
+        nodes,
+        edges,
+        nodeKindCounts,
+      };
+    }
 
-    return {
-      rawHash: importedFacts.rawHash,
-      contentHash: importedFacts.contentHash,
-      timestamp: importedFacts.timestamp,
-      nodes,
-      edges,
-      nodeKindCounts,
-    };
-  }, [importedFacts, nodesArr, edgesArr]);
+    // Else (DEMO fallback) show file-only facts.
+    return demoFacts;
+  }, [importedFacts, nodesArr, edgesArr, demoFacts]);
 
   async function onPickFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -59,20 +90,57 @@ export function LeanIxImportPanel() {
 
     setErrorText(undefined);
     setPhase("uploading");
+    setDemoFacts(undefined);
 
     try {
-      // 1) load raw snapshot via backend ingestion (store action)
+      // Preferred path (Tool/FULL): backend ingestion as source of truth.
       await loadRawSnapshot(file);
-
-      // 2) build canonical graph (store action; must remain contract-faithful)
       const graph = await buildCanonicalGraph();
-
-      // 3) set baseline (resetShock must return to this)
       setBaselineGraph(graph);
 
       setPhase("success");
+      return;
     } catch (err: any) {
       const msg = err?.message ? String(err.message) : "Ошибка импорта.";
+
+      // DEMO fallback:
+      // If backend route is missing/unavailable, keep UI useful:
+      // compute file hashes locally and show facts-only (NO graph change).
+      const isBackendMissing =
+        msg.includes("status=404") ||
+        msg.toLowerCase().includes("not found") ||
+        msg.toLowerCase().includes("failed to fetch") ||
+        msg.toLowerCase().includes("networkerror");
+
+      if (isBackendMissing) {
+        try {
+          const buf = await file.arrayBuffer();
+          const contentHash = await sha256Hex(buf);
+
+          // rawHash is "file envelope" hash surrogate: name+size+mtime
+          const rawEnvelope = `${file.name}::${file.size}::${file.lastModified}`;
+          const rawHash = await sha256Hex(new TextEncoder().encode(rawEnvelope).buffer);
+
+          setDemoFacts({
+            rawHash: rawHash ?? `demo:env:${rawEnvelope}`,
+            contentHash: contentHash ?? `demo:sha256:unavailable`,
+            timestamp: safeIso(Date.now()),
+            nodes: undefined,
+            edges: undefined,
+            nodeKindCounts: undefined,
+          });
+
+          setPhase("success");
+          setErrorText(
+            "DEMO fallback: Backend ingestion (/api/ingest/leanix) is unavailable. " +
+              "Showing file facts + hashes only. No mapping to graph performed."
+          );
+          return;
+        } catch {
+          // If even fallback fails, show original error.
+        }
+      }
+
       setErrorText(msg);
       setPhase("error");
     } finally {
@@ -100,7 +168,8 @@ export function LeanIxImportPanel() {
       <div style={{ marginTop: 10 }}>
         <input
           type="file"
-          accept=".json,application/json"
+          // CRITICAL (MVP): do not filter in the file picker.
+          // Backend is source of truth for validation; UI must allow selecting any file.
           onChange={onPickFile}
           disabled={phase === "uploading"}
         />
