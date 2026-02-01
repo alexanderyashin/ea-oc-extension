@@ -199,6 +199,9 @@ export interface GraphState {
   selectEdge: (id: string) => void;
   clearSelection: () => void;
 
+  // UI removal actions (interaction-only)
+  removeEdge: (id: string) => void;
+
   updateSelectedNodeName: (name: string) => void;
   updateNodeName: (id: string, name: string) => void;
 
@@ -359,6 +362,14 @@ export const useGraphStore = create<GraphState>((set, get) => {
     selectEdge: (id) => set({ selected: { type: "edge", id } }),
     clearSelection: () => set({ selected: { type: "none" } }),
 
+    removeEdge: (id: string) =>
+      set((s) => {
+        const nextEdges = s.edges.filter((e) => e.id !== id);
+        const nextSelected: Selected =
+          s.selected.type === "edge" && s.selected.id === id ? { type: "none" } : s.selected;
+        return { edges: nextEdges, selected: nextSelected };
+      }),
+
     updateSelectedNodeName: (name: string) => {
       const sel = get().selected;
       if (sel.type !== "node") return;
@@ -460,9 +471,6 @@ export const useGraphStore = create<GraphState>((set, get) => {
       // Explicit user reset: clears simulation slice and restores baseline graph.
       // This is not "bypassing STOP": STOP remains terminal for the episode until reset.
       set((st) => ({
-        simLocked: false,
-        nodeStates: {},
-        ledger: [],
         metrics: null,
         selected: { type: "none" },
         nodes: st.baseline.nodes.map((n) => ({ ...n, style: undefined })),

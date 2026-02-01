@@ -1,4 +1,5 @@
-﻿import { useGraphStore } from "../store/graph.store";
+﻿import { useMemo } from "react";
+import { useGraphStore } from "../store/graph.store";
 import type { ShockIntensity, ShockScope, ShockType } from "../compute/types";
 import { IS_DEMO } from "../gates/tier";
 
@@ -18,6 +19,11 @@ export function TopBar({ onOpenImport }: Props) {
   const runShock = useGraphStore((s) => s.runShock);
   const resetShock = useGraphStore((s) => s.resetShock);
 
+  const intensityOptions = useMemo(() => {
+    // 10..200 step 10 (value in [0.1..2.0])
+    return Array.from({ length: 20 }, (_, i) => (i + 1) * 10);
+  }, []);
+
   const selectStyle: React.CSSProperties = {
     width: "100%",
     background: "rgba(0,0,0,0.35)",
@@ -30,7 +36,7 @@ export function TopBar({ onOpenImport }: Props) {
       <div className="title" style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <span style={{ fontWeight: 900 }}>ESTRA Cockpit {IS_DEMO ? "(DEMO)" : ""}</span>
+            <span style={{ fontWeight: 900 }}>ESTRA Toolkit {IS_DEMO ? "(DEMO)" : ""}</span>
 
             {IS_DEMO ? (
               <span
@@ -48,14 +54,6 @@ export function TopBar({ onOpenImport }: Props) {
               </span>
             ) : null}
           </div>
-
-          <div style={{ fontSize: 12, opacity: 0.88 }}>
-            <span style={{ fontWeight: 800 }}>Alexander Yashin</span>
-            <span style={{ opacity: 0.8 }}> · </span>
-            Observe continuum state, thresholds Θ, and STOP under deterministic shocks.
-          </div>
-
-          <div style={{ fontSize: 11, opacity: 0.70 }}>No control. No optimization. No output.</div>
         </div>
       </div>
 
@@ -93,17 +91,14 @@ export function TopBar({ onOpenImport }: Props) {
             onChange={(e) => setShockIntensity(Number(e.target.value) as ShockIntensity)}
             title="Intensity"
           >
-            <option value={0.1}>10%</option>
-            <option value={0.3}>30%</option>
-            <option value={0.5}>50%</option>
+            {intensityOptions.map((pct) => (
+              <option key={pct} value={pct / 100}>
+                {pct}%
+              </option>
+            ))}
           </select>
 
-          <button
-            className="btn"
-            onClick={runShock}
-            disabled={simLocked}
-            title="Run Shock (deterministic)"
-          >
+          <button className="btn" onClick={runShock} disabled={simLocked} title="Run Shock (deterministic)">
             Run Shock
           </button>
 
@@ -111,14 +106,12 @@ export function TopBar({ onOpenImport }: Props) {
             Reset
           </button>
 
-          <span style={{ opacity: simLocked ? 0.95 : 0.6, fontWeight: 900 }}>
-            {simLocked ? "STOP" : "OK"}
-          </span>
+          <span style={{ opacity: simLocked ? 0.95 : 0.6, fontWeight: 900 }}>{simLocked ? "STOP" : "OK"}</span>
         </div>
 
         <div style={{ width: 10 }} />
 
-        {/* NEW: kernel-neutral import entrypoint (wiring only) */}
+        {/* kernel-neutral import entrypoint (wiring only) */}
         <button
           className="btn"
           onClick={() => onOpenImport?.()}
@@ -130,11 +123,7 @@ export function TopBar({ onOpenImport }: Props) {
 
         <div style={{ width: 10 }} />
 
-        <button
-          className="btn"
-          onClick={() => openModal("extended")}
-          title="Extended capabilities (Full build only)"
-        >
+        <button className="btn" onClick={() => openModal("extended")} title="Extended capabilities (Full build only)">
           Extended (Full build)
         </button>
       </div>
