@@ -2,7 +2,11 @@
 import type { ShockIntensity, ShockScope, ShockType } from "../compute/types";
 import { IS_DEMO } from "../gates/tier";
 
-export function TopBar() {
+type Props = {
+  onOpenImport?: () => void;
+};
+
+export function TopBar({ onOpenImport }: Props) {
   const openModal = useGraphStore((s) => s.openModal);
 
   const simLocked = useGraphStore((s) => s.simLocked);
@@ -111,6 +115,18 @@ export function TopBar() {
             {simLocked ? "STOP" : "OK"}
           </span>
         </div>
+
+        <div style={{ width: 10 }} />
+
+        {/* NEW: kernel-neutral import entrypoint (wiring only) */}
+        <button
+          className="btn"
+          onClick={() => onOpenImport?.()}
+          disabled={!onOpenImport}
+          title="Import source snapshot (session only)"
+        >
+          Import…
+        </button>
 
         <div style={{ width: 10 }} />
 

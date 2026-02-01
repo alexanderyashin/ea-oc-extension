@@ -115,3 +115,6 @@ patent_*.ps1
 /patent_*.txt
 /patent_*.ps1
 /patent_extract.ps1
+
+# local scratch / analysis
+_analysis/
