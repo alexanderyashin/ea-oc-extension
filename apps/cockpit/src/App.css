@@ -212,6 +212,10 @@ select.input option {
   align-items: center;
   justify-content: center;
   padding: 24px;
+
+  /* CRITICAL: must sit above ReactFlow/panels and capture clicks */
+  z-index: 10000;
+  pointer-events: auto;
 }
 
 .modal {
@@ -220,6 +224,10 @@ select.input option {
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: #121521;
   overflow: hidden;
+
+  /* ensure modal stays clickable */
+  pointer-events: auto;
+  z-index: 10001;
 }
 
 .modalHeader {
@@ -240,10 +248,18 @@ select.input option {
 .hintOverlay {
   position: absolute;
   inset: 10px;
-  pointer-events: none;
+
+  /* CRITICAL: must sit above ReactFlow and capture clicks/wheel */
+  z-index: 999;
+  pointer-events: auto;
+
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+
+  /* optional: subtle dim to signal overlay */
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
 }
 
 .hintCard {
