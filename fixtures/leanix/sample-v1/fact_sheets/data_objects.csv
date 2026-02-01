@@ -1,41 +1,51 @@
 id,name,type,lifecycle,status,description
-DO-001,Data Object 01,DataObject,Retire,Planned,Synthetic data object (DO-001).
-DO-002,Data Object 02,DataObject,Active,Deprecated,Synthetic data object (DO-002).
-DO-003,Data Object 03,DataObject,Plan,Deprecated,Synthetic data object (DO-003).
-DO-004,Data Object 04,DataObject,Phase In,Deprecated,Synthetic data object (DO-004).
-DO-005,Data Object 05,DataObject,Retire,Deprecated,Synthetic data object (DO-005).
-DO-006,Data Object 06,DataObject,Plan,Deprecated,Synthetic data object (DO-006).
-DO-007,Data Object 07,DataObject,Retire,Planned,Synthetic data object (DO-007).
-DO-008,Data Object 08,DataObject,Active,Active,Synthetic data object (DO-008).
-DO-009,Data Object 09,DataObject,Phase In,Active,Synthetic data object (DO-009).
-DO-010,Data Object 10,DataObject,Phase Out,Active,Synthetic data object (DO-010).
-DO-011,Data Object 11,DataObject,Retire,Planned,Synthetic data object (DO-011).
-DO-012,Data Object 12,DataObject,Phase Out,Deprecated,Synthetic data object (DO-012).
-DO-013,Data Object 13,DataObject,Plan,Active,Synthetic data object (DO-013).
-DO-014,Data Object 14,DataObject,Phase In,Active,Synthetic data object (DO-014).
-DO-015,Data Object 15,DataObject,Phase In,Active,Synthetic data object (DO-015).
-DO-016,Data Object 16,DataObject,Plan,Deprecated,Synthetic data object (DO-016).
-DO-017,Data Object 17,DataObject,Phase Out,Planned,Synthetic data object (DO-017).
-DO-018,Data Object 18,DataObject,Phase Out,Deprecated,Synthetic data object (DO-018).
-DO-019,Data Object 19,DataObject,Active,Planned,Synthetic data object (DO-019).
-DO-020,Data Object 20,DataObject,Plan,Deprecated,Synthetic data object (DO-020).
-DO-021,Data Object 21,DataObject,Phase Out,Planned,Synthetic data object (DO-021).
-DO-022,Data Object 22,DataObject,Plan,Active,Synthetic data object (DO-022).
-DO-023,Data Object 23,DataObject,Plan,Deprecated,Synthetic data object (DO-023).
-DO-024,Data Object 24,DataObject,Plan,Planned,Synthetic data object (DO-024).
-DO-025,Data Object 25,DataObject,Phase In,Active,Synthetic data object (DO-025).
-DO-026,Data Object 26,DataObject,Phase In,Active,Synthetic data object (DO-026).
-DO-027,Data Object 27,DataObject,Plan,Active,Synthetic data object (DO-027).
-DO-028,Data Object 28,DataObject,Retire,Deprecated,Synthetic data object (DO-028).
-DO-029,Data Object 29,DataObject,Phase Out,Deprecated,Synthetic data object (DO-029).
-DO-030,Data Object 30,DataObject,Retire,Active,Synthetic data object (DO-030).
-DO-031,Data Object 31,DataObject,Plan,Planned,Synthetic data object (DO-031).
-DO-032,Data Object 32,DataObject,Phase In,Deprecated,Synthetic data object (DO-032).
-DO-033,Data Object 33,DataObject,Phase Out,Planned,Synthetic data object (DO-033).
-DO-034,Data Object 34,DataObject,Retire,Planned,Synthetic data object (DO-034).
-DO-035,Data Object 35,DataObject,Phase Out,Deprecated,Synthetic data object (DO-035).
-DO-036,Data Object 36,DataObject,Phase In,Active,Synthetic data object (DO-036).
-DO-037,Data Object 37,DataObject,Plan,Active,Synthetic data object (DO-037).
-DO-038,Data Object 38,DataObject,Phase In,Planned,Synthetic data object (DO-038).
-DO-039,Data Object 39,DataObject,Active,Deprecated,Synthetic data object (DO-039).
-DO-040,Data Object 40,DataObject,Phase Out,Active,Synthetic data object (DO-040).
+DO-0001,Data Object 01,DataObject,EndOfLife,Inactive,Synthetic data object (DO-0001).
+DO-0002,Data Object 02,DataObject,Active,Planned,Synthetic data object (DO-0002).
+DO-0003,Data Object 03,DataObject,Plan,Planned,Synthetic data object (DO-0003).
+DO-0004,Data Object 04,DataObject,PhaseIn,Planned,Synthetic data object (DO-0004).
+DO-0005,Data Object 05,DataObject,EndOfLife,Planned,Synthetic data object (DO-0005).
+DO-0006,Data Object 06,DataObject,Plan,Planned,Synthetic data object (DO-0006).
+DO-0007,Data Object 07,DataObject,EndOfLife,Inactive,Synthetic data object (DO-0007).
+DO-0008,Data Object 08,DataObject,Active,Active,Synthetic data object (DO-0008).
+DO-0009,Data Object 09,DataObject,PhaseIn,Active,Synthetic data object (DO-0009).
+DO-0010,Data Object 10,DataObject,PhaseOut,Active,Synthetic data object (DO-0010).
+DO-0011,Data Object 11,DataObject,EndOfLife,Inactive,Synthetic data object (DO-0011).
+DO-0012,Data Object 12,DataObject,PhaseOut,Planned,Synthetic data object (DO-0012).
+DO-0013,Data Object 13,DataObject,Plan,Active,Synthetic data object (DO-0013).
+DO-0014,Data Object 14,DataObject,PhaseIn,Active,Synthetic data object (DO-0014).
+DO-0015,Data Object 15,DataObject,PhaseIn,Active,Synthetic data object (DO-0015).
+DO-0016,Data Object 16,DataObject,Plan,Planned,Synthetic data object (DO-0016).
+DO-0017,Data Object 17,DataObject,PhaseOut,Inactive,Synthetic data object (DO-0017).
+DO-0018,Data Object 18,DataObject,PhaseOut,Planned,Synthetic data object (DO-0018).
+DO-0019,Data Object 19,DataObject,Active,Inactive,Synthetic data object (DO-0019).
+DO-0020,Data Object 20,DataObject,Plan,Planned,Synthetic data object (DO-0020).
+DO-0021,Data Object 21,DataObject,PhaseOut,Inactive,Synthetic data object (DO-0021).
+DO-0022,Data Object 22,DataObject,Plan,Active,Synthetic data object (DO-0022).
+DO-0023,Data Object 23,DataObject,Plan,Planned,Synthetic data object (DO-0023).
+DO-0024,Data Object 24,DataObject,Plan,Inactive,Synthetic data object (DO-0024).
+DO-0025,Data Object 25,DataObject,PhaseIn,Active,Synthetic data object (DO-0025).
+DO-0026,Data Object 26,DataObject,PhaseIn,Active,Synthetic data object (DO-0026).
+DO-0027,Data Object 27,DataObject,Plan,Active,Synthetic data object (DO-0027).
+DO-0028,Data Object 28,DataObject,EndOfLife,Planned,Synthetic data object (DO-0028).
+DO-0029,Data Object 29,DataObject,PhaseOut,Planned,Synthetic data object (DO-0029).
+DO-0030,Data Object 30,DataObject,EndOfLife,Active,Synthetic data object (DO-0030).
+DO-0031,Data Object 31,DataObject,Plan,Inactive,Synthetic data object (DO-0031).
+DO-0032,Data Object 32,DataObject,PhaseIn,Planned,Synthetic data object (DO-0032).
+DO-0033,Data Object 33,DataObject,PhaseOut,Inactive,Synthetic data object (DO-0033).
+DO-0034,Data Object 34,DataObject,EndOfLife,Inactive,Synthetic data object (DO-0034).
+DO-0035,Data Object 35,DataObject,PhaseOut,Planned,Synthetic data object (DO-0035).
+DO-0036,Data Object 36,DataObject,PhaseIn,Active,Synthetic data object (DO-0036).
+DO-0037,Data Object 37,DataObject,Plan,Active,Synthetic data object (DO-0037).
+DO-0038,Data Object 38,DataObject,PhaseIn,Inactive,Synthetic data object (DO-0038).
+DO-0039,Data Object 39,DataObject,Active,Planned,Synthetic data object (DO-0039).
+DO-0040,Data Object 40,DataObject,PhaseOut,Active,Synthetic data object (DO-0040).
+DO-0041,Data Object 41,DataObject,Plan,Planned,Synthetic data object (DO-0041).
+DO-0042,Data Object 42,DataObject,PhaseIn,Active,Synthetic data object (DO-0042).
+DO-0043,Data Object 43,DataObject,EndOfLife,Planned,Synthetic data object (DO-0043).
+DO-0044,Data Object 44,DataObject,Plan,Planned,Synthetic data object (DO-0044).
+DO-0045,Data Object 45,DataObject,PhaseOut,Inactive,Synthetic data object (DO-0045).
+DO-0046,Data Object 46,DataObject,EndOfLife,Planned,Synthetic data object (DO-0046).
+DO-0047,Data Object 47,DataObject,Active,Active,Synthetic data object (DO-0047).
+DO-0048,Data Object 48,DataObject,Plan,Inactive,Synthetic data object (DO-0048).
+DO-0049,Data Object 49,DataObject,Active,Inactive,Synthetic data object (DO-0049).
+DO-0050,Data Object 50,DataObject,Active,Active,Synthetic data object (DO-0050).

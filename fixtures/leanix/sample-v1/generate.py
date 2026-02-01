@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+import glob
 import os
 import random
 from dataclasses import dataclass
@@ -43,6 +44,18 @@ class Row:
 def ensure_dirs() -> None:
     os.makedirs(OUT_FACT, exist_ok=True)
     os.makedirs(OUT_REL, exist_ok=True)
+
+
+def clean_dir(path: str, pattern: str = "*.csv") -> None:
+    """
+    Ensure output is never contaminated by stale files from previous runs.
+    We only remove CSVs in the known output dirs.
+    """
+    for fp in glob.glob(os.path.join(path, pattern)):
+        try:
+            os.remove(fp)
+        except OSError:
+            pass
 
 
 def mk_id(prefix: str, i: int) -> str:
@@ -187,6 +200,9 @@ def rel_rows(
         targets = random.sample(target_ids, k=k)
         for tid in targets:
             rows.append([sid, tid, relation_type])
+
+    # Stable ordering to make file hashes robust across environments.
+    rows.sort(key=lambda r: (r[0], r[1], r[2]))
     return rows
 
 
@@ -230,6 +246,7 @@ def write_relations(
         for tid in targets:
             rows_prv.append([sid, tid, "depends_on"])
 
+    rows_prv.sort(key=lambda r: (r[0], r[1], r[2]))
     write_csv(
         os.path.join(OUT_REL, "app_to_provider.csv"),
         header,
@@ -247,6 +264,8 @@ def write_relations(
 def main() -> None:
     random.seed(SEED)
     ensure_dirs()
+    clean_dir(OUT_FACT)
+    clean_dir(OUT_REL)
 
     apps, itcs, caps, prov, data = gen_fact_sheets()
     write_fact_sheets(apps, itcs, caps, prov, data)
