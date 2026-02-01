@@ -7,8 +7,28 @@ type Props = {
 
 export function LockedFeatureDialog({ title, featureId, onClose }: Props) {
   return (
-    <div className="modalOverlay" onClick={onClose} role="presentation">
-      <div className="modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
+    <div
+      className="modalOverlay"
+      onClick={onClose}
+      role="presentation"
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        // ensure overlay reliably catches clicks even if underlying canvas has pointer capture
+        pointerEvents: "auto",
+      }}
+    >
+      <div
+        className="modal"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        style={{
+          position: "relative",
+          zIndex: 10000,
+        }}
+      >
         <div className="modalHeader">
           <div>{title}</div>
           <button className="btn" onClick={onClose}>
