@@ -58,3 +58,28 @@ Notes
   may appear when using the Windows Python launcher.
 - This warning does not affect execution or output correctness
   and can be safely ignored for fixture generation.
+
+---
+
+## Internal review stamp (MVP import pipeline)
+
+Status
+- APPROVED (internal review)
+
+Scope of approval
+- UI import wiring + mapping/validation sources tracked in repo
+- Session-only behavior (no persistence / exports / sync claims)
+- Deterministic gates green for cockpit build
+
+Evidence (facts-only)
+- `npm --prefix apps/cockpit run typecheck` → PASS
+- `npm --prefix apps/cockpit run build` → PASS
+- Relevant commits (main):
+  - 350dd74 — ui: wire ImportDialog via integrations modal (session-only)
+  - 5b04c2a — fix: leanix validate noUnusedLocals (remove unused const)
+  - a26d2b4 — chore: track import/mapping sources and ignore local _analysis
+
+Review note
+- This stamp confirms only: build integrity + wiring correctness at MVP level.
+- It does NOT imply: backend ingestion availability, data completeness guarantees,
+  or any “full product” claims beyond the stated scope.
