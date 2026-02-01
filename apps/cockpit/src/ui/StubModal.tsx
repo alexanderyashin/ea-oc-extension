@@ -1,6 +1,7 @@
 import { useGraphStore } from "../store/graph.store";
 import { IS_DEMO } from "../gates/tier";
 import { LockedFeatureDialog } from "./LockedFeatureDialog";
+import { ImportDialog } from "./ImportDialog";
 
 const TITLES: Record<string, string> = {
   integrations: "Integrations",
@@ -33,6 +34,11 @@ export function StubModal() {
   // DEMO tier: always show locked-feature dialog
   if (IS_DEMO) {
     return <LockedFeatureDialog title={title} featureId={featureId} onClose={close} />;
+  }
+
+  // FULL tier: allow Integrations to be a real (session-only) import surface.
+  if (modal === "integrations") {
+    return <ImportDialog open={true} onClose={close} />;
   }
 
   // FULL tier: honest stub shell (no fake implementation claims)

@@ -31,6 +31,8 @@ export default function App() {
   const selectEdge = useGraphStore((s) => s.selectEdge);
   const clearSelection = useGraphStore((s) => s.clearSelection);
 
+  const openModal = useGraphStore((s) => s.openModal);
+
   const onPaneClick = useCallback(() => {
     clearSelection();
   }, [clearSelection]);
@@ -43,7 +45,7 @@ export default function App() {
   return (
     <div className="cockpit">
       {/* TOP: TopBar already has className="topbar" inside */}
-      <TopBar />
+      <TopBar onOpenImport={() => openModal("integrations")} />
 
       {/* LEFT */}
       <div className="panel left">
