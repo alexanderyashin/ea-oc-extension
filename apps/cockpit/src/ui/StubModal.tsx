@@ -4,6 +4,7 @@ import { LockedFeatureDialog } from "./LockedFeatureDialog";
 import { ImportDialog } from "./ImportDialog";
 
 const TITLES: Record<string, string> = {
+  import: "Import",
   integrations: "Integrations",
   archimate: "ArchiMate Profile",
   save: "Save",
@@ -12,6 +13,7 @@ const TITLES: Record<string, string> = {
 };
 
 const FEATURE_IDS: Record<string, string> = {
+  import: "import.leanix_csv.mvp",
   integrations: "integrations",
   archimate: "profile.archimate.switch",
   save: "artifact.save",
@@ -23,7 +25,7 @@ export function StubModal() {
   const modal = useGraphStore((s) => s.modal);
   const close = useGraphStore((s) => s.closeModal);
 
-  // CRITICAL FIX:
+  // CRITICAL:
   // If no modal is active, render nothing.
   // Otherwise .modalOverlay (fixed, inset:0) would cover the entire UI.
   if (!modal) return null;
@@ -31,7 +33,12 @@ export function StubModal() {
   const title = TITLES[modal] ?? "Dialog";
   const featureId = FEATURE_IDS[modal] ?? modal;
 
-  // DEMO tier: always show locked-feature dialog
+  // MVP import must work in DEMO and FULL. No FULL build dependency.
+  if (modal === "import") {
+    return <ImportDialog open={true} onClose={close} />;
+  }
+
+  // DEMO tier: all other surfaces remain gated (honest).
   if (IS_DEMO) {
     return <LockedFeatureDialog title={title} featureId={featureId} onClose={close} />;
   }
@@ -43,12 +50,18 @@ export function StubModal() {
 
   // FULL tier: honest stub shell (no fake implementation claims)
   return (
-    <div className="modalOverlay" onClick={close} role="presentation">
+    <div
+      className="modalOverlay"
+      onClick={close}
+      role="presentation"
+      style={{ zIndex: 9999 }}
+    >
       <div
         className="modal"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
+        style={{ zIndex: 10000 }}
       >
         <div className="modalHeader">
           <div>{title}</div>
@@ -59,8 +72,8 @@ export function StubModal() {
 
         <div className="modalBody">
           <div style={{ opacity: 0.9, marginBottom: 10 }}>
-            This shell is diagnostic-only (SIMULATION-0). The UI surface exists,
-            but no persistence / exports are implemented here.
+            This shell is diagnostic-only (SIMULATION-0). The UI surface exists, but no persistence /
+            exports are implemented here.
           </div>
 
           <div style={{ opacity: 0.75, fontSize: 13 }}>

@@ -45,7 +45,7 @@ export default function App() {
   return (
     <div className="cockpit">
       {/* TOP: TopBar already has className="topbar" inside */}
-      <TopBar onOpenImport={() => openModal("integrations")} />
+      <TopBar onOpenImport={() => openModal("import")} />
 
       {/* LEFT */}
       <div className="panel left">

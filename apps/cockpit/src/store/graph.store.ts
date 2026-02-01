@@ -170,7 +170,10 @@ export interface GraphState {
 
   selected: Selected;
 
-  modal: null | "integrations" | "archimate" | "save" | "report" | "extended";
+  // NOTE:
+  // - "import" is MVP path and must work in DEMO (session-only, no persistence).
+  // - "integrations" stays full-only surface (gated in DEMO).
+  modal: null | "import" | "integrations" | "archimate" | "save" | "report" | "extended";
   paletteKinds: readonly string[];
 
   // Session-only UX hints
@@ -356,7 +359,7 @@ export const useGraphStore = create<GraphState>((set, get) => {
     selectEdge: (id) => set({ selected: { type: "edge", id } }),
     clearSelection: () => set({ selected: { type: "none" } }),
 
-    updateSelectedNodeName: (name) => {
+    updateSelectedNodeName: (name: string) => {
       const sel = get().selected;
       if (sel.type !== "node") return;
 
@@ -380,7 +383,7 @@ export const useGraphStore = create<GraphState>((set, get) => {
       }));
     },
 
-    updateNodeName: (id, name) => {
+    updateNodeName: (id: string, name: string) => {
       const trimmed = name.trim();
       const finalName = trimmed.length ? trimmed : "Unnamed";
 
