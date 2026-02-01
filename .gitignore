@@ -109,3 +109,9 @@ patent_*.ps1
 
 # root npm lock should not exist (monorepo uses per-app lock)
 /package-lock.json
+
+# --- TEMP: patent bundle staged locally (will be moved to ESTRA Toolkit repo) ---
+/patent/
+/patent_*.txt
+/patent_*.ps1
+/patent_extract.ps1
