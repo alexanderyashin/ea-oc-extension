@@ -122,6 +122,10 @@ _analysis/
 # local release bundles / packaging outputs (do not commit)
 ESTRA_EA-OC-EXTENSION_v*_artefacts.zip
 ESTRA_EA-OC-EXTENSION_v*_source.zip
+
+# allow tracked checksum files if placed under release-assets
 SHA256SUMS.txt
+!release-assets/**/SHA256SUMS.txt
+
 _artefacts/
 release-assets/**/_incoming/
