@@ -1,14 +1,35 @@
-# EA OC Extension — K_EA (GitHub Run)
+# ESTRA / EA-OC-EXTENSION
 
-This repository implements **ETS.K_EA.v1.1** as an executable computational engine
-and hosts the corresponding executable-closed diagnostic whitepaper.
+This repository contains the **public reference artefacts** of the
+ESTRA / EA-OC-EXTENSION project.
+
+The material is published for **inspection, classification, and scholarly
+reference**. It does **not** constitute a software product, an operational
+tool, or a methodological guide.
+
+---
+
+## Reference release
+
+The authoritative public snapshot is:
+
+- **GitHub Release (access & navigation layer)**  
+  https://github.com/alexanderyashin/ea-oc-extension/releases/tag/v1.0.0
+
+- **Zenodo Record (archival reference for citation)**  
+  https://doi.org/10.5281/zenodo.18468373
+
+The Zenodo record represents the **frozen archival reference**.
+The GitHub release provides **human-readable access** (PDFs, overview,
+repository snapshot).
 
 ---
 
 ## Scope locks (hard)
+
 - OC Core: frozen
 - ESTRA v1 invariants: diagnostic-only
-- K_EA primitives: frozen (ETS.K_EA.v1.1)
+- Structural primitives and boundary semantics: frozen
 
 No new theory.  
 No reinterpretation.  
@@ -18,61 +39,66 @@ No extension of primitives, thresholds, or operators.
 
 ## Epistemic status (repository-level)
 
-This repository contains a **formal, executable-closed specification**
+This repository contains a **closed, versioned formal specification**
 and its faithful human-readable projection.
 
-**What this is**
-- A versioned, immutable formal object (ETS) and its executable realization.
-- A diagnostic calculus defining symbols, constraints, admissibility conditions,
-  and boundary outcomes (including STOP).
-- Infrastructure for reconstruction, inspection, and reproducibility
+### What this is
+
+- A versioned reference snapshot of structural and epistemic artefacts.
+- Formal definitions of system states, constraints, admissibility conditions,
+  and boundary outcomes (including terminal STOP conditions).
+- Material intended for inspection, classification, and reproducibility
   at the level of file identity.
 
-**What this is not**
+### What this is not
+
+- Not a software product.
+- Not an operational tool.
 - Not a scientific theory.
 - Not an empirical study or validation.
-- Not a framework or methodology.
-- Not prescriptive guidance or best practice.
+- Not a framework, methodology, or best-practice guide.
 - Not a claim of usefulness, effectiveness, or superiority.
 
-Any request for empirical grounding, case studies, comparisons, validation,
-or practical justification is **out of scope by artifact type**.
+Requests for empirical grounding, case studies, benchmarks, comparisons,
+or practical justification are **out of scope by artefact type**.
 
 ---
 
 ## Citation & use contract (summary)
 
-A citation to artifacts in this repository is valid **only** to assert:
-- the existence and identity of a specific, versioned formal specification;
-- definitions, symbols, constraints, and STOP boundary semantics;
-- executable closure and reconstructability.
+A citation to artefacts in this repository is valid **only** to assert:
+
+- the existence and identity of a specific, versioned reference artefact;
+- formal definitions of states, constraints, and boundary semantics;
+- the internal consistency of the documented construct.
 
 A citation **does not** assert:
+
 - empirical correctness or validation;
 - predictive accuracy;
 - practical utility or outcomes;
 - authority derived from publication or archiving.
 
-Using this repository or its whitepaper as empirical evidence,
-prescriptive guidance, or comparative benchmark constitutes a category error.
+Using these artefacts as empirical evidence, prescriptive guidance,
+or comparative benchmarks constitutes a category error.
 
 ---
 
 ## Publication & archiving intent
 
-If archived (e.g. on Zenodo), the intended classification is:
+When archived (e.g. on Zenodo), the intended classification is:
 
-- Resource type: **Technical report / formal specification**
-- Domain: **Formal methods / systems engineering (diagnostic specification)**
-- Keywords (non-marketing):
-  `formal specification`, `executable closure`, `diagnostic calculus`,
-  `enterprise continuum`, `K_EA`, `ontology of continua`, `STOP boundary`,
-  `reproducibility`
+- **Resource type:** Other / reference artefacts
+- **Domain:** Structural analysis, formal systems, enterprise architecture (theoretical)
+- **Keywords (non-marketing):**  
+  structural analysis, system states, constraints, state transitions,
+  epistemic artefacts, reference release, enterprise architecture (theoretical)
 
 Versioning semantics:
-- Cite a specific release, tag, or commit.
-- Where relevant, also cite the ETS identity anchor (SHA-256) stated in the
-  whitepaper front matter.
+
+- Always cite a specific release or Zenodo record.
+- Distinct releases represent distinct frozen reference states.
+- No forward references or roadmap claims are implied.
 
 ---
 
@@ -80,4 +106,5 @@ Versioning semantics:
 
 Publication, archiving, or citation of this repository does not imply
 scientific validation, empirical authority, or endorsement.
-It provides a stable reference for a closed formal object only.
+
+It provides a stable reference for a **closed formal construct** only.
