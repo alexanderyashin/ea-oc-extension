@@ -30,8 +30,8 @@ structural consistency.
 
 ### What Problem This Whitepaper Addresses
 
-Large enterprises are frequently analyzed using frameworks, maturity models,
-roadmaps, or best-practice catalogs. Such instruments often assume, implicitly
+Large enterprises are frequently analyzed using frameworks, staged assessment model,
+outline, or best-practice catalogs. Such instruments often assume, implicitly
 or explicitly, that:
 
 - the enterprise exists as a stable object of analysis,
@@ -42,7 +42,7 @@ or explicitly, that:
 In practice, many enterprise initiatives fail not because of poor execution,
 but because the *structural conditions for existence, stability, or recovery are
 no longer satisfied*. Conventional approaches lack a formal mechanism to state
-when diagnosis itself must stop.
+when diagnosis itself is forced to stop.
 
 K_EA addresses this gap by treating the enterprise as a **continuum with
 explicit existence conditions**, bounded state space, and well-defined STOP
@@ -73,9 +73,9 @@ performed in this document.
 This whitepaper is strictly **diagnostic** in scope.
 
 It does not:
-- recommend interventions,
-- optimize outcomes,
-- propose roadmaps,
+- provide intervention considerations,
+- improve outcomes,
+- propose outline,
 - rank alternatives,
 - suggest recovery strategies.
 
@@ -153,7 +153,7 @@ formal document.
 
 ### 1.2 What this whitepaper is not
 
-Not a framework, methodology, guideline, maturity model, roadmap, or
+Not a framework, methodology, guideline, staged assessment model, outline, or
 prescriptive instrument.
 
 ### 1.3 Diagnostic-only commitment
