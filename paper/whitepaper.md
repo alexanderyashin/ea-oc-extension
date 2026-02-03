@@ -55,10 +55,10 @@ states. Diagnosis is permitted only while these conditions hold.
 K_EA is not a metaphor, framework, or descriptive taxonomy. It is defined as a
 continuum in the Ontology-of-Continua (OC) sense, characterized by:
 
-- a state space Ω_EA with explicit boundaries ∂Ω_EA,
+- a state space ??_EA with explicit boundaries ?????_EA,
 - a finite set of axes A_EA representing degrees of freedom,
 - potentials P_EA and flows J_EA governing internal dynamics,
-- threshold functions Θ_EA defining structural admissibility,
+- threshold functions ??_EA defining structural admissibility,
 - recurrent cycles C_EA required for persistence,
 - a continuity measure k_EA expressing structural connectivity over time.
 
@@ -180,14 +180,14 @@ modifying OC Core.
 **Definition (ETS.K_EA.v1.1):**
 
 K_EA is defined as a continuum with immutable primitives:
-- State space: Ω_EA and boundary ∂Ω_EA
+- State space: ??_EA and boundary ?????_EA
 - Axes: A_EA
 - Potentials: P_EA
-- Threshold set: Θ_EA (via f_k components)
+- Threshold set: ??_EA (via f_k components)
 - Flows: J_EA
 - Cycles: C_EA
 - Continuity/connectivity: k_EA
-- Internal time scale: τ_EA
+- Internal time scale: ??_EA
 
 ---
 
@@ -210,8 +210,8 @@ No additional axes are introduced.
 
 From `structural_tension_f_k:` in ETS:
 - components: f_exist, f_stab, f_inertia, f_collapse, f_stop
-- mapping: Θ_exist→f_exist, Θ_stab→f_stab, Θ_inertia→f_inertia,
-  Θ_collapse→f_collapse, Θ_stop→f_stop
+- mapping: ??_exist???f_exist, ??_stab???f_stab, ??_inertia???f_inertia,
+  ??_collapse???f_collapse, ??_stop???f_stop
 
 No numeric values are defined; only inequality-based structure is preserved.
 
@@ -221,17 +221,17 @@ No numeric values are defined; only inequality-based structure is preserved.
 
 From `cycles:` in ETS:
 - required: governance, value, reproduction, finance, learning
-- closure_rule: graph_closed_path; recurrent_pattern_over_τ
+- closure_rule: graph_closed_path; recurrent_pattern_over_??
 
 ---
 
 ## 7. Continuity Measure k_EA (ETS Projection)
 
 From `k_EA:` in ETS:
-- factorization: H_Ω, S_cycles, S_obs, S_parent, S_thresholds
+- factorization: H_??, S_cycles, S_obs, S_parent, S_thresholds
 - aggregation: product
 - bounds: [0, 1]
-- hard zero: H_Ω = false
+- hard zero: H_?? = false
 
 ---
 
@@ -250,13 +250,13 @@ INERTIA:
 - f_inertia > 0 and not (STOP or COLLAPSE)
 
 SUCCESS:
-- all f_k ≤ 0
+- all f_k ??? 0
 
 Allowed transitions:
-- SUCCESS → INERTIA, COLLAPSE, STOP
-- INERTIA → SUCCESS_via_external_Ψ, COLLAPSE, STOP
-- COLLAPSE → STOP
-- STOP → (none)
+- SUCCESS ??? INERTIA, COLLAPSE, STOP
+- INERTIA ??? SUCCESS_via_external_??, COLLAPSE, STOP
+- COLLAPSE ??? STOP
+- STOP ??? (none)
 
 ---
 
@@ -265,9 +265,9 @@ Allowed transitions:
 From `coupling_k7:` in ETS:
 - fields: law, regulation, market, technology, norms
 - constraints:
-  - Ω_EA ⊆ Ω_7
+  - ??_EA ??? ??_7
   - no direct external axis control
-  - no direct K8→EA coupling
+  - no direct K8???EA coupling
 
 ---
 
@@ -294,6 +294,6 @@ performed.
 
 ---
 
-## Appendix C — Reproducibility Manifest (Pointer)
+## Appendix C ??? Reproducibility Manifest (Pointer)
 
 See `paper/manifest.yml` and `configs/ETS.K_EA.v1.1.sha256`.
