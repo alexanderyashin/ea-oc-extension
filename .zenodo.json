@@ -1,0 +1,20 @@
+{
+  "title": "ESTRA / EA-OC-EXTENSION v1.0.0 — Reference Artefacts (Public Release)",
+  "description": "This record contains the v1.0.0 public release of the ESTRA / EA-OC-EXTENSION project. The release consists of a fixed set of reference artefacts intended for inspection, classification, and scholarly citation. The material documents a structural and epistemic construct describing system states, constraints, and transitions. It is provided as a frozen snapshot of documents and sources, without claims of applicability, effectiveness, or operational use.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "structural analysis",
+    "system states",
+    "constraints",
+    "state transitions",
+    "epistemic artefacts",
+    "reference release",
+    "enterprise architecture (theoretical)"
+  ],
+  "upload_type": "other",
+  "creators": [
+    {
+      "name": "Yashin, Alexander"
+    }
+  ]
+}
