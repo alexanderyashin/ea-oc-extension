@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use these reference artefacts in academic work, please cite the Zenodo record."
+type: generic
+title: "ESTRA / EA-OC-EXTENSION v1.0.0 — Reference Artefacts (Public Release)"
+authors:
+  - family-names: "Yashin"
+    given-names: "Alexander"
+doi: "10.5281/zenodo.18468373"
+url: "https://zenodo.org/records/18468373"
+version: "v1.0.0"
+date-released: "2026-02-03"
+license: "CC-BY-4.0"
+keywords:
+  - structural analysis
+  - system states
+  - constraints
+  - state transitions
+  - epistemic artefacts
+  - reference release
+  - enterprise architecture (theoretical)
