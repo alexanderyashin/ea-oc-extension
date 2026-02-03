@@ -129,3 +129,10 @@ SHA256SUMS.txt
 
 _artefacts/
 release-assets/**/_incoming/
+
+# release hygiene local helpers (do not commit)
+tools/release_hygiene_*.ps1
+tools/release_hygiene_*.log
+
+# release-assets staging (do not commit)
+release-assets/v1.0.0/_incoming/
