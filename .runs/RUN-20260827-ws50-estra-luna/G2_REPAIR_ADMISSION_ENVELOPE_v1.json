@@ -1,0 +1,141 @@
+{
+  "schema_id": "ESTRA_WS50_G2_REPAIR_ADMISSION_ENVELOPE_v1",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "logical_result_id": "OC14-OB-ESTRA-01",
+  "cycle_id": "OC14-G1-CYCLE-ROOT",
+  "predecessor_generation": 1,
+  "next_generation": 2,
+  "phase": "RETURN_FOR_REPAIR",
+  "admission_status": "GENERATION_2_ADMISSION_ONLY",
+  "validator_decision": "BLOCKED_EXTERNAL_AUTHORITY",
+  "validator_code": "ROLE_SCOPE_MISMATCH",
+  "validator_binding": {
+    "thread_id": "01a04271-9aa2-7f61-b3a9-615124827fe1",
+    "result_ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/LOGION_OC14_WS35_INDEPENDENT_VALIDATION_RESULT_WS50_ESTRA_01_v1.json",
+    "result_sha256": "d453bcd1042693e97a1ebd6203e06ac0291992e2ed7872f9b57524a386a5bc76",
+    "result_commit": "29666611c7f6974cd0537b8ea61469ccb34a4274",
+    "result_tree": "600ff015936f2ced55c724aae851786480f4f467",
+    "binding_status": "RECEIVED_AS_BLOCKED_EXTERNAL_AUTHORITY; NOT_ACCEPTANCE"
+  },
+  "predecessor_result": {
+    "commit": "53380eb9fb481a47a14fc3d1dbd0f1c3bf87cf09",
+    "tree": "99afe97a42f33db12be6c27a0747360b9ac86e0e",
+    "artifact_path_relative_to_producer_branch": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "artifact_raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "artifact_bytes": 3138,
+    "artifact_present_in_remote_tree": true,
+    "candidate_checksums": "40/40",
+    "guarded_baseline": "PASS_GUARDED_69_TESTS",
+    "preserve_without_rerun": true
+  },
+  "source_catalog": {
+    "sha256": "D006D5FAC755AC37A47018A3128940C489540053414D6D3B38EE963004B376BC",
+    "commit": "7b9567dbbb6f31f7428c94dfdb8b94a40f4525ac",
+    "tree": "ee972a72f763f7a005b3bce7a243752e308808e7"
+  },
+  "idempotency_key": "WS90:CYCLE:G2:OC14-G1-WS50-ESTRA-01:RETURN-FOR-REPAIR:d453bcd1",
+  "next_owner": "WS50 producer/owner",
+  "required_generation_2_fields": {
+    "artifact_path_relative_to_producer_branch": {
+      "value": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+      "status": "PRESENT"
+    },
+    "raw_artifact_sha256": {
+      "value": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+      "status": "PRESENT"
+    },
+    "producer_commit_tree": {
+      "commit": "53380eb9fb481a47a14fc3d1dbd0f1c3bf87cf09",
+      "tree": "99afe97a42f33db12be6c27a0747360b9ac86e0e",
+      "status": "PRESENT"
+    },
+    "remote_sha_tree_parity": {
+      "local_commit": "53380eb9fb481a47a14fc3d1dbd0f1c3bf87cf09",
+      "local_tree": "99afe97a42f33db12be6c27a0747360b9ac86e0e",
+      "remote_commit": "53380eb9fb481a47a14fc3d1dbd0f1c3bf87cf09",
+      "remote_tree": "99afe97a42f33db12be6c27a0747360b9ac86e0e",
+      "sha_match": true,
+      "tree_match": true,
+      "worker_dirty_count": 0,
+      "status": "PRESENT"
+    },
+    "declared_paths": {
+      "value": [
+        ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+        ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+        ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json"
+      ],
+      "status": "PRESENT_IN_PREDECESSOR_RESULT"
+    },
+    "current_validator_binding": {
+      "value": "01a04271-9aa2-7f61-b3a9-615124827fe1",
+      "status": "BLOCKED_ROLE_SCOPE_MISMATCH; AUTHORITATIVE_REBIND_REQUIRED"
+    },
+    "owner_receipt": {
+      "value": null,
+      "status": "MISSING_OWNER_RECEIPT",
+      "owner": "WS50 producer/owner"
+    },
+    "rights_receipt": {
+      "value": null,
+      "status": "MISSING_RIGHTS_RECEIPT",
+      "owner": "WS50 producer/owner"
+    },
+    "custody_chain": {
+      "value": null,
+      "status": "MISSING_CUSTODY_CHAIN_RECEIPT",
+      "owner": "WS50 producer/owner"
+    },
+    "measurement_review_occurrence": {
+      "value": null,
+      "status": "MISSING_MEASUREMENT_REVIEW_OCCURRENCE",
+      "owner": "Authoritative reviewer"
+    },
+    "independent_reviewer_occurrence": {
+      "value": null,
+      "status": "MISSING_INDEPENDENT_REVIEWER_OCCURRENCE",
+      "owner": "Authoritative independent reviewer"
+    },
+    "honest_dod": {
+      "value": "Admission packet only: preserve predecessor evidence, obtain authoritative source/artifact/binding and owner/rights/custody/reviewer receipts, then re-evaluate. No substantive rerun is requested.",
+      "status": "BLOCKED_UNTIL_AUTHORITATIVE_SOURCE_AND_BINDING_RECEIPTS"
+    },
+    "next_transition": {
+      "value": "GENERATION_2_ADMISSION_ONLY_AFTER_AUTHORITATIVE_SOURCE_AND_BINDING_RECEIPTS",
+      "status": "FAIL_CLOSED"
+    }
+  },
+  "failed_predicates_preserved": [
+    "result commit object unavailable to validator",
+    "result tree object unavailable to validator",
+    "artifact path/content readback missing to validator",
+    "schema/content check not executable",
+    "rights receipt missing",
+    "custody chain missing",
+    "measurement review occurrence missing",
+    "independent reviewer occurrence missing"
+  ],
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "promotion_forbidden": true,
+    "cci_status": "WITHHELD",
+    "authority_emitted": false,
+    "activation": false
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "shared_main_pointer_public_cold_raw_db_host_io_mutation": false,
+    "delete_move_reset_cleanup": false,
+    "substantive_rerun": false
+  },
+  "router_boundary": {
+    "role": "TRANSPORT_ONLY",
+    "writes_performed": 0,
+    "authority_emitted": false,
+    "activation": false,
+    "host_io": false,
+    "direct_cci_route": false
+  }
+}
