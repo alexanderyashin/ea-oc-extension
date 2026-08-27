@@ -5,7 +5,7 @@
   "source_obligation_id": "OC14-OB-ESTRA-01",
   "phase": "R4_FUNCTIONAL_ASSET_REVIEW",
   "snapshot_utc": "2026-08-27T22:00:28Z",
-  "status": "CAPABILITY_BLOCKER__HOST_SAFETY_ACTIVE_ALERT__FUNCTIONAL_VALIDATION_PENDING",
+  "status": "RETURNED_FOR_REPAIR__RECOVERY_GATE_OPEN__FUNCTIONAL_VALIDATION_PENDING",
   "latest_current_artifact": {
     "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
     "logical_id": "OC14-OB-ESTRA-01",
@@ -89,11 +89,17 @@
   },
   "ws70_validation_consumption": {
     "consumed": true,
-    "validation_result_commit": "30472ba8541d16401697bf1f872776aa4e91de05",
-    "validation_result_tree": "a64bb1a9a7e3194c8001555c6d2c80930443176d",
-    "canonical_validation_receipt_digest": "BDD34EA4B0C428C1DD807C4A9D0389CD2DF3B21E773B5315C2C0A28BFBB62B47",
+    "validation_result_version": "v5",
+    "validation_result_commit": "ef1e5f575171c97400823e2d5805bdb06bc1b289",
+    "validation_result_tree": "64aa1510c8580627dfd5f9391bf81848f0cf646b",
+    "canonical_validation_receipt_digest": "7164B85692FBEE7071EB7C981FB32261FA18E765A581AC40B4A5A95EC37D5490",
     "decision": "RETURNED_FOR_REPAIR",
     "return_code": "CURRENT_GUARDED_69_TEST_PAYLOAD_ADMISSION_BLOCKED__ACTIVE_ALERT_OPEN",
+    "prior_validation_result_v4": {
+      "validation_result_commit": "30472ba8541d16401697bf1f872776aa4e91de05",
+      "validation_result_tree": "a64bb1a9a7e3194c8001555c6d2c80930443176d",
+      "canonical_validation_receipt_digest": "BDD34EA4B0C428C1DD807C4A9D0389CD2DF3B21E773B5315C2C0A28BFBB62B47"
+    },
     "prior_validation_delta": {
       "validation_result_commit": "eda3eb8db3e96475c5ab54fbe7bc3ad384794aa7",
       "validation_result_tree": "ff7a0212c648b088b9b53bcf03265100eb85cf4a",
@@ -121,6 +127,94 @@
     },
     "repair_action_consumed": "Governed owner-recovery/restart-preflight must resolve the active alert without clearing the retained marker; then rerun the exact guarded 69-test command against the unchanged source and issue a fresh PASS or typed blocker. No rerun or promotion was performed in this repair turn.",
     "claim_ceiling": "Validation delta consumed for metadata repair only; no functional acceptance, semantic acceptance, CCI, publication, release or activation authority."
+  },
+  "ws15_infrastructure_recovery_consumption": {
+    "consumed": true,
+    "validation_receipt_path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/ws15_r4_estra_host_safety_recovery_validation_result_v1.json",
+    "payload_sha256": "77D92447E3785C474417DE5460ADB2828264021016D240CD2A9A00BCC21B7543",
+    "raw_sha256": "7D9785E870EFA98723336114839A0BDB210C8E719EF32F528846D3B5B4DAC1D6",
+    "source_ws70_result_binding": {
+      "commit": "30472ba8541d16401697bf1f872776aa4e91de05",
+      "tree": "a64bb1a9a7e3194c8001555c6d2c80930443176d",
+      "receipt_digest": "BDD34EA4B0C428C1DD807C4A9D0389CD2DF3B21E773B5315C2C0A28BFBB62B47"
+    },
+    "supplied_guarded_attempt": {
+      "raw_sha256": "9A4159F1472A6A6D853F82D46889B6EA45AD6566B5C3222CC6BE28EA45640B85",
+      "payload_started": false,
+      "exit_code": 120,
+      "reason": "ACTIVE_ALERT_OPEN",
+      "incident_id": "HOST-SAFETY-INCIDENT-A24A1CC74F66F81788F6A0A6"
+    },
+    "fresh_bounded_readback": {
+      "monitor_sha256": "F3923B48AAB5FCFA5B6AD4B5D7B6AA217F0077EB74381A0866569944B0897B11",
+      "monitor_status": "RUNNING",
+      "active_alert": false,
+      "common_stop_marker": false,
+      "restart_required": false,
+      "snapshot_utc": "2026-08-27T22:05:52Z",
+      "resource_sha256": "83C302E7707362235A88229A79F122D6AD0A21CF31A53CFE45578A3D281D7BDE",
+      "resource_status": "WARN",
+      "resource_snapshot_utc": "2026-08-27T22:05:48Z",
+      "free_ram_gb": 3.367611,
+      "green_min_not_met": true
+    },
+    "policy_and_contract": {
+      "policy_sha256": "7D244875B2766A6395BA104D367D9A0BF49C99E98C026400772C4F2634F86B42",
+      "recovery_contract_sha256": "475DA81FC1A4FF36974FF15AECC9A7A83B35A4972A6DFAD0D7D84CD5ABEAF721"
+    },
+    "decision": "BLOCKED_UNCHANGED_SOURCE_RETRY_NOT_ADMISSIBLE",
+    "tests_run_by_ws15": false,
+    "owner_action": "Preserve evidence, wait for a fresh GREEN monitor/resource frame and an explicit recovery/closure receipt; do not clear the marker or run owner-recovery/restart-preflight from this executor slot.",
+    "n_plus_1": "On fresh GREEN plus explicit closure receipt, rerun the exact guarded 69-test command against unchanged source and route fresh PASS or typed blocker to WS70; after the third identical blocker, escalate to OWNER_REVIEWER.",
+    "producer": {
+      "commit": "faec173346bba3c0583ba9d30278a0c7279a1403",
+      "tree": "9d1c650625f37bb5097980f5251c986a9d2d81cc",
+      "remote_parity": true,
+      "clean": true
+    },
+    "claim_ceiling": "Infrastructure recovery validation only; no current test result, functional acceptance, semantic acceptance, CCI, authority, occurrence, atom or publication claim."
+  },
+  "g19_executor_binding_correction_consumption": {
+    "consumed": true,
+    "transport_class": "ROUTER_TRANSPORT_ONLY",
+    "correction_path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/WS-10-CANON/oc14_g19_r4_estra_executor_binding_correction.json",
+    "packet_sha256": "f731b8ba2affe494283e074786e5c893ba6aa94cef44e69f8c9f13280cde04c0",
+    "source_planner_commit": "59ae43dcb27f40e0c1bb8e58ed655b91414ad7b5",
+    "source_planner_tree": "4ac997cad180b48cca114fc134ec3bb3bc9ac700",
+    "current_binding": {
+      "executor_thread": "01a0453a-ef27-7f72-9302-a2eb2c60f2e6",
+      "role": "ESTRA DOMAIN_EXECUTOR",
+      "old_failed_slot": "01a04271-cd1d-7590-b935-e3d078b003f5",
+      "old_slot_retry": false,
+      "independent_validator": "01a04271-ff7c-7812-9b3b-1d317af41691"
+    },
+    "idempotency_key": "WS90:G18:R4:ESTRA_EXECUTOR_SLOT_FAILURE:NPLUS1_BINDING_CORRECTION:01a04271-cd1d-7590-b935-e3d078b003f5",
+    "scope": "Bounded metadata correction only; WS70 remains independent validator.",
+    "router_boundary": {
+      "validation": false,
+      "acceptance": false,
+      "cci": false,
+      "authority": false,
+      "activation": false,
+      "host_io": false,
+      "main_pointer_public_db_mutation": false
+    },
+    "claim_ceiling": "Executor binding correction only; no functional acceptance, semantic acceptance, CCI, authority, publication, release or activation claim."
+  },
+  "g18_recovery_transport_consumption": {
+    "consumed": true,
+    "transport_class": "ROUTER_TRANSPORT_ONLY",
+    "state": "RETURNED_FOR_REPAIR__RECOVERY_GATE_OPEN",
+    "idempotency_key": "WS90:G18:R4:HOST_SAFETY_RECOVERY:7d9785e870efa98723336114839a0bdb210c8e719ef32f528846d3b5b4dac1d6",
+    "authority_present": false,
+    "recovery_command_run": false,
+    "tests_run": false,
+    "marker_cleared": false,
+    "host_io": false,
+    "lease_or_slot_mutation": false,
+    "main_pointer_public_db_mutation": false,
+    "required_action": "Do not run recovery command or tests without independently admitted authority; preserve evidence and await governed owner-recovery/restart-preflight closure evidence.",
+    "n_plus_1": "After fresh GREEN monitor/resource evidence and explicit closure receipt, rerun the exact guarded 69-test command against unchanged source and route fresh PASS or typed blocker to WS70; third identical blocker escalates to OWNER_REVIEWER."
   },
   "claim_ceiling": {
     "candidate_only": true,
@@ -160,5 +254,5 @@
     "Current guarded rerun was stopped before pytest payload by OPEN HARD_SAFETY alert.",
     "WS70 independent machine-functional receipt is still absent; WS35 semantic acceptance is separate and pending."
   ],
-  "next_transition": "OWNER_RECOVERY_HOST_SAFETY_ADMISSION_THEN_WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_DRIFT_TEST_BLOCKER"
+  "next_transition": "INDEPENDENT_AUTHORITY_FOR_GOVERNED_RECOVERY_THEN_FRESH_GREEN_AND_EXPLICIT_CLOSURE_THEN_GOVERNED_69_TEST_RERUN_AND_WS70_TYPED_RECEIPT"
 }
