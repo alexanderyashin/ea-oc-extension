@@ -23,7 +23,11 @@ def main() -> None:
     freeze = json.loads(FREEZE.read_text(encoding="utf-8"))
     assert envelope["base_worker"] == {"commit": "9db64e071e346671bfa592043c87fd3207bfb0c7", "tree": "c1b77a2e05bcba158e6587f19713fe245df184db", "clean_at_capture": True}
     assert envelope["snapshot_timestamp_utc"].endswith("Z")
-    assert envelope["snapshot_status"] == "CURRENT_AT_CAPTURE__IMMUTABLE_BOUNDARY"
+    assert envelope["snapshot_status"] == "STALE_AFTER_POST_CAPTURE_DRIFT__CAPTURE_PRESERVED"
+    assert envelope["post_capture_readback"]["status"] == "STALE_SNAPSHOT"
+    assert envelope["post_capture_readback"]["changed_consumers"] == ["WS-75-PUBLICATION"]
+    assert envelope["post_capture_readback"]["captured_history_rewritten"] is False
+    assert envelope["post_capture_readback"]["observed_refs"]["WS-75-PUBLICATION"] == {"commit":"4c3092f1eaee04b00b3a800864d1ecd31138a08e","tree":"fb0a96ce3a9387eb39827d70812dbb619be91d62"}
     assert envelope["claim_ceiling"] == "semantic-review-candidate-only"
     assert envelope["negative_boundaries"] == {"candidate_only": True, "no_promotion": True, "dominance": False, "holdout_delta": "NEGATIVE", "confidence_interval": "INCLUDES_ZERO", "feature_mutation": False, "source_mutation": False, "shared_logion_mutation": False, "empirical_execution": False, "publication_effect": False}
     assert len(envelope["candidate_rows"]) == 40

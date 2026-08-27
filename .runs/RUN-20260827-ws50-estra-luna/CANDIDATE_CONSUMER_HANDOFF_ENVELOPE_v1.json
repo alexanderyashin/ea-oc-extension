@@ -1,8 +1,8 @@
 {
   "schema_id": "ESTRA_WS50_CANDIDATE_CONSUMER_HANDOFF_ENVELOPE_v1",
   "run_id": "RUN-20260827-ws50-estra-luna",
-  "status": "SNAPSHOT_CAPTURED_READ_ONLY",
-  "snapshot_status": "CURRENT_AT_CAPTURE__IMMUTABLE_BOUNDARY",
+  "status": "SNAPSHOT_STALE_AFTER_POST_CAPTURE_DRIFT",
+  "snapshot_status": "STALE_AFTER_POST_CAPTURE_DRIFT__CAPTURE_PRESERVED",
   "snapshot_timestamp_utc": "2026-08-27T10:21:42.9895952Z",
   "snapshot_timestamp_europe_berlin": "2026-08-27T12:21:42.9962327+02:00",
   "base_worker": {
@@ -106,6 +106,18 @@
     {"id":"widened_ceiling","status":"BLOCKED_CLAIM_CEILING","reason":"WS60_REJECT_WIDENED_CLAIM_CEILING","rule":"semantic-review-candidate-only cannot produce typed-history-dominance"}
   ],
   "stale_snapshot_rule": "If any post-capture consumer commit or tree differs, mark this snapshot STALE_AFTER_POST_CAPTURE_DRIFT and append a new receipt/metadata commit; never rewrite the captured snapshot history.",
+  "post_capture_readback": {
+    "timestamp_utc": "2026-08-27T10:26:58.9836827Z",
+    "timestamp_europe_berlin": "2026-08-27T12:26:58.9836827+02:00",
+    "status": "STALE_SNAPSHOT",
+    "reason": "MARK_SNAPSHOT_STALE_NO_HISTORY_REWRITE",
+    "observed_refs": {
+      "WS-60-TOOLKIT": {"commit":"5196abf848d42b93ad120685f8bbe5006791c76b","tree":"1c4850a72c12984cd6d6e5f25766533256f917f9"},
+      "WS-75-PUBLICATION": {"commit":"4c3092f1eaee04b00b3a800864d1ecd31138a08e","tree":"fb0a96ce3a9387eb39827d70812dbb619be91d62"}
+    },
+    "changed_consumers": ["WS-75-PUBLICATION"],
+    "captured_history_rewritten": false
+  },
   "negative_boundaries": {
     "candidate_only": true,
     "no_promotion": true,

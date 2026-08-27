@@ -1,8 +1,8 @@
 {
   "schema_id": "ESTRA_WS50_SEVENTH_TRANCHE_HANDOFF_RECEIPT_v1",
   "run_id": "RUN-20260827-ws50-estra-luna",
-  "status": "PASS_READ_ONLY_40_ROW_HANDOFF_CAPTURE",
-  "snapshot_status": "CURRENT_AT_CAPTURE__IMMUTABLE_BOUNDARY",
+  "status": "STALE_SNAPSHOT_AFTER_POST_CAPTURE_DRIFT",
+  "snapshot_status": "STALE_AFTER_POST_CAPTURE_DRIFT__CAPTURE_PRESERVED",
   "snapshot_timestamp_utc": "2026-08-27T10:21:42.9895952Z",
   "snapshot_timestamp_europe_berlin": "2026-08-27T12:21:42.9962327+02:00",
   "base_worker": {"commit":"9db64e071e346671bfa592043c87fd3207bfb0c7","tree":"c1b77a2e05bcba158e6587f19713fe245df184db"},
@@ -20,7 +20,18 @@
     {"id":"private_runtime_path","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS75_REJECT_PRIVATE_RUNTIME_PATH"},
     {"id":"widened_ceiling","status":"BLOCKED_CLAIM_CEILING","reason":"WS60_REJECT_WIDENED_CLAIM_CEILING"}
   ],
-  "post_capture_readback": "PENDING_AFTER_PUSH",
+  "post_capture_readback": {
+    "timestamp_utc":"2026-08-27T10:26:58.9836827Z",
+    "timestamp_europe_berlin":"2026-08-27T12:26:58.9836827+02:00",
+    "status":"STALE_SNAPSHOT",
+    "reason":"MARK_SNAPSHOT_STALE_NO_HISTORY_REWRITE",
+    "changed_consumers":["WS-75-PUBLICATION"],
+    "observed_consumers": {
+      "WS-60-TOOLKIT":{"commit":"5196abf848d42b93ad120685f8bbe5006791c76b","tree":"1c4850a72c12984cd6d6e5f25766533256f917f9"},
+      "WS-75-PUBLICATION":{"commit":"4c3092f1eaee04b00b3a800864d1ecd31138a08e","tree":"fb0a96ce3a9387eb39827d70812dbb619be91d62"}
+    },
+    "captured_history_rewritten":false
+  },
   "negative_boundaries": {"candidate_only":true,"no_promotion":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","source_mutation":false,"shared_logion_mutation":false,"empirical_execution":false},
   "claim_ceiling": "semantic-review-candidate-only"
 }

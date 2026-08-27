@@ -20,6 +20,13 @@
     "WS-60-TOOLKIT": "5196abf848d42b93ad120685f8bbe5006791c76b@1c4850a72c12984cd6d6e5f25766533256f917f9",
     "WS-75-PUBLICATION": "2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703"
   },
+  "post_capture_readback": {
+    "timestamp_utc":"2026-08-27T10:26:58.9836827Z",
+    "status":"STALE_SNAPSHOT",
+    "changed_consumers":["WS-75-PUBLICATION"],
+    "observed_ws75_ref":"4c3092f1eaee04b00b3a800864d1ecd31138a08e@fb0a96ce3a9387eb39827d70812dbb619be91d62",
+    "history_rewritten":false
+  },
   "coverage": "All 40 frozen rows are bound to exact candidate digest/state and immutable source/consumer snapshot metadata.",
   "stale_policy": "Post-capture ref drift is marked stale in a new metadata-only receipt/commit; captured history is not rewritten.",
   "forbidden_effects": ["candidate or source mutation","shared Logion edits","consumer content copy","empirical execution","publication/DB effects","promotion","dominance claim"],
