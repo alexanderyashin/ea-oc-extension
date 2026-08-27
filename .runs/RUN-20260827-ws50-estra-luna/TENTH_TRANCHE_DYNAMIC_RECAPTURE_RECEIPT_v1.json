@@ -1,0 +1,14 @@
+{
+  "schema_id":"ESTRA_WS50_TENTH_TRANCHE_DYNAMIC_RECAPTURE_RECEIPT_v1",
+  "run_id":"RUN-20260827-ws50-estra-luna",
+  "status":"PASS_DYNAMIC_CONSUMER_RECAPTURE__ADMISSION_BLOCKED_FAIL_CLOSED",
+  "candidate_rows":40,
+  "timestamp_utc":"2026-08-27T11:10:55.6728554Z",
+  "refs":{"WS-60":"fc2bac3e7dfc010b50ca6ee5276aa8f5b10fc03e@d93745779f52d30e88dda1515e4417ce8392acad","WS-70":"622990823741fa0954c6b8d4b00d295b46c02411@a87e1755980bffb58b04009eac79af968e6e43d6","WS-75":"5df32a46c736e43226b6b2229f5bd539e16bc12b@c145f6db62d558560c1554c154d5d4e7207a31da"},
+  "rights":"READ_ONLY_REFERENCE",
+  "reviewer":"INDEPENDENT_REVIEW_REQUIRED_RECOMMENDATION_ONLY",
+  "runtime":"NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_DB_RAW_COLD_HOST_IO_SHARED_PUBLIC_WRITES",
+  "replay":"TENTH_TRANCHE_DYNAMIC_RECAPTURE_FIXTURE_v1.json; validator PASS",
+  "stale_history":"PRESERVED_NO_HISTORY_REWRITE",
+  "candidate_only":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true,"acceptance_forbidden":true,"claim_ceiling":"semantic-review-candidate-only"
+}

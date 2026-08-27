@@ -1,0 +1,22 @@
+{
+  "schema_id":"ESTRA_WS50_DYNAMIC_CONSUMER_RECAPTURE_ENVELOPE_v1",
+  "run_id":"RUN-20260827-ws50-estra-luna",
+  "status":"BLOCKED_FAIL_CLOSED",
+  "dynamic_recapture_status":"PASS_CURRENT_METADATA_CAPTURE",
+  "admission_status":"BLOCKED_FAIL_CLOSED",
+  "mode":"PURE_METADATA_READ_ONLY_NO_LIVE_EXECUTION",
+  "base_worker":{"commit":"bc89407c6349fd5410183a01ed9159085ece8ec2","tree":"c0eff0816568b2c7d26b255708bd4d56fd0a26b8","clean_at_capture":true},
+  "snapshot":{"timestamp_utc":"2026-08-27T11:10:55.6728554Z","timestamp_europe_berlin":"2026-08-27T13:10:55.6728554+02:00","current_refs_required":true,"captured_history_immutable":true},
+  "traceability_source":{"envelope":".runs/RUN-20260827-ws50-estra-luna/COORDINATOR_ESTRA_CONTRACT_TRACEABILITY_ADMISSION_ENVELOPE_v1.json","candidate_row_count":40,"candidate_rows_unchanged":true,"candidate_only":true},
+  "source_binding":{"repository":"ea-oc-extension","commit":"5398bfed0efbc56ad969382df48af568ee2df24b","tree":"30578579fc51acf3512991ed2a9b6a01c0b95691","rights":"READ_ONLY_REFERENCE","digest_rule":"SHA256(utf8(repository|branch|commit|tree))"},
+  "consumer_snapshots":{
+    "WS-60":{"role":"Toolkit","repository":"estra-toolkit","branch":"workstream/oc14-toolkit-luna-20260827","commit":"fc2bac3e7dfc010b50ca6ee5276aa8f5b10fc03e","tree":"d93745779f52d30e88dda1515e4417ce8392acad","commit_tree_digest":"a3e13a0b76855e30a1b09437e22c39c905e943fa9959b19b6d4b9d4a5d6d23bf","rights":"READ_ONLY_REFERENCE","provenance_predicate":"PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE","digest_predicate":"PASS_COMMIT_TREE_DIGEST","reviewer_predicate":"INDEPENDENT_REVIEW_REQUIRED_RECOMMENDATION_ONLY","runtime_predicate":"NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_OR_CATALOG_MUTATION"},
+    "WS-70":{"role":"Machine/adapter downstream","repository":"Logion","branch":"workstream/oc14-machine-luna-20260827","commit":"622990823741fa0954c6b8d4b00d295b46c02411","tree":"a87e1755980bffb58b04009eac79af968e6e43d6","commit_tree_digest":"d434325a232cc1ee0397c9bb21a3570af4ef76ee5bc86fc5739687a4087d45a4","rights":"READ_ONLY_REFERENCE","provenance_predicate":"PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE","digest_predicate":"PASS_COMMIT_TREE_DIGEST","reviewer_predicate":"INDEPENDENT_REVIEW_REQUIRED_RECOMMENDATION_ONLY","runtime_predicate":"NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_OR_CATALOG_MUTATION"},
+    "WS-75":{"role":"Publication","repository":"Logion","branch":"workstream/oc14-publication-luna-20260827","commit":"5df32a46c736e43226b6b2229f5bd539e16bc12b","tree":"c145f6db62d558560c1554c154d5d4e7207a31da","commit_tree_digest":"472fa75b4ae9ac72215ce212fd7c32db8b8f667da7a6859efdfa8bdae94e4d35","rights":"READ_ONLY_REFERENCE","provenance_predicate":"PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE","digest_predicate":"PASS_COMMIT_TREE_DIGEST","reviewer_predicate":"INDEPENDENT_REVIEW_REQUIRED_RECOMMENDATION_ONLY","runtime_predicate":"NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT"}
+  },
+  "prior_snapshot":{"envelope":".runs/RUN-20260827-ws50-estra-luna/COORDINATOR_ESTRA_CONTRACT_TRACEABILITY_ADMISSION_ENVELOPE_v1.json","status":"STALE_HISTORY_PRESERVED","stale_consumers":["WS-60","WS-70","WS-75"],"history_rewritten":false},
+  "predicate_contract":{"provenance":"repository+branch+commit+tree exact","digest":"declared commit-tree digest exact","rights":"READ_ONLY_REFERENCE only","reviewer":"independent reviewer recommendation only; no authorship/adjudication/promotion","runtime":"no live ESTRA, feature/catalog, DB/raw/cold/HOST_IO/shared/public writes"},
+  "admission_rules":{"missing_current_ref":"BLOCKED_RECAPTURE_REQUIRED","stale_after_capture":"BLOCKED_RECAPTURE_REQUIRED","provenance_mismatch":"BLOCKED_PROVENANCE","digest_mismatch":"BLOCKED_DIGEST","rights_mismatch":"BLOCKED_RIGHTS","private_runtime":"BLOCKED_PRIVATE_RUNTIME","widened_claim":"BLOCKED_CLAIM_CEILING","promotion":false,"acceptance":false},
+  "negative_boundaries":{"candidate_only":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true,"source_mutation":false,"feature_or_catalog_mutation":false,"db_raw_cold_host_io_shared_public_mutation":false,"live_execution":false},
+  "claim_ceiling":"semantic-review-candidate-only"
+}

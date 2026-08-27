@@ -1,0 +1,20 @@
+{
+  "schema_id":"ESTRA_WS50_TENTH_TRANCHE_DYNAMIC_RECAPTURE_FIXTURE_v1",
+  "run_id":"RUN-20260827-ws50-estra-luna",
+  "envelope":".runs/RUN-20260827-ws50-estra-luna/DYNAMIC_CONSUMER_RECAPTURE_ENVELOPE_v1.json",
+  "mode":"PURE_REPLAY_NO_LIVE_EXECUTION",
+  "required_rows":40,
+  "required_consumers":["WS-60","WS-70","WS-75"],
+  "current_ref_inputs":{"WS-60":"fc2bac3e7dfc010b50ca6ee5276aa8f5b10fc03e@d93745779f52d30e88dda1515e4417ce8392acad","WS-70":"622990823741fa0954c6b8d4b00d295b46c02411@a87e1755980bffb58b04009eac79af968e6e43d6","WS-75":"5df32a46c736e43226b6b2229f5bd539e16bc12b@c145f6db62d558560c1554c154d5d4e7207a31da"},
+  "scenarios":[
+    {"id":"current_refs_complete","expected":{"status":"PASS_CURRENT_METADATA_CAPTURE","reason":"CURRENT_WS60_WS70_WS75_REFS_RESOLVED"}},
+    {"id":"stale_after_post_capture","expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED"}},
+    {"id":"missing_ws70_current_ref","expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CURRENT_WS70_REF_REQUIRED"}},
+    {"id":"provenance_mismatch","expected":{"status":"BLOCKED_PROVENANCE","reason":"REJECT_CONSUMER_PROVENANCE_MISMATCH"}},
+    {"id":"digest_mismatch","expected":{"status":"BLOCKED_DIGEST","reason":"REJECT_CONSUMER_DIGEST_MISMATCH"}},
+    {"id":"rights_mismatch","expected":{"status":"BLOCKED_RIGHTS","reason":"REJECT_NON_READ_ONLY_RIGHTS"}},
+    {"id":"private_runtime","expected":{"status":"BLOCKED_PRIVATE_RUNTIME","reason":"REJECT_PRIVATE_RUNTIME_PATH"}},
+    {"id":"widened_claim","expected":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_WIDENED_CLAIM_CEILING"}}
+  ],
+  "negative_boundaries":{"candidate_only":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true,"acceptance_forbidden":true}
+}

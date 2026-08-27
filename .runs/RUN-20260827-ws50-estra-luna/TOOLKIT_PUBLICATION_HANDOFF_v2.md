@@ -101,3 +101,15 @@ The coordinator envelope binds all 40 frozen rows to exact ESTRA concepts from t
 - `.runs/RUN-20260827-ws50-estra-luna/COORDINATOR_DOWNSTREAM_HANDOFF_REQUEST_v1.md`
 
 WS-70 has no resolved current ref in the scoped read-only contour and is explicitly `CURRENT_REF_REQUIRED`; no SHA is invented. The pure replay is fail-closed: missing current refs and stale-after-capture return `BLOCKED_RECAPTURE_REQUIRED`; provenance, digest, rights, private/runtime and widened-claim cases return their corresponding rejection codes. No live ESTRA execution, DB/raw/cold/HOST_IO/shared edit, promotion or acceptance occurred.
+
+## Tenth-tranche dynamic consumer recapture
+
+The dynamic recapture packet resolves the current read-only refs for all three downstream contours and binds them to the existing 40-row traceability envelope:
+
+- `.runs/RUN-20260827-ws50-estra-luna/DYNAMIC_CONSUMER_RECAPTURE_ENVELOPE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DYNAMIC_RECAPTURE_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_tenth_dynamic_recapture_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DYNAMIC_RECAPTURE_RECEIPT_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DOWNSTREAM_RECAPTURE_REQUEST_v1.md`
+
+Current snapshots are WS-60 `fc2bac3e…@d9374577…`, WS-70 `6229908…@a87e1755…`, and WS-75 `5df32a4…@c145f6db…`, with exact commit-tree digests, provenance, read-only rights, reviewer and runtime predicates. Prior stale history remains immutable. Pure replay covers current, stale, missing WS-70, provenance, digest, rights, private-runtime and widened-claim cases; admission remains `BLOCKED_FAIL_CLOSED`, candidate-only, with no promotion or acceptance.

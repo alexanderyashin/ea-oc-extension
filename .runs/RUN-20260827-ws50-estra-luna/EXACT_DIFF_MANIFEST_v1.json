@@ -45,9 +45,14 @@
     ".runs/RUN-20260827-ws50-estra-luna/NINTH_TRANCHE_COORDINATOR_REPLAY_FIXTURE_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/validate_ninth_coordinator_traceability_v1.py",
     ".runs/RUN-20260827-ws50-estra-luna/NINTH_TRANCHE_COORDINATOR_HANDOFF_RECEIPT_v1.json",
-    ".runs/RUN-20260827-ws50-estra-luna/COORDINATOR_DOWNSTREAM_HANDOFF_REQUEST_v1.md"
+    ".runs/RUN-20260827-ws50-estra-luna/COORDINATOR_DOWNSTREAM_HANDOFF_REQUEST_v1.md",
+    ".runs/RUN-20260827-ws50-estra-luna/DYNAMIC_CONSUMER_RECAPTURE_ENVELOPE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DYNAMIC_RECAPTURE_FIXTURE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/validate_tenth_dynamic_recapture_v1.py",
+    ".runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DYNAMIC_RECAPTURE_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DOWNSTREAM_RECAPTURE_REQUEST_v1.md"
   ],
   "staging_rule": "Only the exact expected_paths above may be staged for this infrastructure checkpoint. Candidate files in the source checkout are not part of this diff.",
   "candidate_transport": "NONE",
-  "status": "PASS_EXACT_RUN_MANIFEST__NINTH_COORDINATOR_TRACEABILITY_INCLUDED"
+  "status": "PASS_EXACT_RUN_MANIFEST__TENTH_DYNAMIC_RECAPTURE_INCLUDED"
 }
