@@ -1,0 +1,18 @@
+{
+  "schema_id": "ESTRA_WS50_EMERGENCY_SUBSTANTIVE_CANDIDATE_REPLAY_FIXTURE_v1",
+  "mode": "PURE_DECLARATIVE_REPLAY_NO_ESTRA_RUNTIME",
+  "cases": [
+    {"id":"40_rows_all_metadata_bound","rows":40,"open_slots":241,"candidate_only":true,"dominance":false,"expected":"BLOCKED_DEPENDENCY_RECEIPTS_OPEN"},
+    {"id":"one_row_missing_mapping","rows":40,"missing":"mapping","expected":"BLOCKED_INCOMPLETE_MAPPING"},
+    {"id":"one_row_widened_applicability","rows":40,"missing":"applicability_ceiling","expected":"BLOCKED_CLAIM_CEILING"},
+    {"id":"negative_holdout_reversed","rows":40,"holdout":"POSITIVE","expected":"BLOCKED_DOMINANCE_BOUNDARY"},
+    {"id":"consumer_receipts_open","rows":40,"open_slots":241,"expected":"BLOCKED_DEPENDENCY_RECEIPTS_OPEN"},
+    {"id":"stale_consumer_ref","rows":40,"open_slots":241,"negative":"STALE_REF","expected":"BLOCKED_RECAPTURE_REQUIRED"},
+    {"id":"provenance_mismatch","rows":40,"open_slots":241,"negative":"PROVENANCE","expected":"BLOCKED_PROVENANCE"},
+    {"id":"rights_mismatch","rows":40,"open_slots":241,"negative":"RIGHTS","expected":"BLOCKED_RIGHTS"},
+    {"id":"private_runtime","rows":40,"open_slots":241,"negative":"PRIVATE_RUNTIME","expected":"BLOCKED_PRIVATE_RUNTIME"},
+    {"id":"widened_claim","rows":40,"open_slots":241,"negative":"WIDENED_CLAIM","expected":"BLOCKED_CLAIM_CEILING"},
+    {"id":"source_mutation_attempt","rows":40,"open_slots":241,"negative":"SOURCE_MUTATION","expected":"BLOCKED_SOURCE_MUTATION"},
+    {"id":"authority_attempt","rows":40,"open_slots":241,"negative":"AUTHORITY","expected":"BLOCKED_AUTHORITY"}
+  ]
+}

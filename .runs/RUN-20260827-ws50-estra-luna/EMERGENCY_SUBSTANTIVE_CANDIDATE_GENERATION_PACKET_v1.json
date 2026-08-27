@@ -1,0 +1,4343 @@
+{
+  "schema_id": "ESTRA_WS50_EMERGENCY_SUBSTANTIVE_CANDIDATE_GENERATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "CANDIDATE_GENERATION_COMPLETE__RECEIPT_GATED",
+  "created_at_utc": "2026-08-27T13:54:32.394672Z",
+  "mode": "BOUNDED_FRAMEWORK_ENGINEERING_CANDIDATE_NO_SOURCE_MUTATION",
+  "generation_request": "EMERGENCY SUBSTANTIVE TRANCHE WS50 / G0",
+  "base_worker": {
+    "worktree": "C:/Users/Megaport/LOGION Ecosystem/03_ESTRA/Private/Remote/ea-oc-extension-ws50-estra-luna-20260827",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "commit": "a13e7541e9bb253e0ede17be097ef612a7b28f25",
+    "tree": "2629f971e0a6af486b85a729096b4bddca262033",
+    "clean_at_capture": true
+  },
+  "source_provenance": {
+    "repository": "ea-oc-extension",
+    "commit": "5398bfed0efbc56ad969382df48af568ee2df24b",
+    "tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+    "rights": "READ_ONLY_REFERENCE",
+    "mutation": false
+  },
+  "immutable_consumer_refs": {
+    "WS-60": {
+      "role": "Toolkit",
+      "exact_ref": {
+        "repository": "estra-toolkit",
+        "branch": "workstream/oc14-toolkit-luna-20260827",
+        "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+        "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+        "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+      },
+      "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+      "rights_predicate": "READ_ONLY_REFERENCE",
+      "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+      "admission_receipt": null,
+      "reviewer_receipt": null,
+      "admission_missing_rows": 40,
+      "reviewer_missing_rows": 40,
+      "owner_route": "WS-60 current consumer owner"
+    },
+    "WS-70": {
+      "role": "Machine/adapter downstream",
+      "exact_ref": {
+        "repository": "Logion",
+        "branch": "workstream/oc14-machine-luna-20260827",
+        "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+        "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+        "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+      },
+      "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+      "rights_predicate": "READ_ONLY_REFERENCE",
+      "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+      "admission_receipt": null,
+      "reviewer_receipt": null,
+      "admission_missing_rows": 40,
+      "reviewer_missing_rows": 40,
+      "owner_route": "WS-70 current consumer owner"
+    },
+    "WS-75": {
+      "role": "Publication closeout",
+      "exact_ref": {
+        "repository": "Logion",
+        "branch": "workstream/oc14-publication-luna-20260827",
+        "commit": "160312105bf3e8448a958328152c123af0505443",
+        "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+        "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+      },
+      "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+      "rights_predicate": "READ_ONLY_REFERENCE",
+      "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+      "admission_receipt": null,
+      "reviewer_receipt": null,
+      "admission_missing_rows": 40,
+      "reviewer_missing_rows": 40,
+      "owner_route": "WS-75 current consumer owner"
+    }
+  },
+  "candidate_binding": {
+    "source_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+    "traceability_matrix": "A3_INDEPENDENT_PROFILE_REVIEW_REQUEST_MANIFEST_v1.json",
+    "rows": 40,
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "NEGATIVE",
+    "confidence_interval": "INCLUDES_ZERO",
+    "promotion_forbidden": true
+  },
+  "interface_contract_map": {
+    "mapping_rule": "Use existing row producer bindings and ESTRA concept; no new OC producer or ontology authority is created.",
+    "applicability_rule": "Finite deterministic candidate engineering scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim.",
+    "conformance_rule": "Use freeze-manifest identity and guarded 69-test evidence as candidate/conformance metadata only.",
+    "adapter_rule": "Candidate adapters expose descriptor-level inputs/outputs and fail-closed behavior; source implementation remains untouched."
+  },
+  "consumer_handoff": {
+    "required_fields": [
+      "candidate_id",
+      "path",
+      "interface_contract",
+      "exact_consumer_ref",
+      "provenance",
+      "rights",
+      "reviewer_predicate",
+      "admission_receipt"
+    ],
+    "consumer_rule": "Current consumer refs are read-only anchors; each admission and reviewer receipt must match exact commit/tree/digest/provenance/rights predicates.",
+    "open_slot_total": 241,
+    "admission_slots": 120,
+    "reviewer_slots": 120,
+    "independent_review_slots": 1,
+    "promotion": "FORBIDDEN"
+  },
+  "open_receipt_slots": [
+    {
+      "slot_id": "row-001/WS-60/admission_receipt",
+      "candidate_id": "README.md",
+      "field_path": "rows[1].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-001/WS-60/reviewer_receipt",
+      "candidate_id": "README.md",
+      "field_path": "rows[1].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-001/WS-70/admission_receipt",
+      "candidate_id": "README.md",
+      "field_path": "rows[1].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-001/WS-70/reviewer_receipt",
+      "candidate_id": "README.md",
+      "field_path": "rows[1].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-001/WS-75/admission_receipt",
+      "candidate_id": "README.md",
+      "field_path": "rows[1].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-001/WS-75/reviewer_receipt",
+      "candidate_id": "README.md",
+      "field_path": "rows[1].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-002/WS-60/admission_receipt",
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "field_path": "rows[2].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-002/WS-60/reviewer_receipt",
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "field_path": "rows[2].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-002/WS-70/admission_receipt",
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "field_path": "rows[2].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-002/WS-70/reviewer_receipt",
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "field_path": "rows[2].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-002/WS-75/admission_receipt",
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "field_path": "rows[2].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-002/WS-75/reviewer_receipt",
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "field_path": "rows[2].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-003/WS-60/admission_receipt",
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "field_path": "rows[3].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-003/WS-60/reviewer_receipt",
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "field_path": "rows[3].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-003/WS-70/admission_receipt",
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "field_path": "rows[3].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-003/WS-70/reviewer_receipt",
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "field_path": "rows[3].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-003/WS-75/admission_receipt",
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "field_path": "rows[3].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-003/WS-75/reviewer_receipt",
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "field_path": "rows[3].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-004/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "field_path": "rows[4].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-004/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "field_path": "rows[4].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-004/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "field_path": "rows[4].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-004/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "field_path": "rows[4].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-004/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "field_path": "rows[4].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-004/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "field_path": "rows[4].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-005/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "field_path": "rows[5].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-005/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "field_path": "rows[5].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-005/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "field_path": "rows[5].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-005/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "field_path": "rows[5].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-005/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "field_path": "rows[5].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-005/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "field_path": "rows[5].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-006/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "field_path": "rows[6].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-006/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "field_path": "rows[6].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-006/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "field_path": "rows[6].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-006/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "field_path": "rows[6].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-006/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "field_path": "rows[6].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-006/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "field_path": "rows[6].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-007/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "field_path": "rows[7].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-007/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "field_path": "rows[7].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-007/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "field_path": "rows[7].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-007/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "field_path": "rows[7].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-007/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "field_path": "rows[7].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-007/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "field_path": "rows[7].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-008/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[8].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-008/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[8].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-008/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[8].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-008/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[8].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-008/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[8].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-008/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[8].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-009/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "field_path": "rows[9].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-009/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "field_path": "rows[9].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-009/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "field_path": "rows[9].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-009/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "field_path": "rows[9].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-009/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "field_path": "rows[9].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-009/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "field_path": "rows[9].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-010/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "field_path": "rows[10].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-010/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "field_path": "rows[10].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-010/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "field_path": "rows[10].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-010/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "field_path": "rows[10].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-010/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "field_path": "rows[10].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-010/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "field_path": "rows[10].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-011/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "field_path": "rows[11].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-011/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "field_path": "rows[11].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-011/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "field_path": "rows[11].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-011/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "field_path": "rows[11].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-011/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "field_path": "rows[11].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-011/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "field_path": "rows[11].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-012/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "field_path": "rows[12].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-012/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "field_path": "rows[12].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-012/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "field_path": "rows[12].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-012/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "field_path": "rows[12].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-012/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "field_path": "rows[12].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-012/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "field_path": "rows[12].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-013/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "field_path": "rows[13].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-013/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "field_path": "rows[13].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-013/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "field_path": "rows[13].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-013/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "field_path": "rows[13].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-013/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "field_path": "rows[13].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-013/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "field_path": "rows[13].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-014/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "field_path": "rows[14].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-014/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "field_path": "rows[14].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-014/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "field_path": "rows[14].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-014/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "field_path": "rows[14].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-014/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "field_path": "rows[14].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-014/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "field_path": "rows[14].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-015/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[15].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-015/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[15].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-015/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[15].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-015/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[15].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-015/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[15].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-015/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "field_path": "rows[15].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-016/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "field_path": "rows[16].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-016/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "field_path": "rows[16].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-016/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "field_path": "rows[16].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-016/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "field_path": "rows[16].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-016/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "field_path": "rows[16].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-016/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "field_path": "rows[16].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-017/WS-60/admission_receipt",
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "field_path": "rows[17].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-017/WS-60/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "field_path": "rows[17].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-017/WS-70/admission_receipt",
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "field_path": "rows[17].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-017/WS-70/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "field_path": "rows[17].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-017/WS-75/admission_receipt",
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "field_path": "rows[17].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-017/WS-75/reviewer_receipt",
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "field_path": "rows[17].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-018/WS-60/admission_receipt",
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "field_path": "rows[18].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-018/WS-60/reviewer_receipt",
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "field_path": "rows[18].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-018/WS-70/admission_receipt",
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "field_path": "rows[18].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-018/WS-70/reviewer_receipt",
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "field_path": "rows[18].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-018/WS-75/admission_receipt",
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "field_path": "rows[18].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-018/WS-75/reviewer_receipt",
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "field_path": "rows[18].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-019/WS-60/admission_receipt",
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "field_path": "rows[19].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-019/WS-60/reviewer_receipt",
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "field_path": "rows[19].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-019/WS-70/admission_receipt",
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "field_path": "rows[19].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-019/WS-70/reviewer_receipt",
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "field_path": "rows[19].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-019/WS-75/admission_receipt",
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "field_path": "rows[19].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-019/WS-75/reviewer_receipt",
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "field_path": "rows[19].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-020/WS-60/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[20].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-020/WS-60/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[20].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-020/WS-70/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[20].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-020/WS-70/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[20].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-020/WS-75/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[20].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-020/WS-75/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[20].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-021/WS-60/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "field_path": "rows[21].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-021/WS-60/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "field_path": "rows[21].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-021/WS-70/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "field_path": "rows[21].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-021/WS-70/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "field_path": "rows[21].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-021/WS-75/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "field_path": "rows[21].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-021/WS-75/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "field_path": "rows[21].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-022/WS-60/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "field_path": "rows[22].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-022/WS-60/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "field_path": "rows[22].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-022/WS-70/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "field_path": "rows[22].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-022/WS-70/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "field_path": "rows[22].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-022/WS-75/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "field_path": "rows[22].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-022/WS-75/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "field_path": "rows[22].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-023/WS-60/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "field_path": "rows[23].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-023/WS-60/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "field_path": "rows[23].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-023/WS-70/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "field_path": "rows[23].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-023/WS-70/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "field_path": "rows[23].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-023/WS-75/admission_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "field_path": "rows[23].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-023/WS-75/reviewer_receipt",
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "field_path": "rows[23].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-024/WS-60/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[24].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-024/WS-60/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[24].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-024/WS-70/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[24].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-024/WS-70/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[24].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-024/WS-75/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[24].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-024/WS-75/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "field_path": "rows[24].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-025/WS-60/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "field_path": "rows[25].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-025/WS-60/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "field_path": "rows[25].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-025/WS-70/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "field_path": "rows[25].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-025/WS-70/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "field_path": "rows[25].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-025/WS-75/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "field_path": "rows[25].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-025/WS-75/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "field_path": "rows[25].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-026/WS-60/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "field_path": "rows[26].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-026/WS-60/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "field_path": "rows[26].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-026/WS-70/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "field_path": "rows[26].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-026/WS-70/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "field_path": "rows[26].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-026/WS-75/admission_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "field_path": "rows[26].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-026/WS-75/reviewer_receipt",
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "field_path": "rows[26].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-027/WS-60/admission_receipt",
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "field_path": "rows[27].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-027/WS-60/reviewer_receipt",
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "field_path": "rows[27].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-027/WS-70/admission_receipt",
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "field_path": "rows[27].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-027/WS-70/reviewer_receipt",
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "field_path": "rows[27].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-027/WS-75/admission_receipt",
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "field_path": "rows[27].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-027/WS-75/reviewer_receipt",
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "field_path": "rows[27].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-028/WS-60/admission_receipt",
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "field_path": "rows[28].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-028/WS-60/reviewer_receipt",
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "field_path": "rows[28].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-028/WS-70/admission_receipt",
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "field_path": "rows[28].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-028/WS-70/reviewer_receipt",
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "field_path": "rows[28].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-028/WS-75/admission_receipt",
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "field_path": "rows[28].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-028/WS-75/reviewer_receipt",
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "field_path": "rows[28].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-029/WS-60/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "field_path": "rows[29].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-029/WS-60/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "field_path": "rows[29].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-029/WS-70/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "field_path": "rows[29].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-029/WS-70/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "field_path": "rows[29].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-029/WS-75/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "field_path": "rows[29].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-029/WS-75/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "field_path": "rows[29].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-030/WS-60/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "field_path": "rows[30].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-030/WS-60/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "field_path": "rows[30].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-030/WS-70/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "field_path": "rows[30].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-030/WS-70/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "field_path": "rows[30].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-030/WS-75/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "field_path": "rows[30].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-030/WS-75/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "field_path": "rows[30].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-031/WS-60/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "field_path": "rows[31].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-031/WS-60/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "field_path": "rows[31].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-031/WS-70/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "field_path": "rows[31].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-031/WS-70/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "field_path": "rows[31].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-031/WS-75/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "field_path": "rows[31].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-031/WS-75/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "field_path": "rows[31].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-032/WS-60/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "field_path": "rows[32].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-032/WS-60/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "field_path": "rows[32].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-032/WS-70/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "field_path": "rows[32].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-032/WS-70/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "field_path": "rows[32].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-032/WS-75/admission_receipt",
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "field_path": "rows[32].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-032/WS-75/reviewer_receipt",
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "field_path": "rows[32].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-033/WS-60/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "field_path": "rows[33].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-033/WS-60/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "field_path": "rows[33].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-033/WS-70/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "field_path": "rows[33].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-033/WS-70/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "field_path": "rows[33].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-033/WS-75/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "field_path": "rows[33].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-033/WS-75/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "field_path": "rows[33].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-034/WS-60/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "field_path": "rows[34].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-034/WS-60/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "field_path": "rows[34].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-034/WS-70/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "field_path": "rows[34].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-034/WS-70/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "field_path": "rows[34].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-034/WS-75/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "field_path": "rows[34].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-034/WS-75/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "field_path": "rows[34].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-035/WS-60/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "field_path": "rows[35].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-035/WS-60/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "field_path": "rows[35].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-035/WS-70/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "field_path": "rows[35].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-035/WS-70/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "field_path": "rows[35].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-035/WS-75/admission_receipt",
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "field_path": "rows[35].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-035/WS-75/reviewer_receipt",
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "field_path": "rows[35].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-036/WS-60/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "field_path": "rows[36].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-036/WS-60/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "field_path": "rows[36].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-036/WS-70/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "field_path": "rows[36].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-036/WS-70/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "field_path": "rows[36].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-036/WS-75/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "field_path": "rows[36].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-036/WS-75/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "field_path": "rows[36].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-037/WS-60/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "field_path": "rows[37].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-037/WS-60/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "field_path": "rows[37].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-037/WS-70/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "field_path": "rows[37].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-037/WS-70/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "field_path": "rows[37].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-037/WS-75/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "field_path": "rows[37].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-037/WS-75/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "field_path": "rows[37].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-038/WS-60/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "field_path": "rows[38].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-038/WS-60/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "field_path": "rows[38].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-038/WS-70/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "field_path": "rows[38].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-038/WS-70/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "field_path": "rows[38].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-038/WS-75/admission_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "field_path": "rows[38].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-038/WS-75/reviewer_receipt",
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "field_path": "rows[38].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-039/WS-60/admission_receipt",
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "field_path": "rows[39].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-039/WS-60/reviewer_receipt",
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "field_path": "rows[39].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-039/WS-70/admission_receipt",
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "field_path": "rows[39].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-039/WS-70/reviewer_receipt",
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "field_path": "rows[39].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-039/WS-75/admission_receipt",
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "field_path": "rows[39].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-039/WS-75/reviewer_receipt",
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "field_path": "rows[39].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-040/WS-60/admission_receipt",
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "field_path": "rows[40].consumer_slots.WS-60.admission_receipt",
+      "consumer": "WS-60",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-040/WS-60/reviewer_receipt",
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "field_path": "rows[40].consumer_slots.WS-60.reviewer_receipt",
+      "consumer": "WS-60",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-60 current consumer owner"
+    },
+    {
+      "slot_id": "row-040/WS-70/admission_receipt",
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "field_path": "rows[40].consumer_slots.WS-70.admission_receipt",
+      "consumer": "WS-70",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-040/WS-70/reviewer_receipt",
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "field_path": "rows[40].consumer_slots.WS-70.reviewer_receipt",
+      "consumer": "WS-70",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-70 current consumer owner"
+    },
+    {
+      "slot_id": "row-040/WS-75/admission_receipt",
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "field_path": "rows[40].consumer_slots.WS-75.admission_receipt",
+      "consumer": "WS-75",
+      "kind": "admission_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "row-040/WS-75/reviewer_receipt",
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "field_path": "rows[40].consumer_slots.WS-75.reviewer_receipt",
+      "consumer": "WS-75",
+      "kind": "reviewer_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "WS-75 current consumer owner"
+    },
+    {
+      "slot_id": "independent-engineering-review/receipt",
+      "candidate_id": "ALL-40-ROWS",
+      "field_path": "independent_engineering_review.receipt",
+      "consumer": null,
+      "kind": "independent_engineering_review_receipt",
+      "receipt": null,
+      "status": "OPEN_MISSING",
+      "owner_route": "ESTRA_OWNER_AND_INDEPENDENT_ENGINEERING_REVIEWER"
+    }
+  ],
+  "replay_and_negative_fixture": "EMERGENCY_SUBSTANTIVE_CANDIDATE_REPLAY_FIXTURE_v1.json",
+  "validator": "validate_emergency_substantive_candidate_v1.py",
+  "negative_boundaries": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "NEGATIVE",
+    "confidence_interval": "INCLUDES_ZERO",
+    "promotion_forbidden": true,
+    "source_content_mutation": false,
+    "registry_main_pointer_mutation": false,
+    "authority": false,
+    "science_acceptance": false,
+    "publication_authority": false,
+    "host_io_cold_raw_outcome_db_mutation": false
+  },
+  "rows": [
+    {
+      "row_number": 1,
+      "candidate_id": "README.md",
+      "path": "README.md",
+      "estra_concept": "Repository-level additive ESTRA v2/v3 context and nonclaims",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__NOT_ACCEPTED",
+        "semantic_digest": "788d50f11d2225197eef91f255563afb27acca3498ee09c0d167e892e53f8441",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 2,
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "path": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "estra_concept": "v3 optimality registry schema",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "68a36b2521e81ff07b68b5b434770a383bbbc1e38ec3c4f4c572ffe5ee780596",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_COMPATIBILITY_PACKET_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "SCHEMA_CONTRACT_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 3,
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "path": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "estra_concept": "v2 projection registry schema",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "20eb974e40410d022b5b940522707bb94b84396998a8bf6ae82dcab1ae017e99",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_COMPATIBILITY_PACKET_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "SCHEMA_CONTRACT_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 4,
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "path": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "estra_concept": "ESTRA Projection Framework 2.0.0-rc.1 additive candidate lineage",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__CANDIDATE_ONLY",
+        "semantic_digest": "6b3d01d0a22ab165e521a2ac785ac65177c0c2e289f90b3ad93af85b8296a2d7",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 5,
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "path": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "estra_concept": "Formal projection model and OC-to-EA rule surface",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__CANDIDATE_ONLY",
+        "semantic_digest": "9b16c00a5d711b726e8c0e9fc2970abf3c0511f4c08e6ed8ebeae01111261282",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 6,
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "path": "docs/estra-2.0/02_METHOD.md",
+      "estra_concept": "Intent elicitation, projection admission, selection and governance method",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__CANDIDATE_ONLY",
+        "semantic_digest": "99b505f1b34a3b69b64e2cac732b39f852c3d0d42da408baad3123d642ead1e7",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 7,
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "path": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "estra_concept": "Comparison with adjacent standards and research traditions",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__CANDIDATE_ONLY",
+        "semantic_digest": "b6379c5213989fa149fad59ba00ec7c0fb40067842256979d952f87639a15ecf",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 8,
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "path": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "estra_concept": "Finite v2 conformance levels and counterexample behavior",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__CANDIDATE_ONLY",
+        "semantic_digest": "d4102716897dc6b54aaa5df13af2f5d75a84606c217a333b3a148c5b8e35a8f6",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 9,
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "path": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "estra_concept": "Enterprise-neutral worked projection case",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__CANDIDATE_ONLY",
+        "semantic_digest": "3a9684a9edf6df67ecdb2775e4946d923fd11ab779bf02b9748d87df39fa0df3",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 10,
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "path": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "estra_concept": "ESTRA Optimality Framework 3.0.0-alpha.1 additive characterization lineage",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__ALPHA_ONLY",
+        "semantic_digest": "988af6cf2f889e7af93eaff93d2103e90de25a47efcc15383da1366ad56cca46",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 11,
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "path": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "estra_concept": "Interface-relative predictive-state and channel characterization",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__ALPHA_ONLY",
+        "semantic_digest": "342c8f3fca88ca783a197eb5f640daf7e9f653f4d8b60eeef090f63c4882c392",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 12,
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "path": "docs/estra-3.0/02_METHOD.md",
+      "estra_concept": "Optimality experiment and candidate selection method",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__ALPHA_ONLY",
+        "semantic_digest": "ed038d3b26d369e9021a6552e1fcce09f98b3c3f550e7b437c99466d3a223027",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 13,
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "path": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "estra_concept": "Primitive ablation and independence analysis",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__ALPHA_ONLY",
+        "semantic_digest": "65db02c8a78eb25319a6ae0805ffb27e0cd2ff353fb1b118d47ab9e6e5c5cf4b",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 14,
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "path": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "estra_concept": "v3 prior-art and novelty boundary",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__ALPHA_ONLY",
+        "semantic_digest": "cdec3f8d1799c33fe3a9e0f16abc3e836f247b529c48deac3391b07786e73d3d",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 15,
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "path": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "estra_concept": "Finite v3 conformance, negative cases and boundary outcomes",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__ALPHA_ONLY",
+        "semantic_digest": "196187494850ca36fdfdfea29b51b67b2cb1f3c3f5bac0cbf456e42942d858e0",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 16,
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "path": "docs/estra-3.0/06_WORKED_CASE.md",
+      "estra_concept": "v3 worked optimality case",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__ALPHA_ONLY",
+        "semantic_digest": "78ddb419aa869211799617a97b9e5fbd612eb5da45e3eab312964b63314e7057",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 17,
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "path": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "estra_concept": "Phase C empirical constraint and rejected typed-history candidate",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__NEGATIVE_EVIDENCE",
+        "semantic_digest": "bdf72f5b9a58819397455f1120efb318182a79ed9b6af41925144b090ae2893e",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 18,
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "path": "paper/estra_optimality_framework_v3/main.md",
+      "estra_concept": "Reader-facing v3 optimality alpha paper",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__NOT_PUBLICATION_READY",
+        "semantic_digest": "b434216822eb5b34e672a5ad013955bda1c8a94c967dfe4c1819ad2e9a5114d3",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 19,
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "path": "paper/estra_projection_framework_v2/README.md",
+      "estra_concept": "Reader-facing v2 projection framework paper entrypoint",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__NOT_PUBLICATION_READY",
+        "semantic_digest": "35e690ebc2365591a3b5c6e23a5ba50b51af7f6a35ea0e5ae681a7a60a744ddd",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 20,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "path": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "estra_concept": "Historical v3 internal alpha conformance receipt",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__HISTORICAL_RECEIPT",
+        "semantic_digest": "52d2329cd7d3f498fc3c6041a02d22b148334e517343513607e4ae7827fd549c",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 21,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "path": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "estra_concept": "Historical deterministic v3 package review",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__HISTORICAL_RECEIPT",
+        "semantic_digest": "e11c8d7bb4b0baf30e20a226f62eba1b4198bac5bc57785896cf987b3fae0afe",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 22,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "path": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "estra_concept": "Historical v3 release candidate manifest",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__HISTORICAL_MANIFEST",
+        "semantic_digest": "3fdf66786ffab898eb4dd900bba2e8770ca333c7ba0f5e5d546ca5f5b0cca962",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 23,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "path": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "estra_concept": "Historical v3 scoped optimality certificate",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__SCOPED_ALPHA_CERTIFICATE",
+        "semantic_digest": "7cc0ca756ee8bf13295ef81583eef06bfdf9ccadaf8dfdbe83b963d95337d3db",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 24,
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "path": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "estra_concept": "Historical v2 conformance receipt",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__HISTORICAL_RECEIPT",
+        "semantic_digest": "0965dde605d24c6deeae554ad6ac2e8a789d67b895e2435020dd3f22bd38a2e9",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 25,
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "path": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "estra_concept": "Historical deterministic v2 package review",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__HISTORICAL_RECEIPT",
+        "semantic_digest": "03e8876635c5fcde13d548aea5ad0e90d95b61417d3391c3fc702972015b6170",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 26,
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "path": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "estra_concept": "Historical v2 release candidate manifest",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "PRESERVE_INHERITED__HISTORICAL_MANIFEST",
+        "semantic_digest": "590267b516916748f90ff1f7681e1c72276e054dadf52e314d6afec5f40fca6f",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "DOCUMENTATION_SEMANTIC_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 27,
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "path": "scripts/verify_estra_optimality_framework_v3.py",
+      "estra_concept": "v3 deterministic optimality verifier",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "ee1abef52862d98132c9b3bcb439ee9c4884a05ea3d9e27ba898e2e3bb676a0d",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 28,
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "path": "scripts/verify_estra_projection_framework_v2.py",
+      "estra_concept": "v2 deterministic semantic verifier",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "9c18c896183d4ff54f1dfde792529f4efe151ac9b42b2cf23ec72f8405a602b5",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 29,
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "path": "src/estra_optimality_framework/__init__.py",
+      "estra_concept": "v3 optimality framework API",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "d00b762def6e14937d13ee6c2ed44407a38b4f78317b81e5144bedd5863d8cda",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 30,
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "path": "src/estra_optimality_framework/__main__.py",
+      "estra_concept": "v3 optimality CLI replay surface",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "93dd0abd31d608038be7afe2b13a4b569d4d4a369725a8459dab4181bd85596c",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 31,
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "path": "src/estra_optimality_framework/core.py",
+      "estra_concept": "v3 finite predictive-state and optimality algorithms",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "1b00bbfcce84e2faf335ff6c318cec3fdc029c8eb22a5a734aa9f1b642551152",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 32,
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "path": "src/estra_optimality_framework/validation.py",
+      "estra_concept": "v3 optimality validation and certificate checks",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "397e72c397e52762f7e7587b5e764555623e9ed32e76df610b86dfcda5979a30",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 33,
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "path": "src/estra_projection_framework/__init__.py",
+      "estra_concept": "v2 projection framework API",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "92331e4b6de5d865e6506b4d8368f3a49cd5da6638978d990e745d0f615a8420",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 34,
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "path": "src/estra_projection_framework/__main__.py",
+      "estra_concept": "v2 CLI execution surface",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "103546423ba855589457e362e5d346ab0b780ce753c2eb979e2bf9d0cf47d577",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 35,
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "path": "src/estra_projection_framework/validation.py",
+      "estra_concept": "v2 projection semantic validation implementation",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "1181c0025d0c309519dfa04fe4b0eac5d16965e3260d55e6bd5f9cadcb095457",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "IMPLEMENTATION_INTERFACE_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 36,
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "path": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "estra_concept": "v2 enterprise-neutral valid registry fixture",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "bbaa8b899d04e39f229891e9620741d33d5ca7e779d56825d411e70f77874466",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "CONFORMANCE_REPLAY_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 37,
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "path": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "estra_concept": "v3 finite optimality valid fixture",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "6fed56092e776e2a9239efdff0efb86dba5303310a8009f3f0a62ae953b93d02",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "CONFORMANCE_REPLAY_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 38,
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "path": "tests/fixtures/estra_v3/negative_cases.json",
+      "estra_concept": "v3 negative scenario fixture catalogue",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "e3d3894765c539b8866a99499b71538a8bb142a79018589b67b00a32dff32b0f",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "CONFORMANCE_REPLAY_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 39,
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "path": "tests/test_estra_optimality_framework_v3.py",
+      "estra_concept": "v3 candidate regression suite",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "2943c43f888005b8a4e316da13e2a2a57b14cffbfda8d695e4a57c4d347e3c88",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "CONFORMANCE_REPLAY_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    },
+    {
+      "row_number": 40,
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "path": "tests/test_estra_projection_framework_v2.py",
+      "estra_concept": "v2 candidate regression suite",
+      "producer_bindings": {
+        "oc_math_producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+        "oc_metaontology_producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+        "mapping_predicate": "OC producer ceiling binds the exact ESTRA concept; mapping is review-request metadata only"
+      },
+      "applicability_limit": "finite deterministic candidate scope only; no universal, stochastic, enterprise-transfer, dominance, publication or activation claim",
+      "corpus_conformance_evidence": {
+        "candidate_state": "IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING",
+        "semantic_digest": "dd1683965289b183737d5b7fc22d4738a2fafb50bd8d352b90df405fe509192b",
+        "freeze_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "evidence_pointer": "BASELINE_TEST_RECEIPT_v1.json; DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+        "baseline_scope": "BASELINE_TEST_RECEIPT_v1.json: guarded 69-test regression evidence only"
+      },
+      "holdout_status": {
+        "delta": "NEGATIVE",
+        "confidence_interval": "INCLUDES_ZERO",
+        "dominance": false,
+        "promotion_forbidden": true,
+        "evidence_pointer": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+        "review_receipt": null,
+        "owner_route": "WS-50 profile owner + independent engineering reviewer"
+      },
+      "interface_contract": {
+        "implementation_kind": "CONFORMANCE_REPLAY_ADAPTER",
+        "inputs": [
+          "frozen candidate metadata",
+          "accepted producer receipts when supplied",
+          "exact read-only consumer refs"
+        ],
+        "outputs": [
+          "candidate adapter descriptor",
+          "fail-closed admission decision",
+          "consumer handoff metadata"
+        ],
+        "candidate_implementation": "DESCRIPTOR_ONLY_NO_SOURCE_IMPLEMENTATION",
+        "mutation_boundary": "no source, registry, main, pointer, runtime, database or public mutation"
+      },
+      "candidate_only": true,
+      "promotion_forbidden": true
+    }
+  ]
+}
