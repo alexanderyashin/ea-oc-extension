@@ -115,3 +115,14 @@ The dynamic recapture packet resolves the current read-only refs for all three d
 Current snapshots are WS-60 `fc2bac3e…@d9374577…`, WS-70 `6229908…@a87e1755…`, and WS-75 `5df32a4…@c145f6db…`, with exact commit-tree digests, provenance, read-only rights, reviewer and runtime predicates. Prior stale history remains immutable. Pure replay covers current, stale, missing WS-70, provenance, digest, rights, private-runtime and widened-claim cases; admission remains `BLOCKED_FAIL_CLOSED`, candidate-only, with no promotion or acceptance.
 
 Post-push readback at `2026-08-27T11:13:46.0964373Z` found WS-70 drift to `b0ba5b95…@e65a8fcb…`. The dynamic snapshot is therefore marked stale with captured history preserved and no rewrite; recapture is required before any downstream admission decision.
+
+## Successor tranche 11 — current-consumer recapture
+
+The pure receipt records current consumer refs, trees, commit-tree digests, selected blob IDs, repository/branch provenance, read-only rights, independent reviewer recommendation-only predicates and runtime boundaries for WS-60, WS-70 and WS-75:
+
+- `.runs/RUN-20260827-ws50-estra-luna/ELEVENTH_TRANCHE_CURRENT_CONSUMER_RECAPTURE_RECEIPT_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/ELEVENTH_TRANCHE_RECAPTURE_REPLAY_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_eleventh_current_consumer_recapture_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/ELEVENTH_TRANCHE_DOWNSTREAM_RECAPTURE_REQUEST_v1.md`
+
+The recapture remains metadata-only with `accepted=0`, `candidate_only=true`, `dominance=false`, and `BOUNDED_ENGINEERING_REVIEW_ONLY` as the only unblock predicate. Retry attempts are bounded to `0..2`; the third identical dependency escalates to `ESCALATE_OWNER` / `ESCALATE_OWNER_REVIEWER`. No ESTRA runtime, feature/catalog, DB/raw/cold/HOST_IO/shared/public mutation occurred.

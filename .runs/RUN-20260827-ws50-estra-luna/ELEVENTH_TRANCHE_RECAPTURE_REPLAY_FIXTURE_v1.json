@@ -1,0 +1,20 @@
+{
+  "schema_id":"ESTRA_WS50_ELEVENTH_TRANCHE_RECAPTURE_REPLAY_FIXTURE_v1",
+  "run_id":"RUN-20260827-ws50-estra-luna",
+  "receipt":".runs/RUN-20260827-ws50-estra-luna/ELEVENTH_TRANCHE_CURRENT_CONSUMER_RECAPTURE_RECEIPT_v1.json",
+  "mode":"PURE_METADATA_REPLAY_NO_RUNTIME",
+  "cases":[
+    {"id":"current_refs_exact","expected":{"status":"PASS_CURRENT_CONSUMER_RECAPTURE_METADATA","reason":"EXACT_WS60_WS70_WS75_REF_TREE_DIGEST_PROVENANCE"}},
+    {"id":"stale_history_preserved","expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED"}},
+    {"id":"missing_ws70_ref","expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CURRENT_WS70_REF_REQUIRED"}},
+    {"id":"provenance_mismatch","expected":{"status":"BLOCKED_PROVENANCE","reason":"REJECT_CONSUMER_PROVENANCE_MISMATCH"}},
+    {"id":"digest_mismatch","expected":{"status":"BLOCKED_DIGEST","reason":"REJECT_CONSUMER_DIGEST_MISMATCH"}},
+    {"id":"rights_mismatch","expected":{"status":"BLOCKED_RIGHTS","reason":"REJECT_NON_READ_ONLY_RIGHTS"}},
+    {"id":"private_runtime","expected":{"status":"BLOCKED_PRIVATE_RUNTIME","reason":"REJECT_PRIVATE_RUNTIME_PATH"}},
+    {"id":"widened_claim","expected":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_WIDENED_CLAIM_CEILING"}},
+    {"id":"retry_0","attempt":0,"dependency":"IDENTICAL_DEPENDENCY","expected":{"status":"RETRY_BOUNDED","reason":"RETRY_ATTEMPT_0"}},
+    {"id":"retry_1","attempt":1,"dependency":"IDENTICAL_DEPENDENCY","expected":{"status":"RETRY_BOUNDED","reason":"RETRY_ATTEMPT_1"}},
+    {"id":"retry_2_third_identical","attempt":2,"dependency":"IDENTICAL_DEPENDENCY","expected":{"status":"ESCALATE_OWNER","reason":"ESCALATE_OWNER_REVIEWER"}}
+  ],
+  "negative_boundaries":{"candidate_only":true,"dominance":false,"accepted":0,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true}
+}
