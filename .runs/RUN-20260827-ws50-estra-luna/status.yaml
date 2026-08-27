@@ -1,7 +1,7 @@
 status: GOOD
 run_id: RUN-20260827-ws50-estra-luna
 workstream: LUNA-OC14-07 / WS-50-ESTRA
-stage: fifth-tranche-producer-downstream-compatibility
+stage: sixth-tranche-downstream-revalidation
 source_head: 5398bfed0efbc56ad969382df48af568ee2df24b
 worker_branch: workstream/oc14-estra-luna-20260827
 claim_ceiling: discovery-preservation-only
@@ -28,5 +28,12 @@ candidate_only: true
 dominance: false
 holdout_boundary: NEGATIVE_DELTA_CI_INCLUDES_ZERO
 feature_mutation: NONE
+downstream_revalidation: PASS_READ_ONLY_40_ROWS
+current_ws60_ref: 981369b22a960c0fca72573f53c613f50b66456@14b4b61e9d6347042aeb94256f854954fb1ab9fa
+current_ws75_ref: dff9639381bd4ecacf605f7a1cd122295774d35c@e2d054146361478c5134a2ebbb7fe793ced9b73e
+stale_prior_consumer_refs: REJECTED
+consumer_provenance_mismatch: REJECTED
+private_runtime_path: REJECTED
+revalidation_claim_ceiling: semantic-review-candidate-only
 remote_readback: PASS_REMOTE_PARITY
 worker_tree: CLEAN_AT_READBACK

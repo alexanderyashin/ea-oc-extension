@@ -53,3 +53,14 @@ The producer-side compatibility packet fixes, for all 40 frozen rows, the requir
 - `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_RECEIPT_v1.json`
 
 WS-60 and WS-75 are represented only by read-only register refs: Toolkit `bdc4fe27…` / tree `6590cabf…`; Publication `722c2547…` / tree `7a5c7349…`. No consumer content is copied. The stale consumer, provenance mismatch, private/runtime path and widened-ceiling fixtures reject deterministically. Candidate-only state, `dominance=false`, negative holdout delta and CI-including-zero remain fixed.
+
+## Sixth-tranche read-only downstream revalidation
+
+The 40-row revalidation report fixes exact frozen-candidate SHA-256 digests, candidate states, source commit/tree bindings, current consumer commit/tree refs and the stale/provenance/private-runtime/widened-ceiling rejection matrix:
+
+- `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_REPORT_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_downstream_revalidation_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_RECEIPT_v1.json`
+
+Current read-only refs are WS-60 Toolkit `981369b22a960c0fca72573f53c613f50b66456@14b4b61e9d6347042aeb94256f854954fb1ab9fa` and WS-75 Publication `dff9639381bd4ecacf605f7a1cd122295774d35c@e2d054146361478c5134a2ebbb7fe793ced9b73e`. Prior register refs are retained as stale negatives. No consumer content, candidate/source content or shared Logion state was copied or mutated; no live, publication or DB effect is authorized.

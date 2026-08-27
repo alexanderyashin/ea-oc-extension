@@ -1,0 +1,30 @@
+{
+  "schema_id": "ESTRA_WS50_DOWNSTREAM_REVALIDATION_RECEIPT_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "validator": ".runs/RUN-20260827-ws50-estra-luna/validate_downstream_revalidation_v1.py",
+  "report": ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_REPORT_v1.json",
+  "fixture": ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+  "base_commit": "ed317499f30cfc5c20939b62e027d685cc368ebf",
+  "status": "PASS_DOWNSTREAM_REVALIDATION",
+  "candidate_rows": 40,
+  "source_binding": "5398bfed0efbc56ad969382df48af568ee2df24b@30578579fc51acf3512991ed2a9b6a01c0b95691",
+  "current_consumer_refs": {
+    "WS-60-TOOLKIT": "981369b22a960c0fca72573f53c613f50b66456@14b4b61e9d6347042aeb94256f854954fb1ab9fa",
+    "WS-75-PUBLICATION": "dff9639381bd4ecacf605f7a1cd122295774d35c@e2d054146361478c5134a2ebbb7fe793ced9b73e"
+  },
+  "results": [
+    {"id":"current_refs","status":"PASS_READ_ONLY_REVALIDATION","reason":"CURRENT_CONSUMER_REFS_MATCH"},
+    {"id":"stale_consumer","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_STALE_CONSUMER_REF"},
+    {"id":"provenance_mismatch","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_PROVENANCE_MISMATCH"},
+    {"id":"private_runtime_path","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS75_REJECT_PRIVATE_RUNTIME_PATH"},
+    {"id":"widened_ceiling","status":"BLOCKED_CLAIM_CEILING","reason":"WS60_REJECT_WIDENED_CLAIM_CEILING"}
+  ],
+  "stale_prior_register_refs": true,
+  "candidate_only": true,
+  "dominance": false,
+  "holdout_delta": "NEGATIVE",
+  "confidence_interval": "INCLUDES_ZERO",
+  "candidate_mutation": false,
+  "shared_logion_mutation": false,
+  "live_publication_db_effect": false
+}

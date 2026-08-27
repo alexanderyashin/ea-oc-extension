@@ -1,0 +1,26 @@
+{
+  "schema_id": "ESTRA_WS50_SIXTH_TRANCHE_REVALIDATION_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "tranche": "SIXTH_NARROW_DOWNSTREAM_REVALIDATION",
+  "status": "FIXED_READ_ONLY_40_ROW_REVALIDATION",
+  "base_commit": "ed317499f30cfc5c20939b62e027d685cc368ebf",
+  "base_tree": "25648dbdc5aa62bae2a20e18c6b7306bd39e6140",
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_REPORT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_FIXTURE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/validate_downstream_revalidation_v1.py",
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SIXTH_TRANCHE_REVALIDATION_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "current_consumer_refs_read_only": {
+    "WS-60-TOOLKIT": "981369b22a960c0fca72573f53c613f50b66456@14b4b61e9d6347042aeb94256f854954fb1ab9fa",
+    "WS-75-PUBLICATION": "dff9639381bd4ecacf605f7a1cd122295774d35c@e2d054146361478c5134a2ebbb7fe793ced9b73e"
+  },
+  "coverage": "All 40 frozen candidate rows revalidated by exact SHA-256 digest, candidate state, source commit/tree and consumer rejection profile.",
+  "negative_matrix": ["stale consumer", "provenance mismatch", "private/runtime path", "widened ceiling"],
+  "forbidden_effects": ["candidate or source mutation", "shared Logion edits", "consumer content copy", "live/publication/DB effects", "dominance claim"],
+  "claim_ceiling": "Semantic-review candidate only; read-only downstream revalidation and deterministic rejection evidence."
+}
