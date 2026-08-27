@@ -1,0 +1,14 @@
+{
+  "schema_id": "ESTRA_WS50_SEVENTH_HANDOFF_FIXTURE_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "envelope": ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_CONSUMER_HANDOFF_ENVELOPE_v1.json",
+  "scenarios": [
+    {"id":"snapshot_current_at_capture","mutation":"none","expected":{"status":"PASS_READ_ONLY_HANDOFF","reason":"IMMUTABLE_CONSUMER_SNAPSHOT_CAPTURED"}},
+    {"id":"post_capture_consumer_drift","mutation":"consumer_commit_or_tree_changed","expected":{"status":"STALE_SNAPSHOT","reason":"MARK_SNAPSHOT_STALE_NO_HISTORY_REWRITE"}},
+    {"id":"stale_consumer","mutation":"old_register_ref","expected":{"status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_STALE_CONSUMER_REF"}},
+    {"id":"provenance_mismatch","mutation":"repository_or_branch_changed","expected":{"status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_PROVENANCE_MISMATCH"}},
+    {"id":"private_runtime_path","mutation":"private_or_runtime_candidate_path","expected":{"status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS75_REJECT_PRIVATE_RUNTIME_PATH"}},
+    {"id":"widened_ceiling","mutation":"typed-history-dominance","expected":{"status":"BLOCKED_CLAIM_CEILING","reason":"WS60_REJECT_WIDENED_CLAIM_CEILING"}}
+  ],
+  "negative_boundaries":{"candidate_only":true,"no_promotion":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","source_mutation":false,"shared_logion_mutation":false}
+}

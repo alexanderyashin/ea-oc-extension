@@ -64,3 +64,16 @@ The 40-row revalidation report fixes exact frozen-candidate SHA-256 digests, can
 - `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_RECEIPT_v1.json`
 
 Current read-only refs are WS-60 Toolkit `2c482f56662a175ecba0f7f6fff142ff5f0a5896@7ecb2c0a2101dbc6adcda0c9cf535127623843b5` and WS-75 Publication `2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703`. Prior register refs are retained as stale negatives. No consumer content, candidate/source content or shared Logion state was copied or mutated; no live, publication or DB effect is authorized.
+
+## Seventh-tranche candidate-consumer handoff envelope
+
+The immutable handoff envelope binds all 40 frozen rows to the source checkout and a read-only WS-60/WS-75 consumer snapshot:
+
+- `.runs/RUN-20260827-ws50-estra-luna/CANDIDATE_CONSUMER_HANDOFF_ENVELOPE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_seventh_handoff_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_RECEIPT_v1.json`
+
+Snapshot timestamp: `2026-08-27T10:21:42.9895952Z` / `2026-08-27T12:21:42.9962327+02:00`. Source is `5398bfed0efbc56ad969382df48af568ee2df24b@30578579fc51acf3512991ed2a9b6a01c0b95691`; Toolkit is `5196abf848d42b93ad120685f8bbe5006791c76b@1c4850a72c12984cd6d6e5f25766533256f917f9`; Publication is `2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703`. Commit-tree digests are recorded in the envelope; no consumer content is copied.
+
+The fixture rejects stale consumer refs, repository/branch provenance mismatch, private/runtime paths, and a widened typed-history-dominance ceiling with exact deterministic codes. If a post-capture readback finds either consumer commit or tree changed, the snapshot is marked `STALE_AFTER_POST_CAPTURE_DRIFT` in a new metadata-only receipt/commit; the captured snapshot and its history are not rewritten. Candidate-only state, no-promotion, `dominance=false`, negative holdout delta and CI-including-zero remain mandatory.

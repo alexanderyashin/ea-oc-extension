@@ -32,9 +32,14 @@
     ".runs/RUN-20260827-ws50-estra-luna/validate_downstream_compatibility_v1.py",
     ".runs/RUN-20260827-ws50-estra-luna/validate_downstream_revalidation_v1.py",
     ".runs/RUN-20260827-ws50-estra-luna/run.md",
-    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml",
+    ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_CONSUMER_HANDOFF_ENVELOPE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_FIXTURE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/validate_seventh_handoff_v1.py",
+    ".runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_FIXATION_PACKET_v1.json"
   ],
   "staging_rule": "Only the exact expected_paths above may be staged for this infrastructure checkpoint. Candidate files in the source checkout are not part of this diff.",
   "candidate_transport": "NONE",
-  "status": "PASS_EXACT_RUN_MANIFEST__SIXTH_REVALIDATION_INCLUDED"
+  "status": "PASS_EXACT_RUN_MANIFEST__SEVENTH_HANDOFF_INCLUDED"
 }

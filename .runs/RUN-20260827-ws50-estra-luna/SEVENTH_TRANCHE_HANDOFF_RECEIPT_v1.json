@@ -1,0 +1,26 @@
+{
+  "schema_id": "ESTRA_WS50_SEVENTH_TRANCHE_HANDOFF_RECEIPT_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "PASS_READ_ONLY_40_ROW_HANDOFF_CAPTURE",
+  "snapshot_status": "CURRENT_AT_CAPTURE__IMMUTABLE_BOUNDARY",
+  "snapshot_timestamp_utc": "2026-08-27T10:21:42.9895952Z",
+  "snapshot_timestamp_europe_berlin": "2026-08-27T12:21:42.9962327+02:00",
+  "base_worker": {"commit":"9db64e071e346671bfa592043c87fd3207bfb0c7","tree":"c1b77a2e05bcba158e6587f19713fe245df184db"},
+  "source": {"commit":"5398bfed0efbc56ad969382df48af568ee2df24b","tree":"30578579fc51acf3512991ed2a9b6a01c0b95691","commit_tree_digest":"90e7be5d9f62c6022e89fe16935288dab872821a72d6ea2274fcdfe20a4ffbdc"},
+  "consumers": {
+    "WS-60-TOOLKIT": {"commit":"5196abf848d42b93ad120685f8bbe5006791c76b","tree":"1c4850a72c12984cd6d6e5f25766533256f917f9","commit_tree_digest":"f1826e334cd504446e63d7e6b984bf8b2080994b64467057476afd306f10be0c","ref_mode":"READ_ONLY"},
+    "WS-75-PUBLICATION": {"commit":"2777fa80f821a0a91d6653df0951a5494f5f44d9","tree":"e905599fb066c9bbb7b375b5ef767ab3761ec703","commit_tree_digest":"17835cea8c5062aa2a280a759f01dfff4e66101ebb43a429b430042046132b03","ref_mode":"READ_ONLY"}
+  },
+  "coverage": {"frozen_candidate_rows":40,"semantic_digest_rule":"SHA-256 of frozen candidate bytes","content_copied":false},
+  "deterministic_scenarios": [
+    {"id":"snapshot_current_at_capture","status":"PASS_READ_ONLY_HANDOFF","reason":"IMMUTABLE_CONSUMER_SNAPSHOT_CAPTURED"},
+    {"id":"post_capture_consumer_drift","status":"STALE_SNAPSHOT","reason":"MARK_SNAPSHOT_STALE_NO_HISTORY_REWRITE"},
+    {"id":"stale_consumer","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_STALE_CONSUMER_REF"},
+    {"id":"provenance_mismatch","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_PROVENANCE_MISMATCH"},
+    {"id":"private_runtime_path","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS75_REJECT_PRIVATE_RUNTIME_PATH"},
+    {"id":"widened_ceiling","status":"BLOCKED_CLAIM_CEILING","reason":"WS60_REJECT_WIDENED_CLAIM_CEILING"}
+  ],
+  "post_capture_readback": "PENDING_AFTER_PUSH",
+  "negative_boundaries": {"candidate_only":true,"no_promotion":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","source_mutation":false,"shared_logion_mutation":false,"empirical_execution":false},
+  "claim_ceiling": "semantic-review-candidate-only"
+}

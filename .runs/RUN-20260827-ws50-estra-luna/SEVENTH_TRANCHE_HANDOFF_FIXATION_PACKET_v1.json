@@ -1,0 +1,27 @@
+{
+  "schema_id": "ESTRA_WS50_SEVENTH_TRANCHE_HANDOFF_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "tranche": "SEVENTH_NARROW_CANDIDATE_CONSUMER_HANDOFF",
+  "status": "FIXED_IMMUTABLE_READ_ONLY_SNAPSHOT",
+  "base_commit": "9db64e071e346671bfa592043c87fd3207bfb0c7",
+  "base_tree": "c1b77a2e05bcba158e6587f19713fe245df184db",
+  "snapshot_timestamp_utc": "2026-08-27T10:21:42.9895952Z",
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_CONSUMER_HANDOFF_ENVELOPE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_FIXTURE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/validate_seventh_handoff_v1.py",
+    ".runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SEVENTH_TRANCHE_HANDOFF_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "consumer_refs_read_only": {
+    "WS-60-TOOLKIT": "5196abf848d42b93ad120685f8bbe5006791c76b@1c4850a72c12984cd6d6e5f25766533256f917f9",
+    "WS-75-PUBLICATION": "2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703"
+  },
+  "coverage": "All 40 frozen rows are bound to exact candidate digest/state and immutable source/consumer snapshot metadata.",
+  "stale_policy": "Post-capture ref drift is marked stale in a new metadata-only receipt/commit; captured history is not rewritten.",
+  "forbidden_effects": ["candidate or source mutation","shared Logion edits","consumer content copy","empirical execution","publication/DB effects","promotion","dominance claim"],
+  "claim_ceiling": "Semantic-review candidate only."
+}

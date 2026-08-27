@@ -1,7 +1,7 @@
 status: GOOD
 run_id: RUN-20260827-ws50-estra-luna
 workstream: LUNA-OC14-07 / WS-50-ESTRA
-stage: sixth-tranche-downstream-revalidation
+stage: seventh-tranche-candidate-consumer-handoff
 source_head: 5398bfed0efbc56ad969382df48af568ee2df24b
 worker_branch: workstream/oc14-estra-luna-20260827
 claim_ceiling: discovery-preservation-only
@@ -29,6 +29,13 @@ dominance: false
 holdout_boundary: NEGATIVE_DELTA_CI_INCLUDES_ZERO
 feature_mutation: NONE
 downstream_revalidation: PASS_READ_ONLY_40_ROWS
+candidate_consumer_handoff: PASS_READ_ONLY_40_ROWS
+handoff_snapshot_timestamp_utc: 2026-08-27T10:21:42.9895952Z
+handoff_snapshot_status: CURRENT_AT_CAPTURE_IMMUTABLE_BOUNDARY
+handoff_ws60_ref: 5196abf848d42b93ad120685f8bbe5006791c76b@1c4850a72c12984cd6d6e5f25766533256f917f9
+handoff_ws75_ref: 2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703
+handoff_stale_policy: MARK_POST_CAPTURE_DRIFT_WITH_NEW_RECEIPT_NO_HISTORY_REWRITE
+no_promotion: true
 current_ws60_ref: 2c482f56662a175ecba0f7f6fff142ff5f0a5896@7ecb2c0a2101dbc6adcda0c9cf535127623843b5
 current_ws75_ref: 2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703
 stale_prior_consumer_refs: REJECTED
