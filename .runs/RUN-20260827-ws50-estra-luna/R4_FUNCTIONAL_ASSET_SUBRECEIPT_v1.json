@@ -1,0 +1,129 @@
+{
+  "schema_id": "ESTRA_WS50_R4_FUNCTIONAL_ASSET_SUBRECEIPT_v1",
+  "request_type": "CURRENT_FUNCTIONAL_ASSET_SUBRECEIPT_FOR_INDEPENDENT_MACHINE_VALIDATION",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "predecessor_generation": 4,
+  "next_generation": 5,
+  "phase": "FUNCTIONAL_ASSET_REVIEW",
+  "status": "READY_FOR_WS70_INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION",
+  "branch": "workstream/oc14-estra-luna-20260827",
+  "current_artifact": {
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "bytes": 3138,
+    "git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "present_in_latest_remote_tree": true,
+    "latest_producer_commit": "2c86bb7b247b42357ba71f471c149e62992cd7b6",
+    "latest_producer_tree": "b70895caf2f4b292be986a114dbaa01a2e480e83",
+    "fingerprint_envelope_sha256": "ea33b4f66e15299ebb70649abeec32b3e0b7205b47c11cafb133d4f088637fdc"
+  },
+  "latest_current_artifact": {
+    "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_id": "OC14-OB-ESTRA-01",
+    "consumer_generation": 5,
+    "required_state": "FUNCTIONAL_MACHINE_VALIDATION_RECEIPT_PRESENT",
+    "resolved_candidate": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "resolution_status": "RESOLVED_LATEST_CANDIDATE; REQUIRED_FUNCTIONAL_RECEIPT_PENDING",
+    "history_rule": "Do not overwrite generation-1 through generation-4 evidence; recapture only when a newer authoritative artifact is selected."
+  },
+  "remote_readback": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
+    "local_commit": "2c86bb7b247b42357ba71f471c149e62992cd7b6",
+    "local_tree": "b70895caf2f4b292be986a114dbaa01a2e480e83",
+    "remote_commit": "2c86bb7b247b42357ba71f471c149e62992cd7b6",
+    "remote_tree": "b70895caf2f4b292be986a114dbaa01a2e480e83",
+    "sha_match": true,
+    "tree_match": true,
+    "worker_dirty_count": 0,
+    "artifact_path_present": true
+  },
+  "candidate_and_baseline_evidence": {
+    "candidate_manifest_path": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "candidate_manifest_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "candidate_checksums_numerator": 40,
+    "candidate_checksums_denominator": 40,
+    "candidate_only": true,
+    "guarded_baseline_receipt_path": ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json",
+    "guarded_baseline_receipt_sha256": "ff0c05764e10689bc51311dca499585c91f04d2b50c2182962c99f95b9002a6a",
+    "guarded_baseline_status": "PASS_GUARDED_69_TESTS",
+    "substantive_rerun": false
+  },
+  "environment_and_toolchain_binding": {
+    "worker_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension-ws50-estra-luna-20260827",
+    "python": "Python 3.14.3",
+    "pytest": "pytest 9.0.2",
+    "pythonpath": "src",
+    "guard_script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "baseline_command": "python -B -m pytest -q tests -p no:cacheprovider",
+    "binding_status": "READ_ONLY_TOOLCHAIN_METADATA; NO_NEW_EXECUTION"
+  },
+  "hard_fact_scorecard": {
+    "numerator": 5,
+    "denominator": 6,
+    "passing": [
+      "exact artifact path and remote presence",
+      "raw artifact SHA-256 and committed blob",
+      "latest producer commit/tree",
+      "remote SHA/tree parity and clean worker",
+      "environment/toolchain binding"
+    ],
+    "missing": [
+      "typed WS70 independent machine/functional validation receipt"
+    ],
+    "interpretation": "5/6 is transport and functional-review readiness evidence, not implementation acceptance."
+  },
+  "validation_chain": [
+    {
+      "stage": "WS70_INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION",
+      "validator_thread": "01a04271-ff7c-7812-9b3b-1d317af41691",
+      "owner": "WS70 independent machine/functional validator",
+      "action": "Validate the exact current artifact path/ref/blob/SHA and functional asset contract; issue a typed receipt or exact fault.",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+      "status": "PENDING_EXTERNAL_RECEIPT",
+      "executor_may_not_issue_receipt": true
+    },
+    {
+      "stage": "WS35_SEMANTIC_VALIDATION",
+      "validator": "Independent applied-ontology validator",
+      "action": "Review semantic and claim-ceiling predicates separately after WS70 evidence; current machine access does not grant semantic acceptance.",
+      "status": "SEPARATE_PENDING",
+      "authority": "NOT_EMITTED"
+    },
+    {
+      "stage": "CCI_CLOSURE",
+      "owner": "CCI_CYCLE_CONTROLLER",
+      "action": "Close only after WS70 functional receipt and separate WS35 semantic acceptance satisfy the current resolver state.",
+      "status": "WITHHELD",
+      "promotion": "FORBIDDEN"
+    }
+  ],
+  "inherited_dirty_limits": {
+    "source_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "source_head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+    "source_tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+    "source_dirty_count": 16,
+    "preserved": true,
+    "reset_delete_move_cleanup": false,
+    "source_shared_main_pointer_public_host_io_db_mutation": false
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "science_publication_release_authority": false,
+    "activation": false,
+    "role_scope_note": "Obsolete source-path/object access block is superseded for this readback; semantic role binding remains separate and unaccepted."
+  },
+  "router_boundary": {
+    "transport_only": true,
+    "writes_performed": 0,
+    "direct_cci_route": false,
+    "self_validation": false,
+    "self_acceptance": false,
+    "next_transition": "WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_FAULT"
+  }
+}
