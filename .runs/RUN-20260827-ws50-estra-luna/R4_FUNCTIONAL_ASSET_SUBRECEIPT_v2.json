@@ -46,7 +46,7 @@
     "candidate_checksums_denominator": 40,
     "candidate_only": true,
     "test_receipt": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1.json",
-    "test_receipt_sha256": "PENDING_COMMIT_READBACK",
+    "test_receipt_sha256": "4b850afe8933260118ec5a899ddcc5e9781c7c35a30142c0288bd3b15ae1a346",
     "guarded_test_numerator": 69,
     "guarded_test_denominator": 69,
     "guarded_test_status": "PASS_GUARDED_69_TESTS"
