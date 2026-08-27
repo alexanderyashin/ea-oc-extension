@@ -1,0 +1,18 @@
+{
+  "schema_id": "ESTRA_WS50_A6_CONSUMER_REVIEW_WATCH_POLL_02_REPLAY_FIXTURE_v1",
+  "mode": "PURE_DECLARATIVE_REPLAY_NO_CONSUMER_EXECUTION",
+  "cases": [
+    {"id": "retry_2_no_admissible_delta", "attempt": 2, "open_slots": 241, "delta": "NONE", "state": "IDENTICAL", "expected": "ESCALATE_OWNER_REVIEWER"},
+    {"id": "retry_2_one_receipt_arrives", "attempt": 2, "open_slots": 240, "delta": "ONE_RECEIPT", "state": "RECEIPTS_PARTIAL", "expected": "RETURN_FOR_REPAIR_MISSING_CONSUMER_OR_INDEPENDENT_REVIEW_RECEIPT"},
+    {"id": "retry_3_timeout", "attempt": 3, "open_slots": 241, "delta": "NONE", "state": "TIMEOUT", "expected": "ESCALATE_OWNER_REVIEWER"},
+    {"id": "all_consumer_receipts_independent_missing", "attempt": 2, "open_slots": 1, "delta": "CONSUMER_RECEIPTS_ONLY", "state": "RECEIPTS_PARTIAL", "expected": "RETURN_FOR_REPAIR_MISSING_INDEPENDENT_REVIEW_RECEIPT"},
+    {"id": "all_receipts_bounded_profile", "attempt": 2, "open_slots": 0, "delta": "ALL_RECEIPTS", "state": "ALL_RECEIPTS_PRESENT", "expected": "PROFILE_REVIEW_READY"},
+    {"id": "stale_ref", "attempt": 2, "open_slots": 0, "delta": "NONE", "state": "STALE_REF", "expected": "BLOCKED_RECAPTURE_REQUIRED"},
+    {"id": "provenance_mismatch", "attempt": 2, "open_slots": 0, "delta": "NONE", "state": "PROVENANCE_MISMATCH", "expected": "BLOCKED_PROVENANCE"},
+    {"id": "digest_mismatch", "attempt": 2, "open_slots": 0, "delta": "NONE", "state": "DIGEST_MISMATCH", "expected": "BLOCKED_DIGEST"},
+    {"id": "rights_mismatch", "attempt": 2, "open_slots": 0, "delta": "NONE", "state": "RIGHTS_MISMATCH", "expected": "BLOCKED_RIGHTS"},
+    {"id": "private_runtime", "attempt": 2, "open_slots": 0, "delta": "NONE", "state": "PRIVATE_RUNTIME", "expected": "BLOCKED_PRIVATE_RUNTIME"},
+    {"id": "widened_claim", "attempt": 2, "open_slots": 0, "delta": "NONE", "state": "WIDENED_CLAIM", "expected": "BLOCKED_CLAIM_CEILING"},
+    {"id": "reviewer_authority", "attempt": 2, "open_slots": 0, "delta": "NONE", "state": "REVIEWER_AUTHORITY", "expected": "BLOCKED_REVIEWER_AUTHORITY"}
+  ]
+}
