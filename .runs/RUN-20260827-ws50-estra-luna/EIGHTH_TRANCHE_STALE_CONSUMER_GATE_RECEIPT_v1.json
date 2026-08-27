@@ -1,0 +1,16 @@
+{
+  "schema_id": "ESTRA_WS50_EIGHTH_TRANCHE_STALE_CONSUMER_GATE_RECEIPT_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "PASS_PURE_STALE_CONSUMER_GATE",
+  "base_commit": "0df8ba664a15549f234977434868ee20eea35e8e",
+  "base_tree": "1e9fbdd99ff17c097a5818aca4911506407e281a",
+  "candidate_rows": 40,
+  "captured_history_immutable": true,
+  "current_refs_required": true,
+  "current_refs": {"WS-60-TOOLKIT":"5196abf848d42b93ad120685f8bbe5006791c76b@1c4850a72c12984cd6d6e5f25766533256f917f9","WS-75-PUBLICATION":"4c3092f1eaee04b00b3a800864d1ecd31138a08e@fb0a96ce3a9387eb39827d70812dbb619be91d62"},
+  "stale_after_post_capture": {"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED"},
+  "negative_scenarios": ["provenance mismatch","digest mismatch","rights not read-only","private/runtime path","widened claim ceiling"],
+  "negative_boundaries": {"candidate_only":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true,"source_mutation":false,"shared_logion_mutation":false},
+  "empirical_execution": false,
+  "claim_ceiling": "semantic-review-candidate-only"
+}

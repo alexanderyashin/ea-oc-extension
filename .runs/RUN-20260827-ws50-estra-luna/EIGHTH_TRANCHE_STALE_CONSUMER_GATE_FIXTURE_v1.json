@@ -1,0 +1,28 @@
+{
+  "schema_id": "ESTRA_WS50_EIGHTH_TRANCHE_STALE_CONSUMER_GATE_FIXTURE_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "envelope": ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_CONSUMER_HANDOFF_ENVELOPE_v1.json",
+  "mode": "PURE_REVIEW_ONLY_NO_EXECUTION_NO_WRITES",
+  "candidate_rows_required": 40,
+  "captured_history": {
+    "immutable": true,
+    "rewrite_forbidden": true,
+    "captured_ws60": "5196abf848d42b93ad120685f8bbe5006791c76b@1c4850a72c12984cd6d6e5f25766533256f917f9",
+    "captured_ws75": "2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703"
+  },
+  "current_required_refs": {
+    "WS-60-TOOLKIT": {"repository":"estra-toolkit","branch":"workstream/oc14-toolkit-luna-20260827","commit":"5196abf848d42b93ad120685f8bbe5006791c76b","tree":"1c4850a72c12984cd6d6e5f25766533256f917f9","commit_tree_digest":"f1826e334cd504446e63d7e6b984bf8b2080994b64467057476afd306f10be0c","rights":"READ_ONLY"},
+    "WS-75-PUBLICATION": {"repository":"Logion","branch":"workstream/oc14-publication-luna-20260827","commit":"4c3092f1eaee04b00b3a800864d1ecd31138a08e","tree":"fb0a96ce3a9387eb39827d70812dbb619be91d62","commit_tree_digest":"3d7754bd256e3a491985a03646851f4c32722854dd5af30394992b7829ec320a","rights":"READ_ONLY"}
+  },
+  "snapshot_timestamp_utc": "2026-08-27T10:29:10.5242420Z",
+  "scenarios": [
+    {"id":"stale_after_post_capture","current_refs":"current_required_refs","expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED"}},
+    {"id":"current_refs_missing","current_refs":{"WS-60-TOOLKIT":null,"WS-75-PUBLICATION":null},"expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CURRENT_WS60_WS75_REFS_REQUIRED"}},
+    {"id":"provenance_mismatch","mutation":"WS-75 repository changed to ea-oc-extension","expected":{"status":"BLOCKED_PROVENANCE","reason":"REJECT_CONSUMER_PROVENANCE_MISMATCH"}},
+    {"id":"digest_mismatch","mutation":"WS-75 commit_tree_digest changed","expected":{"status":"BLOCKED_DIGEST","reason":"REJECT_CONSUMER_DIGEST_MISMATCH"}},
+    {"id":"rights_not_read_only","mutation":"WS-60 rights changed to WRITE","expected":{"status":"BLOCKED_RIGHTS","reason":"REJECT_NON_READ_ONLY_RIGHTS"}},
+    {"id":"private_runtime_path","mutation":"candidate path is Private/Runtime/...","expected":{"status":"BLOCKED_PRIVATE_RUNTIME","reason":"REJECT_PRIVATE_RUNTIME_PATH"}},
+    {"id":"widened_ceiling","mutation":"requested claim is typed-history-dominance","expected":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_WIDENED_CLAIM_CEILING"}}
+  ],
+  "negative_boundaries":{"candidate_only":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true,"source_mutation":false,"shared_logion_mutation":false}
+}

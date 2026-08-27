@@ -79,3 +79,13 @@ Snapshot timestamp: `2026-08-27T10:21:42.9895952Z` / `2026-08-27T12:21:42.996232
 The fixture rejects stale consumer refs, repository/branch provenance mismatch, private/runtime paths, and a widened typed-history-dominance ceiling with exact deterministic codes. If a post-capture readback finds either consumer commit or tree changed, the snapshot is marked `STALE_AFTER_POST_CAPTURE_DRIFT` in a new metadata-only receipt/commit; the captured snapshot and its history are not rewritten. Candidate-only state, no-promotion, `dominance=false`, negative holdout delta and CI-including-zero remain mandatory.
 
 Post-push readback at `2026-08-27T10:26:58.9836827Z` found WS-75 drift: captured `2777fa80…@e905599f…`, observed `4c3092f1eaee04b00b3a800864d1ecd31138a08e@fb0a96ce3a9387eb39827d70812dbb619be91d62`. WS-60 remained `5196abf8…@1c4850a7…`. The envelope is therefore explicitly stale; the original captured consumer snapshot remains intact as history and was not rewritten.
+
+## Eighth-tranche pure stale-consumer gate
+
+The pure gate fixture/validator covers the 40-row envelope without empirical execution or writes outside this report zone:
+
+- `.runs/RUN-20260827-ws50-estra-luna/EIGHTH_TRANCHE_STALE_CONSUMER_GATE_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_eighth_stale_consumer_gate_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/EIGHTH_TRANCHE_STALE_CONSUMER_GATE_RECEIPT_v1.json`
+
+Current WS-60 and WS-75 refs are required. Because captured WS-75 `2777fa80…@e905599f…` differs from current `4c3092f1…@fb0a96ce…`, the gate returns `BLOCKED_RECAPTURE_REQUIRED` / `CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED`. Provenance, commit-tree digest, non-read-only rights, private/runtime path and widened-ceiling mutations reject with deterministic codes. Candidate-only, `dominance=false`, negative holdout, CI-includes-zero and promotion-forbidden boundaries remain fixed.
