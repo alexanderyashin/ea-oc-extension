@@ -100,10 +100,10 @@
   },
   "ws70_validation_consumption": {
     "consumed": true,
-    "validation_result_version": "G20_TERMINAL_ACK",
-    "validation_result_commit": "0363b6e9a309a0aa30e2b92174ad2024a10c3885",
-    "validation_result_tree": "d14fecc65afb86fc6b9abff95d6d192b815399e5",
-    "canonical_validation_receipt_digest": "3F6AFDA51B7A3989D05892A0638DEA63112EDFC7C9D2E363F80E9F961113BA52",
+    "validation_result_version": "G20_TERMINAL_ACK_V2",
+    "validation_result_commit": "1f7908e4034bf0c60faf93be3af6307783e3ae9",
+    "validation_result_tree": "e8449bb0d6e2784e566b43c97a57ad839f71783b",
+    "canonical_validation_receipt_digest": "82EABE6650E1EB2289DF73BCFC37EC79DE2843336CD5498821D8B17F7C31C26A",
     "decision": "ACCEPTED",
     "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
     "return_code": null,
@@ -118,12 +118,26 @@
       "blob_unchanged_on_remote_readback": true
     },
     "ws70_receipt": {
+      "path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/WS-70-MACHINE/OC14_MACHINE_LUNA_09_20260827/WS70_INDEPENDENT_VALIDATION_WS50_G20_R4_FUNCTIONAL_RECEIPT_v2.json",
+      "digest": "82EABE6650E1EB2289DF73BCFC37EC79DE2843336CD5498821D8B17F7C31C26A",
+      "raw_sha256": "67d2e11bd89834cfd7f4f0b37846d3b5a29a8b1fe3f11ff7b1ce50548de1fd2c",
+      "git_blob": "ad4c6b72b52d645e6717d0ce90156f71869e8e99",
+      "commit": "1f7908e4034bf0c60faf93be3af6307783e3ae9",
+      "tree": "e8449bb0d6e2784e566b43c97a57ad839f71783b",
+      "remote_parity": true,
+      "clean": true
+    },
+    "prior_ws70_receipt_v1": {
       "path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/WS-70-MACHINE/OC14_MACHINE_LUNA_09_20260827/WS70_INDEPENDENT_VALIDATION_WS50_G20_R4_FUNCTIONAL_RECEIPT_v1.json",
       "digest": "3F6AFDA51B7A3989D05892A0638DEA63112EDFC7C9D2E363F80E9F961113BA52",
       "commit": "0363b6e9a309a0aa30e2b92174ad2024a10c3885",
-      "tree": "d14fecc65afb86fc6b9abff95d6d192b815399e5",
-      "remote_parity": true,
-      "clean": true
+      "tree": "d14fecc65afb86fc6b9abff95d6d192b815399e5"
+    },
+    "prior_validation_result_g20_v1": {
+      "validation_result_commit": "0363b6e9a309a0aa30e2b92174ad2024a10c3885",
+      "validation_result_tree": "d14fecc65afb86fc6b9abff95d6d192b815399e5",
+      "canonical_validation_receipt_digest": "3F6AFDA51B7A3989D05892A0638DEA63112EDFC7C9D2E363F80E9F961113BA52",
+      "decision": "ACCEPTED"
     },
     "prior_validation_result_g19": {
       "validation_result_commit": "b0093f3102765e854775a997717a1307cc82202d",
