@@ -5,7 +5,7 @@
   "source_obligation_id": "OC14-OB-ESTRA-01",
   "phase": "R4_FUNCTIONAL_ASSET_REVIEW",
   "snapshot_utc": "2026-08-27T22:00:28Z",
-  "status": "RETURNED_FOR_REPAIR__RECOVERY_GATE_OPEN__FUNCTIONAL_VALIDATION_PENDING",
+  "status": "FUNCTIONAL_VALIDATION_ACCEPTED__SEMANTIC_ACCEPTANCE_PENDING__CCI_WITHHELD",
   "latest_current_artifact": {
     "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
     "logical_id": "OC14-OB-ESTRA-01",
@@ -17,7 +17,7 @@
     "content_producer_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
     "content_producer_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
     "fingerprint_envelope_sha256": "ea33b4f66e15299ebb70649abeec32b3e0b7205b47c11cafb133d4f088637fdc",
-    "resolution": "CURRENT_CANDIDATE_RESOLVED; FUNCTIONAL_ACCEPTANCE_PENDING; CURRENT_69_TEST_RERUN_BLOCKED"
+    "resolution": "CURRENT_CANDIDATE_RESOLVED; WS70_INDEPENDENT_FUNCTIONAL_VALIDATION_ACCEPTED; SEMANTIC_ACCEPTANCE_PENDING"
   },
   "repository_access": {
     "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
@@ -59,12 +59,15 @@
     "historical_status": "PASS_GUARDED_69_TESTS",
     "historical_numerator": 69,
     "historical_denominator": 69,
-    "current_status": "CAPABILITY_BLOCKER__HOST_SAFETY_ACTIVE_ALERT",
-    "current_exit_code": 120,
-    "current_test_count": null,
-    "current_collection_count": null,
+    "current_status": "PASS_GUARDED_69_TESTS__WS70_INDEPENDENT_REPLAY",
+    "current_exit_code": 0,
+    "current_test_count": 69,
+    "current_collection_count": 69,
+    "current_payload_started": true,
+    "current_replay_source": "WS70 independent machine-functional validation",
+    "prior_safety_blocker_preserved": true,
     "rerun_in_this_receipt": true,
-    "claim_boundary": "Historical 69/69 is retained; current rerun did not reach pytest payload."
+    "claim_boundary": "Current 69/69 is accepted only within WS70 independent machine-functional scope; no semantic, scientific, CCI, publication, release or authority claim."
   },
   "provenance_and_toolchain": {
     "worker_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension-ws50-estra-luna-20260827",
@@ -83,18 +86,46 @@
     "owner": "WS70 independent functional validator",
     "action": "Read and validate the exact current result path/ref/blob/SHA, toolchain binding and functional contract; issue a typed receipt or exact blocker.",
     "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
-    "receipt": null,
+    "receipt": {
+      "decision": "ACCEPTED",
+      "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
+      "canonical_digest": "38EF123A63E89E66EA88AB5EFB74BC8254944CAE752744F34F39389764A641E5",
+      "validator_commit": "b0093f3102765e854775a997717a1307cc82202d",
+      "validator_tree": "25d0bcc132eee788717157326bd3ac3a2b6177bb",
+      "remote_parity": true,
+      "tracked_clean": true
+    },
     "current_executor_blocker": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_ATTEMPT_v2.json",
     "executor_self_validation": false
   },
   "ws70_validation_consumption": {
     "consumed": true,
-    "validation_result_version": "v5",
-    "validation_result_commit": "ef1e5f575171c97400823e2d5805bdb06bc1b289",
-    "validation_result_tree": "64aa1510c8580627dfd5f9391bf81848f0cf646b",
-    "canonical_validation_receipt_digest": "7164B85692FBEE7071EB7C981FB32261FA18E765A581AC40B4A5A95EC37D5490",
-    "decision": "RETURNED_FOR_REPAIR",
-    "return_code": "CURRENT_GUARDED_69_TEST_PAYLOAD_ADMISSION_BLOCKED__ACTIVE_ALERT_OPEN",
+    "validation_result_version": "G19_TERMINAL_ACK",
+    "validation_result_commit": "b0093f3102765e854775a997717a1307cc82202d",
+    "validation_result_tree": "25d0bcc132eee788717157326bd3ac3a2b6177bb",
+    "canonical_validation_receipt_digest": "38EF123A63E89E66EA88AB5EFB74BC8254944CAE752744F34F39389764A641E5",
+    "decision": "ACCEPTED",
+    "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
+    "return_code": null,
+    "g19_artifact": {
+      "raw_sha256": "22cc3e2336cb30477b16c51c4469efd40102d09d0a6d39863b9210601289cc43",
+      "git_blob": "e15c84da7b8e72005a368c60424e25e3da0830f2",
+      "producer_commit": "346f288e",
+      "producer_tree": "4344ec13"
+    },
+    "fresh_guarded_replay": {
+      "status": "PASS_GUARDED_69_TESTS",
+      "numerator": 69,
+      "denominator": 69,
+      "payload_started": true,
+      "exit_code": 0
+    },
+    "prior_validation_result_v5": {
+      "validation_result_commit": "ef1e5f575171c97400823e2d5805bdb06bc1b289",
+      "validation_result_tree": "64aa1510c8580627dfd5f9391bf81848f0cf646b",
+      "canonical_validation_receipt_digest": "7164B85692FBEE7071EB7C981FB32261FA18E765A581AC40B4A5A95EC37D5490",
+      "decision": "RETURNED_FOR_REPAIR"
+    },
     "prior_validation_result_v4": {
       "validation_result_commit": "30472ba8541d16401697bf1f872776aa4e91de05",
       "validation_result_tree": "a64bb1a9a7e3194c8001555c6d2c80930443176d",
@@ -125,8 +156,8 @@
       "candidate_fingerprint_evidence": "PRESERVED_40_OF_40",
       "current_guarded_rerun": "NOT_PERFORMED_AFTER_RETURN_FOR_REPAIR"
     },
-    "repair_action_consumed": "Governed owner-recovery/restart-preflight must resolve the active alert without clearing the retained marker; then rerun the exact guarded 69-test command against the unchanged source and issue a fresh PASS or typed blocker. No rerun or promotion was performed in this repair turn.",
-    "claim_ceiling": "Validation delta consumed for metadata repair only; no functional acceptance, semantic acceptance, CCI, publication, release or activation authority."
+    "repair_action_consumed": "The fresh WS70 functional replay is accepted only within independent machine-functional scope; prior safety blocker evidence remains preserved and no scientific/semantic/CCI promotion follows.",
+    "claim_ceiling": "Independent machine-functional acceptance only; no semantic acceptance, scientific acceptance, CCI, publication, release, occurrence, atom or authority claim."
   },
   "ws15_infrastructure_recovery_consumption": {
     "consumed": true,
@@ -219,6 +250,8 @@
   "claim_ceiling": {
     "candidate_only": true,
     "accepted": 0,
+    "functional_validation_scope_accepted": true,
+    "functional_validation_scope": "WS70_INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
     "dominance": false,
     "holdout_delta": "negative",
     "ci_includes_zero": true,
@@ -254,5 +287,5 @@
     "Current guarded rerun was stopped before pytest payload by OPEN HARD_SAFETY alert.",
     "WS70 independent machine-functional receipt is still absent; WS35 semantic acceptance is separate and pending."
   ],
-  "next_transition": "INDEPENDENT_AUTHORITY_FOR_GOVERNED_RECOVERY_THEN_FRESH_GREEN_AND_EXPLICIT_CLOSURE_THEN_GOVERNED_69_TEST_RERUN_AND_WS70_TYPED_RECEIPT"
+  "next_transition": "SEPARATE_WS35_SEMANTIC_ACCEPTANCE_THEN_CCI_REVIEW; PRIOR_HOST_SAFETY_RECOVERY_EVIDENCE_RETAINED"
 }
