@@ -1,0 +1,44 @@
+{
+  "schema_id": "ESTRA_WS50_G1_GUARDED_BASELINE_RECEIPT_v1",
+  "task_id": "OC14-G1-WS50-ESTRA-01-CANDIDATE-PRESERVATION",
+  "snapshot_utc": "2026-08-27T14:31:00Z",
+  "guard": {
+    "script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "require_common_stop_absent": true,
+    "actor": "WS-50-ESTRA",
+    "reason": "OC14-G1 exact guarded 69-test baseline replay against preserved inherited candidate checkout"
+  },
+  "source_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+  "source_head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+  "source_tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+  "requested_command": "PYTHONPATH=src python -B -m pytest -q tests -p no:cacheprovider",
+  "guarded_argv": ["python", "-B", "-m", "pytest", "-q", "tests", "-p", "no:cacheprovider"],
+  "result": {
+    "status": "PASS_GUARDED_69_TESTS",
+    "exit_code": 0,
+    "test_count": 69,
+    "collection_count": 69,
+    "collection_breakdown": {
+      "tests/test_estra_optimality_framework_v3.py": 17,
+      "tests/test_estra_projection_framework_v2.py": 9,
+      "tests/test_ops3a_engine_smoke.py": 1,
+      "tests/test_ops3a_graph_model.py": 6,
+      "tests/test_ops3a_misuse_rejection.py": 5,
+      "tests/test_ops3a_pipeline_determinism.py": 3,
+      "tests/test_ops3a_scheduler.py": 4,
+      "tests/test_ops3a_state_machine.py": 5,
+      "tests/test_ops3a_trace.py": 3,
+      "tests/test_ops3d_cli_misuse.py": 4,
+      "tests/test_ops3d_cli_smoke.py": 2,
+      "tests/test_phase_and_k.py": 5,
+      "tests/test_transitions.py": 3,
+      "tests/test_transitions_self.py": 2
+    }
+  },
+  "source_preservation_check": {
+    "dirty_entry_count_before": 16,
+    "dirty_entry_count_after": 16,
+    "changed_by_replay": false
+  },
+  "claim_ceiling": "Guarded baseline replay evidence only; no semantic acceptance, dominance, science, publication, release, or authority claim."
+}

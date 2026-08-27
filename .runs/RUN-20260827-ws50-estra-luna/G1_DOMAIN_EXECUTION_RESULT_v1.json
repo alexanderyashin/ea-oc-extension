@@ -1,0 +1,66 @@
+{
+  "schema_id": "ESTRA_WS50_DOMAIN_EXECUTION_RESULT_v1",
+  "task_id": "OC14-G1-WS50-ESTRA-01-CANDIDATE-PRESERVATION",
+  "generation": "G1",
+  "source_packet_sha256": "e4bfde50c60a20b68fdcbaeac3a5c44091deeae792086385611417cc727ce4aa",
+  "source_producer": {
+    "commit": "180f81a35725875ff1aefdda04fb9edd3151fa3",
+    "tree": "4f9f6f243ee9919179dd35b4873d5daed7638129"
+  },
+  "idempotency_key": "e4bfde50c60a20b68fdcbaeac3a5c44091deeae792086385611417cc727ce4aa:G1:OC14-G1-WS50-ESTRA-01-CANDIDATE-PRESERVATION",
+  "executor": "WS-50-ESTRA",
+  "independent_validator": "Science / WS-35-APPLIED_ONTOLOGY / INDEPENDENT_EVIDENCE_REVIEWER",
+  "cci_target_recorded_only": "Management/Planning::CCI_ACCEPTOR",
+  "router_boundary": {
+    "phase": "ROUTED_READY_TO_EXECUTE",
+    "writes_performed_by_router": 0,
+    "HOST_IO": false,
+    "activation": false,
+    "direct_cci_dispatch": false
+  },
+  "execution": {
+    "result_type": "ESTRA_FRAMEWORK_ENGINEERING_CANDIDATE",
+    "commit_class": "architecture",
+    "worker_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension-ws50-estra-luna-20260827",
+    "worker_branch": "workstream/oc14-estra-luna-20260827",
+    "base_commit": "c6d6a4bd2e4b2e81e3f75bbd6135caab1caad46b",
+    "base_tree": "06e2fc835610ec59a64192a276f5c6a721507bdc"
+  },
+  "candidate_preservation": {
+    "manifest": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "manifest_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "candidate_file_total": 40,
+    "identity_match_count": 40,
+    "identity_mismatch_count": 0,
+    "source_dirty_entry_count": 16,
+    "status_counts": {"MODIFIED": 1, "UNTRACKED": 39},
+    "decision": "PRESERVE_INHERITED",
+    "terminal_status": "HOLD_INHERITED_DIRTY_CONFLICT",
+    "mutation_performed": false,
+    "reset_delete_move_cleanup": false
+  },
+  "guarded_baseline": {
+    "receipt": ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json",
+    "status": "PASS_GUARDED_69_TESTS",
+    "test_count": 69,
+    "claim_ceiling": "Baseline replay only"
+  },
+  "independent_validation": {
+    "executor_self_validation": false,
+    "status": "PENDING_INDEPENDENT_VALIDATOR",
+    "receipt": null,
+    "required_action": "Independent validator reviews this execution result and issues its own receipt."
+  },
+  "scientific_and_authority_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "promotion_forbidden": true,
+    "science_publication_release_authority": false,
+    "forbidden_mutations": ["canonical promotion", "source checkout", "registry", "main", "pointer", "public", "cold", "raw", "outcome", "DB", "HOST_IO"]
+  },
+  "terminal_result": "DOMAIN_EXECUTION_RESULT_READY__HOLD_INHERITED_DIRTY_CONFLICT__INDEPENDENT_VALIDATION_REQUIRED",
+  "handoff": "Return this packet to the named independent validator; do not self-validate, self-accept, self-route, or dispatch directly to CCI."
+}
