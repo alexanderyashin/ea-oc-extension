@@ -63,4 +63,4 @@ The 40-row revalidation report fixes exact frozen-candidate SHA-256 digests, can
 - `.runs/RUN-20260827-ws50-estra-luna/validate_downstream_revalidation_v1.py`
 - `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_REVALIDATION_RECEIPT_v1.json`
 
-Current read-only refs are WS-60 Toolkit `137f7733febf6c026619816272f9440e0d029f3c@cdece84101752f68c7e1d85f734c406c2190bd8f` and WS-75 Publication `cd1149108fdc4c02b6a019f369b4fb8ef582b616@98d7e74c7698d77fad775de21fb309a2c277d0fe`. Prior register refs are retained as stale negatives. No consumer content, candidate/source content or shared Logion state was copied or mutated; no live, publication or DB effect is authorized.
+Current read-only refs are WS-60 Toolkit `2c482f56662a175ecba0f7f6fff142ff5f0a5896@7ecb2c0a2101dbc6adcda0c9cf535127623843b5` and WS-75 Publication `2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703`. Prior register refs are retained as stale negatives. No consumer content, candidate/source content or shared Logion state was copied or mutated; no live, publication or DB effect is authorized.

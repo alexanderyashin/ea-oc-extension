@@ -9,8 +9,8 @@
   "candidate_rows": 40,
   "source_binding": "5398bfed0efbc56ad969382df48af568ee2df24b@30578579fc51acf3512991ed2a9b6a01c0b95691",
   "current_consumer_refs": {
-    "WS-60-TOOLKIT": "137f7733febf6c026619816272f9440e0d029f3c@cdece84101752f68c7e1d85f734c406c2190bd8f",
-    "WS-75-PUBLICATION": "cd1149108fdc4c02b6a019f369b4fb8ef582b616@98d7e74c7698d77fad775de21fb309a2c277d0fe"
+    "WS-60-TOOLKIT": "2c482f56662a175ecba0f7f6fff142ff5f0a5896@7ecb2c0a2101dbc6adcda0c9cf535127623843b5",
+    "WS-75-PUBLICATION": "2777fa80f821a0a91d6653df0951a5494f5f44d9@e905599fb066c9bbb7b375b5ef767ab3761ec703"
   },
   "results": [
     {"id":"current_refs","status":"PASS_READ_ONLY_REVALIDATION","reason":"CURRENT_CONSUMER_REFS_MATCH"},
