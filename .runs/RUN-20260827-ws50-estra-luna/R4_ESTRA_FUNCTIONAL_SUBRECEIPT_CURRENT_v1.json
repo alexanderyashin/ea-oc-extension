@@ -25,11 +25,7 @@
     "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
     "recaptured_current_local_remote_commit": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
     "recaptured_current_local_remote_tree": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
-    "last_pushed_receipt_branch_commit": "9d6c9892de100e0e8fb45ba74864a04351bd90e9",
-    "last_pushed_receipt_branch_tree": "5e4d12348234429a920f9c1ae2b493892f862e64",
-    "last_pushed_receipt_remote_commit": "9d6c9892de100e0e8fb45ba74864a04351bd90e9",
-    "last_pushed_receipt_remote_tree": "5e4d12348234429a920f9c1ae2b493892f862e64",
-    "last_pushed_receipt_sha_tree_parity": true,
+    "volatile_receipt_container_commit_fields": "OMITTED_TO_AVOID_SELF_REFERENTIAL_STALE_READBACK",
     "sha_match": true,
     "tree_match": true,
     "worker_dirty_count": 0,
@@ -93,11 +89,24 @@
   },
   "ws70_validation_consumption": {
     "consumed": true,
-    "validation_result_commit": "eda3eb8db3e96475c5ab54fbe7bc3ad384794aa7",
-    "validation_result_tree": "ff7a0212c648b088b9b53bcf03265100eb85cf4a",
+    "validation_result_commit": "30472ba8541d16401697bf1f872776aa4e91de05",
+    "validation_result_tree": "a64bb1a9a7e3194c8001555c6d2c80930443176d",
+    "canonical_validation_receipt_digest": "BDD34EA4B0C428C1DD807C4A9D0389CD2DF3B21E773B5315C2C0A28BFBB62B47",
     "decision": "RETURNED_FOR_REPAIR",
-    "return_code": "STALE_EMBEDDED_BRANCH_READBACK",
+    "return_code": "CURRENT_GUARDED_69_TEST_PAYLOAD_ADMISSION_BLOCKED__ACTIVE_ALERT_OPEN",
+    "prior_validation_delta": {
+      "validation_result_commit": "eda3eb8db3e96475c5ab54fbe7bc3ad384794aa7",
+      "validation_result_tree": "ff7a0212c648b088b9b53bcf03265100eb85cf4a",
+      "return_code": "STALE_EMBEDDED_BRANCH_READBACK"
+    },
     "failed_predicate": {
+      "attempt_receipt_sha256": "9a4159f1472a6a6d853f82d46889b6ea45ad6566b5c3222cc6be28ea45640b85",
+      "attempt_receipt_git_blob": "bfec7902d9412dbd2d492e341801e4c2915fa429",
+      "payload_started": false,
+      "test_count": null,
+      "guard_exit_code": 120,
+      "guard_reason": "ACTIVE_ALERT_OPEN",
+      "incident_id": "HOST-SAFETY-INCIDENT-A24A1CC74F66F81788F6A0A6",
       "embedded_local_commit": "000f707d7a77c946d7ccc12b7a180f9c84a3d064",
       "embedded_local_tree": "bfcc2bbb4f05bc4b02e090b8fe17edefdf734220",
       "recaptured_current_local_commit": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
@@ -110,7 +119,7 @@
       "candidate_fingerprint_evidence": "PRESERVED_40_OF_40",
       "current_guarded_rerun": "NOT_PERFORMED_AFTER_RETURN_FOR_REPAIR"
     },
-    "repair_action_consumed": "Replace stale embedded branch readback with the recaptured current local/remote commit/tree values; do not rerun substantive tests or promote the candidate.",
+    "repair_action_consumed": "Governed owner-recovery/restart-preflight must resolve the active alert without clearing the retained marker; then rerun the exact guarded 69-test command against the unchanged source and issue a fresh PASS or typed blocker. No rerun or promotion was performed in this repair turn.",
     "claim_ceiling": "Validation delta consumed for metadata repair only; no functional acceptance, semantic acceptance, CCI, publication, release or activation authority."
   },
   "claim_ceiling": {
