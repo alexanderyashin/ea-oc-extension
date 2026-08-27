@@ -1,0 +1,78 @@
+{
+  "schema_id": "ESTRA_WS50_DOMAIN_EXECUTION_RESULT_RESUBMISSION_v1",
+  "phase": "DOMAIN_EXECUTION_RESULT_RESUBMISSION",
+  "result_status": "HOLD_INHERITED_DIRTY_CONFLICT",
+  "transport_status": "READY_TO_ROUTE_TO_INDEPENDENT_VALIDATOR",
+  "task_id": "OC14-G1-WS50-ESTRA-01-CANDIDATE-PRESERVATION",
+  "generation": "G1",
+  "source_packet_sha256": "e4bfde50c60a20b68fdcbaeac3a5c44091deeae792086385611417cc727ce4aa",
+  "source_producer_commit": "180f81a35725875ff1aefdda04fb9edd3151fa3",
+  "source_producer_tree": "4f9f6f243ee9919179dd35b4873d5daed7638129",
+  "idempotency_key": "e4bfde50c60a20b68fdcbaeac3a5c44091deeae792086385611417cc727ce4aa:G1:OC14-G1-WS50-ESTRA-01-CANDIDATE-PRESERVATION",
+  "executor": "WS-50-ESTRA",
+  "independent_validator_route": {
+    "role": "Science / WS-35-APPLIED_ONTOLOGY / INDEPENDENT_EVIDENCE_REVIEWER",
+    "thread_id": "01a04271-9aa2-7f61-b3a9-615124827fe1",
+    "route_only": true,
+    "self_validation": false,
+    "self_acceptance": false,
+    "direct_cci_dispatch": false
+  },
+  "artifact_fingerprint": {
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/G1_DOMAIN_EXECUTION_RESULT_v1.json",
+    "raw_sha256": "cd88abcb0af35b92f2cafeae1b66f4c841969c3fe6acdbf94cbdb611b1e5b9e3",
+    "raw_bytes": 3055,
+    "producer_commit": "ab6a47e72f530364db077b6932b1536843605734",
+    "producer_tree": "f9e552e35668a0dad83525549da4f6a4871fe891",
+    "committed_git_blob": "d0ec3e2c35c04c643789f267a90af8d2b8faf173",
+    "path_present_in_producer_commit": true
+  },
+  "final_remote_readback_for_artifact_producer": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
+    "local_commit": "ab6a47e72f530364db077b6932b1536843605734",
+    "local_tree": "f9e552e35668a0dad83525549da4f6a4871fe891",
+    "remote_commit": "ab6a47e72f530364db077b6932b1536843605734",
+    "remote_tree": "f9e552e35668a0dad83525549da4f6a4871fe891",
+    "sha_match": true,
+    "tree_match": true,
+    "local_clean": true,
+    "remote_path_present": true
+  },
+  "declared_path_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/G1_DOMAIN_EXECUTION_RESULT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/G1_REMOTE_READBACK_RECEIPT_v1.json"
+  ],
+  "execution_evidence": {
+    "candidate_file_total": 40,
+    "candidate_checksum_matches": 40,
+    "candidate_checksum_mismatches": 0,
+    "source_inherited_dirty_count": 16,
+    "guarded_baseline": "PASS_GUARDED_69_TESTS",
+    "accepted": 0,
+    "candidate_only": true,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "promotion_forbidden": true
+  },
+  "independent_validation": {
+    "status": "PENDING_INDEPENDENT_VALIDATOR",
+    "receipt": null,
+    "missing_authority": "Only the named independent validator may issue the validation receipt."
+  },
+  "forbidden_mutations": [
+    "source checkout", "registry", "main", "pointer", "public", "cold", "raw", "outcome", "DB", "HOST_IO", "activation", "canonical promotion"
+  ],
+  "router_boundary": {
+    "writes_performed": 0,
+    "HOST_IO": false,
+    "activation": false,
+    "content_validation": false,
+    "acceptance": false,
+    "next_transition": "ROUTE_ONLY_TO_WS35_INDEPENDENT_VALIDATOR"
+  }
+}
