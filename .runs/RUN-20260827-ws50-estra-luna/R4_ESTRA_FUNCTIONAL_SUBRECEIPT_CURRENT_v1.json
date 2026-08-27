@@ -100,13 +100,37 @@
   },
   "ws70_validation_consumption": {
     "consumed": true,
-    "validation_result_version": "G19_TERMINAL_ACK",
-    "validation_result_commit": "b0093f3102765e854775a997717a1307cc82202d",
-    "validation_result_tree": "25d0bcc132eee788717157326bd3ac3a2b6177bb",
-    "canonical_validation_receipt_digest": "38EF123A63E89E66EA88AB5EFB74BC8254944CAE752744F34F39389764A641E5",
+    "validation_result_version": "G20_TERMINAL_ACK",
+    "validation_result_commit": "0363b6e9a309a0aa30e2b92174ad2024a10c3885",
+    "validation_result_tree": "d14fecc65afb86fc6b9abff95d6d192b815399e5",
+    "canonical_validation_receipt_digest": "3F6AFDA51B7A3989D05892A0638DEA63112EDFC7C9D2E363F80E9F961113BA52",
     "decision": "ACCEPTED",
     "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
     "return_code": null,
+    "g20_artifact": {
+      "raw_sha256": "1ff3c481e65c3f71bb86a00a2f0922b345ad6a4feaa924f42ea1d54f5ac6ee4d",
+      "git_blob": "e2a03a31ded39d35024d2fadbeb74a8d938e62d8",
+      "declared_producer_commit": "1c14544dd26037af8e3ee16a6c855d29c6ac5d4b",
+      "declared_producer_tree": "f77ed8fd7b000ce786979124f3be15541bc5b871",
+      "current_remote_readback_commit": "49f87a2575a0390b969fc66e8cce11d6005dc08b",
+      "current_remote_readback_tree": "ed41fb6f6b685ff721890d09edf187256d4d7fdd",
+      "current_remote_clean": true,
+      "blob_unchanged_on_remote_readback": true
+    },
+    "ws70_receipt": {
+      "path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/WS-70-MACHINE/OC14_MACHINE_LUNA_09_20260827/WS70_INDEPENDENT_VALIDATION_WS50_G20_R4_FUNCTIONAL_RECEIPT_v1.json",
+      "digest": "3F6AFDA51B7A3989D05892A0638DEA63112EDFC7C9D2E363F80E9F961113BA52",
+      "commit": "0363b6e9a309a0aa30e2b92174ad2024a10c3885",
+      "tree": "d14fecc65afb86fc6b9abff95d6d192b815399e5",
+      "remote_parity": true,
+      "clean": true
+    },
+    "prior_validation_result_g19": {
+      "validation_result_commit": "b0093f3102765e854775a997717a1307cc82202d",
+      "validation_result_tree": "25d0bcc132eee788717157326bd3ac3a2b6177bb",
+      "canonical_validation_receipt_digest": "38EF123A63E89E66EA88AB5EFB74BC8254944CAE752744F34F39389764A641E5",
+      "decision": "ACCEPTED"
+    },
     "g19_artifact": {
       "raw_sha256": "22cc3e2336cb30477b16c51c4469efd40102d09d0a6d39863b9210601289cc43",
       "git_blob": "e15c84da7b8e72005a368c60424e25e3da0830f2",
