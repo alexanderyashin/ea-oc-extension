@@ -89,3 +89,15 @@ The pure gate fixture/validator covers the 40-row envelope without empirical exe
 - `.runs/RUN-20260827-ws50-estra-luna/EIGHTH_TRANCHE_STALE_CONSUMER_GATE_RECEIPT_v1.json`
 
 Current WS-60 and WS-75 refs are required. Because captured WS-75 `2777fa80…@e905599f…` differs from current `4c3092f1…@fb0a96ce…`, the gate returns `BLOCKED_RECAPTURE_REQUIRED` / `CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED`. Provenance, commit-tree digest, non-read-only rights, private/runtime path and widened-ceiling mutations reject with deterministic codes. Candidate-only, `dominance=false`, negative holdout, CI-includes-zero and promotion-forbidden boundaries remain fixed.
+
+## Ninth-tranche coordinator-facing contract traceability
+
+The coordinator envelope binds all 40 frozen rows to exact ESTRA concepts from the accepted review matrix, WS-20/WS-30 producer IDs, source digest/provenance, recorded replay evidence, read-only rights, and downstream routes WS-60/WS-70/WS-75:
+
+- `.runs/RUN-20260827-ws50-estra-luna/COORDINATOR_ESTRA_CONTRACT_TRACEABILITY_ADMISSION_ENVELOPE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/NINTH_TRANCHE_COORDINATOR_REPLAY_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_ninth_coordinator_traceability_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/NINTH_TRANCHE_COORDINATOR_HANDOFF_RECEIPT_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/COORDINATOR_DOWNSTREAM_HANDOFF_REQUEST_v1.md`
+
+WS-70 has no resolved current ref in the scoped read-only contour and is explicitly `CURRENT_REF_REQUIRED`; no SHA is invented. The pure replay is fail-closed: missing current refs and stale-after-capture return `BLOCKED_RECAPTURE_REQUIRED`; provenance, digest, rights, private/runtime and widened-claim cases return their corresponding rejection codes. No live ESTRA execution, DB/raw/cold/HOST_IO/shared edit, promotion or acceptance occurred.

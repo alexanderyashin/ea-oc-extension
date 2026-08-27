@@ -57,3 +57,10 @@ private_runtime_path: REJECTED
 revalidation_claim_ceiling: semantic-review-candidate-only
 remote_readback: PASS_REMOTE_PARITY
 worker_tree: CLEAN_AT_READBACK
+coordinator_traceability: PASS_METADATA_ONLY_40_ROWS
+coordinator_admission: BLOCKED_FAIL_CLOSED
+coordinator_consumers: WS-60_WS-70_WS-75
+coordinator_ws70_ref: CURRENT_REF_REQUIRED
+coordinator_replay: PASS_PURE_7_SCENARIOS
+coordinator_promotion: FORBIDDEN
+coordinator_acceptance: FORBIDDEN

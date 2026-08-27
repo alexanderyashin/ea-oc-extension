@@ -1,0 +1,18 @@
+{
+  "schema_id":"ESTRA_WS50_NINTH_TRANCHE_COORDINATOR_REPLAY_FIXTURE_v1",
+  "run_id":"RUN-20260827-ws50-estra-luna",
+  "envelope":".runs/RUN-20260827-ws50-estra-luna/COORDINATOR_ESTRA_CONTRACT_TRACEABILITY_ADMISSION_ENVELOPE_v1.json",
+  "mode":"PURE_DETERMINISTIC_REPLAY_NO_LIVE_EXECUTION",
+  "required_row_count":40,
+  "required_consumers":["WS-60","WS-70","WS-75"],
+  "scenarios":[
+    {"id":"current_ws70_ref_missing","mutation":"WS-70 current commit/tree/digest absent","expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CURRENT_WS60_WS70_WS75_REFS_REQUIRED"}},
+    {"id":"stale_after_post_capture","mutation":"captured WS-75 differs from current WS-75","expected":{"status":"BLOCKED_RECAPTURE_REQUIRED","reason":"CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED"}},
+    {"id":"provenance_mismatch","mutation":"consumer repository or branch differs","expected":{"status":"BLOCKED_PROVENANCE","reason":"REJECT_CONSUMER_PROVENANCE_MISMATCH"}},
+    {"id":"digest_mismatch","mutation":"consumer commit-tree digest differs","expected":{"status":"BLOCKED_DIGEST","reason":"REJECT_CONSUMER_DIGEST_MISMATCH"}},
+    {"id":"rights_mismatch","mutation":"consumer rights are not READ_ONLY","expected":{"status":"BLOCKED_RIGHTS","reason":"REJECT_NON_READ_ONLY_RIGHTS"}},
+    {"id":"private_runtime","mutation":"candidate input path is private/runtime","expected":{"status":"BLOCKED_PRIVATE_RUNTIME","reason":"REJECT_PRIVATE_RUNTIME_PATH"}},
+    {"id":"widened_claim","mutation":"requested claim is typed-history-dominance","expected":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_WIDENED_CLAIM_CEILING"}}
+  ],
+  "negative_boundaries":{"candidate_only":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true,"acceptance_forbidden":true}
+}

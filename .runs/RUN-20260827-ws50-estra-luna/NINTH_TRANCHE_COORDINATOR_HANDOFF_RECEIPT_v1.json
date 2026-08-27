@@ -1,0 +1,14 @@
+{
+  "schema_id":"ESTRA_WS50_NINTH_TRANCHE_COORDINATOR_HANDOFF_RECEIPT_v1",
+  "run_id":"RUN-20260827-ws50-estra-luna",
+  "status":"PASS_METADATA_TRACEABILITY__ADMISSION_BLOCKED_FAIL_CLOSED",
+  "candidate_rows":40,
+  "base_commit":"d317d8d6e19a3ae088706f976a60c1db3174c6ab",
+  "base_tree":"fae556de7df03de7c8bcf4388ea66cb4e130d0dd",
+  "source":{"commit":"5398bfed0efbc56ad969382df48af568ee2df24b","tree":"30578579fc51acf3512991ed2a9b6a01c0b95691","rights":"READ_ONLY_REFERENCE"},
+  "consumers":{"WS-60":"5196abf848d42b93ad120685f8bbe5006791c76b@1c4850a72c12984cd6d6e5f25766533256f917f9","WS-70":"CURRENT_REF_REQUIRED__NO_LOCAL_REF_IN_SCOPED_READ_ONLY_CONTOUR","WS-75":"4c3092f1eaee04b00b3a800864d1ecd31138a08e@fb0a96ce3a9387eb39827d70812dbb619be91d62"},
+  "replay":"NINTH_TRANCHE_COORDINATOR_REPLAY_FIXTURE_v1.json; pure validator PASS",
+  "stale_result":"BLOCKED_RECAPTURE_REQUIRED / CAPTURED_HISTORY_IMMUTABLE_RECAPTURE_REQUIRED",
+  "negative_codes":["REJECT_CONSUMER_PROVENANCE_MISMATCH","REJECT_CONSUMER_DIGEST_MISMATCH","REJECT_NON_READ_ONLY_RIGHTS","REJECT_PRIVATE_RUNTIME_PATH","REJECT_WIDENED_CLAIM_CEILING"],
+  "candidate_only":true,"dominance":false,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":true,"acceptance_forbidden":true,"live_execution":false,"db_raw_cold_host_io_shared_mutation":false,"claim_ceiling":"semantic-review-candidate-only"
+}
