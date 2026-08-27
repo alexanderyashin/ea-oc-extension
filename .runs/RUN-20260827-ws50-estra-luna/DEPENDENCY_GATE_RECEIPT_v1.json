@@ -1,0 +1,22 @@
+{
+  "schema_id": "ESTRA_WS50_DEPENDENCY_GATE_RECEIPT_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "validator": ".runs/RUN-20260827-ws50-estra-luna/validate_dependency_gate_v1.py",
+  "fixture": ".runs/RUN-20260827-ws50-estra-luna/DEPENDENCY_GATE_FIXTURE_v1.json",
+  "base_commit": "f59c2005589e25c62c17b99241de9364d7046d07",
+  "status": "PASS_DEPENDENCY_GATE_FIXTURE",
+  "candidate_rows": 40,
+  "scenario_count": 7,
+  "results": [
+    {"id":"accepted_current_producers","status":"PASS_DEPENDENCY_GATE_REVIEW_ONLY","reason":"ACCEPT_EXACT_PRODUCER_RECEIPTS"},
+    {"id":"ws35_proposed_not_accepted_dependency_ready","status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"},
+    {"id":"ws30_math_03_open","status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"},
+    {"id":"stale_math_producer_sha","status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"},
+    {"id":"provenance_mismatch","status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"},
+    {"id":"negative_holdout","status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_NEGATIVE_HOLDOUT"},
+    {"id":"widened_ceiling","status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_WIDENED_CLAIM_CEILING"}
+  ],
+  "source_mutation": "NONE",
+  "feature_mutation": "NONE",
+  "dominance_claim": "FORBIDDEN_NEGATIVE_HOLDOUT_AND_CI_INCLUDES_ZERO"
+}

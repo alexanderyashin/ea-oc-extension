@@ -1,0 +1,39 @@
+{
+  "schema_id": "ESTRA_WS50_FOURTH_TRANCHE_DEPENDENCY_GATE_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "tranche": "FOURTH_NARROW_DEPENDENCY_GATE",
+  "status": "FIXED_REVIEW_ONLY_GATE_AND_NEGATIVE_BOUNDARIES",
+  "base_commit": "f59c2005589e25c62c17b99241de9364d7046d07",
+  "base_tree": "84a0844035a91ee6d16284b8a0305d9745382f7c",
+  "accepted_register": "governance/oc14-release-discovery-20260827@477549e04a8514f8ff118a5ad10a4edee8d42bab",
+  "accepted_producer_bindings": [
+    "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+    "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa"
+  ],
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/DEPENDENCY_GATE_FIXTURE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/validate_dependency_gate_v1.py",
+    ".runs/RUN-20260827-ws50-estra-luna/DEPENDENCY_GATE_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/FOURTH_TRANCHE_DEPENDENCY_GATE_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "gate_scope": "Review-only dependency admission for the 40 frozen ESTRA rows. Only exact accepted formal-math and metaontology producer receipts are admissible.",
+  "fixed_negative_boundaries": [
+    "WS-35 PROPOSED__NOT_ACCEPTED__DEPENDENCY_READY",
+    "WS-30 MATH-03 OPEN",
+    "stale producer SHA",
+    "provenance mismatch",
+    "negative holdout with confidence interval including zero",
+    "widened claim ceiling toward typed-history dominance"
+  ],
+  "forbidden_effects": [
+    "mutate the 40 frozen candidate files",
+    "mutate the inherited source checkout",
+    "mutate shared Logion state or pointers",
+    "change feature behavior",
+    "claim dominance or treat CI including zero as positive evidence"
+  ],
+  "claim_ceiling": "Dependency traceability and deterministic rejection only; no semantic acceptance, implementation promotion, dominance, publication, release or activation."
+}

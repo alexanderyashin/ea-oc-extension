@@ -30,3 +30,15 @@ These producer IDs are traceability bindings, not approvals of ESTRA source cand
 ## Terminal boundary
 
 This handoff is an infrastructure review checkpoint. It records no source mutation, no feature implementation, no dominance claim, no publication readiness, no release promotion, and no live activation. The worker tree must be clean after commit and remote readback; the inherited source checkout remains untouched and separately classified.
+
+## Fourth-tranche dependency gate
+
+The deterministic review-only gate and its receipt are fixed in:
+
+- `.runs/RUN-20260827-ws50-estra-luna/DEPENDENCY_GATE_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_dependency_gate_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/DEPENDENCY_GATE_RECEIPT_v1.json`
+
+Only the exact accepted WS-20 formal-math and WS-30 metaontology producer receipts are admissible. The gate returns `BLOCKED_DEPENDENCY` / `REJECT_UNACCEPTED_PRODUCER` for the WS-35 `PROPOSED__NOT_ACCEPTED__DEPENDENCY_READY` receipt, WS-30 `MATH-03 OPEN`, stale producer SHA, and provenance mismatch. It retains separate claim-ceiling blocks for the negative holdout and widened-ceiling scenarios.
+
+All 40 candidate rows now have exact Toolkit and Publication expectations in the fixture. Toolkit must preserve evidence or block implementation deltas pending the gate and independent review; Publication must remain review-only with no publication or release promotion. The negative holdout and CI-including-zero boundary remain unchanged.

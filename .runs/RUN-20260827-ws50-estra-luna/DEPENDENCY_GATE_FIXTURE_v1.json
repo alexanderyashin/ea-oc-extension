@@ -1,0 +1,147 @@
+{
+  "schema_id": "ESTRA_WS50_DEPENDENCY_GATE_FIXTURE_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "REVIEW_ONLY_DETERMINISTIC_GATE_FIXTURE",
+  "base_commit": "f59c2005589e25c62c17b99241de9364d7046d07",
+  "accepted_register": "governance/oc14-release-discovery-20260827@477549e04a8514f8ff118a5ad10a4edee8d42bab",
+  "accepted_producers": {
+    "formal_math": {
+      "workstream_id": "WS-20-MATH",
+      "producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+      "producer_sha": "c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+      "acceptance_status": "ACCEPT_STATIC_FORMAL_PACKET_ONLY",
+      "accepted_formal": true,
+      "claim_ceiling": "Static formal packet only; independent clean Lean replay and OC14-OB-MATH-03..06 remain open."
+    },
+    "metaontology": {
+      "workstream_id": "WS-30-METAONTOLOGY",
+      "producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+      "producer_sha": "350737a50bb7884276836650c7d7ebe9411c8faa",
+      "acceptance_status": "ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN",
+      "accepted_formal": true,
+      "claim_ceiling": "Correspondence audit and adapter plan only; SQL correspondence is not formal proof and ontology authority is not promoted."
+    }
+  },
+  "gate_contract": {
+    "required_roles": ["formal_math", "metaontology"],
+    "required_receipt_fields": ["workstream_id", "producer_id", "producer_sha", "acceptance_status", "accepted_formal"],
+    "acceptance_rule": "Only the two exact accepted producer IDs, SHAs, acceptance statuses and workstream bindings above may pass the dependency gate.",
+    "unaccepted_dependency_result": {"status": "BLOCKED_DEPENDENCY", "reason": "REJECT_UNACCEPTED_PRODUCER"},
+    "claim_ceiling_result": {"status": "BLOCKED_CLAIM_CEILING", "reason": "REJECT_CLAIM_CEILING_BOUNDARY"}
+  },
+  "candidate_expectations": [
+    {"path":"README.md","matrix_status":"PRESERVE_INHERITED__NOT_ACCEPTED","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md","matrix_status":"PRESERVE_INHERITED__CANDIDATE_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-2.0/01_FORMAL_MODEL.md","matrix_status":"PRESERVE_INHERITED__CANDIDATE_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-2.0/02_METHOD.md","matrix_status":"PRESERVE_INHERITED__CANDIDATE_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-2.0/03_PRIOR_ART_COMPARISON.md","matrix_status":"PRESERVE_INHERITED__CANDIDATE_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md","matrix_status":"PRESERVE_INHERITED__CANDIDATE_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md","matrix_status":"PRESERVE_INHERITED__CANDIDATE_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md","matrix_status":"PRESERVE_INHERITED__ALPHA_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/01_CHARACTERIZATION_THEORY.md","matrix_status":"PRESERVE_INHERITED__ALPHA_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/02_METHOD.md","matrix_status":"PRESERVE_INHERITED__ALPHA_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md","matrix_status":"PRESERVE_INHERITED__ALPHA_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md","matrix_status":"PRESERVE_INHERITED__ALPHA_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md","matrix_status":"PRESERVE_INHERITED__ALPHA_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/06_WORKED_CASE.md","matrix_status":"PRESERVE_INHERITED__ALPHA_ONLY","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_AS_CANDIDATE_EVIDENCE_ONLY","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md","matrix_status":"PRESERVE_INHERITED__NEGATIVE_EVIDENCE","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_NEGATIVE_BOUNDARY_NO_PROMOTION","publication_expectation":"REVIEW_ONLY_PRESERVE_NEGATIVE_EVIDENCE_NO_PUBLICATION"},
+    {"path":"paper/estra_optimality_framework_v3/main.md","matrix_status":"PRESERVE_INHERITED__NOT_PUBLICATION_READY","downstream_consumers":["WS-75-PUBLICATION"],"toolkit_expectation":"NO_TOOLKIT_PROMOTION_PRESERVE_LINEAGE","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"paper/estra_projection_framework_v2/README.md","matrix_status":"PRESERVE_INHERITED__NOT_PUBLICATION_READY","downstream_consumers":["WS-75-PUBLICATION"],"toolkit_expectation":"NO_TOOLKIT_PROMOTION_PRESERVE_LINEAGE","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json","matrix_status":"PRESERVE_INHERITED__HISTORICAL_RECEIPT","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_HISTORICAL_RECEIPT_NO_CAPABILITY_PROMOTION","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json","matrix_status":"PRESERVE_INHERITED__HISTORICAL_RECEIPT","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_HISTORICAL_RECEIPT_NO_CAPABILITY_PROMOTION","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json","matrix_status":"PRESERVE_INHERITED__HISTORICAL_MANIFEST","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_HISTORICAL_MANIFEST_NO_CAPABILITY_PROMOTION","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json","matrix_status":"PRESERVE_INHERITED__SCOPED_ALPHA_CERTIFICATE","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_SCOPED_CERTIFICATE_NO_DOMINANCE","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json","matrix_status":"PRESERVE_INHERITED__HISTORICAL_RECEIPT","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_HISTORICAL_RECEIPT_NO_CAPABILITY_PROMOTION","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json","matrix_status":"PRESERVE_INHERITED__HISTORICAL_RECEIPT","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_HISTORICAL_RECEIPT_NO_CAPABILITY_PROMOTION","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json","matrix_status":"PRESERVE_INHERITED__HISTORICAL_MANIFEST","downstream_consumers":["WS-60-TOOLKIT","WS-75-PUBLICATION"],"toolkit_expectation":"PRESERVE_HISTORICAL_MANIFEST_NO_CAPABILITY_PROMOTION","publication_expectation":"REVIEW_ONLY_NO_PUBLICATION_OR_RELEASE"},
+    {"path":"configs/ESTRA.ProjectionRegistry.v2.schema.json","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"configs/ESTRA.OptimalityRegistry.v3.schema.json","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"scripts/verify_estra_projection_framework_v2.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"scripts/verify_estra_optimality_framework_v3.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"src/estra_projection_framework/__init__.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"src/estra_projection_framework/__main__.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"src/estra_projection_framework/validation.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"src/estra_optimality_framework/__init__.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"src/estra_optimality_framework/__main__.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"src/estra_optimality_framework/core.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"src/estra_optimality_framework/validation.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"tests/fixtures/estra_v2/municipal_permit_registry.valid.json","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_IMPLEMENTATION_DELTA_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"tests/fixtures/estra_v3/negative_cases.json","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"PRESERVE_NEGATIVE_FIXTURES_NO_POSITIVE_PROMOTION","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"tests/test_estra_projection_framework_v2.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_TEST_ACCEPTANCE_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"},
+    {"path":"tests/test_estra_optimality_framework_v3.py","matrix_status":"IMPLEMENTATION_DELTA__REJECTED_PENDING_BINDING","downstream_consumers":["WS-60-TOOLKIT"],"toolkit_expectation":"BLOCK_TEST_ACCEPTANCE_UNTIL_DEPENDENCY_GATE_AND_REVIEW","publication_expectation":"NO_PUBLICATION_ROUTE_UNTIL_TOOLKIT_ACCEPTANCE"}
+  ],
+  "negative_boundaries": {
+    "stale_producer_sha": {"presented_workstream_id":"WS-20-MATH","presented_producer_id":"WS-20-MATH@db8355978a52cb36263816f413d655d5b3c8d984","presented_producer_sha":"db8355978a52cb36263816f413d655d5b3c8d984","expected_producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","expected_result":{"status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"}},
+    "provenance_mismatch": {"presented_workstream_id":"WS-30-METAONTOLOGY","presented_producer_id":"WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","presented_producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","expected_workstream_id":"WS-20-MATH","expected_result":{"status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"}},
+    "negative_holdout": {"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","dominance_claim":"FORBIDDEN","expected_result":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_NEGATIVE_HOLDOUT"}},
+    "widened_ceiling": {"accepted_claim_ceiling":"discovery-preservation-only","requested_claim":"typed-history-dominance","expected_result":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_WIDENED_CLAIM_CEILING"}}
+  },
+  "scenarios": [
+    {
+      "id":"accepted_current_producers",
+      "receipts":[
+        {"role":"formal_math","workstream_id":"WS-20-MATH","producer_id":"WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","acceptance_status":"ACCEPT_STATIC_FORMAL_PACKET_ONLY","accepted_formal":true},
+        {"role":"metaontology","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa","producer_sha":"350737a50bb7884276836650c7d7ebe9411c8faa","acceptance_status":"ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN","accepted_formal":true}
+      ],
+      "claim_context":{"dominance_requested":false},
+      "expected":{"status":"PASS_DEPENDENCY_GATE_REVIEW_ONLY","reason":"ACCEPT_EXACT_PRODUCER_RECEIPTS"}
+    },
+    {
+      "id":"ws35_proposed_not_accepted_dependency_ready",
+      "receipts":[
+        {"role":"formal_math","workstream_id":"WS-20-MATH","producer_id":"WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","acceptance_status":"ACCEPT_STATIC_FORMAL_PACKET_ONLY","accepted_formal":true},
+        {"role":"metaontology","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa","producer_sha":"350737a50bb7884276836650c7d7ebe9411c8faa","acceptance_status":"ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN","accepted_formal":true},
+        {"role":"applied_ontology","workstream_id":"WS-35-APPLIED_ONTOLOGY","producer_id":"WS-35-APPLIED_ONTOLOGY@d815b77aa705747bac1433a833fdab91cc5a629e","producer_sha":"d815b77aa705747bac1433a833fdab91cc5a629e","acceptance_status":"PROPOSED__NOT_ACCEPTED__DEPENDENCY_READY","accepted_formal":false}
+      ],
+      "claim_context":{"dominance_requested":false},
+      "expected":{"status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"}
+    },
+    {
+      "id":"ws30_math_03_open",
+      "receipts":[
+        {"role":"formal_math","workstream_id":"WS-20-MATH","producer_id":"WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","acceptance_status":"ACCEPT_STATIC_FORMAL_PACKET_ONLY","accepted_formal":true},
+        {"role":"metaontology","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa","producer_sha":"350737a50bb7884276836650c7d7ebe9411c8faa","acceptance_status":"ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN","accepted_formal":true,"dependency_state":"MATH-03 OPEN"}
+      ],
+      "claim_context":{"dominance_requested":false,"open_obligations":["OC14-OB-MATH-03"]},
+      "expected":{"status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"}
+    },
+    {
+      "id":"stale_math_producer_sha",
+      "receipts":[
+        {"role":"formal_math","workstream_id":"WS-20-MATH","producer_id":"WS-20-MATH@db8355978a52cb36263816f413d655d5b3c8d984","producer_sha":"db8355978a52cb36263816f413d655d5b3c8d984","acceptance_status":"ACCEPT_STATIC_FORMAL_PACKET_ONLY","accepted_formal":true},
+        {"role":"metaontology","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa","producer_sha":"350737a50bb7884276836650c7d7ebe9411c8faa","acceptance_status":"ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN","accepted_formal":true}
+      ],
+      "claim_context":{"dominance_requested":false},
+      "expected":{"status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"}
+    },
+    {
+      "id":"provenance_mismatch",
+      "receipts":[
+        {"role":"formal_math","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","acceptance_status":"ACCEPT_STATIC_FORMAL_PACKET_ONLY","accepted_formal":true},
+        {"role":"metaontology","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa","producer_sha":"350737a50bb7884276836650c7d7ebe9411c8faa","acceptance_status":"ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN","accepted_formal":true}
+      ],
+      "claim_context":{"dominance_requested":false},
+      "expected":{"status":"BLOCKED_DEPENDENCY","reason":"REJECT_UNACCEPTED_PRODUCER"}
+    },
+    {
+      "id":"negative_holdout",
+      "receipts":[
+        {"role":"formal_math","workstream_id":"WS-20-MATH","producer_id":"WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","acceptance_status":"ACCEPT_STATIC_FORMAL_PACKET_ONLY","accepted_formal":true},
+        {"role":"metaontology","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa","producer_sha":"350737a50bb7884276836650c7d7ebe9411c8faa","acceptance_status":"ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN","accepted_formal":true}
+      ],
+      "claim_context":{"dominance_requested":true,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO"},
+      "expected":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_NEGATIVE_HOLDOUT"}
+    },
+    {
+      "id":"widened_ceiling",
+      "receipts":[
+        {"role":"formal_math","workstream_id":"WS-20-MATH","producer_id":"WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","producer_sha":"c237a7e58a34b8a1209042d1a2f8a9eb722d27ed","acceptance_status":"ACCEPT_STATIC_FORMAL_PACKET_ONLY","accepted_formal":true},
+        {"role":"metaontology","workstream_id":"WS-30-METAONTOLOGY","producer_id":"WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa","producer_sha":"350737a50bb7884276836650c7d7ebe9411c8faa","acceptance_status":"ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN","accepted_formal":true}
+      ],
+      "claim_context":{"dominance_requested":false,"requested_claim":"typed-history-dominance"},
+      "expected":{"status":"BLOCKED_CLAIM_CEILING","reason":"REJECT_WIDENED_CLAIM_CEILING"}
+    }
+  ],
+  "claim_ceiling": "Review-only dependency traceability; no implementation acceptance, feature mutation, dominance, publication, release promotion or live activation."
+}

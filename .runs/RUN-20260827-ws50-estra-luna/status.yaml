@@ -14,5 +14,12 @@ preserve_inherited: 24
 implementation_delta: 16
 dominance_claim: FORBIDDEN_NEGATIVE_HOLDOUT
 source_mutation: NONE
+dependency_gate: PASS_FIXTURE_VALIDATOR_REVIEW_ONLY
+dependency_gate_scenarios: PASS_1_BLOCKED_DEPENDENCY_4_BLOCKED_CLAIM_CEILING_2
+downstream_expectations: FIXED_FOR_40_ROWS_TOOLKIT_AND_PUBLICATION
+stale_producer_sha: REJECTED
+provenance_mismatch: REJECTED
+negative_holdout: RETAINED_CI_INCLUDES_ZERO
+widened_ceiling: REJECTED
 remote_readback: PASS_REMOTE_PARITY
 worker_tree: CLEAN_AT_READBACK
