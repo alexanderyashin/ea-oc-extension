@@ -1,0 +1,9 @@
+status: GOOD
+run_id: RUN-20260827-ws50-estra-luna
+workstream: LUNA-OC14-07 / WS-50-ESTRA
+stage: guarded-baseline-and-preservation-review
+source_head: 5398bfed0efbc56ad969382df48af568ee2df24b
+worker_branch: workstream/oc14-estra-luna-20260827
+claim_ceiling: discovery-preservation-only
+baseline: PASS_GUARDED_69_TESTS
+candidate_transport: HOLD_SEMANTIC_ACCEPTANCE

@@ -1,0 +1,19 @@
+{
+  "schema_id": "ESTRA_WS50_EXACT_DIFF_MANIFEST_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "base_head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+  "base_tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+  "expected_paths": [
+    ".runs/RUN-20260827-ws50-estra-luna/BASELINE_TEST_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_FREEZE_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/RESULT_FIXATION_PACKET.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SEMANTIC_REVIEW_PACKET_v1.md",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v1.md",
+    ".runs/RUN-20260827-ws50-estra-luna/run.md",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "staging_rule": "Only the exact eight paths above may be staged for this infrastructure checkpoint. Candidate files in the source checkout are not part of this diff.",
+  "candidate_transport": "NONE",
+  "status": "PENDING_POST_WRITE_INDEX_CHECK"
+}

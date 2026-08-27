@@ -1,0 +1,28 @@
+{
+  "schema_id": "ESTRA_WS50_BASELINE_TEST_RECEIPT_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "PASS_GUARDED_69_TESTS",
+  "requested_command": "PYTHONPATH=src python -B -m pytest -q tests -p no:cacheprovider",
+  "expected_baseline": "69 tests, fresh guarded execution",
+  "attempted_at_utc": "2026-08-27T09:06:35.9526451Z",
+  "guard_route": "C:/Users/Megaport/work/estra-private-work/logion/k8/core-db-spot/ingest/run_logion_host_safety_guarded_command_v1.py",
+  "preflight_observation": {
+    "monitor_status": "RUNNING",
+    "resource_status": "WARN",
+    "active_alert": false,
+    "common_stop_marker_present": false,
+    "restart_preflight_required": false,
+    "incident_id": null,
+    "reason_codes": ["free_ram_gb=3.916019<green_min"]
+  },
+  "execution": {
+    "started": true,
+    "exit_code": 0,
+    "tests_passed": 69,
+    "tests_failed": 0,
+    "result_digest": "b156e9922f76d25723911762a7fc411b0a8aeb840a9069496bef64f6b3877445",
+    "stdout_summary": ".....................................................................    [100%]"
+  },
+  "interpretation": "Fresh guarded execution passed all 69 collected tests. The initial unqualified invocation and earlier safety refusal remain diagnostics; neither is overwritten. Source checkout remained dirty and was not changed by this test run.",
+  "claim_ceiling": "Current guarded repository test baseline only; no dominance, publication, release, certification or activation claim."
+}

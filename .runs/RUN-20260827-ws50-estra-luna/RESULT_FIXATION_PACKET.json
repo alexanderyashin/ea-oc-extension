@@ -1,0 +1,81 @@
+{
+  "schema_id": "ESTRA_WS50_RESULT_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "workstream": "LUNA-OC14-07 / WS-50-ESTRA",
+  "status": "FROZEN_BEFORE_MUTATION",
+  "observed_at_utc": "2026-08-27T09:01:45.5606397Z",
+  "source_repository": "C:/Users/Megaport/LOGION Ecosystem/03_ESTRA/Private/Remote/ea-oc-extension",
+  "worker_repository": "C:/Users/Megaport/LOGION Ecosystem/03_ESTRA/Private/Remote/ea-oc-extension-ws50-estra-luna-20260827",
+  "source_branch": "main",
+  "source_head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+  "source_head_tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+  "worker_branch": "workstream/oc14-estra-luna-20260827",
+  "baseline_status": [
+    " M README.md",
+    "?? configs/ESTRA.OptimalityRegistry.v3.schema.json",
+    "?? configs/ESTRA.ProjectionRegistry.v2.schema.json",
+    "?? docs/estra-2.0/",
+    "?? docs/estra-3.0/",
+    "?? paper/estra_optimality_framework_v3/",
+    "?? paper/estra_projection_framework_v2/",
+    "?? release-assets/estra-optimality-framework-v3.0.0-alpha.1/",
+    "?? release-assets/estra-projection-framework-v2.0.0-rc.1/",
+    "?? scripts/verify_estra_optimality_framework_v3.py",
+    "?? scripts/verify_estra_projection_framework_v2.py",
+    "?? src/estra_optimality_framework/",
+    "?? src/estra_projection_framework/",
+    "?? tests/fixtures/",
+    "?? tests/test_estra_optimality_framework_v3.py",
+    "?? tests/test_estra_projection_framework_v2.py"
+  ],
+  "candidate_scope": [
+    "README.md",
+    "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+    "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+    "docs/estra-2.0",
+    "docs/estra-3.0",
+    "paper/estra_optimality_framework_v3",
+    "paper/estra_projection_framework_v2",
+    "release-assets/estra-optimality-framework-v3.0.0-alpha.1",
+    "release-assets/estra-projection-framework-v2.0.0-rc.1",
+    "scripts/verify_estra_optimality_framework_v3.py",
+    "scripts/verify_estra_projection_framework_v2.py",
+    "src/estra_optimality_framework",
+    "src/estra_projection_framework",
+    "tests/fixtures",
+    "tests/test_estra_optimality_framework_v3.py",
+    "tests/test_estra_projection_framework_v2.py"
+  ],
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/RESULT_FIXATION_PACKET.json",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml",
+    ".runs/RUN-20260827-ws50-estra-luna/run.md",
+    ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_FREEZE_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/BASELINE_TEST_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SEMANTIC_REVIEW_PACKET_v1.md",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v1.md"
+  ],
+  "commit_class": "infrastructure",
+  "allowed_effects": [
+    "write only the declared worker evidence paths",
+    "run bounded candidate verification and guarded 69-test baseline",
+    "stage and transport only the exact evidence manifest",
+    "push only workstream/oc14-estra-luna-20260827"
+  ],
+  "forbidden_effects": [
+    "reset, delete, absorb or rewrite inherited candidate dirt",
+    "mutate shared Logion control repository or pointers",
+    "claim typed-history dominance",
+    "mix ESTRA 2.0 candidate claims with ESTRA 3.0 alpha claims",
+    "claim publication, release, activation or scientific acceptance"
+  ],
+  "required_tests": [
+    "guarded fresh 69-test ESTRA baseline",
+    "candidate verifier tests for 2.0 and 3.0",
+    "negative holdout result retained; no dominance claim"
+  ],
+  "artifact_disposition_rule": "Every candidate file receives exactly one of PRESERVE_INHERITED, TRACK_EVIDENCE, TRACK_CANONICAL, REGENERATE_EXCLUDE, DELETE_EXACT_TRANSIENT, ARCHIVE_MANIFEST, HOLD_UNKNOWN; inherited candidate files remain in the source checkout and are not transported by this initial discovery checkpoint.",
+  "claim_ceiling": "Discovery/preservation and internal candidate conformance evidence only; holdout delta is negative and CI includes zero; no dominance, readiness, publication or activation claim.",
+  "shared_logion_control": "READ_ONLY"
+}
