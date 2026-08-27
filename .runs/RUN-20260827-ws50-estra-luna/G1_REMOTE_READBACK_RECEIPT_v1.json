@@ -1,0 +1,36 @@
+{
+  "schema_id": "ESTRA_WS50_G1_REMOTE_READBACK_RECEIPT_v1",
+  "task_id": "OC14-G1-WS50-ESTRA-01-CANDIDATE-PRESERVATION",
+  "snapshot_utc": "2026-08-27T14:33:00Z",
+  "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+  "branch": "workstream/oc14-estra-luna-20260827",
+  "local": {
+    "commit": "3486fc5de28b73172d818e24574d34ce2ff9ad67",
+    "tree": "10f1b546616e92778f3a3310568fddd79c6a8d47",
+    "dirty_count": 0
+  },
+  "remote": {
+    "ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
+    "commit": "3486fc5de28b73172d818e24574d34ce2ff9ad67",
+    "tree": "10f1b546616e92778f3a3310568fddd79c6a8d47"
+  },
+  "parity": {
+    "sha_match": true,
+    "tree_match": true,
+    "clean_worker_tree": true
+  },
+  "required_paths_present_in_remote_tree": true,
+  "required_paths": [
+    ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/G1_DOMAIN_EXECUTION_RESULT_v1.json"
+  ],
+  "source_checkout_boundary": {
+    "head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+    "tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+    "dirty_count": 16,
+    "preserved_unchanged": true
+  },
+  "transport_only": true,
+  "claim_ceiling": "Remote transport parity evidence only; no independent validation, semantic acceptance, dominance, science, publication, release, or authority claim."
+}
