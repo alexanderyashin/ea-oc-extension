@@ -1,0 +1,36 @@
+{
+  "schema_id": "ESTRA_WS50_THIRD_TRANCHE_CANDIDATE_CLAIM_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "tranche": "THIRD_TRANCHE_CANDIDATE_TO_CLAIM_REVIEW",
+  "status": "FROZEN_BEFORE_REVIEW_MATRIX_MUTATION",
+  "base_commit": "b3ccfeab9170dfbc8b73971acac92f37d6bef22c",
+  "base_tree": "0441f5de0a863a9062054eb3afc4d0504f4de64b",
+  "accepted_register": "LOGION_OC14_LUNA_INITIAL_TRANCHE_ACCEPTANCE_REGISTER_v1@477549e04a8514f8ff118a5ad10a4edee8d42bab",
+  "producer_bindings": {
+    "math": {
+      "producer_id": "WS-20-MATH@c237a7e58a34b8a1209042d1a2f8a9eb722d27ed",
+      "acceptance": "ACCEPT_STATIC_FORMAL_PACKET_ONLY",
+      "ceiling": "Exact stated-cut formal result; independent clean Lean replay remains open."
+    },
+    "metaontology": {
+      "producer_id": "WS-30-METAONTOLOGY@350737a50bb7884276836650c7d7ebe9411c8faa",
+      "acceptance": "ACCEPT_CORRESPONDENCE_AUDIT_AND_ADAPTER_PLAN",
+      "ceiling": "Current-cut semantic/formal engineering result; SQL correspondence is not formal proof and no ontology authority is promoted."
+    }
+  },
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/THIRD_TRANCHE_CANDIDATE_CLAIM_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_TO_CLAIM_MATRIX_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "forbidden_effects": [
+    "modify, rename, copy into worker or delete any frozen candidate source file",
+    "modify shared Logion control or pointers",
+    "claim dominance or feature acceptance",
+    "treat Python tests, SQL correspondence or receipts as formal proof"
+  ],
+  "review_contract": "Every one of the 40 frozen candidate paths receives exact candidate claim, math producer, metaontology producer, required proof/evidence, semantic status, rejection reason and downstream consumer.",
+  "claim_ceiling": "Review-only candidate-to-claim traceability; no implementation acceptance, dominance, publication, release or activation claim."
+}

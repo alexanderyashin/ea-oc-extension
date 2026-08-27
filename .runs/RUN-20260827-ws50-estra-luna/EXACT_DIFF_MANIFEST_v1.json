@@ -5,6 +5,7 @@
   "base_tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
   "expected_paths": [
     ".runs/RUN-20260827-ws50-estra-luna/BASELINE_TEST_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_TO_CLAIM_MATRIX_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_FREEZE_MANIFEST_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/RESULT_FIXATION_PACKET.json",
@@ -12,12 +13,14 @@
     ".runs/RUN-20260827-ws50-estra-luna/REMOTE_TRANSPORT_FIXATION_PACKET_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/SEMANTIC_REVIEW_MATRIX_v2.json",
     ".runs/RUN-20260827-ws50-estra-luna/SUCCESSOR_SEMANTIC_REVIEW_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/THIRD_TRANCHE_CANDIDATE_CLAIM_FIXATION_PACKET_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/SEMANTIC_REVIEW_PACKET_v1.md",
     ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v1.md",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
     ".runs/RUN-20260827-ws50-estra-luna/run.md",
     ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
   ],
-  "staging_rule": "Only the exact eight paths above may be staged for this infrastructure checkpoint. Candidate files in the source checkout are not part of this diff.",
+  "staging_rule": "Only the exact expected_paths above may be staged for this infrastructure checkpoint. Candidate files in the source checkout are not part of this diff.",
   "candidate_transport": "NONE",
-  "status": "PASS_EXACT_RUN_MANIFEST__REMOTE_RECEIPT_AND_SUCCESSOR_REVIEW_INCLUDED"
+  "status": "PASS_EXACT_RUN_MANIFEST__THIRD_TRANCHE_REVIEW_INCLUDED"
 }

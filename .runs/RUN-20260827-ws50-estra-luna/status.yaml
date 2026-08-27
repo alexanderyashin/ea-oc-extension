@@ -1,7 +1,7 @@
 status: GOOD
 run_id: RUN-20260827-ws50-estra-luna
 workstream: LUNA-OC14-07 / WS-50-ESTRA
-stage: guarded-baseline-and-preservation-review
+stage: third-tranche-candidate-to-claim-review
 source_head: 5398bfed0efbc56ad969382df48af568ee2df24b
 worker_branch: workstream/oc14-estra-luna-20260827
 claim_ceiling: discovery-preservation-only
@@ -9,5 +9,10 @@ baseline: PASS_GUARDED_69_TESTS
 candidate_transport: HOLD_SEMANTIC_ACCEPTANCE
 semantic_review: PASS_CLASSIFIED_24_PRESERVE_16_IMPLEMENTATION_DELTA
 implementation_acceptance: REJECTED_PENDING_PROOF_OR_SEMANTIC_BINDING
+candidate_to_claim_matrix: PASS_REVIEW_ONLY_40_ROWS
+preserve_inherited: 24
+implementation_delta: 16
+dominance_claim: FORBIDDEN_NEGATIVE_HOLDOUT
+source_mutation: NONE
 remote_readback: PASS_REMOTE_PARITY
 worker_tree: CLEAN_AT_READBACK
