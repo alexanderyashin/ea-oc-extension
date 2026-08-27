@@ -1,0 +1,138 @@
+{
+  "schema_id": "ESTRA_WS50_G4_ROLE_SCOPE_REPAIR_AND_CHAIN_MANIFEST_v1",
+  "request_type": "TYPED_REPAIR_FAULT_CYCLE_WITH_VALIDATION_ACCEPTANCE_CHAIN",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "cycle_id": "OC14-G1-CYCLE-ROOT",
+  "predecessor_generation": 3,
+  "next_generation": 4,
+  "phase": "RETURN_FOR_REPAIR",
+  "status": "ROLE_SCOPE_REPAIR_OPEN; ACCEPTANCE_WITHHELD",
+  "predecessor_current_artifact": {
+    "path": ".runs/RUN-20260827-ws50-estra-luna/G3_TYPED_REPAIR_ACQUISITION_REQUEST_v1.json",
+    "raw_sha256": "759f56b5ade83a6a303908b3f9bb312dcb3b3742be79b6e411607c99752fc722",
+    "bytes": 6369,
+    "commit": "f36fa8fda0e6f81a1fcf715980f7c0fa8e7e66db",
+    "tree": "0ea4f646690c772bf3bd9278f4ddd48dfa13c306",
+    "state": "OPEN_RECEIPT_ACQUISITION; NO_SUBSTANTIVE_EXECUTION"
+  },
+  "fault": {
+    "code": "ROLE_SCOPE_MISMATCH",
+    "decision": "BLOCKED_EXTERNAL_AUTHORITY",
+    "validator_thread": "01a04271-9aa2-7f61-b3a9-615124827fe1",
+    "validator_result_ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/LOGION_OC14_WS35_INDEPENDENT_VALIDATION_RESULT_WS50_ESTRA_01_v1.json",
+    "validator_result_sha256": "d453bcd1042693e97a1ebd6203e06ac0291992e2ed7872f9b57524a386a5bc76",
+    "validator_result_commit": "29666611c7f6974cd0537b8ea61469ccb34a4274",
+    "validator_result_tree": "600ff015936f2ced55c724aae851786480f4f467",
+    "acceptance_effect": "No acceptance; no CCI closure; no authority or activation."
+  },
+  "idempotency_key": "WS90:CYCLE:G4:OC14-G1-WS50-ESTRA-01:ROLE-SCOPE-REPAIR",
+  "dynamic_latest_current_artifact": {
+    "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_id": "OC14-OB-ESTRA-01",
+    "consumer_generation": 4,
+    "required_state": "AUTHORITATIVE_SOURCE_AND_BINDING_RECEIPTS_PRESENT",
+    "resolution_time": "CONSUMPTION_TIME_ONLY",
+    "resolved_artifact": null,
+    "resolution_status": "BLOCKED_UNTIL_ALL_HARD_FACT_GATES_PASS",
+    "history_rule": "Generation 1, 2 and 3 evidence is immutable; a newer artifact must not overwrite captured history."
+  },
+  "receipt_scorecard": {
+    "candidate_preservation": {
+      "numerator": 40,
+      "denominator": 40,
+      "interpretation": "File identity preservation only, not acceptance."
+    },
+    "hard_fact_admission": {
+      "numerator": 4,
+      "denominator": 9,
+      "passing_predicates": [
+        "source catalog reference",
+        "predecessor artifact path and raw SHA-256",
+        "producer commit and tree",
+        "remote SHA/tree parity and clean worker"
+      ],
+      "missing_predicates": [
+        "owner rights receipt",
+        "custody chain receipt",
+        "measurement review occurrence",
+        "independent reviewer occurrence with corrected role scope",
+        "dynamic resolver returns an artifact satisfying authoritative required_state"
+      ],
+      "acceptance_status": "BLOCKED; 4/9 IS NOT ACCEPTANCE"
+    }
+  },
+  "owner_action_deadline": {
+    "owner": "WS50 producer/owner",
+    "action": "Acquire the five missing hard-fact receipts, submit corrected validator binding, and preserve all predecessor artifacts without content mutation.",
+    "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+    "owner_receipt": null,
+    "rights_receipt": null,
+    "custody_receipt": null,
+    "measurement_review_occurrence": null,
+    "independent_reviewer_occurrence": null,
+    "binding_repair": "Authoritative validator binding must be supplied externally; executor cannot self-rebind."
+  },
+  "independent_validation_acceptance_cci_chain": [
+    {
+      "stage": "PRODUCER_HARD_FACT_ACQUISITION",
+      "owner": "WS50 producer/owner",
+      "required_input": "All five missing receipts plus corrected validator binding",
+      "status": "OPEN",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW"
+    },
+    {
+      "stage": "INDEPENDENT_VALIDATION",
+      "owner": "AUTHORITATIVE_INDEPENDENT_VALIDATOR_REQUIRED",
+      "current_binding": "01a04271-9aa2-7f61-b3a9-615124827fe1",
+      "status": "BLOCKED_ROLE_SCOPE_MISMATCH",
+      "required_output": "Typed validation receipt over exact artifact, provenance, rights, custody and review occurrences"
+    },
+    {
+      "stage": "ACCEPTANCE_REVIEW",
+      "owner": "CCI_CYCLE_CONTROLLER",
+      "status": "WITHHELD",
+      "entry_predicate": "Independent validation receipt is present and all 9 hard-fact predicates pass"
+    },
+    {
+      "stage": "CCI_CLOSURE",
+      "owner": "CCI_CYCLE_CONTROLLER",
+      "status": "WITHHELD",
+      "next_generation": 4,
+      "closure_predicate": "Dynamic resolver returns latest current artifact with authoritative required_state"
+    }
+  ],
+  "honest_dod": {
+    "numerator_denominator_receipt": "Candidate preservation 40/40; hard-fact admission 4/9; accepted implementation 0/1.",
+    "missing_evidence": [
+      "owner rights receipt",
+      "custody chain receipt",
+      "measurement review occurrence",
+      "independent reviewer occurrence with corrected role scope",
+      "dynamic current-artifact resolution under authoritative required_state"
+    ],
+    "next_transition": "GENERATION_4_CURRENT_VALIDATOR_WORK_PACKET_ONLY_AFTER_ALL_MISSING_RECEIPTS_AND_CORRECTED_BINDING",
+    "current_validator_work_packet": null
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "promotion_forbidden": true,
+    "science_publication_release_authority": false,
+    "cci_status": "WITHHELD"
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "substantive_rerun": false,
+    "source_shared_main_pointer_public_cold_raw_db_host_io_mutation": false,
+    "reset_delete_move_cleanup": false,
+    "activation": false
+  },
+  "router_boundary": {
+    "transport_only": true,
+    "writes_performed": 0,
+    "authority_emitted": false,
+    "direct_executor_to_cci": false
+  }
+}
