@@ -1,0 +1,78 @@
+{
+  "schema_id": "ESTRA_WS50_DOMAIN_EXECUTION_RESULT_RESUBMISSION_v1",
+  "phase": "DOMAIN_EXECUTION_RESULT",
+  "result_status": "HOLD_INHERITED_DIRTY_CONFLICT",
+  "transport_status": "READY_TO_ROUTE_TO_NAMED_INDEPENDENT_VALIDATOR",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "cycle_id": "OC14-G1-CYCLE-ROOT",
+  "parent_cycle_id": null,
+  "cycle_index": 0,
+  "generation": 1,
+  "source_catalog_sha256": "D006D5FAC755AC37A47018A3128940C489540053414D6D3B38EE963004B376BC",
+  "source_catalog_commit": "7b9567dbbb6f31f7428c94dfdb8b94a40f4525ac",
+  "source_catalog_tree": "ee972a72f763f7a005b3bce7a243752e308808e7",
+  "idempotency_key": "WS90:CYCLE:G1:OC14-G1-WS50-ESTRA-01:DISPATCH",
+  "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+  "executor_thread": "01a04271-cd1d-7590-b935-e3d078b003f5",
+  "independent_validator_thread": "01a04271-e73f-7991-8d1a-b08134b0411c",
+  "artifact_fingerprint": {
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "raw_bytes": 3138,
+    "producer_commit": "0f555cc5714baa74dd5ff35f5c9bccb6ddb4f90e",
+    "producer_tree": "e79b6524a9daffd8f565225b5c1f1cea153480d9",
+    "committed_git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "path_present_in_producer_commit": true
+  },
+  "final_remote_readback_for_artifact_producer": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
+    "local_commit": "0f555cc5714baa74dd5ff35f5c9bccb6ddb4f90e",
+    "local_tree": "e79b6524a9daffd8f565225b5c1f1cea153480d9",
+    "remote_commit": "0f555cc5714baa74dd5ff35f5c9bccb6ddb4f90e",
+    "remote_tree": "e79b6524a9daffd8f565225b5c1f1cea153480d9",
+    "sha_match": true,
+    "tree_match": true,
+    "local_clean": true,
+    "remote_path_present": true
+  },
+  "declared_path_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json"
+  ],
+  "evidence": {
+    "candidate_file_total": 40,
+    "candidate_checksum_matches": 40,
+    "candidate_checksum_mismatches": 0,
+    "source_inherited_dirty_count": 16,
+    "source_status_unchanged": true,
+    "guarded_baseline_status": "PASS_GUARDED_69_TESTS",
+    "guarded_baseline_receipt_path": ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json",
+    "guarded_baseline_receipt_sha256": "ff0c05764e10689bc51311dca499585c91f04d2b50c2182962c99f95b9002a6a",
+    "baseline_execution": "REUSED_FRESH_GUARDED_RECEIPT; NO_SUBSTANTIVE_RERUN_REQUIRED"
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "promotion_forbidden": true,
+    "authority_or_activation": false,
+    "science_or_publication_acceptance": false
+  },
+  "router_boundary": {
+    "dispatch_only": true,
+    "writes_performed": 0,
+    "HOST_IO": false,
+    "activation": false,
+    "self_validation": false,
+    "self_acceptance": false,
+    "direct_executor_to_cci": false,
+    "next_transition": "DOMAIN_EXECUTION_RESULT_TO_NAMED_INDEPENDENT_VALIDATOR"
+  },
+  "handoff": "Route only to independent validator; no direct executor-to-CCI authority."
+}
