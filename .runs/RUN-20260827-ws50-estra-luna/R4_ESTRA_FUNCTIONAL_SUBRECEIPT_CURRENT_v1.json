@@ -100,10 +100,10 @@
   },
   "ws70_validation_consumption": {
     "consumed": true,
-    "validation_result_version": "G20_TERMINAL_ACK_V3",
-    "validation_result_commit": "4a809cb942e58790258dc3999c8ddd246e2d46c4",
-    "validation_result_tree": "34e2e8083bb28f54b18ca37116e16e35575f1835",
-    "canonical_validation_receipt_digest": "D9C538E205FA927DD47769A25F1D33D77438F68E3B99AE8D6D81BA1B3FBE2B34",
+    "validation_result_version": "G20_TERMINAL_ACK_V4",
+    "validation_result_commit": "3a4411e41a4c71fc0cb94363298031fd02286e99",
+    "validation_result_tree": "ba2ed71d31affd8601a42e4e50f30998f07a9f41",
+    "canonical_validation_receipt_digest": "901EEFA318B1D5D836C6034C724383800B7700ACD4E4DC6579500D3AE7DFA0D9",
     "decision": "ACCEPTED",
     "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
     "return_code": null,
@@ -118,14 +118,22 @@
       "blob_unchanged_on_remote_readback": true
     },
     "ws70_receipt": {
+      "path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/WS-70-MACHINE/OC14_MACHINE_LUNA_09_20260827/WS70_INDEPENDENT_VALIDATION_WS50_G20_R4_FUNCTIONAL_RECEIPT_v4.json",
+      "digest": "901EEFA318B1D5D836C6034C724383800B7700ACD4E4DC6579500D3AE7DFA0D9",
+      "raw_sha256": "00a5f81c8c6c97c5aa257c6d22ac6bc475f2cd5315a8fb4805195d8563cbecb0",
+      "git_blob": "b45c284151bcec3e0fddb331c21694dfaf641b05",
+      "commit": "3a4411e41a4c71fc0cb94363298031fd02286e99",
+      "tree": "ba2ed71d31affd8601a42e4e50f30998f07a9f41",
+      "remote_parity": true,
+      "clean": true
+    },
+    "prior_ws70_receipt_v3": {
       "path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/WS-70-MACHINE/OC14_MACHINE_LUNA_09_20260827/WS70_INDEPENDENT_VALIDATION_WS50_G20_R4_FUNCTIONAL_RECEIPT_v3.json",
       "digest": "D9C538E205FA927DD47769A25F1D33D77438F68E3B99AE8D6D81BA1B3FBE2B34",
       "raw_sha256": "2c81bc9a7d0995a82506da4a4cfd549e1bf548eae91e022254bce8af62e028a9",
       "git_blob": "2790618730485fbaa2030652e1348e5e4b15457b",
       "commit": "4a809cb942e58790258dc3999c8ddd246e2d46c4",
-      "tree": "34e2e8083bb28f54b18ca37116e16e35575f1835",
-      "remote_parity": true,
-      "clean": true
+      "tree": "34e2e8083bb28f54b18ca37116e16e35575f1835"
     },
     "prior_ws70_receipt_v2": {
       "path": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/WS-70-MACHINE/OC14_MACHINE_LUNA_09_20260827/WS70_INDEPENDENT_VALIDATION_WS50_G20_R4_FUNCTIONAL_RECEIPT_v2.json",
@@ -140,6 +148,12 @@
       "digest": "3F6AFDA51B7A3989D05892A0638DEA63112EDFC7C9D2E363F80E9F961113BA52",
       "commit": "0363b6e9a309a0aa30e2b92174ad2024a10c3885",
       "tree": "d14fecc65afb86fc6b9abff95d6d192b815399e5"
+    },
+    "prior_validation_result_g20_v3": {
+      "validation_result_commit": "4a809cb942e58790258dc3999c8ddd246e2d46c4",
+      "validation_result_tree": "34e2e8083bb28f54b18ca37116e16e35575f1835",
+      "canonical_validation_receipt_digest": "D9C538E205FA927DD47769A25F1D33D77438F68E3B99AE8D6D81BA1B3FBE2B34",
+      "decision": "ACCEPTED"
     },
     "prior_validation_result_g20_v2": {
       "validation_result_commit": "1f7908e4034bf0c60faf93be3af6307783e3ae9",
