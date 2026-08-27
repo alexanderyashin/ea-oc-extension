@@ -1,0 +1,136 @@
+{
+  "schema_id": "ESTRA_WS50_G3_TYPED_REPAIR_ACQUISITION_REQUEST_v1",
+  "request_type": "PRODUCER_OWNER_RECEIPT_ACQUISITION_ONLY",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "logical_result_id": "OC14-OB-ESTRA-01",
+  "cycle_id": "OC14-G1-CYCLE-ROOT",
+  "predecessor_generation": 1,
+  "current_admission_generation": 2,
+  "next_generation": 3,
+  "phase": "RETURN_FOR_REPAIR",
+  "status": "OPEN_RECEIPT_ACQUISITION; NO_SUBSTANTIVE_EXECUTION",
+  "predecessor_g2_admission": {
+    "path": ".runs/RUN-20260827-ws50-estra-luna/G2_REPAIR_ADMISSION_ENVELOPE_v1.json",
+    "raw_sha256": "c569bf8136ce641307eaf529d2bce9c420214ddbe2e1a723098b6567d4b43cff",
+    "commit": "3c2f4e500d0d748d5c6ac4123e91964bafad380c",
+    "tree": "138cc4f622312f9ad495a3324dbcdb22ded2fc59",
+    "decision": "BLOCKED_EXTERNAL_AUTHORITY / ROLE_SCOPE_MISMATCH"
+  },
+  "idempotency_key": "WS90:CYCLE:G3:OC14-G1-WS50-ESTRA-01:REPAIR-ACQUISITION:ROLE_SCOPE_MISMATCH",
+  "owner": {
+    "next_owner": "WS50 producer/owner",
+    "owner_action": "Acquire and bind the authoritative source, rights, custody, measurement-review and independent-review receipts listed below; do not alter candidate content or promote state.",
+    "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+    "retry_policy": "One bounded acquisition response per heartbeat window; no substantive rerun unless owner explicitly admits it."
+  },
+  "dynamic_latest_current_artifact": {
+    "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_id": "OC14-OB-ESTRA-01",
+    "consumer_generation": 3,
+    "required_state": "AUTHORITATIVE_SOURCE_AND_BINDING_RECEIPTS_PRESENT",
+    "resolution_mode": "DYNAMIC_AT_CONSUMPTION_TIME",
+    "resolved_artifact": null,
+    "resolution_status": "BLOCKED_MISSING_AUTHORITATIVE_RECEIPTS",
+    "stale_history_rule": "Preserve generation-1 and generation-2 evidence immutably; never overwrite captured history when a newer artifact appears."
+  },
+  "acquisition_actions": [
+    {
+      "action_id": "G3-A01-SOURCE-OBJECT",
+      "owner": "WS50 producer/owner",
+      "action": "Supply authoritative source artifact object and repository readback for the predecessor result, including exact relative path, raw SHA-256, commit and tree.",
+      "required_field": "authoritative_source_artifact_receipt",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+      "status": "OPEN",
+      "issuer_must_not_be": "WS50 executor self-validation"
+    },
+    {
+      "action_id": "G3-A02-RIGHTS",
+      "owner": "WS50 producer/owner",
+      "action": "Obtain an explicit rights receipt covering the declared report-zone artifact paths and the allowed read-only downstream references.",
+      "required_field": "owner_rights_receipt",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+      "status": "OPEN",
+      "receipt_value": null
+    },
+    {
+      "action_id": "G3-A03-CUSTODY",
+      "owner": "WS50 producer/owner",
+      "action": "Obtain a custody-chain receipt linking source catalog, predecessor result, producer commit/tree, remote readback and immutable generation history.",
+      "required_field": "custody_chain_receipt",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+      "status": "OPEN",
+      "receipt_value": null
+    },
+    {
+      "action_id": "G3-A04-MEASUREMENT-REVIEW",
+      "owner": "WS50 producer/owner",
+      "action": "Request a typed measurement-review occurrence from an authorized reviewer; the executor may not issue this occurrence.",
+      "required_field": "measurement_review_occurrence",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+      "status": "OPEN",
+      "receipt_value": null,
+      "issuer": "AUTHORIZED_EXTERNAL_REVIEWER_REQUIRED"
+    },
+    {
+      "action_id": "G3-A05-REVIEWER-BINDING",
+      "owner": "WS50 producer/owner",
+      "action": "Request an authoritative independent-reviewer occurrence with corrected role scope; current WS-35 binding remains blocked by ROLE_SCOPE_MISMATCH.",
+      "required_field": "independent_reviewer_occurrence",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+      "status": "OPEN",
+      "receipt_value": null,
+      "issuer": "INDEPENDENT_REVIEWER_WITH_AUTHORITATIVE_SCOPE_REQUIRED"
+    }
+  ],
+  "current_validator_binding": {
+    "previous_thread": "01a04271-9aa2-7f61-b3a9-615124827fe1",
+    "previous_decision": "BLOCKED_EXTERNAL_AUTHORITY",
+    "previous_code": "ROLE_SCOPE_MISMATCH",
+    "required_repair": "Authoritative binding receipt must identify a validator whose role scope covers this result; no executor-side rebinding.",
+    "current_validator_work_packet": null,
+    "status": "WAITING_FOR_AUTHORITATIVE_REBINDING_RECEIPT"
+  },
+  "cci_closure_and_next_generation": {
+    "cci_controller": "CCI_CYCLE_CONTROLLER",
+    "cci_closure_status": "WITHHELD",
+    "closure_authority_emitted": false,
+    "generation_1_closeout": "NOT_CLOSED",
+    "generation_2_admission": "RETURN_FOR_REPAIR",
+    "generation_3_admission": "NOT_ADMITTED",
+    "admit_generation_3_only_when": [
+      "authoritative source artifact receipt present",
+      "owner rights receipt present",
+      "custody chain receipt present",
+      "measurement review occurrence present",
+      "independent reviewer occurrence present with corrected role scope",
+      "dynamic resolver returns the latest artifact satisfying required_state"
+    ],
+    "next_transition": "GENERATION_3_ADMISSION_ONLY_AFTER_AUTHORITATIVE_SOURCE_AND_BINDING_RECEIPTS"
+  },
+  "preserved_evidence": {
+    "candidate_manifest_path": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "candidate_manifest_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "candidate_checksums": "40/40",
+    "guarded_baseline": "PASS_GUARDED_69_TESTS",
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "substantive_rerun": false,
+    "source_shared_main_pointer_public_cold_raw_db_host_io_mutation": false,
+    "reset_delete_move_cleanup": false,
+    "promotion_activation_publication": false
+  },
+  "router_boundary": {
+    "transport_only": true,
+    "writes_performed_by_router": 0,
+    "direct_executor_to_cci": false,
+    "authority_emitted": false,
+    "activation": false
+  }
+}
