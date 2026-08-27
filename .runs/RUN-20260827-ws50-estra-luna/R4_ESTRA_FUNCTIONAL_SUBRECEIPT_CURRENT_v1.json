@@ -4,7 +4,8 @@
   "task_id": "OC14-G1-WS50-ESTRA-01",
   "source_obligation_id": "OC14-OB-ESTRA-01",
   "phase": "R4_FUNCTIONAL_ASSET_REVIEW",
-  "status": "READY_FOR_WS70_INDEPENDENT_FUNCTIONAL_VALIDATION",
+  "snapshot_utc": "2026-08-27T22:00:28Z",
+  "status": "CAPABILITY_BLOCKER__HOST_SAFETY_ACTIVE_ALERT__FUNCTIONAL_VALIDATION_PENDING",
   "latest_current_artifact": {
     "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
     "logical_id": "OC14-OB-ESTRA-01",
@@ -16,18 +17,25 @@
     "content_producer_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
     "content_producer_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
     "fingerprint_envelope_sha256": "ea33b4f66e15299ebb70649abeec32b3e0b7205b47c11cafb133d4f088637fdc",
-    "resolution": "CURRENT_CANDIDATE_RESOLVED; FUNCTIONAL_ACCEPTANCE_PENDING"
+    "resolution": "CURRENT_CANDIDATE_RESOLVED; FUNCTIONAL_ACCEPTANCE_PENDING; CURRENT_69_TEST_RERUN_BLOCKED"
   },
   "repository_access": {
     "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
     "branch": "workstream/oc14-estra-luna-20260827",
     "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
-    "latest_branch_commit": "000f707d7a77c946d7ccc12b7a180f9c84a3d064",
-    "latest_branch_tree": "bfcc2bbb4f05bc4b02e090b8fe17edefdf734220",
+    "current_local_commit_before_receipt_materialization": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
+    "current_local_tree_before_receipt_materialization": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
+    "remote_commit_before_receipt_materialization": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
+    "remote_tree_before_receipt_materialization": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
+    "remote_ls_remote_before_receipt_materialization": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
     "sha_match": true,
     "tree_match": true,
     "worker_dirty_count": 0,
-    "result_path_present": true
+    "result_path_present": true,
+    "target_result_git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "target_result_raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "target_result_producer_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "target_result_producer_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48"
   },
   "candidate_fingerprint_evidence": {
     "manifest_path": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
@@ -35,18 +43,30 @@
     "numerator": 40,
     "denominator": 40,
     "mismatches": 0,
+    "fingerprint_envelope_sha256": "ea33b4f66e15299ebb70649abeec32b3e0b7205b47c11cafb133d4f088637fdc",
+    "fingerprint_envelope_path": null,
+    "fingerprint_envelope_verification": "Supplied prior fingerprint SHA retained as provenance; envelope file is not present in the current branch checkout.",
+    "current_recalculation": "40_OF_40_MATCH; 0_MISMATCH; 0_MISSING",
     "interpretation": "Preservation/fingerprint evidence only; not acceptance."
   },
   "guarded_test_evidence": {
-    "receipt_path": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1.json",
-    "receipt_sha256": "4b850afe8933260118ec5a899ddcc5e9781c7c35a30142c0288bd3b15ae1a346",
+    "historical_receipt_path": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1.json",
+    "historical_receipt_sha256": "4b850afe8933260118ec5a899ddcc5e9781c7c35a30142c0288bd3b15ae1a346",
+    "current_attempt_receipt_path": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_ATTEMPT_v2.json",
+    "current_attempt_receipt_sha256": "9a4159f1472a6a6d853f82d46889b6ea45ad6566b5c3222cc6be28ea45640b85",
     "command": "python -B -m pytest -q tests -p no:cacheprovider",
     "guard": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
     "numerator": 69,
     "denominator": 69,
-    "status": "PASS_GUARDED_69_TESTS",
-    "exit_code": 0,
-    "rerun_in_this_receipt": false
+    "historical_status": "PASS_GUARDED_69_TESTS",
+    "historical_numerator": 69,
+    "historical_denominator": 69,
+    "current_status": "CAPABILITY_BLOCKER__HOST_SAFETY_ACTIVE_ALERT",
+    "current_exit_code": 120,
+    "current_test_count": null,
+    "current_collection_count": null,
+    "rerun_in_this_receipt": true,
+    "claim_boundary": "Historical 69/69 is retained; current rerun did not reach pytest payload."
   },
   "provenance_and_toolchain": {
     "worker_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension-ws50-estra-luna-20260827",
@@ -57,7 +77,7 @@
     "python": "Python 3.14.3",
     "pytest": "pytest 9.0.2",
     "pythonpath": "src",
-    "drift_status": "NO_DRIFT_DETECTED"
+    "drift_status": "SOURCE_MANIFEST_40_OF_40_MATCH; CLEAN_BRANCH_TEST_SURFACE_IS_43; CURRENT_SOURCE_69_TEST_RERUN_BLOCKED"
   },
   "ws70_independent_handoff": {
     "validator_thread": "01a04271-ff7c-7812-9b3b-1d317af41691",
@@ -66,6 +86,7 @@
     "action": "Read and validate the exact current result path/ref/blob/SHA, toolchain binding and functional contract; issue a typed receipt or exact blocker.",
     "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
     "receipt": null,
+    "current_executor_blocker": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_ATTEMPT_v2.json",
     "executor_self_validation": false
   },
   "claim_ceiling": {
@@ -85,5 +106,24 @@
     "reset_delete_move_cleanup": false,
     "activation": false
   },
-  "next_transition": "WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_DRIFT_TEST_BLOCKER"
+  "capability_blocker": {
+    "type": "CAPABILITY_BLOCKER__HOST_SAFETY_ACTIVE_ALERT",
+    "owner": "OWNER_RECOVERY / Logion host-safety operator",
+    "action": "Resolve the open host-safety alert through the governed restart-preflight/owner-recovery path; do not clear or bypass the retained safety marker manually.",
+    "n_plus_1": "After independent safety admission, rerun the exact guarded 69-test command against the unchanged source checkout; retain a fresh PASS or exact blocker receipt.",
+    "incident_id": "HOST-SAFETY-INCIDENT-A24A1CC74F66F81788F6A0A6",
+    "guard_exit_code": 120
+  },
+  "prior_ref_anchors": {
+    "prior_commit": "3c2f4e500d0d748d5c6ac4123e91964bafad380c",
+    "prior_tree": "138cc4f622312f9ad495a3324dbcdb22ded2fc59",
+    "verified": true
+  },
+  "weakest_evidence_trace": [
+    "40/40 candidate identity matches are preservation evidence only.",
+    "Historical 69/69 guarded evidence is not a current rerun.",
+    "Current guarded rerun was stopped before pytest payload by OPEN HARD_SAFETY alert.",
+    "WS70 independent machine-functional receipt is still absent; WS35 semantic acceptance is separate and pending."
+  ],
+  "next_transition": "OWNER_RECOVERY_HOST_SAFETY_ADMISSION_THEN_WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_DRIFT_TEST_BLOCKER"
 }

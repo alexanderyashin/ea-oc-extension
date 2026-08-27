@@ -1,0 +1,48 @@
+{
+  "schema_id": "ESTRA_WS50_R4_CURRENT_GUARDED_69_TEST_ATTEMPT_v2",
+  "receipt_kind": "EXECUTION_ATTEMPT_TYPED_CAPABILITY_BLOCKER",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "snapshot_utc": "2026-08-27T22:00:28Z",
+  "guard": {
+    "script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "require_common_stop_absent": true,
+    "actor": "WS-50-ESTRA",
+    "reason": "OC14 R4 current ESTRA functional subreceipt exact guarded 69-test execution against preserved source checkout"
+  },
+  "source_checkout": {
+    "path": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+    "tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+    "dirty_count_observed": 16,
+    "inherited_material_mutated": false
+  },
+  "command": {
+    "requested": "PYTHONPATH=src python -B -m pytest -q tests -p no:cacheprovider",
+    "guarded_argv": ["python", "-B", "-m", "pytest", "-q", "tests", "-p", "no:cacheprovider"],
+    "cwd": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "payload_started": false,
+    "test_count": null,
+    "collection_count": null
+  },
+  "capability_blocker": {
+    "type": "CAPABILITY_BLOCKER__HOST_SAFETY_ACTIVE_ALERT",
+    "status": "PRE_RELEASE_ALERT_STOPPED_PRIVATE_JOB_BEFORE_PAYLOAD",
+    "guard_exit_code": 120,
+    "incident_id": "HOST-SAFETY-INCIDENT-A24A1CC74F66F81788F6A0A6",
+    "host_status": "HARD_SAFETY",
+    "lifecycle_status": "OPEN",
+    "reason": "ACTIVE_ALERT_OPEN",
+    "owner": "OWNER_RECOVERY / Logion host-safety operator",
+    "action": "Resolve the open host-safety alert through the governed restart-preflight/owner-recovery path; do not clear or bypass the retained safety marker manually.",
+    "n_plus_1": "After independently confirmed GREEN/WARN/DEGRADED admission and current projections, rerun the exact guarded 69-test command against the unchanged source checkout and replace this attempt with a fresh PASS or exact blocker receipt."
+  },
+  "prior_guarded_evidence": {
+    "receipt_path": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1.json",
+    "receipt_sha256": "4b850afe8933260118ec5a899ddcc5e9781c7c35a30142c0288bd3b15ae1a346",
+    "status": "PASS_GUARDED_69_TESTS",
+    "numerator": 69,
+    "denominator": 69,
+    "interpretation": "Historical guarded execution evidence; not a current rerun and not independent acceptance."
+  },
+  "claim_ceiling": "Typed execution blocker only; no current 69-test result, independent validation, semantic acceptance, dominance, publication, release, activation or authority claim."
+}
