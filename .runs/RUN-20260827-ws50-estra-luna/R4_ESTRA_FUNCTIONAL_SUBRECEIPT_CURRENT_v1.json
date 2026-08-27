@@ -23,11 +23,13 @@
     "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
     "branch": "workstream/oc14-estra-luna-20260827",
     "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
-    "current_local_commit_before_receipt_materialization": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
-    "current_local_tree_before_receipt_materialization": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
-    "remote_commit_before_receipt_materialization": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
-    "remote_tree_before_receipt_materialization": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
-    "remote_ls_remote_before_receipt_materialization": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
+    "recaptured_current_local_remote_commit": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
+    "recaptured_current_local_remote_tree": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
+    "last_pushed_receipt_branch_commit": "9d6c9892de100e0e8fb45ba74864a04351bd90e9",
+    "last_pushed_receipt_branch_tree": "5e4d12348234429a920f9c1ae2b493892f862e64",
+    "last_pushed_receipt_remote_commit": "9d6c9892de100e0e8fb45ba74864a04351bd90e9",
+    "last_pushed_receipt_remote_tree": "5e4d12348234429a920f9c1ae2b493892f862e64",
+    "last_pushed_receipt_sha_tree_parity": true,
     "sha_match": true,
     "tree_match": true,
     "worker_dirty_count": 0,
@@ -89,6 +91,28 @@
     "current_executor_blocker": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_ATTEMPT_v2.json",
     "executor_self_validation": false
   },
+  "ws70_validation_consumption": {
+    "consumed": true,
+    "validation_result_commit": "eda3eb8db3e96475c5ab54fbe7bc3ad384794aa7",
+    "validation_result_tree": "ff7a0212c648b088b9b53bcf03265100eb85cf4a",
+    "decision": "RETURNED_FOR_REPAIR",
+    "return_code": "STALE_EMBEDDED_BRANCH_READBACK",
+    "failed_predicate": {
+      "embedded_local_commit": "000f707d7a77c946d7ccc12b7a180f9c84a3d064",
+      "embedded_local_tree": "bfcc2bbb4f05bc4b02e090b8fe17edefdf734220",
+      "recaptured_current_local_commit": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
+      "recaptured_current_local_tree": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
+      "recaptured_current_remote_commit": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
+      "recaptured_current_remote_tree": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746"
+    },
+    "preserved_evidence": {
+      "guarded_69_test_evidence": "PRESERVED_HISTORICAL_69_OF_69",
+      "candidate_fingerprint_evidence": "PRESERVED_40_OF_40",
+      "current_guarded_rerun": "NOT_PERFORMED_AFTER_RETURN_FOR_REPAIR"
+    },
+    "repair_action_consumed": "Replace stale embedded branch readback with the recaptured current local/remote commit/tree values; do not rerun substantive tests or promote the candidate.",
+    "claim_ceiling": "Validation delta consumed for metadata repair only; no functional acceptance, semantic acceptance, CCI, publication, release or activation authority."
+  },
   "claim_ceiling": {
     "candidate_only": true,
     "accepted": 0,
@@ -102,6 +126,8 @@
   "mutation_boundary": {
     "report_zone_only": true,
     "source_mutated": false,
+    "post_validation_rerun": false,
+    "post_validation_promotion": false,
     "main_pointer_public_host_io_db_mutated": false,
     "reset_delete_move_cleanup": false,
     "activation": false
