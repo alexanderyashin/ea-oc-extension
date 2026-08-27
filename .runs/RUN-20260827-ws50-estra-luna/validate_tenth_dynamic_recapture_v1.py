@@ -44,10 +44,12 @@ def main() -> None:
     assert envelope["status"] == "BLOCKED_FAIL_CLOSED"
     assert envelope["dynamic_recapture_status"] == "STALE_AFTER_POST_CAPTURE_DRIFT__CAPTURE_PRESERVED"
     assert envelope["post_capture_readback"]["status"] == "STALE_SNAPSHOT"
-    assert envelope["post_capture_readback"]["changed_consumers"] == ["WS-70"]
+    assert envelope["post_capture_readback"]["changed_consumers"] == ["WS-70", "WS-75"]
     assert envelope["post_capture_readback"]["captured_history_rewritten"] is False
     assert envelope["post_capture_readback"]["observed_ws70"]["commit"] == "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d"
     assert envelope["post_capture_readback"]["observed_ws70"]["tree"] == "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b"
+    assert envelope["post_capture_readback"]["observed_ws75"]["commit"] == "824578378c1d7a6c34d0f2cfc9e5fef12a3793ee"
+    assert envelope["post_capture_readback"]["observed_ws75"]["tree"] == "18c1b7204eeeb18927dd4fc9f994b40050c21063"
     assert envelope["traceability_source"]["candidate_row_count"] == fixture["required_rows"] == 40
     assert len(trace["candidate_rows"]) == len(matrix["rows"]) == len(packet["candidate_rows"]) == len(report["candidate_rows"]) == len(freeze["files"]) == 40
     assert envelope["negative_boundaries"] == {"candidate_only":True,"dominance":False,"holdout_delta":"NEGATIVE","confidence_interval":"INCLUDES_ZERO","promotion_forbidden":True,"source_mutation":False,"feature_or_catalog_mutation":False,"db_raw_cold_host_io_shared_public_mutation":False,"live_execution":False}

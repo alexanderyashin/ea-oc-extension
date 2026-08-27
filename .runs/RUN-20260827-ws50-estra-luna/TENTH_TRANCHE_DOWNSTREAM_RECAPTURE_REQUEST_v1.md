@@ -8,6 +8,8 @@ Return a read-only receipt containing exact repository, branch, commit, tree, co
 
 The prior snapshot remains immutable history. Any stale or missing current ref returns `BLOCKED_RECAPTURE_REQUIRED`; provenance, digest, rights, private/runtime and widened-claim mutations return the envelope's fail-closed codes. Do not execute ESTRA live, mutate features/catalogues, touch DB/raw/cold/HOST_IO/shared/public state, promote or accept any candidate. Preserve `candidate_only=true`, `dominance=false`, negative holdout, CI-includes-zero and `semantic-review-candidate-only`.
 
+Terminal readback found post-capture drift in WS-70 and WS-75; the captured dynamic snapshot is marked stale and requires a new recapture. Captured refs remain immutable and no history was rewritten.
+
 Pure replay evidence:
 
 - `.runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DYNAMIC_RECAPTURE_FIXTURE_v1.json`
