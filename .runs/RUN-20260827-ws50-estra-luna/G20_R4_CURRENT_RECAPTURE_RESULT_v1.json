@@ -1,0 +1,105 @@
+{
+  "schema_id": "ESTRA_WS50_G20_R4_CURRENT_RECAPTURE_RESULT_v1",
+  "result_kind": "GENERATION_PLUS_ONE_REPAIR_RECAPTURE",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "cycle_id": "OC14-G1-CYCLE-ROOT",
+  "predecessor_generation": 19,
+  "next_generation": 20,
+  "phase": "RETURN_FOR_REPAIR",
+  "status": "CURRENT_RECAPTURE_COMPLETE__READY_FOR_WS70_REVALIDATION",
+  "idempotency_key": "WS90:G18:R4:RETURN_FOR_REPAIR:HOST_SAFETY_ACTIVE_ALERT_BLOCKED:9c7aff949a19b9b43ea41e5bdf5ee5af0f1d20432a6df02d3703b2728ad58ffc:G20",
+  "router_boundary": {
+    "transport_only": true,
+    "router_validation": false,
+    "router_acceptance": false,
+    "cci_route": false,
+    "activation": false
+  },
+  "source_and_candidate": {
+    "latest_current_artifact_resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_result_id": "OC14-OB-ESTRA-01",
+    "result_path": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "result_raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "result_git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "result_content_producer_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "result_content_producer_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
+    "fingerprint_envelope_sha256": "ea33b4f66e15299ebb70649abeec32b3e0b7205b47c11cafb133d4f088637fdc",
+    "candidate_manifest_path": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "candidate_manifest_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "candidate_checksums": {"matched": 40, "total": 40, "mismatches": 0},
+    "source_inherited_dirty_count": 16,
+    "source_mutated": false,
+    "claim": "Preservation/fingerprint evidence only; candidate_only is not acceptance."
+  },
+  "current_worker_readback": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "local_commit": "bcbe3b0f0f65ca90e3385c411492e8296acddf8f",
+    "local_tree": "5e8d8f9bcf1097af2d8f742227134ac981f056d9",
+    "remote_commit": "bcbe3b0f0f65ca90e3385c411492e8296acddf8f",
+    "remote_tree": "5e8d8f9bcf1097af2d8f742227134ac981f056d9",
+    "sha_match": true,
+    "tree_match": true,
+    "dirty_count": 0,
+    "snapshot_note": "Read before this G20 report-zone write; final G20 producer commit/tree are returned by terminal git readback."
+  },
+  "current_subreceipt": {
+    "path": ".runs/RUN-20260827-ws50-estra-luna/R4_ESTRA_FUNCTIONAL_SUBRECEIPT_CURRENT_v1.json",
+    "raw_sha256": "5792c29d1bcfbb9be49748f1225c5e573ac00fea9ef35cc75f888b7c9012152a",
+    "git_blob": "25056de59223c6d14452e044417fb3091b40d326",
+    "bytes": 14971,
+    "embedded_snapshot_commit": "75d36151b18a4dc092b85b0b70f1b9f0ae32f53a",
+    "embedded_snapshot_tree": "fbe1f772b94c693bf2ac2bfac093a2ca0b156746",
+    "embedded_status": "RETURNED_FOR_REPAIR__RECOVERY_GATE_OPEN__FUNCTIONAL_VALIDATION_PENDING",
+    "stale_embedded_branch_readback": true,
+    "current_worker_delta": "Current worker readback is bcbe3b0f0f65ca90e3385c411492e8296acddf8f/5e8d8f9bcf1097af2d8f742227134ac981f056d9; embedded 75d36151/fbe1f772 is preserved as immutable history and is not treated as current."
+  },
+  "guarded_replay": {
+    "command": "python -B -m pytest -q tests -p no:cacheprovider",
+    "guard_script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "cwd_unchanged_source": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "fresh_status": "PASS_GUARDED_69_TESTS",
+    "numerator": 69,
+    "denominator": 69,
+    "exit_code": 0,
+    "payload_started": true,
+    "stdout": ".....................................................................    [100%]",
+    "toolchain": {"python": "Python 3.14.3", "pytest": "pytest 9.0.2", "pythonpath": "src"},
+    "fresh_receipt_path": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1.json",
+    "fresh_receipt_sha256": "4b850afe8933260118ec5a899ddcc5e9781c7c35a30142c0288bd3b15ae1a346",
+    "prior_returned_attempt": {"path": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_ATTEMPT_v2.json", "sha256": "9a4159f1472a6a6d853f82d46889b6ea45ad6566b5c3222cc6be28ea45640b85", "exit_code": 120, "payload_started": false, "reason": "ACTIVE_ALERT_OPEN", "incident_id": "HOST-SAFETY-INCIDENT-A24A1CC74F66F81788F6A0A6"},
+    "claim_ceiling": "Fresh guarded execution evidence only; no independent functional or semantic acceptance."
+  },
+  "recovery_provenance": {
+    "restart_preflight_receipt_path": "C:\\Users\\Megaport\\work\\logion_local\\runtime\\hot\\host_safety\\restart_preflight_receipts\\HOST_SAFETY_RESTART_PREFLIGHT_RECEIPT_HOST-SAFETY-RESTART-PREFLIGHT-0E30913936A67810AA994857.json",
+    "restart_preflight_receipt_sha256": "cf729a97967af8fe5ad15b0952c8143486c5b55f35449c8eb917fc7adf971d81",
+    "restart_preflight_status": "BLOCKED_COMMON_STOP_MARKER_MISSING",
+    "manual_marker_removal": false,
+    "database_opened": false,
+    "interpretation": "Fail-closed preflight evidence is preserved. The later exact guarded command admitted and passed 69/69 under the current safety projection; no marker was manually cleared."
+  },
+  "ws70_handoff": {
+    "validator_thread": "01a04271-ff7c-7812-9b3b-1d317af41691",
+    "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION_ONLY",
+    "action": "Revalidate this G20 receipt, the current subreceipt path/blob/SHA, current branch parity, and fresh guarded 69/69 receipt; issue typed PASS or exact blocker.",
+    "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+    "receipt": null,
+    "next_transition": "WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_FAULT"
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "semantic_ws35_acceptance": "SEPARATE_PENDING",
+    "cci_status": "WITHHELD",
+    "promotion_publication_authority": false
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "source_shared_main_pointer_public_db_host_io_mutation": false,
+    "reset_delete_move_cleanup": false,
+    "activation": false
+  }
+}
