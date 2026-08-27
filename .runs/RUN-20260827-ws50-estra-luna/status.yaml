@@ -7,3 +7,5 @@ worker_branch: workstream/oc14-estra-luna-20260827
 claim_ceiling: discovery-preservation-only
 baseline: PASS_GUARDED_69_TESTS
 candidate_transport: HOLD_SEMANTIC_ACCEPTANCE
+remote_readback: PASS_REMOTE_PARITY
+worker_tree: CLEAN_AT_READBACK

@@ -6,6 +6,8 @@
 
 Worker branch: `workstream/oc14-estra-luna-20260827`
 Source candidate checkout: `main` at `5398bfed0efbc56ad969382df48af568ee2df24b`
+Remote parity: `fa07c9ec9bf0410d88a166032a587ba223e9fdbb` / tree
+`63e9fc6c224f1ebe79106c15e956444e959e78f0`
 Freeze manifest: `CANDIDATE_FREEZE_MANIFEST_v1.json`
 
 ## Delivered evidence
@@ -19,6 +21,8 @@ Freeze manifest: `CANDIDATE_FREEZE_MANIFEST_v1.json`
 - The negative Phase C holdout boundary is retained; dominance is not claimed.
 - Exact worker evidence diff is limited to the `.runs/RUN-20260827-ws50-estra-luna/`
   packet.
+- The worker evidence commit was read back from the remote branch with matching
+  SHA/tree and all eight required paths present.
 
 ## Open obligations
 

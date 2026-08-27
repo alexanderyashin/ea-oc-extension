@@ -1,0 +1,17 @@
+{
+  "schema_id": "ESTRA_WS50_REMOTE_READBACK_RECEIPT_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "PASS_REMOTE_PARITY",
+  "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+  "branch": "workstream/oc14-estra-luna-20260827",
+  "local_sha": "fa07c9ec9bf0410d88a166032a587ba223e9fdbb",
+  "local_tree": "63e9fc6c224f1ebe79106c15e956444e959e78f0",
+  "remote_ref": "refs/heads/workstream/oc14-estra-luna-20260827",
+  "remote_sha": "fa07c9ec9bf0410d88a166032a587ba223e9fdbb",
+  "sha_match": true,
+  "required_path_readback": "PASS",
+  "required_path_total": 8,
+  "readback_command": "git ls-remote --heads origin refs/heads/workstream/oc14-estra-luna-20260827; git ls-tree -r --name-only HEAD -- .runs/RUN-20260827-ws50-estra-luna/",
+  "read_back_at_utc": "2026-08-27T09:09:12Z",
+  "claim_ceiling": "Remote SHA/tree/path parity only; CI, candidate acceptance, dominance, publication, release and activation remain separate claims."
+}

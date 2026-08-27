@@ -1,0 +1,17 @@
+{
+  "schema_id": "ESTRA_WS50_REMOTE_TRANSPORT_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "FROZEN_BEFORE_REMOTE_EVIDENCE_MUTATION",
+  "base_commit": "fa07c9ec9bf0410d88a166032a587ba223e9fdbb",
+  "base_tree": "63e9fc6c224f1ebe79106c15e956444e959e78f0",
+  "branch": "workstream/oc14-estra-luna-20260827",
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/REMOTE_TRANSPORT_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/REMOTE_READBACK_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v1.md",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "effect": "Record immutable remote parity and finalize the handoff metadata only; no candidate source files, shared Logion control files or pointers may change.",
+  "claim_ceiling": "Remote transport parity of the worker evidence checkpoint only; no candidate acceptance, dominance, publication, release or activation claim."
+}
