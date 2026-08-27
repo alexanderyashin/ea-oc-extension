@@ -1,0 +1,89 @@
+{
+  "schema_id": "R4_ESTRA_FUNCTIONAL_SUBRECEIPT_v1",
+  "receipt_kind": "CURRENT_FUNCTIONAL_ASSET_SUBRECEIPT",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "phase": "R4_FUNCTIONAL_ASSET_REVIEW",
+  "status": "READY_FOR_WS70_INDEPENDENT_FUNCTIONAL_VALIDATION",
+  "latest_current_artifact": {
+    "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_id": "OC14-OB-ESTRA-01",
+    "consumer_generation": 5,
+    "required_state": "FUNCTIONAL_MACHINE_VALIDATION_RECEIPT_PRESENT",
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "content_producer_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "content_producer_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
+    "fingerprint_envelope_sha256": "ea33b4f66e15299ebb70649abeec32b3e0b7205b47c11cafb133d4f088637fdc",
+    "resolution": "CURRENT_CANDIDATE_RESOLVED; FUNCTIONAL_ACCEPTANCE_PENDING"
+  },
+  "repository_access": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
+    "latest_branch_commit": "000f707d7a77c946d7ccc12b7a180f9c84a3d064",
+    "latest_branch_tree": "bfcc2bbb4f05bc4b02e090b8fe17edefdf734220",
+    "sha_match": true,
+    "tree_match": true,
+    "worker_dirty_count": 0,
+    "result_path_present": true
+  },
+  "candidate_fingerprint_evidence": {
+    "manifest_path": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "manifest_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "numerator": 40,
+    "denominator": 40,
+    "mismatches": 0,
+    "interpretation": "Preservation/fingerprint evidence only; not acceptance."
+  },
+  "guarded_test_evidence": {
+    "receipt_path": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1.json",
+    "receipt_sha256": "4b850afe8933260118ec5a899ddcc5e9781c7c35a30142c0288bd3b15ae1a346",
+    "command": "python -B -m pytest -q tests -p no:cacheprovider",
+    "guard": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "numerator": 69,
+    "denominator": 69,
+    "status": "PASS_GUARDED_69_TESTS",
+    "exit_code": 0,
+    "rerun_in_this_receipt": false
+  },
+  "provenance_and_toolchain": {
+    "worker_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension-ws50-estra-luna-20260827",
+    "source_checkout": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "source_head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+    "source_tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+    "source_inherited_dirty_count": 16,
+    "python": "Python 3.14.3",
+    "pytest": "pytest 9.0.2",
+    "pythonpath": "src",
+    "drift_status": "NO_DRIFT_DETECTED"
+  },
+  "ws70_independent_handoff": {
+    "validator_thread": "01a04271-ff7c-7812-9b3b-1d317af41691",
+    "scope": "MACHINE_FUNCTIONAL_VALIDATION_ONLY",
+    "owner": "WS70 independent functional validator",
+    "action": "Read and validate the exact current result path/ref/blob/SHA, toolchain binding and functional contract; issue a typed receipt or exact blocker.",
+    "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+    "receipt": null,
+    "executor_self_validation": false
+  },
+  "claim_ceiling": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "semantic_ws35_acceptance": "SEPARATE_PENDING",
+    "cci_status": "WITHHELD",
+    "promotion_publication_authority": false
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "source_mutated": false,
+    "main_pointer_public_host_io_db_mutated": false,
+    "reset_delete_move_cleanup": false,
+    "activation": false
+  },
+  "next_transition": "WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_DRIFT_TEST_BLOCKER"
+}
