@@ -113,3 +113,5 @@ The dynamic recapture packet resolves the current read-only refs for all three d
 - `.runs/RUN-20260827-ws50-estra-luna/TENTH_TRANCHE_DOWNSTREAM_RECAPTURE_REQUEST_v1.md`
 
 Current snapshots are WS-60 `fc2bac3e…@d9374577…`, WS-70 `6229908…@a87e1755…`, and WS-75 `5df32a4…@c145f6db…`, with exact commit-tree digests, provenance, read-only rights, reviewer and runtime predicates. Prior stale history remains immutable. Pure replay covers current, stale, missing WS-70, provenance, digest, rights, private-runtime and widened-claim cases; admission remains `BLOCKED_FAIL_CLOSED`, candidate-only, with no promotion or acceptance.
+
+Post-push readback at `2026-08-27T11:13:46.0964373Z` found WS-70 drift to `b0ba5b95…@e65a8fcb…`. The dynamic snapshot is therefore marked stale with captured history preserved and no rewrite; recapture is required before any downstream admission decision.
