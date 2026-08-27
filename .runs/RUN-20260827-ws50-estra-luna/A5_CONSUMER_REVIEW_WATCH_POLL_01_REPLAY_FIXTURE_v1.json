@@ -1,0 +1,19 @@
+{
+  "schema_id": "ESTRA_WS50_A5_CONSUMER_REVIEW_WATCH_POLL_REPLAY_FIXTURE_v1",
+  "mode": "PURE_DECLARATIVE_REPLAY_NO_CONSUMER_EXECUTION",
+  "cases": [
+    {"id": "poll_1_same_241_open", "attempt": 1, "open_slots": 241, "state": "IDENTICAL", "expected": "HEARTBEAT_RETRY_1"},
+    {"id": "poll_2_same_241_open", "attempt": 2, "open_slots": 241, "state": "IDENTICAL", "expected": "HEARTBEAT_RETRY_2"},
+    {"id": "poll_3_same_241_open", "attempt": 3, "open_slots": 241, "state": "IDENTICAL", "expected": "ESCALATE_OWNER_REVIEWER"},
+    {"id": "timeout_after_poll_3", "attempt": 3, "open_slots": 241, "state": "TIMEOUT", "expected": "ESCALATE_OWNER_REVIEWER"},
+    {"id": "receipt_arrival_but_independent_missing", "attempt": 1, "open_slots": 1, "state": "RECEIPTS_PARTIAL", "expected": "RETURN_FOR_REPAIR_MISSING_INDEPENDENT_REVIEW_RECEIPT"},
+    {"id": "all_receipts_arrive_bounded_profile", "attempt": 1, "open_slots": 0, "state": "ALL_RECEIPTS_PRESENT", "expected": "PROFILE_REVIEW_READY"},
+    {"id": "stale_consumer_ref", "attempt": 1, "open_slots": 0, "state": "STALE_REF", "expected": "BLOCKED_RECAPTURE_REQUIRED"},
+    {"id": "provenance_mismatch", "attempt": 1, "open_slots": 0, "state": "PROVENANCE_MISMATCH", "expected": "BLOCKED_PROVENANCE"},
+    {"id": "digest_mismatch", "attempt": 1, "open_slots": 0, "state": "DIGEST_MISMATCH", "expected": "BLOCKED_DIGEST"},
+    {"id": "rights_mismatch", "attempt": 1, "open_slots": 0, "state": "RIGHTS_MISMATCH", "expected": "BLOCKED_RIGHTS"},
+    {"id": "private_runtime", "attempt": 1, "open_slots": 0, "state": "PRIVATE_RUNTIME", "expected": "BLOCKED_PRIVATE_RUNTIME"},
+    {"id": "widened_claim", "attempt": 1, "open_slots": 0, "state": "WIDENED_CLAIM", "expected": "BLOCKED_CLAIM_CEILING"},
+    {"id": "reviewer_authority", "attempt": 1, "open_slots": 0, "state": "REVIEWER_AUTHORITY", "expected": "BLOCKED_REVIEWER_AUTHORITY"}
+  ]
+}
