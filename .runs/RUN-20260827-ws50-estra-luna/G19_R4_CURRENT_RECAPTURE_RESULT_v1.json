@@ -1,0 +1,114 @@
+{
+  "schema_id": "ESTRA_WS50_G19_R4_CURRENT_RECAPTURE_RESULT_v1",
+  "result_kind": "GENERATION_PLUS_ONE_REPAIR_RECAPTURE",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "cycle_id": "OC14-G1-CYCLE-ROOT",
+  "predecessor_generation": 18,
+  "next_generation": 19,
+  "phase": "RETURN_FOR_REPAIR",
+  "status": "CURRENT_RECAPTURE_COMPLETE; READY_FOR_WS70_REVALIDATION",
+  "idempotency_key": "WS90:G18:R4:RETURN_FOR_REPAIR:HOST_SAFETY_ACTIVE_ALERT_BLOCKED:9c7aff949a19b9b43ea41e5bdf5ee5af0f1d20432a6df02d3703b2728ad58ffc",
+  "validator_return_consumed": {
+    "validator": "WS70 independent machine/functional validator",
+    "decision": "RETURNED_FOR_REPAIR",
+    "code": "HOST_SAFETY_ACTIVE_ALERT_BLOCKED",
+    "validator_commit": "30472ba8541d16401697bf1f872776aa4e91de05",
+    "validator_tree": "a64bb1a9a7e3194c8001555c6d2c80930443176d",
+    "stale_subreceipt_digest": "9c7aff949a19b9b43ea41e5bdf5ee5af0f1d20432a6df02d3703b2728ad58ffc",
+    "selected_candidate_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "selected_candidate_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48"
+  },
+  "governed_restart_preflight": {
+    "script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_restart_preflight_v1.py",
+    "receipt_path": "C:\\Users\\Megaport\\work\\logion_local\\runtime\\hot\\host_safety\\restart_preflight_receipts\\HOST_SAFETY_RESTART_PREFLIGHT_RECEIPT_HOST-SAFETY-RESTART-PREFLIGHT-0E30913936A67810AA994857.json",
+    "receipt_sha256": "cf729a97967af8fe5ad15b0952c8143486c5b55f35449c8eb917fc7adf971d81",
+    "receipt_status": "BLOCKED_COMMON_STOP_MARKER_MISSING",
+    "stop_marker_removed": false,
+    "process_kill_performed": false,
+    "database_opened": false,
+    "directory_scan_performed": false,
+    "incident_id": "HOST-SAFETY-INCIDENT-A24A1CC74F66F81788F6A0A6",
+    "interpretation": "No manual marker removal; the preflight was fail-closed. Subsequent guarded admission succeeded under current safety projection."
+  },
+  "current_subreceipt_recapture": {
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/R4_ESTRA_FUNCTIONAL_SUBRECEIPT_CURRENT_v1.json",
+    "raw_sha256": "1357d7a86c8a6f4199b723ecd91860619659439b8e39c92e7c0d65a05fc30d9a",
+    "bytes": 9523,
+    "git_blob": "6bf4fcdaad17218393ee7b668febe47f98fc6a87",
+    "producer_commit": "1ee912bc9004a2d108f4a7b6f255a2bb4b7b6b0a",
+    "producer_tree": "527c451b4f6a610bd3d02aff6797bc105f79d8cb",
+    "remote_path_present": true,
+    "stale_embedded_readback_repaired": true
+  },
+  "latest_current_artifact": {
+    "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_id": "OC14-OB-ESTRA-01",
+    "consumer_generation": 19,
+    "required_state": "FUNCTIONAL_MACHINE_VALIDATION_RECEIPT_PRESENT",
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "resolution": "CURRENT_CANDIDATE_RESOLVED; FRESH_GUARDED_REPLAY_AVAILABLE; WS70_RECEIPT_PENDING"
+  },
+  "fresh_guarded_replay": {
+    "command": "python -B -m pytest -q tests -p no:cacheprovider",
+    "guard_script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "cwd": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "status": "PASS_GUARDED_69_TESTS",
+    "numerator": 69,
+    "denominator": 69,
+    "exit_code": 0,
+    "payload_started": true,
+    "stdout": ".....................................................................    [100%]",
+    "toolchain": {"python": "Python 3.14.3", "pytest": "pytest 9.0.2", "pythonpath": "src"},
+    "prior_blocker": {"guard_exit_code": 120, "payload_started": false, "reason": "ACTIVE_ALERT_OPEN"},
+    "claim_ceiling": "Fresh guarded execution evidence only; not independent acceptance."
+  },
+  "candidate_fingerprint": {
+    "manifest_path": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "manifest_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "numerator": 40,
+    "denominator": 40,
+    "mismatches": 0,
+    "source_inherited_dirty_count": 16,
+    "source_mutated": false,
+    "interpretation": "Preservation/fingerprint evidence only; not acceptance."
+  },
+  "remote_readback": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "remote_ref": "refs/remotes/origin/workstream/oc14-estra-luna-20260827",
+    "local_commit": "1ee912bc9004a2d108f4a7b6f255a2bb4b7b6b0a",
+    "local_tree": "527c451b4f6a610bd3d02aff6797bc105f79d8cb",
+    "remote_commit": "1ee912bc9004a2d108f4a7b6f255a2bb4b7b6b0a",
+    "remote_tree": "527c451b4f6a610bd3d02aff6797bc105f79d8cb",
+    "sha_match": true,
+    "tree_match": true,
+    "dirty_count": 0
+  },
+  "ws70_revalidation": {
+    "validator_thread": "01a04271-ff7c-7812-9b3b-1d317af41691",
+    "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION_ONLY",
+    "owner": "WS70 independent functional validator",
+    "action": "Revalidate the recaptured current subreceipt and fresh guarded 69/69 evidence; issue typed PASS or exact blocker.",
+    "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+    "receipt": null,
+    "next_transition": "WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_FAULT"
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "semantic_ws35_acceptance": "SEPARATE_PENDING",
+    "cci_status": "WITHHELD",
+    "promotion_publication_authority": false
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "source_shared_main_pointer_public_db_host_io_mutation": false,
+    "reset_delete_move_cleanup": false,
+    "activation": false
+  }
+}
