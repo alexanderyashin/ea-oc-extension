@@ -1,0 +1,71 @@
+{
+  "schema_id": "ESTRA_WS50_A4_CONSUMER_REVIEW_WATCH_REPLAY_FIXTURE_v1",
+  "mode": "PURE_DECLARATIVE_REPLAY_NO_CONSUMER_EXECUTION",
+  "cases": [
+    {
+      "id": "current_all_slots_missing",
+      "input": {"missing_admission": 120, "missing_reviewer": 120, "missing_independent": 1, "heartbeat_retry": 0},
+      "expected": "RETURN_FOR_REPAIR_MISSING_CONSUMER_OR_INDEPENDENT_REVIEW_RECEIPT"
+    },
+    {
+      "id": "after_heartbeat_retry_1_identical",
+      "input": {"missing_admission": 120, "missing_reviewer": 120, "missing_independent": 1, "heartbeat_retry": 1},
+      "expected": "HEARTBEAT_RETRY_1"
+    },
+    {
+      "id": "after_heartbeat_retry_2_identical",
+      "input": {"missing_admission": 120, "missing_reviewer": 120, "missing_independent": 1, "heartbeat_retry": 2},
+      "expected": "HEARTBEAT_RETRY_2"
+    },
+    {
+      "id": "after_heartbeat_retry_3_identical",
+      "input": {"missing_admission": 120, "missing_reviewer": 120, "missing_independent": 1, "heartbeat_retry": 3},
+      "expected": "ESCALATE_OWNER_REVIEWER"
+    },
+    {
+      "id": "all_consumer_slots_present_independent_missing",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 1, "heartbeat_retry": 0},
+      "expected": "RETURN_FOR_REPAIR_MISSING_INDEPENDENT_REVIEW_RECEIPT"
+    },
+    {
+      "id": "all_slots_present_bounded_profile_only",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "heartbeat_retry": 0},
+      "expected": "PROFILE_REVIEW_READY"
+    },
+    {
+      "id": "stale_consumer_ref",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "ref_state": "STALE"},
+      "expected": "BLOCKED_RECAPTURE_REQUIRED"
+    },
+    {
+      "id": "provenance_mismatch",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "provenance": "MISMATCH"},
+      "expected": "BLOCKED_PROVENANCE"
+    },
+    {
+      "id": "digest_mismatch",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "digest": "MISMATCH"},
+      "expected": "BLOCKED_DIGEST"
+    },
+    {
+      "id": "rights_mismatch",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "rights": "WRITE"},
+      "expected": "BLOCKED_RIGHTS"
+    },
+    {
+      "id": "private_runtime",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "runtime": "PRIVATE"},
+      "expected": "BLOCKED_PRIVATE_RUNTIME"
+    },
+    {
+      "id": "widened_claim",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "claim_ceiling": "WIDENED"},
+      "expected": "BLOCKED_CLAIM_CEILING"
+    },
+    {
+      "id": "reviewer_authority",
+      "input": {"missing_admission": 0, "missing_reviewer": 0, "missing_independent": 0, "reviewer": "AUTHORITY"},
+      "expected": "BLOCKED_REVIEWER_AUTHORITY"
+    }
+  ]
+}

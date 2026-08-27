@@ -1,0 +1,2347 @@
+{
+  "schema_id": "ESTRA_WS50_A4_CONSUMER_REVIEW_WATCH_REPAIR_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "WATCH_OPEN__RETURN_FOR_REPAIR",
+  "created_at_utc": "2026-08-27T13:04:52.519410Z",
+  "mode": "PURE_METADATA_VALIDATOR_REPLAY_NEGATIVES_ONLY",
+  "source_request": "STREAM-OC14-G0-A4-WS50-CONSUMER-REVIEW-WATCH-01",
+  "base_worker": {
+    "worktree": "C:/Users/Megaport/LOGION Ecosystem/03_ESTRA/Private/Remote/ea-oc-extension-ws50-estra-luna-20260827",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "commit": "368ba5ecfc928f0a768d05cf7d3d7bfee454daf7",
+    "tree": "841685dfb9cdd3ec0b7ed4b1aba84a8838448464",
+    "clean_at_capture": true
+  },
+  "source_provenance": {
+    "repository": "ea-oc-extension",
+    "commit": "5398bfed0efbc56ad969382df48af568ee2df24b",
+    "tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+    "rights": "READ_ONLY_REFERENCE",
+    "mutation": false
+  },
+  "candidate_binding": {
+    "manifest": "A3_INDEPENDENT_PROFILE_REVIEW_REQUEST_MANIFEST_v1.json",
+    "rows": 40,
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "promotion_forbidden": true,
+    "holdout_delta": "NEGATIVE",
+    "confidence_interval": "INCLUDES_ZERO"
+  },
+  "exact_predicates": {
+    "source": "source repository/commit/tree must equal the immutable WS-50 source binding; source mutation=false",
+    "candidate": "all 40 candidate IDs must match the A3 metadata matrix; candidate_only=true; accepted=0; promotion_forbidden=true",
+    "consumer_ref": "each receipt must match its declared repository/branch/commit/tree/commit_tree_digest exactly",
+    "provenance": "receipt provenance must be PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE and correspond to the declared consumer",
+    "rights": "receipt rights must remain READ_ONLY_REFERENCE",
+    "reviewer": "review is recommendation-only and independently attributable; no authority or acceptance effect",
+    "runtime": "no live ESTRA execution, feature/catalog mutation, publication, DB, raw, cold or HOST_IO effect",
+    "claim_ceiling": "semantic-review-candidate-only; no science, dominance, publication, release or activation claim"
+  },
+  "retry_policy": {
+    "heartbeat": true,
+    "max_heartbeat_retries": 3,
+    "retry_numbers": [
+      1,
+      2,
+      3
+    ],
+    "identical_dependency_key": "MISSING_CONSUMER_OR_INDEPENDENT_REVIEW_RECEIPT",
+    "retry_1": "HEARTBEAT_RETRY_1",
+    "retry_2": "HEARTBEAT_RETRY_2",
+    "retry_3": "HEARTBEAT_RETRY_3",
+    "after_retry_3_identical": {
+      "status": "ESCALATE_OWNER",
+      "code": "ESCALATE_OWNER_REVIEWER",
+      "route": "OC14 router + WS-50 owner + affected consumer/reviewer",
+      "auto_retry": false
+    }
+  },
+  "slot_counts": {
+    "candidate_rows": 40,
+    "consumer_count": 3,
+    "consumer_admission_slots": 120,
+    "consumer_reviewer_slots": 120,
+    "independent_engineering_review_slots": 1,
+    "total_required_slots": 241,
+    "admission_receipts_present": 0,
+    "reviewer_receipts_present": 0,
+    "independent_review_receipts_present": 0,
+    "open_slots": 241
+  },
+  "accept_or_return": {
+    "accept_code": "PROFILE_REVIEW_READY",
+    "accept_rule": "Accept only when all 241 slots are non-null, exact-predicate matched, independently attributable and no fail-closed negative is active; acceptance remains profile/transport metadata only.",
+    "return_code": "RETURN_FOR_REPAIR_MISSING_CONSUMER_OR_INDEPENDENT_REVIEW_RECEIPT",
+    "current_decision": "RETURN_FOR_REPAIR_MISSING_CONSUMER_OR_INDEPENDENT_REVIEW_RECEIPT",
+    "promotion_forbidden": true,
+    "scientific_acceptance": false,
+    "authority": false
+  },
+  "missing_routes": {
+    "WS-60": "40 admission + 40 reviewer slots across WS-60 rows -> WS-60 Toolkit owner",
+    "WS-70": "40 admission + 40 reviewer slots across WS-70 rows -> WS-70 adapter/execution consumer owner",
+    "WS-75": "40 admission + 40 reviewer slots across WS-75 rows -> WS-75 Publication owner",
+    "independent_engineering_review": "1 profile-review receipt for all 40 rows -> independent engineering reviewer / WS-50 owner"
+  },
+  "negative_boundaries": {
+    "stale_ref": "BLOCKED_RECAPTURE_REQUIRED",
+    "provenance_mismatch": "BLOCKED_PROVENANCE",
+    "digest_mismatch": "BLOCKED_DIGEST",
+    "rights_mismatch": "BLOCKED_RIGHTS",
+    "private_runtime": "BLOCKED_PRIVATE_RUNTIME",
+    "widened_claim": "BLOCKED_CLAIM_CEILING",
+    "reviewer_authority": "BLOCKED_REVIEWER_AUTHORITY",
+    "candidate_only": true,
+    "dominance": false,
+    "holdout_delta": "NEGATIVE",
+    "confidence_interval": "INCLUDES_ZERO",
+    "promotion_forbidden": true,
+    "source_mutation": false,
+    "registry_main_pointer_mutation": false,
+    "shared_public_mutation": false
+  },
+  "rows": [
+    {
+      "row_number": 1,
+      "candidate_id": "README.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 2,
+      "candidate_id": "configs/ESTRA.OptimalityRegistry.v3.schema.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 3,
+      "candidate_id": "configs/ESTRA.ProjectionRegistry.v2.schema.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 4,
+      "candidate_id": "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 5,
+      "candidate_id": "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 6,
+      "candidate_id": "docs/estra-2.0/02_METHOD.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 7,
+      "candidate_id": "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 8,
+      "candidate_id": "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 9,
+      "candidate_id": "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 10,
+      "candidate_id": "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 11,
+      "candidate_id": "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 12,
+      "candidate_id": "docs/estra-3.0/02_METHOD.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 13,
+      "candidate_id": "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 14,
+      "candidate_id": "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 15,
+      "candidate_id": "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 16,
+      "candidate_id": "docs/estra-3.0/06_WORKED_CASE.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 17,
+      "candidate_id": "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 18,
+      "candidate_id": "paper/estra_optimality_framework_v3/main.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 19,
+      "candidate_id": "paper/estra_projection_framework_v2/README.md",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 20,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 21,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 22,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 23,
+      "candidate_id": "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 24,
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 25,
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 26,
+      "candidate_id": "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 27,
+      "candidate_id": "scripts/verify_estra_optimality_framework_v3.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 28,
+      "candidate_id": "scripts/verify_estra_projection_framework_v2.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 29,
+      "candidate_id": "src/estra_optimality_framework/__init__.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 30,
+      "candidate_id": "src/estra_optimality_framework/__main__.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 31,
+      "candidate_id": "src/estra_optimality_framework/core.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 32,
+      "candidate_id": "src/estra_optimality_framework/validation.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 33,
+      "candidate_id": "src/estra_projection_framework/__init__.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 34,
+      "candidate_id": "src/estra_projection_framework/__main__.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 35,
+      "candidate_id": "src/estra_projection_framework/validation.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 36,
+      "candidate_id": "tests/fixtures/estra_v2/municipal_permit_registry.valid.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 37,
+      "candidate_id": "tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 38,
+      "candidate_id": "tests/fixtures/estra_v3/negative_cases.json",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 39,
+      "candidate_id": "tests/test_estra_optimality_framework_v3.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    },
+    {
+      "row_number": 40,
+      "candidate_id": "tests/test_estra_projection_framework_v2.py",
+      "consumer_slots": {
+        "WS-60": {
+          "exact_ref": {
+            "repository": "estra-toolkit",
+            "branch": "workstream/oc14-toolkit-luna-20260827",
+            "commit": "c79ca249aa202718debacffe3b4a5566948a06ae",
+            "tree": "a17246b0d1b6a4256e1c73c48170cdfab6fc2e24",
+            "commit_tree_digest": "394ac0f7e84c3bb947d7b56cc050f8f1140ff972e4d43afefce4963d8482f509"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-60 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-70": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-machine-luna-20260827",
+            "commit": "b0ba5b95a75cb507e08013aa6fb66df12e2e5b3d",
+            "tree": "e65a8fcb2edad46bcf0c49d0b73586857ea74d3b",
+            "commit_tree_digest": "acd39796340bf7d8009bf5a22a131a8280910e26ebf3f8b888544b3a592dba46"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_FEATURE_CATALOG_MUTATION",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-70 current consumer owner",
+          "status": "MISSING"
+        },
+        "WS-75": {
+          "exact_ref": {
+            "repository": "Logion",
+            "branch": "workstream/oc14-publication-luna-20260827",
+            "commit": "160312105bf3e8448a958328152c123af0505443",
+            "tree": "5045192778ef6dbe422d8a4b1e81ae72929cfd95",
+            "commit_tree_digest": "f195080930cb12519802b32318db5a1fd76c08c99f190ca5155fd4a861e195be"
+          },
+          "provenance_predicate": "PASS_EXACT_REPOSITORY_BRANCH_COMMIT_TREE",
+          "rights_predicate": "READ_ONLY_REFERENCE",
+          "runtime_predicate": "NO_LIVE_ESTRA_EXECUTION_NO_PUBLICATION_OR_DB_EFFECT",
+          "admission_receipt": null,
+          "reviewer_receipt": null,
+          "owner_route": "WS-75 current consumer owner",
+          "status": "MISSING"
+        }
+      },
+      "row_candidate_only": true,
+      "row_promotion_forbidden": true
+    }
+  ]
+}
