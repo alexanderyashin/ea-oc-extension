@@ -1,0 +1,78 @@
+{
+  "schema_id": "ESTRA_WS50_DOMAIN_EXECUTION_RESULT_v1",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "deliverable_logical_id": "OC14-OB-ESTRA-01",
+  "cycle_id": "OC14-G1-CYCLE-ROOT",
+  "parent_cycle_id": null,
+  "cycle_index": 0,
+  "generation": 1,
+  "phase_index": 0,
+  "dispatch_phase": "ROUTED_READY_TO_EXECUTE",
+  "source_current_phase": "SPECIFIED",
+  "result_status": "HOLD_INHERITED_DIRTY_CONFLICT",
+  "source_catalog": {
+    "sha256": "D006D5FAC755AC37A47018A3128940C489540053414D6D3B38EE963004B376BC",
+    "commit": "7b9567dbbb6f31f7428c94dfdb8b94a40f4525ac",
+    "tree": "ee972a72f763f7a005b3bce7a243752e308808e7"
+  },
+  "idempotency_key": "WS90:CYCLE:G1:OC14-G1-WS50-ESTRA-01:DISPATCH",
+  "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+  "executor": {
+    "workstream": "WS-50-ESTRA",
+    "thread_id": "01a04271-cd1d-7590-b935-e3d078b003f5",
+    "write_boundary": "Own workstream report zone only"
+  },
+  "independent_validator": {
+    "thread_id": "01a04271-e73f-7991-8d1a-b08134b0411c",
+    "role": "Independent validator",
+    "route_only": true,
+    "executor_self_validation": false,
+    "executor_self_acceptance": false
+  },
+  "cci_controller_recorded_only": "CCI_CYCLE_CONTROLLER",
+  "artifact": {
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "fingerprint_status": "FIXED_IN_FINGERPRINT_ENVELOPE_AFTER_COMMIT"
+  },
+  "evidence": {
+    "candidate_manifest_path": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "candidate_manifest_raw_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "candidate_file_total": 40,
+    "candidate_checksum_matches": 40,
+    "candidate_checksum_mismatches": 0,
+    "source_inherited_dirty_count": 16,
+    "source_status_unchanged": true,
+    "guarded_baseline_receipt_path": ".runs/RUN-20260827-ws50-estra-luna/G1_GUARDED_BASELINE_RECEIPT_v1.json",
+    "guarded_baseline_receipt_raw_sha256": "ff0c05764e10689bc51311dca499585c91f04d2b50c2182962c99f95b9002a6a",
+    "guarded_baseline_status": "PASS_GUARDED_69_TESTS",
+    "baseline_execution": "REUSED_FRESH_GUARDED_RECEIPT; NO_SUBSTANTIVE_RERUN_REQUIRED"
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "promotion_forbidden": true,
+    "science_publication_release_authority": false
+  },
+  "preservation_boundary": {
+    "inherited_material_preserved": true,
+    "reset": false,
+    "delete": false,
+    "move": false,
+    "cleanup": false,
+    "source_shared_main_pointer_public_mutation": false,
+    "cold_raw_db_host_io": false
+  },
+  "router_boundary": {
+    "dispatch_only": true,
+    "writes_performed": 0,
+    "HOST_IO": false,
+    "activation": false,
+    "direct_executor_to_cci": false,
+    "next_transition": "DOMAIN_EXECUTION_RESULT_TO_NAMED_INDEPENDENT_VALIDATOR"
+  },
+  "handoff_status": "PENDING_EXACT_FINGERPRINT_AND_REMOTE_READBACK_THEN_WS35_EQUIVALENT_VALIDATOR_HANDOFF"
+}
