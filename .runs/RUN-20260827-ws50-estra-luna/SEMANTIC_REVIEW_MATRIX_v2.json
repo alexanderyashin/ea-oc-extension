@@ -1,0 +1,71 @@
+{
+  "schema_id": "ESTRA_WS50_SEMANTIC_REVIEW_MATRIX_v2",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "status": "REVIEWED__IMPLEMENTATION_ACCEPTANCE_HELD",
+  "candidate_manifest": "CANDIDATE_FREEZE_MANIFEST_v1.json",
+  "accepted_math_ceiling": "WS-20-MATH at 477549e: exact-cut formal result only; independent clean Lean replay remains open.",
+  "accepted_metaontology_ceiling": "WS-30-METAONTOLOGY at 477549e: current-cut semantic/formal engineering result; SQL correspondence is not formal proof; no ontology authority promoted.",
+  "global_nonclaims": [
+    "The 69/69 Python test replay is not a Lean proof or metaontology proof.",
+    "The negative Phase C holdout delta and confidence interval including zero do not license typed-history dominance.",
+    "Finite deterministic candidate checks do not license stochastic, measurable-channel, universal-enterprise or live-deployment claims.",
+    "No file in this matrix is accepted for publication, release, Toolkit feature mutation or scientific self-acceptance."
+  ],
+  "preserve_inherited": {
+    "count": 24,
+    "disposition": "PRESERVE_INHERITED",
+    "reason_code": "INHERITED_EVIDENCE_OR_LINEAGE_SURFACE",
+    "reason": "These files were dirty/untracked before the worker and preserve historical candidate identity, lineage, reader framing or bounded receipts. They are not rewritten or absorbed. Their existence is not acceptance evidence.",
+    "paths": [
+      "README.md",
+      "docs/estra-2.0/00_LINEAGE_STATUS_AND_ENGINEERING_BASIS.md",
+      "docs/estra-2.0/01_FORMAL_MODEL.md",
+      "docs/estra-2.0/02_METHOD.md",
+      "docs/estra-2.0/03_PRIOR_ART_COMPARISON.md",
+      "docs/estra-2.0/04_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "docs/estra-2.0/05_ENTERPRISE_NEUTRAL_WORKED_CASE.md",
+      "docs/estra-3.0/00_LINEAGE_STATUS_AND_SCOPE.md",
+      "docs/estra-3.0/01_CHARACTERIZATION_THEORY.md",
+      "docs/estra-3.0/02_METHOD.md",
+      "docs/estra-3.0/03_ABLATION_AND_INDEPENDENCE.md",
+      "docs/estra-3.0/04_PRIOR_ART_AND_NOVELTY.md",
+      "docs/estra-3.0/05_CONFORMANCE_AND_COUNTEREXAMPLES.md",
+      "docs/estra-3.0/06_WORKED_CASE.md",
+      "docs/estra-3.0/07_PHASE_C_EMPIRICAL_CONSTRAINT.md",
+      "paper/estra_optimality_framework_v3/main.md",
+      "paper/estra_projection_framework_v2/README.md",
+      "release-assets/estra-optimality-framework-v3.0.0-alpha.1/CONFORMANCE_RECEIPT.json",
+      "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MACHINE_REVIEW.json",
+      "release-assets/estra-optimality-framework-v3.0.0-alpha.1/MANIFEST.json",
+      "release-assets/estra-optimality-framework-v3.0.0-alpha.1/OPTIMALITY_CERTIFICATE.json",
+      "release-assets/estra-projection-framework-v2.0.0-rc.1/CONFORMANCE_RECEIPT.json",
+      "release-assets/estra-projection-framework-v2.0.0-rc.1/MACHINE_REVIEW.json",
+      "release-assets/estra-projection-framework-v2.0.0-rc.1/MANIFEST.json"
+    ]
+  },
+  "implementation_delta": {
+    "count": 16,
+    "disposition": "IMPLEMENTATION_DELTA",
+    "acceptance": "REJECTED_PENDING_EXACT_PROOF_OR_SEMANTIC_BINDING",
+    "items": [
+      {"path":"configs/ESTRA.ProjectionRegistry.v2.schema.json","reason_code":"V2_SCHEMA_NO_ACCEPTED_SEMANTIC_PRODUCER","rejection_reason":"Schema syntax does not prove the OC derivation, accepted WS-20 formal grounding or WS-30 rule correspondence; no producer packet accepts this registry as canonical."},
+      {"path":"configs/ESTRA.OptimalityRegistry.v3.schema.json","reason_code":"V3_SCHEMA_FINITE_SCOPE_ONLY","rejection_reason":"Schema syntax cannot prove predictive-state minimality, Blackwell claims or broader channel semantics; the accepted ceilings do not admit universal or stochastic generalization."},
+      {"path":"scripts/verify_estra_projection_framework_v2.py","reason_code":"V2_VALIDATOR_NOT_FORMAL_PROOF","rejection_reason":"Deterministic Python validation covers finite registry semantics only; it is not Lean proof, SQL correspondence proof or current-cut metaontology acceptance."},
+      {"path":"scripts/verify_estra_optimality_framework_v3.py","reason_code":"V3_VALIDATOR_SCOPED_AND_HOLDOUT_NEGATIVE","rejection_reason":"The checker characterizes finite deterministic experiments, while the admitted typed-history holdout result is negative; no dominance or universal optimality follows."},
+      {"path":"src/estra_projection_framework/__init__.py","reason_code":"V2_SOURCE_UNACCEPTED_FRAMEWORK_SEMANTICS","rejection_reason":"Executable names and functions implement a candidate projection model but have no accepted producer packet, independent semantic review or proof that the model is the accepted OC/metaontology contract."},
+      {"path":"src/estra_projection_framework/__main__.py","reason_code":"V2_CLI_NOT_SEMANTIC_AUTHORITY","rejection_reason":"CLI execution is an engineering surface; successful invocation cannot establish formal derivation, ontology authority or live enterprise validity."},
+      {"path":"src/estra_projection_framework/validation.py","reason_code":"V2_FINITE_VALIDATION_BOUNDARY","rejection_reason":"Validation issue codes and checks are bounded executable evidence only; missing Lean correspondence, domain-independent adapter proof and independent review block acceptance."},
+      {"path":"src/estra_optimality_framework/__init__.py","reason_code":"V3_SOURCE_UNACCEPTED_OPTIMALITY","rejection_reason":"The candidate package exposes an alpha characterization but the accepted math/metaontology packets do not prove its optimality semantics or promote it as a canonical framework."},
+      {"path":"src/estra_optimality_framework/__main__.py","reason_code":"V3_CLI_NOT_DOMINANCE_PROOF","rejection_reason":"CLI replay can reproduce finite classifications but cannot reverse the negative holdout result or establish typed-history dominance."},
+      {"path":"src/estra_optimality_framework/core.py","reason_code":"V3_FINITE_DETERMINISTIC_CORE","rejection_reason":"Core algorithms are bounded to finite deterministic experiments; no proof is supplied for measurable stochastic channels, enterprise-wide transfer or universal optimality."},
+      {"path":"src/estra_optimality_framework/validation.py","reason_code":"V3_NEGATIVE_AND_SCOPE_BOUNDARY","rejection_reason":"Negative-case validation is valuable evidence but not a positive dominance result; broader semantic acceptance requires an independently reviewed proof and accepted current-cut binding."},
+      {"path":"tests/fixtures/estra_v2/municipal_permit_registry.valid.json","reason_code":"V2_SYNTHETIC_CASE_NOT_CURRENT_LOGION","rejection_reason":"Enterprise-neutral fixture tests candidate syntax/semantics but is not a current Logion object set and cannot establish domain-independent bridge validity."},
+      {"path":"tests/fixtures/estra_v3/maintenance_dispatch_registry.valid.json","reason_code":"V3_SYNTHETIC_CASE_NOT_HOLDOUT_REPAIR","rejection_reason":"Synthetic worked case exercises finite characterization but does not repair or overturn the rejected Logion typed-history holdout candidate."},
+      {"path":"tests/fixtures/estra_v3/negative_cases.json","reason_code":"V3_NEGATIVE_FIXTURES_NOT_POSITIVE_PROOF","rejection_reason":"Negative fixtures document rejection behavior; they do not prove the positive optimality theorem, accepted metaontology correspondence or dominance."},
+      {"path":"tests/test_estra_projection_framework_v2.py","reason_code":"V2_TEST_PASS_NOT_FORMAL_ACCEPTANCE","rejection_reason":"Passing tests establish executable regression behavior only; they do not discharge the accepted WS-20 open Lean replay or WS-30 SQL/formal correspondence obligation."},
+      {"path":"tests/test_estra_optimality_framework_v3.py","reason_code":"V3_TEST_PASS_NOT_DOMINANCE","rejection_reason":"Passing tests establish finite deterministic regression behavior only; they cannot license dominance when holdout delta is negative and CI includes zero."}
+    ]
+  },
+  "review_decision": "PRESERVE_ALL_INHERITED_BYTES; ACCEPT_NO_IMPLEMENTATION_DELTA; return implementation items to semantic/proof review after accepted producer packets and independent review.",
+  "claim_ceiling": "Exact file classification and bounded rejection reasons at accepted WS-20/WS-30 ceilings; no source acceptance, dominance, publication, release or activation claim."
+}

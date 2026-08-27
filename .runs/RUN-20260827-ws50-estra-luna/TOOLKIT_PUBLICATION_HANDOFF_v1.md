@@ -2,13 +2,14 @@
 
 ## Handoff state
 
-`DISCOVERY_CHECKPOINT__GUARDED_BASELINE_PASS__SEMANTIC_ACCEPTANCE_OPEN`
+`SUCCESSOR_REVIEW_CHECKPOINT__24_PRESERVED__16_IMPLEMENTATION_DELTAS_REJECTED_PENDING_PROOF`
 
 Worker branch: `workstream/oc14-estra-luna-20260827`
 Source candidate checkout: `main` at `5398bfed0efbc56ad969382df48af568ee2df24b`
 Remote parity: `fa07c9ec9bf0410d88a166032a587ba223e9fdbb` / tree
 `63e9fc6c224f1ebe79106c15e956444e959e78f0`
 Freeze manifest: `CANDIDATE_FREEZE_MANIFEST_v1.json`
+Semantic matrix: `SEMANTIC_REVIEW_MATRIX_v2.json`
 
 ## Delivered evidence
 
@@ -23,11 +24,15 @@ Freeze manifest: `CANDIDATE_FREEZE_MANIFEST_v1.json`
   packet.
 - The worker evidence commit was read back from the remote branch with matching
   SHA/tree and all eight required paths present.
+- Successor review splits all 40 candidates into 24 `PRESERVE_INHERITED` and
+  16 `IMPLEMENTATION_DELTA`; every implementation delta has an exact proof or
+  semantic rejection reason.
 
 ## Open obligations
 
-1. Perform independent semantic review of source, schema, paper, fixture and
-   release-manifest parity for each lineage.
+1. Obtain accepted producer packets and independent semantic/proof review for
+   the 16 implementation deltas; no candidate source mutation is authorized by
+   this handoff.
 2. Decide a separately authorized canonical transport set; do not infer it
    from this preservation manifest.
 3. Keep Toolkit and publication consumers pointed at this handoff as

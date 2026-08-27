@@ -1,0 +1,31 @@
+{
+  "schema_id": "ESTRA_WS50_SUCCESSOR_SEMANTIC_REVIEW_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "tranche": "SUCCESSOR_SEMANTIC_REVIEW",
+  "status": "FROZEN_BEFORE_REVIEW_EVIDENCE_MUTATION",
+  "base_commit": "db8355978a52cb36263816f413d655d5b3c8d984",
+  "base_tree": "3b5186aacc04e1f12bdef106c8e45e777f6f517f",
+  "accepted_logion_register": {
+    "commit": "477549e04a8514f8ff118a5ad10a4edee8d42bab",
+    "branch": "governance/oc14-release-discovery-20260827",
+    "ws50_acceptance": "ACCEPT_CANDIDATE_FREEZE_AND_BASELINE",
+    "ws20_ceiling": "formal result at exact stated cut; no independent clean Lean replay accepted in the tranche",
+    "ws30_ceiling": "current-cut semantic/formal engineering result; SQL correspondence is not formal proof and no ontology authority is promoted"
+  },
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/SUCCESSOR_SEMANTIC_REVIEW_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/SEMANTIC_REVIEW_MATRIX_v2.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "forbidden_effects": [
+    "modify candidate source files",
+    "modify shared Logion control or pointers",
+    "promote SQL tests to formal proof",
+    "claim dominance while holdout delta is negative and CI includes zero",
+    "claim publication, release, certification or activation"
+  ],
+  "review_rule": "Split all 40 frozen files into PRESERVE_INHERITED or IMPLEMENTATION_DELTA; attach an exact rejection reason wherever implementation acceptance exceeds the accepted WS-20/WS-30 ceiling.",
+  "claim_ceiling": "Semantic classification and rejection matrix only; no source acceptance or scientific dominance claim."
+}
