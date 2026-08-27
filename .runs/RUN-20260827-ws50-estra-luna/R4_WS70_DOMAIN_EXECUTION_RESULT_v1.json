@@ -1,0 +1,71 @@
+{
+  "schema_id": "ESTRA_WS50_DOMAIN_EXECUTION_RESULT_v1",
+  "result_kind": "FUNCTIONAL_ASSET_HANDOFF",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "predecessor_generation": 4,
+  "next_generation": 5,
+  "phase": "FUNCTIONAL_ASSET_REVIEW",
+  "result_status": "READY_FOR_WS70_INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION",
+  "idempotency_key": "WS90:CYCLE:G5:OC14-G1-WS50-ESTRA-01:WS70-FUNCTIONAL-RESULT",
+  "current_artifact_resolver": {
+    "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_id": "OC14-OB-ESTRA-01",
+    "consumer_generation": 5,
+    "required_state": "FUNCTIONAL_MACHINE_VALIDATION_RECEIPT_PRESENT",
+    "selected_candidate": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "status": "CANDIDATE_SELECTED; FUNCTIONAL_RECEIPT_PENDING"
+  },
+  "functional_asset_subreceipt": {
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/R4_FUNCTIONAL_ASSET_SUBRECEIPT_v1.json",
+    "raw_sha256": "d833769c61ec71144f9cdae953db2f68784ac03af38a55252573f0e8cf542672",
+    "bytes": 6179,
+    "producer_commit": "09619533d6f099de637e66954a2ad47bc523a723",
+    "producer_tree": "86c62d8912d414cd4c6e9db926f47457792bb6f2",
+    "committed_blob": "bd0145a73273ae54eef49fe64d59f6a5664f5606",
+    "remote_path_present": true,
+    "remote_sha_tree_parity": true
+  },
+  "target_independent_validator": {
+    "workstream": "WS-70",
+    "thread_id": "01a04271-ff7c-7812-9b3b-1d317af41691",
+    "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION_ONLY",
+    "action": "Validate the exact current artifact path/ref/blob/SHA, environment/toolchain binding and functional contract; issue a typed receipt or exact fault.",
+    "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+    "receipt": null,
+    "executor_self_validation": false
+  },
+  "evidence_summary": {
+    "candidate_checksums_numerator": 40,
+    "candidate_checksums_denominator": 40,
+    "candidate_checksums_are_not_acceptance": true,
+    "guarded_baseline": "PASS_GUARDED_69_TESTS",
+    "hard_fact_functional_gates_numerator": 5,
+    "hard_fact_functional_gates_denominator": 6,
+    "missing_evidence": ["WS70 typed independent machine/functional validation receipt"],
+    "toolchain": {"python": "Python 3.14.3", "pytest": "pytest 9.0.2", "pythonpath": "src"}
+  },
+  "separate_chain": {
+    "ws35_semantic_acceptance": "SEPARATE_PENDING; NOT IMPLIED BY WS70 FUNCTIONAL REVIEW",
+    "cci_controller": "CCI_CYCLE_CONTROLLER",
+    "cci_status": "WITHHELD",
+    "accepted": 0,
+    "dominance": false,
+    "candidate_only": true,
+    "promotion_forbidden": true
+  },
+  "inherited_dirty_boundary": {
+    "source_dirty_count": 16,
+    "source_checkout_mutated": false,
+    "reset_delete_move_cleanup": false,
+    "main_pointer_public_host_io_db_mutation": false
+  },
+  "router_boundary": {
+    "transport_only": true,
+    "direct_cci_route": false,
+    "authority_emitted": false,
+    "activation": false,
+    "substantive_rerun": false,
+    "next_transition": "WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_FAULT"
+  }
+}
