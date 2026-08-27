@@ -1,0 +1,113 @@
+{
+  "schema_id": "ESTRA_WS50_R4_FUNCTIONAL_ASSET_SUBRECEIPT_v2",
+  "receipt_kind": "CURRENT_FUNCTIONAL_ASSET_SUBRECEIPT",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "source_obligation_id": "OC14-OB-ESTRA-01",
+  "predecessor_generation": 4,
+  "next_generation": 5,
+  "phase": "FUNCTIONAL_ASSET_REVIEW",
+  "status": "READY_FOR_WS70_INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION",
+  "dynamic_latest_current_artifact": {
+    "resolver": "latest_current_artifact(logical_id,generation<=consumer_generation,required_state)",
+    "logical_id": "OC14-OB-ESTRA-01",
+    "consumer_generation": 5,
+    "required_state": "FUNCTIONAL_MACHINE_VALIDATION_RECEIPT_PRESENT",
+    "selected_path": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "selected_raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "status": "RESOLVED_CURRENT_CANDIDATE; EXTERNAL_FUNCTIONAL_RECEIPT_PENDING",
+    "n_plus_1_transition": "WS70_TYPED_FUNCTIONAL_RECEIPT_OR_EXACT_FAULT"
+  },
+  "exact_access_receipt": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "path_relative_to_branch": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "bytes": 3138,
+    "git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "producer_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "producer_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
+    "fingerprint_envelope_sha256": "ea33b4f66e15299ebb70649abeec32b3e0b7205b47c11cafb133d4f088637fdc",
+    "path_object_readback": "PASS"
+  },
+  "current_remote_readback": {
+    "local_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "local_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
+    "remote_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "remote_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
+    "sha_match": true,
+    "tree_match": true,
+    "worker_dirty_count": 0,
+    "result_path_present": true
+  },
+  "candidate_and_test_evidence": {
+    "candidate_manifest": ".runs/RUN-20260827-ws50-estra-luna/G1_CANDIDATE_PRESERVATION_MANIFEST_v1.json",
+    "candidate_manifest_sha256": "301a8d225b4ab95d907e7018762add3fb6536d05f2f18a4931da0886ec9a846e",
+    "candidate_checksums_numerator": 40,
+    "candidate_checksums_denominator": 40,
+    "candidate_only": true,
+    "test_receipt": ".runs/RUN-20260827-ws50-estra-luna/R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1.json",
+    "test_receipt_sha256": "PENDING_COMMIT_READBACK",
+    "guarded_test_numerator": 69,
+    "guarded_test_denominator": 69,
+    "guarded_test_status": "PASS_GUARDED_69_TESTS"
+  },
+  "environment_toolchain": {
+    "python": "Python 3.14.3",
+    "pytest": "pytest 9.0.2",
+    "pythonpath": "src",
+    "guard_script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "functional_asset_execution": "GUARDED_REPLAY_COMPLETED; NO_LIVE_ESTRA_OR_DB_EFFECT"
+  },
+  "independent_validation_chain": {
+    "ws70": {
+      "thread_id": "01a04271-ff7c-7812-9b3b-1d317af41691",
+      "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_VALIDATION_ONLY",
+      "owner": "WS70 independent machine/functional validator",
+      "action": "Validate exact path/ref/blob/SHA, toolchain binding and functional asset contract; emit typed receipt or exact fault.",
+      "deadline": "NEXT_HEARTBEAT_ACK_WINDOW",
+      "receipt": null,
+      "status": "PENDING_EXTERNAL_RECEIPT"
+    },
+    "ws35": {
+      "scope": "INDEPENDENT_APPLIED_ONTOLOGY_SEMANTIC_ACCEPTANCE",
+      "status": "SEPARATE_PENDING",
+      "implied_by_ws70": false
+    },
+    "cci": {
+      "controller": "CCI_CYCLE_CONTROLLER",
+      "status": "WITHHELD",
+      "closure_allowed_when": "WS70 functional receipt and separate WS35 semantic acceptance both satisfy current resolver state"
+    }
+  },
+  "hard_fact_scorecard": {
+    "asset_access_numerator": 6,
+    "asset_access_denominator": 6,
+    "functional_acceptance_numerator": 0,
+    "functional_acceptance_denominator": 1,
+    "missing_evidence": ["WS70 typed independent machine/functional validation receipt"],
+    "interpretation": "Execution replay and access evidence do not constitute independent acceptance."
+  },
+  "inherited_dirty_limits": {
+    "source_dirty_count": 16,
+    "preserved": true,
+    "reset_delete_move_cleanup": false,
+    "main_pointer_public_host_io_db_mutation": false
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true,
+    "promotion_forbidden": true,
+    "science_publication_release_authority": false
+  },
+  "router_boundary": {
+    "transport_only": true,
+    "self_validation": false,
+    "self_acceptance": false,
+    "direct_cci_route": false,
+    "authority_emitted": false,
+    "activation": false
+  }
+}

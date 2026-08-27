@@ -1,0 +1,38 @@
+{
+  "schema_id": "ESTRA_WS50_R4_CURRENT_GUARDED_69_TEST_RECEIPT_v1",
+  "receipt_kind": "EXECUTION_EVIDENCE_NOT_INDEPENDENT_ACCEPTANCE",
+  "task_id": "OC14-G1-WS50-ESTRA-01",
+  "snapshot_utc": "2026-08-27T21:52:43.9681529Z",
+  "guard": {
+    "script": "C:\\Users\\Megaport\\work\\estra-private-work\\logion\\k8\\core-db-spot\\ingest\\run_logion_host_safety_guarded_command_v1.py",
+    "require_common_stop_absent": true,
+    "actor": "WS-50-ESTRA",
+    "reason": "OC14 R4 current ESTRA functional subreceipt exact guarded 69-test replay"
+  },
+  "source_checkout": {
+    "path": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "head": "5398bfed0efbc56ad969382df48af568ee2df24b",
+    "tree": "30578579fc51acf3512991ed2a9b6a01c0b95691",
+    "dirty_count_observed": 16,
+    "inherited_material_mutated": false
+  },
+  "toolchain": {
+    "python": "Python 3.14.3",
+    "pytest": "pytest 9.0.2",
+    "pythonpath": "src"
+  },
+  "command": {
+    "requested": "PYTHONPATH=src python -B -m pytest -q tests -p no:cacheprovider",
+    "guarded_argv": ["python", "-B", "-m", "pytest", "-q", "tests", "-p", "no:cacheprovider"],
+    "cwd": "C:\\Users\\Megaport\\LOGION Ecosystem\\03_ESTRA\\Private\\Remote\\ea-oc-extension",
+    "stdout_tail": ".....................................................................    [100%]",
+    "exit_code": 0
+  },
+  "result": {
+    "status": "PASS_GUARDED_69_TESTS",
+    "test_count": 69,
+    "collection_count": 69,
+    "reproducible": true
+  },
+  "claim_ceiling": "Guarded execution evidence only; this receipt is not independent validation, semantic acceptance, dominance, publication, release or authority."
+}
