@@ -42,3 +42,14 @@ The deterministic review-only gate and its receipt are fixed in:
 Only the exact accepted WS-20 formal-math and WS-30 metaontology producer receipts are admissible. The gate returns `BLOCKED_DEPENDENCY` / `REJECT_UNACCEPTED_PRODUCER` for the WS-35 `PROPOSED__NOT_ACCEPTED__DEPENDENCY_READY` receipt, WS-30 `MATH-03 OPEN`, stale producer SHA, and provenance mismatch. It retains separate claim-ceiling blocks for the negative holdout and widened-ceiling scenarios.
 
 All 40 candidate rows now have exact Toolkit and Publication expectations in the fixture. Toolkit must preserve evidence or block implementation deltas pending the gate and independent review; Publication must remain review-only with no publication or release promotion. The negative holdout and CI-including-zero boundary remain unchanged.
+
+## Fifth-tranche producer-side compatibility
+
+The producer-side compatibility packet fixes, for all 40 frozen rows, the required field mapping, declared version, SHA-256 content digest, source commit/tree, accepted-vs-candidate rule, and expected consumer rejection codes:
+
+- `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_PACKET_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_FIXTURE_v1.json`
+- `.runs/RUN-20260827-ws50-estra-luna/validate_downstream_compatibility_v1.py`
+- `.runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_RECEIPT_v1.json`
+
+WS-60 and WS-75 are represented only by read-only register refs: Toolkit `bdc4fe27…` / tree `6590cabf…`; Publication `722c2547…` / tree `7a5c7349…`. No consumer content is copied. The stale consumer, provenance mismatch, private/runtime path and widened-ceiling fixtures reject deterministically. Candidate-only state, `dominance=false`, negative holdout delta and CI-including-zero remain fixed.

@@ -1,0 +1,38 @@
+{
+  "schema_id": "ESTRA_WS50_FIFTH_TRANCHE_COMPATIBILITY_FIXATION_PACKET_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "tranche": "FIFTH_NARROW_PRODUCER_DOWNSTREAM_COMPATIBILITY",
+  "status": "FIXED_REVIEW_ONLY_COMPATIBILITY_AND_CONSUMER_NEGATIVES",
+  "base_commit": "0944a2afcabcccc0cc125604d6462cc94317f8ba",
+  "base_tree": "b30d23443fcbb9c0046cf56b02de6893aa3325d6",
+  "accepted_register": "governance/oc14-release-discovery-20260827@477549e04a8514f8ff118a5ad10a4edee8d42bab",
+  "read_only_consumer_refs": [
+    "WS-60-TOOLKIT@bdc4fe27ac457b3f42bd1d1ab66d2d946b1991a3",
+    "WS-75-PUBLICATION@722c2547d7f676ab4e636849bc1a2d2e08a31e67"
+  ],
+  "declared_write_set": [
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_FIXTURE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/validate_downstream_compatibility_v1.py",
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/FIFTH_TRANCHE_COMPATIBILITY_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
+    ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
+  ],
+  "coverage": "All 40 frozen rows have exact required field mapping, version, SHA-256 content digest, source commit/tree, accepted-vs-candidate rule, and expected Toolkit/Publication rejection codes.",
+  "negative_fixtures": [
+    "stale consumer ref",
+    "consumer provenance mismatch",
+    "private/runtime path",
+    "widened claim ceiling"
+  ],
+  "forbidden_effects": [
+    "mutate frozen candidates or inherited source checkout",
+    "copy WS-60 or WS-75 content",
+    "mutate shared Logion state",
+    "change feature behavior",
+    "claim dominance"
+  ],
+  "claim_ceiling": "Producer-side downstream compatibility traceability only; candidate-only state and negative holdout boundary remain fixed."
+}

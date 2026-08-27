@@ -1,0 +1,26 @@
+{
+  "schema_id": "ESTRA_WS50_DOWNSTREAM_COMPATIBILITY_RECEIPT_v1",
+  "run_id": "RUN-20260827-ws50-estra-luna",
+  "validator": ".runs/RUN-20260827-ws50-estra-luna/validate_downstream_compatibility_v1.py",
+  "packet": ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_PACKET_v1.json",
+  "fixture": ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_FIXTURE_v1.json",
+  "base_commit": "0944a2afcabcccc0cc125604d6462cc94317f8ba",
+  "status": "PASS_DOWNSTREAM_COMPATIBILITY",
+  "candidate_rows": 40,
+  "semantic_digest_binding": "PASS_FREEZE_SHA256_FOR_ALL_40_ROWS",
+  "source_commit_tree_binding": "PASS_5398BFED_30578579_FOR_ALL_40_ROWS",
+  "consumer_refs": "READ_ONLY_REGISTER_REFS_ONLY",
+  "results": [
+    {"id":"accepted_current_consumer_refs","status":"PASS_DOWNSTREAM_COMPATIBILITY_REVIEW_ONLY","reason":"ACCEPT_READ_ONLY_CURRENT_CONSUMER_REFS"},
+    {"id":"stale_consumer","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_STALE_CONSUMER_REF"},
+    {"id":"provenance_mismatch","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS60_REJECT_PROVENANCE_MISMATCH"},
+    {"id":"private_runtime_path","status":"BLOCKED_CONSUMER_COMPATIBILITY","reason":"WS75_REJECT_PRIVATE_RUNTIME_PATH"},
+    {"id":"widened_ceiling","status":"BLOCKED_CLAIM_CEILING","reason":"WS60_REJECT_WIDENED_CLAIM_CEILING"}
+  ],
+  "candidate_only": true,
+  "dominance": false,
+  "holdout_delta": "NEGATIVE",
+  "confidence_interval": "INCLUDES_ZERO",
+  "feature_mutation": false,
+  "source_mutation": false
+}

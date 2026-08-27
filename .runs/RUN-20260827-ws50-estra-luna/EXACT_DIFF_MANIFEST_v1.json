@@ -9,8 +9,12 @@
     ".runs/RUN-20260827-ws50-estra-luna/CANDIDATE_FREEZE_MANIFEST_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/DEPENDENCY_GATE_FIXTURE_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/DEPENDENCY_GATE_RECEIPT_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_FIXTURE_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/DOWNSTREAM_COMPATIBILITY_RECEIPT_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/EXACT_DIFF_MANIFEST_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/FOURTH_TRANCHE_DEPENDENCY_GATE_FIXATION_PACKET_v1.json",
+    ".runs/RUN-20260827-ws50-estra-luna/FIFTH_TRANCHE_COMPATIBILITY_FIXATION_PACKET_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/RESULT_FIXATION_PACKET.json",
     ".runs/RUN-20260827-ws50-estra-luna/REMOTE_READBACK_RECEIPT_v1.json",
     ".runs/RUN-20260827-ws50-estra-luna/REMOTE_TRANSPORT_FIXATION_PACKET_v1.json",
@@ -21,10 +25,11 @@
     ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v1.md",
     ".runs/RUN-20260827-ws50-estra-luna/TOOLKIT_PUBLICATION_HANDOFF_v2.md",
     ".runs/RUN-20260827-ws50-estra-luna/validate_dependency_gate_v1.py",
+    ".runs/RUN-20260827-ws50-estra-luna/validate_downstream_compatibility_v1.py",
     ".runs/RUN-20260827-ws50-estra-luna/run.md",
     ".runs/RUN-20260827-ws50-estra-luna/status.yaml"
   ],
   "staging_rule": "Only the exact expected_paths above may be staged for this infrastructure checkpoint. Candidate files in the source checkout are not part of this diff.",
   "candidate_transport": "NONE",
-  "status": "PASS_EXACT_RUN_MANIFEST__FOURTH_DEPENDENCY_GATE_INCLUDED"
+  "status": "PASS_EXACT_RUN_MANIFEST__FIFTH_COMPATIBILITY_INCLUDED"
 }
