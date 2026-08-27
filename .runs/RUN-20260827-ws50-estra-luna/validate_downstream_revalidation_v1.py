@@ -13,8 +13,8 @@ FREEZE = ROOT / "CANDIDATE_FREEZE_MANIFEST_v1.json"
 
 
 CURRENT_REFS = {
-    "WS-60-TOOLKIT": {"repository":"estra-toolkit","branch":"workstream/oc14-toolkit-luna-20260827","commit":"981369b22a960c0fca72573f53c613f50b66456","tree":"14b4b61e9d6347042aeb94256f854954fb1ab9fa"},
-    "WS-75-PUBLICATION": {"repository":"Logion","branch":"workstream/oc14-publication-luna-20260827","commit":"dff9639381bd4ecacf605f7a1cd122295774d35c","tree":"e2d054146361478c5134a2ebbb7fe793ced9b73e"},
+    "WS-60-TOOLKIT": {"repository":"estra-toolkit","branch":"workstream/oc14-toolkit-luna-20260827","commit":"137f7733febf6c026619816272f9440e0d029f3c","tree":"cdece84101752f68c7e1d85f734c406c2190bd8f"},
+    "WS-75-PUBLICATION": {"repository":"Logion","branch":"workstream/oc14-publication-luna-20260827","commit":"cd1149108fdc4c02b6a019f369b4fb8ef582b616","tree":"98d7e74c7698d77fad775de21fb309a2c277d0fe"},
 }
 
 

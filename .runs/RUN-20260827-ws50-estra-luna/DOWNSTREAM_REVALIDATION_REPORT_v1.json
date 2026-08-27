@@ -6,8 +6,8 @@
   "base_tree": "25648dbdc5aa62bae2a20e18c6b7306bd39e6140",
   "source_checkout": {"commit":"5398bfed0efbc56ad969382df48af568ee2df24b","tree":"30578579fc51acf3512991ed2a9b6a01c0b95691","candidate_mutation":false},
   "current_consumer_refs": {
-    "WS-60-TOOLKIT": {"repository":"estra-toolkit","branch":"workstream/oc14-toolkit-luna-20260827","commit":"981369b22a960c0fca72573f53c613f50b66456","tree":"14b4b61e9d6347042aeb94256f854954fb1ab9fa","ref_mode":"READ_ONLY"},
-    "WS-75-PUBLICATION": {"repository":"Logion","branch":"workstream/oc14-publication-luna-20260827","commit":"dff9639381bd4ecacf605f7a1cd122295774d35c","tree":"e2d054146361478c5134a2ebbb7fe793ced9b73e","ref_mode":"READ_ONLY"}
+    "WS-60-TOOLKIT": {"repository":"estra-toolkit","branch":"workstream/oc14-toolkit-luna-20260827","commit":"137f7733febf6c026619816272f9440e0d029f3c","tree":"cdece84101752f68c7e1d85f734c406c2190bd8f","ref_mode":"READ_ONLY"},
+    "WS-75-PUBLICATION": {"repository":"Logion","branch":"workstream/oc14-publication-luna-20260827","commit":"cd1149108fdc4c02b6a019f369b4fb8ef582b616","tree":"98d7e74c7698d77fad775de21fb309a2c277d0fe","ref_mode":"READ_ONLY"}
   },
   "stale_prior_register_refs": {
     "WS-60-TOOLKIT": {"commit":"bdc4fe27ac457b3f42bd1d1ab66d2d946b1991a3","tree":"6590cabff15055073ba430a95a9fc872fae55d69","stale_relative_to_current":true},
