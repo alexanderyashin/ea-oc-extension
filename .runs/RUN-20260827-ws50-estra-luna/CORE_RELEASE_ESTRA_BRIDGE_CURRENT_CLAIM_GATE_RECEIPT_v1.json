@@ -1,0 +1,113 @@
+{
+  "schema_id": "ESTRA_CORE_RELEASE_BRIDGE_CURRENT_CLAIM_GATE_RECEIPT_v1",
+  "receipt_kind": "READ_ONLY_CURRENT_CLAIM_BRIDGE_GATE_CHECK",
+  "snapshot_utc": "2026-08-28T12:39:14.1789311Z",
+  "scope": "Current OC14 release claims only; no research-scope expansion and no live conversion.",
+  "decision": "BLOCKED_NO_ACCEPTED_ESTRA_SEMANTIC_INPUT",
+  "bridge_path": {
+    "canonical_graph_ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/LOGION_OC14_RELEASE_1_4_REVERSE_DECOMPOSITION_GRAPH_v1.json",
+    "canonical_graph_sha256": "d0fbefff290a674fbc3b1a712acd3cfca42b7be70290b1d3e14443504b2ce551",
+    "framework_node": {
+      "node_id": "REL_ESTRA_FRAMEWORK",
+      "state": "CANDIDATE_FRAMEWORK_NOT_ACCEPTED",
+      "selector": "latest_current_artifact(urn:logion:asset:estra:framework,required_state=ACCEPTED)",
+      "inputs": ["ASSET_METAONTOLOGY", "ASSET_SCIENTIFIC_SNAPSHOT", "ASSET_CONTROL_RECEIPT"],
+      "output": "ASSET_ESTRA_FRAMEWORK",
+      "acceptance_role": "RESEARCH_MACHINE_ENGINEERING_ACCEPTOR",
+      "cci_role": "CCI_ENGINEERING_GATE"
+    },
+    "toolkit_node": {
+      "node_id": "REL_ESTRA_TOOLKIT",
+      "state": "INTERNAL_ENGINEERING_CANDIDATE_NOT_ACCEPTED",
+      "selector": "latest_current_artifact(urn:estra:toolkit:ws60:candidate,required_state=ACCEPTED)",
+      "inputs": ["ASSET_ESTRA_FRAMEWORK", "ASSET_DATASET_PASSPORT", "ASSET_HOST_SAFETY_RECEIPT"],
+      "output": "ASSET_ESTRA_TOOLKIT",
+      "acceptance_role": "RESEARCH_MACHINE_ENGINEERING_ACCEPTOR",
+      "cci_role": "CCI_ENGINEERING_GATE"
+    },
+    "claim_trace_node": {
+      "node_id": "REL_CLAIM_TRACE",
+      "state": "NO_ADMITTED_G14_TRACE_TASK_OR_CURRENT_TRACE_GRAPH",
+      "selector": "latest_current_artifact(urn:logion:asset:oc14:claim-trace-graph,required_state=TRACE_VALIDATED)",
+      "inputs": ["ASSET_LEAN_PROOF_RECEIPT", "ASSET_EXPERIMENT_RESULT", "ASSET_ESTRA_FRAMEWORK", "ASSET_DATASET_PASSPORT"],
+      "output": "ASSET_TRACE_GRAPH",
+      "acceptance_role": "SCIENCE_DEPARTMENT_ACCEPTOR",
+      "cci_role": "CCI_SCIENCE_GATE"
+    },
+    "reproducibility_node": "CURRENT_REPLAY_NOT_BOUND_TO_RELEASE_CUT",
+    "release_integrity_node": "NOT_ASSEMBLED_CURRENT_GENERATION"
+  },
+  "estra_current_evidence": {
+    "repository": "https://github.com/alexanderyashin/ea-oc-extension.git",
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "worker_commit": "d856065b4b76849589dd17f2c3d8673e6f7ec150",
+    "worker_tree": "6be5924d1290558a1611e749bbd065c8130cd10b",
+    "remote_commit": "d856065b4b76849589dd17f2c3d8673e6f7ec150",
+    "remote_tree": "6be5924d1290558a1611e749bbd065c8130cd10b",
+    "sha_match": true,
+    "tree_match": true,
+    "dirty_count_before_receipt_write": 0,
+    "latest_result_path": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "latest_result_raw_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "latest_result_git_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "latest_result_content_producer_commit": "150154ccf8b624e940eb3c5eb115f92cf84fe7d7",
+    "latest_result_content_producer_tree": "5c0f499a881b323c02e6c8fa2ea95bd4ad43ac48",
+    "current_r4_subreceipt_path": ".runs/RUN-20260827-ws50-estra-luna/R4_ESTRA_FUNCTIONAL_SUBRECEIPT_CURRENT_v1.json",
+    "current_r4_subreceipt_raw_sha256": "e368ce366902a7e2e2af323fb9b96c9e492177777f4609e9312e210a4fd22095",
+    "current_r4_subreceipt_git_blob": "991038b03c08061b8e05035ea766a8c34e5d5286",
+    "ws70_functional_receipt": {
+      "decision": "ACCEPTED",
+      "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
+      "digest": "901EEFA318B1D5D836C6034C724383800B7700ACD4E4DC6579500D3AE7DFA0D9",
+      "commit": "3a4411e41a4c71fc0cb94363298031fd02286e99",
+      "tree": "ba2ed71d31affd8601a42e4e50f30998f07a9f41"
+    },
+    "guarded_replay": {"status": "PASS_GUARDED_69_TESTS", "numerator": 69, "denominator": 69, "exit_code": 0},
+    "candidate_fingerprint": {"numerator": 40, "denominator": 40, "mismatches": 0, "accepted": 0}
+  },
+  "gate_e_and_semantic_trace": {
+    "claim_ledger_ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/OC14_CLAIM_LEDGER_EXPERIMENT_SIMULATION_RELEASE_MAP_v1.json",
+    "claim_ledger_sha256": "082304e2060f8f47718ce3867f0b50fa8d33c29ab3517c072bdf0f6c9cb304d5",
+    "gate_e_disc_current_result": {"gate": "G_SYNTHETIC_CURRENT_RESULT", "status": "BLOCKED", "numerator": 0, "denominator": 1, "missing": "current raw result bound to exact seed, input and command"},
+    "gate_e_disc_independent_validation": {"gate": "G_SYNTHETIC_INDEPENDENT_VALIDATION", "status": "BLOCKED_PREDECESSOR", "numerator": 0, "denominator": 1, "missing": "immutable raw result plus independent validation receipt"},
+    "gate_e_disc_departmental_cci": {"gate": "G_SYNTHETIC_DEPARTMENTAL_CCI", "status": "PENDING_PREDECESSOR", "numerator": 0, "denominator": 1, "missing": "accepted experiment result, departmental acceptance and CCI closure"},
+    "semantic_trace": {"status": "NOT_ADMITTED", "current_claim_surface": "31/31 mapped; 0/31 terminally resolved", "occurrence_trace": "0/1 HELD", "required": "accepted ScientificResultStateOccurrence and complete bidirectional claim trace"},
+    "release_claim_ceiling": "Candidate/functionally validated bridge only; no semantic, scientific, publication, release or authority claim."
+  },
+  "existing_bridge_atom": {
+    "ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/05_Current_Baseline/LOGION_OC14_BRIDGE_READER_CLAIM_PUBLICATION_ATOM_v1.json",
+    "sha256": "b81434d8e00ed288d389330603239f591203e624bdb3814cff2ee083f3eed184",
+    "status": "CANDIDATE_NOT_RELEASED",
+    "required_empirical_result": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/LOGION_OC14_BRIDGE_ALL_RULE_REAL_MAPPING_RESULT_v1.json",
+    "independent_publication_gate": "MISSING",
+    "interpretation": "Existing finite bridge atom is not an accepted ESTRA framework input and cannot authorize release conversion."
+  },
+  "drt_boundary": {
+    "deferred_id": "DRT_PHYSICAL_EXTENSION_AND_EXPERIMENTAL_DISCRIMINATION",
+    "status": "DEFERRED_UNTIL_AFTER_RELEASE_1_4",
+    "formal_modules_retained_in_current_corpus": true,
+    "not_silently_dropped": true,
+    "next_action": "After Release 1.4, reopen the DRT physical/experimental programme and route required mathematics, simulations and experiments through the normal evidence ladder."
+  },
+  "exact_blocker": {
+    "code": "BLOCKED_NO_ACCEPTED_ESTRA_SEMANTIC_INPUT",
+    "missing_inputs": ["ACCEPTED_ASSET_METAONTOLOGY", "ACCEPTED_ASSET_SCIENTIFIC_SNAPSHOT", "ACCEPTED_ASSET_CONTROL_RECEIPT", "TRACE_VALIDATED_CLAIM_GRAPH", "RELEASE_BOUND_CURRENT_REPRODUCIBILITY_RECEIPT"],
+    "action_owner": "WS-35/Science semantic acceptor and CCI_ENGINEERING_GATE owners",
+    "next_transition": "ACCEPTED_SEMANTIC_PRODUCER_RECEIPTS -> ESTRA_FRAMEWORK_ACCEPTANCE -> TRACE_VALIDATION -> CCI_REVIEW",
+    "conversion_performed": false,
+    "independent_validation_performed": true,
+    "independent_validation_scope": "WS70 machine-functional only",
+    "semantic_independent_validation_performed": false,
+    "reason": "WS70 functional validation is present but explicitly does not substitute for semantic acceptance or Gate E closure."
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "canonical_shared_main_pointer_public_db_raw_cold_host_io_mutation": false,
+    "promotion_publication_activation": false,
+    "candidate_only": true,
+    "accepted": 0,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true
+  }
+}
