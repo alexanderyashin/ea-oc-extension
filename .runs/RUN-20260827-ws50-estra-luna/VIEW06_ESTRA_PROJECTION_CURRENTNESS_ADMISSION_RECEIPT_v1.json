@@ -1,0 +1,107 @@
+{
+  "schema_id": "ESTRA_VIEW06_PROJECTION_CURRENTNESS_ADMISSION_RECEIPT_v1",
+  "receipt_kind": "READ_ONLY_PROJECTION_ADMISSION_CHECK",
+  "snapshot_utc": "2026-08-31",
+  "scope": "Current OC14 claims only; View06 inventory identity reconciliation and ESTRA bridge admission.",
+  "decision": "BLOCKED_TYPED_SEMANTIC_COMPATIBILITY_AND_CURRENT_EVIDENCE_REQUIRED",
+  "view06_baseline": {
+    "reconciled_commit": "a48290b18f0c041e4b5567c1612d175a8db7d57f",
+    "reconciled_tree": "9dd29ca6e665235dd20ccdfb18e4c76cf79fdc42",
+    "reconciled_clean": true,
+    "post_materialization_receipt": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/OC14_E2E_SCIENCE_TO_RELEASE_VIEW_06_POST_MATERIALIZATION_CURRENTNESS_RECONCILIATION_v1.json",
+    "post_materialization_receipt_sha256": "6d2c146e963de4bb037349a9f0d8185daf50237163fc308f3b54da1d8c3895d8",
+    "post_materialization_status": "CURRENTNESS_RECONCILED_FOR_DECLARED_INPUT_CUT__INDEPENDENT_REVIEW_OPEN",
+    "inventory_validation_ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/OC14_E2E_SCIENCE_TO_RELEASE_VIEW_06_VALIDATION_RESULT_v1.json",
+    "inventory_validation_sha256": "9c2f90ad0bb40c1c2a2576e137e694de097b6a511348ce5c49dbb9cfdc0226df",
+    "inventory_validation_status": "PASS_VIEW06_BOUNDED_UNIFIED_FUNCTIONAL_MACHINE_INVENTORY",
+    "inventory_identity_counts": {
+      "process_families": 15,
+      "process_nodes": 20,
+      "atomic_capabilities": 125,
+      "declared_bridges": 16,
+      "functional_roots": 20771,
+      "function_inventory_rows": 32896,
+      "data_asset_identities_referenced": 10710
+    },
+    "inventory_limits": {
+      "automatic_semantic_merge": false,
+      "unsupported_source_records": 15712,
+      "root_family_ambiguous": 2446,
+      "root_family_unresolved": 3387,
+      "roots_without_unique_capability": 18530,
+      "open_obligation_count": 10,
+      "claim_ceiling": "BOUNDED_FUNCTIONAL_MACHINE_INVENTORY_AND_CANDIDATE_MAPPING_ONLY__NO_RUNTIME_SCIENCE_PUBLICATION_RELEASE_OR_SEMANTIC_MERGE_CREDIT"
+    }
+  },
+  "projection_admission_contract": {
+    "identity_predicate": "View06 inventory identity, source ref, tree and digest must match the declared current cut.",
+    "semantic_predicate": "A typed semantic compatibility receipt must bind the ESTRA concept to an accepted OC math/metaontology producer and claim ceiling.",
+    "evidence_predicate": "Current evidence must be independently validated, provenance/rights-bound and admitted for the requested consumer scope.",
+    "runtime_release_predicate": "Static inventory mappings never create runtime capability, scientific result, publication atom or release credit.",
+    "fail_closed_codes": ["REJECT_STATIC_MAPPING_AS_RUNTIME", "BLOCKED_TYPED_SEMANTIC_COMPATIBILITY", "BLOCKED_CURRENT_EVIDENCE", "BLOCKED_OPEN_OBLIGATION"]
+  },
+  "estra_current_bridge_input": {
+    "branch": "workstream/oc14-estra-luna-20260827",
+    "pre_write_commit": "0b6f359049d2143d9ba0dbda219154d20dd6b611",
+    "pre_write_tree": "7fb18dc7484730b7233a95aee42acf44fc42de46",
+    "pre_write_remote_parity": true,
+    "pre_write_dirty_count": 0,
+    "functional_result_path": ".runs/RUN-20260827-ws50-estra-luna/CYCLE_ROOT_DOMAIN_EXECUTION_RESULT_v1.json",
+    "functional_result_sha256": "886236776567b4e9fc19486df363768c870bc937a948bcead5b6ef27cf7f51fe",
+    "functional_result_blob": "8fb6418df5dccb0b5faecae6b90c636363e49a17",
+    "current_r4_path": ".runs/RUN-20260827-ws50-estra-luna/R4_ESTRA_FUNCTIONAL_SUBRECEIPT_CURRENT_v1.json",
+    "current_r4_sha256": "e368ce366902a7e2e2af323fb9b96c9e492177777f4609e9312e210a4fd22095",
+    "current_r4_blob": "991038b03c08061b8e05035ea766a8c34e5d5286",
+    "ws70_functional_receipt": {
+      "decision": "ACCEPTED",
+      "scope": "INDEPENDENT_MACHINE_FUNCTIONAL_ONLY",
+      "digest": "901EEFA318B1D5D836C6034C724383800B7700ACD4E4DC6579500D3AE7DFA0D9"
+    },
+    "semantic_state": "SEPARATE_PENDING",
+    "accepted_count": 0,
+    "candidate_only": true,
+    "dominance": false,
+    "holdout_delta": "negative",
+    "ci_includes_zero": true
+  },
+  "gate_e_and_semantic_trace": {
+    "gate_e_disc": {
+      "current_result": "G_SYNTHETIC_CURRENT_RESULT 0/1 BLOCKED",
+      "independent_validation": "G_SYNTHETIC_INDEPENDENT_VALIDATION 0/1 BLOCKED_PREDECESSOR",
+      "departmental_cci": "G_SYNTHETIC_DEPARTMENTAL_CCI 0/1 PENDING_PREDECESSOR"
+    },
+    "semantic_trace": {
+      "claim_ledger_ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/OC14_CLAIM_LEDGER_EXPERIMENT_SIMULATION_RELEASE_MAP_v1.json",
+      "claim_ledger_sha256": "082304e2060f8f47718ce3867f0b50fa8d33c29ab3517c072bdf0f6c9cb304d5",
+      "current_claim_surface": "31/31 mapped; 0/31 terminally resolved",
+      "occurrence_trace": "0/1 HELD",
+      "missing": "accepted ScientificResultStateOccurrence and complete bidirectional claim trace"
+    }
+  },
+  "open_obligations": {
+    "ledger_ref": "06_Processes_and_Programs/00_Corporate_Control_Hypergraph/07_Reports/OC14_E2E_SCIENCE_TO_RELEASE_VIEW_06_OPEN_OBLIGATION_LEDGER_v1.json",
+    "ledger_sha256": "0f14b6bc94c5d1a56d039e65dabfee35453d6a4d49e13371d85423a9fcf0f694",
+    "status": "OPEN__PRESERVED__NOT_CLOSED_BY_VIEW06",
+    "count": 10
+  },
+  "drt_boundary": {
+    "deferred_id": "DRT_PHYSICAL_EXTENSION_AND_EXPERIMENTAL_DISCRIMINATION",
+    "status": "DEFERRED_UNTIL_AFTER_RELEASE_1_4",
+    "formal_modules_retained": true,
+    "not_silently_dropped": true
+  },
+  "exact_blocker": {
+    "missing": ["accepted typed semantic compatibility receipt", "accepted current claim/provenance evidence", "validated claim trace / occurrence for release conversion"],
+    "next_action": "Obtain the appropriate accepted OC math/metaontology and current evidence receipts, then run the typed compatibility gate before any projection admission.",
+    "conversion_performed": false,
+    "runtime_or_release_atom_created": false,
+    "independent_validation_performed": true,
+    "independent_validation_scope": "WS70 machine-functional only"
+  },
+  "mutation_boundary": {
+    "report_zone_only": true,
+    "canonical_shared_main_pointer_public_db_raw_cold_host_io_mutation": false,
+    "static_mapping_promoted_to_runtime_or_release": false,
+    "promotion_publication_authority": false
+  }
+}
